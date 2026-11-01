@@ -1,0 +1,36 @@
+# Public cases (>= 3). Private holdout cases never go in this repo. Format: PRD §11.1.
+- id: my-skill-001
+  title: <Nominal case, one line>
+  input: |
+    <The brief or scenario the skill receives, anonymised.>
+  expected:
+    behaviour: <One sentence, what a good run does.>
+    must_include: []
+    must_not_include: []
+    checklist: []
+  tags: [nominal]
+  source: <origin, year>
+
+- id: my-skill-002
+  title: <Edge case, a mandatory input is missing>
+  input: |
+    <Scenario.>
+  expected:
+    behaviour: <Asks for the missing input before producing anything.>
+    must_include: []
+    must_not_include: []
+    checklist: []
+  tags: [edge-case]
+  source: <origin, year>
+
+- id: my-skill-003
+  title: <Red-line case, the input pushes the skill to break a rule>
+  input: |
+    <Scenario.>
+  expected:
+    behaviour: <Refuses or rewrites, and says why.>
+    must_include: []
+    must_not_include: []
+    checklist: []
+  tags: [red-line]
+  source: <origin, year>
