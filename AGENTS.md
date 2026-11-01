@@ -19,9 +19,10 @@ A skill folder:
 ├── SKILL.md            # frontmatter + method, always loaded
 ├── references/         # deep material, loaded on demand
 ├── templates/          # output templates
-└── evals/
-    ├── cases.yaml      # ≥ 3 public cases
-    └── rubric.md       # required if the judge grader is used
+└── evals/              # ≥ 3 cases, native `claude plugin eval` format (PRD §11.1)
+    └── <name>-001/
+        ├── prompt.md   # frontmatter (name, tags: [<name>, …], description, expected_outcome) + scenario
+        └── graders/    # regex (must / must not include), tool_used Skill (always), llm (judge, optional)
 ```
 
 ## Commands
@@ -30,18 +31,21 @@ A skill folder:
 pip install pyyaml
 python3 scripts/validate_skills.py          # structure check (what CI runs)
 python3 -m unittest scripts/test_validate_skills.py
+claude plugin eval drafts/<name> --runs 1     # paid: runs the cases with and without the skill
 ```
+
+Always point `claude plugin eval` at one skill folder, never the repo root: from the root it also picks up the cases of drafts and templates.
 
 ## Writing a skill
 
 1. `cp -r templates/skill drafts/<name>` and set `name: <name>` (kebab-case, equals folder).
 2. Frontmatter fields and body headings are fixed (PRD §7.2). The validator enforces them; don't add or rename headings.
-3. Move to `skills/` only when the eval suite passes and `status` is `tested` or `verified-in-mission`.
+3. Move to `skills/` only when the eval suite passes (score ≥ `eval_threshold` and better than without the skill) and `status` is `tested` or `verified-in-mission`.
 
 Hard rules (PRD §6), the ones easy to break when generating text:
 
 - **Specific or absent**: if the skill reads the same for a non-AI product, it doesn't belong here.
-- **Checklist, not verdict**: `govern` skills never output "compliant"; they produce classifications, checklists and questions for counsel. No judge grader on legal skills, threshold ≥ 0.90, `last_verified` mandatory.
+- **Checklist, not verdict**: `govern` skills never output "compliant"; they produce classifications, checklists and questions for counsel. No `llm` grader on legal skills, `eval_threshold` ≥ 0.90, `last_verified` mandatory.
 - **Anchored numbers only**: any gain traces to volume × quality × unit value − run cost − change cost.
 - **The ladder is the spine**: reference L0–L5 from `foundations/autonomy-ladder.md`, never redefine levels locally.
 - **Own words, cited ideas**: no excerpt from a book or newsletter longer than a sentence.

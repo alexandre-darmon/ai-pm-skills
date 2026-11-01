@@ -8,10 +8,7 @@ depends_on: []
 feeds: []
 autonomy_relevant: false
 sources: [own-practice]  # ids from foundations/sources.md
-evals:
-  cases: 3
-  graders: [checklist, exact]  # exact | checklist | judge (no judge for govern)
-  threshold: 0.80  # 0.90 for govern and flagship skills
+eval_threshold: 0.80  # 0.90 for govern and flagship skills
 status: draft  # draft | tested | verified-in-mission
 ---
 

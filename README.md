@@ -8,7 +8,7 @@ An open-source set of [Agent Skills](https://agentskills.io) that take an AI or 
 
 ## What makes it different
 
-1. **Tested.** Every skill ships with eval cases and a visible pass rate. A skill without a passing suite stays in `drafts/`.
+1. **Tested.** Every skill ships with eval cases run by `claude plugin eval`, with and without the skill, and a visible pass rate. A skill without a passing suite stays in `drafts/`.
 2. **Compliance as skills.** AI Act classification, DPIA pre-screen, CSE consultation, model card, incident playbook — checklists and questions, inside the agent.
 3. **A spine.** Every skill plugs into two shared backbones: the **autonomy ladder** (L0 to L5) and the **ROI model** (volume × quality × value).
 4. **Lived.** Every rule comes from a real deployment; eval cases are anonymised real briefs.
@@ -35,7 +35,11 @@ pip install pyyaml
 python3 scripts/validate_skills.py
 ```
 
-The validator checks the frontmatter, the fixed body headings and the eval cases (PRD §7.2 and §11.1). CI runs it on every push and pull request.
+The validator checks the frontmatter, the fixed body headings and the eval cases (PRD §7.2 and §11.1). CI runs it on every push and pull request. To score a skill (paid, uses your Claude credentials):
+
+```bash
+claude plugin eval drafts/<your-skill-name> --runs 1
+```
 
 ## License
 

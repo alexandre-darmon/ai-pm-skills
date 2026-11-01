@@ -8,7 +8,7 @@
 
 **ai-pm-skills is an open-source set of 26 tested skills that take an AI or Data product from framing to budget, build, measurement and compliance, in a regulated European enterprise.**
 
-Each skill is a folder an agent (Claude Code, Codex, Cursor, a custom agent) loads on demand: a `SKILL.md` with the method, templates, sources, and an eval suite run by [evalblink](https://pypi.org/project/evalblink/). The repo is a system, not a list: every skill plugs into two shared backbones, the **autonomy ladder** (L0 to L5) and the **ROI model** (volume × quality × value).
+Each skill is a folder an agent (Claude Code, Codex, Cursor, a custom agent) loads on demand: a `SKILL.md` with the method, templates, sources, and an eval suite run by `claude plugin eval`. The repo is a system, not a list: every skill plugs into two shared backbones, the **autonomy ladder** (L0 to L5) and the **ROI model** (volume × quality × value).
 
 README promise, one line:
 
@@ -20,7 +20,7 @@ README promise, one line:
 | Format | [Agent Skills](https://agentskills.io) open standard: `SKILL.md` + progressive disclosure |
 | Skill count | 26 at v1.0, hard cap 30 |
 | Stages | Strategy · Specify · Data & Knowledge · Build · Measure · Govern · Transform |
-| Test harness | evalblink suites, 3 cases minimum per skill, pass rate shown in README |
+| Test harness | `claude plugin eval`, native format, 3 cases minimum per skill, scored with and without the skill; pass rate shown in README |
 | Language | English skills; French legal annexes where the law is French |
 | License | To decide (section 14) |
 | Owner | Alex Darmon, solo, about 1 hour per day |
@@ -62,7 +62,7 @@ The repo's bet: the skills a PM actually needs for AI products are specific, few
 ### Goals
 
 1. Cover the seven stages of an AI product's life with 26 specific skills, none generic.
-2. Ship every skill with an evalblink suite; the README shows each skill's pass rate and date.
+2. Ship every skill with an eval suite; the README shows each skill's pass rate and date.
 3. Make the autonomy ladder and the ROI model the shared language of all skills.
 4. Give compliance (AI Act, GDPR, French labour law) the same actionable form as product work: checklists and questions, inside the agent, never a PDF.
 5. Be usable from any agent that reads `SKILL.md`: Claude Code first, Codex and Cursor verified.
@@ -74,7 +74,7 @@ The repo's bet: the skills a PM actually needs for AI products are specific, few
 - Not legal advice: skills produce classifications, questions and checklists for counsel, never a conformity verdict.
 - Not a redistribution of books or newsletters: skills state the author's own rules and cite the source; no excerpts.
 - Not a SaaS, a web app, a marketplace or a course. A repo and a README.
-- Not a replacement for evalblink: the tool stays in its own repo; this repo only calls it.
+- Not an eval tool: the repo uses `claude plugin eval` and a small deterministic grader script; it builds no harness of its own.
 - Not more than 30 skills, ever. A 31st replaces one.
 
 ### Success metrics
@@ -86,7 +86,7 @@ The repo's bet: the skills a PM actually needs for AI products are specific, few
 | GitHub stars | 100 | 500 | GitHub |
 | Issues or PRs from strangers | 1 | 20 | GitHub |
 | Weekly installs (`npx skills add`, clone) | 20 | 150 | GitHub traffic |
-| Eval pass rate, repo average | 80% | 90% | evalblink `report` |
+| Eval pass rate, repo average | 80% | 90% | `claude plugin eval` results JSON |
 | Legal skills verified within 90 days | 100% | 100% | `last_verified` frontmatter, CI check |
 | Articles published, one per wave | 1 | 4 | aiunmagic.com |
 
@@ -114,7 +114,7 @@ Design implication: skills are written for the primary user and tested on the au
 
 ### Four differentiators, in order of defensibility
 
-1. **Tested.** Each skill has an evalblink suite and a visible pass rate. No other PM skill repo tests its skills. This is also the hardest thing to copy, because it requires the cases, not just the prose.
+1. **Tested.** Each skill has an eval suite and a visible pass rate, including the score delta with vs without the skill. No other PM skill repo tests its skills. This is also the hardest thing to copy, because it requires the cases, not just the prose.
 2. **Compliance as skills.** AI Act classification, DPIA pre-screen, CSE consultation, model card and AI registry, incident playbook. Written for a PM's working tool, dated and sourced.
 3. **A spine.** The autonomy ladder and the ROI model connect the skills. A reader sees a method, not a folder of prompts.
 4. **Lived.** Every rule comes from a problem the author met on a real deployment. Cases in the suites are anonymised real briefs.
@@ -129,7 +129,7 @@ Design implication: skills are written for the primary user and tested on the au
 
 | Project | Relationship |
 | --- | --- |
-| evalblink (PyPI) | Runs every suite. Two skills (`build-evals`, `model-selection`) explicitly call it. |
+| evalblink (PyPI) | Not the repo's test harness. Optional tool for model and classifier comparisons inside `model-selection` and `conversation-analysis`. |
 | nanoagent | Reference implementation for `agent-design-and-tooling`; emits traces used in `assistant-kpis-cost-per-outcome` demos. |
 | aiunmagic.com | Publishes one article per wave; hosts the pedagogical companion to `ai-literacy-program`. |
 | My Companion (BNP) | Live source for `conversation-analysis`, `assistant-kpis-cost-per-outcome`, `agent-knowledge-base`. Data never leaves the client; only the method is published. |
@@ -170,20 +170,22 @@ ai-pm-skills/
 │   │   ├── SKILL.md               # frontmatter + method (the only file always loaded)
 │   │   ├── references/            # deep material, loaded on demand
 │   │   ├── templates/             # output templates (markdown, yaml, csv)
-│   │   └── evals/
-│   │       ├── cases.yaml         # public cases (≥3)
-│   │       └── rubric.md          # grader rubric when an LLM judge is used
+│   │   └── evals/                 # `claude plugin eval` cases, one folder per case (≥3)
+│   │       └── <skill-name>-001/
+│   │           ├── prompt.md      # frontmatter (name, tags, expected_outcome) + scenario sent to the agent
+│   │           └── graders/       # one file per check: regex, tool_used, llm
 │   └── ...
-├── drafts/                        # skills without a passing suite; not counted
-├── evals/
-│   ├── suite.yaml                 # evalblink suite definition: all skills, graders, baseline
-│   ├── baseline/                  # frozen baseline runs per skill (model + date)
-│   └── redteam/                   # adversarial cases for guardrail skills
+├── drafts/                        # same structure, no passing suite yet; not counted
+├── templates/skill/               # starting point for a new skill, cases included
+├── baselines/                     # frozen results JSON per skill (model, judge model, date, delta)
+├── .claude-plugin/plugin.json     # install as a Claude Code plugin
 ├── scripts/
-│   ├── run_evals.sh               # evalblink run on changed skills
+│   ├── validate_skills.py         # structure check: frontmatter, headings, cases, graders
+│   ├── run_evals.sh               # `claude plugin eval` per changed skill, with its own threshold
 │   ├── check_freshness.py         # fails CI if a legal skill's last_verified > 90 days
-│   └── build_readme_table.py      # regenerates the catalog table from frontmatter + reports
+│   └── build_readme_table.py      # regenerates the catalog table from frontmatter + results
 └── .github/workflows/
+    ├── validate.yml               # on push and PR: structure check
     ├── evals.yml                  # on PR: changed skills, cheap model; nightly: full suite
     └── freshness.yml              # weekly
 ```
@@ -205,7 +207,7 @@ Frontmatter (YAML), all fields required unless marked optional:
 | `feeds` | list | skill names that consume this skill's output |
 | `autonomy_relevant` | bool | true if the skill reads or sets an L-level |
 | `sources` | list | ids from `foundations/sources.md` |
-| `evals` | object | `cases: <n>`, `graders: [exact, checklist, judge]`, `threshold: 0.80` |
+| `eval_threshold` | number | pass threshold for the skill's cases; 0.80 by default, 0.90 for `govern` and flagship skills |
 | `status` | enum | draft · tested · verified-in-mission |
 
 Body structure (fixed headings, so graders can check structure):
@@ -403,12 +405,12 @@ Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Grade
 - **Purpose:** write the system prompt and the three guardrail layers (input, output, action) as one coherent, tested unit.
 - **Trigger:** first prompt draft, a jailbreak found, an agent gets tools, moving up the ladder.
 - **Inputs:** PRD; autonomy level per step; tools available to the agent; sensitive data classes; latency and cost budget.
-- **Outputs:** system prompt (role, scope, refusal policy, format); guardrail spec per layer with mechanism, latency budget, cost per call, failure action; a redteam case set (≥ 20 injections, ≥ 10 out-of-scope, ≥ 5 action-limit attempts) added to `evals/redteam/`; false-positive budget.
+- **Outputs:** system prompt (role, scope, refusal policy, format); guardrail spec per layer with mechanism, latency budget, cost per call, failure action; a redteam case set (≥ 20 injections, ≥ 10 out-of-scope, ≥ 5 action-limit attempts) added as cases tagged `redteam` in the skill's `evals/`; false-positive budget.
 - **Rules:** no L3 without tested output guardrails; no L4 without action guardrails (scope, caps, approvals); each guardrail has a latency and cost line (cheap classifiers first, frontier last); guardrails are defence in depth, never a guarantee; the skill refuses to claim "safe".
 - **Depends on / feeds:** P1, B3 / M1, M3, G1.
 - **Sources:** OWASP Top 10 for LLM applications, own guardrail work, AI Act art. 14 (human oversight).
 - **Evals (3):** a refund agent with no caps (expected: caps + approval rule added, L4 blocked); a prompt with "be helpful" and no scope (expected: scope and refusal added); a redteam run with 30% false positives (expected: tuning plan, not acceptance).
-- **Graders:** checklist (three layers, budgets, redteam set sizes) + exact (redteam pass rate ≥ threshold, false positives ≤ budget, measured by evalblink).
+- **Graders:** checklist (three layers, budgets, redteam set sizes) + exact (redteam pass rate ≥ threshold, false positives ≤ budget, measured by the eval run).
 
 #### B3 · `agent-design-and-tooling` — P1
 - **Purpose:** design an agent's loop, tools and permissions from its target autonomy level, before any framework choice.
@@ -427,10 +429,10 @@ Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Grade
 - **Purpose:** build the evaluation set and graders that decide whether an AI feature, model or skill is good enough.
 - **Trigger:** PRD eval stub exists, before any model choice, before any release, when quality is disputed.
 - **Inputs:** the task definition; 20+ real examples (anonymised); what "correct" means to the business; constraints on judge cost.
-- **Outputs:** golden set (50–80 cases, 20% private holdout); grader per case type (exact, checklist, judge rubric); judge calibration report (agreement with 20 human-labelled cases ≥ 80%); frozen baseline run; threshold; an evalblink `suite.yaml`.
+- **Outputs:** golden set (50–80 cases, 20% private holdout); grader per case type (exact, checklist, judge rubric); judge calibration report (agreement with 20 human-labelled cases ≥ 80%); frozen baseline run; threshold; cases in `claude plugin eval` format.
 - **Rules:** real cases over synthetic; the judge is calibrated before it is trusted; holdout never in the public repo; thresholds are per question class; the baseline is frozen with model name and date; outputs are scored on cost per success, not score alone.
 - **Depends on / feeds:** P1 / M2, M3, B2, T1 (gates).
-- **Sources:** evalblink docs (own), Anthropic eval guidance, own golden-set practice.
+- **Sources:** Anthropic eval guidance, own golden-set practice.
 - **Evals (3):** a task with only 8 examples (expected: skill asks for more or generates with a flagged synthetic ratio); a judge at 62% agreement (expected: rubric revision loop, not acceptance); a suite with a single global threshold on 4 question classes (expected: split per class).
 - **Graders:** checklist + exact (holdout ratio, calibration ≥ 0.80, baseline frozen).
 
@@ -438,10 +440,10 @@ Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Grade
 - **Purpose:** choose a model for a use case with evidence, and record the decision so it can be redone when a new model ships.
 - **Trigger:** "Which model?", a new model release, a cost review, a sovereignty requirement.
 - **Inputs:** the suite from M1; candidate models (including hosted-in-EU and small models); constraints (hosting, data residency, latency, structured output, context).
-- **Outputs:** evalblink comparison run; decision record (one page): candidates, scores per class, cost per success, latency p95, structured-output error rate, hosting compliance, chosen model, reasons, re-evaluation date and trigger.
+- **Outputs:** comparison run on the M1 suite (evalblink or equivalent); decision record (one page): candidates, scores per class, cost per success, latency p95, structured-output error rate, hosting compliance, chosen model, reasons, re-evaluation date and trigger.
 - **Rules:** never choose on public benchmarks; cost per success is the primary economic metric; sovereignty constraints are filters, not criteria; the decision record names the date and the suite version.
 - **Depends on / feeds:** M1 / M3, G4.
-- **Sources:** evalblink (own), own model-selection decisions in banking.
+- **Sources:** own model-selection decisions in banking.
 - **Evals (3):** a frontier model slightly better but 20× costlier (expected: cheaper model chosen, with the gap quantified); a candidate hosted outside EU on personal data (expected: filtered out, not scored); a classification task (expected: small models and specialised decision models included as candidates).
 - **Graders:** checklist (record complete, cost per success, re-eval date) + exact (filters applied).
 
@@ -471,10 +473,10 @@ Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Grade
 - **Purpose:** classify every conversation of an assistant (use case, domain, sentiment, language, resolution) anonymously and reliably, to feed KPIs and ROI.
 - **Trigger:** "What do people use it for?", KB prioritisation, ROI volume needed, a quarterly review.
 - **Inputs:** anonymised transcripts; a draft taxonomy; 150–200 hand-labelled conversations; candidate classifiers; PII rules.
-- **Outputs:** frozen taxonomy (8–12 use cases, rules for edge cases); annotation guide; evalblink classification suite comparing candidates on agreement per dimension and cost per conversation; chosen classifier with thresholds; monthly drift check design; output schema joined to M4.
+- **Outputs:** frozen taxonomy (8–12 use cases, rules for edge cases); annotation guide; classification suite (evalblink or equivalent) comparing candidates on agreement per dimension and cost per conversation; chosen classifier with thresholds; monthly drift check design; output schema joined to M4.
 - **Rules:** PII masking before any model call; taxonomy frozen before labelling; agreement measured per dimension; low-confidence cases routed to review, not forced; the classifier is re-measured monthly on a fresh sample.
 - **Depends on / feeds:** M1, D2 / M4, M6, T1.
-- **Sources:** own My Companion classification work (method only), evalblink.
+- **Sources:** own My Companion classification work (method only).
 - **Evals (3):** a taxonomy with overlapping classes (expected: merge or rule); a candidate at 0.0004 €/conversation with 78% agreement vs a frontier at 92% (expected: hybrid routing by confidence); transcripts with names and IBANs (expected: masking step blocks until done).
 - **Graders:** checklist + exact (taxonomy size, PII step present, agreement per dimension).
 
@@ -675,59 +677,108 @@ The autonomy ladder is read by P1, B2, B3, M3, G1, G3, G5, T1, T2, T3 (ten skill
 
 ## 11. Evaluation strategy
 
-**Every skill is tested the way evalblink tests a prompt: fixed cases, a grader, a frozen baseline, a threshold.**
+**Every skill is tested like code: fixed cases, deterministic graders first, a judge only where needed, a run with and without the skill, a frozen baseline, a threshold.**
 
-### 11.1 Case format (`skills/<name>/evals/cases.yaml`)
+The harness is `claude plugin eval` ([docs](https://code.claude.com/docs/en/plugin-evals)), used in its native format: no adapter, no harness of our own.
 
-```yaml
-- id: llm-feature-prd-003
-  title: Brief with no success metric
-  input: |
-    <the brief or scenario the skill receives, anonymised>
-  expected:
-    behaviour: asks for a success metric before writing   # one sentence, what a good run does
-    must_include: ["success metric", "open question"]     # exact grader
-    must_not_include: ["30% productivity"]                # exact grader
-    checklist: [problem, users, non-goals, autonomy_per_step, failure_paths>=3, eval_stub, kpi_outcome]
-    rubric: rubric.md#coherence                           # judge grader, optional
-  tags: [p0, specify, edge-case]
-  source: anonymised client brief, 2026
+### 11.1 Case format (`skills/<name>/evals/<name>-<nnn>/`)
+
+One folder per case. The folder name is the case `name`, prefixed with the skill name.
+
+**`prompt.md`**: frontmatter, then the scenario the skill receives, anonymised.
+
+```markdown
+---
+name: llm-feature-prd-003
+description: Brief with no success metric (source - anonymised client brief, 2026)
+tags: [llm-feature-prd, p0, edge-case]   # first tag is always the skill name
+expected_outcome: asks for a success metric before writing
+runs: 3
+max_turns: 10
+allowed_tools: [Read, Glob, Grep, Skill]
+---
+
+<the brief or scenario the skill receives, anonymised>
+```
+
+**`graders/*.md`**: one file per check, frontmatter plus an optional body.
+
+```markdown
+---
+type: regex            # graders/asks-metric.md: must include
+pattern: success metric
+flags: i
+---
+```
+
+```markdown
+---
+type: regex            # graders/no-free-gain.md: must not include, red line
+pattern: '\d+\s?% productivity'
+match: not_contains
+weight: 5
+---
+```
+
+```markdown
+---
+type: tool_used        # graders/triggered.md: the description actually fired the skill
+tool: Skill
+---
+```
+
+```markdown
+---
+type: llm              # graders/coherence.md: judge, optional, never on govern skills
+---
+The answer refuses to write the PRD without an outcome metric and lists it as an open question.
 ```
 
 ### 11.2 Graders
 
-| Grader | Used for | Cost | Rule |
-| --- | --- | --- | --- |
-| **exact** | mandatory words, counts, structure (sections present, articles cited, formula lines) | none | deterministic; failure is a hard fail |
-| **checklist** | fixed-heading outputs; items present and non-empty | none | pass if ≥ 90% items present and all mandatory items present |
-| **judge** | coherence, reasoning quality, appropriateness of recommendation | tokens | calibrated: ≥ 80% agreement with 20 human-labelled cases per skill before use; rubric in `rubric.md`; temperature 0; cheap judge after calibration, frontier judge for calibration |
+The PRD names three grader kinds; each maps to native `claude plugin eval` graders.
 
-A skill may use all three. Legal skills use exact + checklist only (no judge decides legal reasoning).
+| Grader | Native type | Used for | Cost | Rule |
+| --- | --- | --- | --- | --- |
+| **exact** | `regex` (must include, `match: not_contains`, `count:N`), `tool_used`, `file_exists` | mandatory words, counts, articles cited, red-line phrases, formula lines | none | deterministic; a red-line grader gets a weight high enough that one failure drops the case below threshold |
+| **checklist** | one `regex` per mandatory item (heading, field, section) | fixed-heading outputs | none | items are weighted; mandatory items weigh more than optional ones |
+| **judge** | `llm` | coherence, reasoning quality, appropriateness of recommendation | tokens | calibrated: ≥ 80% agreement with 20 human-labelled cases per skill before use; criteria in the grader body; 2-of-3 votes; frontier judge for calibration, then a cheap pinned `--judge-model` |
+
+Every case also carries a `tool_used: Skill` grader: it proves the `description` triggers the skill. In a two-arm run it is reported as an indicator, not scored.
+
+Scoring: a run scores the weighted share of graders passed; a case scores the mean of its runs and passes at or above the skill's `eval_threshold`; the skill's pass rate is the share of passing cases.
+
+A skill may use all three kinds. Legal skills use exact + checklist only (no judge decides legal reasoning).
 
 ### 11.3 Thresholds and baseline
 
-- Pass threshold per skill: **0.80** by default, set in frontmatter. Flagship (T1) and legal skills: 0.90.
-- Baseline: the first passing run, frozen with model, date and suite version in `evals/baseline/<skill>.json`. Every later run is compared to it, never to an absolute.
+- Pass threshold per skill: **0.80** by default, set in `eval_threshold`. Flagship (T1) and legal skills: 0.90. `scripts/run_evals.sh` passes it as `--threshold`.
+- **With vs without.** Every run has two arms, with and without the skill (`--ablation with-without`, the default). A skill must beat the model alone: a mean delta ≤ 0 fails the skill whatever its score. This is rule 1, "specific or absent", measured.
+- **One skill per run.** Runs always target one skill folder (`claude plugin eval skills/<name>` or `drafts/<name>`). A run from the repo root would also pick up the cases of drafts and templates, whose skills are not loaded.
+- Baseline: the results JSON (`--json`) of the first passing run, frozen with model, judge model and date in `baselines/<skill>.json`. Every later run is compared to it, never to an absolute.
 - A skill whose pass rate drops below threshold on the nightly run is demoted to `drafts/` by CI and removed from the README count until fixed.
 
 ### 11.4 Holdout and contamination
 
 - 20% of each skill's cases live in the private repo `ai-pm-skills-holdout`. They are never published and never used in articles.
-- The nightly job runs public + holdout; the PR job runs public only.
+- The nightly job checks out the holdout repo and runs it with `--eval-dir`; the PR job runs public cases only.
 - If public and holdout pass rates diverge by more than 10 points for two weeks, the public set is assumed contaminated or overfitted and is refreshed.
 
 ### 11.5 CI
 
 | Job | Trigger | Scope | Model | Budget |
 | --- | --- | --- | --- | --- |
-| `evals-pr` | pull request | changed skills, public cases | one cheap model | < 1 € per run |
-| `evals-nightly` | daily | all skills, public + holdout | baseline model + one challenger | < 5 € per run |
+| `validate` | push, pull request | all skills and drafts: frontmatter, headings, cases, graders | none | — |
+| `evals-pr` | pull request | changed skills, public cases, `--runs 1` | one cheap model | < 1 € per run (`--max-cost-usd`) |
+| `evals-nightly` | daily | all skills, public + holdout | baseline model + one challenger | < 5 € per run (`--max-cost-usd`) |
 | `freshness` | weekly | `govern` skills | none | fails if `last_verified` > 90 days |
 | `readme` | on main | regenerate catalog table | none | — |
 
-### 11.6 Cheap decision models as graders
+Eval jobs run `claude plugin eval <skill-folder> --trust-plugin --no-publish --json`, with model and judge model pinned and `ANTHROPIC_API_KEY` as a repository secret. Changed skills come from `git diff --name-only`; a change in `foundations/` runs every skill.
 
-Where a grader is a yes/no or a choice (does the output contain a conformity verdict? is the recommendation go/no-go/explore?), a specialised decision model (e.g. TypeSafe's Jev when accessible, or a small fine-tuned classifier) can replace the LLM judge after calibration. Rule: same calibration bar (≥ 80% agreement), and the frontier judge remains the reference for recalibration.
+### 11.6 Cheap graders first
+
+A yes/no check (does the output contain a conformity verdict? is the recommendation go, no-go or explore?) is a `regex` or `tool_used` grader, not a judge. When a judge is needed, calibrate it with a frontier model, then pin a cheap `--judge-model` that meets the same ≥ 80% bar; the frontier judge stays the reference for recalibration. Specialised decision models (e.g. TypeSafe's Jev) wait until `claude plugin eval` can call them.
 
 ---
 
@@ -737,7 +788,7 @@ Twenty-five hours a month. One skill per week including its three cases, plus on
 
 | Wave | Weeks | Deliverables | Exit criterion |
 | --- | --- | --- | --- |
-| **0 — Foundations** | 1–2 | Repo skeleton, `autonomy-ladder.md`, `roi-model.md`, `eval-conventions.md`, `sources.md`, `SKILL.md` template, CI skeleton, evalblink `suite` support verified | `evalblink run evals/suite.yaml` runs on an empty suite |
+| **0 — Foundations** | 1–2 | Repo skeleton, `autonomy-ladder.md`, `roi-model.md`, `eval-conventions.md`, `sources.md`, `SKILL.md` template, structure CI, plugin manifest, first paid `claude plugin eval` run on one case (two arms) | structure CI green; `claude plugin eval skills/<name>` scores one case with and without the skill |
 | **1 — Lived skills (P0)** | 3–8 | P1 `llm-feature-prd`, M1 `build-evals`, M4 `assistant-kpis-cost-per-outcome`, M5 `conversation-analysis`, G1 `ai-act-classification`, G3 `cse-consultation` | 6 skills passing; M5 and M4 used on a live mission; README live; article 1: "Why PM skills need tests" |
 | **2 — The spine** | 9–15 | S1, S3, M2, B2, D2, T1 (flagship) | T1 passes at 0.90 and calls G1, G3, M1 by reference; article 2: "Six levels of autonomy" |
 | **3 — Build and data** | 16–23 | P2, P3, D1, B1, B3, G2, G4, M3 | 20 skills; Codex and Cursor install verified; article 3: "Shadow, canary, A/B for AI features" |
@@ -763,7 +814,7 @@ Rules of the road:
 | Scope creep beyond 30 skills | High | Medium | Hard cap in principles; backlog table; a 31st replaces one |
 | Maintenance burden once users arrive | Medium | Medium | CI does the grading; issue templates; "one release per wave" cadence; no SLA promised |
 | Agent Skills standard or Claude Code plugin format changes | Medium | Low | Skills are plain Markdown; adapters live in `scripts/`; install matrix re-verified per wave |
-| evalblink lacks a feature the suites need (suite, compare, classification) | Medium | Medium | Wave 0 verifies; missing features are evalblink's next versions, built before the skill that needs them |
+| `claude plugin eval` is young; its format or flags change | Medium | Medium | Native format, no adapter to maintain; the validator pins the conventions; re-verified each wave (discovery of `skills/<name>/evals/` checked 2026-11-01) |
 | Author time drops below 1 h/day | Medium | High | Waves are independent; a paused repo still shows passing skills; no deadline communicated publicly |
 | Holdout leaks into training data of a model used as judge | Low | Medium | Holdout never in prompts sent to providers that train on data; EU-hosted or no-training endpoints for holdout runs |
 
@@ -775,11 +826,11 @@ Rules of the road:
 | --- | --- | --- | --- |
 | License | MIT for everything · Apache-2.0 · MIT code + CC BY 4.0 skill text | MIT code + CC BY 4.0 text (attribution for the method, freedom for the scripts) | Wave 0 |
 | Skill language | English only · English with French legal annexes · bilingual | English with French annexes for G1, G3 (articles and texts) | Wave 0 |
-| Final name | `ai-pm-skills` · `aipm-skills` · `regulated-ai-pm` | `ai-pm-skills` (clear, searchable, pairs with evalblink) | Wave 0 |
-| Eval format | evalblink suite only · also emit `claude plugin eval` format | evalblink only at v1.0; export adapter in backlog | Wave 1 |
+| Final name | `ai-pm-skills` · `aipm-skills` · `regulated-ai-pm` | `ai-pm-skills` (clear, searchable) | Wave 0 |
+| Eval format | evalblink suite · native `claude plugin eval` · both | **Decided 2026-11-01:** native `claude plugin eval` cases inside each skill; evalblink only for model and classifier comparisons (M2, M5) | Done |
 | Distribution surface | GitHub only · also Claude Code plugin manifest · also skills directories | GitHub + plugin manifest at v1.0; directories at Show HN | Wave 4 |
 | Holdout storage | private repo · encrypted folder in main repo | private repo (simpler CI secret) | Wave 0 |
-| Judge model policy | frontier for all · cheap after calibration · decision model when available | cheap after calibration; decision model as experiment in M5 first | Wave 1 |
+| Judge model policy | frontier for all · cheap after calibration · decision model when available | frontier to calibrate, then a cheap pinned `--judge-model` | Wave 1 |
 | Case anonymisation procedure | manual · scripted with review | scripted (NER masking) + manual review checklist | Wave 1 |
 
 ---
@@ -799,10 +850,7 @@ depends_on: [ai-opportunity-assessment]
 feeds: [build-evals, prd-to-claude-code, system-prompt-and-guardrails, ai-data-requirements, ai-act-classification]
 autonomy_relevant: true
 sources: [cagan-inspired, torres-continuous-discovery, own-prds]
-evals:
-  cases: 3
-  graders: [checklist, exact]
-  threshold: 0.80
+eval_threshold: 0.80
 status: draft
 ---
 
@@ -847,20 +895,20 @@ foundations/autonomy-ladder.md · build-evals · system-prompt-and-guardrails ·
 
 ### B. Eval case template
 
-```yaml
-- id: <skill>-<nnn>
-  title: <one line>
-  input: |
-    <scenario, anonymised>
-  expected:
-    behaviour: <one sentence>
-    must_include: []
-    must_not_include: []
-    checklist: []
-    rubric: rubric.md#<anchor>   # optional
-  tags: []
-  source: <origin, year>
+A folder `evals/<skill>-<nnn>/` holding `prompt.md` and `graders/`. Copy one from `templates/skill/evals/`.
+
+```markdown
+---
+name: <skill>-<nnn>
+description: <one line> (source - <origin, year>)
+tags: [<skill>, <tags>]
+expected_outcome: <one sentence, what a good run does>
+---
+
+<scenario, anonymised>
 ```
+
+Graders: `graders/triggered.md` (`type: tool_used`, `tool: Skill`) in every case, plus `regex` graders for must-include, must-not-include and checklist items, and an optional `llm` grader with its criteria in the body.
 
 ### C. Skill card template (for new proposals)
 
