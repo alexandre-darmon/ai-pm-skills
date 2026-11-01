@@ -9,7 +9,7 @@ skills/<name>/      # catalog: skills with a passing eval suite (status tested |
 drafts/<name>/      # same structure, not yet tested; not counted in the README
 templates/skill/    # copy this to start a new skill
 scripts/            # validate_skills.py (structure check run by CI)
-foundations/        # shared backbones (autonomy ladder, ROI model, eval conventions, sources) — Wave 0, not written yet
+foundations/        # shared backbones: autonomy ladder, ROI model, eval conventions, sources (read before writing a skill)
 ```
 
 A skill folder:
@@ -22,7 +22,7 @@ A skill folder:
 └── evals/              # ≥ 3 cases, native `claude plugin eval` format (PRD §11.1)
     └── <name>-001/
         ├── prompt.md   # frontmatter (name, tags: [<name>, …], description, expected_outcome) + scenario
-        └── graders/    # regex (must / must not include), tool_used Skill (always), llm (judge, optional)
+        └── graders/    # regex (must / must not include), tool_used Skill + input_match: <name> (always), llm (judge, optional)
 ```
 
 ## Commands

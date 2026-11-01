@@ -1,0 +1,9 @@
+{
+  "name": "ai-pm-skills",
+  "version": "0.1.0",
+  "description": "Tested skills for AI product managers who ship in regulated companies.",
+  "author": {
+    "name": "Alex Darmon"
+  },
+  "repository": "https://github.com/alexandre-darmon/ai-pm-skills"
+}

@@ -44,6 +44,11 @@ class ValidateSkillsTest(unittest.TestCase):
         self.assertError("eval_threshold >= 0.90")
         self.assertError("no judge")
 
+    def test_unknown_source(self):
+        self.edit("sources: [own-practice]", "sources: [own-practice, cagan-inspired, made-up]")
+        errors = check_skill(self.skill, in_catalog=False, known_sources={"cagan-inspired"})
+        self.assertEqual(errors, ["sources ['made-up'] are not in foundations/sources.md (own-* ids are free)"])
+
     def test_skill_structure_errors(self):
         self.edit("## Links", "## See also")
         self.edit("name: my-skill", "name: other-skill")

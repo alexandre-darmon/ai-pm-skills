@@ -39,7 +39,15 @@ def read_frontmatter(path: Path) -> tuple[dict, str]:
     return fm, parts[2]
 
 
-def check_skill(folder: Path, in_catalog: bool) -> list[str]:
+def load_sources(root: Path) -> set[str] | None:
+    """Ids from the first column of foundations/sources.md tables, or None if the file is absent."""
+    path = root / "foundations" / "sources.md"
+    if not path.is_file():
+        return None
+    return set(re.findall(r"^\| ([a-z][a-z0-9-]*) \|", path.read_text(encoding="utf-8"), re.MULTILINE))
+
+
+def check_skill(folder: Path, in_catalog: bool, known_sources: set[str] | None = None) -> list[str]:
     errors = []
     err = errors.append
     skill_md = folder / "SKILL.md"
@@ -79,6 +87,10 @@ def check_skill(folder: Path, in_catalog: bool) -> list[str]:
     sources = fm.get("sources")
     if not isinstance(sources, list) or not sources or not all(isinstance(s, str) for s in sources):
         err("sources must be a non-empty list of ids")
+    elif known_sources is not None:
+        unknown = [s for s in sources if s not in known_sources and not s.startswith("own-")]
+        if unknown:
+            err(f"sources {unknown} are not in foundations/sources.md (own-* ids are free)")
 
     if not isinstance(fm.get("autonomy_relevant"), bool):
         err("autonomy_relevant must be true or false")
@@ -144,11 +156,11 @@ def check_cases(folder: Path, name: str, govern: bool) -> list[str]:
                 errors.append(f"{where}: {key} is required")
         if not body.strip():
             errors.append(f"{where}: prompt.md body (the scenario) is empty")
-        errors += check_graders(case, where, govern)
+        errors += check_graders(case, where, name, govern)
     return errors
 
 
-def check_graders(case: Path, where: str, govern: bool) -> list[str]:
+def check_graders(case: Path, where: str, skill: str, govern: bool) -> list[str]:
     errors = []
     triggered = False
     for grader in sorted((case / "graders").glob("*.md")):
@@ -165,9 +177,9 @@ def check_graders(case: Path, where: str, govern: bool) -> list[str]:
             errors.append(f"{gwhere}: regex grader needs a pattern")
         elif gtype in JUDGE_TYPES and govern:
             errors.append(f"{gwhere}: govern skills use exact + checklist only, no judge")
-        triggered |= gtype == "tool_used" and fm.get("tool") == "Skill"
+        triggered |= gtype == "tool_used" and fm.get("tool") == "Skill" and fm.get("input_match") == skill
     if not triggered:
-        errors.append(f"{where}: needs a tool_used grader with tool: Skill (proves the skill fired)")
+        errors.append(f"{where}: needs a tool_used grader with tool: Skill and input_match: {skill} (proves this skill fired)")
     return errors
 
 
@@ -177,8 +189,9 @@ def main(root: Path) -> int:
     drafts = sorted(p for p in (root / "drafts").glob("*") if p.is_dir())
     if len(catalog) > MAX_SKILLS:
         problems.append(f"skills/: {len(catalog)} skills, hard cap is {MAX_SKILLS}")
+    known_sources = load_sources(root)
     for folder in catalog + drafts:
-        for e in check_skill(folder, in_catalog=folder in catalog):
+        for e in check_skill(folder, in_catalog=folder in catalog, known_sources=known_sources):
             problems.append(f"{folder.relative_to(root)}: {e}")
 
     for p in problems:

@@ -691,7 +691,7 @@ One folder per case. The folder name is the case `name`, prefixed with the skill
 ---
 name: llm-feature-prd-003
 description: Brief with no success metric (source - anonymised client brief, 2026)
-tags: [llm-feature-prd, p0, edge-case]   # first tag is always the skill name
+tags: [llm-feature-prd, p0, edge-case]   # first tag is always the skill name (validator)
 expected_outcome: asks for a success metric before writing
 runs: 3
 max_turns: 10
@@ -722,8 +722,9 @@ weight: 5
 
 ```markdown
 ---
-type: tool_used        # graders/triggered.md: the description actually fired the skill
+type: tool_used        # graders/triggered.md: the description actually fired this skill
 tool: Skill
+input_match: llm-feature-prd
 ---
 ```
 
@@ -744,7 +745,7 @@ The PRD names three grader kinds; each maps to native `claude plugin eval` grade
 | **checklist** | one `regex` per mandatory item (heading, field, section) | fixed-heading outputs | none | items are weighted; mandatory items weigh more than optional ones |
 | **judge** | `llm` | coherence, reasoning quality, appropriateness of recommendation | tokens | calibrated: ≥ 80% agreement with 20 human-labelled cases per skill before use; criteria in the grader body; 2-of-3 votes; frontier judge for calibration, then a cheap pinned `--judge-model` |
 
-Every case also carries a `tool_used: Skill` grader: it proves the `description` triggers the skill. In a two-arm run it is reported as an indicator, not scored.
+Every case also carries a `tool_used: Skill` grader with `input_match: <skill>`: it proves the `description` triggers this skill, not just any skill of the plugin. In a two-arm run it is reported as an indicator, not scored.
 
 Scoring: a run scores the weighted share of graders passed; a case scores the mean of its runs and passes at or above the skill's `eval_threshold`; the skill's pass rate is the share of passing cases.
 
@@ -842,7 +843,7 @@ Rules of the road:
 ```markdown
 ---
 name: llm-feature-prd
-description: Write a PRD for an LLM-powered feature with autonomy level per step, eval plan and guardrails. Use when a go is given on an AI feature or when asked to "write the PRD" for anything that generates, extracts, classifies or acts.
+description: Write the PRD for an LLM feature with autonomy level per step, failure paths, eval plan and guardrails. Use when asked for the PRD of anything that generates, extracts, classifies or acts.
 stage: specify
 version: 1.0.0
 last_verified: 2026-11-01
