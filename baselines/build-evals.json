@@ -1,0 +1,34 @@
+{
+  "skill": "build-evals",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.302",
+  "date": "2026-11-02",
+  "casesHash": "6e7b9192f43c969789d014f36977de27d81d89ea51fa830a2f1b521001b73399",
+  "partial": false,
+  "costUsd": 0.28343450000000003,
+  "cases": {
+    "build-evals-001": {
+      "score": 1.0,
+      "scoreWithout": 0.3333333333333333,
+      "fired": 1,
+      "runs": 1,
+      "delta": 0.6666666666666667
+    },
+    "build-evals-002": {
+      "score": 1.0,
+      "scoreWithout": 0.5714285714285714,
+      "fired": 1,
+      "runs": 1,
+      "delta": 0.4285714285714286
+    },
+    "build-evals-003": {
+      "score": 0.8333333333333334,
+      "scoreWithout": 0.16666666666666666,
+      "fired": 1,
+      "runs": 1,
+      "delta": 0.6666666666666667
+    }
+  },
+  "meanDelta": 0.5873015873015873
+}
