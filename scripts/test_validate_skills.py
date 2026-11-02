@@ -76,8 +76,50 @@ class ValidateSkillsTest(unittest.TestCase):
         (self.skill / "templates/prompt.md").write_text("stray")
         self.assertError("my-skill-002: needs a tool_used grader")
         self.assertError("my-skill-001: first tag must be the skill name")
-        self.assertError("at least 3 case folders, found 2")
+        self.assertError("at least 3 case folders not tagged negative, found 2")
         self.assertError("templates/prompt.md: cases live in evals/<case>/prompt.md only")
+
+    def test_red_lines(self):
+        self.edit("weight: 5", "weight: 0.2", file="evals/my-skill-001/graders/redline-must-not-include.md")
+        (self.skill / "evals/my-skill-003/graders/redline-must-not-include.md").rename(
+            self.skill / "evals/my-skill-003/graders/must-not-include.md")
+        self.assertError("red-line weight 0.2 must exceed 0.25")  # one other weight of 1 at threshold 0.8
+        self.assertError("my-skill-003: a case tagged red-line needs a graders/redline-*.md grader")
+
+    def test_fixtures_and_echo(self):
+        self.edit("<An answer", "<Nothing useful", file="evals/my-skill-001/fixtures/good.md")
+        self.edit("It contains replace-me-must-include.", "", file="evals/my-skill-001/fixtures/good.md")
+        (self.skill / "evals/my-skill-002/fixtures/bad.md").write_text("It contains replace-me-must-include.\n")
+        (self.skill / "evals/my-skill-003/fixtures/good.md").unlink()
+        self.edit("<A scenario that", "replace-me-must-include <A scenario that", file="evals/my-skill-003/prompt.md")
+        self.assertError("my-skill-001: fixtures/good.md fails ['must-include']: these graders reject a good answer")
+        self.assertError("my-skill-002: fixtures/bad.md scores 1.00 >= 0.8: the graders let a bad answer pass")
+        self.assertError("my-skill-002: fixtures/bad.md passes every red line")
+        self.assertError("my-skill-003: missing fixtures/good.md")
+        self.assertError("must-include.md: matches the prompt itself")
+
+    def test_triggering(self):
+        self.edit("?my-skill\"'", "?my-skill.*\"'", file="evals/my-skill-001/graders/triggered.md")  # unanchored
+        self.edit("min: 0\n", "", file="evals/my-skill-004/graders/not-triggered.md")  # min defaults to 1: never passes
+        self.assertError("my-skill-001: needs a tool_used grader with tool: Skill")
+        self.assertError("max: 0 needs min: 0")
+        (self.skill / "evals/my-skill-002/graders/sibling.md").write_text(
+            "---\ntype: tool_used\ntool: Skill\ninput_match: 'other-skill'\nmin: 0\nmax: 0\narm: both\n---\n")
+        self.assertError("graders/sibling.md: a Skill grader needs input_match")
+        shutil.rmtree(self.skill / "evals/my-skill-004")
+        self.assertError("needs a case tagged negative")
+
+    def test_harness_schema_and_js_regex(self):
+        self.edit("weight: 5", "weight: 5\nname: must-not-include", file="evals/my-skill-001/graders/redline-must-not-include.md")
+        self.edit("flags: i", "flag: i", file="evals/my-skill-002/graders/must-include.md")
+        self.edit("max_turns: 10", "max_turn: 10", file="evals/my-skill-002/prompt.md")
+        # Python re treats é as a word character, JavaScript does not: the harness would never match this.
+        self.edit("pattern: 'replace-me-must-include'", "pattern: '\\bétude'", file="evals/my-skill-003/graders/must-include.md")
+        (self.skill / "evals/my-skill-003/fixtures/good.md").write_text("Une étude est requise.\n")
+        self.assertError("name 'must-not-include' must equal the file name 'redline-must-not-include'")
+        self.assertError("unknown keys ['flag'] for type regex")
+        self.assertError("my-skill-002/prompt.md: unknown frontmatter keys ['max_turn']")
+        self.assertError("my-skill-003: fixtures/good.md fails ['must-include']")
 
 
 if __name__ == "__main__":

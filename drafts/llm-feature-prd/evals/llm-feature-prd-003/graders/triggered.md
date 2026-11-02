@@ -1,5 +1,5 @@
 ---
 type: tool_used  # this skill fired, not just any skill of the plugin
 tool: Skill
-input_match: 'llm-feature-prd'
+input_match: '"skill"\s*:\s*"(?:[\w-]+:)?llm-feature-prd"'  # the Skill input is JSON; anchored so a sibling skill does not count
 ---

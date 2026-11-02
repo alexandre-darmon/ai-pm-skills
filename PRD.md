@@ -166,23 +166,26 @@ ai-pm-skills/
 │   ├── roi-model.md               # volume × quality × value, baseline rules
 │   ├── eval-conventions.md        # grader types, thresholds, case format, holdout policy
 │   └── sources.md                 # bibliography with one-line "what we take from it"
+├── docs/
+│   └── evaluation.md              # the evaluation process explained with diagrams
 ├── skills/
 │   ├── <skill-name>/
 │   │   ├── SKILL.md               # frontmatter + method (the only file always loaded)
 │   │   ├── references/            # deep material, loaded on demand; synced copies of cited foundations
 │   │   ├── templates/             # output templates (markdown, yaml, csv)
-│   │   └── evals/                 # `claude plugin eval` cases, one folder per case (≥3)
+│   │   └── evals/                 # `claude plugin eval` cases, one folder per case (≥3, plus ≥1 negative)
 │   │       └── <skill-name>-001/
 │   │           ├── prompt.md      # frontmatter (name, tags, expected_outcome) + scenario sent to the agent
-│   │           └── graders/       # one file per check: regex, tool_used, llm
+│   │           ├── graders/       # one file per check: regex, tool_used, llm; red lines named redline-*.md
+│   │           └── fixtures/      # good.md and bad.md: hand-written answers that test the graders
 │   └── ...
 ├── drafts/                        # same structure, no passing suite yet; not counted
 ├── templates/skill/               # starting point for a new skill, cases included
 ├── baselines/                     # frozen eval summary per skill (model, judge model, date, cases hash, scores with and without)
 ├── .claude-plugin/plugin.json     # install as a Claude Code plugin
 ├── scripts/
-│   ├── validate_skills.py         # structure check: frontmatter, headings, cases, graders, foundation copies (--sync writes them)
-│   ├── run_evals.py               # `claude plugin eval` per changed skill, with its own threshold and the delta rule
+│   ├── validate_skills.py         # structure check: frontmatter, headings, cases, graders, foundation copies (--sync writes them), free grader checks (§11.7)
+│   ├── run_evals.py               # `claude plugin eval` per changed skill: threshold, delta rule, red lines in every run, negative cases, discrimination report
 │   ├── check_freshness.py         # fails CI if a legal skill's last_verified > 90 days
 │   └── build_readme_table.py      # regenerates the catalog table from frontmatter + results
 └── .github/workflows/
@@ -714,7 +717,7 @@ flags: i
 
 ```markdown
 ---
-type: regex            # graders/no-free-gain.md: must not include, red line
+type: regex            # graders/redline-no-free-gain.md: must not include, red line
 pattern: '\d+\s?% productivity'
 match: not_contains
 weight: 5
@@ -725,9 +728,22 @@ weight: 5
 ---
 type: tool_used        # graders/triggered.md: the description actually fired this skill
 tool: Skill
-input_match: llm-feature-prd
+input_match: '"skill"\s*:\s*"(?:[\w-]+:)?llm-feature-prd"'
 ---
 ```
+
+```markdown
+---
+type: tool_used        # graders/not-triggered.md, in a case tagged negative: the skill stayed silent
+tool: Skill
+input_match: '"skill"\s*:\s*"(?:[\w-]+:)?llm-feature-prd"'
+min: 0
+max: 0
+arm: both
+---
+```
+
+**`fixtures/good.md` and `fixtures/bad.md`**: two answers written by hand, a good one and one that crosses the red line. They test the graders for free (§11.7) and are never sent to the agent.
 
 ```markdown
 ---
@@ -746,7 +762,9 @@ The PRD names three grader kinds; each maps to native `claude plugin eval` grade
 | **checklist** | one `regex` per mandatory item (heading, field, section) | fixed-heading outputs | none | items are weighted; mandatory items weigh more than optional ones |
 | **judge** | `llm` | coherence, reasoning quality, appropriateness of recommendation | tokens | calibrated: ≥ 80% agreement with 20 human-labelled cases per skill before use; criteria in the grader body; 2-of-3 votes; frontier judge for calibration, then a cheap pinned `--judge-model` |
 
-Every case also carries a `tool_used: Skill` grader with `input_match: <skill>`: it proves the `description` triggers this skill, not just any skill of the plugin. In a two-arm run it is reported as an indicator, not scored.
+Every case also carries a `tool_used: Skill` grader whose `input_match` is anchored on the skill name: it proves the `description` triggers this skill, not just any skill of the plugin, nor a sibling whose name starts the same way. In a two-arm run it is reported as an indicator, not scored. Every skill also has at least one **negative** case: a near-miss request from a "Do not use" bullet, graded by a `tool_used: Skill` grader with `max: 0`. It proves the description does not claim requests that belong to another skill.
+
+Red-line graders are named `redline-<rule>.md`. Their weight must fail the case on its own (`w > W × (1 − t) / t`, checked by the validator), and they must pass in every run with the skill.
 
 Scoring: a run scores the weighted share of graders passed; a case scores the mean of its runs and passes at or above the skill's `eval_threshold`; the skill's pass rate is the share of passing cases.
 
@@ -759,6 +777,8 @@ A skill may use all three kinds. Legal skills use exact + checklist only (no jud
 - **One skill per run.** Runs always target one skill folder (`claude plugin eval skills/<name>` or `drafts/<name>`). A run from the repo root would also pick up the cases of drafts and templates, whose skills are not loaded.
 - Baseline: the summary written by `scripts/run_evals.py --full` for the first passing run, frozen with model, judge model, date and a hash of `evals/` in `baselines/<skill>.json`. Later runs report their scores next to it.
 - Evals run only on request, never on a schedule. The full suite runs by hand after a major change (a `foundations/` rewrite, a new pinned model, a harness upgrade). A skill that fails it is fixed or moved back to `drafts/` by the author; CI never moves skills itself, because one run per case is noisy.
+- **Red lines in every run.** A `redline-*` grader missed in any run with the skill fails the case, even when the mean of the runs passes: an average must not hide a never-do.
+- **Negative cases** fail if the skill fires in any run. They are left out of the mean delta: without the skill they cannot fire.
 - **Reused "without" arm.** The arm without the skill never sees it, so its scores change only with the cases, graders, model or judge. PR runs reuse them from `baselines/<skill>.json` while those match (a hash of `evals/` plus the model ids) and run the skill arm alone; full-suite runs measure both arms.
 
 ### 11.4 Holdout and contamination
@@ -771,7 +791,7 @@ A skill may use all three kinds. Legal skills use exact + checklist only (no jud
 
 | Job | Trigger | Scope | Model | Budget |
 | --- | --- | --- | --- | --- |
-| `validate` | push, pull request | all skills and drafts: frontmatter, headings, cases, graders | none | — |
+| `validate` | push, pull request | all skills and drafts: frontmatter, headings, cases, graders, free grader checks (§11.7) | none | — |
 | `evals` (PR) | `run-evals` label on a PR from this repo | changed skills and drafts, public cases, `--runs 1`, skill arm only when the baseline matches | Sonnet, pinned; Haiku judge | `--max-cost-usd 3` per skill |
 | `evals` (full suite) | manual run with `all`, after a major change | all skills, both arms; holdout once the holdout repo exists | Sonnet, pinned; a challenger model later | `--max-cost-usd 3` per skill |
 | `freshness` | weekly | `govern` skills | none | fails if `last_verified` > 90 days |
@@ -782,6 +802,19 @@ Eval jobs run `scripts/run_evals.py`, which calls `claude plugin eval <skill-fol
 ### 11.6 Cheap graders first
 
 A yes/no check (does the output contain a conformity verdict? is the recommendation go, no-go or explore?) is a `regex` or `tool_used` grader, not a judge. When a judge is needed, calibrate it with a frontier model, then pin a cheap `--judge-model` that meets the same ≥ 80% bar; the frontier judge stays the reference for recalibration. Specialised decision models (e.g. TypeSafe's Jev) wait until `claude plugin eval` can call them.
+
+### 11.7 Free checks
+
+Paid scores are only as good as the graders. Four checks protect them; three cost nothing. [docs/evaluation.md](docs/evaluation.md) explains them with diagrams.
+
+| Check | Where | It catches |
+| --- | --- | --- |
+| Grader fixtures, prompt echo, harness schema | `validate_skills.py`, every push (JavaScript RegExp through `node`, as the harness runs them) | `good.md` must pass every `regex` grader; `bad.md` must score below threshold and, when the case has a `regex` red line, fail it; a must-include grader must not match the prompt itself; unknown keys that would stop the harness loading a case |
+| Discrimination report | `run_evals.py`, after a paid run | graders that pass, or fail, in every run of both arms: they measure the model, not the skill (warning) |
+| Red lines | weight in `validate_skills.py`, every run in `run_evals.py` | a never-do hidden by the average |
+| Negative case | one paid case per skill (about 5 cents) | a description that claims another skill's requests; an errored run fails it too |
+
+Ideas borrowed from the market: the trigger-rate set and non-discriminating-assertion analysis of Anthropic's skill-creator, pass^k from Inspect AI, and leakage and negative-delta checks from SkillsBench.
 
 ---
 
@@ -911,7 +944,7 @@ expected_outcome: <one sentence, what a good run does>
 <scenario, anonymised>
 ```
 
-Graders: `graders/triggered.md` (`type: tool_used`, `tool: Skill`) in every case, plus `regex` graders for must-include, must-not-include and checklist items, and an optional `llm` grader with its criteria in the body.
+Graders: `graders/triggered.md` (`type: tool_used`, `tool: Skill`, anchored `input_match`) in every case, plus `regex` graders for must-include, must-not-include and checklist items, red lines named `redline-*.md`, and an optional `llm` grader with its criteria in the body. Fixtures: `fixtures/good.md` and `fixtures/bad.md`. One case per skill is tagged `negative` and carries `graders/not-triggered.md` instead. Copy all four cases from `templates/skill/evals/`.
 
 ### C. Skill card template (for new proposals)
 

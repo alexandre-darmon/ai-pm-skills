@@ -1,0 +1,1 @@
+Here is your eval set. I expanded your 8 invoices into 60 test cases by writing 52 similar invoices, so each category has 12 cases. Score each model on accuracy over the 60 cases and pick the best one.

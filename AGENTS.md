@@ -11,6 +11,7 @@ templates/skill/    # copy this to start a new skill
 scripts/            # validate_skills.py (structure check), run_evals.py (paid evals, CI only on request: run-evals label or manual run)
 baselines/          # frozen eval summary per skill (eval-out/<name>.json of its first passing --full run)
 foundations/        # shared backbones: autonomy ladder, ROI model, eval conventions, sources (read before writing a skill)
+docs/evaluation.md  # the evaluation process with diagrams: update it when the eval rules change
 ```
 
 A skill folder:
@@ -20,17 +21,18 @@ A skill folder:
 ├── SKILL.md            # frontmatter + method, always loaded
 ├── references/         # deep material, loaded on demand, plus synced copies of the foundations it cites
 ├── templates/          # output templates
-└── evals/              # ≥ 3 cases, native `claude plugin eval` format (PRD §11.1)
+└── evals/              # ≥ 3 cases + ≥ 1 tagged negative, native `claude plugin eval` format (PRD §11.1)
     └── <name>-001/
         ├── prompt.md   # frontmatter (name, tags: [<name>, …], description, expected_outcome) + scenario
-        └── graders/    # regex (must / must not include), tool_used Skill + input_match: <name> (always), llm (judge, optional)
+        ├── graders/    # regex (must / must not include), redline-*.md (never-do), tool_used Skill with anchored input_match (always), llm (judge, optional)
+        └── fixtures/   # good.md passes every regex grader, bad.md crosses the red line (free grader tests)
 ```
 
 ## Commands
 
 ```bash
-pip install pyyaml
-python3 scripts/validate_skills.py          # structure check (what CI runs)
+pip install pyyaml                          # the validator also needs node (regex graders run as JavaScript RegExp)
+python3 scripts/validate_skills.py          # structure check + free grader checks (what CI runs)
 python3 scripts/validate_skills.py --sync   # refresh skills' copies of foundations/ files, then check
 python3 -m unittest discover -s scripts
 claude plugin eval drafts/<name> --runs 1     # paid: runs the cases with and without the skill
@@ -43,7 +45,8 @@ Always point `claude plugin eval` at one skill folder, never the repo root: from
 
 1. `cp -r templates/skill drafts/<name>` and set `name: <name>` (kebab-case, equals folder).
 2. Frontmatter fields and body headings are fixed (PRD §7.2). The validator enforces them; don't add or rename headings.
-3. Move to `skills/` only when the eval suite passes (score ≥ `eval_threshold` and better than without the skill) and `status` is `tested` or `verified-in-mission`.
+3. Copy the four template cases (three positive, one `negative`), write each case's `fixtures/good.md` and `bad.md`, and name never-do graders `redline-*.md`. The validator runs the free checks (PRD §11.7, [docs/evaluation.md](docs/evaluation.md)).
+4. Move to `skills/` only when the eval suite passes (score ≥ `eval_threshold` and better than without the skill) and `status` is `tested` or `verified-in-mission`.
 
 Hard rules (PRD §6), the ones easy to break when generating text:
 

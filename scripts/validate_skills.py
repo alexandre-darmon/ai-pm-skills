@@ -4,9 +4,18 @@
 Usage: python3 scripts/validate_skills.py [--sync] [repo_root]
 Exits 1 and prints one line per problem if anything is wrong.
 --sync first rewrites each skill's references/ copies of the foundations/ files it cites.
+
+Free checks on the eval cases (foundations/eval-conventions.md, "Free checks"):
+- red lines: graders/redline-*.md must weigh enough to fail the case on their own;
+- fixtures: evals/<case>/fixtures/good.md must pass every regex grader, bad.md must fail the case;
+- echo: a must-include regex that matches the prompt itself proves nothing;
+- triggering: input_match is anchored on the skill name, and one case tagged negative checks the skill stays silent.
 """
 import datetime
+import json
 import re
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -14,7 +23,19 @@ import yaml
 
 STAGES = {"strategy", "specify", "data", "build", "measure", "govern", "transform"}
 STATUSES = {"draft", "tested", "verified-in-mission"}
-GRADER_TYPES = {"regex", "tool_used", "tool_order", "file_exists", "llm", "baseline"}
+# Keys the harness accepts per grader type (claude plugin eval 2.1.302, strict schema: anything else fails the load).
+GRADER_KEYS = {
+    "regex": {"target", "pattern", "flags", "match", "weight", "arm"},
+    "tool_used": {"tool", "input_match", "min", "max", "weight", "arm"},
+    "tool_order": {"before", "after", "weight", "arm"},
+    "file_exists": {"path", "exists", "weight", "arm"},
+    "llm": {"criteria", "focus", "weight", "arm"},
+    "baseline": {"baseline_file", "criteria", "weight", "arm"},
+}
+GRADER_TYPES = set(GRADER_KEYS)
+PROMPT_KEYS = {"schema_version", "name", "description", "tags", "plugins", "runs", "expected_outcome", "model", "max_turns",
+               "timeout_seconds", "allowed_tools", "disallowed_tools", "artifact_publish", "growthbook_overrides",
+               "append_system_prompt", "env"}
 JUDGE_TYPES = {"llm", "baseline"}
 HEADINGS = ["When to use", "Inputs", "Method", "Output", "Rules and red lines", "Links", "Sources"]
 KEBAB = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
@@ -23,6 +44,10 @@ MAX_SKILLS = 30
 MAX_DESCRIPTION = 200
 MAX_WORDS = 2000
 MIN_CASES = 3
+REDLINE = "redline-"
+# The Skill tool input reaches input_match as JSON, e.g. {"skill":"llm-feature-prd:llm-feature-prd"}.
+# Anchoring on the whole name stops a sibling such as llm-feature-prd-lite from counting as this skill.
+TRIGGER = r'"skill"\s*:\s*"(?:[\w-]+:)?{name}"'
 # A skill installed alone has no foundations/ folder, so it cites a synced copy in its own references/.
 COPY_HEADER = "<!-- Synced copy of foundations/{name}. Edit the original, then run: python3 scripts/validate_skills.py --sync -->\n"
 
@@ -147,11 +172,12 @@ def check_skill(folder: Path, in_catalog: bool, known_sources: set[str] | None =
 
     if foundations is not None:
         errors += check_foundations(folder, body, foundations)
-    errors += check_cases(folder, str(name), govern=stage == "govern")
+    valid_threshold = threshold if not any(e.startswith("eval_threshold") for e in errors) else None
+    errors += check_cases(folder, str(name), govern=stage == "govern", threshold=valid_threshold)
     return errors
 
 
-def check_cases(folder: Path, name: str, govern: bool) -> list[str]:
+def check_cases(folder: Path, name: str, govern: bool, threshold: float | None = None) -> list[str]:
     """Cases use the native `claude plugin eval` layout: evals/<case>/prompt.md + graders/*.md."""
     evals = folder / "evals"
     errors = []
@@ -163,9 +189,7 @@ def check_cases(folder: Path, name: str, govern: bool) -> list[str]:
 
     # evals/results/ is where claude plugin eval writes its runs (git-ignored), not a case.
     cases = sorted(p for p in evals.glob("*") if p.is_dir() and p.name != "results") if evals.is_dir() else []
-    if len(cases) < MIN_CASES:
-        errors.append(f"evals/ must hold at least {MIN_CASES} case folders, found {len(cases)}")
-
+    negatives = 0
     for case in cases:
         where = f"evals/{case.name}"
         if not case.name.startswith(f"{name}-"):
@@ -181,6 +205,9 @@ def check_cases(folder: Path, name: str, govern: bool) -> list[str]:
             continue
         if fm.get("name", case.name) != case.name:
             errors.append(f"{where}: name must equal the folder name")
+        unknown = sorted(set(fm) - PROMPT_KEYS)
+        if unknown:
+            errors.append(f"{where}/prompt.md: unknown frontmatter keys {unknown}; the harness would not load the case")
         tags = fm.get("tags")
         if not isinstance(tags, list) or not tags or tags[0] != name:
             errors.append(f"{where}: first tag must be the skill name '{name}'")
@@ -189,30 +216,160 @@ def check_cases(folder: Path, name: str, govern: bool) -> list[str]:
                 errors.append(f"{where}: {key} is required")
         if not body.strip():
             errors.append(f"{where}: prompt.md body (the scenario) is empty")
-        errors += check_graders(case, where, name, govern)
+        tags = tags if isinstance(tags, list) else []
+        negatives += "negative" in tags
+        errors += check_graders(case, where, name, govern, tags, body, threshold)
+    if len(cases) - negatives < MIN_CASES:
+        errors.append(f"evals/ must hold at least {MIN_CASES} case folders not tagged negative, found {len(cases) - negatives}")
+    if cases and not negatives:
+        errors.append("evals/ needs a case tagged negative: a near-miss request, taken from a 'Do not use' bullet, where this skill must stay silent")
     return errors
 
 
-def check_graders(case: Path, where: str, skill: str, govern: bool) -> list[str]:
+def skill_check(fm: dict) -> str | None:
+    """'fires' for a grader proving the skill was called, 'silent' for one proving it was not (max: 0)."""
+    if fm.get("type") != "tool_used" or fm.get("tool") != "Skill":
+        return None
+    return "silent" if fm.get("max") == 0 else "fires"
+
+
+# The harness runs regex graders as JavaScript RegExp; Python's re differs on Unicode \b, flags and syntax.
+JS_REGEX = """const [pats, texts] = JSON.parse(require('fs').readFileSync(0, 'utf8'));
+console.log(JSON.stringify(pats.map(([p, f]) => { try {
+  const one = new RegExp(p, f), all = new RegExp(p, f.includes('g') ? f : f + 'g');
+  return texts.map(t => [one.test(t), [...t.matchAll(all)].length]);
+} catch (e) { return String(e.message); } })));"""
+
+
+def run_js_regex(patterns: list[tuple[str, str]], texts: list[str]) -> list:
+    """For each (pattern, flags): [[matches, count] per text], or the error message if JS cannot compile it."""
+    node = shutil.which("node")
+    if not node:
+        sys.exit("validate_skills.py needs node: regex graders are checked with JavaScript RegExp, as the harness runs them")
+    out = subprocess.run([node, "-e", JS_REGEX], input=json.dumps([patterns, texts]), capture_output=True, text=True, check=True)
+    return json.loads(out.stdout)
+
+
+def regex_passes(fm: dict, matched: bool, count: int) -> bool:
+    match = str(fm.get("match", "contains"))
+    return count == int(match[6:]) if match.startswith("count:") else matched == (match == "contains")
+
+
+def check_grader_schema(fm: dict, stem: str, gwhere: str) -> list[str]:
     errors = []
-    triggered = False
+    gtype = fm.get("type")
+    if gtype not in GRADER_KEYS:
+        return [f"{gwhere}: type '{gtype}' must be one of {sorted(GRADER_KEYS)}"]
+    unknown = sorted(set(fm) - GRADER_KEYS[gtype] - {"type", "name"})
+    if unknown:
+        errors.append(f"{gwhere}: unknown keys {unknown} for type {gtype}; the harness would not load the case")
+    if fm.get("name", stem) != stem:  # the harness reports a grader under this name; the red-line rule reads the file name
+        errors.append(f"{gwhere}: name '{fm['name']}' must equal the file name '{stem}' (or be left out)")
+    weight = fm.get("weight", 1)
+    if isinstance(weight, bool) or not isinstance(weight, (int, float)) or weight <= 0:
+        errors.append(f"{gwhere}: weight must be a positive number")
+    if fm.get("arm", "both") not in ("both", "with-only"):
+        errors.append(f"{gwhere}: arm must be both or with-only")
+    for key in ("min", "max"):
+        if key in fm and (isinstance(fm[key], bool) or not isinstance(fm[key], int) or fm[key] < 0):
+            errors.append(f"{gwhere}: {key} must be a whole number >= 0")
+    if gtype == "regex":
+        if not isinstance(fm.get("pattern"), str) or not fm["pattern"]:
+            errors.append(f"{gwhere}: regex grader needs a pattern (a quoted string, or the file body)")
+        if not re.fullmatch(r"contains|not_contains|count:\d+", str(fm.get("match", "contains"))):
+            errors.append(f"{gwhere}: match must be contains, not_contains or count:N")
+        if not re.fullmatch(r"[dgimsuvy]*", str(fm.get("flags", ""))):
+            errors.append(f"{gwhere}: flags must be JavaScript RegExp flags (d g i m s u v y)")
+    return errors
+
+
+def check_graders(case: Path, where: str, skill: str, govern: bool, tags: list | None = None,
+                  prompt: str = "", threshold: float | None = None) -> list[str]:
+    errors = []
+    tags = tags or []
+    graders: dict[str, dict] = {}
     for grader in sorted((case / "graders").glob("*.md")):
         gwhere = f"{where}/graders/{grader.name}"
         try:
-            fm, _ = read_frontmatter(grader)
+            fm, body = read_frontmatter(grader)
         except ValueError as e:
             errors.append(f"{gwhere} {e}")
             continue
-        gtype = fm.get("type")
-        if gtype not in GRADER_TYPES:
-            errors.append(f"{gwhere}: type '{gtype}' must be one of {sorted(GRADER_TYPES)}")
-        elif gtype == "regex" and not fm.get("pattern"):
-            errors.append(f"{gwhere}: regex grader needs a pattern")
-        elif gtype in JUDGE_TYPES and govern:
+        if body.strip():  # the harness reads the body as the pattern or the criteria when the key is absent
+            fm.setdefault({"regex": "pattern", "llm": "criteria", "baseline": "criteria"}.get(fm.get("type"), "_body"), body.strip())
+            fm.pop("_body", None)
+        schema = check_grader_schema(fm, grader.stem, gwhere)
+        errors += schema
+        if fm.get("type") in JUDGE_TYPES and govern:
             errors.append(f"{gwhere}: govern skills use exact + checklist only, no judge")
-        triggered |= gtype == "tool_used" and fm.get("tool") == "Skill" and fm.get("input_match") == skill
-    if not triggered:
-        errors.append(f"{where}: needs a tool_used grader with tool: Skill and input_match: {skill} (proves this skill fired)")
+        if not schema:
+            graders[grader.stem] = fm
+
+    expected = TRIGGER.format(name=skill)
+    fires, silent = [], []
+    for g, fm in graders.items():
+        kind = skill_check(fm)
+        if kind and fm.get("input_match") != expected:
+            errors.append(f"{where}/graders/{g}.md: a Skill grader needs input_match: '{expected}' (this skill, anchored)")
+        elif kind == "silent" and (fm.get("min") != 0 or fm.get("arm") != "both"):
+            errors.append(f"{where}/graders/{g}.md: max: 0 needs min: 0 (the default min is 1, so it could never pass) and arm: both")
+        elif kind:
+            (fires if kind == "fires" else silent).append(g)
+    if "negative" in tags:
+        if len(silent) != 1 or len(graders) != 1:
+            errors.append(f"{where}: a negative case has one grader only: type: tool_used, tool: Skill, input_match: '{expected}', "
+                          "min: 0, max: 0, arm: both (proves this skill stayed silent)")
+        return errors
+    if silent:
+        errors.append(f"{where}: max: 0 on this skill belongs in a case tagged negative")
+    if not fires:
+        errors.append(f"{where}: needs a tool_used grader with tool: Skill and input_match: '{expected}' (proves this skill fired)")
+
+    redlines = [g for g in graders if g.startswith(REDLINE)]
+    for g in [g for g in redlines if skill_check(graders[g])]:
+        errors.append(f"{where}/graders/{g}.md: a red line checks the answer, not whether the skill fired")
+        redlines.remove(g)
+    if "red-line" in tags and not redlines:
+        errors.append(f"{where}: a case tagged red-line needs a graders/{REDLINE}*.md grader")
+
+    regex = {g: fm for g, fm in graders.items() if fm.get("type") == "regex"}
+    fixtures = {k: case / "fixtures" / f"{k}.md" for k in ("good", "bad")}
+    texts = [prompt] + [p.read_text(encoding="utf-8") if p.is_file() else "" for p in fixtures.values()]
+    results = dict(zip(regex, run_js_regex([(fm["pattern"], str(fm.get("flags", ""))) for fm in regex.values()], texts))) if regex else {}
+    for g, res in list(results.items()):
+        if isinstance(res, str):
+            errors.append(f"{where}/graders/{g}.md: pattern is not a valid JavaScript RegExp: {res}")
+            del results[g]
+        elif (regex[g].get("match", "contains") == "contains" and regex[g].get("target", "last_message") == "last_message"
+              and res[0][0]):
+            errors.append(f"{where}/graders/{g}.md: matches the prompt itself, so an answer that repeats the brief passes; match what the skill adds")
+    if threshold is None or not results:
+        return errors
+
+    scored = {g: fm.get("weight", 1) for g, fm in graders.items() if skill_check(fm) != "fires"}
+    for g in redlines:
+        others = sum(scored.values()) - scored[g]
+        floor = others * (1 - threshold) / threshold
+        if scored[g] <= floor:
+            errors.append(f"{where}/graders/{g}.md: red-line weight {scored[g]} must exceed {floor:.2f} "
+                          f"(other weights {others}, threshold {threshold}), or one miss would not fail the case")
+
+    # Grader unit tests: a hand-written good answer must pass every regex grader, a bad one must fail the case.
+    # Graders that cannot run offline (llm, file, tool) count as passed in both.
+    for i, (kind, path) in enumerate(fixtures.items(), start=1):
+        if not path.is_file():
+            what = "an answer that passes every grader" if kind == "good" else "an answer that crosses the red line"
+            errors.append(f"{where}: missing fixtures/{kind}.md ({what})")
+            continue
+        failed = [g for g, res in results.items() if not regex_passes(regex[g], *res[i])]
+        score = 1 - sum(scored[g] for g in failed) / sum(scored.values())
+        if kind == "good" and failed:  # every grader, not just the threshold: a too-narrow grader is what this catches
+            errors.append(f"{where}: fixtures/good.md fails {failed}: these graders reject a good answer")
+        regex_redlines = [g for g in redlines if g in results]
+        if kind == "bad" and score >= threshold:
+            errors.append(f"{where}: fixtures/bad.md scores {score:.2f} >= {threshold}: the graders let a bad answer pass")
+        if kind == "bad" and regex_redlines and not set(regex_redlines) & set(failed):
+            errors.append(f"{where}: fixtures/bad.md passes every red line {regex_redlines}: write it to cross one")
     return errors
 
 

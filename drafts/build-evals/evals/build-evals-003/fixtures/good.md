@@ -1,0 +1,9 @@
+Replace the single 85% threshold with a threshold per question class: a global score hides failures in the small classes, and warranty claims are only about 12 of your 120 cases.
+
+- Warranty claims have legal consequences: set a stricter bar, 95% or more, and route failures to a human.
+- Order status and returns: 85% is fine.
+- Product advice: 80%.
+
+Re-sample the suite with stratified sampling so warranty claims and product advice get at least 30 cases each, instead of the 12 and 6 a random draw gives.
+
+Track cost per correct answer, not cost per answer: at 0.04 EUR per answer and 88% correct, that is about 0.045 EUR per correct answer.

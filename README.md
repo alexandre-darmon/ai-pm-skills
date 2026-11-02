@@ -8,7 +8,7 @@ An open-source set of [Agent Skills](https://agentskills.io) that take an AI or 
 
 ## What makes it different
 
-1. **Tested.** Every skill ships with eval cases run by `claude plugin eval`, with and without the skill, and a visible pass rate. A skill without a passing suite stays in `drafts/`.
+1. **Tested.** Every skill ships with eval cases run by `claude plugin eval`, with and without the skill, and a visible pass rate. A skill without a passing suite stays in `drafts/`. [How a skill is evaluated](docs/evaluation.md), with diagrams.
 2. **Compliance as skills.** AI Act classification, DPIA pre-screen, CSE consultation, model card, incident playbook — checklists and questions, inside the agent.
 3. **A spine.** Every skill plugs into two shared backbones: the **autonomy ladder** (L0 to L5) and the **ROI model** (volume × quality × value).
 4. **Lived.** Every rule comes from a real deployment; eval cases are anonymised real briefs.
@@ -31,11 +31,11 @@ Claude Code: clone the repo and point your skills directory at `skills/`. Other 
 
 ```bash
 cp -r templates/skill drafts/<your-skill-name>
-pip install pyyaml
+pip install pyyaml   # node is needed too
 python3 scripts/validate_skills.py
 ```
 
-The validator checks the frontmatter, the fixed body headings and the eval cases (PRD §7.2 and §11.1). CI runs it on every push and pull request. To score a skill (paid, uses your Claude credentials):
+The validator checks the frontmatter, the fixed body headings and the eval cases (PRD §7.2 and §11.1), and tests the graders for free against a good and a bad answer per case. [docs/evaluation.md](docs/evaluation.md) explains the whole evaluation process with diagrams. CI runs it on every push and pull request. To score a skill (paid, uses your Claude credentials):
 
 ```bash
 claude plugin eval drafts/<your-skill-name> --runs 1
