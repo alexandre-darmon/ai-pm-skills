@@ -177,20 +177,20 @@ ai-pm-skills/
 │   └── ...
 ├── drafts/                        # same structure, no passing suite yet; not counted
 ├── templates/skill/               # starting point for a new skill, cases included
-├── baselines/                     # frozen results JSON per skill (model, judge model, date, delta)
+├── baselines/                     # frozen eval summary per skill (model, judge model, date, cases hash, scores with and without)
 ├── .claude-plugin/plugin.json     # install as a Claude Code plugin
 ├── scripts/
 │   ├── validate_skills.py         # structure check: frontmatter, headings, cases, graders, foundation copies (--sync writes them)
-│   ├── run_evals.sh               # `claude plugin eval` per changed skill, with its own threshold
+│   ├── run_evals.py               # `claude plugin eval` per changed skill, with its own threshold and the delta rule
 │   ├── check_freshness.py         # fails CI if a legal skill's last_verified > 90 days
 │   └── build_readme_table.py      # regenerates the catalog table from frontmatter + results
 └── .github/workflows/
     ├── validate.yml               # on push and PR: structure check
-    ├── evals.yml                  # on PR: changed skills, cheap model; nightly: full suite
+    ├── evals.yml                  # on PR label `run-evals`: changed skills; weekly: full suite
     └── freshness.yml              # weekly
 ```
 
-Private holdout cases (20% of each suite) live outside the repo, in a private repo `ai-pm-skills-holdout`, pulled by the nightly job only. See section 11.
+Private holdout cases (20% of each suite) live outside the repo, in a private repo `ai-pm-skills-holdout`, pulled by the weekly job only. See section 11.
 
 ### 7.2 `SKILL.md` specification
 
@@ -753,16 +753,17 @@ A skill may use all three kinds. Legal skills use exact + checklist only (no jud
 
 ### 11.3 Thresholds and baseline
 
-- Pass threshold per skill: **0.80** by default, set in `eval_threshold`. Flagship (T1) and legal skills: 0.90. `scripts/run_evals.sh` passes it as `--threshold`.
+- Pass threshold per skill: **0.80** by default, set in `eval_threshold`. Flagship (T1) and legal skills: 0.90. `scripts/run_evals.py` passes it as `--threshold`.
 - **With vs without.** Every run has two arms, with and without the skill (`--ablation with-without`, the default). A skill must beat the model alone: a mean delta ≤ 0 fails the skill whatever its score. This is rule 1, "specific or absent", measured.
 - **One skill per run.** Runs always target one skill folder (`claude plugin eval skills/<name>` or `drafts/<name>`). A run from the repo root would also pick up the cases of drafts and templates, whose skills are not loaded.
-- Baseline: the results JSON (`--json`) of the first passing run, frozen with model, judge model and date in `baselines/<skill>.json`. Every later run is compared to it, never to an absolute.
-- A skill whose pass rate drops below threshold on the nightly run is demoted to `drafts/` by CI and removed from the README count until fixed.
+- Baseline: the summary written by `scripts/run_evals.py --full` for the first passing run, frozen with model, judge model, date and a hash of `evals/` in `baselines/<skill>.json`. Later runs report their scores next to it.
+- A skill that fails the weekly run gets an issue opened by CI. The author fixes it or moves it back to `drafts/`; CI never moves skills itself, because one run per case is noisy.
+- **Reused "without" arm.** The arm without the skill never sees it, so its scores change only with the cases, graders, model or judge. PR runs reuse them from `baselines/<skill>.json` while those match (a hash of `evals/` plus the model ids) and run the skill arm alone; the weekly run measures both arms.
 
 ### 11.4 Holdout and contamination
 
 - 20% of each skill's cases live in the private repo `ai-pm-skills-holdout`. They are never published and never used in articles.
-- The nightly job checks out the holdout repo and runs it with `--eval-dir`; the PR job runs public cases only.
+- The weekly job checks out the holdout repo and runs it with `--eval-dir`; the PR job runs public cases only.
 - If public and holdout pass rates diverge by more than 10 points for two weeks, the public set is assumed contaminated or overfitted and is refreshed.
 
 ### 11.5 CI
@@ -770,12 +771,12 @@ A skill may use all three kinds. Legal skills use exact + checklist only (no jud
 | Job | Trigger | Scope | Model | Budget |
 | --- | --- | --- | --- | --- |
 | `validate` | push, pull request | all skills and drafts: frontmatter, headings, cases, graders | none | — |
-| `evals-pr` | pull request | changed skills, public cases, `--runs 1` | one cheap model | < 1 € per run (`--max-cost-usd`) |
-| `evals-nightly` | daily | all skills, public + holdout | baseline model + one challenger | < 5 € per run (`--max-cost-usd`) |
+| `evals` (PR) | `run-evals` label on a PR from this repo | changed skills and drafts, public cases, `--runs 1`, skill arm only when the baseline matches | Sonnet, pinned; Haiku judge | `--max-cost-usd 3` per skill |
+| `evals` (weekly) | Monday, and on demand | all skills, both arms; holdout once the holdout repo exists | Sonnet, pinned; a challenger model later | `--max-cost-usd 3` per skill; opens an issue on failure |
 | `freshness` | weekly | `govern` skills | none | fails if `last_verified` > 90 days |
 | `readme` | on main | regenerate catalog table | none | — |
 
-Eval jobs run `claude plugin eval <skill-folder> --trust-plugin --no-publish --json`, with model and judge model pinned and `ANTHROPIC_API_KEY` as a repository secret. Changed skills come from `git diff --name-only`; a change in `foundations/` runs every skill.
+Eval jobs run `scripts/run_evals.py`, which calls `claude plugin eval <skill-folder> --trust-plugin --no-publish --json` with model and judge model pinned. They authenticate with `CLAUDE_CODE_OAUTH_TOKEN` (from `claude setup-token`, a Claude subscription, so runs cost no API spend) or `ANTHROPIC_API_KEY`, as a repository secret. Running on a label, not on every push, means a PR pays once. Changed skills come from `git diff --name-only`; a change in `foundations/` reaches exactly the skills whose `references/` copies it changes. PRs from forks get no secret: a maintainer runs them from a branch of this repo.
 
 ### 11.6 Cheap graders first
 

@@ -70,7 +70,7 @@ Rules:
 - Run score = weighted share of graders passed. Case score = mean of runs. A case passes at ≥ the skill's `eval_threshold` (0.80 default, 0.90 for govern and flagship).
 - `claude plugin eval` does not read `eval_threshold`: it fails a case below `--threshold`, which defaults to 1.0. Pass the skill's threshold explicitly.
 - Every run has two arms, with and without the skill. A skill whose mean delta is ≤ 0 fails: it adds nothing over the model alone. The CLI reports the delta but does not fail on it, so the run script checks it from the `--json` output.
-- The results JSON of the first passing run is frozen in `baselines/<skill>.json` with model, judge model and date. Later runs compare to it.
+- The summary of the first passing `--full` run (`eval-out/<skill>.json` from `scripts/run_evals.py`) is frozen in `baselines/<skill>.json` with model, judge model, date and a hash of `evals/`. PR runs reuse its scores without the skill while the hash and models match.
 
 ## Running
 
@@ -80,6 +80,8 @@ claude plugin eval skills/<skill> --case '<skill>-003' --threshold 0.8        # 
 ```
 
 Always target one skill folder, never the repo root. Results land in `evals/results/` (git-ignored).
+
+`python3 scripts/run_evals.py --full <skill-folder>` runs the same with pinned models and applies the pass rules (threshold from `eval_threshold`, mean delta > 0). CI runs it on PRs labelled `run-evals` and weekly; see PRD §11.5.
 
 ## Holdout
 

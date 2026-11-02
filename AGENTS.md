@@ -8,7 +8,8 @@ Repo of Agent Skills for AI / Data PMs in regulated European companies. `PRD.md`
 skills/<name>/      # catalog: skills with a passing eval suite (status tested | verified-in-mission)
 drafts/<name>/      # same structure, not yet tested; not counted in the README
 templates/skill/    # copy this to start a new skill
-scripts/            # validate_skills.py (structure check run by CI)
+scripts/            # validate_skills.py (structure check), run_evals.py (paid evals, CI on the run-evals label and weekly)
+baselines/          # frozen eval summary per skill (eval-out/<name>.json of its first passing --full run)
 foundations/        # shared backbones: autonomy ladder, ROI model, eval conventions, sources (read before writing a skill)
 ```
 
@@ -31,8 +32,9 @@ A skill folder:
 pip install pyyaml
 python3 scripts/validate_skills.py          # structure check (what CI runs)
 python3 scripts/validate_skills.py --sync   # refresh skills' copies of foundations/ files, then check
-python3 -m unittest scripts/test_validate_skills.py
+python3 -m unittest discover -s scripts
 claude plugin eval drafts/<name> --runs 1     # paid: runs the cases with and without the skill
+python3 scripts/run_evals.py --full drafts/<name>   # same, plus the repo's pass rules (threshold, delta > 0)
 ```
 
 Always point `claude plugin eval` at one skill folder, never the repo root: from the root it also picks up the cases of drafts and templates.
