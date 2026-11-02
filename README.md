@@ -43,4 +43,4 @@ claude plugin eval drafts/<your-skill-name> --runs 1
 
 ## License
 
-To decide (PRD §14).
+Code (`scripts/`, `.github/`, `.claude-plugin/`) is MIT. Skills, foundations and docs are [CC BY 4.0](LICENSE-CC-BY-4.0): reuse and adapt them, with credit. See [LICENSE](LICENSE).

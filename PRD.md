@@ -22,7 +22,7 @@ README promise, one line:
 | Stages | Strategy · Specify · Data & Knowledge · Build · Measure · Govern · Transform |
 | Test harness | `claude plugin eval`, native format, 3 cases minimum per skill, scored with and without the skill; pass rate shown in README |
 | Language | English skills; French legal annexes where the law is French |
-| License | To decide (section 14) |
+| License | MIT for code, CC BY 4.0 for skills, foundations and docs |
 | Owner | Alex Darmon, solo, about 1 hour per day |
 
 ---
@@ -158,7 +158,8 @@ Design implication: skills are written for the primary user and tested on the au
 ```
 ai-pm-skills/
 ├── README.md                      # promise, catalog table with pass rates, install, 60-second example
-├── LICENSE
+├── LICENSE                        # MIT for code; points to CC BY 4.0 for the rest
+├── LICENSE-CC-BY-4.0              # skills, foundations, docs
 ├── CONTRIBUTING.md                # how to author a skill, how to add cases, review checklist
 ├── foundations/                   # shared backbones, read by many skills
 │   ├── autonomy-ladder.md         # L0–L5, gates, obligations per level
@@ -826,7 +827,7 @@ Rules of the road:
 
 | Decision | Options | Leaning | Decide by |
 | --- | --- | --- | --- |
-| License | MIT for everything · Apache-2.0 · MIT code + CC BY 4.0 skill text | MIT code + CC BY 4.0 text (attribution for the method, freedom for the scripts) | Wave 0 |
+| License | MIT for everything · Apache-2.0 · MIT code + CC BY 4.0 skill text | **Decided 2026-11-02:** MIT code + CC BY 4.0 text (attribution for the method, freedom for the scripts) | Done |
 | Skill language | English only · English with French legal annexes · bilingual | English with French annexes for G1, G3 (articles and texts) | Wave 0 |
 | Final name | `ai-pm-skills` · `aipm-skills` · `regulated-ai-pm` | `ai-pm-skills` (clear, searchable) | Wave 0 |
 | Eval format | evalblink suite · native `claude plugin eval` · both | **Decided 2026-11-01:** native `claude plugin eval` cases inside each skill; evalblink only for model and classifier comparisons (M2, M5) | Done |
