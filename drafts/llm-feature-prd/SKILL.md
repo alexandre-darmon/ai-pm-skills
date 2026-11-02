@@ -28,7 +28,7 @@ If the outcome metric is missing, ask for it and stop, even when asked to skip q
 
 ## Method
 1. Restate the problem and the outcome metric in one sentence each. Refuse to continue without an outcome metric.
-2. List the steps the feature performs. Assign an autonomy level L0–L5 per step (foundations/autonomy-ladder.md: L1 assisted, L2 human validates every output, L3 human reviews exceptions and a sample, L4 acts within tested limits). Say why each step is not at L+1. Give each step its launch level and its path, one level at a time with the gate for each move (e.g. L2 → L3 → L4).
+2. List the steps the feature performs. Assign an autonomy level L0–L5 per step, as defined in references/autonomy-ladder.md (read it first: levels, gates, rules). Say why each step is not at L+1. Give each step its launch level and its path, one level at a time with the gate for each move (e.g. L2 → L3 → L4).
 3. Write the happy path, then at least three failure paths: wrong answer, no answer, out-of-scope or prompt injection. Say what the user sees and what the system does in each.
 4. Write the eval stub: what "correct" means per step, how cases are sampled, who labels, the threshold to beat. For generated text (summaries, drafts, answers), name the reference outputs written by domain experts and the grading rubric a judge or reviewer applies. Hand over to `build-evals`.
 5. List guardrail requirements per layer: input, output, action. Any step at L3 needs tested output guardrails; any step at L4 needs action guardrails (scope, caps, approvals). Hand over to `system-prompt-and-guardrails`.
@@ -43,11 +43,11 @@ A PRD following `templates/prd.md`: all headings present, no empty section. Sect
 - No PRD without an eval section.
 - No step without an autonomy level.
 - No usage KPI without an outcome KPI beside it.
-- No gain stated without volume × quality × unit value behind it (foundations/roi-model.md); remove or rewrite free-floating percentages.
+- No gain stated without volume × quality × unit value behind it (references/roi-model.md); remove or rewrite free-floating percentages.
 - Never skip a level in production: a step moves one level at a time (L2 → L3 → L4), each move behind its own gate. A step that issues payments, refunds or other irreversible actions launches at L2 at most.
 
 ## Links
-foundations/autonomy-ladder.md · foundations/roi-model.md · build-evals · system-prompt-and-guardrails · ai-data-requirements · ai-act-classification
+references/autonomy-ladder.md · references/roi-model.md · build-evals · system-prompt-and-guardrails · ai-data-requirements · ai-act-classification
 
 ## Sources
 - cagan-inspired: product risks (value, usability, feasibility, viability) frame the failure paths.

@@ -143,7 +143,7 @@ Design implication: skills are written for the primary user and tested on the au
 3. **Sourced and dated.** Every rule names its source (book, regulation, article, own experience). Legal skills carry `last_verified`; a CI check flags any past 90 days.
 4. **Checklist, not verdict.** Legal and risk skills produce classifications, questions for counsel and checklists. They never output "compliant".
 5. **Anchored numbers only.** Any ROI, gain or productivity figure must trace to volume × quality × value with named inputs. No free-floating percentages.
-6. **The ladder is the spine.** Any skill that touches autonomy, risk, release or governance references the L0–L5 ladder in `foundations/`, never a local definition.
+6. **The ladder is the spine.** Any skill that touches autonomy, risk, release or governance references the L0–L5 ladder in `foundations/`, never a local definition. Each skill cites a synced copy in its own `references/`, so it works when installed alone; CI fails if a copy drifts from the original.
 7. **One skill, one job.** Inputs and outputs fit in a screen. Two jobs = two skills. A skill that needs another one says so in `depends_on`.
 8. **Progressive disclosure.** Frontmatter `description` is the trigger (under 200 characters). `SKILL.md` body is the method (under 2 000 words). Heavy material lives in `references/` and is loaded only when needed.
 9. **Own words, cited ideas.** Books and newsletters are sources, never content. No excerpts longer than a sentence.
@@ -168,7 +168,7 @@ ai-pm-skills/
 ├── skills/
 │   ├── <skill-name>/
 │   │   ├── SKILL.md               # frontmatter + method (the only file always loaded)
-│   │   ├── references/            # deep material, loaded on demand
+│   │   ├── references/            # deep material, loaded on demand; synced copies of cited foundations
 │   │   ├── templates/             # output templates (markdown, yaml, csv)
 │   │   └── evals/                 # `claude plugin eval` cases, one folder per case (≥3)
 │   │       └── <skill-name>-001/
@@ -180,7 +180,7 @@ ai-pm-skills/
 ├── baselines/                     # frozen results JSON per skill (model, judge model, date, delta)
 ├── .claude-plugin/plugin.json     # install as a Claude Code plugin
 ├── scripts/
-│   ├── validate_skills.py         # structure check: frontmatter, headings, cases, graders
+│   ├── validate_skills.py         # structure check: frontmatter, headings, cases, graders, foundation copies (--sync writes them)
 │   ├── run_evals.sh               # `claude plugin eval` per changed skill, with its own threshold
 │   ├── check_freshness.py         # fails CI if a legal skill's last_verified > 90 days
 │   └── build_readme_table.py      # regenerates the catalog table from frontmatter + results
@@ -217,7 +217,7 @@ Body structure (fixed headings, so graders can check structure):
 3. **Method** — numbered steps; each step says what to produce and the rule it applies.
 4. **Output** — the exact artefact, pointing to `templates/`.
 5. **Rules and red lines** — the opinions: what the skill refuses to do.
-6. **Links** — which `foundations/` file and which other skills it calls.
+6. **Links** — which foundation (as `references/<file>.md`, its synced copy) and which other skills it calls.
 7. **Sources** — ids, one line each.
 
 ### 7.3 README
@@ -868,7 +868,7 @@ Ask if missing: data sources, current process, risk context.
 
 ## Method
 1. Restate the problem and the outcome metric in one sentence each. Refuse to continue without an outcome metric.
-2. List the steps the feature performs. Assign an autonomy level per step (foundations/autonomy-ladder.md). Justify why not L+1.
+2. List the steps the feature performs. Assign an autonomy level per step (references/autonomy-ladder.md). Justify why not L+1.
 3. Write the happy path, then at least three failure paths: wrong answer, no answer, out-of-scope or injection.
 4. Write the eval stub: what "correct" means per step, how cases will be sampled, who labels (hand to build-evals).
 5. List guardrail requirements per layer: input, output, action (hand to system-prompt-and-guardrails).
@@ -886,7 +886,7 @@ Ask if missing: data sources, current process, risk context.
 - No unanchored gains.
 
 ## Links
-foundations/autonomy-ladder.md · build-evals · system-prompt-and-guardrails · ai-act-classification
+references/autonomy-ladder.md · build-evals · system-prompt-and-guardrails · ai-act-classification
 
 ## Sources
 - cagan-inspired: product risks (value, usability, feasibility, viability) frame the failure paths.

@@ -17,7 +17,7 @@ A skill folder:
 ```
 <name>/
 ├── SKILL.md            # frontmatter + method, always loaded
-├── references/         # deep material, loaded on demand
+├── references/         # deep material, loaded on demand, plus synced copies of the foundations it cites
 ├── templates/          # output templates
 └── evals/              # ≥ 3 cases, native `claude plugin eval` format (PRD §11.1)
     └── <name>-001/
@@ -30,6 +30,7 @@ A skill folder:
 ```bash
 pip install pyyaml
 python3 scripts/validate_skills.py          # structure check (what CI runs)
+python3 scripts/validate_skills.py --sync   # refresh skills' copies of foundations/ files, then check
 python3 -m unittest scripts/test_validate_skills.py
 claude plugin eval drafts/<name> --runs 1     # paid: runs the cases with and without the skill
 ```
@@ -47,7 +48,8 @@ Hard rules (PRD §6), the ones easy to break when generating text:
 - **Specific or absent**: if the skill reads the same for a non-AI product, it doesn't belong here.
 - **Checklist, not verdict**: `govern` skills never output "compliant"; they produce classifications, checklists and questions for counsel. No `llm` grader on legal skills, `eval_threshold` ≥ 0.90, `last_verified` mandatory.
 - **Anchored numbers only**: any gain traces to volume × quality × unit value − run cost − change cost.
-- **The ladder is the spine**: reference L0–L5 from `foundations/autonomy-ladder.md`, never redefine levels locally.
+- **The ladder is the spine**: reference L0–L5 from `references/autonomy-ladder.md`, never redefine levels locally.
+- **Foundations travel with the skill**: a skill installed alone has no `foundations/`. Cite `references/<file>.md`, never `foundations/`; `--sync` writes the copy, CI fails if it drifts. Edit only the original in `foundations/`.
 - **Own words, cited ideas**: no excerpt from a book or newsletter longer than a sentence.
 - **Progressive disclosure**: `description` ≤ 200 chars and states *when* to use; body ≤ 2 000 words; heavy material goes to `references/`.
 - **Thirty is the ceiling**: never more than 30 skills in `skills/`.

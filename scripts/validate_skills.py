@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Check the structure of every skill in skills/ and drafts/ against PRD §7.2 and §11.1.
 
-Usage: python3 scripts/validate_skills.py [repo_root]
+Usage: python3 scripts/validate_skills.py [--sync] [repo_root]
 Exits 1 and prints one line per problem if anything is wrong.
+--sync first rewrites each skill's references/ copies of the foundations/ files it cites.
 """
 import datetime
 import re
@@ -22,6 +23,8 @@ MAX_SKILLS = 30
 MAX_DESCRIPTION = 200
 MAX_WORDS = 2000
 MIN_CASES = 3
+# A skill installed alone has no foundations/ folder, so it cites a synced copy in its own references/.
+COPY_HEADER = "<!-- Synced copy of foundations/{name}. Edit the original, then run: python3 scripts/validate_skills.py --sync -->\n"
 
 
 def read_frontmatter(path: Path) -> tuple[dict, str]:
@@ -47,7 +50,35 @@ def load_sources(root: Path) -> set[str] | None:
     return set(re.findall(r"^\| ([a-z][a-z0-9-]*) \|", path.read_text(encoding="utf-8"), re.MULTILINE))
 
 
-def check_skill(folder: Path, in_catalog: bool, known_sources: set[str] | None = None) -> list[str]:
+def foundation_copies(folder: Path, foundations: Path) -> dict[str, str]:
+    """Expected content of each references/<file> that mirrors foundations/<file>: the ones SKILL.md cites, plus existing ones."""
+    cited = re.findall(r"references/([a-z0-9-]+\.md)", (folder / "SKILL.md").read_text(encoding="utf-8"))
+    present = [p.name for p in (folder / "references").glob("*.md")]
+    return {
+        name: COPY_HEADER.format(name=name) + (foundations / name).read_text(encoding="utf-8")
+        for name in set(cited + present)
+        if (foundations / name).is_file()
+    }
+
+
+def sync_foundations(folder: Path, foundations: Path) -> None:
+    for name, expected in foundation_copies(folder, foundations).items():
+        (folder / "references").mkdir(exist_ok=True)
+        (folder / "references" / name).write_text(expected, encoding="utf-8")
+
+
+def check_foundations(folder: Path, body: str, foundations: Path) -> list[str]:
+    errors = []
+    if "foundations/" in body:
+        errors.append("cite references/<file>.md, not foundations/: a skill installed alone has no foundations/ folder")
+    for name, expected in sorted(foundation_copies(folder, foundations).items()):
+        copy = folder / "references" / name
+        if not copy.is_file() or copy.read_text(encoding="utf-8") != expected:
+            errors.append(f"references/{name} is missing or differs from foundations/{name}; run python3 scripts/validate_skills.py --sync")
+    return errors
+
+
+def check_skill(folder: Path, in_catalog: bool, known_sources: set[str] | None = None, foundations: Path | None = None) -> list[str]:
     errors = []
     err = errors.append
     skill_md = folder / "SKILL.md"
@@ -114,6 +145,8 @@ def check_skill(folder: Path, in_catalog: bool, known_sources: set[str] | None =
     if words > MAX_WORDS:
         err(f"body is {words} words, max {MAX_WORDS}; move material to references/")
 
+    if foundations is not None:
+        errors += check_foundations(folder, body, foundations)
     errors += check_cases(folder, str(name), govern=stage == "govern")
     return errors
 
@@ -183,15 +216,18 @@ def check_graders(case: Path, where: str, skill: str, govern: bool) -> list[str]
     return errors
 
 
-def main(root: Path) -> int:
+def main(root: Path, sync: bool = False) -> int:
     problems = []
     catalog = sorted(p for p in (root / "skills").glob("*") if p.is_dir())
     drafts = sorted(p for p in (root / "drafts").glob("*") if p.is_dir())
     if len(catalog) > MAX_SKILLS:
         problems.append(f"skills/: {len(catalog)} skills, hard cap is {MAX_SKILLS}")
     known_sources = load_sources(root)
+    foundations = root / "foundations"
     for folder in catalog + drafts:
-        for e in check_skill(folder, in_catalog=folder in catalog, known_sources=known_sources):
+        if sync and (folder / "SKILL.md").is_file():
+            sync_foundations(folder, foundations)
+        for e in check_skill(folder, folder in catalog, known_sources, foundations):
             problems.append(f"{folder.relative_to(root)}: {e}")
 
     for p in problems:
@@ -201,4 +237,5 @@ def main(root: Path) -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main(Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).parent.parent)))
+    args = [a for a in sys.argv[1:] if a != "--sync"]
+    sys.exit(main(Path(args[0]) if args else Path(__file__).parent.parent, sync="--sync" in sys.argv))

@@ -37,7 +37,7 @@ Ask if missing: <optional inputs>.
 - <What the skill refuses to do.>
 
 ## Links
-foundations/autonomy-ladder.md · <other skills>
+references/autonomy-ladder.md (synced copy of the foundation) · <other skills>
 
 ## Sources
 - own-practice: <what this skill takes from it, one line>.

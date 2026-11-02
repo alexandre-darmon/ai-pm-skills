@@ -57,6 +57,17 @@ class ValidateSkillsTest(unittest.TestCase):
         self.assertError("case folder must start with 'other-skill-'")
         self.assertEqual(main(self.root), 1)
 
+    def test_foundation_copies(self):
+        (self.root / "foundations").mkdir()
+        (self.root / "foundations/autonomy-ladder.md").write_text("# Ladder\n")
+        self.assertEqual(main(self.root), 1)  # template cites references/autonomy-ladder.md, no copy yet
+        self.assertEqual(main(self.root, sync=True), 0)
+        self.edit("# Ladder", "# Edited locally", file="references/autonomy-ladder.md")
+        self.edit("references/autonomy-ladder.md", "foundations/autonomy-ladder.md")
+        errors = check_skill(self.skill, in_catalog=False, foundations=self.root / "foundations")
+        self.assertTrue(any("not foundations/" in e for e in errors))
+        self.assertTrue(any("differs from foundations/autonomy-ladder.md" in e for e in errors))  # stale copy still checked
+
     def test_case_errors(self):
         (self.skill / "evals/my-skill-002/graders/triggered.md").unlink()
         self.edit("tags: [my-skill,", "tags: [other,", file="evals/my-skill-001/prompt.md")

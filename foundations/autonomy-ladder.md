@@ -2,7 +2,7 @@
 
 The single definition of "how autonomous" used by every skill. A process step, an assistant or an agent is always at one level, and moving up requires passing a gate.
 
-Skills reference levels as `L3 (foundations/autonomy-ladder.md)` and never redefine them locally.
+Skills cite levels as `L3 (references/autonomy-ladder.md)`, a synced copy of this file inside the skill, and never redefine them locally.
 
 ## Levels
 
