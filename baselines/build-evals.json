@@ -4,9 +4,9 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.302",
   "date": "2026-11-02",
-  "casesHash": "33add2e8c16d1f8c9f10c5bae9f001cb8ead9417ff390642353916bb8a5a0b0f",
+  "casesHash": "e5abf288595026713d9cb3d177e8a7e6a65a0cdf65f1f2d5e2b22f4e111282b5",
   "partial": false,
-  "costUsd": 0.5493527,
+  "costUsd": 0.5523879,
   "cases": {
     "build-evals-001": {
       "score": 1.0,
@@ -37,7 +37,7 @@
     },
     "build-evals-002": {
       "score": 1.0,
-      "scoreWithout": 0.8571428571428571,
+      "scoreWithout": 0.625,
       "fired": 1,
       "runs": 1,
       "runsWithout": 1,
@@ -47,11 +47,15 @@
           1,
           1
         ],
-        "disagreements": [
+        "baseline-recorded": [
+          1,
+          0
+        ],
+        "human-review": [
           1,
           1
         ],
-        "human-review": [
+        "per-class": [
           1,
           0
         ],
@@ -59,22 +63,30 @@
           1,
           1
         ],
-        "rubric": [
+        "rubric-revision": [
           1,
-          1
+          0
         ]
       },
-      "delta": 0.1428571428571429
+      "delta": 0.375
     },
     "build-evals-003": {
-      "score": 0.8888888888888888,
-      "scoreWithout": 0.7777777777777778,
+      "score": 1.0,
+      "scoreWithout": 0.36363636363636365,
       "fired": 1,
       "runs": 1,
       "runsWithout": 1,
       "negative": false,
       "graders": {
+        "baseline-recorded": [
+          1,
+          0
+        ],
         "cost-per-correct": [
+          1,
+          0
+        ],
+        "holdout": [
           1,
           0
         ],
@@ -84,10 +96,10 @@
         ],
         "redline-per-class-threshold": [
           1,
-          1
+          0
         ],
         "resample": [
-          0,
+          1,
           1
         ],
         "warranty-stricter": [
@@ -95,7 +107,7 @@
           0
         ]
       },
-      "delta": 0.11111111111111105
+      "delta": 0.6363636363636364
     },
     "build-evals-004": {
       "score": 1.0,
@@ -112,5 +124,5 @@
       }
     }
   },
-  "meanDelta": 0.3068783068783069
+  "meanDelta": 0.5593434343434344
 }

@@ -2,7 +2,7 @@
 name: build-evals-003
 description: Support assistant suite with one global threshold over 4 question classes of different risk (source - anonymised e-commerce support brief, 2026)
 tags: [build-evals, p0, red-line]
-expected_outcome: Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, and scores cost per correct answer.
+expected_outcome: Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]
 ---

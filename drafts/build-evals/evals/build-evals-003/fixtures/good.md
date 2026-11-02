@@ -4,6 +4,8 @@ Replace the single 85% threshold with a threshold per question class: a global s
 - Order status and returns: 85% is fine.
 - Product advice: 80%.
 
-Re-sample the suite with stratified sampling so warranty claims and product advice get at least 30 cases each, instead of the 12 and 6 a random draw gives.
+Re-sample the suite with stratified sampling so warranty claims and product advice get at least 30 cases each, instead of the 12 and 6 a random draw gives. Keep 20% of the cases as a private holdout that never enters a prompt or a repo.
+
+Freeze the 88% run as the baseline, with the model and version, the judge model, the date and the set version.
 
 Track cost per correct answer, not cost per answer: at 0.04 EUR per answer and 88% correct, that is about 0.045 EUR per correct answer.

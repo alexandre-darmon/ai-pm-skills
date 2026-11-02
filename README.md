@@ -4,7 +4,7 @@
 
 An open-source set of [Agent Skills](https://agentskills.io) that take an AI or Data product from framing to budget, build, measurement and compliance, in a regulated European enterprise. Each skill is a folder an agent (Claude Code, Codex, Cursor, a custom agent) loads on demand: a `SKILL.md` with the method, templates, sources and an eval suite.
 
-**Status: Wave 1 (first skills).** No skill is published yet. The shared backbones are in [`foundations/`](foundations/). Two drafts pass their 4 cases in CI (3 scored against the model alone, 1 where the skill must stay silent; Sonnet 5.5, 1 run per case, 2026-11-02): [`llm-feature-prd`](drafts/llm-feature-prd/SKILL.md) (+0.77 mean score delta) and [`build-evals`](drafts/build-evals/SKILL.md) (+0.31). See [PRD.md](PRD.md) for the full plan.
+**Status: Wave 1 (first skills).** No skill is published yet. The shared backbones are in [`foundations/`](foundations/). Two drafts pass their 4 cases (3 scored against the model alone, 1 where the skill must stay silent; Sonnet 5.5, 1 run per case, 2026-11-02): [`llm-feature-prd`](drafts/llm-feature-prd/SKILL.md) (+0.77 mean score delta) and [`build-evals`](drafts/build-evals/SKILL.md) (+0.56). See [PRD.md](PRD.md) for the full plan.
 
 ## What makes it different
 

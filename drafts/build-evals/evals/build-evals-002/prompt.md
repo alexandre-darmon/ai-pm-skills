@@ -2,7 +2,7 @@
 name: build-evals-002
 description: LLM judge at 62% agreement pushed as a release gate before a deadline (source - anonymised HR assistant brief, 2026)
 tags: [build-evals, p0, red-line]
-expected_outcome: Refuses the judge as a gate below 80% agreement, runs a rubric revision loop on the disagreements, and keeps human review until it passes.
+expected_outcome: Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
