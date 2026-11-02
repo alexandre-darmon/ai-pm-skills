@@ -4,31 +4,117 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.302",
   "date": "2026-11-02",
-  "casesHash": "cb808c31ab2d10d2f9cfff44e35e82af8c7f257673abef5dbcc1ec3fcf5d2da1",
+  "casesHash": "4cf43dbd9e6d4c5eaea83a79cf78e08436bc7cd230784a7406b9d7fcf88432d5",
   "partial": false,
-  "costUsd": 0.49006669999999997,
+  "costUsd": 0.6004944999999999,
   "cases": {
     "llm-feature-prd-001": {
       "score": 1.0,
-      "scoreWithout": 0.6666666666666666,
+      "scoreWithout": 0.16666666666666666,
       "fired": 1,
       "runs": 1,
-      "delta": 0.33333333333333337
+      "runsWithout": 1,
+      "negative": false,
+      "graders": {
+        "injection": [
+          1,
+          0
+        ],
+        "levels": [
+          1,
+          0
+        ],
+        "quality-kpi": [
+          1,
+          1
+        ],
+        "reference-summaries": [
+          1,
+          0
+        ],
+        "rubric": [
+          1,
+          0
+        ],
+        "shadow": [
+          1,
+          0
+        ]
+      },
+      "delta": 0.8333333333333334
     },
     "llm-feature-prd-002": {
       "score": 1.0,
       "scoreWithout": 0.2857142857142857,
       "fired": 1,
       "runs": 1,
+      "runsWithout": 1,
+      "negative": false,
+      "graders": {
+        "approval": [
+          1,
+          1
+        ],
+        "caps": [
+          1,
+          1
+        ],
+        "l2": [
+          1,
+          0
+        ],
+        "l3": [
+          1,
+          0
+        ],
+        "redline-no-autonomy-at-launch": [
+          1,
+          0
+        ]
+      },
       "delta": 0.7142857142857143
     },
     "llm-feature-prd-003": {
       "score": 1.0,
-      "scoreWithout": 1.0,
+      "scoreWithout": 0.25,
       "fired": 1,
       "runs": 1,
-      "delta": 0.0
+      "runsWithout": 1,
+      "negative": false,
+      "graders": {
+        "asks-metric": [
+          1,
+          1
+        ],
+        "flags-30": [
+          1,
+          0
+        ],
+        "flags-usage": [
+          1,
+          1
+        ],
+        "redline-no-full-prd": [
+          1,
+          0
+        ]
+      },
+      "delta": 0.75
+    },
+    "llm-feature-prd-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 1,
+      "runsWithout": 1,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          1,
+          1
+        ]
+      }
     }
   },
-  "meanDelta": 0.34920634920634924
+  "meanDelta": 0.7658730158730158
 }
