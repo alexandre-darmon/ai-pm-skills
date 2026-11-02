@@ -8,7 +8,7 @@ Repo of Agent Skills for AI / Data PMs in regulated European companies. `PRD.md`
 skills/<name>/      # catalog: skills with a passing eval suite (status tested | verified-in-mission)
 drafts/<name>/      # same structure, not yet tested; not counted in the README
 templates/skill/    # copy this to start a new skill
-scripts/            # validate_skills.py (structure check), run_evals.py (paid evals, CI on the run-evals label and weekly)
+scripts/            # validate_skills.py (structure check), run_evals.py (paid evals, CI only on request: run-evals label or manual run)
 baselines/          # frozen eval summary per skill (eval-out/<name>.json of its first passing --full run)
 foundations/        # shared backbones: autonomy ladder, ROI model, eval conventions, sources (read before writing a skill)
 ```

@@ -81,7 +81,7 @@ claude plugin eval skills/<skill> --case '<skill>-003' --threshold 0.8        # 
 
 Always target one skill folder, never the repo root. Results land in `evals/results/` (git-ignored).
 
-`python3 scripts/run_evals.py --full <skill-folder>` runs the same with pinned models and applies the pass rules (threshold from `eval_threshold`, mean delta > 0). CI runs it on PRs labelled `run-evals` and weekly; see PRD §11.5.
+`python3 scripts/run_evals.py --full <skill-folder>` runs the same with pinned models and applies the pass rules (threshold from `eval_threshold`, mean delta > 0). CI runs it only on request: on PRs labelled `run-evals`, or by hand on every skill after a major change; see PRD §11.5.
 
 ## Holdout
 

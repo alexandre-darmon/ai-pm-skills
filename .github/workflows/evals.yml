@@ -1,17 +1,19 @@
 name: evals
 
-# Paid runs (PRD §11.5). On a PR: add the `run-evals` label; remove and re-add it to run again.
-# PRs from forks get no secret, so they are not evaluated here.
+# Paid runs, only on request (PRD §11.5). On a PR: add the `run-evals` label; remove and re-add it
+# to run again. Full suite: run this workflow by hand with `all`. PRs from forks get no secret.
 on:
   pull_request:
     types: [labeled]
-  schedule:
-    - cron: "0 5 * * 1" # weekly, Monday 05:00 UTC
   workflow_dispatch:
     inputs:
       skills:
         description: "Skill folders, space-separated (empty: changed since main)"
         default: ""
+      all:
+        description: "Every skill in skills/ (after a major change: foundations, model, harness)"
+        type: boolean
+        default: false
       full:
         description: "Run with and without the skill (ignore stored baselines)"
         type: boolean
@@ -19,7 +21,6 @@ on:
 
 permissions:
   contents: read
-  issues: write
 
 concurrency:
   group: evals-${{ github.ref }}
@@ -50,11 +51,15 @@ jobs:
           EVENT: ${{ github.event_name }}
           SKILLS: ${{ inputs.skills }}
           FULL: ${{ inputs.full }}
+          ALL: ${{ inputs.all }}
           BASE: ${{ github.base_ref }}
         run: |
           case "$EVENT" in
-            schedule) python scripts/run_evals.py --full --all ;;
-            workflow_dispatch) if [ "$FULL" = true ]; then FLAG=--full; fi; python scripts/run_evals.py $FLAG $SKILLS ;;
+            workflow_dispatch)
+              FLAGS=""
+              if [ "$FULL" = true ]; then FLAGS="$FLAGS --full"; fi
+              if [ "$ALL" = true ]; then FLAGS="$FLAGS --all"; fi
+              python scripts/run_evals.py $FLAGS $SKILLS ;;
             *) python scripts/run_evals.py --base "origin/$BASE" ;;
           esac
       - uses: actions/upload-artifact@v4
@@ -63,11 +68,3 @@ jobs:
           name: eval-out
           path: eval-out/
           if-no-files-found: ignore
-      - name: Open an issue
-        if: failure() && github.event_name == 'schedule'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: >-
-          gh issue create --repo "$GITHUB_REPOSITORY"
-          --title "Weekly evals failed ($(date +%F))"
-          --body "A skill dropped below its threshold or no longer beats the model alone: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"

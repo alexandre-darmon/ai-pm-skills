@@ -186,11 +186,11 @@ ai-pm-skills/
 │   └── build_readme_table.py      # regenerates the catalog table from frontmatter + results
 └── .github/workflows/
     ├── validate.yml               # on push and PR: structure check
-    ├── evals.yml                  # on PR label `run-evals`: changed skills; weekly: full suite
+    ├── evals.yml                  # on request only: PR label `run-evals` (changed skills) or manual run (`all`)
     └── freshness.yml              # weekly
 ```
 
-Private holdout cases (20% of each suite) live outside the repo, in a private repo `ai-pm-skills-holdout`, pulled by the weekly job only. See section 11.
+Private holdout cases (20% of each suite) live outside the repo, in a private repo `ai-pm-skills-holdout`, pulled by the full-suite run only. See section 11.
 
 ### 7.2 `SKILL.md` specification
 
@@ -757,13 +757,13 @@ A skill may use all three kinds. Legal skills use exact + checklist only (no jud
 - **With vs without.** Every run has two arms, with and without the skill (`--ablation with-without`, the default). A skill must beat the model alone: a mean delta ≤ 0 fails the skill whatever its score. This is rule 1, "specific or absent", measured.
 - **One skill per run.** Runs always target one skill folder (`claude plugin eval skills/<name>` or `drafts/<name>`). A run from the repo root would also pick up the cases of drafts and templates, whose skills are not loaded.
 - Baseline: the summary written by `scripts/run_evals.py --full` for the first passing run, frozen with model, judge model, date and a hash of `evals/` in `baselines/<skill>.json`. Later runs report their scores next to it.
-- A skill that fails the weekly run gets an issue opened by CI. The author fixes it or moves it back to `drafts/`; CI never moves skills itself, because one run per case is noisy.
-- **Reused "without" arm.** The arm without the skill never sees it, so its scores change only with the cases, graders, model or judge. PR runs reuse them from `baselines/<skill>.json` while those match (a hash of `evals/` plus the model ids) and run the skill arm alone; the weekly run measures both arms.
+- Evals run only on request, never on a schedule. The full suite runs by hand after a major change (a `foundations/` rewrite, a new pinned model, a harness upgrade). A skill that fails it is fixed or moved back to `drafts/` by the author; CI never moves skills itself, because one run per case is noisy.
+- **Reused "without" arm.** The arm without the skill never sees it, so its scores change only with the cases, graders, model or judge. PR runs reuse them from `baselines/<skill>.json` while those match (a hash of `evals/` plus the model ids) and run the skill arm alone; full-suite runs measure both arms.
 
 ### 11.4 Holdout and contamination
 
 - 20% of each skill's cases live in the private repo `ai-pm-skills-holdout`. They are never published and never used in articles.
-- The weekly job checks out the holdout repo and runs it with `--eval-dir`; the PR job runs public cases only.
+- The full-suite run checks out the holdout repo and runs it with `--eval-dir`; the PR job runs public cases only.
 - If public and holdout pass rates diverge by more than 10 points for two weeks, the public set is assumed contaminated or overfitted and is refreshed.
 
 ### 11.5 CI
@@ -772,7 +772,7 @@ A skill may use all three kinds. Legal skills use exact + checklist only (no jud
 | --- | --- | --- | --- | --- |
 | `validate` | push, pull request | all skills and drafts: frontmatter, headings, cases, graders | none | — |
 | `evals` (PR) | `run-evals` label on a PR from this repo | changed skills and drafts, public cases, `--runs 1`, skill arm only when the baseline matches | Sonnet, pinned; Haiku judge | `--max-cost-usd 3` per skill |
-| `evals` (weekly) | Monday, and on demand | all skills, both arms; holdout once the holdout repo exists | Sonnet, pinned; a challenger model later | `--max-cost-usd 3` per skill; opens an issue on failure |
+| `evals` (full suite) | manual run with `all`, after a major change | all skills, both arms; holdout once the holdout repo exists | Sonnet, pinned; a challenger model later | `--max-cost-usd 3` per skill |
 | `freshness` | weekly | `govern` skills | none | fails if `last_verified` > 90 days |
 | `readme` | on main | regenerate catalog table | none | — |
 
