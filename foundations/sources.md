@@ -29,7 +29,7 @@ Sources are ideas, never content: skills state rules in their own words and quot
 | --- | --- | --- | --- |
 | eu-ai-act | Regulation (EU) 2024/1689 (AI Act) | classification, annex III, deployer duties, human oversight (art. 14), literacy (art. 4), record-keeping, serious incidents | G1, G4, G5, T3, B2 |
 | ec-ai-act-guidelines | European Commission guidelines on the AI Act, as published | interpretation of definitions, prohibited practices, high-risk classification | G1, T3 |
-| gdpr | Regulation (EU) 2016/679 (GDPR) | processing principles (art. 5), lawful basis (art. 6), DPIA (art. 35), breach notification (art. 33) | P2, G2, G5 |
+| gdpr | Regulation (EU) 2016/679 (GDPR) | processing principles (art. 5), lawful basis (art. 6), DPIA (art. 35), breach notification (art. 33) | P2, G2, G5, M5 |
 | edpb-wp248 | EDPB / WP29, *Guidelines on DPIA* (WP248 rev.01) | the nine criteria; two or more means a DPIA is likely needed | G2 |
 | cnil-dpia | CNIL, list of processing operations requiring a DPIA, and the PIA tool | French DPIA list, pre-filled sections | G2 |
 | cnil-ai | CNIL resources on AI systems | practical GDPR application to AI | G1 |

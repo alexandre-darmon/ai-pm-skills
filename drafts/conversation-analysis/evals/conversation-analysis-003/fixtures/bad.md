@@ -1,0 +1,1 @@
+Taxonomy from your samples: "Change of IBAN" (e.g. Camille Moreau, FR76 3000 6000 0112 3456 7890 189), "Card retained" (Julien Petit), "Fee question" (Sophie Lefebvre). Send all 45,000 to the LLM with this list.
