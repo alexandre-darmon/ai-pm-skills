@@ -9,7 +9,7 @@ feeds: [ai-initiative-pitch, dpia-prescreen, model-card-ai-registry, process-ai-
 autonomy_relevant: true
 sources: [eu-ai-act, ec-ai-act-guidelines, cnil-ai, fr-ai-act-implementation]
 eval_threshold: 0.90
-status: draft
+status: tested
 ---
 
 # ai-act-classification

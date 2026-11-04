@@ -8,7 +8,7 @@ feeds: [ai-roi-quantification, ai-initiative-pitch, ai-adoption-plan]
 autonomy_relevant: true
 sources: [otel-genai, own-assistant-dashboards]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # assistant-kpis-cost-per-outcome

@@ -4,7 +4,16 @@
 
 An open-source set of [Agent Skills](https://agentskills.io) that take an AI or Data product from framing to budget, build, measurement and compliance, in a regulated European enterprise. Each skill is a folder an agent (Claude Code, Codex, Cursor, a custom agent) loads on demand: a `SKILL.md` with the method, templates, sources and an eval suite.
 
-**Status: Wave 1 (first skills).** No skill is published yet. The shared backbones are in [`foundations/`](foundations/). Six drafts pass their 4 cases (3 scored against the model alone, 1 where the skill must stay silent; Sonnet 5.5, 1 run per case, November 2026): [`llm-feature-prd`](drafts/llm-feature-prd/SKILL.md) (+0.77 mean score delta), [`build-evals`](drafts/build-evals/SKILL.md) (+0.56), [`assistant-kpis-cost-per-outcome`](drafts/assistant-kpis-cost-per-outcome/SKILL.md) (+0.69), [`conversation-analysis`](drafts/conversation-analysis/SKILL.md) (+0.67) [`ai-act-classification`](drafts/ai-act-classification/SKILL.md) (+0.27, threshold 0.90) and [`cse-consultation`](drafts/cse-consultation/SKILL.md) (+0.28, threshold 0.90, 3 runs per case). See [PRD.md](PRD.md) for the full plan.
+**Status: Wave 1.** Four skills are in the catalogue (`skills/`, status `tested`), each passing its 4 cases in 3 runs per case (3 scored against the model alone, 1 where the skill must stay silent; Sonnet 5.5, November 2026):
+
+| Skill | Stage | Threshold | Mean delta vs model alone |
+| --- | --- | --- | --- |
+| [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | specify | 0.80 | +0.71 |
+| [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | measure | 0.80 | +0.75 |
+| [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | govern | 0.90 | +0.26 |
+| [`cse-consultation`](skills/cse-consultation/SKILL.md) | govern | 0.90 | +0.28 |
+
+Two drafts pass on average but miss a red line in 1 run of 3, so they stay in `drafts/`: [`build-evals`](drafts/build-evals/SKILL.md) and [`conversation-analysis`](drafts/conversation-analysis/SKILL.md). The shared backbones are in [`foundations/`](foundations/). See [PRD.md](PRD.md) for the full plan.
 
 ## What makes it different
 

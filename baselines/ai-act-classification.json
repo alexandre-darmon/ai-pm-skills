@@ -4,169 +4,169 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.302",
   "date": "2026-11-04",
-  "casesHash": "60692a12f700a1c8ecd9fb1def0845ae3b5dfcb899b12be9221e02e82072deb2",
+  "casesHash": "9df1a93856a9cb51af6122e2f6660e2fdb633b56e7865c5f50d57ab09ab44a0e",
   "partial": false,
-  "costUsd": 0.5417414,
+  "costUsd": 1.6542552000000001,
   "cases": {
     "ai-act-classification-001": {
       "score": 1.0,
-      "scoreWithout": 0.6666666666666666,
-      "fired": 1,
-      "runs": 1,
-      "runsWithout": 1,
+      "scoreWithout": 0.6944444444444443,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
       "negative": false,
       "graders": {
         "annex-iii-4a": [
-          1,
-          1
+          3,
+          3
         ],
         "art-26": [
-          1,
-          1
+          3,
+          3
         ],
         "counsel": [
-          1,
+          3,
           0
         ],
         "date-2027": [
-          1,
+          3,
           0
         ],
         "date-not-aug-2026": [
-          1,
+          3,
           0
         ],
         "deployer": [
-          1,
-          1
+          3,
+          3
         ],
         "logs-6-months": [
-          1,
-          1
+          3,
+          3
         ],
         "redline-no-verdict": [
-          1,
-          1
+          3,
+          3
         ],
         "vendor-claim": [
-          1,
-          0
+          3,
+          1
         ],
         "workers-informed": [
-          1,
-          1
+          3,
+          3
         ]
       },
-      "delta": 0.33333333333333337
+      "delta": 0.3055555555555557
     },
     "ai-act-classification-002": {
       "score": 1.0,
-      "scoreWithout": 0.7,
-      "fired": 1,
-      "runs": 1,
-      "runsWithout": 1,
+      "scoreWithout": 0.7666666666666666,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
       "negative": false,
       "graders": {
         "art-4-literacy": [
-          1,
-          1
+          3,
+          3
         ],
         "art-5-screened": [
-          1,
-          1
+          3,
+          3
         ],
         "art-50": [
-          1,
-          1
+          3,
+          3
         ],
         "counsel": [
-          1,
+          3,
           0
         ],
         "gpai-flag": [
-          1,
-          0
+          3,
+          1
         ],
         "not-high-risk": [
-          1,
-          1
+          3,
+          3
         ],
         "redline-no-verdict": [
-          1,
-          1
+          3,
+          3
         ],
         "role": [
-          1,
-          0
+          3,
+          1
         ]
       },
-      "delta": 0.30000000000000004
+      "delta": 0.2333333333333334
     },
     "ai-act-classification-003": {
-      "score": 0.9166666666666666,
+      "score": 1.0,
       "scoreWithout": 0.75,
-      "fired": 1,
-      "runs": 1,
-      "runsWithout": 1,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
       "negative": false,
       "graders": {
         "annex-5b": [
-          1,
-          1
+          3,
+          3
         ],
         "art-50": [
-          1,
-          1
+          3,
+          3
         ],
         "counsel": [
-          1,
+          3,
           0
         ],
         "date-2027": [
-          1,
+          3,
           0
         ],
         "date-not-aug-2026": [
-          1,
-          1
+          3,
+          3
         ],
         "explanation-art-86": [
-          0,
-          1
+          3,
+          3
         ],
         "fria": [
-          1,
-          1
+          3,
+          3
         ],
         "ladder-levels": [
-          1,
+          3,
           0
         ],
         "oversight": [
-          1,
-          1
+          3,
+          3
         ],
         "redline-no-verdict": [
-          1,
-          1
+          3,
+          3
         ]
       },
-      "delta": 0.16666666666666663
+      "delta": 0.25
     },
     "ai-act-classification-004": {
       "score": 1.0,
       "scoreWithout": 1.0,
       "fired": 0,
-      "runs": 1,
-      "runsWithout": 1,
+      "runs": 3,
+      "runsWithout": 3,
       "negative": true,
       "graders": {
         "not-triggered": [
-          1,
-          1
+          3,
+          3
         ]
       }
     }
   },
-  "meanDelta": 0.26666666666666666
+  "meanDelta": 0.262962962962963
 }

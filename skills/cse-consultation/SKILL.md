@@ -9,7 +9,7 @@ feeds: [process-ai-redesign, ai-adoption-plan]
 autonomy_relevant: true
 sources: [code-du-travail, cnil-employee-monitoring, fr-cse-case-law]
 eval_threshold: 0.90
-status: draft
+status: tested
 ---
 
 # cse-consultation

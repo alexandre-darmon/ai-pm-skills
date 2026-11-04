@@ -8,7 +8,7 @@ feeds: [build-evals, prd-to-claude-code, system-prompt-and-guardrails, ai-data-r
 autonomy_relevant: true
 sources: [cagan-inspired, torres-continuous-discovery, own-prds]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # llm-feature-prd

@@ -1,6 +1,6 @@
 ---
 name: build-evals
-description: Build the eval set, graders, thresholds and baseline that decide if an AI feature is good enough. Use when a PRD eval stub exists, before choosing a model or releasing, or when quality is disputed.
+description: Build or review the eval set, graders, thresholds and baseline that decide if an AI feature is good enough. Use for a PRD eval stub, an eval suite to review, a release gate, or disputed quality.
 stage: measure
 version: 0.1.0
 depends_on: [llm-feature-prd]
@@ -15,6 +15,7 @@ status: draft
 
 ## When to use
 - A PRD has an eval stub and the feature needs a real eval set before build or model choice.
+- An existing eval suite or its pass rule (sampling, thresholds, judge) needs a review before a release.
 - A release, a model change or a level change (references/autonomy-ladder.md) needs a measured gate.
 - Quality is disputed: "it works for me", thumbs-up rates, anecdotes.
 - An LLM judge exists and nobody knows if it can be trusted.
