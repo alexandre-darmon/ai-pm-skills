@@ -1,0 +1,136 @@
+{
+  "skill": "assistant-kpis-cost-per-outcome",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.302",
+  "date": "2026-11-04",
+  "casesHash": "d6b66c541796cae5ba1b002ba4e0749bb0bf4a80684e3dca3f171c38a0cbaa11",
+  "partial": false,
+  "costUsd": 0.41345050000000005,
+  "cases": {
+    "assistant-kpis-cost-per-outcome-001": {
+      "score": 1.0,
+      "scoreWithout": 0.5,
+      "fired": 1,
+      "runs": 1,
+      "runsWithout": 1,
+      "negative": false,
+      "graders": {
+        "interim": [
+          1,
+          0
+        ],
+        "outcome-event": [
+          1,
+          0
+        ],
+        "redline-successes-denominator": [
+          1,
+          1
+        ],
+        "sampled-quality": [
+          1,
+          0
+        ],
+        "thumbs-not-quality": [
+          1,
+          1
+        ]
+      },
+      "delta": 0.5
+    },
+    "assistant-kpis-cost-per-outcome-002": {
+      "score": 1.0,
+      "scoreWithout": 0.0,
+      "fired": 1,
+      "runs": 1,
+      "runsWithout": 1,
+      "negative": false,
+      "graders": {
+        "adoption-population": [
+          1,
+          0
+        ],
+        "quality-beside-usage": [
+          1,
+          0
+        ],
+        "redline-successes-denominator": [
+          1,
+          0
+        ],
+        "sampled-quality": [
+          1,
+          0
+        ],
+        "stale-rate": [
+          1,
+          0
+        ],
+        "volume-by-use-case": [
+          1,
+          0
+        ]
+      },
+      "delta": 1.0
+    },
+    "assistant-kpis-cost-per-outcome-003": {
+      "score": 1.0,
+      "scoreWithout": 0.4444444444444444,
+      "fired": 1,
+      "runs": 1,
+      "runsWithout": 1,
+      "negative": false,
+      "graders": {
+        "adoption-population": [
+          1,
+          1
+        ],
+        "cost-per-correct": [
+          1,
+          0
+        ],
+        "interim": [
+          1,
+          0
+        ],
+        "kb-owner": [
+          1,
+          1
+        ],
+        "outcome-event": [
+          1,
+          0
+        ],
+        "quality-beside-usage": [
+          1,
+          0
+        ],
+        "redline-quality-per-kb": [
+          1,
+          1
+        ],
+        "stale-rate": [
+          1,
+          0
+        ]
+      },
+      "delta": 0.5555555555555556
+    },
+    "assistant-kpis-cost-per-outcome-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 1,
+      "runsWithout": 1,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "meanDelta": 0.6851851851851851
+}
