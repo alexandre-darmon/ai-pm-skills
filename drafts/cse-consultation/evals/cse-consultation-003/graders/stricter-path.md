@@ -1,0 +1,5 @@
+---
+type: regex  # the capability to monitor triggers consultation, whatever management intends
+pattern: '(even if|even when|whatever|regardless of|even though|irrespective of)[^\n]{0,100}(inten(d|t)|use it|will not|won[''’]t|doesn[''’]t|does not|plan|assurance|promise|says|purpose|side)[^\n]{0,150}\b(consult|L\.?\s?2312-38|stricter path|monitoring path)|capabilit(y|ies)[^\n]{0,60}\b(is what (matters|counts)|triggers|suffices|is enough)\b|\b(ability|possibility|capacity) (to|of) monitor\w*[^\n]{0,60}(trigger|enough|suffic|counts|what matters)|(intention|intent|promise|assurance)[^\n]{0,60}((does not|doesn[''’]t) (matter|count|change|remove)|is irrelevant|changes nothing)|\b(can|could|able to|allows?|permits?)\b[^\n]{0,40}\b(monitor|track|control)[^\n]{0,120}\b(L\.?\s?2312-38|means of (monitoring|control))|(intention|promesse|engagement)[^\n]{0,60}(n[''’]y change rien|ne change rien|ne suffit pas|est indifférente?)|quelle que soit l[''’]intention|dès lors que l[''’]outil (permet|peut)'
+flags: i
+---

@@ -1,0 +1,192 @@
+{
+  "skill": "cse-consultation",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.302",
+  "date": "2026-11-04",
+  "casesHash": "688794824ceb8082c5e94355e168502432d8ed4d9be366eac4639e353d10df3d",
+  "partial": false,
+  "costUsd": 1.2161061,
+  "cases": {
+    "cse-consultation-001": {
+      "score": 1.0,
+      "scoreWithout": 0.7380952380952381,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "bdese": [
+          3,
+          2
+        ],
+        "case-law-ai": [
+          3,
+          0
+        ],
+        "cssct": [
+          3,
+          3
+        ],
+        "delays": [
+          3,
+          3
+        ],
+        "entrave-fine": [
+          3,
+          0
+        ],
+        "expert": [
+          3,
+          3
+        ],
+        "hr-legal-decide": [
+          3,
+          0
+        ],
+        "info-consultation": [
+          3,
+          3
+        ],
+        "l2312-8": [
+          3,
+          3
+        ],
+        "monitoring-screen": [
+          3,
+          3
+        ],
+        "pilot-held": [
+          3,
+          2
+        ],
+        "redline-no-early-pilot": [
+          3,
+          3
+        ]
+      },
+      "delta": 0.26190476190476186
+    },
+    "cse-consultation-002": {
+      "score": 1.0,
+      "scoreWithout": 0.7222222222222222,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "gdpr": [
+          3,
+          3
+        ],
+        "good-practice": [
+          3,
+          2
+        ],
+        "hr-legal-decide": [
+          3,
+          0
+        ],
+        "l1222-4": [
+          3,
+          3
+        ],
+        "l2311-2": [
+          3,
+          0
+        ],
+        "no-cse": [
+          3,
+          3
+        ],
+        "proportionality": [
+          3,
+          1
+        ],
+        "redline-no-invented-consultation": [
+          3,
+          3
+        ],
+        "threshold-50": [
+          3,
+          2
+        ],
+        "threshold-watch": [
+          3,
+          3
+        ]
+      },
+      "delta": 0.2777777777777778
+    },
+    "cse-consultation-003": {
+      "score": 1.0,
+      "scoreWithout": 0.6923076923076922,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "case-law-2019": [
+          3,
+          0
+        ],
+        "case-law-ai": [
+          3,
+          0
+        ],
+        "gdpr": [
+          3,
+          3
+        ],
+        "hr-legal-decide": [
+          3,
+          0
+        ],
+        "l1222-4": [
+          3,
+          3
+        ],
+        "l2312-38": [
+          3,
+          3
+        ],
+        "l2312-8": [
+          3,
+          3
+        ],
+        "proportionality": [
+          3,
+          0
+        ],
+        "redline-no-info-only": [
+          3,
+          3
+        ],
+        "stricter-path": [
+          3,
+          3
+        ],
+        "switch-off": [
+          3,
+          3
+        ]
+      },
+      "delta": 0.3076923076923078
+    },
+    "cse-consultation-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      }
+    }
+  },
+  "meanDelta": 0.2824582824582825
+}
