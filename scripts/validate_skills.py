@@ -390,6 +390,8 @@ def main(root: Path, sync: bool = False) -> int:
             problems.append(f"{folder.relative_to(root)}: {e}")
     market = root / ".claude-plugin" / "marketplace.json"
     if market.is_file():  # the bundle plugin installs exactly the catalogue, drafts never
+        if (root / ".claude-plugin" / "plugin.json").is_file():  # claude plugin validate misses this: installs, then fails to load
+            problems.append(".claude-plugin/plugin.json: remove it, it conflicts with marketplace.json entries that list skills")
         bundle = json.loads(market.read_text())["plugins"][0]["skills"]
         if sorted(bundle) != [f"./skills/{p.name}" for p in catalog]:
             problems.append(".claude-plugin/marketplace.json: the first plugin must list exactly the skills/ folders")

@@ -63,7 +63,7 @@ Or a single skill, by its name:
 claude plugin install llm-feature-prd@ai-pm-skills
 ```
 
-Inside a session, the same works as `/plugin install ai-pm-skills --marketplace alexandre-darmon/ai-pm-skills`. Each per-skill plugin is named after its skill: `build-evals`, `assistant-kpis-cost-per-outcome`, `conversation-analysis`, `ai-act-classification`, `cse-consultation`.
+Each per-skill plugin is named after its skill: `llm-feature-prd`, `build-evals`, `assistant-kpis-cost-per-outcome`, `conversation-analysis`, `ai-act-classification`, `cse-consultation`. Pick the bundle or single skills, not both. The bundle adds about 330 tokens to every session; a skill's full text loads only when it fires. Drafts are not installable: they join the marketplace once they pass their eval run.
 
 Other agents (Codex, Cursor, custom): each folder in `skills/` follows the [Agent Skills](https://agentskills.io) standard and is self-contained; copy it into your agent's skills directory.
 

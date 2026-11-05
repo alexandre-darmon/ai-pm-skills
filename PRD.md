@@ -182,7 +182,7 @@ ai-pm-skills/
 ├── drafts/                        # same structure, no passing suite yet; not counted
 ├── templates/skill/               # starting point for a new skill, cases included
 ├── baselines/                     # frozen eval summary per skill (model, judge model, date, cases hash, scores with and without)
-├── .claude-plugin/plugin.json     # install as a Claude Code plugin
+├── .claude-plugin/marketplace.json # install all tested skills or one, as Claude Code plugins
 ├── scripts/
 │   ├── validate_skills.py         # structure check: frontmatter, headings, cases, graders, foundation copies (--sync writes them), free grader checks (§11.7)
 │   ├── run_evals.py               # `claude plugin eval` per changed skill: threshold, delta rule, red lines in every run, negative cases, discrimination report
@@ -234,7 +234,7 @@ Body structure (fixed headings, so graders can check structure):
 
 ### 7.4 Installation targets
 
-- Claude Code: `skills/` directory or plugin manifest (`.claude-plugin/plugin.json`) so `claude plugin details` shows token cost.
+- Claude Code: `skills/` directory or plugin marketplace (`.claude-plugin/marketplace.json`) so `claude plugin details` shows token cost.
 - Codex / Cursor / others: via the Agent Skills standard (`npx skills add alexandre-darmon/ai-pm-skills`).
 - Verified matrix in README: which agents were tested, on which date.
 
