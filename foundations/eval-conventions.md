@@ -94,6 +94,8 @@ Always target one skill folder, never the repo root. Results land in `evals/resu
 
 `python3 scripts/validate_skills.py` runs the free checks on every push: the harness schema (unknown prompt or grader keys, `match`, `flags`, a grader `name` other than its file name), fixtures, echo, red-line weights, the negative case and anchored triggers. It needs `node`: regex graders are checked with JavaScript RegExp, as the harness runs them. `run_evals.py --runs 3` confirms a red-line or discrimination finding.
 
+`python3 scripts/run_evals.py --regrade <skill-folder>` is free: it re-scores the answers the last paid run saved in `eval-out/answers/<skill>/` with the current graders, without any model call. Use it after a grader change. After a change to the skill itself the answers are stale, and the report says so.
+
 `python3 scripts/run_evals.py --full <skill-folder>` runs the same with pinned models and applies the pass rules (threshold from `eval_threshold`, mean delta > 0). CI runs it only on request: on PRs labelled `run-evals`, or by hand on every skill after a major change; see PRD §11.5.
 
 ## Holdout

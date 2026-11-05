@@ -32,7 +32,8 @@ flowchart TD
 | Step | Command | Cost | What it checks |
 | --- | --- | --- | --- |
 | validate | `python3 scripts/validate_skills.py` (needs Python with pyyaml, and node) | free | structure, the harness schema (unknown keys fail the load), plus the free checks below |
-| evals | `python3 scripts/run_evals.py --full drafts/<skill>` | a few cents per case | real answers, with and without the skill |
+| evals | `python3 scripts/run_evals.py --full drafts/<skill>` | a few cents per case | real answers, with and without the skill; every answer is saved to `eval-out/answers/` |
+| regrade | `python3 scripts/run_evals.py --regrade drafts/<skill>` | free | the saved answers re-scored with the current graders, no model call; valid for grader changes, stale after a change to the skill |
 
 ## Anatomy of a case
 

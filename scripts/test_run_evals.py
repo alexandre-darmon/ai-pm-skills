@@ -1,10 +1,15 @@
 """The pass rules of run_evals.py, on hand-written `claude plugin eval` results."""
+import json
+import shutil
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from run_evals import summarise, verdict, warnings  # noqa: E402
+from run_evals import evaluate, summarise, verdict, warnings  # noqa: E402
+
+TEMPLATE = Path(__file__).parent.parent / "templates" / "skill"
 
 GRADERS = [
     {"name": "triggered", "type": "tool_used", "weight": 1, "config": {"tool": "Skill", "input_match": "s"}},
@@ -76,6 +81,30 @@ class RunEvalsTest(unittest.TestCase):
         verdict(s, 0.8, {"cases": {"s-001": {"scoreWithout": 0.25, "runsWithout": 1,
                                              "graders": {"has-x": [1, 1], "redline-x": [1, 0]}}}})
         self.assertEqual(len(warnings(s)), 1)  # per-grader "without" counts come from the baseline
+
+    def test_regrade_saved_answers(self):
+        # --regrade re-scores saved answers with the current graders: no model call
+        root = Path(tempfile.mkdtemp())
+        try:
+            skill, out = root / "my-skill", root / "out"
+            shutil.copytree(TEMPLATE, skill)
+            answers = out / "answers" / "my-skill" / "my-skill-001"
+            answers.mkdir(parents=True)
+            (answers / "with-1.md").write_text("It contains replace-me-must-include.")
+            (answers / "without-1.md").write_text("Nothing useful, and replace-me-red-line.")
+            runs = {"my-skill-001": {
+                "with": [{"file": "my-skill-001/with-1.md", "error": None, "graders": {"triggered": True}}],
+                "without": [{"file": "my-skill-001/without-1.md", "error": None, "graders": {"triggered": False}}]}}
+            (out / "answers" / "my-skill" / "runs.json").write_text(json.dumps({"skillHash": "old", "cases": runs}))
+            summary, failures, mode = evaluate(skill, full=False, out=out, offline=True)
+            case = summary["cases"]["my-skill-001"]
+            self.assertEqual((mode, case["score"], case["scoreWithout"], case["fired"]), ("regrade", 1.0, 0.0, 1))
+            self.assertTrue(summary["stale"])  # the saved answers predate this copy of the skill
+            self.assertEqual(failures, [])
+            shutil.rmtree(out / "answers")
+            self.assertIn("no saved answers", evaluate(skill, full=False, out=out, offline=True)[1][0])
+        finally:
+            shutil.rmtree(root)
 
 
 if __name__ == "__main__":
