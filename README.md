@@ -28,7 +28,7 @@ What makes it different:
 
 ## The lifecycle
 
-<p align="center"><img src="assets/lifecycle.svg" alt="Seven stages: Strategy, Specify, Data, Build, Measure, Govern, Transform, with the skills of each" width="100%"></p>
+<p align="center"><img src="assets/lifecycle.svg" alt="Seven stages with their 26 skills, marked tested, draft or planned" width="100%"></p>
 
 | You need to… | Run | Stage |
 | --- | --- | --- |
@@ -40,6 +40,8 @@ What makes it different:
 | Know whether a French CSE must be informed or consulted | `/ai-pm-skills:cse-consultation` | Govern |
 
 You rarely need the command: skills load on their own when the request matches. Coming next, in [`drafts/`](drafts/) until their eval run: decide if an idea needs AI (`ai-opportunity-assessment`), pitch it (`ai-initiative-pitch`), choose a model (`model-selection`), write prompt and guardrails (`system-prompt-and-guardrails`), plan the knowledge base (`agent-knowledge-base`), redesign a process level by level (`process-ai-redesign`).
+
+**Looking for discovery?** Not here on purpose: generic discovery reads the same with or without AI, and Teresa Torres, Marty Cagan or [pm-skills](https://github.com/phuryn/pm-skills) already cover it. What AI changes is here: `ai-opportunity-assessment` checks that the problem is real and the data ready before you build, and `conversation-analysis` shows what people really ask once it runs.
 
 ## Install
 
