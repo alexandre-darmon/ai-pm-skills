@@ -29,8 +29,8 @@ Ask if missing: guardrail spec, monitoring, the AI Act classification, whether p
 2. First 60 minutes: contain (stop the action, drop the level, roll back), preserve traces, name the incident lead.
 3. Name the rollback owner: one role, with a deputy, not a committee.
 4. Check reporting and compute the clocks as dates from the detection time. All for counsel and the DPO to confirm.
-   - Personal data breach (GDPR art. 33): authority within 72 hours of awareness, unless risk is unlikely; people concerned if risk is high (art. 34). The DPO decides.
-   - Serious incident, high-risk system (AI Act art. 73, in force for Annex III from 2 December 2027): the deployer informs the provider first. The provider's limits are 15 days, 10 days in case of death, 2 days for a widespread infringement or critical infrastructure.
+   - Personal data breach (GDPR art. 33): the controller notifies the authority without undue delay and, where feasible, within 72 hours of becoming aware, with reasons if later. No notification if a risk to people is unlikely; the DPO decides and records it. People concerned are told if the risk is high (art. 34). A processor alerts its controller without undue delay. Take the detection time as the prudent start of the clock.
+   - Serious incident (AI Act art. 3(49)) on a high-risk system: the deployer immediately informs the provider, then the importer or distributor and the authority (art. 26(5), from 2 December 2027 for Annex III). The provider's limits under art. 73, from awareness: 15 days in general, 10 days in case of death, 2 days for a widespread infringement or critical infrastructure; an incomplete first report is allowed. When art. 73 itself starts to bite for Annex III systems is an open question for counsel.
 5. Write communications: users, sponsor, DPO, the CSE if work is affected.
 6. Post-incident review: timeline, cause, fix. Every incident becomes eval cases through `build-evals`. Update the card with `model-card-ai-registry`.
 
@@ -47,6 +47,6 @@ Ask if missing: guardrail spec, monitoring, the AI Act classification, whether p
 references/autonomy-ladder.md · build-evals · ai-act-classification · model-card-ai-registry · cse-consultation
 
 ## Sources
-- eu-ai-act: art. 26, 73.
+- eu-ai-act: art. 3(49), 26(5), 73.
 - gdpr: art. 33, 34.
 - own-incident-practice: first 60 minutes, named owner, cases from incidents.
