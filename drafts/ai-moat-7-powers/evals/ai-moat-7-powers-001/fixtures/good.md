@@ -1,0 +1,1 @@
+Scale economies: absent. Network: absent. Counter-positioning: buildable. Switching costs: absent. Branding: absent. Cornered resource: absent, public texts. Process power: absent. What the model does not protect: answers any rival can get.

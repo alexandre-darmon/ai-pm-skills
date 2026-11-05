@@ -28,7 +28,7 @@ What makes it different:
 
 ## The lifecycle
 
-<p align="center"><img src="assets/lifecycle.svg" alt="Seven stages with their 26 skills, marked tested, draft or planned" width="100%"></p>
+<p align="center"><img src="assets/lifecycle.svg" alt="Seven stages with their 26 skills, marked tested or draft" width="100%"></p>
 
 | You need to… | Run | Stage |
 | --- | --- | --- |
@@ -39,7 +39,7 @@ What makes it different:
 | Classify a use case under the EU AI Act | `/ai-pm-skills:ai-act-classification` | Govern |
 | Know whether a French CSE must be informed or consulted | `/ai-pm-skills:cse-consultation` | Govern |
 
-You rarely need the command: skills load on their own when the request matches. Coming next, in [`drafts/`](drafts/) until their eval run: decide if an idea needs AI (`ai-opportunity-assessment`), pitch it (`ai-initiative-pitch`), choose a model (`model-selection`), write prompt and guardrails (`system-prompt-and-guardrails`), plan the knowledge base (`agent-knowledge-base`), redesign a process level by level (`process-ai-redesign`).
+You rarely need the command: skills load on their own when the request matches. The other 20 skills are written and pass the free checks; they stay in [`drafts/`](drafts/) until their paid eval run. Below, what each one does.
 
 **Looking for discovery?** Not here on purpose: generic discovery reads the same with or without AI, and Teresa Torres, Marty Cagan or [pm-skills](https://github.com/phuryn/pm-skills) already cover it. What AI changes is here: `ai-opportunity-assessment` checks that the problem is real and the data ready before you build, and `conversation-analysis` shows what people really ask once it runs.
 
@@ -69,7 +69,7 @@ Other agents (Codex, Cursor, custom): each folder in `skills/` follows the [Agen
 
 ## Catalog
 
-26 skills planned across 7 stages, hard cap 30. **Available** skills are in `skills/` with a passing eval suite; **planned** ones are in the [PRD](PRD.md) or in `drafts/`.
+26 skills across 7 stages, hard cap 30. **Available** skills are in `skills/` with a passing eval suite. **Drafts** are written and pass the free checks, but have not been scored against the model yet.
 
 ### Available
 
@@ -82,7 +82,7 @@ Other agents (Codex, Cursor, custom): each folder in `skills/` follows the [Agen
 | [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | Govern | EU AI Act role, risk category, obligations and dated questions for counsel. Never a compliance verdict. |
 | [`cse-consultation`](skills/cse-consultation/SKILL.md) | Govern | Whether an AI tool in a French company needs CSE information or consultation, and the file to prepare. |
 
-### Planned
+### Drafts
 
 | Stage | Skills |
 | --- | --- |
