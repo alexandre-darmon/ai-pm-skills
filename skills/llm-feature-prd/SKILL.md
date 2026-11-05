@@ -29,7 +29,7 @@ If the outcome metric is missing, ask for it and stop, even when asked to skip q
 ## Method
 1. Restate the problem and the outcome metric in one sentence each. Refuse to continue without an outcome metric.
 2. List the steps the feature performs. Assign an autonomy level L0–L5 per step, as defined in references/autonomy-ladder.md (read it first: levels, gates, rules). Say why each step is not at L+1. Give each step its launch level and its path, one level at a time with the gate for each move (e.g. L2 → L3 → L4).
-3. Write the happy path, then at least three failure paths: wrong answer, no answer, out-of-scope or prompt injection. Say what the user sees and what the system does in each.
+3. Write the happy path, then the four failure paths: wrong answer, no answer, out-of-scope request, prompt injection (instructions hidden in the input or a retrieved document). Say what the user sees and what the system does in each.
 4. Write the eval stub: what "correct" means per step, how cases are sampled, who labels, the threshold to beat. For generated text (summaries, drafts, answers), name the reference outputs written by domain experts and the grading rubric a judge or reviewer applies. Hand over to `build-evals`.
 5. List guardrail requirements per layer: input, output, action. Any step at L3 needs tested output guardrails; any step at L4 needs action guardrails (scope, caps, approvals). Hand over to `system-prompt-and-guardrails`.
 6. Point to data requirements and compliance flags: personal data, high-risk domain, employee impact. Hand over to `ai-data-requirements` and `ai-act-classification`.

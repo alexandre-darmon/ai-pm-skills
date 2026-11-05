@@ -23,7 +23,8 @@
 | --- | --- | --- |
 | Wrong answer | | |
 | No answer | | |
-| Out of scope / injection | | |
+| Out of scope | | |
+| Prompt injection | | |
 
 ## Eval plan
 - What "correct" means, per step:
