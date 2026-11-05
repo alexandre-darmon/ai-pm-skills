@@ -98,6 +98,15 @@ class ValidateSkillsTest(unittest.TestCase):
         self.assertError("my-skill-003: missing fixtures/good.md")
         self.assertError("must-include.md: matches the prompt itself")
 
+    def test_extra_fixtures(self):
+        # real answers saved as good-*.md / bad-*.md follow the same rules as good.md / bad.md
+        fixtures = self.skill / "evals/my-skill-001/fixtures"
+        (fixtures / "good-run1.md").write_text("A sound answer that forgot the key words.\n")
+        (fixtures / "bad-run2.md").write_text("It contains replace-me-must-include.\n")
+        (fixtures / "notes-x.md").write_text("ignored: not a good- or bad- fixture\n")
+        self.assertError("my-skill-001: fixtures/good-run1.md fails ['must-include']")
+        self.assertError("my-skill-001: fixtures/bad-run2.md scores 1.00 >= 0.8")
+
     def test_triggering(self):
         self.edit("?my-skill\"'", "?my-skill.*\"'", file="evals/my-skill-001/graders/triggered.md")  # unanchored
         self.edit("min: 0\n", "", file="evals/my-skill-004/graders/not-triggered.md")  # min defaults to 1: never passes

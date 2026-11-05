@@ -25,7 +25,7 @@ A skill folder:
     └── <name>-001/
         ├── prompt.md   # frontmatter (name, tags: [<name>, …], description, expected_outcome) + scenario
         ├── graders/    # regex (must / must not include), redline-*.md (never-do), tool_used Skill with anchored input_match (always), llm (judge, optional)
-        └── fixtures/   # good.md passes every regex grader, bad.md crosses the red line (free grader tests)
+        └── fixtures/   # good.md / good-<run>.md pass every regex grader, bad.md / bad-<run>.md cross the red line (free grader tests; <run> = real answers from paid runs)
 ```
 
 ## Commands

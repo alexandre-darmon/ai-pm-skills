@@ -1,6 +1,6 @@
 ---
 type: regex  # red line: the overlapping classes are not labelled as they are
-pattern: '(?<!(n[''’]t|not|never|no need to) )(merg|combin|collaps|fold|group|consolidat|absorb)\w*[\s\S]{0,100}?(travel|expenses|payslip|salary|password|access|other|general|leave|holiday|absence)|(written|edge[- ]case|separating|tie-?break) rule|(apart|separate)[^\n]{0,60}(with|by) a (written )?rule'
+pattern: '(?:^|[.!?\n])(?=[^.!?\n]*\b(merg\w*|combin\w*|collaps\w*|fold\w*|group\w*|consolidat\w*|unif\w*|single class|one class|into one)\b)(?=[^.!?\n]*\b(class\w*|labels?|travel|expenses|payslip|salary|password|access|other|general|leave|holiday|absence|overlap\w*|pairs?)\b)(?![^.!?\n]*((n[''’]t|\bnot|\bnever|\bavoid\w*)\s+(\w+\s+)?(merg|combin|collaps|fold|group|consolidat)|\bonly merg\w*[^.!?\n]{0,40}\b(after|later|if)\b|\bunnecessary\b|\boverhead\b|\bkeep the (overlapping )?(classes|list)\b|\brefined later\b|\bno point\b|\bwould lose\b|\b(don[''’]t|doesn[''’]t|do not|does not) need\b|\bno need\b|\brather than merg|\bleave (it |them )?as is\b|\bwithout (a |any )?rule\b|\bnot merg\w*\b|\bcould merge\b|\bkeep (both|all)\b))|(?:^|[.!?\n])(?=[^.!?\n]*\b(rule|boundary)\b)(?=[^.!?\n]*\b(write|written|define\w*|add|tie-?break\w*|separat\w*|apart|split)\b)(?![^.!?\n]*(\bunnecessary\b|\boverhead\b|\bno (written |separating )?rule\b|\bwithout (a |any )?rule\b|\brule is (not )?needed\b|\b(don[''’]t|doesn[''’]t|do not|does not) need\b|\bno need\b))'
 flags: i
 weight: 2
 ---

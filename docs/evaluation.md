@@ -54,7 +54,7 @@ flowchart LR
 
 - `prompt.md` is the question, written like a real request. It never names the skill: triggering is part of the test.
 - `graders/` holds the marking rules: greps (`regex`) first, a judge (`llm`) only when a grep cannot decide.
-- `fixtures/` holds two answers we write by hand to test the graders themselves. The model never sees them, and they do not count in the eval hash.
+- `fixtures/` holds the answers that test the graders themselves: `good.md` and `bad.md` written by hand, plus real answers saved from paid runs (`good-<run>.md`, and `bad-<run>.md` for a model-alone answer that crosses a red line). The model never sees them, and they do not count in the eval hash.
 
 ## How an answer is scored
 

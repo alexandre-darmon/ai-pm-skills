@@ -177,7 +177,7 @@ ai-pm-skills/
 │   │       └── <skill-name>-001/
 │   │           ├── prompt.md      # frontmatter (name, tags, expected_outcome) + scenario sent to the agent
 │   │           ├── graders/       # one file per check: regex, tool_used, llm; red lines named redline-*.md
-│   │           └── fixtures/      # good.md and bad.md: hand-written answers that test the graders
+│   │           └── fixtures/      # good.md and bad.md (hand-written) plus good-*/bad-* real answers: they test the graders
 │   └── ...
 ├── drafts/                        # same structure, no passing suite yet; not counted
 ├── templates/skill/               # starting point for a new skill, cases included

@@ -333,8 +333,10 @@ def check_graders(case: Path, where: str, skill: str, govern: bool, tags: list |
         errors.append(f"{where}: a case tagged red-line needs a graders/{REDLINE}*.md grader")
 
     regex = {g: fm for g, fm in graders.items() if fm.get("type") == "regex"}
-    fixtures = {k: case / "fixtures" / f"{k}.md" for k in ("good", "bad")}
-    texts = [prompt] + [p.read_text(encoding="utf-8") if p.is_file() else "" for p in fixtures.values()]
+    # good.md and bad.md are required; good-*.md and bad-*.md (e.g. real answers from paid runs) follow the same rules
+    fixtures = [(k, case / "fixtures" / f"{k}.md") for k in ("good", "bad")]
+    fixtures += [(p.stem.split("-")[0], p) for p in sorted((case / "fixtures").glob("*-*.md")) if p.stem.split("-")[0] in ("good", "bad")]
+    texts = [prompt] + [p.read_text(encoding="utf-8") if p.is_file() else "" for _, p in fixtures]
     results = dict(zip(regex, run_js_regex([(fm["pattern"], str(fm.get("flags", ""))) for fm in regex.values()], texts))) if regex else {}
     for g, res in list(results.items()):
         if isinstance(res, str):
@@ -356,7 +358,7 @@ def check_graders(case: Path, where: str, skill: str, govern: bool, tags: list |
 
     # Grader unit tests: a hand-written good answer must pass every regex grader, a bad one must fail the case.
     # Graders that cannot run offline (llm, file, tool) count as passed in both.
-    for i, (kind, path) in enumerate(fixtures.items(), start=1):
+    for i, (kind, path) in enumerate(fixtures, start=1):
         if not path.is_file():
             what = "an answer that passes every grader" if kind == "good" else "an answer that crosses the red line"
             errors.append(f"{where}: missing fixtures/{kind}.md ({what})")
@@ -364,12 +366,12 @@ def check_graders(case: Path, where: str, skill: str, govern: bool, tags: list |
         failed = [g for g, res in results.items() if not regex_passes(regex[g], *res[i])]
         score = 1 - sum(scored[g] for g in failed) / sum(scored.values())
         if kind == "good" and failed:  # every grader, not just the threshold: a too-narrow grader is what this catches
-            errors.append(f"{where}: fixtures/good.md fails {failed}: these graders reject a good answer")
+            errors.append(f"{where}: fixtures/{path.name} fails {failed}: these graders reject a good answer")
         regex_redlines = [g for g in redlines if g in results]
         if kind == "bad" and score >= threshold:
-            errors.append(f"{where}: fixtures/bad.md scores {score:.2f} >= {threshold}: the graders let a bad answer pass")
+            errors.append(f"{where}: fixtures/{path.name} scores {score:.2f} >= {threshold}: the graders let a bad answer pass")
         if kind == "bad" and regex_redlines and not set(regex_redlines) & set(failed):
-            errors.append(f"{where}: fixtures/bad.md passes every red line {regex_redlines}: write it to cross one")
+            errors.append(f"{where}: fixtures/{path.name} passes every red line {regex_redlines}: write it to cross one")
     return errors
 
 

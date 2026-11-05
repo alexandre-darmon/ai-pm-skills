@@ -69,6 +69,8 @@ Rules:
 - **No echo.** A must-include `regex` must not match the prompt itself: an answer that repeats the brief would pass it. Match what the skill adds (the challenge to a number, not the number).
 - **Regex patterns** use `flags: i` and tolerate wording variants (`success (metric|measure)`).
 - **Fixtures test the graders.** Every case with a `regex` grader has `fixtures/good.md` (an answer that passes every `regex` grader) and `fixtures/bad.md` (an answer that crosses the red line: it scores below threshold and fails a `regex` red line if the case has one). `llm` graders count as passed in both, so the greps alone must reject the bad answer. When a paid run misses a grader on a sound answer, add that phrasing to `good.md` before widening the pattern.
+- **Real answers become fixtures.** Save the answers of paid runs (`--keep-temp` traces) as `fixtures/good-<run>.md` (with the skill, sound) and `fixtures/bad-<run>.md` (a model-alone answer that crosses a red line). They follow the same rules as `good.md` and `bad.md`, so every later grader change is checked against real answers for free, on every push. Drop an answer that predates a change to the skill.
+- **No judge in the catalogue today.** Every grader is a regex or a tool check, so grading costs nothing beyond the runs themselves. Add an `llm` grader only when a regex cannot decide, and calibrate it first.
 - **`file_exists`** only sees files Claude created, so the case needs `Write` in `allowed_tools`.
 - **Govern skills** use no `llm` or `baseline` grader.
 - **Judges are calibrated** before use: ≥ 80% agreement with 20 human-labelled cases per skill, frontier model to calibrate, then a cheap pinned `--judge-model`. An `llm` grader passes on 2 of 3 votes.
