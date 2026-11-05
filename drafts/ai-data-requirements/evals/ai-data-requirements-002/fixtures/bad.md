@@ -1,0 +1,1 @@
+Refresh the catalog regularly.
