@@ -388,6 +388,11 @@ def main(root: Path, sync: bool = False) -> int:
             sync_foundations(folder, foundations)
         for e in check_skill(folder, folder in catalog, known_sources, foundations):
             problems.append(f"{folder.relative_to(root)}: {e}")
+    market = root / ".claude-plugin" / "marketplace.json"
+    if market.is_file():  # the bundle plugin installs exactly the catalogue, drafts never
+        bundle = json.loads(market.read_text())["plugins"][0]["skills"]
+        if sorted(bundle) != [f"./skills/{p.name}" for p in catalog]:
+            problems.append(".claude-plugin/marketplace.json: the first plugin must list exactly the skills/ folders")
 
     for p in problems:
         print(p)

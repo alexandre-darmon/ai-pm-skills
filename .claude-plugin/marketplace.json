@@ -1,0 +1,80 @@
+{
+  "name": "ai-pm-skills",
+  "owner": {
+    "name": "Alex Darmon"
+  },
+  "metadata": {
+    "description": "Tested skills for AI product managers who ship in regulated companies.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "ai-pm-skills",
+      "description": "All tested skills: specify, measure and govern AI products.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/ai-act-classification",
+        "./skills/assistant-kpis-cost-per-outcome",
+        "./skills/build-evals",
+        "./skills/conversation-analysis",
+        "./skills/cse-consultation",
+        "./skills/llm-feature-prd"
+      ]
+    },
+    {
+      "name": "ai-act-classification",
+      "description": "Classify an AI use case under the EU AI Act (role, risk category, obligations, questions for counsel). Use for a new AI use case, an autonomy level change, or a vendor's AI Act claim.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/ai-act-classification"
+      ]
+    },
+    {
+      "name": "assistant-kpis-cost-per-outcome",
+      "description": "Define an AI assistant's or agent's KPIs (quality by domain, adoption, cost per correct outcome). Use when asked for its dashboard or ROI, or when usage grows and nobody knows if it helps.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/assistant-kpis-cost-per-outcome"
+      ]
+    },
+    {
+      "name": "build-evals",
+      "description": "Build or review the eval set, graders, thresholds and baseline that decide if an AI feature is good enough. Use for a PRD eval stub, an eval suite to review, a release gate, or disputed quality.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/build-evals"
+      ]
+    },
+    {
+      "name": "conversation-analysis",
+      "description": "Classify an AI assistant's conversations by use case, resolution and sentiment, PII masked. Use to build or check the taxonomy, pick the classifier, or learn what people use it for.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/conversation-analysis"
+      ]
+    },
+    {
+      "name": "cse-consultation",
+      "description": "Check whether deploying an AI tool in a French company means informing or consulting the CSE, and prepare the file. Use for any AI tool that touches employees' work in France.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/cse-consultation"
+      ]
+    },
+    {
+      "name": "llm-feature-prd",
+      "description": "Write the PRD for an LLM feature with autonomy level per step, failure paths, eval plan and guardrails. Use when asked for the PRD of anything that generates, extracts, classifies or acts.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/llm-feature-prd"
+      ]
+    }
+  ]
+}
