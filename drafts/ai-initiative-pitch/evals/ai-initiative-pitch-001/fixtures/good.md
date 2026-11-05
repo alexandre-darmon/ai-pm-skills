@@ -1,0 +1,1 @@
+Thesis: we do not yet know the value, so we ask for a measurement pilot. Ask: a 3-month pilot on 500 employees, 45k EUR, decision by 3 December; success criterion: answers correct on 90% of sampled questions. We measure HR question volume first.

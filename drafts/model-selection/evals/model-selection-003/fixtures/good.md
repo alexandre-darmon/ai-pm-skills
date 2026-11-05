@@ -1,0 +1,1 @@
+Candidates: add a small model and a fine-tuned classifier next to the two frontier ones. Run all on your eval suite from the labelled tickets. Chosen model: pending suite run. We do not choose from the leaderboard.

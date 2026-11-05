@@ -26,11 +26,32 @@ Pending re-confirmation (paid runs paused): `build-evals` and `conversation-anal
 
 ## Catalog
 
-26 skills planned across 7 stages: Strategy · Specify · Data & Knowledge · Build · Measure · Govern · Transform. Hard cap: 30.
+26 skills planned across 7 stages, hard cap 30. **Available** skills are in `skills/` with a passing eval suite; **planned** ones are in the [PRD](PRD.md#9-skill-catalog--26-skills-across-7-stages) or in `drafts/`.
 
-| Stage | Skill | Pass rate | Status |
-| --- | --- | --- | --- |
-| — | *Wave 1 in progress* | — | — |
+### Available
+
+| Skill | Stage | What it does |
+| --- | --- | --- |
+| [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | Specify | PRD for an LLM feature: autonomy level per step, four failure paths, eval stub, guardrails, outcome KPIs, shadow → canary → GA. |
+| [`build-evals`](skills/build-evals/SKILL.md) | Measure | Builds or reviews the eval set, graders, threshold and baseline that decide if an AI feature is good enough. |
+| [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | Measure | KPIs for an assistant or agent: quality by domain, adoption, cost per correct outcome, not usage alone. |
+| [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | Measure | Classifies conversations by use case, resolution and sentiment, PII masked, to learn what people use the assistant for. |
+| [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | Govern | EU AI Act role, risk category, obligations and dated questions for counsel. Never a compliance verdict. |
+| [`cse-consultation`](skills/cse-consultation/SKILL.md) | Govern | Whether an AI tool in a French company needs CSE information or consultation, and the file to prepare. |
+
+### Planned
+
+| Stage | Skills |
+| --- | --- |
+| Strategy | `ai-opportunity-assessment` (AI or not, in which form) · `ai-initiative-pitch` (one-pager with anchored numbers and one dated ask) · `ai-moat-7-powers` (where defensibility lies when the model is a commodity) |
+| Specify | `ai-data-requirements` (fields, quality bar, legal basis, owner) · `chat-with-your-data-scoping` (bounded text-to-SQL with a golden set) · `ai-interaction-patterns` (trust calibration, correction, refusal UX) |
+| Data & Knowledge | `semantic-layer-design` (one definition and one owner per metric) · `agent-knowledge-base` (source register, owners, expiry) |
+| Build | `prd-to-claude-code` (brief an agentic coding tool) · `system-prompt-and-guardrails` (prompt plus input, output and action guardrails) · `agent-design-and-tooling` (loop, tools, permission matrix) |
+| Measure | `model-selection` (cost per success on your suite, sovereignty as a filter) · `release-to-production` (shadow, canary, A/B) · `ai-roi-quantification` (volume × quality × value − costs) |
+| Govern | `dpia-prescreen` (the nine EDPB criteria) · `model-card-ai-registry` · `ai-incident-playbook` |
+| Transform | `process-ai-redesign` (flagship: level per step, gates, three scenarios) · `ai-adoption-plan` · `ai-literacy-program` (AI Act art. 4) |
+
+Wave 2 is written and waiting for its paid eval run in [`drafts/`](drafts/): `ai-opportunity-assessment`, `ai-initiative-pitch`, `model-selection`, `system-prompt-and-guardrails`, `agent-knowledge-base`, `process-ai-redesign`. Their graders already pass the free checks.
 
 > **Not legal advice.** Govern skills produce classifications, checklists and questions for counsel, never a conformity verdict.
 

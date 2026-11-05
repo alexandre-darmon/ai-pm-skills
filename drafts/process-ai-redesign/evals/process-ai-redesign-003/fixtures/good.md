@@ -1,0 +1,1 @@
+Redesign the exception handling first: missing photos are requested at first notice. Target levels stay at L1 or L2 until the exception rate falls; each has a gate. Recording handler times changes how employees are measured: call cse-consultation.

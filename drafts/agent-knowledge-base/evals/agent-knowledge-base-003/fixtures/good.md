@@ -1,0 +1,1 @@
+Segregate by sensitivity: separate indexes for public, internal and restricted documents, with access control at retrieval from the user's permissions. Board minutes and salary grids leave the shared index.
