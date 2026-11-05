@@ -8,7 +8,7 @@ feeds: [assistant-kpis-cost-per-outcome, ai-roi-quantification, process-ai-redes
 autonomy_relevant: true
 sources: [gdpr, own-conversation-classification]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # conversation-analysis

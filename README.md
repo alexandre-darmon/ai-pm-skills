@@ -4,16 +4,18 @@
 
 An open-source set of [Agent Skills](https://agentskills.io) that take an AI or Data product from framing to budget, build, measurement and compliance, in a regulated European enterprise. Each skill is a folder an agent (Claude Code, Codex, Cursor, a custom agent) loads on demand: a `SKILL.md` with the method, templates, sources and an eval suite.
 
-**Status: Wave 1.** Four skills are in the catalogue (`skills/`, status `tested`), each passing its 4 cases in 3 runs per case (3 scored against the model alone, 1 where the skill must stay silent; Sonnet 5.5, November 2026):
+**Status: Wave 1 complete.** Six skills are in the catalogue (`skills/`, status `tested`), each with 4 cases (3 scored against the model alone, 1 where the skill must stay silent; Sonnet 5.5, 3 runs per case, November 2026):
 
 | Skill | Stage | Threshold | Mean delta vs model alone |
 | --- | --- | --- | --- |
 | [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | specify | 0.80 | +0.71 |
+| [`build-evals`](skills/build-evals/SKILL.md) | measure | 0.80 | +0.53 |
 | [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | measure | 0.80 | +0.75 |
+| [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | measure | 0.80 | +0.62 |
 | [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | govern | 0.90 | +0.26 |
 | [`cse-consultation`](skills/cse-consultation/SKILL.md) | govern | 0.90 | +0.28 |
 
-Two drafts pass on average but miss a red line in 1 run of 3, so they stay in `drafts/`: [`build-evals`](drafts/build-evals/SKILL.md) and [`conversation-analysis`](drafts/conversation-analysis/SKILL.md). The shared backbones are in [`foundations/`](foundations/). See [PRD.md](PRD.md) for the full plan.
+Pending re-confirmation (paid runs paused): `build-evals` and `conversation-analysis` each missed one red line in 1 run of 3 on their last paid run. Those two graders have since been refitted and checked for free against real answers and probes, but not re-run. `llm-feature-prd` changed after its last run (regex red line instead of an LLM judge, four failure paths). The shared backbones are in [`foundations/`](foundations/). See [PRD.md](PRD.md) for the full plan.
 
 ## What makes it different
 

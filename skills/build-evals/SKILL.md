@@ -8,7 +8,7 @@ feeds: [model-selection, release-to-production, system-prompt-and-guardrails, pr
 autonomy_relevant: true
 sources: [anthropic-evals, own-golden-sets]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # build-evals
