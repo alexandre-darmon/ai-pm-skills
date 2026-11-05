@@ -47,6 +47,7 @@ Sources are ideas, never content: skills state rules in their own words and quot
 | anthropic-evals | Anthropic documentation on building evaluations | eval design, judge use | M1 |
 | anthropic-claude-code | Anthropic, Claude Code best practices | how to brief an agentic coding tool (`CLAUDE.md`, context, verification) | B1 |
 | otel-genai | OpenTelemetry, GenAI semantic conventions | trace and outcome-event fields | M4 |
+| apache-ossie | [Apache Ossie](https://ossie.apache.org/) (incubating), Core Metadata Specification | vendor-neutral exchange of metrics, dimensions and joins; AI context | D1 |
 | dbt-semantic-layer | dbt, semantic layer documentation | metric definitions, grain, dimensions | D1 |
 | ms-hax | Amershi et al., *Guidelines for Human-AI Interaction* (Microsoft, 2019) | interaction guidelines as a reference | P4 |
 | google-pair | Google PAIR, *People + AI Guidebook* | trust calibration, explanation patterns | P4 |

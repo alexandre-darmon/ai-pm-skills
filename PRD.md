@@ -377,7 +377,7 @@ Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Grade
 - **Outputs:** semantic layer spec: metric name, business definition, formula, grain, allowed dimensions, source tables, owner, status (certified / draft / deprecated), test for each metric; a conflict register; a migration order.
 - **Rules:** one definition per metric name; a metric without a test is draft; deprecated metrics keep an alias for 90 days; the AI only reads certified metrics.
 - **Depends on / feeds:** P2 / P3, M4.
-- **Sources:** dbt semantic layer docs, own data-platform migrations.
+- **Sources:** Apache Ossie (exchange format), dbt semantic layer docs, own data-platform migrations.
 - **Evals (3):** two teams with conflicting "active customer" (expected: conflict register, decision needed, both kept as draft); 20 metrics with no tests (expected: all draft, test stubs generated); a migration brief (expected: ordered plan, certified-first).
 - **Graders:** exact (one definition per name, owner per metric, test per certified metric) + checklist.
 
