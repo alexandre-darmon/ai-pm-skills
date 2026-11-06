@@ -6,7 +6,7 @@
 
 ## 1. Summary
 
-**ai-pm-skills is an open-source set of 26 tested skills that take an AI or Data product from framing to budget, build, measurement and compliance, in a regulated European enterprise.**
+**ai-pm-skills is an open-source set of 27 skills, each tested before it enters the catalog, that take an AI or Data product from framing to budget, build, measurement and compliance, in a regulated European enterprise.**
 
 Each skill is a folder an agent (Claude Code, Codex, Cursor, a custom agent) loads on demand: a `SKILL.md` with the method, templates, sources, and an eval suite run by `claude plugin eval`. The repo is a system, not a list: every skill plugs into two shared backbones, the **autonomy ladder** (L0 to L5) and the **ROI model** (volume × quality × value).
 
@@ -18,7 +18,7 @@ README promise, one line:
 | --- | --- |
 | Repo name | `ai-pm-skills` (GitHub: alexandre-darmon) |
 | Format | [Agent Skills](https://agentskills.io) open standard: `SKILL.md` + progressive disclosure |
-| Skill count | 26 at v1.0, hard cap 30 |
+| Skill count | 27, hard cap 30 |
 | Stages | Strategy · Specify · Data & Knowledge · Build · Measure · Govern · Transform |
 | Test harness | `claude plugin eval`, native format, 3 cases minimum per skill, scored with and without the skill; pass rate shown in README |
 | Language | English skills; French legal annexes where the law is French |
@@ -61,7 +61,7 @@ The repo's bet: the skills a PM actually needs for AI products are specific, few
 
 ### Goals
 
-1. Cover the seven stages of an AI product's life with 26 specific skills, none generic.
+1. Cover the seven stages of an AI product's life with 27 specific skills, none generic.
 2. Ship every skill with an eval suite; the README shows each skill's pass rate and date.
 3. Make the autonomy ladder and the ROI model the shared language of all skills.
 4. Give compliance (AI Act, GDPR, French labour law) the same actionable form as product work: checklists and questions, inside the agent, never a PDF.
@@ -81,7 +81,7 @@ The repo's bet: the skills a PM actually needs for AI products are specific, few
 
 | Metric | 3 months | 12 months | How measured |
 | --- | --- | --- | --- |
-| Skills shipped with passing suites | 8 | 26 | CI report in README |
+| Skills shipped with passing suites | 8 | 27 | CI report in README |
 | Skills used on a real client mission | 4 | 15 | Author's log |
 | GitHub stars | 100 | 500 | GitHub |
 | Issues or PRs from strangers | 1 | 20 | GitHub |
@@ -110,11 +110,11 @@ Design implication: skills are written for the primary user and tested on the au
 
 ## 5. Positioning and differentiation
 
-**Positioning statement:** for AI and Data PMs in regulated companies, ai-pm-skills is the only skill library that is specific to AI products, covers EU compliance as product work, and ships every skill with a passing test suite.
+**Positioning statement:** for AI and Data PMs in regulated companies, ai-pm-skills is a skill library specific to AI products that covers EU compliance as product work and moves a skill to its catalog only once it passes a test suite against the bare model. Other repos do parts of this: none of it is claimed as unique.
 
 ### Four differentiators, in order of defensibility
 
-1. **Tested.** Each skill has an eval suite and a visible pass rate, including the score delta with vs without the skill. No other PM skill repo tests its skills. This is also the hardest thing to copy, because it requires the cases, not just the prose.
+1. **Tested.** Each skill has an eval suite and a visible pass rate, including the score delta with vs without the skill. At least three other repos also compare with and without a skill, usually on fewer skills. `claude plugin eval` gives everyone the method, so the cases are what takes work to copy, not the testing itself.
 2. **Compliance as skills.** AI Act classification, DPIA pre-screen, CSE consultation, model card and AI registry, incident playbook. Written for a PM's working tool, dated and sourced.
 3. **A spine.** The autonomy ladder and the ROI model connect the skills. A reader sees a method, not a folder of prompts.
 4. **Lived.** Every rule comes from a problem the author met on a real deployment. Cases in the suites are anonymised real briefs.
@@ -283,11 +283,11 @@ Rules:
 
 ---
 
-## 9. Skill catalog — 26 skills across 7 stages
+## 9. Skill catalog — 27 skills across 7 stages
 
 Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Graders: *exact* (deterministic check), *checklist* (structure and mandatory items), *judge* (LLM with rubric, calibrated).
 
-### Stage 1 — Strategy (3)
+### Stage 1 — Strategy (4)
 
 #### S1 · `ai-opportunity-assessment` — P1
 - **Purpose:** decide in one page whether an AI idea deserves a PRD, and in which form (build, buy, API, or not at all).
@@ -321,6 +321,17 @@ Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Grade
 - **Sources:** Cole (online writing: thesis first, specificity), Cialdini (Influence, ethical use), Hagel (Power of Pull: make it pulled, not pushed), own copywriting rules.
 - **Evals (3):** inputs with a weak ROI (expected: pitch asks for a measurement pilot, not a rollout); inputs with a high-risk flag (expected: risk named before objections); a pitch draft with a free-floating "30% productivity" (expected: skill rewrites it as anchored or removes it).
 - **Graders:** checklist (thesis in first sentence; one dated ask; every number sourced; objection table present; risk named; zero unanchored %).
+
+#### S4 · `ai-brand-positioning` — P2
+- **Purpose:** give an AI product a category it can own and copy whose every claim survives its evals and its autonomy level.
+- **Trigger:** naming or tagline work, a landing page or launch text for an AI product, "AI-powered says nothing", competitors sound the same.
+- **Inputs:** the product and its real autonomy level per step, the eval and KPI evidence, the audience and its words, the alternatives they compare it with.
+- **Outputs:** category statement and point of view, claims ledger (claim, evidence, level, status), name and vocabulary test, pull plan, copy pack with before and after.
+- **Rules:** no word promises more autonomy than the measured level; no gain without the five ROI lines; "AI-powered" is never the differentiator; a category is named in the buyer's problem, not in invented jargon; never "compliant".
+- **Depends on / feeds:** `ai-opportunity-assessment`, `ai-moat-7-powers`, `build-evals` / `ai-initiative-pitch`, `ai-adoption-plan`.
+- **Sources:** Category Pirates (Snow Leopard: category of one, obvious and non-obvious content), Calloway (Becoming a Category of One: win on what you deliver, not on slogans), Cole (thesis first, specificity), Hagel (pull, not push).
+- **Evals (3):** a copilot at L2 marketed as "autonomous" (expected: claim downgraded to the level); a launch text with an unmeasured "10x" (expected: anchored or removed); a "me too" assistant (expected: category and point of view from a real difference, or the statement that none exists yet).
+- **Graders:** checklist (ledger present, level per claim, thesis first) + red lines.
 
 ### Stage 2 — Specify (4)
 
@@ -773,7 +784,7 @@ A skill may use all three kinds. Legal skills use exact + checklist only (no jud
 ### 11.3 Thresholds and baseline
 
 - Pass threshold per skill: **0.80** by default, set in `eval_threshold`. Flagship (T1) and legal skills: 0.90. `scripts/run_evals.py` passes it as `--threshold`.
-- **With vs without.** Every run has two arms, with and without the skill (`--ablation with-without`, the default). A skill must beat the model alone: a mean delta ≤ 0 fails the skill whatever its score. This is rule 1, "specific or absent", measured.
+- **With vs without.** Every run has two arms, with and without the skill (`--ablation with-without`, the default). A skill must beat the model alone by at least 10 points: a mean delta under 10 points fails the skill whatever its score. This is rule 1, "specific or absent", measured.
 - **One skill per run.** Runs always target one skill folder (`claude plugin eval skills/<name>` or `drafts/<name>`). A run from the repo root would also pick up the cases of drafts and templates, whose skills are not loaded.
 - Baseline: the summary written by `scripts/run_evals.py --full` for the first passing run, frozen with model, judge model, date and a hash of `evals/` in `baselines/<skill>.json`. Later runs report their scores next to it.
 - Evals run only on request, never on a schedule. The full suite runs by hand after a major change (a `foundations/` rewrite, a new pinned model, a harness upgrade). A skill that fails it is fixed or moved back to `drafts/` by the author; CI never moves skills itself, because one run per case is noisy.
@@ -834,7 +845,7 @@ Rules of the road:
 
 - A week where the skill does not pass is a week where the cases are improved, not a week where the skill is published anyway.
 - Every skill is run once on a real artefact of the author's current mission before publication.
-- Anything that is not one of the 26 skills, the foundations, the README, the CI or the four articles waits until v1.0.
+- Anything that is not one of the 27 skills, the foundations, the README, the CI or the four articles waits until v1.0.
 
 ---
 

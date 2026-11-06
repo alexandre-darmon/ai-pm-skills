@@ -10,7 +10,7 @@ reused from baselines/<skill>.json when its cases, model and judge still match;
 the "without" arm never sees the skill, so only those can change it.
 A skill fails if a case scores below its eval_threshold, a graders/redline-* grader
 misses in any run with the skill, a negative case fires the skill, or its mean delta
-is <= 0 (negative cases left out: without the skill they cannot fire).
+is under 10 points (negative cases left out: without the skill they cannot fire).
 The report also lists graders that do not tell the two arms apart (a warning, not a failure).
 
 Writes eval-out/<skill>.json (the baseline format: commit it to baselines/ to
@@ -37,6 +37,7 @@ MODEL = "claude-sonnet-5-5"
 JUDGE = "claude-haiku-5-5"
 MAX_COST_USD = 3  # per skill and run, 3 cases x 2 arms cost about 0.5 on the API
 REDLINE = "redline-"
+MIN_DELTA = 0.10  # a skill must beat the model alone by 10 points (PRD §11.3)
 
 
 def changed_skills(base: str) -> list[Path]:
@@ -138,8 +139,8 @@ def verdict(summary: dict, threshold: float, baseline: dict | None) -> list[str]
             c["delta"] = c["score"] - c["scoreWithout"]
             deltas.append(c["delta"])
     summary["meanDelta"] = delta = mean(deltas)
-    if delta is not None and delta <= 0:
-        failures.append(f"mean delta {delta:+.2f}: the skill adds nothing over the model alone")
+    if delta is not None and round(delta, 4) < MIN_DELTA:
+        failures.append(f"mean delta {delta:+.2f} is under {MIN_DELTA:+.2f}: the skill adds too little over the model alone")
     return failures
 
 

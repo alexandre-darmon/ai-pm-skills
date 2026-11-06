@@ -48,8 +48,14 @@ class RunEvalsTest(unittest.TestCase):
         self.assertEqual(verdict(s, 0.8, None), [
             "s-001: score 0.25 < threshold 0.80",
             "s-001: red line redline-x missed in 1/1 runs",
-            "mean delta +0.00: the skill adds nothing over the model alone",
+            "mean delta +0.00 is under +0.10: the skill adds too little over the model alone",
         ])
+
+    def test_gain_must_reach_ten_points(self):
+        for without, failed in ((0.95, True), (0.90, False)):
+            s = summarise(result({"with": [run(True, True, True)]}), "s", "h")
+            failures = verdict(s, 0.8, {"cases": {"s-001": {"scoreWithout": without}}})
+            self.assertEqual(any("under +0.10" in f for f in failures), failed)
 
     def test_without_arm_reused_from_baseline(self):
         s = summarise(result({"with": [run(True, True, True)]}), "s", "h")

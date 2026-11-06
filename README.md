@@ -1,6 +1,6 @@
 <p align="center"><img src="assets/banner.svg" alt="AI PM Skills: Strategy, Specify, Data, Build, Measure, Govern, Transform" width="100%"></p>
 
-<p align="center">Agent Skills for Claude Code, Codex, Cursor or your own agent. Every skill is scored with and without it.</p>
+<p align="center">Agent Skills for Claude Code, Codex, Cursor or your own agent. Skills enter the catalog only after scoring at least 10 points above the model alone.</p>
 
 <!-- gains:start -->
 | | Without skill | With skill |
@@ -20,9 +20,9 @@ Each skill encodes how an AI product is actually framed, specified, measured and
 
 What makes it different:
 
-1. **Tested.** Each skill ships with eval cases run by `claude plugin eval`, with and without the skill. A skill that does not beat the model alone stays in `drafts/`. [How a skill is evaluated](docs/evaluation.md).
+1. **Tested.** Each skill ships with eval cases run by `claude plugin eval`, with and without the skill. A skill that does not beat the model alone by at least 10 points stays in `drafts/`. [How a skill is evaluated](docs/evaluation.md).
 2. **Compliance as skills.** AI Act classification, CSE consultation, DPIA pre-screen, model card, incident playbook: classifications, checklists and questions for counsel.
-3. **One spine.** Every skill plugs into the same [autonomy ladder](foundations/autonomy-ladder.md) (L0 to L5) and [ROI model](foundations/roi-model.md) (volume × quality × unit value − costs).
+3. **One spine.** The skills share the same [autonomy ladder](foundations/autonomy-ladder.md) (L0 to L5) and [ROI model](foundations/roi-model.md) (volume × quality × unit value − costs).
 4. **No free-floating numbers.** A gain that cannot be traced to volume, quality and unit value is rewritten or removed.
 
 ## The lifecycle

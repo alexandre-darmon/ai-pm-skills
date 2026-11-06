@@ -13,8 +13,10 @@ Sources are ideas, never content: skills state rules in their own words and quot
 | fitzpatrick-mom-test | Rob Fitzpatrick, *The Mom Test* (2013) | problem-validation questions | S1 |
 | helmer-7-powers | Hamilton Helmer, *7 Powers* (2016) | the moat scan | S2 |
 | cialdini-influence | Robert Cialdini, *Influence* | ethical persuasion levers, each resting on a verifiable fact | S3, T2 |
-| cole-online-writing | Nicolas Cole, *The Art and Business of Online Writing* (2020) | thesis first, specificity, rhythm | S3 |
-| hagel-power-of-pull | John Hagel, John Seely Brown, Lang Davison, *The Power of Pull* (2010) | make initiatives pulled, not pushed | S3 |
+| cole-online-writing | Nicolas Cole, *The Art and Business of Online Writing* (2020) | thesis first, specificity, rhythm | S3, S4 |
+| hagel-power-of-pull | John Hagel, John Seely Brown, Lang Davison, *The Power of Pull* (2010) | make initiatives pulled, not pushed; be found by the people who already have the problem | S3, S4 |
+| category-pirates-snow-leopard | Category Pirates (Nicolas Cole, Christopher Lochhead, Eddie Yoon), *Snow Leopard* (2022) | a category of one; obvious and non-obvious content | S4 |
+| calloway-category-of-one | Joe Calloway, *Becoming a Category of One* (2009) | win on what you deliver, not on gimmicks; defy comparison | S4 |
 | kohavi-experiments | Ron Kohavi, Diane Tang, Ya Xu, *Trustworthy Online Controlled Experiments* (2020) | A/B feasibility, sample size, pitfalls | M3 |
 | mitchell-model-cards | Margaret Mitchell et al., *Model Cards for Model Reporting* (2019) | model card structure | G4 |
 | hammer-reengineering | Michael Hammer, James Champy, *Reengineering the Corporation* (1993) | method lineage for process redesign | T1 |
@@ -52,6 +54,23 @@ Sources are ideas, never content: skills state rules in their own words and quot
 | ms-hax | Amershi et al., *Guidelines for Human-AI Interaction* (Microsoft, 2019) | interaction guidelines as a reference | P4 |
 | google-pair | Google PAIR, *People + AI Guidebook* | trust calibration, explanation patterns | P4 |
 | text-to-sql-benchmarks | Spider (Yu et al., 2018), BIRD (Li et al., 2023) | eval method for text-to-SQL, not their scores | P3 |
+
+## Other skill repositories
+
+Read in the November 2026 review. Ideas only, restated in our own words; no text copied.
+
+| id | Work | What the repo takes from it | Used by |
+| --- | --- | --- | --- |
+| repo-chanmeng | [ChanMeng666/ai-product-manager-skill](https://github.com/ChanMeng666/ai-product-manager-skill) (MIT) | solution selection, agent and production checks, eval depth | S1, B2, B3, M1, M4 |
+| repo-yoseph | [Yoseph-Zuskin/AI-Product-Manager](https://github.com/Yoseph-Zuskin/AI-Product-Manager) (MIT) | business case lines, vendor checks | S1, M6 |
+| repo-lenny | [RefoundAI/lenny-skills](https://github.com/RefoundAI/lenny-skills) (MIT) | eval practice and AI UX, as ideas; guest quotes are not reused | M1, P4 |
+| repo-vishalhabib | [vishalhabib99/ai-pm-skills](https://github.com/vishalhabib99/ai-pm-skills) (MIT) | fixing the bar before looking at cases, declined lists | S1, T1 |
+| repo-product-on-purpose | [product-on-purpose/pm-skills](https://github.com/product-on-purpose/pm-skills) (Apache-2.0) | template-only control, routing checks | M1 |
+| repo-product-to-prod | [naderelewa/Product-to-Prod](https://github.com/naderelewa/Product-to-Prod) | release and production readiness checks | M3, B1 |
+| repo-pangkaifeng | [PANGKAIFENG/ai-product-manager-skills](https://github.com/PANGKAIFENG/ai-product-manager-skills) | AI PM checklists, as ideas | as cited |
+| repo-phuryn | [phuryn/pm-skills](https://github.com/phuryn/pm-skills) (MIT) | next-step links between skills | as cited |
+| repo-anthropic-kwp | [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) (Apache-2.0) | workflow packaging, as ideas | as cited |
+| repo-deanpeters | [deanpeters/Product-Manager-Skills](https://github.com/deanpeters/Product-Manager-Skills) (CC BY-NC-SA 4.0) | ideas only, never text: its license forbids commercial reuse | as cited |
 
 ## Own experience
 

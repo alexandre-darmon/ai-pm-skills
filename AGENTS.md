@@ -39,7 +39,7 @@ python3 scripts/validate_skills.py          # structure check + free grader chec
 python3 scripts/validate_skills.py --sync   # refresh skills' copies of foundations/ files, then check
 python3 -m unittest discover -s scripts
 claude plugin eval drafts/<name> --runs 1     # paid: runs the cases with and without the skill
-python3 scripts/run_evals.py --full drafts/<name>   # same, plus the repo's pass rules (threshold, delta > 0); saves every answer
+python3 scripts/run_evals.py --full drafts/<name>   # same, plus the repo's pass rules (threshold, delta ≥ 10 points); saves every answer
 python3 scripts/run_evals.py --regrade drafts/<name>  # free: re-scores the saved answers with the current graders, no model call
 ```
 
@@ -50,7 +50,7 @@ Always point `claude plugin eval` at one skill folder, never the repo root: from
 1. `cp -r templates/skill drafts/<name>` and set `name: <name>` (kebab-case, equals folder).
 2. Frontmatter fields and body headings are fixed (PRD §7.2). The validator enforces them; don't add or rename headings.
 3. Copy the four template cases (three positive, one `negative`), write each case's `fixtures/good.md` and `bad.md`, and name never-do graders `redline-*.md`. The validator runs the free checks (PRD §11.7, [docs/evaluation.md](docs/evaluation.md)).
-4. Move to `skills/` only when the eval suite passes (score ≥ `eval_threshold` and better than without the skill) and `status` is `tested` or `verified-in-mission`. Then add it to `.claude-plugin/marketplace.json` (the bundle and its own plugin; the validator checks the bundle) and run `python3 scripts/eval_gains.py` and `scripts/lifecycle_svg.py` (needs fonttools and the Geist fonts, see the script).
+4. Move to `skills/` only when the eval suite passes (score ≥ `eval_threshold` and at least 10 points better than without the skill) and `status` is `tested` or `verified-in-mission`. Then add it to `.claude-plugin/marketplace.json` (the bundle and its own plugin; the validator checks the bundle) and run `python3 scripts/eval_gains.py` and `scripts/lifecycle_svg.py` (needs fonttools and the Geist fonts, see the script).
 
 Hard rules (PRD §6), the ones easy to break when generating text:
 

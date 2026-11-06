@@ -16,6 +16,8 @@ Skills cite levels as `L3 (references/autonomy-ladder.md)`, a synced copy of thi
 | **L4** | Autonomous with guardrails | AI acts within limits; automatic stop | Sets limits, reviews reports | Action guardrails (scope, caps, approvals) tested in redteam; canary passed; rollback in one click | High-risk classification check (AI Act annex III); human oversight design (art. 14); model card |
 | **L5** | Self-improving loop | AI acts and improves on its own outcomes until plateau | Intervenes at plateau | L4 stable 3 months; eval gate automated; drift detection live | Continuous monitoring; change-management of the model itself; registry update on each version |
 
+The gate numbers (5 people, 4 weeks, 2 weeks, 3 months) are defaults, not measured laws. Adjust them to the cost of an error and write down why; the gate itself stays a measured fact.
+
 The last column shows when an obligation typically becomes salient as autonomy rises. It is not a legal map: whether an obligation applies depends on the use case, not on the level (AI Act classification, personal data, effect on employees). The Govern skills check the actual triggers.
 
 ## Rules

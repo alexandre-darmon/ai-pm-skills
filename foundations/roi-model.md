@@ -9,8 +9,8 @@ ROI (per use case, per period) =
     volume            # outcomes produced by the AI in the period
   × quality           # share of outcomes judged correct / accepted
   × unit value        # € value of one correct outcome (time saved × loaded cost, or error cost avoided)
-  − run cost          # tokens + infra + licences
-  − change cost       # training, support, review time
+  − run cost          # tokens + infra + licences + hidden recurring cost
+  − change cost       # training, support, review time + build cost spread over the period
 ```
 
 ## Where each input comes from
@@ -20,8 +20,8 @@ ROI (per use case, per period) =
 | Volume | traces or conversation classification (`conversation-analysis`) | declared usage |
 | Quality | sampled evaluation (`build-evals`, `assistant-kpis-cost-per-outcome`) | thumbs-up alone |
 | Unit value | the business: interviews, time studies; conservative, sourced, assumption written down | an assumed figure |
-| Run cost | tokens + infra + licences | — |
-| Change cost | training, support, review time | — |
+| Run cost | tokens + infra + licences; hidden recurring cost: eval upkeep, monitoring, prompt and source maintenance | the demo's token bill |
+| Change cost | training, support, review time; one-off build cost spread over a stated period | — |
 
 ## Rules
 
@@ -31,6 +31,9 @@ ROI (per use case, per period) =
 4. **Successes as denominator.** Cost per correct outcome divides a cost by the number of correct outcomes (volume × quality), never by all outputs. Each KPI spec states which costs it puts in the numerator.
 5. **Negative is shown.** A use case with negative ROI is shown, not hidden.
 6. **No free-floating percentages.** A percentage gain without volume, quality and unit value behind it is removed or rewritten as anchored.
+7. **Build cost is spread on purpose.** State the period and why it fits the system's expected life. A period chosen to make the result positive is not a rule.
+8. **Capacity is not cash.** Hours freed are capacity until someone removes a cost or redeploys the hours to named work. Show the two apart.
+9. **Ramp-up only in a projection.** Volume that grows over time appears only in a result labelled projection, with the ramp written down.
 
 ## Assumptions
 

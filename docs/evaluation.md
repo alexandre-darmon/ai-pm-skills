@@ -69,8 +69,8 @@ flowchart TD
     S --> C["Case score = mean of its runs"]
     C --> T{"Case score ≥ eval_threshold?<br/>Every redline-* passed in every run?"}
     T -- "no" --> X["Case fails"]
-    T -- "yes" --> D{"Mean delta over the skill's cases > 0?<br/>(with − without)"}
-    D -- "no" --> Y["Skill fails: it adds nothing<br/>over the model alone"]
+    T -- "yes" --> D{"Mean delta over the skill's cases ≥ 10 points?<br/>(with − without)"}
+    D -- "no" --> Y["Skill fails: it adds too little<br/>over the model alone"]
     D -- "yes" --> Z["Skill passes"]
 ```
 
