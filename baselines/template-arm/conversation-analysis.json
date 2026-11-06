@@ -1,0 +1,154 @@
+{
+  "skill": "conversation-analysis",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.302",
+  "date": "2026-11-06",
+  "casesHash": "56e7e4e000526ec2f9c4121388d7ffc7bd24dec147c15d5ed775452715cbd161",
+  "partial": false,
+  "costUsd": 1.0611145,
+  "cases": {
+    "conversation-analysis-001": {
+      "score": 0.7619047619047619,
+      "scoreWithout": 0.42857142857142855,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "counter-example": [
+          3,
+          0
+        ],
+        "freeze-before-labelling": [
+          0,
+          0
+        ],
+        "other-cap": [
+          3,
+          0
+        ],
+        "redline-overlaps-resolved": [
+          2,
+          3
+        ],
+        "taxonomy-size": [
+          3,
+          0
+        ],
+        "two-labellers": [
+          3,
+          3
+        ]
+      },
+      "delta": 0.3333333333333333
+    },
+    "conversation-analysis-002": {
+      "score": 0.8333333333333334,
+      "scoreWithout": 0.05555555555555555,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "blended-cost": [
+          3,
+          0
+        ],
+        "low-confidence-review": [
+          0,
+          0
+        ],
+        "monthly-remeasure": [
+          3,
+          0
+        ],
+        "per-dimension": [
+          3,
+          1
+        ],
+        "redline-route-by-confidence": [
+          3,
+          0
+        ]
+      },
+      "delta": 0.7777777777777778
+    },
+    "conversation-analysis-003": {
+      "score": 0.9259259259259259,
+      "scoreWithout": 0.3703703703703704,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "bottom-up-taxonomy": [
+          3,
+          1
+        ],
+        "gdpr": [
+          3,
+          0
+        ],
+        "leak-check": [
+          3,
+          0
+        ],
+        "placeholders": [
+          3,
+          3
+        ],
+        "redline-mask-first": [
+          3,
+          2
+        ],
+        "redline-no-pii-echo": [
+          2,
+          1
+        ],
+        "retention": [
+          3,
+          0
+        ]
+      },
+      "delta": 0.5555555555555556
+    },
+    "conversation-analysis-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      }
+    },
+    "conversation-analysis-005": {
+      "score": 0.6666666666666666,
+      "scoreWithout": 0.0,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "failures-to-eval-set": [
+          2,
+          0
+        ]
+      },
+      "delta": 0.6666666666666666
+    }
+  },
+  "meanDelta": 0.5833333333333334,
+  "comparison": {
+    "without": 0.21362433862433863,
+    "template": 0.796957671957672,
+    "with": 0.9623015873015873,
+    "methodGain": 0.16534391534391535,
+    "methodBeatsFormat": true
+  }
+}

@@ -89,6 +89,21 @@ Rules, written and committed before the first run (2026-11-06), on `llm-feature-
 
 This is a strict test: these templates are the skill's own and already carry part of its method, such as the columns of a table. A plain generic template would be easier to beat.
 
+Extended under the same rules to `build-evals`, `assistant-kpis-cost-per-outcome` and `cse-consultation`, committed before their run. Drafts have no frozen baseline yet, so they wait for a 3-run confirmation.
+
+## The blind LLM judge
+
+Regexes check words, not the quality of the advice. `python3 scripts/judge_answers.py <folder>` asks a cheaper model (Haiku 5.5) to grade the saved answers on a generic rubric: sound, actionable, honest about unknowns, risk-aware, specific. Results go to `baselines/judge/`.
+
+Rules, written and committed before the full run (2026-11-06):
+
+- **Information only.** It never changes a pass. Regexes and red lines keep the verdict.
+- **Blind.** The judge does not see the arm, answers are shuffled, and mentions of a skill or its reference files are removed.
+- **Not calibrated yet.** Calibration needs at least 80% agreement with 20 human-scored answers (PRD §11.2). Until then its scores are read as a signal, not a measure.
+- **Never on legal skills** (AGENTS.md): `ai-act-classification`, `cse-consultation` and the other Govern skills get counsel's review instead.
+- **The headline is the generic score.** "Meets the goal" is reported apart, because the skills' author wrote those goals.
+- **Known biases are reported:** each answer is judged twice to show the judge's noise, and length is shown next to the scores.
+
 ## The four free checks
 
 Paid runs can only be trusted if the marking rules are right. Four checks protect them, and three of them cost nothing.

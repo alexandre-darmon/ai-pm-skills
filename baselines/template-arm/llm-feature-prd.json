@@ -1,0 +1,139 @@
+{
+  "skill": "llm-feature-prd",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.302",
+  "date": "2026-11-06",
+  "casesHash": "d6ef18c9277f84df899d36563e762aa65fe4d4aa3e7a3cfe66152cad85d93a34",
+  "partial": false,
+  "costUsd": 0.8041703,
+  "cases": {
+    "llm-feature-prd-001": {
+      "score": 0.9166666666666666,
+      "scoreWithout": 0.25,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "injection": [
+          3,
+          0
+        ],
+        "levels": [
+          3,
+          0
+        ],
+        "quality-kpi": [
+          3,
+          1
+        ],
+        "reference-summaries": [
+          1,
+          1
+        ],
+        "reversibility": [
+          3,
+          0
+        ],
+        "rubric": [
+          3,
+          2
+        ],
+        "shadow": [
+          3,
+          2
+        ],
+        "stop-condition": [
+          3,
+          0
+        ]
+      },
+      "delta": 0.6666666666666666
+    },
+    "llm-feature-prd-002": {
+      "score": 1.0,
+      "scoreWithout": 0.3333333333333333,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "approval": [
+          3,
+          3
+        ],
+        "caps": [
+          3,
+          3
+        ],
+        "l2": [
+          3,
+          0
+        ],
+        "l3": [
+          3,
+          0
+        ],
+        "never-in-tools": [
+          3,
+          2
+        ],
+        "redline-no-autonomy-at-launch": [
+          3,
+          0
+        ]
+      },
+      "delta": 0.6666666666666667
+    },
+    "llm-feature-prd-003": {
+      "score": 0.375,
+      "scoreWithout": 0.2916666666666667,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "asks-metric": [
+          3,
+          2
+        ],
+        "flags-30": [
+          3,
+          2
+        ],
+        "flags-usage": [
+          3,
+          3
+        ],
+        "redline-no-full-prd": [
+          0,
+          0
+        ]
+      },
+      "delta": 0.08333333333333331
+    },
+    "llm-feature-prd-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      }
+    }
+  },
+  "meanDelta": 0.47222222222222227,
+  "comparison": {
+    "without": 0.2916666666666667,
+    "template": 0.7638888888888888,
+    "with": 1.0,
+    "methodGain": 0.23611111111111116,
+    "methodBeatsFormat": true
+  }
+}
