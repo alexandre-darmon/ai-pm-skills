@@ -5,3 +5,6 @@ Don't start labelling with this list: several classes overlap, so the two labell
 3. Edge rules: a conversation with two requests takes the class of the first one the employee states. Sick leave vs Leave: any absence for illness, sick note included, is Sick leave; planned time off and balances are Leave.
 4. Keep "Other" under 10% of conversations.
 5. Freeze the taxonomy before labelling starts. Frozen version: call it v1; any change after labelling begins means relabelling everything. Have both HR assistants label the same 50 conversations to measure their agreement, then split the rest.
+
+- Expenses (including travel expenses)
+- Pay (payslip and salary)

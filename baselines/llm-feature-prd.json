@@ -3,14 +3,14 @@
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.302",
-  "date": "2026-11-04",
-  "casesHash": "730d9fb9d9378ed3a49823cb4abca829da73112a2c6858990b7b1065a330c964",
+  "date": "2026-11-06",
+  "casesHash": "d6ef18c9277f84df899d36563e762aa65fe4d4aa3e7a3cfe66152cad85d93a34",
   "partial": false,
-  "costUsd": 1.7785008000000002,
+  "costUsd": 2.0095744,
   "cases": {
     "llm-feature-prd-001": {
       "score": 1.0,
-      "scoreWithout": 0.38888888888888884,
+      "scoreWithout": 0.25,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -18,7 +18,7 @@
       "graders": {
         "injection": [
           3,
-          3
+          0
         ],
         "levels": [
           3,
@@ -26,26 +26,34 @@
         ],
         "quality-kpi": [
           3,
-          2
+          1
         ],
         "reference-summaries": [
           3,
           1
         ],
-        "rubric": [
+        "reversibility": [
           3,
           0
         ],
+        "rubric": [
+          3,
+          2
+        ],
         "shadow": [
           3,
-          1
+          2
+        ],
+        "stop-condition": [
+          3,
+          0
         ]
       },
-      "delta": 0.6111111111111112
+      "delta": 0.75
     },
     "llm-feature-prd-002": {
       "score": 1.0,
-      "scoreWithout": 0.2857142857142857,
+      "scoreWithout": 0.3333333333333333,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -67,16 +75,20 @@
           3,
           0
         ],
+        "never-in-tools": [
+          3,
+          2
+        ],
         "redline-no-autonomy-at-launch": [
           3,
           0
         ]
       },
-      "delta": 0.7142857142857143
+      "delta": 0.6666666666666667
     },
     "llm-feature-prd-003": {
       "score": 1.0,
-      "scoreWithout": 0.20833333333333334,
+      "scoreWithout": 0.2916666666666667,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -84,7 +96,7 @@
       "graders": {
         "asks-metric": [
           3,
-          0
+          2
         ],
         "flags-30": [
           3,
@@ -99,7 +111,7 @@
           0
         ]
       },
-      "delta": 0.7916666666666666
+      "delta": 0.7083333333333333
     },
     "llm-feature-prd-004": {
       "score": 1.0,
@@ -116,5 +128,5 @@
       }
     }
   },
-  "meanDelta": 0.7056878306878307
+  "meanDelta": 0.7083333333333334
 }

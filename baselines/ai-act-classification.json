@@ -3,14 +3,14 @@
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.302",
-  "date": "2026-11-04",
-  "casesHash": "9df1a93856a9cb51af6122e2f6660e2fdb633b56e7865c5f50d57ab09ab44a0e",
+  "date": "2026-11-06",
+  "casesHash": "35083e4a3d51f2627665a813eaf967e0a49325c76f9c2e3da7d06f9253f89c76",
   "partial": false,
-  "costUsd": 1.6542552000000001,
+  "costUsd": 1.684809,
   "cases": {
     "ai-act-classification-001": {
       "score": 1.0,
-      "scoreWithout": 0.6944444444444443,
+      "scoreWithout": 0.5897435897435898,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -46,22 +46,26 @@
         ],
         "redline-no-verdict": [
           3,
-          3
+          2
+        ],
+        "vendor-claim-unverified": [
+          3,
+          0
         ],
         "vendor-claim": [
           3,
-          1
+          2
         ],
         "workers-informed": [
           3,
           3
         ]
       },
-      "delta": 0.3055555555555557
+      "delta": 0.41025641025641024
     },
     "ai-act-classification-002": {
       "score": 1.0,
-      "scoreWithout": 0.7666666666666666,
+      "scoreWithout": 0.7333333333333334,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -85,7 +89,7 @@
         ],
         "gpai-flag": [
           3,
-          1
+          0
         ],
         "not-high-risk": [
           3,
@@ -100,11 +104,11 @@
           1
         ]
       },
-      "delta": 0.2333333333333334
+      "delta": 0.2666666666666666
     },
     "ai-act-classification-003": {
       "score": 1.0,
-      "scoreWithout": 0.75,
+      "scoreWithout": 0.7222222222222222,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -128,7 +132,7 @@
         ],
         "date-not-aug-2026": [
           3,
-          3
+          2
         ],
         "explanation-art-86": [
           3,
@@ -151,7 +155,7 @@
           3
         ]
       },
-      "delta": 0.25
+      "delta": 0.2777777777777778
     },
     "ai-act-classification-004": {
       "score": 1.0,
@@ -168,5 +172,5 @@
       }
     }
   },
-  "meanDelta": 0.262962962962963
+  "meanDelta": 0.31823361823361823
 }

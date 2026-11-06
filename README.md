@@ -5,8 +5,8 @@
 <!-- gains:start -->
 | | Without skill | With skill |
 | --- | --- | --- |
-| Mean score on the scored cases | 45% | **99%** |
-| Red lines held (the one thing the answer must never do) | 63% | **100%** |
+| Mean score on the scored cases | 44% | **99%** |
+| Red lines held (the one thing the answer must never do) | 61% | **100%** |
 | Stays silent on near-miss requests | — | **100%** |
 
 <sub>6 skills, Sonnet 5.5, same cases with and without the skill. Per-skill numbers and method: [skill-eval-gains.md](skill-eval-gains.md).</sub>
@@ -27,7 +27,7 @@ What makes it different:
 
 ## The lifecycle
 
-<p align="center"><img src="assets/lifecycle.svg" alt="Seven stages with their 26 skills, marked tested or draft" width="100%"></p>
+<p align="center"><img src="assets/lifecycle.svg" alt="Seven stages with their 27 skills, marked tested or draft" width="100%"></p>
 
 | You need to… | Run | Stage |
 | --- | --- | --- |
@@ -38,7 +38,7 @@ What makes it different:
 | Classify a use case under the EU AI Act | `/ai-pm-skills:ai-act-classification` | Govern |
 | Know whether a French CSE must be informed or consulted | `/ai-pm-skills:cse-consultation` | Govern |
 
-You rarely need the command: skills load on their own when the request matches. The other 21 skills are written and pass the free checks; they stay in [`drafts/`](drafts/) until their paid eval run. Below, what each one does.
+You rarely need the command: skills load on their own when the request matches. The other 21 skills have passed one eval check; they stay in [`drafts/`](drafts/) until a 3-run confirmation. Below, what each one does.
 
 **Looking for discovery?** Not here on purpose: generic discovery reads the same with or without AI, and Teresa Torres, Marty Cagan or [pm-skills](https://github.com/phuryn/pm-skills) already cover it. What AI changes is here: `ai-opportunity-assessment` checks that the problem is real and the data ready before you build, and `conversation-analysis` shows what people really ask once it runs.
 
@@ -68,7 +68,7 @@ Other agents (Codex, Cursor, custom): each folder in `skills/` follows the [Agen
 
 ## Catalog
 
-27 skills across 7 stages, hard cap 30. **Available** skills are in `skills/` with a passing eval suite. **Drafts** are written and pass the free checks, but have not been scored against the model yet.
+27 skills across 7 stages, hard cap 30. **Available** skills are in `skills/` with a passing eval suite. **Drafts** have passed one scored eval check, most of them on a single run per case, and are not installable yet.
 
 ### Available
 
@@ -93,7 +93,7 @@ Other agents (Codex, Cursor, custom): each folder in `skills/` follows the [Agen
 | Govern | `dpia-prescreen` (the nine EDPB criteria) · `model-card-ai-registry` · `ai-incident-playbook` |
 | Transform | `process-ai-redesign` (flagship: level per step, gates, three scenarios) · `ai-adoption-plan` · `ai-literacy-program` (AI Act art. 4) |
 
-All skills changed in the November 2026 review. The table at the top still shows the earlier frozen baselines, measured on the previous graders. In new one-run checks, the six catalog skills pass; `ai-incident-playbook` and `ai-roi-quantification` have no valid result yet. A 3-run confirmation is pending.
+Numbers at the top: the 6 catalog skills, 3 runs per case, November 2026, after two red-line graders that rejected correct answers were fixed and the saved answers re-scored. `ai-incident-playbook` and `ai-roi-quantification` also passed at 3 runs; the other 19 drafts have one run per case. Graders are written by the skills' author, and no template-only control has been run yet.
 
 > **Not legal advice.** Govern skills produce classifications, checklists and questions for counsel, never a conformity verdict.
 

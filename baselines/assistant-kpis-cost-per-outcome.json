@@ -3,14 +3,14 @@
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.302",
-  "date": "2026-11-04",
-  "casesHash": "d6b66c541796cae5ba1b002ba4e0749bb0bf4a80684e3dca3f171c38a0cbaa11",
+  "date": "2026-11-06",
+  "casesHash": "e4415d1b78c698ebb5084b23b5f2b2f16e4e42806c29f2c6366d92acd74c3207",
   "partial": false,
-  "costUsd": 1.2465009000000002,
+  "costUsd": 1.2398643000000003,
   "cases": {
     "assistant-kpis-cost-per-outcome-001": {
       "score": 1.0,
-      "scoreWithout": 0.27777777777777773,
+      "scoreWithout": 0.3333333333333333,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -26,7 +26,11 @@
         ],
         "redline-successes-denominator": [
           3,
-          1
+          2
+        ],
+        "rework-not-success": [
+          3,
+          0
         ],
         "sampled-quality": [
           3,
@@ -37,7 +41,7 @@
           3
         ]
       },
-      "delta": 0.7222222222222223
+      "delta": 0.6666666666666667
     },
     "assistant-kpis-cost-per-outcome-002": {
       "score": 1.0,
@@ -75,8 +79,8 @@
       "delta": 1.0
     },
     "assistant-kpis-cost-per-outcome-003": {
-      "score": 0.9259259259259259,
-      "scoreWithout": 0.40740740740740744,
+      "score": 0.9629629629629629,
+      "scoreWithout": 0.48148148148148145,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -84,11 +88,11 @@
       "graders": {
         "adoption-population": [
           3,
-          1
+          2
         ],
         "cost-per-correct": [
           3,
-          0
+          2
         ],
         "interim": [
           3,
@@ -103,8 +107,8 @@
           0
         ],
         "quality-beside-usage": [
-          1,
-          1
+          2,
+          0
         ],
         "redline-quality-per-kb": [
           3,
@@ -115,7 +119,7 @@
           1
         ]
       },
-      "delta": 0.5185185185185185
+      "delta": 0.48148148148148145
     },
     "assistant-kpis-cost-per-outcome-004": {
       "score": 1.0,
@@ -132,5 +136,7 @@
       }
     }
   },
-  "meanDelta": 0.7469135802469137
+  "regraded": true,
+  "stale": false,
+  "meanDelta": 0.7160493827160495
 }
