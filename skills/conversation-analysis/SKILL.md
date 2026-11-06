@@ -1,8 +1,8 @@
 ---
 name: conversation-analysis
-description: Classify an AI assistant's conversations by use case, resolution and sentiment, PII masked. Use to build or check the taxonomy, pick the classifier, or learn what people use it for.
+description: Classify an AI assistant's conversations by use case, resolution and sentiment, PII masked. Use to build or check the taxonomy, pick the classifier, see what people use it for, or act on the results.
 stage: measure
-version: 0.2.0
+version: 0.2.1
 depends_on: [build-evals, agent-knowledge-base]
 feeds: [assistant-kpis-cost-per-outcome, ai-roi-quantification, process-ai-redesign, build-evals]
 autonomy_relevant: true
@@ -18,6 +18,7 @@ status: tested
 - A taxonomy of use cases or a labelling plan for an assistant's conversations needs building or checking before labelling starts.
 - Choosing the model that classifies the conversations (cheap vs frontier, cost vs agreement), or checking one that has drifted.
 - KPIs or ROI need volume by use case (`assistant-kpis-cost-per-outcome`, `ai-roi-quantification`).
+- A classification is done and sound, and the question is what to do with the result: do not redo steps 1–7, go to the end of step 8 and answer with its hand-over.
 - Do not use to build a classifier that acts in production (routing, triage, auto-reply): that is a feature, use `llm-feature-prd`.
 - Do not use to grade whether the assistant's answers were correct: that is `build-evals`.
 

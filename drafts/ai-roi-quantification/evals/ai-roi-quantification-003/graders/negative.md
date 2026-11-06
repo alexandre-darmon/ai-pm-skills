@@ -1,5 +1,5 @@
 ---
 type: regex
-pattern: '\bnegative\b'
+pattern: '\bnegative\b|\bloses money\b|\bloss-making\b'
 flags: i
 ---

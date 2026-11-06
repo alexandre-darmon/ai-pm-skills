@@ -1,5 +1,5 @@
 ---
 type: regex
-pattern: 'cse-consultation'
+pattern: 'cse[- ]consultation'
 flags: i
 ---

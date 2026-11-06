@@ -38,7 +38,7 @@ What makes it different:
 | Classify a use case under the EU AI Act | `/ai-pm-skills:ai-act-classification` | Govern |
 | Know whether a French CSE must be informed or consulted | `/ai-pm-skills:cse-consultation` | Govern |
 
-You rarely need the command: skills load on their own when the request matches. The other 20 skills are written and pass the free checks; they stay in [`drafts/`](drafts/) until their paid eval run. Below, what each one does.
+You rarely need the command: skills load on their own when the request matches. The other 21 skills are written and pass the free checks; they stay in [`drafts/`](drafts/) until their paid eval run. Below, what each one does.
 
 **Looking for discovery?** Not here on purpose: generic discovery reads the same with or without AI, and Teresa Torres, Marty Cagan or [pm-skills](https://github.com/phuryn/pm-skills) already cover it. What AI changes is here: `ai-opportunity-assessment` checks that the problem is real and the data ready before you build, and `conversation-analysis` shows what people really ask once it runs.
 
@@ -68,7 +68,7 @@ Other agents (Codex, Cursor, custom): each folder in `skills/` follows the [Agen
 
 ## Catalog
 
-26 skills across 7 stages, hard cap 30. **Available** skills are in `skills/` with a passing eval suite. **Drafts** are written and pass the free checks, but have not been scored against the model yet.
+27 skills across 7 stages, hard cap 30. **Available** skills are in `skills/` with a passing eval suite. **Drafts** are written and pass the free checks, but have not been scored against the model yet.
 
 ### Available
 
@@ -85,7 +85,7 @@ Other agents (Codex, Cursor, custom): each folder in `skills/` follows the [Agen
 
 | Stage | Skills |
 | --- | --- |
-| Strategy | `ai-opportunity-assessment` (AI or not, in which form) · `ai-initiative-pitch` (one-pager with anchored numbers and one dated ask) · `ai-moat-7-powers` (where defensibility lies when the model is a commodity) |
+| Strategy | `ai-opportunity-assessment` (AI or not, in which form) · `ai-initiative-pitch` (one-pager with anchored numbers and one dated ask) · `ai-moat-7-powers` (where defensibility lies when the model is a commodity) · `ai-brand-positioning` (a category and copy whose claims survive the evals and the autonomy level) |
 | Specify | `ai-data-requirements` (fields, quality bar, legal basis, owner) · `chat-with-your-data-scoping` (bounded text-to-SQL with a golden set) · `ai-interaction-patterns` (trust calibration, correction, refusal UX) |
 | Data & Knowledge | `semantic-layer-design` (one definition and one owner per metric, exported in Apache Ossie) · `agent-knowledge-base` (source register, owners, expiry) |
 | Build | `prd-to-claude-code` (brief an agentic coding tool) · `system-prompt-and-guardrails` (prompt plus input, output and action guardrails) · `agent-design-and-tooling` (loop, tools, permission matrix) |
@@ -93,7 +93,7 @@ Other agents (Codex, Cursor, custom): each folder in `skills/` follows the [Agen
 | Govern | `dpia-prescreen` (the nine EDPB criteria) · `model-card-ai-registry` · `ai-incident-playbook` |
 | Transform | `process-ai-redesign` (flagship: level per step, gates, three scenarios) · `ai-adoption-plan` · `ai-literacy-program` (AI Act art. 4) |
 
-Re-confirmation pending (paid runs paused): `build-evals` and `conversation-analysis` each missed a red line once in their last 3-run check; their graders were refitted and checked for free since. `llm-feature-prd` changed after its last run.
+All skills changed in the November 2026 review. The table at the top still shows the earlier frozen baselines, measured on the previous graders. In new one-run checks, the six catalog skills pass; `ai-incident-playbook` and `ai-roi-quantification` have no valid result yet. A 3-run confirmation is pending.
 
 > **Not legal advice.** Govern skills produce classifications, checklists and questions for counsel, never a conformity verdict.
 

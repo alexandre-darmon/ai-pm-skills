@@ -2,7 +2,7 @@
 name: ai-incident-playbook
 description: 'Prepare the response to an AI incident: classes, severities, first 60 minutes, named rollback owner, reporting clocks, review. Use at go-live at L3+, after a near-miss or during an incident.'
 stage: govern
-version: 0.2.0
+version: 0.2.3
 last_verified: 2026-11-05
 depends_on: [system-prompt-and-guardrails, ai-act-classification, model-card-ai-registry, release-to-production]
 feeds: [build-evals]
@@ -27,11 +27,11 @@ Ask if missing: guardrail spec, monitoring, the AI Act classification, whether p
 ## Method
 1. Classify: harmful output, data leak, wrong action, drift. Set severity from impact on people and reversibility: `Severity: SEV1` to `SEV4`. Drift with no harm stays low (SEV3 or SEV4) and leads to an eval refresh.
 2. First 60 minutes, once something wrong has reached people. Drift with no harm skips this step: no emergency rollback.
-   - Contain by slice, not on or off: say which part stops and which keeps running, with a level drop (`references/autonomy-ladder.md`). High-stakes actions go back to human validation; low-risk ones continue. If no slice is known to be safe, stop everything.
+   - Contain by slice, not on or off: say which part stops and which keeps running, with a level drop written from and to, such as L4 to L2 (`references/autonomy-ladder.md`). High-stakes actions go back to human validation; low-risk ones continue. If no slice is known to be safe, stop everything.
    - Size the damage: pull every output or action since the window opened (the change, the deploy), not only the ones reported, and count the people affected, within a stated time. Fixing the system does nothing for what already went out. Revise the severity and step 4 from that count.
    - Preserve traces, name the incident lead.
 3. Name the rollback owner: one role, with a deputy, not a committee. The owner acts at once, with no vote: moving down the ladder needs no approval (ladder rule 3). The rollback itself and its last rehearsal come from the release plan (`release-to-production`); show a rollback never rehearsed as untested.
-4. Check reporting and compute the clocks as dates from the detection time. All for counsel and the DPO to confirm.
+4. Check reporting and compute the clocks as dates from the detection time. State each legal limit beside its date, also in a short answer, so counsel can check the arithmetic. All for counsel and the DPO to confirm.
    - Personal data breach (GDPR art. 33): the controller notifies the authority without undue delay and, where feasible, within 72 hours of becoming aware, with reasons if later. No notification if a risk to people is unlikely; the controller decides on the DPO's advice and records it. People concerned are told if the risk is high (art. 34). A processor alerts its controller without undue delay. Take the detection time as the prudent start of the clock.
    - Serious incident (AI Act art. 3(49)) on a high-risk system: the deployer immediately informs the provider, then the importer or distributor and the authority (art. 26(5), from 2 December 2027 for Annex III). The provider's limits under art. 73, from awareness: 15 days in general, 10 days in case of death, 2 days for a widespread infringement or critical infrastructure; an incomplete first report is allowed. When art. 73 itself starts to bite for Annex III systems is an open question for counsel.
 5. Write communications: users, sponsor, DPO, the CSE if work is affected. In a live incident, put them in the answer rather than offering them for later. Start with the people who received the wrong output or action, called what the business calls them: what happened, what it means for them, what you will do.
@@ -43,7 +43,7 @@ Ask if missing: guardrail spec, monitoring, the AI Act classification, whether p
 
 ## Rules and red lines
 - Rollback authority is a named role.
-- Deadlines are computed as dates, not described.
+- Deadlines are computed as dates, never a limit alone or a date alone.
 - Checklist, not verdict: the skill never decides that a breach needs no notification; the controller does, on the DPO's advice.
 - Every incident becomes eval cases.
 - Once something wrong has reached people, no severity is final before the affected outputs are counted.

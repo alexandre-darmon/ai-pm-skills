@@ -51,7 +51,7 @@
     },
     {
       "name": "conversation-analysis",
-      "description": "Classify an AI assistant's conversations by use case, resolution and sentiment, PII masked. Use to build or check the taxonomy, pick the classifier, or learn what people use it for.",
+      "description": "Classify an AI assistant's conversations by use case, resolution and sentiment, PII masked. Use to build or check the taxonomy, pick the classifier, see what people use it for, or act on the results.",
       "source": "./",
       "strict": false,
       "skills": [

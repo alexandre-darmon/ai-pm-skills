@@ -1,8 +1,8 @@
 ---
 name: ai-roi-quantification
-description: 'Compute a deployed AI product''s ROI with the five-line model, a baseline and sourced unit values. Use for a budget renewal, a CFO review, "what did it return?" or a scaling decision.'
+description: 'Compute a deployed AI product''s ROI with the five-line model, a baseline and sourced unit values. Use for a budget renewal, a CFO or comex review, "what did it return?" or a scaling decision.'
 stage: measure
-version: 0.2.0
+version: 0.2.2
 depends_on: [assistant-kpis-cost-per-outcome, conversation-analysis]
 feeds: [ai-initiative-pitch, process-ai-redesign]
 autonomy_relevant: false
