@@ -6,7 +6,7 @@ version: 0.1.0
 depends_on: [ai-data-requirements]
 feeds: [assistant-kpis-cost-per-outcome, conversation-analysis, process-ai-redesign]
 autonomy_relevant: false
-sources: [own-my-companion, own-rag-practice]
+sources: [own-assistant-mission, own-rag-practice]
 eval_threshold: 0.80
 status: draft
 ---
@@ -46,5 +46,5 @@ Ask if missing: how often each source changes, its sensitivity (public, internal
 assistant-kpis-cost-per-outcome · conversation-analysis · ai-data-requirements · semantic-layer-design
 
 ## Sources
-- own-my-companion: owner-and-expiry register and the monthly review, method only.
+- own-assistant-mission: owner-and-expiry register and the monthly review, method only.
 - own-rag-practice: metadata on every chunk, segregation by audience, stale-answer sampling.

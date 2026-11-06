@@ -132,7 +132,7 @@ Design implication: skills are written for the primary user and tested on the au
 | evalblink (PyPI) | Not the repo's test harness. Optional tool for model and classifier comparisons inside `model-selection` and `conversation-analysis`. |
 | nanoagent | Reference implementation for `agent-design-and-tooling`; emits traces used in `assistant-kpis-cost-per-outcome` demos. |
 | aiunmagic.com | Publishes one article per wave; hosts the pedagogical companion to `ai-literacy-program`. |
-| My Companion (BNP) | Live source for `conversation-analysis`, `assistant-kpis-cost-per-outcome`, `agent-knowledge-base`. Data never leaves the client; only the method is published. |
+| Live assistant mission (anonymised) | Live source for `conversation-analysis`, `assistant-kpis-cost-per-outcome`, `agent-knowledge-base`. Data never leaves the client; only the method is published. |
 
 ---
 
@@ -388,7 +388,7 @@ Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Grade
 - **Outputs:** KB plan: source register (owner, refresh cadence, sensitivity, format), inclusion/exclusion rules, chunking and metadata guidance, freshness policy (expiry per source type), a monthly review ritual, and a "stale answer" KPI definition linked to M4.
 - **Rules:** no source without an owner; every source has an expiry date; the KB has a retirement path for sources; quality by KB is measured, not assumed.
 - **Depends on / feeds:** P2 / M4, M5, T1.
-- **Sources:** own My Companion observations (method only), RAG practice literature.
+- **Sources:** own assistant mission observations (method only), RAG practice literature.
 - **Evals (3):** 40 sources, 12 without owners (expected: 12 excluded or escalated); HR policies updated yearly vs product specs weekly (expected: distinct expiry); a KB with mixed sensitivity (expected: segregation rule).
 - **Graders:** exact (owner and expiry per source) + checklist.
 
@@ -469,7 +469,7 @@ Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Grade
 - **Outputs:** KPI spec (definitions, formulas, sources, refresh); a reference dashboard layout (volume by use case, quality by KB/domain, adoption curve by population, cost per outcome, stale-answer rate); an outcome-event convention (`outcome_id`, `result`, `value_eur`) attached to the trace id; a monthly review template.
 - **Rules:** no KPI without a definition and a source; usage KPIs are never shown without a quality KPI beside them; cost per outcome uses successes as denominator; every KB has a quality line.
 - **Depends on / feeds:** M1, M5, D2 / M6, S3, T2.
-- **Sources:** own My Companion dashboard work (method only), OpenTelemetry GenAI semantic conventions.
+- **Sources:** own assistant mission dashboard work (method only), OpenTelemetry GenAI semantic conventions.
 - **Evals (3):** logs with no outcome field (expected: outcome convention added, sampled quality as interim); a dashboard spec with sessions only (expected: quality and cost lines added); three KBs with different freshness (expected: quality by KB).
 - **Graders:** checklist (five KPI families present, definitions, sources) + exact (cost per outcome formula uses successes).
 
@@ -480,7 +480,7 @@ Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Grade
 - **Outputs:** frozen taxonomy (8–12 use cases, rules for edge cases); annotation guide; classification suite (evalblink or equivalent) comparing candidates on agreement per dimension and cost per conversation; chosen classifier with thresholds; monthly drift check design; output schema joined to M4.
 - **Rules:** PII masking before any model call; taxonomy frozen before labelling; agreement measured per dimension; low-confidence cases routed to review, not forced; the classifier is re-measured monthly on a fresh sample.
 - **Depends on / feeds:** M1, D2 / M4, M6, T1.
-- **Sources:** own My Companion classification work (method only).
+- **Sources:** own assistant mission classification work (method only).
 - **Evals (3):** a taxonomy with overlapping classes (expected: merge or rule); a candidate at 0.0004 €/conversation with 78% agreement vs a frontier at 92% (expected: hybrid routing by confidence); transcripts with names and IBANs (expected: masking step blocks until done).
 - **Graders:** checklist + exact (taxonomy size, PII step present, agreement per dimension).
 
