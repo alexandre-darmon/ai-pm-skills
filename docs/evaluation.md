@@ -7,6 +7,7 @@ This page explains the evaluation process with diagrams. The rules themselves li
 A skill is a cheat sheet for the model. To know if it helps, we ask the same question to the model **with** the skill and **without** it, and grade both answers with the same marking rules (the graders). A skill is worth keeping only if the answer with the skill scores better.
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#FFFFFF', 'primaryBorderColor': '#CFCBD6', 'primaryTextColor': '#0A0A0A', 'secondaryColor': '#F4F2F5', 'tertiaryColor': '#F4F2F5', 'clusterBkg': '#F4F2F5', 'clusterBorder': '#E6E3EA', 'lineColor': '#8C52EE', 'edgeLabelBackground': '#F4F2F5'}}}%%
 flowchart LR
     Q["Case<br/>prompt.md"] --> W["Model + skill"]
     Q --> O["Model alone"]
@@ -20,6 +21,7 @@ flowchart LR
 Free checks run on every push and catch most mistakes before any money is spent. Paid runs happen only on request: the `run-evals` label on a pull request, or a manual run after a major change.
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#FFFFFF', 'primaryBorderColor': '#CFCBD6', 'primaryTextColor': '#0A0A0A', 'secondaryColor': '#F4F2F5', 'tertiaryColor': '#F4F2F5', 'clusterBkg': '#F4F2F5', 'clusterBorder': '#E6E3EA', 'lineColor': '#8C52EE', 'edgeLabelBackground': '#F4F2F5'}}}%%
 flowchart TD
     A["Write or change a skill<br/>in drafts/"] --> V{"validate<br/>free, every push"}
     V -- "fails" --> A
@@ -38,6 +40,7 @@ flowchart TD
 ## Anatomy of a case
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#FFFFFF', 'primaryBorderColor': '#CFCBD6', 'primaryTextColor': '#0A0A0A', 'secondaryColor': '#F4F2F5', 'tertiaryColor': '#F4F2F5', 'clusterBkg': '#F4F2F5', 'clusterBorder': '#E6E3EA', 'lineColor': '#8C52EE', 'edgeLabelBackground': '#F4F2F5'}}}%%
 flowchart LR
     subgraph C["evals/skill-name-001/"]
         P["prompt.md<br/>the question"]
@@ -60,6 +63,7 @@ flowchart LR
 ## How an answer is scored
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#FFFFFF', 'primaryBorderColor': '#CFCBD6', 'primaryTextColor': '#0A0A0A', 'secondaryColor': '#F4F2F5', 'tertiaryColor': '#F4F2F5', 'clusterBkg': '#F4F2F5', 'clusterBorder': '#E6E3EA', 'lineColor': '#8C52EE', 'edgeLabelBackground': '#F4F2F5'}}}%%
 flowchart TD
     A["One answer"] --> S["Run score = weighted share<br/>of graders passed"]
     S --> C["Case score = mean of its runs"]
@@ -77,6 +81,7 @@ The `triggered` grader is not part of the score: it reports whether the skill fi
 Paid runs can only be trusted if the marking rules are right. Four checks protect them, and three of them cost nothing.
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#FFFFFF', 'primaryBorderColor': '#CFCBD6', 'primaryTextColor': '#0A0A0A', 'secondaryColor': '#F4F2F5', 'tertiaryColor': '#F4F2F5', 'clusterBkg': '#F4F2F5', 'clusterBorder': '#E6E3EA', 'lineColor': '#8C52EE', 'edgeLabelBackground': '#F4F2F5'}}}%%
 flowchart LR
     Q["Question"] --> W["Model + skill"]
     Q --> O["Model alone"]
@@ -99,6 +104,7 @@ flowchart LR
 ### 1. Test the graders first
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#FFFFFF', 'primaryBorderColor': '#CFCBD6', 'primaryTextColor': '#0A0A0A', 'secondaryColor': '#F4F2F5', 'tertiaryColor': '#F4F2F5', 'clusterBkg': '#F4F2F5', 'clusterBorder': '#E6E3EA', 'lineColor': '#8C52EE', 'edgeLabelBackground': '#F4F2F5'}}}%%
 flowchart LR
     GO["fixtures/good.md"] --> G["Regex graders<br/>of the case"]
     BA["fixtures/bad.md"] --> G

@@ -50,7 +50,7 @@ Always point `claude plugin eval` at one skill folder, never the repo root: from
 1. `cp -r templates/skill drafts/<name>` and set `name: <name>` (kebab-case, equals folder).
 2. Frontmatter fields and body headings are fixed (PRD §7.2). The validator enforces them; don't add or rename headings.
 3. Copy the four template cases (three positive, one `negative`), write each case's `fixtures/good.md` and `bad.md`, and name never-do graders `redline-*.md`. The validator runs the free checks (PRD §11.7, [docs/evaluation.md](docs/evaluation.md)).
-4. Move to `skills/` only when the eval suite passes (score ≥ `eval_threshold` and better than without the skill) and `status` is `tested` or `verified-in-mission`. Then add it to `.claude-plugin/marketplace.json` (the bundle and its own plugin; the validator checks the bundle) and run `python3 scripts/eval_gains.py`.
+4. Move to `skills/` only when the eval suite passes (score ≥ `eval_threshold` and better than without the skill) and `status` is `tested` or `verified-in-mission`. Then add it to `.claude-plugin/marketplace.json` (the bundle and its own plugin; the validator checks the bundle) and run `python3 scripts/eval_gains.py` and `scripts/lifecycle_svg.py` (needs fonttools and the Geist fonts, see the script).
 
 Hard rules (PRD §6), the ones easy to break when generating text:
 

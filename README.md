@@ -1,7 +1,6 @@
-<p align="center"><img src="assets/hero.svg" alt="AI PM Skills: Strategy, Specify, Data, Build, Measure, Govern, Transform" width="100%"></p>
+<p align="center"><img src="assets/banner.svg" alt="AI PM Skills: Strategy, Specify, Data, Build, Measure, Govern, Transform" width="100%"></p>
 
-<p align="center"><b>Tested skills for AI product managers who ship in regulated European companies.</b><br>
-Agent Skills for Claude Code, Codex, Cursor or your own agent. Every skill is scored with and without it.</p>
+<p align="center">Agent Skills for Claude Code, Codex, Cursor or your own agent. Every skill is scored with and without it.</p>
 
 <!-- gains:start -->
 | | Without skill | With skill |
