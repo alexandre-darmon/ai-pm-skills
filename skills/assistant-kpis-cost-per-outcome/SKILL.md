@@ -2,11 +2,11 @@
 name: assistant-kpis-cost-per-outcome
 description: Define an AI assistant's or agent's KPIs (quality by domain, adoption, cost per correct outcome). Use when asked for its dashboard or ROI, or when usage grows and nobody knows if it helps.
 stage: measure
-version: 0.1.0
+version: 0.2.0
 depends_on: [build-evals, conversation-analysis, agent-knowledge-base]
 feeds: [ai-roi-quantification, ai-initiative-pitch, ai-adoption-plan]
 autonomy_relevant: true
-sources: [otel-genai, own-assistant-dashboards]
+sources: [otel-genai, own-assistant-dashboards, repo-chanmeng]
 eval_threshold: 0.80
 status: tested
 ---
@@ -23,18 +23,20 @@ status: tested
 
 ## Inputs
 Mandatory: what the assistant does (use cases, the KBs or domains it answers from), the fields its traces or logs actually contain, the run costs (tokens, infra, licences) for a period.
-Ask if missing: conversation classification by use case (`conversation-analysis`), sampled quality scores (`build-evals` graders or a reviewed sample), headcount per population (eligible users), each KB's owner and last review date, unit values per use case.
+Ask if missing: conversation classification by use case (`conversation-analysis`), sampled quality scores (`build-evals` graders or a reviewed sample), headcount per population (eligible users), each KB's owner and last review date, unit values per use case, the systems where humans redo the work (ticket tool, case tool, the channel the assistant replaced).
 A thumbs-up rate is not a quality source: treat quality as missing and plan a sampled review.
 
 ## Method
 1. **Inventory the sources.** List the fields the traces have (trace id, timestamp, use case, KB, user population, tokens, cost) and the ones missing. Any KPI whose source does not exist is marked "not computable yet", with the instrumentation it needs. Never fill a gap with an estimate shown as a measure.
-2. **Define the outcome per use case** in business terms: answer accepted, request closed without escalation, form submitted. Add an outcome event attached to the trace: `outcome_id`, `trace_id`, `use_case`, `result` (success, failure, escalated, abandoned), `value_eur` (empty until a unit value is sourced), `source` (user, system, reviewer), `timestamp`. Model and token fields follow the OpenTelemetry GenAI semantic conventions (`gen_ai.*` attributes). Until outcomes are logged, quality comes from a sampled review, labelled **interim**: a fixed number of conversations per use case and per KB each week, graded by domain reviewers against a written rubric.
+2. **Define the outcome per use case** in business terms: answer accepted, request closed without escalation, form submitted. Add an outcome event attached to the trace: `outcome_id`, `trace_id`, `use_case`, `result` (success, failure, escalated, abandoned, redone), `value_eur` (empty until a unit value is sourced), `source` (user, system, reviewer), `timestamp`. A logged success that a human later redoes, overrides or reopens, within a window you state per use case, gets a correcting event with `result` = `redone` on the same `trace_id`: the latest event on a trace wins, so it stops counting as a success. Model and token fields follow the OpenTelemetry GenAI semantic conventions (`gen_ai.*` attributes). Until outcomes are logged, quality comes from a sampled review, labelled **interim**: a fixed number of conversations per use case and per KB each week, graded by domain reviewers against a written rubric.
 3. **Specify the five KPI families.** Each KPI gets a definition, a formula, a source, a grain, a refresh rate and an owner:
    - **Volume** by use case, from traces and classification, never from declared usage.
-   - **Quality** by KB or domain: share of sampled answers judged correct, with the sample size. One line per KB, never one blended score: a large easy KB hides a failing small one.
-   - **Adoption** by population: active users ÷ eligible users per population, as a weekly curve, plus the share who come back within four weeks.
-   - **Cost per correct outcome** = cost ÷ (volume × quality), i.e. divided by successes, never by all conversations (references/roi-model.md). State which cost lines the numerator includes: run cost (tokens, infra, licences) and, if counted, review time, which is change cost.
+   - **Quality** by KB or domain: share of sampled answers judged correct, with the sample size. One line per KB, never one blended score: a large easy KB hides a failing small one. Next to it, per use case, the **redo rate**: logged successes a human later redid or took over ÷ logged successes. If the downstream system is not linked to the trace, it is "not computable yet", never zero.
+   - **Adoption** by population: active users ÷ eligible users per population, as a weekly curve, plus the share who come back within four weeks. Two reliance signals sit here: **bypass rate** (in-scope requests that reach the old channel without going through the assistant ÷ all in-scope requests) and, where the UI lets users act on the output, **accept, edit and reject ratios**. An edited answer is partial rework, not a clean acceptance.
+   - **Cost per correct outcome** = cost ÷ (volume × quality), i.e. divided by successes, never by all conversations (references/roi-model.md). Redone outcomes are failures here: counted as successes they inflate the denominator and make the KPI look too low. State which cost lines the numerator includes: run cost (tokens, infra, licences) and, if counted, review time, which is change cost.
    - **Stale-answer rate** by KB: share of sampled answers that rely on a document past its review date or superseded by a newer version, next to the age of each KB's oldest active document.
+
+   This skill owns the definitions of the redo, bypass and acceptance metrics; adoption and interaction skills cite them.
 4. **Pair every usage KPI with a quality KPI** at the same grain. Sessions, messages or active users never appear alone.
 5. **Lay out the dashboard** on one page: volume by use case, quality by KB, adoption curve by population, cost per correct outcome, stale-answer rate by KB. Each line shows its threshold and its sample size; a sample under 30 is flagged as indicative.
 6. **Write the monthly review**: each KPI against last month and its target, the decision taken, the owner of each KB action. A stable quality KPI is the evidence this skill gives for a step's L2 gate (references/autonomy-ladder.md); the gate's other facts come from the release plan. Say which steps it gates and since when the KPI has held, with sample sizes.
@@ -47,6 +49,7 @@ A KPI spec following `templates/kpi-spec.md`: source inventory, outcome-event co
 - No KPI without a definition, a formula and a source. A missing source is stated, not invented.
 - No usage KPI without a quality KPI beside it.
 - Cost per correct outcome divides by successes (volume × quality), never by all conversations, messages or sessions.
+- An outcome a human later redid is not a success, in quality or in the cost denominator.
 - Every KB has its own quality line and stale-answer rate.
 - Quality comes from sampled review or graders, never from thumbs-up alone.
 - No gain or ROI figure without volume × quality × unit value − run cost − change cost (references/roi-model.md).
@@ -57,3 +60,4 @@ references/roi-model.md · references/autonomy-ladder.md · build-evals · conve
 ## Sources
 - otel-genai: trace fields for model and token usage; the outcome event extends them.
 - own-assistant-dashboards: the five KPI families, the outcome event and the per-KB quality line, from dashboards of internal assistants in production (method only).
+- repo-chanmeng: the idea of human takeover, bypass and accept, edit, reject ratios as signals of real reliance (idea only, own wording and formulas).

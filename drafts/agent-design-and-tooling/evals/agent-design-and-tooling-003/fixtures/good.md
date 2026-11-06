@@ -1,1 +1,1 @@
-Missing: stop conditions: max 8 steps, budget 0.50 EUR per run. Start with a raw loop; framework only for a named need.
+Missing: stop conditions: max 8 steps, budget 0.50 EUR per run. Start with a raw loop; framework only for a named need. Done when every claim in the summary cites a retrieved clause; the adjuster gets it. Exits: success, handoff on budget hit.

@@ -2,7 +2,8 @@
 
 ## Question classes (allowed | blocked | forbidden)
 ## Metric mapping (metric | definition | status)
-## Answer format
+## Access (where rights are enforced | read-only | row and cost caps)
+## Answer format (number, plain-language restatement, SQL, source, freshness)
 ## Golden set (≥ 50 pairs)
 ## Accuracy target per class
 ## Refusal and escalation

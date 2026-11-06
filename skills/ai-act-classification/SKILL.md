@@ -2,12 +2,12 @@
 name: ai-act-classification
 description: Classify an AI use case under the EU AI Act (role, risk category, obligations, questions for counsel). Use for a new AI use case, an autonomy level change, or a vendor's AI Act claim.
 stage: govern
-version: 0.1.0
+version: 0.2.0
 last_verified: 2026-11-04
 depends_on: [ai-opportunity-assessment, llm-feature-prd, system-prompt-and-guardrails]
 feeds: [ai-initiative-pitch, dpia-prescreen, model-card-ai-registry, process-ai-redesign]
 autonomy_relevant: true
-sources: [eu-ai-act, ec-ai-act-guidelines, cnil-ai, fr-ai-act-implementation]
+sources: [eu-ai-act, ec-ai-act-guidelines, cnil-ai, fr-ai-act-implementation, repo-vishalhabib]
 eval_threshold: 0.90
 status: tested
 ---
@@ -40,18 +40,19 @@ Article numbers refer to Regulation (EU) 2024/1689 as amended by Regulation (EU)
    - High-risk deployer (art. 26): use per the provider's instructions; human oversight by competent, trained people with authority (art. 26(2)); input data relevant and sufficiently representative, where the deployer controls it (art. 26(4)); monitoring, suspending use on a risk, and reporting serious incidents to the provider first (art. 26(5)); logs under the deployer's control kept at least six months unless other law says otherwise (art. 26(6)); workers' representatives and affected workers informed before use at the workplace (art. 26(7)); people subject to its decisions informed (art. 26(11)); a fundamental rights impact assessment before first use for public bodies, private entities providing public services and any deployer of Annex III points 5(b)-(c) (art. 27); on request, an explanation of the system's role in a decision with significant adverse effects (art. 86).
    - High-risk provider: risk management, data governance, technical documentation, logging, instructions, human oversight design, accuracy and robustness (arts. 9–15), quality management (art. 17), conformity assessment (art. 43), registration (art. 49), post-market monitoring and serious-incident reporting (arts. 72–73).
    - Dates (art. 113 as amended in 2026): prohibitions and AI literacy from 2 February 2025; general-purpose model obligations from 2 August 2025; transparency (art. 50) from 2 August 2026; Annex III high-risk obligations (arts. 6–27) from 2 December 2027; Annex I high-risk from 2 August 2028. Say which date applies to each obligation, and ask counsel for arts. 72–73 and 86.
+   - Evidence: for each obligation, record what is on paper: document on file (link), claimed, not verified, or missing. A vendor's claim stays at claimed, not verified until the document is shown; for a high-risk system, ask for the instructions for use (art. 13), the EU declaration of conformity (art. 47) and the registration (art. 49). These provider duties may not be due yet (dates above), so ask what exists today. The status records paper, not conformity.
 8. **Write the L+1 line.** For each step, what changes if it moves one level up (references/autonomy-ladder.md): does it now decide about people, act without prior human review, or fall into an Annex III point? Name the obligations that appear or tighten (human oversight design, logging, informing affected people).
 9. **List the questions for counsel**: every judgement call (role, art. 6(3) exception, scope, dates), each with the facts counsel needs.
 10. **State freshness.** If `last_verified` is more than 90 days old, say so at the top of the memo and ask counsel to confirm the application dates.
 
 ## Output
-A classification memo following `templates/classification-memo.md`: system and role, prohibited-practice screen, risk category with article and annex point, transparency, general-purpose model flag, obligations by role with dates, the L+1 line, questions for counsel, freshness line. It ends with: "This memo is a checklist for counsel, not a conformity assessment."
+A classification memo following `templates/classification-memo.md`: system and role, prohibited-practice screen, risk category with article and annex point, transparency, general-purpose model flag, obligations by role with dates and evidence status, the L+1 line, questions for counsel, freshness line. It ends with: "This memo is a checklist for counsel, not a conformity assessment."
 
 ## Rules and red lines
 - Never state that a system, a vendor or the organisation is "compliant", "AI Act compliant" or "has no obligations". The memo is a classification, a checklist and questions; counsel decides.
 - Every category and every obligation cites its article, and its annex point when there is one.
 - HR, credit scoring, insurance pricing and essential services are checked against Annex III before anything else.
-- A vendor's "AI Act compliant" claim does not transfer deployer duties: list what remains yours (art. 26).
+- A vendor's "AI Act compliant" claim does not transfer deployer duties: list what remains yours (art. 26), and record the claim as unverified until a document is shown.
 - General-purpose model use is flagged in its own section.
 - Never redefine autonomy levels: use references/autonomy-ladder.md.
 
@@ -63,3 +64,4 @@ references/ai-act-map.md · references/autonomy-ladder.md · dpia-prescreen · c
 - ec-ai-act-guidelines: Commission guidelines on the AI system definition and prohibited practices (final, 2025), on general-purpose model providers, and the draft on high-risk classification (2026); not binding.
 - cnil-ai: CNIL resources on AI systems and personal data.
 - fr-ai-act-implementation: French designation of competent authorities, still a bill at last verification (references/ai-act-map.md).
+- repo-vishalhabib: the idea of marking a claim with nothing to point at as unverified (agent-trust-review, MIT), applied here to obligations.

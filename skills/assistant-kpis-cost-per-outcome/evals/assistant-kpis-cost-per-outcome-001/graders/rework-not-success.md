@@ -1,0 +1,5 @@
+---
+type: regex  # a resolved request a human later redoes is not a success
+pattern: '\b(redo(es|ne)?|redid|re-done|rework(ed|s)?|re-?open(ed|s)?|taken over|takes? over|takeover|overrid(den|es?)|overruled|(done|handled|answered) again)\b[^\n]{0,120}(\bnot\b|n[’'']t\b|\bnever\b|\bno longer\b|\bstops?\b)[^\n]{0,30}(count|success|correct|resolved)|\b(redo(es|ne)?|redid|re-done|rework(ed|s)?|re-?open(ed|s)?|taken over|takes? over|takeover|overrid(den|es?)|overruled|(done|handled|answered) again)\b[^\n]{0,120}\b(counts?|treated|recorded|reclassified|logged|marked) (back )?as (a )?(failure|failed|unresolved|not resolved|incorrect)|\b(net of|minus|exclud\w+|less|remov\w+|subtract\w*)\b[^\n]{0,60}\b(redo(es|ne)?|redid|re-done|rework(ed|s)?|re-?open(ed|s)?|taken over|takes? over|takeover|overrid(den|es?)|overruled|(done|handled|answered) again)\b|(\bnot\b|n[’'']t\b|\bnever\b)[^\n]{0,30}(count|success|correct|resolved)[^\n]{0,80}\b(redo(es|ne)?|redid|re-done|rework(ed|s)?|re-?open(ed|s)?|taken over|takes? over|takeover|overrid(den|es?)|overruled|(done|handled|answered) again)\b'
+flags: i
+---

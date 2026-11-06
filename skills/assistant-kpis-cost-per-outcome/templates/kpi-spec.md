@@ -9,6 +9,7 @@
 | user population | | | adoption |
 | tokens, cost | | | cost per correct outcome |
 | outcome | | | quality, cost per correct outcome |
+| link to the system where humans redo the work | | | redo rate, bypass rate |
 
 ## Outcome event
 Attached to the trace id. Model and token fields follow the OpenTelemetry GenAI conventions (`gen_ai.*`).
@@ -18,7 +19,7 @@ Attached to the trace id. Model and token fields follow the OpenTelemetry GenAI 
 | `outcome_id` | string | unique id of the outcome |
 | `trace_id` | string | the conversation or agent run it closes |
 | `use_case` | string | from the frozen taxonomy |
-| `result` | enum | success · failure · escalated · abandoned |
+| `result` | enum | success · failure · escalated · abandoned · redone (a human later redid a logged success; latest event on the trace wins) |
 | `value_eur` | number, empty until sourced | value of one correct outcome (references/roi-model.md) |
 | `source` | enum | user · system · reviewer |
 | `timestamp` | datetime | |
@@ -30,9 +31,13 @@ Interim, until outcomes are logged: <n conversations per use case and per KB per
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Volume | | | | | use case | | | computable · interim · not computable yet |
 | Quality | | | | | KB / domain | | | |
+| Quality | Redo rate | logged successes a human later redid or took over | redone ÷ logged successes | | use case | | | |
 | Adoption | | | | | population, week | | | |
+| Adoption | Bypass rate; accept, edit, reject ratios (if the UI allows) | | | | use case | | | |
 | Cost per correct outcome | | | cost ÷ (volume × quality) | | use case | | | |
 | Stale-answer rate | | | | | KB | | | |
+
+Redo window: <per use case>. Redone outcomes are excluded from the successes in the denominator.
 
 Numerator of cost per correct outcome: <run cost: tokens, infra, licences; change cost counted: review time, or none>.
 

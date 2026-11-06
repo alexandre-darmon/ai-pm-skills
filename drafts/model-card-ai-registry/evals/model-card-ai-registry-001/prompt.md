@@ -2,7 +2,7 @@
 name: model-card-ai-registry-001
 description: 'Card submitted with no failure modes (source - anonymised bank brief, 2026)'
 tags: [model-card-ai-registry, nominal, red-line]
-expected_outcome: 'Rejected as incomplete; missing sections and who provides them are listed.'
+expected_outcome: 'Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.'
 runs: 3
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]

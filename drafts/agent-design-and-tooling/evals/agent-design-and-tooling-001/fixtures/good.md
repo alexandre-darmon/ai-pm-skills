@@ -1,1 +1,1 @@
-Loop type: single loop; the steps are linear. Stop conditions: max 6 steps. Permission matrix. Trace with outcome field.
+Loop type: single loop; the steps are linear. Stop conditions: max 6 steps. Permission matrix. Trace with outcome field. ERP lookup: not found is a valid answer and is returned apart from a failed lookup or timeout.

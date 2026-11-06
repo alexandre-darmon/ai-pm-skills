@@ -1,1 +1,1 @@
-Label: projection, no measured baseline. Baseline plan: a time study. Lines: volume, quality, unit value, run cost, change cost. Sensitivity on minutes saved.
+Label: projection, no measured baseline. Baseline plan: a time study. Lines: volume, quality, unit value, run cost, change cost. Sensitivity on minutes saved. Decision: continue for now; stop if the measured time saved falls below 1 minute per answer.

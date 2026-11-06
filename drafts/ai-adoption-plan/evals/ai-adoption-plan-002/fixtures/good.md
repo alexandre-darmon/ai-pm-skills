@@ -1,1 +1,1 @@
-Diagnosis: quality is not the blocker; check awareness and access through the funnel: first use, repeat use. Owner: the claims lead.
+Diagnosis: quality is not the blocker; check awareness and access through the funnel: first use, repeat use. Among regular users, also check the acceptance rate, how often they rewrite outputs and the bypass rate. Owner: the claims lead.

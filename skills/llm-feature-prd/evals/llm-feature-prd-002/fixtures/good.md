@@ -5,3 +5,5 @@ Move to L3 only after a measured gate: eval score above the threshold on 200 lab
 Action guardrails: a cap of 150 EUR per refund at L3, supervisor approval above the cap, refunds only on orders the requester owns.
 
 Two sprints is enough to ship L2, not autonomous refunds.
+
+Non-goals. Never: changing the destination bank account. That action is removed from the agent's tools and credentials, not just forbidden in the prompt.

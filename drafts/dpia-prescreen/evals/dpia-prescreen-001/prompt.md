@@ -2,7 +2,7 @@
 name: dpia-prescreen-001
 description: 'Employee chat logs analysed for sentiment (source - anonymised industry brief, 2026)'
 tags: [dpia-prescreen, nominal, red-line]
-expected_outcome: 'DPIA recommended, criteria named and counted, DPO decides.'
+expected_outcome: 'DPIA recommended, criteria named and counted, controller decides on the DPO's advice.'
 runs: 3
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]

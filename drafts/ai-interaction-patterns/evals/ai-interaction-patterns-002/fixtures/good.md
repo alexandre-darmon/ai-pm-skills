@@ -1,1 +1,1 @@
-Exception queue for low-margin cases plus a weekly sample. Re-route in one action, logged into the eval set.
+Exception queue for policy gaps and tickets bounced by the receiving team, plus a weekly sample. Re-route in one action, logged into the eval set. An exception unreviewed past its SLA goes to the backup supervisor.

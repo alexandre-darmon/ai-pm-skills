@@ -30,6 +30,7 @@ Result: <no monitoring capability / monitoring capability: stricter path, L2312-
 - Data processed, retention, who has access
 - Monitoring capabilities and safeguards
 - Impact on jobs, tasks, workload, working conditions, health and safety
+- What happens when employees type sensitive content into the tool (their health, harassment, a dispute): who can read it, where it is routed
 - Training plan
 - Timeline, pilot scope
 - AI Act classification (`ai-act-classification`) and GDPR impact assessment (`dpia-prescreen`)
@@ -46,6 +47,8 @@ Result: <no monitoring capability / monitoring capability: stricter path, L2312-
 ## Questions for HR and legal
 | Question | Facts needed |
 | --- | --- |
+| Does anything planned before the opinion count as deployment? (facts for legal, not a safe harbour) | Who uses it, how many of the target employees; real work or test data; does output reach real clients or files; is a consultation already open |
+| Does a harassment or health report typed into the tool put the employer on notice? | Who can read it, where it is routed |
 
 ## CSE presentation outline (plain language)
 1. What the tool does, and what it does not do

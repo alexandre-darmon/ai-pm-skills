@@ -11,10 +11,11 @@
 
 ## Non-goals
 - <What this feature will not do.>
+- Never: <actions it must be unable to take, absent from its tools and credentials, not just forbidden in the prompt.>
 
 ## Steps and autonomy levels
-| Step | Target level | Why not L+1 | Gate to reach it |
-| --- | --- | --- | --- |
+| Step | Target level | Why not L+1 | Gate to reach it | Reversible? (how, by whom) |
+| --- | --- | --- | --- | --- |
 
 ## Happy path
 
@@ -50,6 +51,12 @@
 
 ## Rollout
 Shadow → canary → general availability, with the gate for each.
+
+## Stop conditions
+| Metric | Threshold | Read where and when | Action |
+| --- | --- | --- | --- |
+
+Move to the next stage if <metric> is at <value> on <date>, read on <n> samples. If not: <action>.
 
 ## Open questions
 | Question | Owner |

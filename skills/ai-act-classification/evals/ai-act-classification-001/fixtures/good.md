@@ -9,6 +9,8 @@ The vendor's "AI Act compliant" label does not cover your deployer duties (art. 
 - inform workers' representatives and affected workers before use (art. 26(7)), and inform candidates (art. 26(11));
 - AI literacy for the recruiters (art. 4).
 
+Evidence: the vendor's claim is claimed, not verified, until it shows the document. Instructions for use (art. 13): missing. EU declaration of conformity (art. 47): missing.
+
 Questions for counsel: does the art. 6(3) exception have any room here (it does not apply when the system profiles people)? When do arts. 72-73 and 86 bite?
 
 Dates: the Annex III duties above (arts. 6-27) apply from 2 December 2027, after the 2026 Digital Omnibus (art. 113 as amended); AI literacy (art. 4) already applies.

@@ -23,8 +23,10 @@ Art. 6(3) exception: <not relevant / question for counsel, with the facts>.
 <Model, provider, how it is used (API, fine-tuned), what is asked of the model provider (art. 53(1)(b)).>
 
 ## Obligations
-| Who | Obligation | Article | Applies from | Owner |
-| --- | --- | --- | --- | --- |
+| Who | Obligation | Article | Applies from | Owner | Evidence status |
+| --- | --- | --- | --- | --- | --- |
+
+Evidence records paper, not conformity (status values: Method step 7).
 
 ## If a step moves to L+1
 | Step | From → to | What changes in the classification | Obligations that appear or tighten (article) |

@@ -2,11 +2,11 @@
 name: llm-feature-prd
 description: Write the PRD for an LLM feature with autonomy level per step, failure paths, eval plan and guardrails. Use when asked for the PRD of anything that generates, extracts, classifies or acts.
 stage: specify
-version: 0.1.0
+version: 0.2.0
 depends_on: [ai-opportunity-assessment]
 feeds: [build-evals, prd-to-claude-code, system-prompt-and-guardrails, ai-data-requirements, ai-act-classification]
 autonomy_relevant: true
-sources: [cagan-inspired, torres-continuous-discovery, own-prds]
+sources: [cagan-inspired, torres-continuous-discovery, own-prds, repo-chanmeng]
 eval_threshold: 0.80
 status: tested
 ---
@@ -28,13 +28,14 @@ If the outcome metric is missing, ask for it and stop, even when asked to skip q
 
 ## Method
 1. Restate the problem and the outcome metric in one sentence each. Refuse to continue without an outcome metric.
-2. List the steps the feature performs. Assign an autonomy level L0–L5 per step, as defined in references/autonomy-ladder.md (read it first: levels, gates, rules). Say why each step is not at L+1. Give each step its launch level and its path, one level at a time with the gate for each move (e.g. L2 → L3 → L4).
+2. List the steps the feature performs. Assign an autonomy level L0–L5 per step, as defined in references/autonomy-ladder.md (read it first: levels, gates, rules). Say why each step is not at L+1. Give each step its launch level and its path, one level at a time with the gate for each move (e.g. L2 → L3 → L4). Say whether each step's effect can be undone, and by whom: an LLM error on a step that cannot be undone has no second chance.
 3. Write the happy path, then the four failure paths: wrong answer, no answer, out-of-scope request, prompt injection (instructions hidden in the input or a retrieved document). Say what the user sees and what the system does in each.
 4. Write the eval stub: what "correct" means per step, how cases are sampled, who labels, the threshold to beat. For generated text (summaries, drafts, answers), name the reference outputs written by domain experts and the grading rubric a judge or reviewer applies. Hand over to `build-evals`.
-5. List guardrail requirements per layer: input, output, action. Any step at L3 needs tested output guardrails; any step at L4 needs action guardrails (scope, caps, approvals). Hand over to `system-prompt-and-guardrails`.
+5. List guardrail requirements per layer: input, output, action. Any step at L3 needs tested output guardrails; any step at L4 needs action guardrails (scope, caps, approvals). Add one Never line under Non-goals: the actions the feature must be unable to take, stated as absent from its tools and credentials, because a prompt instruction can fail. Hand over to `system-prompt-and-guardrails`, which owns enforcement.
 6. Point to data requirements and compliance flags: personal data, high-risk domain, employee impact. Hand over to `ai-data-requirements` and `ai-act-classification`.
 7. Define KPIs as outcomes, each with a quality KPI beside any usage KPI. Define the rollout path: shadow, then canary, then general availability, with the gate for each.
-8. List open questions with an owner each.
+8. Carry over the stop conditions from `ai-initiative-pitch`, or write them if there was no pitch: a model can sit just under its threshold for months with nobody empowered to end the project. Each names a metric, a threshold, where and when it is read, and the action. Also state what moves the feature to the next stage: date, metric, value, sample size. These end the project; rollback of a bad canary belongs to `release-to-production`.
+9. List open questions with an owner each.
 
 ## Output
 A PRD following `templates/prd.md`: all headings present, no empty section. Sections that cannot be filled yet say what is missing and who provides it.
@@ -53,3 +54,4 @@ references/autonomy-ladder.md · references/roi-model.md · build-evals · syste
 - cagan-inspired: product risks (value, usability, feasibility, viability) frame the failure paths.
 - torres-continuous-discovery: outcome over output for the KPI section.
 - own-prds: section structure and the eval-stub practice.
+- repo-chanmeng: stop conditions with metric, threshold, observation point and action; reversibility per action; a never list.

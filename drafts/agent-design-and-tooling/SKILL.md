@@ -2,11 +2,11 @@
 name: agent-design-and-tooling
 description: 'Design an agent''s loop, tools, permissions, stop conditions and traces from its autonomy levels, before any framework. Use for "make it an agent" or a framework debate.'
 stage: build
-version: 0.1.0
+version: 0.2.0
 depends_on: [llm-feature-prd, process-ai-redesign]
 feeds: [system-prompt-and-guardrails, assistant-kpis-cost-per-outcome]
 autonomy_relevant: true
-sources: [anthropic-agents, own-nanoagent]
+sources: [anthropic-agents, own-nanoagent, repo-chanmeng]
 eval_threshold: 0.80
 status: draft
 ---
@@ -24,26 +24,31 @@ Mandatory: the process steps with their L-levels, the candidate tools.
 Ask if missing: failure modes, latency and cost constraints.
 
 ## Method
-1. Pick the loop type: single step, plan-execute, multi-agent. Start with a raw loop. Multi-agent needs a written justification naming what a single loop cannot do.
-2. List tools with schemas, side effects and whether they can be undone.
-3. Build the permission matrix: tool × level × approval, following references/autonomy-ladder.md. A tool that moves money or changes records carries a cap and an approval rule.
-4. Write stop conditions: maximum steps, budget per run, timeout, and what happens on stop (hand off to a human, never silent).
-5. Set the memory policy: what persists, for how long, and personal-data limits.
-6. Define the trace schema: every tool call logged with input, output, cost and an outcome field, usable by `assistant-kpis-cost-per-outcome`.
-7. Recommend a framework last, and only for a named need.
+1. Set the trigger (request, batch, event, schedule) and define done as a state of the world (a record written, a case ready for the adjuster), not a sentence in the transcript. Name the exits and what follows each: success, error, escalation, paused for approval, policy denied, budget exhausted. A trigger other than on-request also needs dedup of repeated signals.
+2. Pick the loop type: single step, plan-execute, multi-agent. Start with a raw loop. Multi-agent needs a written justification naming what a single loop cannot do.
+3. List tools with schemas, side effects and whether they can be undone. For each, write the contract the model reads: when to use it over its nearest neighbour, named parameters over a generic tool, and an empty result kept distinct from a failed call. Rate the risk by effect, not by name. Detail in references/tool-contracts.md.
+4. Build the permission matrix: tool × level × approval, following references/autonomy-ladder.md. A tool that moves money or changes records carries a cap and an approval rule.
+5. Write the protocol for each write tool at L3 and above: prepare is separate from commit; where the matrix requires approval, it is bound to the exact action, target and payload, and it expires; the cap is checked on the resulting state in the system of record, where other sessions and channels count too; every write has an idempotency key and is never retried blindly; a write that times out has an unknown result, so reconcile before any retry. How the gate is enforced and attacked belongs to `system-prompt-and-guardrails`.
+6. Write stop conditions for the run. A run ends on a checkable done state or the API's stop signal, never on the model's prose or self-reported confidence. Maximum steps, budget per run and timeout are the safety net: a hit is an alert with its own exit (hand off to a human, never silent). Stop conditions for the initiative itself start in `ai-initiative-pitch`.
+7. Set the memory policy: what persists, for how long, and personal-data limits.
+8. Define the trace schema: every tool call logged with input, output and cost, and an outcome field set from the exit, usable by `assistant-kpis-cost-per-outcome`.
+9. Map frameworks last: each candidate against a named need the raw loop cannot meet, or none.
 
 ## Output
 `templates/agent-design.md`, all headings present. The loop line reads `Loop type: <type>`.
+When the brief asks which framework to take, the answer still opens with what the design lacks, says the choice waits for it, and keeps candidates for the closing section. No conditional pick up front ("X, if you adopt one"): readers stop at the name.
 
 ## Rules and red lines
 - Permissions follow the ladder; no write tool without a line in the matrix.
-- No agent without stop conditions.
+- No write tool at L3 or above without its protocol line.
+- No agent without stop conditions and named exits.
 - Multi-agent needs a written justification.
-- The framework comes last.
+- The framework comes last, in the answer as much as in the method.
 
 ## Links
-references/autonomy-ladder.md · system-prompt-and-guardrails · assistant-kpis-cost-per-outcome · process-ai-redesign
+references/autonomy-ladder.md · references/tool-contracts.md · system-prompt-and-guardrails · ai-initiative-pitch · assistant-kpis-cost-per-outcome · process-ai-redesign
 
 ## Sources
 - anthropic-agents: simple loops first, frameworks last.
 - own-nanoagent: raw loop reference, trace with an outcome field.
+- repo-chanmeng: ideas for tool contracts, the write protocol, trigger and exits, rewritten in our own words.

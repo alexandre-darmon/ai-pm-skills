@@ -1,1 +1,1 @@
-Edit-first: the draft opens editable with its sources; the adviser saves after editing. Correction in one action; feedback is logged.
+Edit-first: the draft opens editable with its sources; the adviser saves after editing. Correction in one action; feedback is logged. A high no-edit rate with very short review time would suggest over-trust: check it against a sampled review.

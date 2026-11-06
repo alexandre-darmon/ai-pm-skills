@@ -12,6 +12,8 @@ Why: GDPR art. 5(1)(c), data minimisation: a classifier needs the request, not t
 
 Check: <n masked conversations read by hand, by whom>. Residual leak rate: <x%>. Status: <passed / not started>.
 
+Retention: masked text and classifier logs kept <period>, deleted by <who> (GDPR art. 5(1)(e)).
+
 ## Dimensions
 | Dimension | Values | Feeds (KPI, decision) |
 | --- | --- | --- |
@@ -22,6 +24,8 @@ Check: <n masked conversations read by hand, by whom>. Residual leak rate: <x%>.
 | language | | |
 
 ## Taxonomy — version <n>, frozen on <date>
+Derived from: <existing draft / free-form notes on n masked conversations, clustered>.
+
 | Use case | Definition | Examples (2) | Counter-example |
 | --- | --- | --- | --- |
 
@@ -47,6 +51,10 @@ Fresh sample: <50–100>, labelled by <who>. Alert when: agreement drops by <x p
 
 ## Output schema
 `trace_id`, `use_case`, `domain`, `resolution`, `sentiment`, `language`, `confidence`, `classifier_version`, `taxonomy_version`. Joined to `assistant-kpis-cost-per-outcome` on `trace_id`.
+
+## Unresolved clusters
+| Use case | Volume | Unresolved share | Masked sample handed to `build-evals` |
+| --- | --- | --- | --- |
 
 ## Open questions
 | Question | Owner |

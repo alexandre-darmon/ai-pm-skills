@@ -285,7 +285,7 @@ Rules:
 
 ## 9. Skill catalog — 27 skills across 7 stages
 
-Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Graders: *exact* (deterministic check), *checklist* (structure and mandatory items), *judge* (LLM with rubric, calibrated).
+Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Graders: *exact* (deterministic check), *checklist* (structure and mandatory items), *judge* (LLM with rubric, calibrated). The November 2026 review added a fifth case to `build-evals`, `conversation-analysis`, `dpia-prescreen`, `cse-consultation` and `ai-incident-playbook`; those suites count as listed here.
 
 ### Stage 1 — Strategy (4)
 
@@ -524,7 +524,7 @@ Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Grade
 - **Trigger:** personal data in scope; DPO asks; new data source; profiling or automated decisions.
 - **Inputs:** P2 data requirements; purpose; populations; automated decision flags; vendors and transfers.
 - **Outputs:** pre-screen against the nine EDPB criteria and the CNIL list; recommendation (DPIA required / recommended / not needed) with reasons; pre-filled sections (purpose, data, flows, recipients, retention, risks, measures); questions for the DPO; transfer flags.
-- **Rules:** two or more EDPB criteria = DPIA recommended, stated as such; transfers outside the EU are flagged, not assessed; the DPO decides, the skill prepares.
+- **Rules:** two or more EDPB criteria = DPIA recommended, stated as such; transfers outside the EU are flagged, not assessed; the controller decides on the DPO's advice, the skill prepares.
 - **Depends on / feeds:** P2, G1 / G4.
 - **Sources:** GDPR art. 35, EDPB WP248 guidelines, CNIL DPIA list and PIA tool.
 - **Evals (3):** employee chat logs analysed for sentiment (expected: DPIA recommended, criteria named); product-catalog search (expected: not needed); a US-hosted LLM on customer data (expected: transfer flag).

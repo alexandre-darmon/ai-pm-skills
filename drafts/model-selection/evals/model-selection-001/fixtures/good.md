@@ -1,1 +1,1 @@
-Cost per success: A 0.0213 EUR, B 0.0011 EUR. Gap 3 points for 20 times the cost. Chosen model: Model B. Re-evaluation date: next release or in 6 months.
+**Chosen model: B.** Cost per success: A 0.0213 EUR, B 0.0011 EUR. Gap 3 points for 20 times the cost: 3,420 EUR more a month for 5,400 more correct emails, so 0.63 EUR per extra correct email. Monthly run cost: A 3,600 EUR, B 180 EUR, assuming one call per email and no cache. Re-evaluation date: next release or in 6 months.

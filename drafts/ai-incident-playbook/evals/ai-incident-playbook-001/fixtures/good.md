@@ -1,1 +1,1 @@
-Rollback owner: the head of customer operations, deputy on-call lead, turns the agent to L2 now. Inform customers. The 40 refunds become eval cases. Severity: SEV2.
+Rollback owner: the head of customer operations, deputy on-call lead, turns the agent to L2 now, without waiting for the meeting. Pull every refund issued since the prompt change and count the customers affected within two hours. Inform customers. The 40 refunds become eval cases. Severity: SEV2.

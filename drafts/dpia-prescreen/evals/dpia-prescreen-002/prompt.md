@@ -2,7 +2,7 @@
 name: dpia-prescreen-002
 description: 'Product-catalog search (source - anonymised retail brief, 2026)'
 tags: [dpia-prescreen, nominal, red-line]
-expected_outcome: 'DPIA not needed, zero criteria, reasons on file for the DPO.'
+expected_outcome: 'DPIA not needed on the stated facts, at most innovative use counted, unknowns as DPO questions, reasons on file.'
 runs: 3
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]

@@ -1,1 +1,1 @@
-A provider model change is a release: offline suite first, then a shadow run in February, then canary with rollback triggers.
+A provider model change is a release: pin the successor's dated snapshot with the prompt, parameters and tools as one version, offline suite first, then a shadow run in February, then canary with rollback triggers.

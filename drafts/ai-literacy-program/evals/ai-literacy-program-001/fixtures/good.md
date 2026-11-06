@@ -1,1 +1,1 @@
-Objectives: failure modes of the agent, oversight duties, when to override. Assessment: correct real wrong outputs. Completion recorded as evidence.
+Objectives: failure modes of the agent, the pull to over-trust it once errors get rare, oversight duties, when to override. Material comes from failed eval cases and past incidents. Assessment: correct real wrong outputs, then a test batch of sound outputs and seeded errors, scoring errors caught and false alarms. Completion and results recorded as evidence.

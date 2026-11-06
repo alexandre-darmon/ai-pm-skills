@@ -8,4 +8,6 @@ File (L2312-15), put in the BDESE (L2312-18): purpose, functioning, data, impact
 
 Timeline (R2312-6, absent an agreement): one month for the opinion, two months if the CSE appoints an expert (L2315-94); the CSSCT prepares the work but does not extend the delay. Plan the pilot after the opinion, so March is tight.
 
+Question for legal on anything planned before the opinion, with the facts: who uses it and how many of the 140 advisers; real work or test data; whether drafts reach real clients; whether a consultation is already open. These facts do not make a pilot safe.
+
 HR and legal decide; this memo prepares their decision.

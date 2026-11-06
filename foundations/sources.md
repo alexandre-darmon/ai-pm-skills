@@ -61,16 +61,16 @@ Read in the November 2026 review. Ideas only, restated in our own words; no text
 
 | id | Work | What the repo takes from it | Used by |
 | --- | --- | --- | --- |
-| repo-chanmeng | [ChanMeng666/ai-product-manager-skill](https://github.com/ChanMeng666/ai-product-manager-skill) (MIT) | solution selection, agent and production checks, eval depth | S1, B2, B3, M1, M4 |
-| repo-yoseph | [Yoseph-Zuskin/AI-Product-Manager](https://github.com/Yoseph-Zuskin/AI-Product-Manager) (MIT) | business case lines, vendor checks | S1, M6 |
-| repo-lenny | [RefoundAI/lenny-skills](https://github.com/RefoundAI/lenny-skills) (MIT) | eval practice and AI UX, as ideas; guest quotes are not reused | M1, P4 |
-| repo-vishalhabib | [vishalhabib99/ai-pm-skills](https://github.com/vishalhabib99/ai-pm-skills) (MIT) | fixing the bar before looking at cases, declined lists | S1, T1 |
-| repo-product-on-purpose | [product-on-purpose/pm-skills](https://github.com/product-on-purpose/pm-skills) (Apache-2.0) | template-only control, routing checks | M1 |
-| repo-product-to-prod | [naderelewa/Product-to-Prod](https://github.com/naderelewa/Product-to-Prod) | release and production readiness checks | M3, B1 |
-| repo-pangkaifeng | [PANGKAIFENG/ai-product-manager-skills](https://github.com/PANGKAIFENG/ai-product-manager-skills) | AI PM checklists, as ideas | as cited |
-| repo-phuryn | [phuryn/pm-skills](https://github.com/phuryn/pm-skills) (MIT) | next-step links between skills | as cited |
-| repo-anthropic-kwp | [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) (Apache-2.0) | workflow packaging, as ideas | as cited |
-| repo-deanpeters | [deanpeters/Product-Manager-Skills](https://github.com/deanpeters/Product-Manager-Skills) (CC BY-NC-SA 4.0) | ideas only, never text: its license forbids commercial reuse | as cited |
+| repo-chanmeng | [ChanMeng666/ai-product-manager-skill](https://github.com/ChanMeng666/ai-product-manager-skill) (MIT) | solution selection, agent and production checks, eval depth | as cited in each skill |
+| repo-yoseph | [Yoseph-Zuskin/AI-Product-Manager](https://github.com/Yoseph-Zuskin/AI-Product-Manager) (MIT) | business case lines, vendor checks | as cited in each skill |
+| repo-lenny | [RefoundAI/lenny-skills](https://github.com/RefoundAI/lenny-skills) (MIT) | eval practice and AI UX, as ideas; guest quotes are not reused | as cited in each skill |
+| repo-vishalhabib | [vishalhabib99/ai-pm-skills](https://github.com/vishalhabib99/ai-pm-skills) (MIT) | fixing the bar before looking at cases, declined lists | as cited in each skill |
+| repo-product-on-purpose | [product-on-purpose/pm-skills](https://github.com/product-on-purpose/pm-skills) (Apache-2.0) | template-only control, routing checks | as cited in each skill |
+| repo-product-to-prod | [naderelewa/Product-to-Prod](https://github.com/naderelewa/Product-to-Prod) | release and production readiness checks | as cited in each skill |
+| repo-pangkaifeng | [PANGKAIFENG/ai-product-manager-skills](https://github.com/PANGKAIFENG/ai-product-manager-skills) | AI PM checklists, as ideas | as cited in each skill |
+| repo-phuryn | [phuryn/pm-skills](https://github.com/phuryn/pm-skills) (MIT) | next-step links between skills | as cited in each skill |
+| repo-anthropic-kwp | [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) (Apache-2.0) | workflow packaging, as ideas | as cited in each skill |
+| repo-deanpeters | [deanpeters/Product-Manager-Skills](https://github.com/deanpeters/Product-Manager-Skills) (CC BY-NC-SA 4.0) | ideas only, never text: its license forbids commercial reuse | as cited in each skill |
 
 ## Own experience
 

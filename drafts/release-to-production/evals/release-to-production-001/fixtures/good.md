@@ -1,1 +1,1 @@
-n per arm ≈ 16 × 0.21 / 0.0009 ≈ 3,733, so A/B is infeasible with 1,800 users. Shadow for 2 weeks, canary at 10% with rollback if completion falls 5 points.
+n per arm ≈ 16 × 0.21 / 0.0009 ≈ 3,733, so A/B is infeasible with 1,800 users. Level to confirm: L2 assumed, a human validates every output. Shadow for 2 weeks, canary at 10% with rollback if completion falls 5 points. Rollback goes to the previous version; never rehearsed, so rehearse it and time it before canary.

@@ -9,3 +9,7 @@ Re-sample the suite with stratified sampling so warranty claims and product advi
 Freeze the 88% run as the baseline, with the model and version, the judge model, the date and the set version.
 
 Track cost per correct answer, not cost per answer: at 0.04 EUR per answer and 88% correct, that is about 0.045 EUR per correct answer.
+
+Before adding graders, read 30 of the failed or borderline answers from the last run, note what went wrong in each, and cluster the notes into failure modes. Write graders for those.
+
+Write the new thresholds down before the next run, dated, and signed by the support lead; only legal may relax the warranty bar.

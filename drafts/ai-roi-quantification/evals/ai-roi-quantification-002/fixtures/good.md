@@ -1,1 +1,1 @@
-Unit value: flagged, unsourced; interview template: technicians, timed on real tasks. Assumptions register and sensitivity attached.
+Unit value: flagged, unsourced; interview template: technicians, timed on real tasks. Assumptions register and sensitivity attached. Cost coverage: confirm the change cost includes build cost (engineering, integration, labelling); monitoring and eval upkeep are missing from the run cost. Freed hours stay capacity until the maintenance manager confirms a removed cost or named redeployment.

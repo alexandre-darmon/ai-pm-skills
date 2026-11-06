@@ -16,6 +16,8 @@
 | Metric across tables | root `metrics`, written `dataset.field` | model-scoped |
 | Formula | `expression.sql` (portable `OSSIE_SQL_2026`), `expression.dialects` for vendor variants | at least one of the two; `sql` wins over an `OSSIE_SQL_2026` dialect entry |
 | Business definition | `description` | |
+| Term and entity | key in `primary_key`, meaning in the `description` of the metrics that use it | Ossie has no term object; the Terms section of the spec stays the source |
+| Standing filter, known trap | in `expression.sql` when it can be; otherwise `ai_context.instructions` | an instruction relies on the agent following it, a formula does not |
 | Terms users really say | `ai_context`: `synonyms`, `examples`, `instructions` | take them from the question inventory |
 | Owner, status, test, grain | `custom_extensions`: `vendor_name` plus `data` as a JSON string | carried, not interpreted, by consumers |
 

@@ -1,10 +1,14 @@
 # Agent design: <agent>
 
+Trigger: <request | batch | event | schedule>
+Done: <state of the world that proves success>
+Exits: <success | error | escalation | paused for approval | policy denied | budget exhausted, and what follows each>
 Loop type: <single step | plan-execute | multi-agent, with justification>
 
-## Tools (name | schema | side effect | reversible?)
+## Tools (name | schema | side effect | reversible? | use over nearest neighbour when | returns on no result | returns on failed call)
 ## Permission matrix (tool | level | approval | cap)
+## Write protocol (from L3: tool | prepare and commit | approval bound to, expiry | cap checked on | idempotency key | on timeout), or "none: no write tool at L3 or above"
 ## Stop conditions
 ## Memory policy
 ## Trace schema (with outcome field)
-## Framework (only for a named need)
+## Framework (only for a named need: need and candidate, or none)

@@ -1,0 +1,1 @@
+Recommendation: DPIA required (CNIL list, recruitment selection algorithm). DPO decides. Autonomy check: the rejection step is L2 on paper. Question for the DPO on art. 22: with 400 applications a day and under 1% overrides, is the review meaningful or nominal?
