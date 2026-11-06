@@ -76,6 +76,19 @@ flowchart TD
 
 The `triggered` grader is not part of the score: it reports whether the skill fired. Negative cases are left out of the delta, because without the skill they cannot fire.
 
+## The template-only control
+
+The model alone is an easy opponent, so a gain over it can come from the output format rather than the method. `python3 scripts/template_arm.py <skill>` adds a third arm: same name, description, cases and graders, but the skill's body is only its own `templates/` files, with no method, rules or references. The other two scores come from `baselines/<skill>.json`, and the result goes to `baselines/template-arm/`.
+
+Rules, written and committed before the first run (2026-11-06), on `llm-feature-prd`, `conversation-analysis` and `ai-act-classification`, 3 runs per case:
+
+- **Method gain** = with the skill − template only, mean over the scored cases.
+- **At least 10 points:** the method beats its format.
+- **Under 10 points:** the gain comes mostly from the format, and the skill's gain is reported that way.
+- **Graders are frozen for this test.** A grader found wrong afterwards is reported, then fixed for every arm by re-scoring, and both results stay published.
+
+This is a strict test: these templates are the skill's own and already carry part of its method, such as the columns of a table. A plain generic template would be easier to beat.
+
 ## The four free checks
 
 Paid runs can only be trusted if the marking rules are right. Four checks protect them, and three of them cost nothing.

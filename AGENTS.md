@@ -41,6 +41,7 @@ python3 -m unittest discover -s scripts
 claude plugin eval drafts/<name> --runs 1     # paid: runs the cases with and without the skill
 python3 scripts/run_evals.py --full drafts/<name>   # same, plus the repo's pass rules (threshold, delta ≥ 10 points); saves every answer
 python3 scripts/run_evals.py --regrade drafts/<name>  # free: re-scores the saved answers with the current graders, no model call
+python3 scripts/template_arm.py <skill>     # paid: third arm, the skill reduced to its output template (docs/evaluation.md)
 ```
 
 Always point `claude plugin eval` at one skill folder, never the repo root: from the root it also picks up the cases of drafts and templates.
