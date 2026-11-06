@@ -1,0 +1,719 @@
+{
+  "skill": "build-evals",
+  "judgeModel": "claude-haiku-5-5",
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.07777777777777778,
+  "costUsd": 0.05775122,
+  "arms": {
+    "template": {
+      "answers": 12,
+      "judge": 0.8125,
+      "meetsGoal": 0.71875,
+      "regex": 0.8469551282051282,
+      "words": 1465.5833333333333
+    },
+    "with": {
+      "answers": 12,
+      "judge": 0.7937500000000001,
+      "meetsGoal": 0.78125,
+      "regex": 1.0,
+      "words": 837.5833333333334
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.7645833333333334,
+      "meetsGoal": 0.5520833333333334,
+      "regex": 0.5112179487179488,
+      "words": 705.25
+    }
+  },
+  "answers": [
+    {
+      "id": "fec85a5638",
+      "case": "build-evals-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 880,
+      "goal": "Says grading the final message cannot gate an agent that acts, and adds checks on the resulting system state and on actions that must never occur, such as a refund above the limit with no manager sign-off.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It never states that a grader of the final message cannot gate an acting agent, and it leans on a closing-message judge and a shadow run instead of runtime and end-state controls.",
+        "It asserts an unsourced '80% bar' for judge agreement and other specific thresholds (20 cases, 2-week shadow run) as if they were established standards, without saying they are judgment calls."
+      ]
+    },
+    {
+      "id": "81bae50bcd",
+      "case": "build-evals-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1125,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It says to split vague rubric criteria and add pass and fail examples but gives none, and the baseline only says to record the judge model and date rather than naming them.",
+        "The proposed per-class thresholds (95%, 92%, 88%) have no stated basis in the data, and the Friday plan depends on exact-check graders that may not be buildable in time."
+      ]
+    },
+    {
+      "id": "c3123b4512",
+      "case": "build-evals-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 757,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.75,
+        0.8500000000000001
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The proposed thresholds (95%, 92\u201395%, 90%, 80%) are asserted without justification, and the resample plan doesn't reconcile the 20% holdout with the 100\u2013150 total.",
+        "The per-class thresholds are asserted without a derivation, and the frozen-baseline and cost-per-correct-outcome requirements get only brief treatment."
+      ]
+    },
+    {
+      "id": "f7c7482c77",
+      "case": "build-evals-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.16666666666666666,
+      "words": 435,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.55,
+        0.6
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It claims it wrote eval/score.py and offers to create the files if Write is re-enabled, which misstates what was actually done.",
+        "It says it wrote eval/score.py and offers to paste the code, but Write is disabled and no file or code was produced, so it claims work that was not done."
+      ]
+    },
+    {
+      "id": "23bf131bd9",
+      "case": "build-evals-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 464,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It defers the actual eval files and candidate lines instead of delivering them, and it never addresses regulated-data or PII handling for real invoices.",
+        "It describes the eval files and score.py but shows neither the 20 candidate lines nor the script, so the PM has nothing runnable today."
+      ]
+    },
+    {
+      "id": "d4eb684857",
+      "case": "build-evals-002",
+      "arm": "template",
+      "run": 1,
+      "regex": 0.875,
+      "words": 1479,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8999999999999999,
+        0.8
+      ],
+      "judge": 0.85,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It splits the criteria into graders but adds no pass/fail examples to the rubric, and the baseline leaves the judge model and date as placeholders instead of naming them.",
+        "It never revises the judge rubric with split criteria or pass and fail examples, and the economics section is a placeholder."
+      ]
+    },
+    {
+      "id": "805d57907e",
+      "case": "build-evals-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 393,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It declines to build the requested eval set and presents a \"20-real-example minimum\" as a fixed rule without basis, so the PM gets no usable artifact today.",
+        "It declines to build the provisional eval set and cites an unsourced 20-example minimum as a hard rule, leaving the PM with no artifact before next week's model pick."
+      ]
+    },
+    {
+      "id": "c9dd47a9b3",
+      "case": "build-evals-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 427,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.65,
+        0.75
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It presents a 20-example minimum as a fixed rule of 'the eval method' without justification, and it ignores regulated-context risks such as handling supplier data, audit trails, and sign-off on the labels.",
+        "It delivers no eval set and asserts a 20-example minimum without justification, so the PM has nothing to use next week beyond a data request."
+      ]
+    },
+    {
+      "id": "a6da8792cf",
+      "case": "build-evals-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.625,
+      "words": 554,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never splits the vague judge rubric or adds pass/fail examples, and it sets no per-class thresholds or judge-model-and-date baseline.",
+        "It sets one aggregate ship threshold instead of per-class thresholds, splits no vague rubric criteria, adds no pass/fail examples, and records no baseline naming the judge model and date."
+      ]
+    },
+    {
+      "id": "8a1ef239e5",
+      "case": "build-evals-005",
+      "arm": "template",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1795,
+      "goal": "Says grading the final message cannot gate an agent that acts, and adds checks on the resulting system state and on actions that must never occur, such as a refund above the limit with no manager sign-off.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The economics section gives an unsupported rule of thumb and most thresholds and sign-off dates are still TBD, so the PM cannot sign off anything today.",
+        "Most thresholds and sign-off dates are left as TBD, and the economics section gives a rule of thumb with no worked numbers, so the PM cannot yet decide the autonomy question today."
+      ]
+    },
+    {
+      "id": "afe581444c",
+      "case": "build-evals-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 847,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The cost-per-correct-outcome formula is muddled and never computed per class, and the claim that order status is 'probably the easiest class' is unsupported speculation.",
+        "The cost-per-correct-answer formula is vague and never applied per class, and the suggested per-class bars are asserted without justification."
+      ]
+    },
+    {
+      "id": "fcd732ae22",
+      "case": "build-evals-001",
+      "arm": "template",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1348,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.8,
+        0.65
+      ],
+      "judge": 0.7250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The 98%, 90% and 100% thresholds are unsupported numbers set before any data exists, and the answer admits 20 cases cannot tell them apart.",
+        "It never states that the 12 synthetic cases make up 60% of the 20-case set, and it pads the answer with generic template sections such as judge calibration and the economics formula."
+      ]
+    },
+    {
+      "id": "38a232e701",
+      "case": "build-evals-001",
+      "arm": "template",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1376,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.75,
+        0.65
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The holdout is labelled 20% but is 6 of 35 cases (about 17%), and a dangling '[ref]' placeholder is left in the autonomy paragraph.",
+        "The set-composition table is internally inconsistent: class rows sum to 40 cases while the total says 35, and 6 of 35 is about 17%, not the stated 20% holdout."
+      ]
+    },
+    {
+      "id": "e5331e74a8",
+      "case": "build-evals-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.38461538461538464,
+      "words": 760,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never freezes a baseline that names the judge model and date, and it scores cost per answer rather than cost per correct answer, both of which the goal requires.",
+        "It never freezes a baseline that names the judge model and date, and it scores cost per answer rather than cost per correct answer."
+      ]
+    },
+    {
+      "id": "660548c54a",
+      "case": "build-evals-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1066,
+      "goal": "Says grading the final message cannot gate an agent that acts, and adds checks on the resulting system state and on actions that must never occur, such as a refund above the limit with no manager sign-off.",
+      "scores": [
+        0.8999999999999999,
+        1.0
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents an '80% bar' for judge agreement and cites repo artifacts (templates/eval-plan.md, release-to-production) the user never mentioned, presenting them as established.",
+        "It cites internal templates and skill names (release-to-production, eval-plan.md) the user never mentioned, and the 'L1 to L2\u2013L3' ladder framing is asserted without grounding in the request."
+      ]
+    },
+    {
+      "id": "c733bad07f",
+      "case": "build-evals-003",
+      "arm": "template",
+      "run": 2,
+      "regex": 0.9230769230769231,
+      "words": 1545,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.75,
+        0.8999999999999999
+      ],
+      "judge": 0.825,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The baseline is described as a future re-run rather than frozen with a named judge model and date, and it ignores data-protection risk in using real customer conversations in a regulated EU setting.",
+        "The warranty threshold is internally inconsistent (98% sets versus zero tolerance on a 12-15 case subset), and cost per correct answer is never broken out by class."
+      ]
+    },
+    {
+      "id": "0bea5913b2",
+      "case": "build-evals-002",
+      "arm": "template",
+      "run": 2,
+      "regex": 0.875,
+      "words": 1268,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.75,
+        0.8500000000000001
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The baseline section only says to record the judge model and date, and the rubric revision adds no pass/fail examples, so it misses two required goal elements.",
+        "The rubric revision splits criteria but gives no pass/fail examples, and the baseline doesn't name the judge model and date."
+      ]
+    },
+    {
+      "id": "e4668eb9dc",
+      "case": "build-evals-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 601,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8500000000000001,
+        0.75
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never splits the vague rubric criteria or adds pass/fail examples, sets no per-class thresholds, and names no judge model or date for a baseline.",
+        "It never splits the vague judge criteria or adds pass/fail examples, and it omits a baseline that names the judge model and date."
+      ]
+    },
+    {
+      "id": "a2be9a197e",
+      "case": "build-evals-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 368,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It never raises the compliance risk of sending supplier invoices, which can hold personal and contract data, to an external model, or the audit and explainability needs of a regulated AP process.",
+        "It cites a 'minimum of 20 real examples' as if it were an established rule, then declines to build any eval artifact even though a flagged provisional set was available to produce now."
+      ]
+    },
+    {
+      "id": "aa18d28c6b",
+      "case": "build-evals-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 683,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.55,
+        0.8
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never states that 8 examples are insufficient or that the set is provisional, and it does not say whether synthetic candidates were generated, so the goal's core requirement is only partly met.",
+        "It says 8 is too few and asks for more real invoices, but it does not clearly state the set is provisional, nor give a synthetic-case share or flag rule, since it proposes unlabeled candidates rather than generated cases."
+      ]
+    },
+    {
+      "id": "98a4a4e2b2",
+      "case": "build-evals-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1073,
+      "goal": "Says grading the final message cannot gate an agent that acts, and adds checks on the resulting system state and on actions that must never occur, such as a refund above the limit with no manager sign-off.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It states unsupported benchmarks as fact, such as an 80% agreement bar and a 2-week shadow period, and never says where they come from.",
+        "It never states outright that a closing-message grader cannot gate an acting agent, and it invents an '80% bar' for judge agreement."
+      ]
+    },
+    {
+      "id": "3ebbd39342",
+      "case": "build-evals-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 1.0,
+      "words": 900,
+      "goal": "Says grading the final message cannot gate an agent that acts, and adds checks on the resulting system state and on actions that must never occur, such as a refund above the limit with no manager sign-off.",
+      "scores": [
+        0.8,
+        0.95
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It asks for zero approval-gate violations on a larger set but never says how large, so the bar it sets can't be verified.",
+        "Several sections, such as rollout safeguards, judge bias and generic adversarial cases, are standard checklists that would read much the same for any agent."
+      ]
+    },
+    {
+      "id": "14273405f2",
+      "case": "build-evals-005",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.0,
+      "words": 1661,
+      "goal": "Says grading the final message cannot gate an agent that acts, and adds checks on the resulting system state and on actions that must never occur, such as a refund above the limit with no manager sign-off.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never states outright that grading the final message cannot gate an agent that acts; it only implies this through the judge critique.",
+        "The proposed thresholds (98%, 95% lower bound, 50 EUR cap, 20 cases per class) are asserted without derivation from cost or volume data, and the 'more than 70%' loss reduction assumes equal cost per error."
+      ]
+    },
+    {
+      "id": "040c46bc8c",
+      "case": "build-evals-003",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.8461538461538461,
+      "words": 1421,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.8999999999999999,
+        0.7
+      ],
+      "judge": 0.7999999999999999,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The per-class thresholds (92%, 90%, 80%) are asserted rather than derived from error costs, which the answer itself lists as missing.",
+        "Its example says warranty at 50% with other classes strong yields about 90% overall, but the weighted math gives about 95%, undermining the case against the single overall gate."
+      ]
+    },
+    {
+      "id": "e01b76b46d",
+      "case": "build-evals-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6153846153846154,
+      "words": 782,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never says to freeze a baseline that names the judge model and date, and it tracks cost per resolved case rather than cost per correct answer.",
+        "It never proposes a frozen baseline naming the judge model and date, a private holdout kept separate from tuning, or cost per correct answer, so it misses several required elements of the goal."
+      ]
+    },
+    {
+      "id": "8f65ced38e",
+      "case": "build-evals-003",
+      "arm": "template",
+      "run": 1,
+      "regex": 0.7692307692307693,
+      "words": 1677,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.95,
+        0.75
+      ],
+      "judge": 0.85,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The per-class thresholds (95/90/98%) are asserted without evidence, and cost per correct answer is computed on answer cost alone, leaving out the judge, human-review and wrong-answer costs it lists as missing.",
+        "It asks for the baseline's judge model, date and scores instead of freezing them, and it never addresses handling personal data in real conversations used as eval cases in a regulated company."
+      ]
+    },
+    {
+      "id": "917f6eaf0e",
+      "case": "build-evals-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 1.0,
+      "words": 940,
+      "goal": "Says grading the final message cannot gate an agent that acts, and adds checks on the resulting system state and on actions that must never occur, such as a refund above the limit with no manager sign-off.",
+      "scores": [
+        0.8500000000000001,
+        0.95
+      ],
+      "judge": 0.9,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It implies but never states plainly that no grader of the final message can gate an acting agent, and it doesn't say the LLM judge should be demoted from release gate.",
+        "It implies but never states outright that grading the final message cannot gate an acting agent, and parts of the rollout section read as generic."
+      ]
+    },
+    {
+      "id": "14e8ba4f4f",
+      "case": "build-evals-001",
+      "arm": "template",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1313,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.7,
+        0.8
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It sets a 95% per-class recall gate and a 1\u20132 case holdout per class, which can't support a meaningful pass/fail, even though the answer admits the holdout is nearly meaningless.",
+        "The answer proposes a ~30-38 synthetic case set and thresholds, which strays toward the 'generate synthetic cases' pattern and leaves the 'ask for more real cases' message diluted behind a heavy plan rather than leading with it."
+      ]
+    },
+    {
+      "id": "837be99e8c",
+      "case": "build-evals-005",
+      "arm": "template",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1596,
+      "goal": "Says grading the final message cannot gate an agent that acts, and adds checks on the resulting system state and on actions that must never occur, such as a refund above the limit with no manager sign-off.",
+      "scores": [
+        0.8500000000000001,
+        1.0
+      ],
+      "judge": 0.925,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never states that grading the final message cannot gate an acting agent, and it proposes no checks on live system state or hard prohibitions beyond the eval tables.",
+        "It never states outright that a grader on the final message cannot gate an agent that acts, though its structure implies it."
+      ]
+    },
+    {
+      "id": "3654195bb4",
+      "case": "build-evals-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 813,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.7,
+        0.8
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It cites a nonexistent 'guideline' requiring 20 real cases and offers to draft from a 'template' it doesn't have, and its suggested case counts don't match its stated total of 50-80.",
+        "It cites a nonexistent 'guideline' and 'template' as if the user had them, and leaves the actual per-class threshold numbers unset."
+      ]
+    },
+    {
+      "id": "e40a56c452",
+      "case": "build-evals-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1091,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It states the rubric should be split and given pass and fail examples but drafts neither, deferring that to a later offer, and the Friday plan may be infeasible for experts to review 50\u201380 cases.",
+        "The rubric revision is described but not drafted, with no pass or fail examples, and the baseline is left unrun with no judge model or date recorded."
+      ]
+    },
+    {
+      "id": "afd4a6a416",
+      "case": "build-evals-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.0,
+      "words": 898,
+      "goal": "Says grading the final message cannot gate an agent that acts, and adds checks on the resulting system state and on actions that must never occur, such as a refund above the limit with no manager sign-off.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It implies but never plainly states that a grader of the final message cannot gate an acting agent, and it buries the tool-layer enforcement of the approval gate in a list item instead of making it the launch condition.",
+        "It never plainly states that a judge reading the closing message cannot gate an acting agent, leaving that central point implied rather than made explicit."
+      ]
+    },
+    {
+      "id": "aa72ddfb05",
+      "case": "build-evals-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.625,
+      "words": 683,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It refuses to confirm the judge but never sets per-class thresholds, a dated baseline naming the judge model, or a rubric revision with pass/fail examples, so it only partly meets the stated goal.",
+        "It sets no explicit per-class numeric thresholds, doesn't split the rubric into criteria with pass and fail examples, and never records a baseline naming the judge model and date."
+      ]
+    },
+    {
+      "id": "fd342f55b3",
+      "case": "build-evals-002",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.875,
+      "words": 1108,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It splits the graders but never revises the judge rubric with explicit pass and fail examples, and most thresholds and traffic figures stay TBD, so the Friday decision is left open.",
+        "It never splits the judge's vague criteria or adds pass/fail examples to the rubric, and it cites an autonomy-ladder file by a '[ref]' placeholder even though it says the file was not read."
+      ]
+    },
+    {
+      "id": "df0785b4a2",
+      "case": "build-evals-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1211,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "A 10\u201316 case holdout cannot support the proposed 95% leave threshold, and the rubric revision with pass and fail examples is deferred rather than drafted.",
+        "It defers the rubric revision with split criteria and pass/fail examples instead of drafting it, and its 10\u201316 case holdout can't support the zero-error leave threshold."
+      ]
+    },
+    {
+      "id": "7ce5e81423",
+      "case": "build-evals-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.38461538461538464,
+      "words": 763,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never scores cost per correct answer or freezes a baseline that names the judge model and date, and it asserts that last month's conversations are mostly easy without evidence.",
+        "It never freezes a baseline that names the judge model and date, and it scores cost per answer instead of cost per correct answer."
+      ]
+    }
+  ]
+}

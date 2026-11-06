@@ -1,0 +1,548 @@
+{
+  "skill": "assistant-kpis-cost-per-outcome",
+  "judgeModel": "claude-haiku-5-5",
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.046296296296296294,
+  "costUsd": 0.046387370000000004,
+  "arms": {
+    "template": {
+      "answers": 9,
+      "judge": 0.8333333333333334,
+      "meetsGoal": 0.8333333333333334,
+      "regex": 0.7760141093474426,
+      "words": 1723.4444444444443
+    },
+    "with": {
+      "answers": 9,
+      "judge": 0.8194444444444444,
+      "meetsGoal": 0.75,
+      "regex": 0.9876543209876544,
+      "words": 1213.3333333333333
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.6722222222222222,
+      "meetsGoal": 0.3333333333333333,
+      "regex": 0.271604938271605,
+      "words": 726.1111111111111
+    }
+  },
+  "answers": [
+    {
+      "id": "6fef7d06b9",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "template",
+      "run": 1,
+      "regex": 0.7142857142857143,
+      "words": 1483,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "The stale-answer rate is defined with a 0-target and the 'quality line beside each usage panel' is only partly delivered, since the quality sampling plan and thresholds are left as TBD and the 14/30-day redo windows are unsourced suggestions.",
+        "The spec never addresses the requested quality line from a sampled review beside each usage panel as a distinct, clearly labelled panel element, and the cost-per-correct-outcome formula is inconsistent with the stated 'cost \u00f7 successes' goal (it uses volume \u00d7 quality rather than successes)."
+      ]
+    },
+    {
+      "id": "9a05b55b18",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 986,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It names few regulatory and customer-harm risks for wrong claims or contract answers in a regulated insurer, and it keeps run cost per session beside the headline instead of fully replacing it.",
+        "It never addresses the customer-harm and regulatory risk of wrong claims or contract answers, and it keeps run cost per session beside the headline instead of replacing cost per conversation as the goal requires."
+      ]
+    },
+    {
+      "id": "7f2076875c",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 443,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It keeps cost per conversation instead of cost per success, and omits the sampled quality line, adoption by population, and stale-answer rate that the goal requires.",
+        "It keeps cost per conversation instead of replacing it with cost per successful outcome, and it omits the sampled quality line, the stale-answer rate and adoption by population."
+      ]
+    },
+    {
+      "id": "a59738feb7",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5555555555555556,
+      "words": 1004,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.8,
+        0.7
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It defines cost per correct answer but never computes it (about \u20ac0.25), and it doesn't assign a named owner to each knowledge base's stale-answer rate.",
+        "It ignores the regulated-company context (conversation logging, data retention, audit trail for HR and finance advice) and gives cost per correct answer as a formula instead of a stated figure."
+      ]
+    },
+    {
+      "id": "18a3b12ba0",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 986,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never assigns a named owner to each knowledge base, gives no per-country eligible-employee denominator, and ignores regulated-company risks such as audit trails and employee-data privacy in the review samples.",
+        "For a regulated company it omits compliance risks like audit trails, data handling and legal sign-off on severe errors, and it gives cost per correct answer only as a formula, not a number."
+      ]
+    },
+    {
+      "id": "7cfe7214e1",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 878,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.8,
+        0.8999999999999999
+      ],
+      "judge": 0.85,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The sample-size arithmetic (200\u2013300 reviews giving \u00b15\u20136 points) and the illustrative 0.47 EUR figure are stated without showing the assumptions, and the stratum and cost-allocation treatment of the 2,600 EUR run cost is left thin.",
+        "It never addresses the privacy and labour-law constraints of sampling employee conversations and adding a pseudonymous user id in a regulated EU company."
+      ]
+    },
+    {
+      "id": "401d112293",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "template",
+      "run": 2,
+      "regex": 0.8571428571428571,
+      "words": 1894,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The illustrative 5,000-conversation and 60% resolution example invents numbers, and success-by-silence within a redo window is asserted without validating it against the reviewed sample.",
+        "The headline section gives illustrative numbers (5,000 conversations, 60%, about 0.87 EUR) right after saying not to present them, which muddies the headline figure."
+      ]
+    },
+    {
+      "id": "3b64ac9cdc",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1197,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "When the redo link is missing, it calls the interim cost an 'upper-bound-quality figure', which muddles the direction of the bias and conflicts with its own rule that redos count as failures.",
+        "The outcome event is keyed to conversation id rather than trace id, and the interim cost figure rests on an unverified ticket-join assumption."
+      ]
+    },
+    {
+      "id": "3adb4567d0",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.42857142857142855,
+      "words": 845,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never proposes attaching outcome events to trace IDs and ignores the privacy and compliance risks of hashed user IDs and sampled conversation review in a regulated company.",
+        "It never proposes attaching outcome events to trace IDs and ignores the privacy and compliance implications of hashed user IDs and conversation logging in a regulated company."
+      ]
+    },
+    {
+      "id": "045d4bb9f9",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "template",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 1989,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.8500000000000001,
+        0.75
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It says review time is 'likely comparable to the run cost' without a loaded rate, and it treats all 180 IT documents as past 12 months when only the last full review date is known.",
+        "It states as fact that all 180 IT documents are past 12 months old, but the request only says the last full review was 14 months ago, so per-document age is unknown."
+      ]
+    },
+    {
+      "id": "ea0a4ded43",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.7142857142857143,
+      "words": 1503,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.75,
+        0.8500000000000001
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The interim cost-per-correct-outcome figure uses the 74% thumbs-up rate as the quality denominator, even though the answer itself says thumbs-up is not a substitute for correctness.",
+        "The headline cost-per-correct-outcome still runs on a thumbs-up proxy, most owners and targets are TBD, and regulatory and audit exposure for a customer-facing insurance assistant is not addressed."
+      ]
+    },
+    {
+      "id": "5df40f72e2",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.14285714285714285,
+      "words": 686,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never proposes an outcome event tied to the trace id, relying instead on a conversation-id join and an LLM-inferred resolution proxy, and it gives little attention to compliance requirements for a regulated company.",
+        "It never specifies emitting an outcome event attached to the conversation's trace id, so resolution labels can't be captured at the source going forward."
+      ]
+    },
+    {
+      "id": "fc9bdf1caa",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.0,
+      "words": 460,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.5,
+        0.55
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It keeps cost per conversation instead of cost per success and omits the quality line, adoption by population, and stale-answer rate the goal requires.",
+        "It keeps cost per conversation instead of cost per successful outcome, and omits the sampled quality line, adoption by population, and stale-answer rate that the goal requires."
+      ]
+    },
+    {
+      "id": "aab09f7046",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "template",
+      "run": 1,
+      "regex": 0.7142857142857143,
+      "words": 1822,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never addresses privacy or governance for having reviewers read employee conversation content in a regulated company, and it relies on a weak no-repeat-contact rule for success.",
+        "The headline success rule leans on a weak proxy (no repeat contact within the redo window), and the redo-rate and success-exclusion logic is circular and hard to follow."
+      ]
+    },
+    {
+      "id": "98dcfa8786",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1299,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "KB owners are listed as roles ('KB owners', 'IT service desk') rather than assigned, and the cost-per-correct figure is shown as 0.25 EUR despite resting on an unsplit blended 84%.",
+        "The 90% quality and 5% stale-rate targets and the 12-month document-age limit are asserted without a basis, and per-country adoption has no target at all."
+      ]
+    },
+    {
+      "id": "3576174594",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5555555555555556,
+      "words": 1011,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The KPI table assigns no owner per knowledge base and does not break out the stale-answer rate by knowledge base, and the answer never addresses privacy or compliance handling of sampled conversations in a regulated company.",
+        "It never assigns an owner to each knowledge base, and the outdated-answer rate is reported overall rather than per knowledge base."
+      ]
+    },
+    {
+      "id": "020d8d2433",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.0,
+      "words": 337,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.5,
+        0.55
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It keeps cost per conversation instead of cost per success, and omits the sampled quality line, adoption by population, and stale-answer rate that the goal requires.",
+        "It keeps cost per conversation instead of cost per success, and omits the sampled quality line, adoption by population, and stale-answer rate that the goal requires."
+      ]
+    },
+    {
+      "id": "6cd7b21890",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1541,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Adoption by country divides by the 3,500 total rather than per-country eligible counts, which are never requested, and the cost-per-correct figure is mislabelled as 'upper-confidence-limited' when it is a point estimate.",
+        "The 0.25 EUR cost per correct answer is called 'upper-confidence-limited' and then 'a floor', which are opposite bounds, and it ignores the \u00b15-point margin on the 84% input."
+      ]
+    },
+    {
+      "id": "64f76497b2",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1112,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The illustrative cost-per-correct-outcome figures and the 14/7-day redo windows are presented as proposals without a stated basis, and the answer never states how sample sizes map to the quality estimate's confidence interval.",
+        "The headline cost-per-correct-outcome divides by sessions \u00d7 sampled quality, but the success count is defined separately through outcome events, so the denominator is ambiguous."
+      ]
+    },
+    {
+      "id": "af21a8dd37",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1299,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.8999999999999999,
+        0.8500000000000001
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It keeps cost per session as a secondary figure instead of fully replacing it, and most headline KPIs are still not computable today.",
+        "The headline cost-per-correct-outcome metric cannot be computed yet, and cost per session stays on the dashboard as a secondary figure, so the requested replacement is only partial and the committee gets no usable cost-per-success number now."
+      ]
+    },
+    {
+      "id": "466c611af7",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.7777777777777778,
+      "words": 1921,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The per-KB-per-country quality cuts rest on a 200-answer monthly sample, which leaves cells far below the answer's own n\u226530 rule, so the country splits can't be read reliably.",
+        "The company-level cost per correct answer (\u22480.25 EUR) relies on the unsplit 84% overall quality figure, so it is not yet a per-use-case baseline."
+      ]
+    },
+    {
+      "id": "2633a6a457",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1098,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It samples employee conversations for review in a regulated company without mentioning privacy, consent, or works-council constraints, and it keys outcome events to conversation id rather than trace id.",
+        "The outcome event is keyed to conversation_id rather than the trace id, so it doesn't meet the goal's requirement to attach outcomes to the trace."
+      ]
+    },
+    {
+      "id": "dbb1db4650",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "template",
+      "run": 2,
+      "regex": 0.7142857142857143,
+      "words": 1449,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It keeps the 0.08 EUR cost-per-session figure on the dashboard beside cost per correct outcome instead of replacing it, and that replacement KPI isn't computable yet, so the committee gets no working cost KPI this cycle.",
+        "The cost-per-correct-outcome formula, 'cost \u00f7 (volume \u00d7 quality)', is muddled and doesn't match the outcome-event definitions, so the committee could not reproduce the headline KPI from the spec."
+      ]
+    },
+    {
+      "id": "5149f7d7bc",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.42857142857142855,
+      "words": 763,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never proposes attaching outcome events to the trace ID, so resolution can't be joined to the individual trace, and it uses a 300-conversation audit rather than a clearly defined sampled review as the interim quality measure.",
+        "It never proposes attaching an outcome event to the trace ID, and it treats the sampled audit as a validation step rather than the interim quality measure in place of the thumbs."
+      ]
+    },
+    {
+      "id": "6be45cb37d",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.7142857142857143,
+      "words": 1622,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.8,
+        0.8999999999999999
+      ],
+      "judge": 0.85,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The two-week committee number depends on a 100-per-week reviewer sample whose rubric and reviewer capacity are still open questions, and the answer doesn't say what to show if the sample can't start in time.",
+        "The two-week deliverable promises a first cost per resolved request, but the review sample will be roughly 200 conversations by then, and the answer doesn't say how wide the interval would be or what the committee should conclude from it."
+      ]
+    },
+    {
+      "id": "fe83eadf55",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 1510,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The stale-answer and quality KPIs have no sample sizes or thresholds tied to a baseline, and the cost-per-outcome figure is a rough indicative number that the answer itself says is not decision-grade.",
+        "KB owners are left as generic roles and the thresholds (90%, 85%, 5%) are invented, so the per-KB owner requirement and the targets are not actually settled."
+      ]
+    },
+    {
+      "id": "f56e3a8bc7",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "template",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 1828,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "Adoption and redo/bypass KPIs are not computable yet, and the cost-per-correct-answer baseline uses the overall 84% rather than per-KB quality, so the headline 0.25 EUR is unverified.",
+        "The cost-per-correct baseline (about 0.25 EUR) rests on the unstratified 84% overall rate and omits reviewer labour, so the headline figure is not yet reliable."
+      ]
+    }
+  ]
+}

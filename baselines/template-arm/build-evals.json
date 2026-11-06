@@ -1,0 +1,158 @@
+{
+  "skill": "build-evals",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.302",
+  "date": "2026-11-06",
+  "casesHash": "85cce3d06d97c78728bacead7c971b7914cb9696ac1e3e2603a9d572655da2f1",
+  "partial": false,
+  "costUsd": 0.8641434,
+  "cases": {
+    "build-evals-001": {
+      "score": 1.0,
+      "scoreWithout": 0.3333333333333333,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "holdout": [
+          3,
+          1
+        ],
+        "more-real": [
+          3,
+          2
+        ],
+        "per-class": [
+          3,
+          3
+        ],
+        "redline-synthetic-flagged": [
+          3,
+          0
+        ]
+      },
+      "delta": 0.6666666666666667
+    },
+    "build-evals-002": {
+      "score": 0.875,
+      "scoreWithout": 0.5833333333333334,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "bar-80": [
+          3,
+          2
+        ],
+        "baseline-recorded": [
+          3,
+          0
+        ],
+        "human-review": [
+          3,
+          3
+        ],
+        "per-class": [
+          3,
+          0
+        ],
+        "redline-not-a-gate": [
+          3,
+          3
+        ],
+        "rubric-revision": [
+          0,
+          0
+        ]
+      },
+      "delta": 0.29166666666666663
+    },
+    "build-evals-003": {
+      "score": 0.8461538461538461,
+      "scoreWithout": 0.4615384615384615,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "baseline-recorded": [
+          2,
+          0
+        ],
+        "cost-per-correct": [
+          3,
+          0
+        ],
+        "holdout": [
+          3,
+          0
+        ],
+        "observed-failures": [
+          1,
+          0
+        ],
+        "redline-no-global-threshold": [
+          3,
+          3
+        ],
+        "redline-per-class-threshold": [
+          3,
+          1
+        ],
+        "resample": [
+          3,
+          3
+        ],
+        "threshold-before-results": [
+          0,
+          0
+        ],
+        "warranty-stricter": [
+          3,
+          3
+        ]
+      },
+      "delta": 0.38461538461538464
+    },
+    "build-evals-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      }
+    },
+    "build-evals-005": {
+      "score": 0.6666666666666666,
+      "scoreWithout": 0.6666666666666666,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "state-and-forbidden": [
+          2,
+          2
+        ]
+      },
+      "delta": 0.0
+    }
+  },
+  "meanDelta": 0.3357371794871795,
+  "comparison": {
+    "without": 0.5112179487179487,
+    "template": 0.8469551282051282,
+    "with": 1.0,
+    "methodGain": 0.1530448717948718,
+    "methodBeatsFormat": true
+  }
+}

@@ -60,7 +60,7 @@ Same model, same cases, with and without the skill. Generated from [`baselines/`
     if readme.is_file() and "<!-- gains:start -->" in readme.read_text():
         head, rest = readme.read_text().split("<!-- gains:start -->", 1)
         block = out.split("\n\n")[2]  # the summary table
-        note = f"<sub>{len(rows)} skills, Sonnet 5.5, same cases with and without the skill. Per-skill numbers and method: [skill-eval-gains.md](skill-eval-gains.md).</sub>"
+        note = f"<sub>{len(rows)} skills, Sonnet 5.5, same cases with and without the skill. Against each skill's own output template, the gain falls to +8 to +24 points, and a blind LLM judge sees less still: [how the skills are tested](docs/testing-approach.md). Per-skill numbers: [skill-eval-gains.md](skill-eval-gains.md).</sub>"
         readme.write_text(f"{head}<!-- gains:start -->\n{block}\n\n{note}\n<!-- gains:end -->{rest.split('<!-- gains:end -->', 1)[1]}")
     return out
 

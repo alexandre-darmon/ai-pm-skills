@@ -9,7 +9,7 @@
 | Red lines held (the one thing the answer must never do) | 61% | **100%** |
 | Stays silent on near-miss requests | — | **100%** |
 
-<sub>6 skills, Sonnet 5.5, same cases with and without the skill. Per-skill numbers and method: [skill-eval-gains.md](skill-eval-gains.md).</sub>
+<sub>6 skills, Sonnet 5.5, same cases with and without the skill. Against each skill's own output template, the gain falls to +8 to +24 points, and a blind LLM judge sees less still: [how the skills are tested](docs/testing-approach.md). Per-skill numbers: [skill-eval-gains.md](skill-eval-gains.md).</sub>
 <!-- gains:end -->
 
 ## Why AI PM Skills?

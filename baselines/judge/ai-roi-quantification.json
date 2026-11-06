@@ -1,0 +1,370 @@
+{
+  "skill": "ai-roi-quantification",
+  "judgeModel": "claude-haiku-5-5",
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.07222222222222224,
+  "costUsd": 0.03186749,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.7777777777777778,
+      "meetsGoal": 0.75,
+      "regex": 0.9161616161616162,
+      "words": 770.3333333333334
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7055555555555555,
+      "meetsGoal": 0.3055555555555556,
+      "regex": 0.6649831649831649,
+      "words": 400.8888888888889
+    }
+  },
+  "answers": [
+    {
+      "id": "7406a33cea",
+      "case": "ai-roi-quantification-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 454,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It keeps troubleshooting in a table with the two positive use cases instead of showing it on its own, and it hedges with 'Stop or fix' rather than making a stop-or-fix call.",
+        "The troubleshooting loss is shown as one row in a table with the positive use cases, not on its own, and the slide still leads with the total."
+      ]
+    },
+    {
+      "id": "06188c277a",
+      "case": "ai-roi-quantification-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 419,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "The bolded headline gives a 700% ROI and says the case 'holds up' despite the unmeasured 8-minute input, instead of framing it as a labelled projection.",
+        "The bolded headline states a 700% ROI as the answer and says the case 'holds up', which is the ROI claim the goal rules out, and it rests on an unsupported judgment that a saving below 1 minute is 'unlikely'."
+      ]
+    },
+    {
+      "id": "d03fb652f0",
+      "case": "ai-roi-quantification-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8181818181818182,
+      "words": 1051,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The low-case net figures (+6k/+10k/+16k \u20ac) and the volume break-even counts don't match the stated inputs, and no interview template is proposed, only a list of questions.",
+        "The low-case net and volume break-even figures don't reconcile with the stated inputs, and no interview template for tracing the 45 minutes is proposed."
+      ]
+    },
+    {
+      "id": "74b4fc5ba8",
+      "case": "ai-roi-quantification-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 442,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "The troubleshooting case gets a deferred 'Fix or stop, with a threshold' rather than a firm stop-or-fix call, and the answer cites an unverifiable 'ROI method I'm following'.",
+        "The troubleshooting call stays a conditional 'Fix or stop, with a threshold' rather than a firm stop-or-fix decision, and the answer asserts an 'ROI method I'm following' that the user never mentioned."
+      ]
+    },
+    {
+      "id": "7d884c0da7",
+      "case": "ai-roi-quantification-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 342,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.6,
+        0.65
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It headlines an 840% ROI instead of a labelled projection, and never addresses the compliance and liability exposure of 14% wrong HR answers in a regulated company.",
+        "It leads with an 840% ROI headline instead of a labelled projection, and never addresses compliance or legal exposure from the 14% of HR answers that are wrong in a regulated company."
+      ]
+    },
+    {
+      "id": "141501582c",
+      "case": "ai-roi-quantification-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 428,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The troubleshooting call is hedged as 'Fix or stop, with a threshold' inside the table rather than giving a firm stop-or-fix decision on the negative use case by itself.",
+        "It shows troubleshooting as one row among three rather than on its own, and it hedges with 'Fix or stop' instead of making the stop-or-fix call the goal requires."
+      ]
+    },
+    {
+      "id": "817849c431",
+      "case": "ai-roi-quantification-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 417,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It leads with a bolded 'ROI is very high' and a 710% figure, which is the ROI claim the goal rules out, and its baseline plan is three loose bullets with no sequencing or owner.",
+        "It bolds a 710% ROI headline and calls ROI 'very high' despite the unmeasured baseline, instead of presenting a labelled projection with a baseline measurement plan."
+      ]
+    },
+    {
+      "id": "f9b377bc0d",
+      "case": "ai-roi-quantification-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 635,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.7,
+        0.8500000000000001
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It proposes no interview template to trace where the 45 minutes came from, and ignores the safety and compliance risk of wrong maintenance advice in a regulated setting.",
+        "It never proposes the interview template for tracing where the 45 minutes came from, offering only re-timing instead."
+      ]
+    },
+    {
+      "id": "b60b749442",
+      "case": "ai-roi-quantification-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 609,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It proposes a generic validation checklist instead of the required interview template for tracing where the 45 minutes came from.",
+        "It never proposes the interview template for finding where the 45 minutes came from, and it ignores adoption ramp and regulated-company audit needs."
+      ]
+    },
+    {
+      "id": "8551ef34e5",
+      "case": "ai-roi-quantification-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8,
+      "words": 708,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.65,
+        0.8500000000000001
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 4-minute sensitivity row is miscalculated (about 15,600 EUR, not 17,600), and the closing claim of an unopened file reference is unexplained.",
+        "The 4-minute sensitivity row is miscalculated (about 15,600 EUR, not 17,600), and the reference to failing to open files implies access the assistant never had."
+      ]
+    },
+    {
+      "id": "12b3464eb9",
+      "case": "ai-roi-quantification-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7777777777777778,
+      "words": 243,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It lists fix, restrict, or stop as options but never makes the stop-or-fix call on troubleshooting that the goal requires.",
+        "It lists fix, restrict, or stop for troubleshooting without making the stop-or-fix call the goal requires."
+      ]
+    },
+    {
+      "id": "13f9a2e987",
+      "case": "ai-roi-quantification-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 734,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.55,
+        0.7
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The sensitivity table and the 8.7\u00d7 multiple are miscalculated (the 50% quality case should be about 18,900 EUR, and break-even is about 5 EUR/h, not 7), yet they are presented as firm figures in a regulated-company pitch.",
+        "The sensitivity table has wrong figures (the 50% quality net and the 15 EUR/h net and break-even are miscalculated), and the 8.7\u00d7 cost multiple doesn't match the stated inputs."
+      ]
+    },
+    {
+      "id": "fc660c31ac",
+      "case": "ai-roi-quantification-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 1.0,
+      "words": 340,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It hedges across fix, restrict and switch-off instead of making one stop-or-fix call, and it recommends leading with the blended total rather than showing the negative use case on its own.",
+        "It lists fix, restrict and switch-off as options and never makes a stop-or-fix call on the troubleshooting use case."
+      ]
+    },
+    {
+      "id": "4f843f6235",
+      "case": "ai-roi-quantification-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8181818181818182,
+      "words": 1173,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.7,
+        0.8
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It says 'I've asked' the CFO and maintenance head and that it 'found no stop conditions' in a pitch or PRD, though no such exchange or document was provided.",
+        "It says 'I've asked' about the hidden costs and change cost, but no question was sent, so the sheet makes a false claim of action."
+      ]
+    },
+    {
+      "id": "385aed57f6",
+      "case": "ai-roi-quantification-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9090909090909091,
+      "words": 1279,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.95,
+        0.8
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 'sensitivity' table's L values are placeholders, and the break-even math mixes capacity and cash framings in a way that could still confuse a CFO.",
+        "The break-even and cash figures use only the 8,333 EUR/month change cost, while the sheet states total costs of 13,333 EUR/month and the cash net should be about -13,333, not -8,333."
+      ]
+    },
+    {
+      "id": "2c382b6bf9",
+      "case": "ai-roi-quantification-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 216,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.5,
+        0.65
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It leaves the stop-or-fix call as a menu of options and never addresses the regulatory exposure of presenting a selectively reported figure in a regulated company.",
+        "It lists stop and fix as options instead of making the stop-or-fix call on troubleshooting, and it never names the missing inputs (quality metrics, customer impact, cost of remediation)."
+      ]
+    },
+    {
+      "id": "7a0c0e0406",
+      "case": "ai-roi-quantification-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 664,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 2-minute sensitivity row reports ~10,300 EUR/month as net, but that figure is gross; net after run and change costs is about 5,200 EUR.",
+        "The 2-minute sensitivity case shows ~10,300 EUR/month net, but it should be ~5,200 once run and change costs are subtracted, and the closing mention of a 'roi-sheet.md' template implies access the answer never had."
+      ]
+    },
+    {
+      "id": "83e36d2348",
+      "case": "ai-roi-quantification-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6363636363636364,
+      "words": 387,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It flags the unsourced 45 minutes but never proposes the interview template the goal requires, and the promised sheet is not delivered.",
+        "It flags the unsourced 45 minutes but proposes no interview template for recovering where that figure came from, which the goal requires."
+      ]
+    }
+  ]
+}
