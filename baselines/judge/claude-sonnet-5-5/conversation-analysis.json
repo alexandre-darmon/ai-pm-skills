@@ -1,0 +1,719 @@
+{
+  "skill": "conversation-analysis",
+  "judgeModel": "claude-sonnet-5-5",
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.03055555555555555,
+  "costUsd": 0.6970775,
+  "arms": {
+    "template": {
+      "answers": 12,
+      "judge": 0.6979166666666666,
+      "meetsGoal": 0.5,
+      "regex": 0.796957671957672,
+      "words": 1250.75
+    },
+    "with": {
+      "answers": 12,
+      "judge": 0.7770833333333332,
+      "meetsGoal": 0.6875,
+      "regex": 0.9623015873015873,
+      "words": 662.25
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.625,
+      "meetsGoal": 0.2708333333333333,
+      "regex": 0.2136243386243386,
+      "words": 554.5
+    }
+  },
+  "answers": [
+    {
+      "id": "63eadd732b",
+      "case": "conversation-analysis-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 607,
+      "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It has the PM read and cluster the sample into failure modes itself and buries the handoff of masked cases to the eval set as step 4 after the fix, rather than making that the main action.",
+        "It treats the sample mainly as material for its own failure-mode clustering and diagnosis, with the eval hand-off tucked in as step 4, instead of centering it as candidate cases for the eval set, and it adds its own analysis work."
+      ]
+    },
+    {
+      "id": "788326280f",
+      "case": "conversation-analysis-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.42857142857142855,
+      "words": 544,
+      "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never delivers a frozen taxonomy with definitions, examples and counter-examples, and its suggested list has 13 labels, over the 8-12 target, while the pilot-then-revise plan conflicts with starting tomorrow.",
+        "The suggested list has 13 labels (it says 11), lacks the definitions, examples and counter-examples, doesn't cap Other firmly, and doesn't clearly freeze the taxonomy before labelling, while the pilot advice conflicts with the start tomorrow."
+      ]
+    },
+    {
+      "id": "84d6519851",
+      "case": "conversation-analysis-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 514,
+      "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It gives no concrete threshold or decision rule (e.g., target blended agreement or review-queue capacity), and the interim 'run frontier alone' advice plus the 40% illustration are somewhat arbitrary.",
+        "It recommends running the frontier alone as interim yet defers the actual decision and threshold, and the 40% routing figure is only illustrative, so no committed blended cost exists."
+      ]
+    },
+    {
+      "id": "5e1ce03654",
+      "case": "conversation-analysis-001",
+      "arm": "template",
+      "run": 1,
+      "regex": 0.5714285714285714,
+      "words": 1451,
+      "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It scatters the taxonomy fix among template sections (candidates, drift, schema) and leaves the 'Other' cap as a post-hoc 10% trigger; it merges Leave with balance but puts 'Absence' and policy questions in confusing buckets, and it does not clearly freeze the taxonomy before the 200-label run.",
+        "It pads the answer with template sections (classifier candidates, drift check, output schema) beyond the request, and the 9-value list leaves 'HR policy & other' as a merged catch-all with no counter-examples, so 'Other' is not truly capped."
+      ]
+    },
+    {
+      "id": "85d172abc2",
+      "case": "conversation-analysis-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 380,
+      "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It recommends the frontier model for everything and treats confidence-based routing only as an optional, untested cascade, with no threshold, human review path, per-dimension agreement, blended cost, or monthly re-measure on a fresh sample.",
+        "It recommends the frontier model outright and treats cascade routing as an optional afterthought, with no confidence threshold, no human review path for low-confidence cases, no per-dimension agreement, no blended cost, and no monthly re-measure on a fresh sample."
+      ]
+    },
+    {
+      "id": "b9c0883032",
+      "case": "conversation-analysis-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1070,
+      "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It drafts a seed taxonomy and classification plan from the raw samples before any masking is verified, so it does not truly block that work, and the 'Update personal or account details' example is a thin gate.",
+        "It says nothing runs before masking is verified, yet it drafts a seed taxonomy straight from the unmasked samples, and it leaves a dangling '[ref]' and internal skill names in the text."
+      ]
+    },
+    {
+      "id": "50a7992fc5",
+      "case": "conversation-analysis-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8571428571428571,
+      "words": 482,
+      "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
+      "scores": [
+        0.8999999999999999,
+        0.8500000000000001
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It does not actually deliver a final 8-12 list with definitions and examples, and its proposal of merging into a draft list plus 50-conversation reading before tomorrow is vague on timing, with 'Other' cap and two-labeller overlap set but no agreement metric (e.g. kappa) or threshold to act on.",
+        "It proposes a draft list of 10 classes but leaves definitions, examples and counter-examples unwritten, and its separation rules for the overlapping classes are thin; the 'Other' cap and overlap sample size are set without justification, and it doesn't clearly settle whether tomorrow's start should slip."
+      ]
+    },
+    {
+      "id": "252ab5b361",
+      "case": "conversation-analysis-002",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.8333333333333334,
+      "words": 979,
+      "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
+      "scores": [
+        0.65,
+        0.7
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It defaults to frontier-on-everything and leaves the cascade as an untested illustration with an invented 60% retention, with no concrete threshold or human-review routing for low-confidence cases, and the template padding dilutes the decision.",
+        "It recommends frontier-on-everything as the default and leaves the cascade as an unmeasured illustration (60% is invented), with template placeholders instead of a decided threshold and review routing."
+      ]
+    },
+    {
+      "id": "5365277bfa",
+      "case": "conversation-analysis-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 491,
+      "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It recommends frontier-only now and defers routing as optional, rather than committing to the confidence-routed design with a threshold and a monthly fresh-sample re-measure as the core plan; the 60% retention figure is an illustration, and the re-measure sample of 50\u2013100 is small.",
+        "It recommends the frontier model now and defers routing, treating the routed setup as a later option rather than the decision, and the 60% illustrative figure is unsupported and the human-review path is not costed."
+      ]
+    },
+    {
+      "id": "fea74b3c86",
+      "case": "conversation-analysis-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.0,
+      "words": 447,
+      "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never frames the pulled masked sample of unresolved VPN conversations as candidate cases for the eval set; it uses the sample for the team's own diagnosis and also proposes relabeling checks.",
+        "It never proposes turning a masked sample of unresolved VPN conversations into candidate eval-set cases; it has the team read them for diagnosis and re-check labels instead."
+      ]
+    },
+    {
+      "id": "a184e4ad3c",
+      "case": "conversation-analysis-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1166,
+      "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It says no further work starts until the 100-conversation masking check passes, yet it still hands over a full taxonomy v0 and classification plan straight away, so the block on taxonomy work is not applied.",
+        "It says no work starts until masking passes, yet it still drafts the taxonomy v0 right away and never sets a pass threshold (e.g. maximum residual leak rate) for the 100-conversation check."
+      ]
+    },
+    {
+      "id": "61f00472f4",
+      "case": "conversation-analysis-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.42857142857142855,
+      "words": 450,
+      "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never produces a revised 8-12 use-case list with definitions, examples and counter-examples, nor an explicit cap on 'Other' and taxonomy freeze, leaving the PM to do that before tomorrow.",
+        "It doesn't deliver a concrete revised list of 8-12 use cases with definitions, examples and counter-examples, nor an explicit cap on 'Other' or a freeze of the taxonomy before labelling, leaving the PM to do the main work before tomorrow."
+      ]
+    },
+    {
+      "id": "c51d68fce0",
+      "case": "conversation-analysis-005",
+      "arm": "template",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1104,
+      "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Much of the answer is a generic classification-plan template with placeholders that redoes work already done, burying the VPN finding and eval handoff; also the 'at least 46% of unresolved' math is slightly off and it prescribes its own sub-clustering of the sample.",
+        "Most of the answer is an irrelevant classification-plan template (masking, classifier candidates, drift checks) that redoes work already done, and it goes beyond handing over the sample by prescribing diagnosis, sub-clustering and targets."
+      ]
+    },
+    {
+      "id": "ef192ae601",
+      "case": "conversation-analysis-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 532,
+      "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It treats the masked VPN sample mainly as material for the team to read and cluster, with the eval-set handoff as one bullet among many (plus a target and a cost line), so the core move of pulling the sample and passing it on as candidate eval cases is diluted and partly displaced by its own diagnosis and by an invented 46%\u219225% target.",
+        "It hands the masked sample to the eval set but also asks the PM to read and cluster it into sub-causes and sets a 25% target, drifting from simply passing candidate cases on, and it suggests re-labeling and checking against ground truth."
+      ]
+    },
+    {
+      "id": "6649d44a65",
+      "case": "conversation-analysis-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 511,
+      "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It states a 35\u201340% share of unresolved conversations based on assumed 10\u201315% rates for other use cases, and it buries the hand-off of the masked sample as eval candidates in a long list of other recommendations.",
+        "It estimates VPN's share of unresolved at 35\u201340% with an assumed 10\u201315% rate for others, and pads the answer with cost, targets (46% to 25%) and drift checks beyond the core move of handing a masked sample over as eval candidates."
+      ]
+    },
+    {
+      "id": "0952fb773b",
+      "case": "conversation-analysis-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.4444444444444444,
+      "words": 778,
+      "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
+      "scores": [
+        0.6,
+        0.55
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.125,
+      "weakest": [
+        "It drafts the taxonomy and classification plan immediately from the raw samples instead of blocking until masking with typed placeholders is done and checked on a sample, and it puts redaction as step 1 of the plan without a verification gate.",
+        "It drafts the taxonomy straight away instead of blocking until PII is masked and the masking is checked on a sample, and it repeats customer surnames (Moreau, Petit, Lefebvre) in the answer."
+      ]
+    },
+    {
+      "id": "477cfbd0df",
+      "case": "conversation-analysis-003",
+      "arm": "template",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1703,
+      "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
+      "scores": [
+        0.65,
+        0.75
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It drafts the full taxonomy and classification plan instead of blocking until masking is done and verified on a sample, and it echoes 'Lyon', the 12 EUR fee and card details from the samples while still producing the taxonomy before any masking check.",
+        "It says masking blocks every later step, yet it still delivers a full draft taxonomy and resolution labels from the unmasked samples instead of holding that work until a masked sample has been checked."
+      ]
+    },
+    {
+      "id": "a82d139733",
+      "case": "conversation-analysis-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8571428571428571,
+      "words": 509,
+      "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It gives class names but not the actual definitions, examples and counter-examples, and it leaves the 'other' cap and the two-labeller overlap (50 items, no agreement metric or threshold) loosely specified, while asking for a pre-read of 50 conversations that conflicts with starting tomorrow.",
+        "It does not actually supply definitions, examples and counter-examples for the proposed classes (only offers them at the end), and the 'Other' cap and the first-request rule are stated loosely, so labellers still lack written rules tomorrow."
+      ]
+    },
+    {
+      "id": "b00c659088",
+      "case": "conversation-analysis-002",
+      "arm": "template",
+      "run": 2,
+      "regex": 0.8333333333333334,
+      "words": 1004,
+      "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
+      "scores": [
+        0.6,
+        0.65
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Heavy template scaffolding (masking, taxonomy, schema) is largely irrelevant to the decision and pads the answer, while the threshold, escalated share and blended cost stay as placeholders, with no concrete step like tuning the threshold on the 200 labels now.",
+        "It leaves the threshold, blended cost and per-dimension agreement as placeholders and pads the answer with generic template sections (taxonomy, schema, unresolved clusters) instead of giving a clear decision and a concrete illustrative routing and re-measure plan."
+      ]
+    },
+    {
+      "id": "fb90db35cf",
+      "case": "conversation-analysis-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 483,
+      "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
+      "scores": [
+        0.6,
+        0.55
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.125,
+      "weakest": [
+        "It never proposes pulling a masked sample of unresolved VPN conversations as candidate cases for the eval set; instead it has the team re-tag failure modes itself and pivots to a fix/A-B test.",
+        "It never frames the pull of a masked sample of unresolved VPN conversations as candidate cases for the eval set; instead it has the team read and tag failure modes themselves and jumps to A/B-testing interventions."
+      ]
+    },
+    {
+      "id": "f993dab9cc",
+      "case": "conversation-analysis-005",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.0,
+      "words": 892,
+      "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
+      "scores": [
+        0.7,
+        0.6
+      ],
+      "judge": 0.6499999999999999,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It buries the core move (pull a masked VPN sample and hand it to the eval set) in a bloated classification-plan template, and it adds its own failure-reason tagging and taxonomy split, which redoes analysis instead of just handing over candidate cases.",
+        "It does the grading itself (failure-reason tagging, splitting the taxonomy, a 'no change' classifier plan) instead of simply handing a masked sample of the unresolved VPN conversations to the eval set as candidate cases."
+      ]
+    },
+    {
+      "id": "012581173d",
+      "case": "conversation-analysis-005",
+      "arm": "template",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1055,
+      "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
+      "scores": [
+        0.6,
+        0.55
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It redoes classification (sub-cause taxonomy, hand-labelling 150-200, reclassifying, new schema and drift check) instead of simply pulling a masked sample of unresolved VPN conversations and handing them over as eval candidates, and it also drifts into diagnosing causes.",
+        "It buries the key move (hand a masked sample of unresolved VPN conversations to the eval set) inside a bloated classification template that redoes the taxonomy, sub-cause labelling and drift checks, instead of simply treating the finding as eval candidates."
+      ]
+    },
+    {
+      "id": "fbad431c05",
+      "case": "conversation-analysis-003",
+      "arm": "template",
+      "run": 1,
+      "regex": 0.7777777777777778,
+      "words": 1495,
+      "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It repeats the names Camille Moreau, Julien Petit, Sophie Lefebvre and the id CLI-482913 in its masking table and then drafts the taxonomy anyway, instead of blocking until masking is done and checked on a sample.",
+        "It repeats the three customers' names and the customer id CLI-482913 in its own answer, and it drafts a taxonomy and classification plan instead of blocking that work until masking has been done and checked on a sample."
+      ]
+    },
+    {
+      "id": "71f343cbd7",
+      "case": "conversation-analysis-001",
+      "arm": "template",
+      "run": 2,
+      "regex": 0.8571428571428571,
+      "words": 1561,
+      "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It pads the answer with irrelevant template sections (classifier candidates, drift, schema) and an unrequested masking blocker, while the 10-value list still has overlaps like IT access/onboarding and a 'Payslip' counter-example that points back to its own class.",
+        "It pads the answer with irrelevant template sections (classifier candidates, drift checks, output schema, empty tables) and is inconsistent about freezing the taxonomy: it says to freeze after a 30-conversation pilot, which sits oddly with 'tomorrow', and the 'Other' cap is split across two catch-alls."
+      ]
+    },
+    {
+      "id": "913b944bff",
+      "case": "conversation-analysis-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.42857142857142855,
+      "words": 517,
+      "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The proposed list has only 10 labels without definitions, examples, counter-examples or a cap on 'other', and it never explicitly says to freeze the taxonomy before labelling, instead suggesting adjusting after the pilot.",
+        "It never fixes the list to 8-12 use cases with definitions, examples and counter-examples, nor does it cap \"Other\" or clearly freeze the taxonomy before labelling; it only suggests a draft list, offers to write definitions later, and leaves the pilot as an iterative process."
+      ]
+    },
+    {
+      "id": "f3501673fb",
+      "case": "conversation-analysis-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.0,
+      "words": 365,
+      "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
+      "scores": [
+        0.6,
+        0.55
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It recommends the frontier model outright and only treats confidence routing as an optional later test, with no threshold, no human review path for low-confidence cases, no per-dimension agreement (use case vs resolution), and no monthly re-measure on a fresh sample.",
+        "It recommends the frontier model outright and treats the confidence-based cascade as an optional later test, with no confidence threshold, no per-dimension agreement for use case versus resolution, no human review path for low-confidence cases, and no monthly re-measure on a fresh sample."
+      ]
+    },
+    {
+      "id": "ef35f823ee",
+      "case": "conversation-analysis-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5555555555555556,
+      "words": 945,
+      "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
+      "scores": [
+        0.5,
+        0.55
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It drafts the taxonomy straight from the raw transcripts instead of blocking until PII is masked with typed placeholders and the masking is checked on a sample; masking is only a step in the plan, with no verification step.",
+        "It drafts the taxonomy straight from the raw conversations and treats PII masking as a Step 0 note, so nothing is blocked until masking is done and checked on a sample."
+      ]
+    },
+    {
+      "id": "cf3b18cf44",
+      "case": "conversation-analysis-002",
+      "arm": "template",
+      "run": 1,
+      "regex": 0.8333333333333334,
+      "words": 897,
+      "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
+      "scores": [
+        0.6,
+        0.65
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It recommends frontier-only and defers the confidence-based cascade (routing, human review of low-confidence cases, blended cost) instead of designing it, and it lacks per-dimension agreement.",
+        "It defaults to frontier-on-everything and defers the confidence-based routing, blended cost, and review queue for low-confidence cases, so the core goal is mostly unmet."
+      ]
+    },
+    {
+      "id": "e04be9a2e3",
+      "case": "conversation-analysis-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.16666666666666666,
+      "words": 397,
+      "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It recommends the frontier model outright and mentions confidence routing only as an optional middle path, with no threshold, no human review for low-confidence cases, no blended cost, and no monthly re-measure on a fresh sample.",
+        "It recommends the frontier model outright and mentions confidence routing only as an afterthought, with no threshold, no human review queue for low-confidence cases, no per-dimension agreement target, no blended cost, and no monthly re-measure on a fresh sample."
+      ]
+    },
+    {
+      "id": "9aef5e4c4a",
+      "case": "conversation-analysis-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8333333333333334,
+      "words": 507,
+      "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It routes only to the frontier model with an illustrative unmeasured 60% share, never sets a threshold or sends low-confidence cases to human review, and it doesn't plan the re-measure around the routing.",
+        "The routing is only sketched with an illustrative 60% share and no concrete confidence threshold, no explicit human-review path for low-confidence cases, and a stray formatting break; the blended cost is hypothetical rather than computed."
+      ]
+    },
+    {
+      "id": "110d2978c4",
+      "case": "conversation-analysis-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 972,
+      "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It does not mask the three samples itself with typed placeholders, and it still drafts a seed taxonomy and a full classification method before the masking check has passed, so it doesn't truly block the work.",
+        "It says nothing starts until masking passes, yet it still drafts a seed taxonomy and classification method straight away instead of blocking that work."
+      ]
+    },
+    {
+      "id": "0eccdcc542",
+      "case": "conversation-analysis-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.1111111111111111,
+      "words": 874,
+      "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
+      "scores": [
+        0.5,
+        0.44999999999999996
+      ],
+      "judge": 0.475,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It drafts the taxonomy and classification plan first and puts masking later, so nothing is blocked until PII is masked and a sample is checked; it also repeats names (Camille, Julien, Sophie) from the data.",
+        "It drafts the taxonomy and the classification plan before any masking, repeats customer first names (Camille, Julien, Sophie) in the answer, and never requires a checked sample of the masked output."
+      ]
+    },
+    {
+      "id": "ba76bcfe8b",
+      "case": "conversation-analysis-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 586,
+      "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It doesn't give written definitions, examples and counter-examples for even the proposed merged classes, and its 10% 'Other' cap and 'first request' rule are asserted without justification, while it defers freezing the taxonomy rather than delivering a usable list before tomorrow.",
+        "It proposes a draft list but does not give actual definitions, examples and counter-examples for the merged classes, and the 'Other' cap and the two-labeller overlap (50 of 200) are stated loosely, with the freeze step coming after a long discovery process rather than a clear decision for tomorrow."
+      ]
+    },
+    {
+      "id": "e29c1a8afb",
+      "case": "conversation-analysis-001",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.8571428571428571,
+      "words": 1357,
+      "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Much of the answer is generic template scaffolding (classifier candidates, cost, drift, schema, unresolved clusters) irrelevant to a pre-labelling list check, while the 'label the first request' rule and the 10% Other cap are asserted without justification and the pilot-first recommendation arguably delays tomorrow's start without a fallback.",
+        "It pads the answer with a template-like classifier, cost and drift scaffolding that the PM didn't ask for, and it leaves the taxonomy as a draft with an open sensitive-case label and pilot rather than clearly deciding what to freeze before tomorrow."
+      ]
+    },
+    {
+      "id": "9a3ccb5727",
+      "case": "conversation-analysis-003",
+      "arm": "template",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1511,
+      "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It says masking blocks every later step and marks the check as 'not started', yet it still delivers the full taxonomy, annotation and classifier plan instead of holding them until the masked sample is verified.",
+        "It says masking blocks everything and the sample check is 'not started', yet it still delivers the full taxonomy and classification plan. It also repeats the quasi-identifier 'ATM in Lyon' in the masking table."
+      ]
+    },
+    {
+      "id": "a3c2d016b4",
+      "case": "conversation-analysis-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.0,
+      "words": 474,
+      "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
+      "scores": [
+        0.6,
+        0.7
+      ],
+      "judge": 0.6499999999999999,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never proposes pulling a masked sample of the VPN-unresolved conversations and handing them over as candidate eval-set cases; instead it has annotators re-label sub-use-cases and proposes a pilot with an invented 30% target.",
+        "It never proposes pulling a masked sample of the unresolved VPN conversations and handing them over as candidate cases for the eval set; it asks annotators to re-label them into sub-use-cases instead."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,548 @@
+{
+  "skill": "llm-feature-prd",
+  "judgeModel": "claude-sonnet-5-5",
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.03333333333333333,
+  "costUsd": 0.7291255,
+  "arms": {
+    "template": {
+      "answers": 9,
+      "judge": 0.7527777777777778,
+      "meetsGoal": 0.4305555555555556,
+      "regex": 0.7638888888888888,
+      "words": 2290.222222222222
+    },
+    "with": {
+      "answers": 9,
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.8333333333333334,
+      "regex": 1.0,
+      "words": 1782.6666666666667
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7388888888888889,
+      "meetsGoal": 0.2916666666666667,
+      "regex": 0.2916666666666667,
+      "words": 1468.7777777777778
+    }
+  },
+  "answers": [
+    {
+      "id": "3b925826b5",
+      "case": "llm-feature-prd-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.375,
+      "words": 1233,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never frames the rollout as human validation of every refund (L2) with a formal gate to autonomy (L3): the agent goes live on 10% of traffic issuing refunds directly under 100 EUR, with no per-refund human approval and no explicit promotion gate or approval tiers.",
+        "It does not start with human validation of every refund (L2) and a formal gate to L3; instead it lets the agent issue refunds autonomously under 100 EUR on 10% of traffic in sprint 2, with only a shadow period beforehand and no explicit L2-to-L3 gate criteria."
+      ]
+    },
+    {
+      "id": "d0938c4229",
+      "case": "llm-feature-prd-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 2495,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It launches refunds at L1 under a ladder rule it asserts (4 weeks at L1 before L2) instead of the requested L2 start with human validation of every refund, and it sets L4 as the long-term target when the goal stops at L3 behind a gate.",
+        "The goal asks for refunds to start at L2 with human validation, but the PRD launches at L1 and defers L2 by 4 weeks, with L2 becoming a later gate; the same-day target rests on an untested hypothesis, and the answer wrongly says it will write the file later."
+      ]
+    },
+    {
+      "id": "c46c5e0dff",
+      "case": "llm-feature-prd-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.25,
+      "words": 1567,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It does not make human validation of every refund (L2) the starting mode with a formal gate to L3; it goes to autonomous live execution on a slice (10% traffic, 50 EUR ceiling) after shadow mode, with approvals only for escalations.",
+        "It does not make human validation of every refund (L2) the launch mode with an explicit gated move to L3; instead it goes live with autonomous auto-approval on a low-risk slice at 10% of traffic after only shadow mode, so the L2-to-L3 gate is not defined."
+      ]
+    },
+    {
+      "id": "3975f3065e",
+      "case": "llm-feature-prd-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2392,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        1.0,
+        0.8500000000000001
+      ],
+      "judge": 0.925,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Many thresholds (2% unsupported, 95% coverage, 200 threads, 1,000 claims) are proposed without justification or power analysis, and the 16-minute canary gate sits loosely against the 14-minute target.",
+        "Many thresholds (2% unsupported, 95% coverage, 200 threads, 1,000 claims, \u226416 min gate) are proposed without justification, and the stop-condition and 'drop bullets without source link' mechanics are only loosely tied to the evidence needed to set them."
+      ]
+    },
+    {
+      "id": "95e7fc01df",
+      "case": "llm-feature-prd-001",
+      "arm": "template",
+      "run": 2,
+      "regex": 1.0,
+      "words": 2301,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The eval plan explicitly rejects full reference summaries in favour of fact checklists, which departs from the requested reference-summary-based evaluation.",
+        "The goal required reference summaries with a rubric, but the eval plan explicitly rejects full reference summaries in favor of fact checklists, and the autonomy levels are only a thin three-row table with a feedback step padded in."
+      ]
+    },
+    {
+      "id": "69ccc00ee7",
+      "case": "llm-feature-prd-003",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.375,
+      "words": 1786,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It writes the full PRD despite the pressure instead of pushing back, and it adopts the unanchored 30% claim as the outcome metric target rather than rejecting the usage metric and requiring a baseline-anchored outcome metric before the committee.",
+        "It wrote the full PRD anyway despite the goal of refusing, kept the 2,000-questions usage target in the KPIs, and adopted the 30% as the outcome target instead of rejecting the usage metric and flagging 30% as unanchored up front."
+      ]
+    },
+    {
+      "id": "8812f979d5",
+      "case": "llm-feature-prd-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 438,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It offers no concrete proposed outcome metric with numbers or a committee-ready fallback beyond a one-page framing, and cites 'the method I'm following' vaguely while the AI Act and personal-data risks are mentioned only briefly.",
+        "It ends by asking 'Which do you want?' and offers no concrete proposed outcome metric with a number, and it gives the committee only a loose fallback (a 1-page framing) instead of a firm recommendation for tomorrow."
+      ]
+    },
+    {
+      "id": "04057c5551",
+      "case": "llm-feature-prd-003",
+      "arm": "template",
+      "run": 1,
+      "regex": 0.375,
+      "words": 2338,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.6,
+        0.55
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It wrote the full PRD despite the 'no questions' pressure and kept the usage metric as a KPI, instead of rejecting it and demanding an outcome metric, and it adopted the sponsor's 30% as the target rather than refusing it as unanchored.",
+        "It writes the full PRD despite the pressure and keeps the 30% reduction as the target outcome metric and the 2,000 usage metric as a KPI target, instead of refusing to write it and rejecting the usage metric."
+      ]
+    },
+    {
+      "id": "8845bb25f2",
+      "case": "llm-feature-prd-001",
+      "arm": "template",
+      "run": 1,
+      "regex": 0.875,
+      "words": 2231,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The eval plan has no per-step levels or reference outputs for the cleaning and source-link steps, and the thresholds (1% invented facts, 85% judge agreement, 300 threads) are asserted without justification or statistical basis; a 'see ai-data-requirements' reference is a dangling pointer.",
+        "The eval plan gives thresholds but no per-step eval (levels and failure paths are not tied to eval cases), and the invented numbers (300 threads, 85% agreement, 1.5 min saved) are asserted without rationale or sample-size justification."
+      ]
+    },
+    {
+      "id": "78af0a92a5",
+      "case": "llm-feature-prd-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.375,
+      "words": 1133,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It makes the agent autonomously issue refunds from day one (after shadow mode) instead of starting with human validation of every refund (L2) and moving to L3 through a defined gate, and the amount ceiling is left as an optional '\u20acX' rather than a decided cap with approval tiers.",
+        "It launches autonomous refunds (L3-like) with staged traffic ramp instead of starting with human validation of every refund (L2) and moving to L3 only through a formal gate, and the amount ceiling is left as an optional TBD."
+      ]
+    },
+    {
+      "id": "d634f078d6",
+      "case": "llm-feature-prd-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2375,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "The goal says refunds start at L2 (human validates each refund), yet the answer launches at L1 and defers L2 to week 8; it also has inconsistencies such as the 4-week L1 gate versus a canary and a 'sample of 300' confidence claim, and it leaves the sponsor question open.",
+        "The goal was to start at L2 (human validates every refund) and reach L3 through a gate, but the PRD launches at L1 and defers L2 to about week 8, and its claim that the L2 gate requires 4 weeks of L1 is asserted rather than justified."
+      ]
+    },
+    {
+      "id": "a12637472f",
+      "case": "llm-feature-prd-001",
+      "arm": "template",
+      "run": 3,
+      "regex": 0.875,
+      "words": 2404,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "Autonomy levels are thin and partly muddled (all steps L2 with weak 'why not L+1' reasoning, and the 'Why not L+1' for summary conflates reversibility with level), plus the canary of 15 handlers over 4 weeks is likely underpowered to prove the 18\u219214 minute effect and the 16-minute interim target is invented without basis.",
+        "The 14-minute target is not tied to evidence: the share of the 18 minutes spent reading threads is left as an open question, and the 4-week, 15-handler canary may be too small to detect a handling-time change, so the main success metric may go unproven."
+      ]
+    },
+    {
+      "id": "75ae40d3f2",
+      "case": "llm-feature-prd-003",
+      "arm": "template",
+      "run": 2,
+      "regex": 0.375,
+      "words": 2744,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It wrote the full PRD despite the 'no questions' pressure instead of declining, and while it flags the 30% as lacking a baseline and calls the 2,000 figure a usage KPI, it still keeps both as targets rather than rejecting the usage metric and requiring an outcome metric before drafting.",
+        "It wrote the full PRD despite the 'no questions' pressure, and kept the 2,000 usage KPI and the 30% target as KPIs instead of rejecting the usage metric and refusing to anchor the 30% claim."
+      ]
+    },
+    {
+      "id": "821fd85842",
+      "case": "llm-feature-prd-002",
+      "arm": "template",
+      "run": 2,
+      "regex": 1.0,
+      "words": 2155,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It targets L3 for low-risk refunds at GA and treats the L2 start as a shadow/canary slice, rather than making human validation of every refund the firm default with L3 reached only via an explicit gate, and the 'refund cannot be pulled back' reasoning is loosely stated.",
+        "The goal requires L2 human validation of every refund at the start, but the plan makes low-risk refunds L3 at GA with only canary L2 on a 10% slice, and sets the L3 gate at 0.5% error on 1,000 cases. That is a loose gate, and the 10% L2 canary leaves L3 reachable inside the two-sprint window."
+      ]
+    },
+    {
+      "id": "9b5be09df6",
+      "case": "llm-feature-prd-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.125,
+      "words": 1500,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The PRD lacks the requested eval plan: no reference summaries, no grading rubric, and no per-step levels or failure paths, only a vague labelled-set spike and an offer to write the eval plan later.",
+        "The goal required an eval plan built on reference summaries and a grading rubric with a level per step and failure paths, but the PRD only gestures at a labelled set and an accuracy threshold, with no rubric, no reference-summary method, no staged eval levels, and no failure-path handling (it just offers to write an eval plan later)."
+      ]
+    },
+    {
+      "id": "be0c3491fc",
+      "case": "llm-feature-prd-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2474,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "The L2 gate says 4 weeks at L1 yet L1 only goes live at end of sprint 2 and the plan mixes shadow/canary timing, and the 300-audit sample size is not reconciled with realistic audit volume at L1; also 'L1' for refund issuance is blurred since a human acts, making the same-day claim weakly supported.",
+        "The PRD launches the refund step at L1 rather than the L2 the goal specifies (human validation of every refund), so refunds are not validated at L2 within the two sprints, and an invented 4-week L1 gate delays the user's requirement without justification."
+      ]
+    },
+    {
+      "id": "77ec4931c4",
+      "case": "llm-feature-prd-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.375,
+      "words": 1773,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The eval plan is a thin four-step outline with no reference summaries per se, no concrete rubric scoring scale, no level per step and no failure paths, so it misses the stated goal; the model pricing table is also presented as cached-but-unverified figures.",
+        "The eval plan is thin and doesn't deliver the requested goal: no reference summaries, no concrete graded rubric with scoring levels, and no per-step levels or failure paths for the evaluation. The cost table also presents unverified model names and prices as if they were known."
+      ]
+    },
+    {
+      "id": "28119a297c",
+      "case": "llm-feature-prd-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2292,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Internal inconsistencies: the 'Problem' calls reading 'a large part' of the 18 min while admitting no time study, the ROI text says 'the 4 minutes attributable to reading' as if known, and the canary/L1 gating and the 1.5 min stop versus 15.5 min go thresholds are muddled and leave an ambiguous gap.",
+        "It refers to unexplained '[ref]' autonomy levels and internal skill names, and contains small inconsistencies (the 'share of the 4 minutes' wording, the 1.5 min stop threshold vs the 15.5 min pass threshold, and a shadow run listed as a gate for L3 when it also precedes canary), while it never checks whether 4 minutes of savings is plausible from reading time alone."
+      ]
+    },
+    {
+      "id": "792b39ae30",
+      "case": "llm-feature-prd-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.25,
+      "words": 1224,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The eval plan does not use reference summaries with a graded rubric (levels per step, failure paths); it only has handler notes and a three-item rubric without scoring levels or per-step failure handling.",
+        "The eval plan does not use reference summaries with a scored grading rubric (no score levels per criterion), and it has no per-step levels or defined failure paths, so it misses the stated goal."
+      ]
+    },
+    {
+      "id": "ca80f7240b",
+      "case": "llm-feature-prd-002",
+      "arm": "template",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2182,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.7,
+        0.8
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "The brief asks for L2 human validation of every refund at launch, but the PRD jumps straight to L3 canary with 100% audit only after the refund is issued, and it sets L4 for eligibility and order lookup, so no human approves money before it goes out.",
+        "No live L2 phase exists where a human approves each refund before money moves: the shadow stage issues no refunds and the canary jumps straight to L3 with after-the-fact audit, so the stated goal is only partly met."
+      ]
+    },
+    {
+      "id": "c2a5892b10",
+      "case": "llm-feature-prd-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 531,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.7,
+        0.8
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It leans on an unexplained 'PRD method I'm following' and offers little concrete risk content (wrong answers, outdated policies, personal data) beyond listing questions, leaving the PM with little to bring to tomorrow's committee beyond an offer.",
+        "Risk awareness is thin: it mentions wrong answers and personal data only briefly in the table and offers no concrete mitigations (e.g., accuracy guardrails, escalation to HR, outdated policy handling) for tomorrow's committee."
+      ]
+    },
+    {
+      "id": "ac226fc238",
+      "case": "llm-feature-prd-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.25,
+      "words": 1717,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It wrote the full PRD despite the 'no questions' pressure and kept the usage metric (2,000 questions/month) as the target, calling it 'reasonable' and adding outcome metrics only as TBD companions rather than rejecting it and demanding an outcome metric.",
+        "It wrote the full PRD under pressure and kept 2,000 questions/month as the stated target (even calling it reasonable) instead of rejecting the usage metric and requiring an outcome metric before proceeding."
+      ]
+    },
+    {
+      "id": "82cf5d4277",
+      "case": "llm-feature-prd-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 538,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It offers little concrete help for tomorrow's committee beyond a framing page, and it does not propose a concrete outcome metric with a target or say how to present the 30% claim to the committee.",
+        "It gives the committee little beyond a framing page and open questions, and offers no concrete draft outcome metric or target for the PM to propose tomorrow."
+      ]
+    },
+    {
+      "id": "43e29fb47b",
+      "case": "llm-feature-prd-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.375,
+      "words": 1582,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It writes the full PRD despite the pressure and keeps the 2,000 questions/month usage metric as the committed target instead of rejecting it and requiring an outcome metric, only caveating it and flagging the 30% claim as a hypothesis.",
+        "It wrote the full PRD despite the pressure and kept the 2,000 questions/month usage metric as the committed target, only caveating it instead of rejecting it and requiring an outcome metric."
+      ]
+    },
+    {
+      "id": "00af1c92d8",
+      "case": "llm-feature-prd-002",
+      "arm": "template",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2471,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.7,
+        0.8
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "The goal is L2 human validation of every refund, moving to L3 only through a gate, but the PRD takes the refund step to L4 (no human click) in sprint 2 on a canary, skipping L3 and a post-hoc audit, and the 300-zero-error gate is too weak to justify that.",
+        "The goal requires refunds to start at L2 with human validation of every refund and move to L3 only through a gate, but the PRD jumps to L4 (no human click) for refunds in sprint 2 and uses a different level scheme, skipping an L3 stage and with a canary that is statistically thin to prove under 1% error."
+      ]
+    },
+    {
+      "id": "7aef700c29",
+      "case": "llm-feature-prd-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.25,
+      "words": 1490,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It wrote the full PRD under pressure and kept the 2,000-questions usage metric as the stated target instead of refusing it and requiring an outcome metric, only flagging the 30% claim and suggesting extra metrics.",
+        "It wrote the full PRD anyway and kept the 2,000-questions usage metric as the stated success metric, only suggesting an outcome metric rather than requiring one or rejecting the usage metric."
+      ]
+    },
+    {
+      "id": "446a2f00a1",
+      "case": "llm-feature-prd-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 2509,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Autonomy levels are given only for the summary step with a placeholder [ref] and no per-step levels for the cached update or the checks, and the eval plan lacks reference summaries tied to each step plus a concrete rubric scale, with 'Copy it from here' trailing text left in.",
+        "The eval plan has reference summaries and a rubric, but it never defines scoring scales or per-step eval levels, and it leaves out how the judge and human agreement is thresholded, with a stray '[ref]' placeholder and a trailing chat-style line left in the document."
+      ]
+    }
+  ]
+}
