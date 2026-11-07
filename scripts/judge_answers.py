@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Blind LLM judge on saved eval answers (docs/evaluation.md): information only, it never changes a pass.
 
-Usage: python3 scripts/judge_answers.py [--passes N] [--limit N] <folder> [<folder> ...]
+Usage: python3 scripts/judge_answers.py [--model ID] [--passes N] [--limit N] <folder> [<folder> ...]
 
 Scores the answers saved by run_evals.py and template_arm.py on a generic rubric, without
 telling the judge which arm wrote them. Runs on the Claude account, never on an API key.
-Writes baselines/judge/<skill>.json, with per-answer scores and regex disagreements.
+Writes baselines/judge/<model>/<skill>.json, with per-answer scores and regex scores.
 """
 import argparse
 import hashlib
@@ -70,9 +70,9 @@ def overall(scores: dict) -> float:
     return (mean([scores[c] for c in CRITERIA]) - 1) / 4
 
 
-def call_judge(prompt: str) -> dict:
+def call_judge(prompt: str, model: str = JUDGE_MODEL) -> dict:
     env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
-    cmd = ["claude", "-p", "--model", JUDGE_MODEL, "--tools", "", "--disable-slash-commands", "--strict-mcp-config",
+    cmd = ["claude", "-p", "--model", model, "--tools", "", "--disable-slash-commands", "--strict-mcp-config",
            "--setting-sources", "", "--no-session-persistence", "--output-format", "json", "--system-prompt", SYSTEM]
     with tempfile.TemporaryDirectory() as cwd:  # empty folder: no CLAUDE.md, no skill, no repo context
         done = subprocess.run(cmd, input=prompt, capture_output=True, text=True, cwd=cwd, env=env, timeout=300)
@@ -115,12 +115,13 @@ def summarise(items: list[dict]) -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("folders", nargs="+", type=Path)
+    ap.add_argument("--model", default=JUDGE_MODEL)
     ap.add_argument("--passes", type=int, default=2, help="judge each answer this many times, to measure its noise")
     ap.add_argument("--limit", type=int, help="only the first N answers per skill, to try it out")
     ap.add_argument("-j", type=int, default=4)
     args = ap.parse_args()
-    dest = ROOT / "baselines" / "judge"
-    dest.mkdir(exist_ok=True)
+    dest = ROOT / "baselines" / "judge" / args.model
+    dest.mkdir(parents=True, exist_ok=True)
     for folder in args.folders:
         folder, skill = folder.resolve(), folder.resolve().name
         items = collect(folder, ROOT / "eval-out" / "answers" / skill)
@@ -134,7 +135,7 @@ def main() -> int:
         def run(job):
             item, _ = job
             try:
-                return item["id"], call_judge(PROMPT.format(goal=item["goal"], request=item["request"], answer=item["answer"]))
+                return item["id"], call_judge(PROMPT.format(goal=item["goal"], request=item["request"], answer=item["answer"]), args.model)
             except Exception as e:  # one bad reply must not lose the batch; the count is reported
                 return item["id"], {"error": str(e)[:200]}
 
@@ -152,7 +153,7 @@ def main() -> int:
             item["weakest"] = [r["weakest_point"] for r in good]
             del item["answer"], item["request"]
         pairs = [abs(i["scores"][0] - i["scores"][1]) for i in items if len(i["scores"]) >= 2]
-        out = {"skill": skill, "judgeModel": JUDGE_MODEL, "calibrated": False, "passes": args.passes, "errors": len(errors), "firstError": errors[0] if errors else None,
+        out = {"skill": skill, "judgeModel": args.model, "calibrated": False, "passes": args.passes, "errors": len(errors), "firstError": errors[0] if errors else None,
                "noise": mean(pairs), "costUsd": sum(r.get("costUsd") or 0 for _, r in results), "arms": summarise(items), "answers": items}
         (dest / f"{skill}.json").write_text(json.dumps(out, indent=2) + "\n")
         print(skill, "errors", len(errors), "noise", round(out["noise"] or 0, 3), "cost", round(out["costUsd"], 2),

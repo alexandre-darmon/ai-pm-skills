@@ -104,6 +104,12 @@ Rules, written and committed before the full run (2026-11-06):
 - **The headline is the generic score.** "Meets the goal" is reported apart, because the skills' author wrote those goals.
 - **Known biases are reported:** each answer is judged twice to show the judge's noise, and length is shown next to the scores.
 
+**Choosing the judge** (rules committed before the Sonnet run and before any human score, 2026-11-07). Haiku 5.5 and Sonnet 5.5 grade the same answers. Sonnet also wrote those answers, so it may be lenient. A person then scores 20 answers drawn at random, blind to the arm, from 1 to 5 overall. Each judge's mean on the five criteria is compared with that score:
+
+- **A judge is calibrated** if it lands within 1 point of the human score on at least 80% of the 20 answers.
+- **If both pass,** the closer one is kept, measured by mean absolute gap; on a gap under 0.2 points, the cheaper one.
+- **If neither passes,** the judge stays out of any reported score, and the rubric is revised before a new test.
+
 ## The four free checks
 
 Paid runs can only be trusted if the marking rules are right. Four checks protect them, and three of them cost nothing.
