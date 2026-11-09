@@ -3,13 +3,15 @@
 <p align="center">Agent Skills for Claude Code, Codex, Cursor or your own agent. Skills enter the catalog only after scoring at least 10 points above the model alone.</p>
 
 <!-- gains:start -->
-| | Without skill | With skill |
-| --- | --- | --- |
-| Mean score on the scored cases | 44% | **99%** |
-| Red lines held (the one thing the answer must never do) | 61% | **100%** |
-| Stays silent on near-miss requests | — | **100%** |
+| Same cases, Sonnet 5.5 answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
+| --- | --- | --- | --- | --- | --- |
+| Regex graders: 6 skills, 21 cases × 3 runs | 44% | 83% | **99%** | +55 [+49, +63] | +16 [+9, +23] |
+| Blind LLM judge, Haiku 5.5: 4 of these skills, 14 cases, not calibrated | 71% | 78% | 81% | +10 [+6, +14] | +3 [+1, +5] |
+| Blind LLM judge, Sonnet 5.5: 4 of these skills, 14 cases, not calibrated | 70% | 76% | 82% | +11 [+6, +17] | +5 [+3, +7] |
+| Red lines held (the one thing the answer must never do) | 61% | 91% | **100%** | | |
+| Stays silent on near-miss requests | — | — | **100%** | | |
 
-<sub>6 skills, Sonnet 5.5, same cases with and without the skill. Against each skill's own output template, the gain falls to +8 to +24 points, and a blind LLM judge sees less still: [how the skills are tested](docs/testing-approach.md). Per-skill numbers: [skill-eval-gains.md](skill-eval-gains.md).</sub>
+<sub>Sonnet 5.5 answers each case 3 times per arm. **Regex graders** check that the answer contains what the skill asks for; the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; it is not calibrated on human scores yet, tends to favour longer answers, and never grades the legal skills. Gains in points; brackets: 95% interval from resampling the cases, which shows how much the gain depends on the cases written, not on the graders chosen. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>
 <!-- gains:end -->
 
 ## Why AI PM Skills?
@@ -20,7 +22,7 @@ Each skill encodes how an AI product is actually framed, specified, measured and
 
 What makes it different:
 
-1. **Tested.** Each skill ships with eval cases run by `claude plugin eval`, with and without the skill. A skill that does not beat the model alone by at least 10 points stays in `drafts/`. [How a skill is evaluated](docs/evaluation.md).
+1. **Tested.** Each skill ships with eval cases run by `claude plugin eval`, with and without the skill. A skill that does not beat the model alone by at least 10 points stays in `drafts/`. The results above also set each skill against its own output template and a blind LLM judge, with 95% intervals, because a grader written by the skill's author is an easy test. [How a skill is evaluated](docs/evaluation.md).
 2. **Compliance as skills.** AI Act classification, CSE consultation, DPIA pre-screen, model card, incident playbook: classifications, checklists and questions for counsel.
 3. **One spine.** The skills share the same [autonomy ladder](foundations/autonomy-ladder.md) (L0 to L5) and [ROI model](foundations/roi-model.md) (volume × quality × unit value − costs).
 4. **No free-floating numbers.** A gain that cannot be traced to volume, quality and unit value is rewritten or removed.

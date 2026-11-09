@@ -1,6 +1,6 @@
 # How the skills are tested
 
-Status on 2026-11-06. No single test is enough, so each mode answers a different question. Step-by-step details: [evaluation.md](evaluation.md).
+Status on 2026-11-09. No single test is enough, so each mode answers a different question. Step-by-step details: [evaluation.md](evaluation.md).
 
 | Test mode | The question it answers | Cost | Weakness | Here | Seen elsewhere |
 | --- | --- | --- | --- | --- | --- |
@@ -50,7 +50,16 @@ On average the format alone adds about 40 points and the method about 16 more. F
 - The skill reaches a similar score with fewer words than the template, between 22% and 47% fewer. This was not a planned measure.
 - The judge favours length on some skills (correlation 0.54 to 0.78 with word count on three of five), and Haiku is not a domain expert. Read these scores as a signal until they are calibrated on human scores.
 
-Raw results: [`baselines/template-arm/`](../baselines/template-arm/), [`baselines/judge/`](../baselines/judge/).
+Raw results: [`baselines/template-arm/`](../baselines/template-arm/), [`baselines/judge/`](../baselines/judge/). Sonnet 5.5 graded the same answers afterwards; both judges are in [skill-eval-gains.md](../skill-eval-gains.md) until the calibration rule picks one.
+
+## How sure are these numbers
+
+Since 2026-11-09, each published gain carries a 95% interval from resampling the cases within each skill ([method](evaluation.md#how-sure-are-the-numbers)). Over the catalog:
+
+- **Regex graders**, skill over the model alone: +55 points, interval +49 to +63. Over the template: +16, interval +9 to +23.
+- **Blind judges**, skill over the model alone: +10 (Haiku, +6 to +14) and +11 (Sonnet, +6 to +17). Over the template: +3 (+1 to +5) and +5 (+3 to +7).
+- Against the template, both judges see a small gain above zero: on these cases, and by a judge not yet calibrated, the method adds something beyond the format. The gain is small, and comes mostly from `llm-feature-prd` and `conversation-analysis`.
+- These intervals only reflect which cases were written. Twenty-one cases (fourteen for the judges), all written by the skills' author, remain the main limit.
 
 ## Limits today
 

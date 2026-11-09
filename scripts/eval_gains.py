@@ -1,67 +1,185 @@
-"""Write skill-eval-gains.md from baselines/*.json: score without and with each skill, and the gain."""
+"""Write skill-eval-gains.md from baselines/ and refresh the README block.
+
+Three arms on the same cases (the model alone, the model with the skill's output template only, the model with
+the skill), scored two ways: regex graders (baselines/*.json, baselines/template-arm/) and the blind LLM judges
+(baselines/judge/<judge model>/). Each gain comes with a 95% interval over cases (scripts/eval_stats.py).
+"""
 import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from eval_stats import bootstrap_ci, macro_mean  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
+DRAWS = 10_000
 
 
 def pct(x):
-    return f"{round(100 * x)}%"
+    return "—" if x is None else f"{round(100 * x)}%"
 
 
-def main(root=ROOT):
-    rows, tot = [], {"w": [], "wo": [], "rl": [0, 0, 0, 0], "neg": [0, 0]}
-    for f in sorted((root / "baselines").glob("*.json")):
+def pts(x):
+    return f"{round(100 * x):+d}" if round(100 * x) else "0"
+
+
+def model_name(model):  # claude-haiku-5-5 -> Haiku 5.5
+    parts = model.split("-")
+    return f"{parts[1].capitalize()} {'.'.join(parts[2:])}" if parts[0] == "claude" and len(parts) > 2 else model
+
+
+def groups(cases, a, b=None):
+    """Per skill, the list of case values of arm a (or of a - b), skipping skills that lack an arm."""
+    out = [[c[a] - c[b] if b else c[a] for c in cs.values() if a in c and (b is None or b in c)] for cs in cases.values()]
+    return [g for g in out if g]
+
+
+def arm_mean(cases, arm):
+    g = groups(cases, arm)
+    return macro_mean(g) if g else None
+
+
+def gain(cases, a, b, draws):
+    g = groups(cases, a, b)
+    if not g:
+        return "—"
+    lo, hi = bootstrap_ci(g, draws=draws)
+    return f"{pts(macro_mean(g))} [{pts(lo)}, {pts(hi)}]"
+
+
+def point_gain(cases, a, b):
+    g = groups(cases, a, b)
+    return f"{pts(macro_mean(g))} pts" if g else "—"
+
+
+def held(runs):  # [held, total]
+    return runs[0] / runs[1] if runs[1] else None
+
+
+def main(root=ROOT, draws=DRAWS):
+    base = root / "baselines"
+    regex, per_skill, models = {}, [], set()
+    rl = {"without": [0, 0], "template": [0, 0], "with": [0, 0]}
+    neg = [0, 0]
+    for f in sorted(base.glob("*.json")):
         b = json.loads(f.read_text())
-        pos = [c for c in b["cases"].values() if not c["negative"]]
-        neg = [c for c in b["cases"].values() if c["negative"]]
-        w = sum(c["score"] for c in pos) / len(pos)
-        wo = sum(c["scoreWithout"] for c in pos) / len(pos)
-        rl = [0, 0, 0, 0]  # red-line runs held with, without, total with, total without
-        for c in pos:
+        skill = b["skill"]
+        models.add(b.get("model", ""))
+        t = base / "template-arm" / f.name
+        tcases = json.loads(t.read_text())["cases"] if t.is_file() else {}
+        pos = {cid: c for cid, c in b["cases"].items() if not c["negative"]}
+        regex[skill] = {cid: {"with": c["score"], "without": c["scoreWithout"]} for cid, c in pos.items()}
+        srl = {"without": [0, 0], "template": [0, 0], "with": [0, 0]}
+        for cid, c in pos.items():
+            if cid in tcases:
+                regex[skill][cid]["template"] = tcases[cid]["score"]
             for g, (a, z) in c["graders"].items():
                 if g.startswith("redline-"):
-                    rl[0] += a; rl[1] += z; rl[2] += c["runs"]; rl[3] += c.get("runsWithout", c["runs"])
-        tot["w"].append(w); tot["wo"].append(wo)
-        tot["rl"] = [x + y for x, y in zip(tot["rl"], rl)]
-        tot["neg"][0] += sum(c["runs"] - c["fired"] for c in neg); tot["neg"][1] += sum(c["runs"] for c in neg)
-        rlw = f"{pct(rl[0] / rl[2])} vs {pct(rl[1] / rl[3])}" if rl[2] else "—"
-        rows.append(f"| [`{b['skill']}`](skills/{b['skill']}/SKILL.md) | {pct(wo)} | **{pct(w)}** | +{round(100 * (w - wo))} pts | {rlw} | {len(pos)} × {pos[0]['runs']} | {b['date']} |")
-    w, wo = sum(tot["w"]) / len(tot["w"]), sum(tot["wo"]) / len(tot["wo"])
-    rl, neg = tot["rl"], tot["neg"]
+                    srl["with"][0] += a; srl["with"][1] += c["runs"]
+                    srl["without"][0] += z; srl["without"][1] += c.get("runsWithout", c["runs"])
+                    if cid in tcases:
+                        srl["template"][0] += tcases[cid]["graders"][g][0]; srl["template"][1] += tcases[cid]["runs"]
+        for arm in rl:
+            rl[arm] = [x + y for x, y in zip(rl[arm], srl[arm])]
+        for c in b["cases"].values():
+            if c["negative"]:
+                neg[0] += c["runs"] - c["fired"]; neg[1] += c["runs"]
+        one = {skill: regex[skill]}
+        deltas = [c["with"] - c["without"] for c in regex[skill].values()]
+        runs = sorted({c["runs"] for c in pos.values()})
+        rlw = " / ".join(pct(held(srl[a])) for a in ("without", "template", "with")) if srl["with"][1] else "—"
+        per_skill.append(
+            f"| [`{skill}`](skills/{skill}/SKILL.md) | {pct(arm_mean(one, 'without'))} | {pct(arm_mean(one, 'template'))} "
+            f"| **{pct(arm_mean(one, 'with'))}** | {pts(macro_mean([deltas]))} pts ({pts(min(deltas))} to {pts(max(deltas))}) "
+            f"| {point_gain(one, 'with', 'template')} "
+            f"| {rlw} | {len(pos)} × {'/'.join(map(str, runs))} | {b['date']} |")
+
+    judges, judge_rows = [], []
+    for d in sorted(p for p in (base / "judge").glob("*") if p.is_dir()) if (base / "judge").is_dir() else []:
+        cases, calibrated = {}, True
+        for skill in regex:
+            f = d / f"{skill}.json"
+            if not f.is_file():
+                continue
+            j = json.loads(f.read_text())
+            calibrated &= bool(j.get("calibrated"))
+            sums = {}
+            for a in j["answers"]:
+                if a.get("judge") is not None:
+                    sums.setdefault(a["case"], {}).setdefault(a["arm"], []).append(a["judge"])
+            cases[skill] = {cid: {arm: sum(v) / len(v) for arm, v in arms.items()} for cid, arms in sums.items()}
+            one = {skill: cases[skill]}
+            words = " / ".join(f"{round(j['arms'][a]['words']):,}" if a in j["arms"] else "—" for a in ("without", "template", "with"))
+            judge_rows.append(
+                f"| `{skill}` | {model_name(d.name)} | {pct(arm_mean(one, 'without'))} | {pct(arm_mean(one, 'template'))} "
+                f"| {pct(arm_mean(one, 'with'))} | {point_gain(one, 'with', 'without')} "
+                f"| {point_gain(one, 'with', 'template')} | {round(100 * j['noise'])} pts | {words} |")
+        if cases:
+            judges.append((model_name(d.name), calibrated, cases))
+
+    ncases = sum(len(cs) for cs in regex.values())
+    runs = sorted({c["runs"] for f in base.glob("*.json") for c in json.loads(f.read_text())["cases"].values()})
+    model = model_name(models.pop()) if len(models) == 1 else "the same model"
+
+    def row(label, cases, bold=False):
+        w = pct(arm_mean(cases, "with"))
+        return (f"| {label} | {pct(arm_mean(cases, 'without'))} | {pct(arm_mean(cases, 'template'))} | {f'**{w}**' if bold else w} "
+                f"| {gain(cases, 'with', 'without', draws)} | {gain(cases, 'with', 'template', draws)} |")
+
+    lines = [
+        f"| Same cases, {model} answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |",
+        "| --- | --- | --- | --- | --- | --- |",
+        row(f"Regex graders: {len(regex)} skill{'s' if len(regex) != 1 else ''}, {ncases} cases × {'/'.join(map(str, runs))} runs", regex, bold=True),
+    ]
+    for name, cal, cases in judges:
+        n = sum(len(cs) for cs in cases.values())
+        lines.append(row(f"Blind LLM judge, {name}: {len(cases)} of these skills, {n} cases, {'calibrated' if cal else 'not calibrated'}", cases))
+    lines.append(f"| Red lines held (the one thing the answer must never do) | {pct(held(rl['without']))} | {pct(held(rl['template']))} "
+                 f"| **{pct(held(rl['with']))}** | | |")
+    lines.append(f"| Stays silent on near-miss requests | — | — | **{pct(held(neg))}** | | |")
+    headline = "\n".join(lines)
+
     out = f"""# Skill eval gains
 
-Same model, same cases, with and without the skill. Generated from [`baselines/`](baselines/) by `python3 scripts/eval_gains.py`; do not edit by hand.
+Same model, same cases, three arms: the model alone, the model given only the skill's output template, and the model with the skill. Generated from [`baselines/`](baselines/) by `python3 scripts/eval_gains.py`; do not edit by hand.
 
-| | Without skill | With skill |
-| --- | --- | --- |
-| Mean score on the scored cases | {pct(wo)} | **{pct(w)}** |
-| Red lines held (the one thing the answer must never do) | {pct(rl[1] / rl[3])} | **{pct(rl[0] / rl[2])}** |
-| Stays silent on near-miss requests | — | **{pct(neg[0] / neg[1])}** |
+{headline}
 
-## Per skill
+Gains in points. Brackets: 95% interval over cases (see below).
 
-| Skill | Without | With | Gain | Red lines held (with vs without) | Cases × runs | Run date |
-| --- | --- | --- | --- | --- | --- | --- |
-{chr(10).join(rows)}
+## Per skill, regex graders
+
+| Skill | Without | Template only | With | Gain over the model alone (lowest to highest case) | Gain over the template | Red lines held: without / template / with | Cases × runs | Run date |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+{chr(10).join(per_skill)}
+
+## Per skill, blind LLM judges
+
+| Skill | Judge | Without | Template only | With | Gain over the model alone | Gain over the template | Judge noise | Words: without / template / with |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+{chr(10).join(judge_rows)}
 
 ## How to read it
 
-- **Score**: share of graders passed on a case, averaged over runs and over the scored cases. A grader checks one thing the answer must contain or must not contain (regex, free and deterministic).
-- **Without / With**: the same prompt run by the same model (Sonnet 5.5), once without the skill and once with it loaded.
+- **Regex graders**: share of graders passed on a case, averaged over runs, then over a skill's scored cases, then over skills. A grader checks one thing the answer must contain or must not contain. The skills' author wrote them, so they reward what the skill asks for.
+- **Template only**: the model gets the skill's own output template without its method. The gain over the template is what the method adds beyond the format ([template-only control](docs/evaluation.md)).
+- **Blind LLM judge**: a model grades each answer twice on a generic rubric (sound, actionable, honest about unknowns, risk-aware, specific) without knowing the arm. Not calibrated on human scores yet, so a signal, not a measure; it tends to favour longer answers and never grades the legal skills. Both judges are shown until the calibration rule committed in [docs/evaluation.md](docs/evaluation.md) picks one. Judge noise is the mean gap between its two passes on the same answer.
+- **Intervals**: resample the cases within each skill 10,000 times and keep the middle 95% of the gains, with a small-sample correction (Rao-Wu rescaling, [scripts/eval_stats.py](scripts/eval_stats.py)). They show how much the gain depends on which cases were written. They do not cover the choice of graders, the judge's biases, or another model. Per skill, 3 to 5 cases are too few for an interval: the table gives the lowest and highest case gain instead.
 - **Red lines**: a red line fails the case on its own (e.g. a refund agent launched without human validation, a "compliant" verdict). Shown as the share of runs where it held.
-- **Pass rule**: a skill enters the catalogue when its score reaches the threshold (0.80, 0.90 for govern and flagship skills), every red line holds in every run, and the gain is at least 10 points. Details in [docs/evaluation.md](docs/evaluation.md).
-- **Runs**: 3 per case and per arm, November 2026. Two red-line graders (`assistant-kpis-cost-per-outcome`, `conversation-analysis`) were corrected after that run because they rejected correct answers; the saved answers were then re-scored. Graders are written by the skills' author, and no template-only control has been run yet.
+- **Pass rule**: a skill enters the catalogue when its regex score reaches the threshold (0.80, 0.90 for govern and flagship skills), every red line holds in every run, and the gain over the model alone is at least 10 points. Details in [docs/evaluation.md](docs/evaluation.md).
+- **Runs**: 3 per case and per arm, November 2026. Two red-line graders (`assistant-kpis-cost-per-outcome`, `conversation-analysis`) were corrected after that run because they rejected correct answers; the saved answers were then re-scored.
 - **Without** scores are not zero: the base model often gets part of the job right. The gain is what the skill adds on top.
 """
     (root / "skill-eval-gains.md").write_text(out)
     readme = root / "README.md"
     if readme.is_file() and "<!-- gains:start -->" in readme.read_text():
         head, rest = readme.read_text().split("<!-- gains:start -->", 1)
-        block = out.split("\n\n")[2]  # the summary table
-        note = f"<sub>{len(rows)} skills, Sonnet 5.5, same cases with and without the skill. Against each skill's own output template, the gain falls to +8 to +24 points, and a blind LLM judge sees less still: [how the skills are tested](docs/testing-approach.md). Per-skill numbers: [skill-eval-gains.md](skill-eval-gains.md).</sub>"
-        readme.write_text(f"{head}<!-- gains:start -->\n{block}\n\n{note}\n<!-- gains:end -->{rest.split('<!-- gains:end -->', 1)[1]}")
+        note = (f"<sub>{model} answers each case {'/'.join(map(str, runs))} times per arm. **Regex graders** check that the answer contains what the skill asks for; "
+                "the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; "
+                "it is not calibrated on human scores yet, tends to favour longer answers, and never grades the legal skills. "
+                "Gains in points; brackets: 95% interval from resampling the cases, which shows how much the gain depends on the cases written, "
+                "not on the graders chosen. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>")
+        readme.write_text(f"{head}<!-- gains:start -->\n{headline}\n\n{note}\n<!-- gains:end -->{rest.split('<!-- gains:end -->', 1)[1]}")
     return out
 
 

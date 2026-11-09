@@ -110,6 +110,19 @@ Rules, written and committed before the full run (2026-11-06):
 - **If both pass,** the closer one is kept, measured by mean absolute gap; on a gap under 0.2 points, the cheaper one.
 - **If neither passes,** the judge stays out of any reported score, and the rubric is revised before a new test.
 
+## How sure are the numbers
+
+A mean over 21 cases can move a lot with a few other cases. Since 2026-11-09, every gain published in the README and in [skill-eval-gains.md](../skill-eval-gains.md) carries a 95% interval, computed by `scripts/eval_gains.py` from the frozen baselines, at no cost:
+
+- **Unit: the case.** Runs of one case share the same prompt, so they are not independent: they are averaged first, and the cases are resampled.
+- **Stratified by skill.** Cases are resampled within each skill, 10,000 times, and each skill weighs the same, as in the headline mean.
+- **Corrected for small groups.** With 3 to 5 cases per skill, a plain bootstrap gives an interval about 15% too narrow here. Each resampled skill mean is stretched by √(n / (n − 1)) (Rao-Wu rescaling), which brings the interval back to the textbook one ([scripts/eval_stats.py](../scripts/eval_stats.py), checked in `test_eval_stats.py`).
+- **Same method for every measure:** regex graders and each blind judge, against the model alone and against the template.
+- **What it does not cover:** the choice of graders, the judge's biases, another model, or how the cases were written. It says how much the gain depends on which cases were drawn, nothing more.
+- **Per skill, no interval.** Three to five cases are too few; the lowest and highest case gain are shown instead.
+
+The pass rule does not change: it stays a mean gain of at least 10 points. Gating a skill on the lower bound of its interval would need more cases per skill, and would be committed before the run it judges.
+
 ## The four free checks
 
 Paid runs can only be trusted if the marking rules are right. Four checks protect them, and three of them cost nothing.
