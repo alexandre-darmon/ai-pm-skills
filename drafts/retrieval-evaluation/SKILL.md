@@ -2,7 +2,7 @@
 name: retrieval-evaluation
 description: 'Evaluate a RAG or search feature in two stages, retrieval then generation. Use when answers are wrong or cite the wrong document, before changing the LLM, or for a new embedding model or re-index.'
 stage: evaluate
-version: 0.1.0
+version: 0.1.1
 depends_on: [build-evals, ai-data-requirements, llm-judge-calibration]
 feeds: [release-to-production, model-selection, ai-data-requirements, system-prompt-and-guardrails, production-evals-monitoring]
 autonomy_relevant: false
@@ -51,7 +51,7 @@ Ask if missing: the current end-to-end score and how it was graded, traffic shar
 8. **Treat every retrieval change as a release.** A new embedding model, chunking, reranker, k, index rebuild or a large corpus refresh: first judge the passages the new version surfaces that nobody has labelled (otherwise it is penalised for them), then re-run the retrieval set on old and new versions and compare them paired on the same queries (references/eval-statistics.md §5). Count d, the queries where exactly one version hits: a gap under 2√d ÷ n is a tie. Gate per class, keep the old index until the gate passes, and hand the result to `release-to-production`. A public leaderboard says nothing about your corpus and your users' wording.
 
 ## Output
-A retrieval eval plan following `templates/retrieval-eval-plan.md`: pipeline as run, failure attribution, query set per class with unanswerable queries, labelling protocol (pooling, experts, agreement), retrieval scores per class at the k sent, generation scores on fixed contexts, diagnosis and owners, k pricing, release rule for retrieval changes. A section that cannot be filled says what is missing and who provides it.
+A retrieval eval plan following `templates/retrieval-eval-plan.md`: pipeline as run, failure attribution, query set per class with unanswerable queries, labelling protocol (pooling, experts, agreement), retrieval scores per class at the k sent, generation scores on fixed contexts, diagnosis and owners, k pricing, release rule for retrieval changes. A section that cannot be filled says what is missing and who provides it. A short answer, such as a recommendation for a committee, still names each of these in a line: failures attributed to a stage, a query set per class with unanswerable queries, relevance labelled by experts on candidates pooled from several retrievers, recall at the k sent, generation on fixed contexts, and the paired comparison that will show whether a change worked.
 
 ## Rules and red lines
 - Never judge a RAG feature on an end-to-end answer score alone: retrieval and generation are scored apart before any fix.

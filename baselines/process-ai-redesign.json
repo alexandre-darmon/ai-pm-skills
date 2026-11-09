@@ -1,0 +1,156 @@
+{
+ "skill": "process-ai-redesign",
+ "model": "claude-sonnet-5-5",
+ "judgeModel": "claude-haiku-5-5",
+ "claudeVersion": "2.1.317",
+ "date": "2026-11-09",
+ "casesHash": "8d019d466615d8d2f3d755698cc5ba69801865affb345cbc5dd98863a56c465b",
+ "partial": false,
+ "costUsd": 1.5552503,
+ "cases": {
+  "process-ai-redesign-001": {
+   "score": 0.9722222222222222,
+   "scoreWithout": 0.4444444444444445,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "approach-per-step": [
+     3,
+     0
+    ],
+    "fallback-hours": [
+     3,
+     0
+    ],
+    "gate": [
+     3,
+     0
+    ],
+    "l1-decide": [
+     3,
+     0
+    ],
+    "l2-extract": [
+     2,
+     0
+    ],
+    "l3-check": [
+     3,
+     0
+    ],
+    "redline-decision-not-autonomous": [
+     3,
+     3
+    ],
+    "scenarios": [
+     3,
+     1
+    ]
+   },
+   "delta": 0.5277777777777777,
+   "costPerAnswer": [
+    0.1252174,
+    0.04731466666666667
+   ]
+  },
+  "process-ai-redesign-002": {
+   "score": 0.8484848484848485,
+   "scoreWithout": 0.5151515151515151,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "demotion-trigger": [
+     3,
+     0
+    ],
+    "fallback": [
+     3,
+     1
+    ],
+    "g1": [
+     3,
+     0
+    ],
+    "l4-routing": [
+     3,
+     0
+    ],
+    "redline-no-l5": [
+     2,
+     3
+    ],
+    "reversibility": [
+     3,
+     1
+    ],
+    "trade-off": [
+     3,
+     0
+    ]
+   },
+   "delta": 0.33333333333333337,
+   "costPerAnswer": [
+    0.09302636666666665,
+    0.042978666666666665
+   ]
+  },
+  "process-ai-redesign-003": {
+   "score": 1.0,
+   "scoreWithout": 0.7407407407407408,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "exceptions-first": [
+     3,
+     2
+    ],
+    "g3": [
+     3,
+     3
+    ],
+    "gate": [
+     3,
+     0
+    ],
+    "low-levels": [
+     3,
+     0
+    ],
+    "redline-no-l5": [
+     3,
+     3
+    ]
+   },
+   "delta": 0.2592592592592592,
+   "costPerAnswer": [
+    0.08753633333333333,
+    0.039722
+   ]
+  },
+  "process-ai-redesign-004": {
+   "score": 1.0,
+   "scoreWithout": 1.0,
+   "fired": 0,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": true,
+   "graders": {
+    "not-triggered": [
+     3,
+     3
+    ]
+   },
+   "costPerAnswer": [
+    0.041242,
+    0.04137933333333333
+   ]
+  }
+ },
+ "meanDelta": 0.37345679012345673
+}

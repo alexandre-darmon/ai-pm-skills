@@ -22,6 +22,14 @@
 | Measure | Real traffic | Synthetic | Tolerance | Within? |
 | --- | --- | --- | --- | --- |
 
+## Variants (when run)
+| Class | Cases | Variants per case | Mean pass | Worst-variant pass | Flip share |
+| --- | --- | --- | --- | --- | --- |
+
+| Attribute or proxy | Pairs | Flips | Flip rate (95% interval) | Noise floor (identical runs) | Direction |
+| --- | --- | --- | --- | --- | --- |
+<Decisions about people only. Questions for counsel, no verdict.>
+
 ## Expected answers
 <Who writes them, from which documents; judge used and its validation.>
 

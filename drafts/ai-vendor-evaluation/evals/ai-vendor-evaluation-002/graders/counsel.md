@@ -2,4 +2,4 @@
 type: regex
 flags: i
 ---
-questions? for (counsel|legal|your (lawyer|legal team|DPO))
+questions? (for|to (ask|put to|send to|take to)) (your )?(counsel|legal|lawyers?|legal team|DPO)

@@ -16,6 +16,16 @@ Tools: <tool | side effect | can it be undone?>
 
 ## Simulated users
 <Tasks that need one: persona, goal, hidden information, stop rule; spot-check size; rule for invalid trials. Or "none".>
+<Requests given over several turns: tasks run with one fact per turn; mean, worst run and spread across runs. Or "single-message use only".>
+
+## Under attack
+<Content an outsider can write that the agent reads, or "none: not applicable".>
+Attack test set: <n attacks, written by whom> · never used to tune <prompt, filter, guardrail> · dev set: <where>
+
+| Forbidden action | Planted in (tool output) | Attacked trials n | Attacks that succeeded | Rate | Upper bound (95%) | Exposure a month (assumption) |
+| --- | --- | --- | --- | --- | --- | --- |
+
+Benign utility: <clean pass rate, interval> · Utility under attack: <same tasks attacked, interval>
 
 ## Suites
 | Suite | Tasks | Expected pass rate | Runs on | Gates |
@@ -36,10 +46,13 @@ Tasks: <n> · trials per task k: <k> · set on <date> · signed by <who>
 | pass^k | | | |
 | Forbidden events | | | |
 | False successes | | | |
+| Attack success, per forbidden action | | | |
 
 Exposure: <events a month the gate accepts>
 
 ## Where runs break
+<Failed runs in hand first (hand review, incidents), then failed trials: first failing step of each.>
+
 | Last successful step ↓ / first failing step → | | | |
 | --- | --- | --- | --- |
 

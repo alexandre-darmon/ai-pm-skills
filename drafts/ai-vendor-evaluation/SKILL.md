@@ -2,13 +2,13 @@
 name: ai-vendor-evaluation
 description: 'Choose or renew a bought AI product or vendor (copilot, chatbot, document AI) on your own bake-off, cost per correct outcome and contract terms. Use for an RFP, a vendor demo or claim, a renewal.'
 stage: evaluate
-version: 0.1.0
+version: 0.2.0
 last_verified: 2026-11-09
 legal: true
 depends_on: [build-evals]
 feeds: [ai-act-classification, production-evals-monitoring, model-card-ai-registry]
 autonomy_relevant: true
-sources: [dora, gdpr, eu-ai-act, eu-digital-omnibus-ai, miller-error-bars, wilson-interval, repo-yoseph, own-vendor-selection]
+sources: [dora, gdpr, eu-ai-act, eu-digital-omnibus-ai, miller-error-bars, wilson-interval, zhu-agentic-benchmarks, zhang-gsm1k, repo-yoseph, own-vendor-selection]
 eval_threshold: 0.90
 status: draft
 ---
@@ -32,9 +32,9 @@ No eval cases yet: build them with `build-evals` before any vendor run. A bake-o
 ## Method
 Clause details and articles: references/vendor-checks.md. Statistics: references/eval-statistics.md. Evidence rules: references/evals-as-evidence.md.
 
-1. **Fix the evidence rule before any demo.** A vendor's benchmark, demo, reference customers and declared accuracy are claims measured on someone else's data. Record each with its source as *claimed*; it stays claimed until your bake-off measures it. Write the per-class thresholds, the primary metric, the scorecard weights and the decision rule, dated, before the first vendor run.
+1. **Fix the evidence rule before any demo.** A vendor's benchmark, demo, reference customers and declared accuracy are claims measured on someone else's data. Record each with its source as *claimed*; it stays claimed until your bake-off measures it. Before a vendor's or a public benchmark score gets any weight, audit it (references/vendor-checks.md, Benchmark audit): a do-nothing answer and a known-wrong answer run through its grader must both fail, or the score measures the grader; contamination is the gap between the public set and a fresh matched set of your own. Write the per-class thresholds, the primary metric, the scorecard weights and the decision rule, dated, before the first vendor run.
 2. **Clear the data path before any upload.** No personal or confidential data reaches a trial, a sandbox or a vendor portal until: a processing agreement under GDPR art. 28 is signed, or the trial set is anonymised and the anonymisation checked on a sample (pseudonymised data are still personal data); hosting and processing locations are known (EU, or a transfer basis under GDPR Chapter V); sub-processors are listed, including the model provider behind the product; and the trial terms exclude training on your data. Health data in claims or HR files are special-category data (art. 9): the bar is higher. Until then the bake-off waits or runs on anonymised cases.
-3. **Design a blind bake-off on your own cases.** Same cases, same inputs, same configuration time and the same instructions for every vendor, and the current process scored on the same cases as the baseline. Vendors never see the expected outputs. Allow configuration on a small tuning slice, the same for all; score only cases they have not seen, and keep a private holdout for the renewal re-test. For a generative product, run each case at least twice: outputs vary. Record each vendor's product version, model version and run date: a score without them cannot be compared later.
+3. **Design a blind bake-off on your own cases.** Same cases, same inputs, same configuration time and the same instructions for every vendor, and the current process scored on the same cases as the baseline. Vendors never see the expected outputs. Allow configuration on a small tuning slice, the same for all; score only cases they have not seen, and keep a private holdout for the renewal re-test (a regression suite, references/eval-statistics.md §14). For a generative product, run each case at least twice: outputs vary. Record each vendor's product version, model version and run date: a score without them cannot be compared later.
 4. **Score the unit the business pays for, per class, with intervals.** A field-level rate is not the outcome: a document of 12 fields at 97% per field is fully right only about 69% of the time if errors are independent (0.97^12). Score per document (every critical field right) and per field class, per document type, never as one global rate. The document is the unit of the interval, not the field: fields of one document share its scan and layout (references/eval-statistics.md §1). Give each class its Wilson 95% interval; mark classes under about 30 cases as indicative; for a costly class (an IBAN that pays the wrong account), gate on the lower bound.
 5. **Compare vendors on the same cases.** Count d, the cases where exactly one vendor is right. A gap smaller than 2√d / n is a tie; state both in points (d = 9 on n = 60 gives 10 points). A tie is decided on cost per correct outcome and the data, contract and exit criteria, never on the higher point estimate; if the decision needs a finer comparison, add cases first. Put each vendor's declared accuracy next to your interval for the same class: a claim above the interval is recorded as *not reproduced*.
 6. **Compute the total cost and the cost per correct outcome** (references/roi-model.md): licences, usage at your volume, integration spread over the contract term, and human time, meaning review of each output at the product's autonomy level (at L2 every output is reviewed) plus correction of each error. Cost per correct outcome = total cost ÷ (volume × measured quality of the business unit from step 4), never ÷ documents or calls processed. Write the price assumptions next to the figure; recompute at every price change.
@@ -47,14 +47,15 @@ Clause details and articles: references/vendor-checks.md. Statistics: references
    - the processing agreement, named processing locations, sub-processor list with notice and a right to object;
    - exit: your data, configurations and eval results returned in a usable format, deletion certified, a transition period.
 
-   Negotiable, unless DORA art. 30(3) makes it mandatory: a quality service level on your metric measured on your eval set (per class, quarterly sample) with credits and a termination right; the right to run your eval set at any time at no extra cost; incident notice times; price protection on a model change.
+   Always propose, even where negotiable (DORA art. 30(3) makes it mandatory for a critical or important function): a quality service level on your metric measured on your eval set (per class, quarterly sample) with credits and a termination right; without it the eval set binds no one after signature. Negotiable: the right to run your eval set at any time at no extra cost; incident notice times; price protection on a model change.
    A contract that allows silent model changes or training on your data is not signed as drafted: mark it *blocking*, name the clause to add and who negotiates it.
 10. **Score and record the decision.** Blocking items are gates, not points; the weighted criteria come after. The decision record holds the date, the cases version, the vendors with their versions, results per class with intervals, the paired gap against its noise, cost per correct outcome, open blocking items, the decision line, a re-evaluation date and its triggers (a new model or version, an incident, a price change, a drop in production quality). Hand over: monitoring after purchase to `production-evals-monitoring`, the classification to `ai-act-classification`, the inventory entry to `model-card-ai-registry`.
 
-When per-case results exist as a CSV, run `python3 scripts/bakeoff.py results.csv --volume 25000 --cost A=150000 --cost B=90000` (columns `case_id,class,<vendor>...`, values 1 or 0): it prints per-class rates with Wilson intervals, the paired gap against 2√d / n for each pair, and cost per correct outcome. Without Python, compute them by hand from references/eval-statistics.md.
+With per-case results in a CSV (`case_id,class,<vendor>...`, values 1 or 0), `python3 scripts/bakeoff.py results.csv --volume 25000 --cost A=150000 --cost B=90000` prints per-class Wilson intervals, each pair's gap against 2√d / n, and cost per correct outcome.
 
 ## Output
 `templates/vendor-evaluation.md`, all headings present. The decision line reads `Selected vendor: <name>`, `Selected vendor: pending bake-off` or `Selected vendor: none (blocking: <item>)`. The document ends with: "This evaluation is a checklist for counsel and procurement, not a compliance assessment."
+A chat answer that skips the template still gives: the decision line in those words; each claim's status; the data gate; the blocking clauses and the quality service level; the AI Act and DORA documents to request; a short list headed "Questions for counsel"; and the closing line.
 
 ## Rules and red lines
 - Never select or rank a vendor on its own benchmark, demo, reference customers or declared accuracy.
@@ -75,5 +76,7 @@ references/vendor-checks.md · references/eval-statistics.md · references/evals
 - eu-digital-omnibus-ai: the amended application date of the Annex III duties.
 - miller-error-bars: paired differences between two systems on the same cases; clustering when cases share a source.
 - wilson-interval: an interval per class that holds with few cases.
+- zhu-agentic-benchmarks: a do-nothing and a known-wrong answer through a benchmark's grader before trusting its score.
+- zhang-gsm1k: contamination read as the gap between a public set and a fresh matched set.
 - repo-yoseph: vendor oversight after purchase as part of the vendor job (idea only, own wording).
 - own-vendor-selection: blind bake-offs, cost per correct outcome and evidence-keeping clauses from AI vendor selections at banks and insurers (method only).

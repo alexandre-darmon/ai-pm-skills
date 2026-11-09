@@ -1,0 +1,240 @@
+{
+ "skill": "ai-data-requirements",
+ "model": "claude-sonnet-5-5",
+ "judgeModel": "claude-haiku-5-5",
+ "claudeVersion": "2.1.317",
+ "date": "2026-11-09",
+ "casesHash": "aef400d316e0c2908a95d2a75d4ceda4205bbb844f52c1ebf6141bd167975db0",
+ "partial": false,
+ "costUsd": 2.1957633000000003,
+ "cases": {
+  "ai-data-requirements-001": {
+   "score": 0.9393939393939394,
+   "scoreWithout": 0.8181818181818182,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "flow-retention": [
+     1,
+     0
+    ],
+    "flows": [
+     3,
+     0
+    ],
+    "lawful-basis": [
+     3,
+     3
+    ],
+    "owner": [
+     3,
+     3
+    ],
+    "personal": [
+     3,
+     3
+    ],
+    "pseudo": [
+     3,
+     3
+    ],
+    "redline-basis-not-open": [
+     3,
+     3
+    ]
+   },
+   "delta": 0.12121212121212122,
+   "costPerAnswer": [
+    0.05768703333333333,
+    0.037544
+   ]
+  },
+  "ai-data-requirements-002": {
+   "score": 0.9259259259259259,
+   "scoreWithout": 0.5925925925925926,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "complete": [
+     3,
+     0
+    ],
+    "freshness": [
+     2,
+     0
+    ],
+    "no-personal": [
+     2,
+     1
+    ],
+    "redline-no-vague-freshness": [
+     3,
+     3
+    ],
+    "volume": [
+     3,
+     0
+    ]
+   },
+   "delta": 0.33333333333333337,
+   "costPerAnswer": [
+    0.13210616666666666,
+    0.07386263333333333
+   ]
+  },
+  "ai-data-requirements-003": {
+   "score": 0.9666666666666667,
+   "scoreWithout": 0.7333333333333334,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "blocker": [
+     3,
+     1
+    ],
+    "measured": [
+     3,
+     0
+    ],
+    "owner": [
+     3,
+     3
+    ],
+    "redline-no-ownerless-source": [
+     3,
+     3
+    ],
+    "sponsor": [
+     3,
+     3
+    ],
+    "threshold": [
+     2,
+     0
+    ]
+   },
+   "delta": 0.23333333333333328,
+   "costPerAnswer": [
+    0.07487376666666667,
+    0.038609333333333336
+   ]
+  },
+  "ai-data-requirements-004": {
+   "score": 0.7666666666666666,
+   "scoreWithout": 0.26666666666666666,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "expiry": [
+     3,
+     0
+    ],
+    "no-source-behaviour": [
+     2,
+     0
+    ],
+    "owner": [
+     3,
+     3
+    ],
+    "redline-not-everything": [
+     2,
+     1
+    ],
+    "retrieval-queries": [
+     2,
+     0
+    ],
+    "twelve": [
+     3,
+     0
+    ]
+   },
+   "delta": 0.49999999999999994,
+   "costPerAnswer": [
+    0.05037356666666667,
+    0.04057586666666666
+   ]
+  },
+  "ai-data-requirements-005": {
+   "score": 0.8888888888888888,
+   "scoreWithout": 0.6666666666666666,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "dated-versions": [
+     3,
+     1
+    ],
+    "distinct": [
+     0,
+     0
+    ],
+    "expiry-number": [
+     3,
+     0
+    ],
+    "redline-no-vague-expiry": [
+     3,
+     3
+    ],
+    "stale-kpi": [
+     3,
+     2
+    ]
+   },
+   "delta": 0.2222222222222222,
+   "costPerAnswer": [
+    0.0510914,
+    0.030685333333333332
+   ]
+  },
+  "ai-data-requirements-006": {
+   "score": 1.0,
+   "scoreWithout": 1.0,
+   "fired": 0,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": true,
+   "graders": {
+    "not-triggered": [
+     3,
+     3
+    ]
+   },
+   "costPerAnswer": [
+    0.037097333333333336,
+    0.03643266666666666
+   ]
+  },
+  "ai-data-requirements-007": {
+   "score": 1.0,
+   "scoreWithout": 1.0,
+   "fired": 0,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": true,
+   "graders": {
+    "not-triggered": [
+     3,
+     3
+    ]
+   },
+   "costPerAnswer": [
+    0.035112,
+    0.035870000000000006
+   ]
+  }
+ },
+ "meanDelta": 0.282020202020202
+}

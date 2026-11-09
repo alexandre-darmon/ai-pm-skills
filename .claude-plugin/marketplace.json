@@ -14,8 +14,11 @@
       "source": "./",
       "strict": false,
       "skills": [
+        "./skills/agent-design-and-tooling",
         "./skills/ai-act-classification",
         "./skills/ai-adoption-plan",
+        "./skills/ai-data-requirements",
+        "./skills/ai-opportunity-assessment",
         "./skills/ai-roi-quantification",
         "./skills/assistant-kpis-cost-per-outcome",
         "./skills/build-evals",
@@ -24,8 +27,18 @@
         "./skills/llm-judge-calibration",
         "./skills/model-card-ai-registry",
         "./skills/model-selection",
+        "./skills/process-ai-redesign",
         "./skills/release-to-production",
         "./skills/system-prompt-and-guardrails"
+      ]
+    },
+    {
+      "name": "agent-design-and-tooling",
+      "description": "Design an agent's loop, tools, permissions, stop conditions and traces from its autonomy levels, before any framework. Use for \"make it an agent\", a new tool or permission, or a framework debate.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/agent-design-and-tooling"
       ]
     },
     {
@@ -47,6 +60,24 @@
       ]
     },
     {
+      "name": "ai-data-requirements",
+      "description": "Specify what an AI feature reads and writes. Use on \"what data do we need\", a DPO asking what is processed, or to set up or review a RAG store: stale answers, mixed sensitivity, unowned docs.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/ai-data-requirements"
+      ]
+    },
+    {
+      "name": "ai-opportunity-assessment",
+      "description": "Decide in one page if an AI idea deserves a PRD, in which form, and what to ask the sponsor: a dated pilot, stop conditions, an evidence plan. Use for \"should we do this with AI?\" or an AI pitch.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/ai-opportunity-assessment"
+      ]
+    },
+    {
       "name": "ai-roi-quantification",
       "description": "Compute a deployed AI product's ROI with the five-line model, a baseline and sourced unit values. Use for a budget renewal, a CFO or comex review, \"what did it return?\" or a scaling decision.",
       "source": "./",
@@ -57,7 +88,7 @@
     },
     {
       "name": "assistant-kpis-cost-per-outcome",
-      "description": "Define an AI assistant's or agent's KPIs (quality by domain, adoption, cost per correct outcome). Use when asked for its dashboard or ROI, or when usage grows and nobody knows if it helps.",
+      "description": "Define an AI assistant's or agent's KPIs (quality by domain, adoption, cost per correct outcome). Use when asked for its dashboard, or when usage grows and nobody knows if it helps.",
       "source": "./",
       "strict": false,
       "skills": [
@@ -66,7 +97,7 @@
     },
     {
       "name": "build-evals",
-      "description": "Build or review the eval set, graders, thresholds and baseline that decide if an AI feature is good enough. Use for a PRD eval stub, an eval suite to review, a release gate, or disputed quality.",
+      "description": "Build or review the eval set, graders, thresholds and baseline that say if an AI feature works. Use for an eval stub, a suite to review, a release gate, disputed quality, or which pipeline step fails.",
       "source": "./",
       "strict": false,
       "skills": [
@@ -116,6 +147,15 @@
       "strict": false,
       "skills": [
         "./skills/model-selection"
+      ]
+    },
+    {
+      "name": "process-ai-redesign",
+      "description": "Redesign a business process with AI: autonomy level and gate per step, three scenarios with ROI lines, trade-offs, migration path. Use for \"automate this process\" or an efficiency target.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/process-ai-redesign"
       ]
     },
     {

@@ -21,6 +21,18 @@ Every document or clause gets one status: **on file** (link, version, date) · *
 | Paired comparison: d = cases where exactly one vendor is right; gap < 2√d / n is a tie | references/eval-statistics.md §5 |
 | Class sizing for the margin the decision needs | references/eval-statistics.md §3 |
 
+## Benchmark audit
+
+A benchmark score describes the benchmark's cases and grader as much as the product. Before a vendor's own benchmark or a public leaderboard gets any weight, run three checks. For a public benchmark you run them; for a vendor's own, ask the vendor to run them and show the outputs.
+
+| Check | How | Reading |
+| --- | --- | --- |
+| Do-nothing answer | Send the grader an empty output, the input copied back, or one constant answer for every case; for an agent, a run that takes no action | Every case it passes is a case the grader passes without the task done: the published score is inflated by at least that share |
+| Known-wrong answer | Send well-formed answers you know are wrong: a value from another document, a plausible false amount, the task done on the wrong record | A grader that passes them checks format, not correctness |
+| Contamination | Build a fresh matched set: same document types, same difficulty, same scoring, never published, collected after the model's training cut-off. Score the product on both sets | The gap between the public score and the matched-set score estimates what the model learnt from the public cases. A gap wider than both intervals means the public score does not transfer |
+
+A vendor that will not run the first two checks on its own benchmark leaves its figure *claimed*. Your bake-off set measures the vendor's claim only where it matches the claim's document types and difficulty; elsewhere the gap also holds the difference between their data and yours, so record it as *not reproduced on your data*, not as contamination. Publishing a set makes it a training target: a public score ages, your private holdout does not. If the product can flag a field for review instead of guessing, score correct, flagged and wrong apart (references/eval-statistics.md §12); if the inputs vary in layout or wording, check the score on reworded variants (§13).
+
 ## GDPR (Regulation (EU) 2016/679)
 
 | Point | What to check in the vendor's terms |

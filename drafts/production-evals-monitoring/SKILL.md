@@ -1,8 +1,8 @@
 ---
 name: production-evals-monitoring
-description: Plan how an AI feature's answer quality is watched in production (samples, online evals, alerts, owners, drift). Use before go-live, for a post-market monitoring plan, drift or a quality dip.
+description: "Watch an AI feature's answer quality in production (samples, judges, alerts, drift). Use before go-live, for a post-market monitoring plan, or when a pass rate drops and someone wants to roll back."
 stage: evaluate
-version: 0.1.1
+version: 0.1.2
 last_verified: 2026-11-09
 legal: true
 depends_on: [build-evals, llm-judge-calibration, conversation-analysis, ai-act-classification]
@@ -18,7 +18,7 @@ status: draft
 ## When to use
 - Go-live is near and nobody has written how answer quality will be watched once real traffic arrives.
 - "Write our post-market monitoring plan", or a deployer must monitor a high-risk system (AI Act arts. 72 and 26(5)).
-- A sampled quality score dips, or drift is suspected, and someone wants to roll back or to call it fine.
+- A sampled pass rate drops and someone wants to roll back today, or to call it fine: is the drop real or noise? Or drift is suspected.
 - The production dashboard shows usage, latency, cost and thumbs, and no measured quality.
 - Do not use to build the offline eval set, graders and thresholds before launch: that is `build-evals`.
 - Do not use to ship a change, including a provider model update: that is `release-to-production`; this skill watches what runs after it.
@@ -37,7 +37,7 @@ No offline plan: fill the plan's slots, send the classes and thresholds to `buil
    - A validated judge (`llm-judge-calibration`) on a random sample stratified by class. Report the level corrected by its TPR and TNR (references/eval-statistics.md §7).
    - Expert review on a smaller random slice of the judged sample: it finds what the judge misses and re-measures the judge's TPR and TNR every month. A judge whose TPR or TNR falls below its validation bar stops gating until revalidated.
    - Oversample low-confidence classifications, escalations, thumbs-down, unclassified and new requests to find new failure modes. Read them, but keep them out of the class rate: they would bias it.
-4. **Size the sample per class and set control limits** (references/eval-statistics.md §3, §9; references/online-sampling.md). For each class, write δ, the drop that matters (from the margin above its threshold). Limits are p̄ ± 3√(p̄(1−p̄)/n). For limits within δ of the centre, n ≥ 9·p̄(1−p̄)/δ² per class per period: p̄ = 90%, δ = 5 points gives 324. A drop of exactly δ then crosses the limit about half the time in its first period; with n ≥ 16·p̄(1−p̄)/δ², about 84%. A class that cannot fill n in a week is charted over two or four weeks, and the plan states the detection delay. Worked band: p̄ = 91%, n = 100 gives ±8.6 points, limits 82.4% to 99.6%. The centre line comes from the first 8 to 12 production periods, not from the offline score; a new judge version restarts the chart. `scripts/control_limits.py` computes limits, run rule and n.
+4. **Size the sample per class and set control limits** (references/eval-statistics.md §3, §9; references/online-sampling.md). For each class, write δ, the drop that matters (from the margin above its threshold). Limits are p̄ ± 3√(p̄(1−p̄)/n). For limits within δ of the centre, n ≥ 9·p̄(1−p̄)/δ² per class per period: p̄ = 90%, δ = 5 points gives 324. A drop of exactly δ then crosses the limit about half the time in its first period; with n ≥ 16·p̄(1−p̄)/δ², about 84%. A class that cannot fill n in a week is charted over two or four weeks, and the plan states the detection delay. Worked band: p̄ = 94%, n = 150 gives σ = 1.94 points, ±5.8 points, limits 88.2% to 99.8%. The centre line comes from the first 8 to 12 production periods, not from the offline score; a new judge version restarts the chart. `scripts/control_limits.py` computes limits, run rule and n.
 5. **Alert rules, owners, action ladder.** Alert when a period falls outside the limits, when 8 periods in a row sit on the same side of the centre line, or when a deterministic red-line check fires. Each alert names an owner (a role, not a team), a response time and the next rung: investigate (pull the failing traces, the per-class breakdown, the version diff of model, prompt, KB and judge) → roll back to the last pinned bundle (`release-to-production`) → suspend the step or move it down one level (references/autonomy-ladder.md). Moving down never needs approval; moving back up passes the gate again. A dip inside the limits is noise until a run rule or a larger sample says otherwise: it earns an investigation and a bigger sample, never a rollback on its own. Page only on what needs action now (google-sre); the rest goes to the weekly review.
 6. **Watch for drift.** New question classes and the share of unclassified requests (`conversation-analysis` monthly check); input shift (class mix, language, length); output shift (refusal, hand-over and citation rates, answer length); knowledge-base staleness. Any provider model, embedding model or judge model change is a release, announced or silent: pin dated versions, alert when the model that answered (`gen_ai.response.model`) changes, re-run the offline gate on the golden set, follow `release-to-production`.
 7. **Close the loop.** Every confirmed failure (judge fail confirmed by an expert, upheld complaint, red-line hit) gets an `error-analysis` note on its failure mode and, masked, becomes a regression case in the golden set (`build-evals`). A new failure mode gets a deterministic check or a grader. A serious incident goes to `ai-incident-playbook` (art. 73 clocks for high-risk systems). Count confirmed failures and cases added per month.
