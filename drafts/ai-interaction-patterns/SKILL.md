@@ -1,8 +1,8 @@
 ---
 name: ai-interaction-patterns
-description: 'Design how an AI feature behaves for users: sources, confidence, correction, refusal, escalation, latency. Use for assistant UX, showing uncertainty, or users who over-trust or ignore the AI.'
+description: 'Design how an AI feature behaves for users: sources, confidence scores, correction, refusal, escalation. Use for assistant UX, showing a score or "% sure", or users who over-trust the AI.'
 stage: specify
-version: 0.2.0
+version: 0.2.1
 depends_on: [llm-feature-prd, build-evals]
 feeds: [system-prompt-and-guardrails, ai-adoption-plan]
 autonomy_relevant: true

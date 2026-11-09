@@ -1,8 +1,8 @@
 ---
 name: agent-knowledge-base
-description: 'Plan the knowledge an assistant or agent retrieves from: source register, owners, expiry, sensitivity, review ritual. Use for "set up the RAG", stale answers, or a KB nobody maintains.'
+description: 'Plan what an assistant retrieves from: sources, owners, expiry, who may see what. Use to set up or review a RAG or vector store, mixed-sensitivity documents, stale answers or an unowned KB.'
 stage: specify
-version: 0.2.0
+version: 0.2.1
 depends_on: [ai-data-requirements]
 feeds: [assistant-kpis-cost-per-outcome, build-evals, conversation-analysis, process-ai-redesign]
 autonomy_relevant: false

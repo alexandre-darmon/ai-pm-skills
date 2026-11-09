@@ -18,7 +18,7 @@ run_evals.py (eval-out/local/answers/<skill>/<case>/<arm>-1.md + runs.json), so 
 the regex graders and verdict() applies the repo's pass rules. Every step resumes where it stopped.
 
 grade also runs judge_answers.py's blind rubric with the local judge, information only and never on
-govern (legal) skills (AGENTS.md). Local results are not comparable with the Claude baselines: a
+legal skills (AGENTS.md). Local results are not comparable with the Claude baselines: a
 different, smaller model wrote them, outside Claude Code.
 """
 import argparse
@@ -259,8 +259,8 @@ def grade(args) -> int:
         print(f"{skill}: {'FAIL' if failures else 'pass'}, mean delta {summary['meanDelta'] if summary['meanDelta'] is None else round(summary['meanDelta'], 2)}", flush=True)
         if args.no_judge:
             continue
-        if fm.get("stage") == "govern":  # AGENTS.md: no LLM judge on legal skills
-            print(f"{skill}: govern skill, no judge", flush=True)
+        if fm.get("legal"):  # AGENTS.md: no LLM judge on legal skills
+            print(f"{skill}: legal skill, no judge", flush=True)
             continue
         # 2. The blind rubric of judge_answers.py, with the chosen judge.
         items = collect(folder, answers)
@@ -350,7 +350,7 @@ def report(args) -> int:
     allp = lambda k: mean([r[k] for r in rows if r[k] is not None])  # noqa: E731
     lines += ["", f"Mean over skills: with {fmt(allp('with'))}, without {fmt(allp('without'))}, delta {sign(allp('delta'))}; "
               f"{sum(r['pass'] for r in rows)}/{len(rows)} skills pass.", "",
-              "## Blind judge (generic rubric, 0 to 1; govern skills excluded)", "",
+              "## Blind judge (generic rubric, 0 to 1; legal skills excluded)", "",
               "| Skill | Judge with | Judge without | Judge delta | Meets goal with | Meets goal without | Words with | Words without | Noise |",
               "| --- | --- | --- | --- | --- | --- | --- | --- | --- |"]
     for r in rows:
