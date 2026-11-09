@@ -232,7 +232,8 @@ def load_baseline(skill: str, chash: str) -> dict | None:
     return b if (b.get("casesHash"), b.get("model"), b.get("judgeModel")) == (chash, MODEL, JUDGE) else None
 
 
-def evaluate(folder: Path, full: bool, out: Path, runs: int = 1, offline: bool = False) -> tuple[dict, list[str], str]:
+def evaluate(folder: Path, full: bool, out: Path, runs: int = 1, offline: bool = False, jobs: int = 1,
+             max_cost: float = MAX_COST_USD) -> tuple[dict, list[str], str]:
     fm, _ = read_frontmatter(folder / "SKILL.md")
     skill, threshold = fm["name"], float(fm["eval_threshold"])
     chash = cases_hash(folder)
@@ -250,7 +251,7 @@ def evaluate(folder: Path, full: bool, out: Path, runs: int = 1, offline: bool =
     raw = out / f"{skill}.raw.json"
     cmd = ["claude", "plugin", "eval", str(folder), "--trust-plugin", "--no-publish", "--json", str(raw),
            "--runs", str(runs), "--threshold", str(threshold), "--ablation", ablation,
-           "--model", MODEL, "--judge-model", JUDGE, "--max-cost-usd", str(MAX_COST_USD), "--keep-temp"]
+           "--model", MODEL, "--judge-model", JUDGE, "--max-cost-usd", str(max_cost), "--keep-temp", "-j", str(jobs)]
     print("$", " ".join(cmd), flush=True)
     code = subprocess.run(cmd, cwd=ROOT).returncode
     if not raw.is_file():
@@ -294,6 +295,8 @@ def main() -> int:
     ap.add_argument("--base", default="origin/main")
     ap.add_argument("--regrade", action="store_true", help="re-score the answers saved by the last paid run: free, no model call")
     ap.add_argument("--out", type=Path, default=ROOT / "eval-out")
+    ap.add_argument("--max-cost", type=float, default=MAX_COST_USD, help="cost ceiling per skill and run, in USD")
+    ap.add_argument("-j", type=int, default=1, help="agent runs at once (1-8), passed to claude plugin eval; they share one rate limit")
     args = ap.parse_args()
 
     if args.skills:
@@ -307,7 +310,7 @@ def main() -> int:
         return 0
 
     args.out.mkdir(parents=True, exist_ok=True)
-    rows = [evaluate(f, args.full, args.out, args.runs, args.regrade) for f in folders]
+    rows = [evaluate(f, args.full, args.out, args.runs, args.regrade, args.j, args.max_cost) for f in folders]
     text = report(rows)
     print(text)
     if os.environ.get("GITHUB_STEP_SUMMARY"):
