@@ -8,7 +8,7 @@ feeds: [build-evals, retrieval-evaluation, agent-evals, llm-judge-calibration]
 autonomy_relevant: false
 sources: [husain-shankar-evals, eu-ai-act, anthropic-evals, zheng-llm-judge, gdpr, tamkin-discrim-eval, sclar-format-spread, own-golden-sets]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # synthetic-eval-data

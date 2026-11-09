@@ -20,6 +20,7 @@
         "./skills/ai-data-requirements",
         "./skills/ai-opportunity-assessment",
         "./skills/ai-roi-quantification",
+        "./skills/ai-vendor-evaluation",
         "./skills/assistant-kpis-cost-per-outcome",
         "./skills/build-evals",
         "./skills/conversation-analysis",
@@ -29,6 +30,8 @@
         "./skills/model-selection",
         "./skills/process-ai-redesign",
         "./skills/release-to-production",
+        "./skills/retrieval-evaluation",
+        "./skills/synthetic-eval-data",
         "./skills/system-prompt-and-guardrails"
       ]
     },
@@ -84,6 +87,15 @@
       "strict": false,
       "skills": [
         "./skills/ai-roi-quantification"
+      ]
+    },
+    {
+      "name": "ai-vendor-evaluation",
+      "description": "Choose or renew a bought AI product or vendor (copilot, chatbot, document AI) on your own bake-off, cost per correct outcome and contract terms. Use for an RFP, a vendor demo or claim, a renewal.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/ai-vendor-evaluation"
       ]
     },
     {
@@ -165,6 +177,24 @@
       "strict": false,
       "skills": [
         "./skills/release-to-production"
+      ]
+    },
+    {
+      "name": "retrieval-evaluation",
+      "description": "Evaluate a RAG or search feature in two stages, retrieval then generation. Use when answers are wrong or cite the wrong document, before changing the LLM, or for a new embedding model or re-index.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/retrieval-evaluation"
+      ]
+    },
+    {
+      "name": "synthetic-eval-data",
+      "description": "Generate synthetic eval inputs when real cases are scarce, without fooling yourself. Use pre-launch, for a rare risky class, when privacy blocks real data, or before \"generate 1,000 test questions\".",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/synthetic-eval-data"
       ]
     },
     {

@@ -8,7 +8,7 @@ feeds: [release-to-production, model-selection, ai-data-requirements, system-pro
 autonomy_relevant: false
 sources: [manning-ir, es-ragas, husain-shankar-evals, anthropic-evals, miller-error-bars, own-rag-practice]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # retrieval-evaluation

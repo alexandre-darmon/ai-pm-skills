@@ -10,7 +10,7 @@ feeds: [ai-act-classification, production-evals-monitoring, model-card-ai-regist
 autonomy_relevant: true
 sources: [dora, gdpr, eu-ai-act, eu-digital-omnibus-ai, miller-error-bars, wilson-interval, zhu-agentic-benchmarks, zhang-gsm1k, repo-yoseph, own-vendor-selection]
 eval_threshold: 0.90
-status: draft
+status: tested
 ---
 
 # ai-vendor-evaluation
