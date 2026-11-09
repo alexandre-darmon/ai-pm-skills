@@ -100,6 +100,8 @@ def summarise(result: dict, skill: str, chash: str) -> dict:
             "negative": bool(silent),
             # runs passed per grader, [with, without]: the discrimination report and red-line rule read it
             "graders": {n: [passes(with_runs, n), passes(without_runs, n) if without_runs else None] for n in scored},
+            # API-equivalent cost of one answer, per arm: with the score it gives cost per correct outcome
+            "costPerAnswer": [mean([r.get("costUsd") or 0 for r in runs]) if runs else None for runs in (with_runs, without_runs)],
         }
     return {"skill": skill, "model": MODEL, "judgeModel": JUDGE, "claudeVersion": result.get("claudeVersion"),
             "date": str(result.get("startedAt", ""))[:10], "casesHash": chash, "partial": result.get("partial", False),

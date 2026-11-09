@@ -5,10 +5,11 @@
 <!-- gains:start -->
 | Same cases, Sonnet 5.5 answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 5 skills, 17 cases × 3 runs | 39% | 82% | **99%** | +60 [+51, +68] | +17 [+9, +26] |
-| Blind LLM judge, Haiku 5.5: 4 of these skills, 14 cases, not calibrated | 71% | 78% | 81% | +10 [+6, +14] | +3 [+1, +5] |
-| Blind LLM judge, Sonnet 5.5: 4 of these skills, 14 cases, not calibrated | 70% | 76% | 82% | +11 [+6, +17] | +5 [+3, +7] |
-| Red lines held (the one thing the answer must never do) | 54% | 90% | **100%** | | |
+| Regex graders: 12 skills, 40 cases × 3 runs | 55% | 82% | **97%** | +42 [+37, +47] | +17 [+9, +26] |
+| Blind LLM judge, Haiku 5.5: 5 of these skills, 17 cases, not calibrated | 71% | 78% | 80% | +10 [+6, +13] | +3 [+1, +5] |
+| Blind LLM judge, Sonnet 5.5: 5 of these skills, 17 cases, not calibrated | 69% | 76% | 80% | +11 [+6, +17] | +5 [+3, +7] |
+| Red lines held (the one thing the answer must never do) | 81% | 90% | **100%** | | |
+| Cost per correct answer, API equivalent (8 skills) | $0.063 | — | **$0.066** | +5% | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
 <sub>Sonnet 5.5 answers each case 3 times per arm. **Regex graders** check that the answer contains what the skill asks for; the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; it is not calibrated on human scores yet, tends to favour longer answers, and never grades the legal skills. Gains in points; brackets: 95% interval from resampling the cases, which shows how much the gain depends on the cases written, not on the graders chosen. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>
