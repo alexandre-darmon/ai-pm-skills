@@ -1,0 +1,1 @@
+Improve the prompt so the agent double-checks its work before it says done, then keep the LLM judge on the final message as the gate: 96% is above the bar, so you can drop the account manager confirmation.

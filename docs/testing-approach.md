@@ -31,7 +31,7 @@ Status on 2026-11-09. No single test is enough, so each mode answers a different
 | `conversation-analysis` | 21% | 80% | 96% | +17 |
 | `build-evals` | 51% | 85% | 100% | +15 |
 | `ai-act-classification` | 68% | 91% | 100% | +9, under the 10-point bar |
-| `cse-consultation` | 65% | 91% | 99% | +8, under the 10-point bar |
+| `cse-consultation` (retired 2026-11-09) | 65% | 91% | 99% | +8, under the 10-point bar |
 
 On average the format alone adds about 40 points and the method about 16 more. For the two legal skills, the gain comes mostly from the format. These templates already carry part of the method, so this is a strict test.
 
@@ -56,7 +56,7 @@ Raw results: [`baselines/template-arm/`](../baselines/template-arm/), [`baseline
 
 Since 2026-11-09, each published gain carries a 95% interval from resampling the cases within each skill ([method](evaluation.md#how-sure-are-the-numbers)). Over the catalog:
 
-- **Regex graders**, skill over the model alone: +55 points, interval +49 to +63. Over the template: +16, interval +9 to +23.
+- **Regex graders**, skill over the model alone: +60 points, interval +51 to +68. Over the template: +17, interval +9 to +26. These are the five catalog skills since `cse-consultation` was retired on 2026-11-09; with it, the figures were +55 (+49 to +63) and +16 (+9 to +23). Retiring a skill with a small gain raises the mean, so read the change as a catalog change, not as progress.
 - **Blind judges**, skill over the model alone: +10 (Haiku, +6 to +14) and +11 (Sonnet, +6 to +17). Over the template: +3 (+1 to +5) and +5 (+3 to +7).
 - Against the template, both judges see a small gain above zero: on these cases, and by a judge not yet calibrated, the method adds something beyond the format. The gain is small, and comes mostly from `llm-feature-prd` and `conversation-analysis`.
 - These intervals only reflect which cases were written. Twenty-one cases (fourteen for the judges), all written by the skills' author, remain the main limit.

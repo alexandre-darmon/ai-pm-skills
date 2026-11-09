@@ -1,0 +1,1 @@
+Here is the prompt: "You are a claims expert. From the 40 procedures below, write 1,000 realistic customer questions and, for each, the correct gold answer in two sentences. Vary claim types and tone." Then run the assistant and let Model X compare each answer with the gold answer.

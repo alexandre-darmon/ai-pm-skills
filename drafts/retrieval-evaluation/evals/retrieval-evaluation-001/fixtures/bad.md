@@ -1,0 +1,1 @@
+Yes, switch the LLM: larger models reason better over long insurance clauses. Run the new model on the same 200 questions, have the two senior agents grade the answers again, and if the score goes above 85% the committee has its proof.

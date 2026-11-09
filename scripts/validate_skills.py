@@ -21,7 +21,7 @@ from pathlib import Path
 
 import yaml
 
-STAGES = {"strategy", "specify", "data", "build", "measure", "govern", "transform"}
+STAGES = {"specify", "evaluate", "prove"}  # what correct means, measure it offline and online, prove it to sponsor and regulator
 STATUSES = {"draft", "tested", "verified-in-mission"}
 # Keys the harness accepts per grader type (claude plugin eval 2.1.302, strict schema: anything else fails the load).
 GRADER_KEYS = {
@@ -133,8 +133,12 @@ def check_skill(folder: Path, in_catalog: bool, known_sources: set[str] | None =
 
     if "last_verified" in fm and not isinstance(fm["last_verified"], datetime.date):
         err("last_verified must be a date (YYYY-MM-DD)")
-    if stage == "govern" and "last_verified" not in fm:
-        err("last_verified is mandatory for govern skills")
+    legal = fm.get("legal", False)
+    if not isinstance(legal, bool):
+        err("legal must be true or false (optional, default false)")
+        legal = False
+    if legal and "last_verified" not in fm:
+        err("last_verified is mandatory for legal skills")
 
     for key in ("depends_on", "feeds"):
         value = fm.get(key)
@@ -160,8 +164,8 @@ def check_skill(folder: Path, in_catalog: bool, known_sources: set[str] | None =
     threshold = fm.get("eval_threshold")
     if isinstance(threshold, bool) or not isinstance(threshold, (int, float)) or not 0 < threshold <= 1:
         err("eval_threshold must be a number in (0, 1]")
-    elif stage == "govern" and threshold < 0.9:
-        err("govern skills need eval_threshold >= 0.90")
+    elif legal and threshold < 0.9:
+        err("legal skills need eval_threshold >= 0.90")
 
     found = re.findall(r"^## (.+?)\s*$", body, re.MULTILINE)
     if found != HEADINGS:
@@ -173,11 +177,11 @@ def check_skill(folder: Path, in_catalog: bool, known_sources: set[str] | None =
     if foundations is not None:
         errors += check_foundations(folder, body, foundations)
     valid_threshold = threshold if not any(e.startswith("eval_threshold") for e in errors) else None
-    errors += check_cases(folder, str(name), govern=stage == "govern", threshold=valid_threshold)
+    errors += check_cases(folder, str(name), legal=legal, threshold=valid_threshold)
     return errors
 
 
-def check_cases(folder: Path, name: str, govern: bool, threshold: float | None = None) -> list[str]:
+def check_cases(folder: Path, name: str, legal: bool, threshold: float | None = None) -> list[str]:
     """Cases use the native `claude plugin eval` layout: evals/<case>/prompt.md + graders/*.md."""
     evals = folder / "evals"
     errors = []
@@ -218,7 +222,7 @@ def check_cases(folder: Path, name: str, govern: bool, threshold: float | None =
             errors.append(f"{where}: prompt.md body (the scenario) is empty")
         tags = tags if isinstance(tags, list) else []
         negatives += "negative" in tags
-        errors += check_graders(case, where, name, govern, tags, body, threshold)
+        errors += check_graders(case, where, name, legal, tags, body, threshold)
     if len(cases) - negatives < MIN_CASES:
         errors.append(f"evals/ must hold at least {MIN_CASES} case folders not tagged negative, found {len(cases) - negatives}")
     if cases and not negatives:
@@ -283,7 +287,7 @@ def check_grader_schema(fm: dict, stem: str, gwhere: str) -> list[str]:
     return errors
 
 
-def check_graders(case: Path, where: str, skill: str, govern: bool, tags: list | None = None,
+def check_graders(case: Path, where: str, skill: str, legal: bool, tags: list | None = None,
                   prompt: str = "", threshold: float | None = None) -> list[str]:
     errors = []
     tags = tags or []
@@ -300,8 +304,8 @@ def check_graders(case: Path, where: str, skill: str, govern: bool, tags: list |
             fm.pop("_body", None)
         schema = check_grader_schema(fm, grader.stem, gwhere)
         errors += schema
-        if fm.get("type") in JUDGE_TYPES and govern:
-            errors.append(f"{gwhere}: govern skills use exact + checklist only, no judge")
+        if fm.get("type") in JUDGE_TYPES and legal:
+            errors.append(f"{gwhere}: legal skills use exact + checklist only, no judge")
         if not schema:
             graders[grader.stem] = fm
 

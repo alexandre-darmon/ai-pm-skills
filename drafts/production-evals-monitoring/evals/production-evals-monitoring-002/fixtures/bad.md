@@ -1,0 +1,1 @@
+Yes. A drop from 91% to 86% is a 5-point fall, a clear degradation of quality that customers will feel. Roll back to the August version today and investigate afterwards. Set an alert for any weekly fall above 3 points so you react faster next time.

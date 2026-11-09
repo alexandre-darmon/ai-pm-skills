@@ -1,0 +1,1 @@
+Yes, we are below the bar: the judge passed 85% of memos against a bar of 88%, a 3-point gap on 400 memos. The judge was validated in September with good TPR and TNR, so its figure stands. Recommend the return to full human review until the rate is back above 88%.

@@ -1,1 +1,1 @@
-Wave 1: managers first. One champion per branch. Adoption measured per population. Today many advisers keep notes by hand or in a personal chatbot account: the assistant must beat that workaround.
+Wave 1: managers first. One champion per branch. Adoption measured per population on correct notes per active user per week, from a sampled review; logins are not adoption. Today many advisers keep notes by hand or in a personal chatbot account: the assistant must beat that workaround.

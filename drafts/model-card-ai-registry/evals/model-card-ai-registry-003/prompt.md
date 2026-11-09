@@ -1,7 +1,7 @@
 ---
 name: model-card-ai-registry-003
 description: 'Card for an L4 agent (source - anonymised telecom brief, 2026)'
-tags: [model-card-ai-registry, nominal, red-line]
+tags: [model-card-ai-registry, p1, nominal, red-line]
 expected_outcome: 'Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.'
 runs: 3
 max_turns: 10

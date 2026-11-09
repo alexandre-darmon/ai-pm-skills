@@ -1,7 +1,7 @@
 ---
 name: semantic-layer-design
 description: 'Define the metrics an AI or a human may use: one definition, owner and test each, conflict register, Apache Ossie export. Use for metric disputes, before chat-with-data, or a BI migration.'
-stage: data
+stage: specify
 version: 0.2.0
 depends_on: [ai-data-requirements]
 feeds: [chat-with-your-data-scoping, assistant-kpis-cost-per-outcome]

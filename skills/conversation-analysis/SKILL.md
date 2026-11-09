@@ -1,10 +1,10 @@
 ---
 name: conversation-analysis
 description: Classify an AI assistant's conversations by use case, resolution and sentiment, PII masked. Use to build or check the taxonomy, pick the classifier, see what people use it for, or act on the results.
-stage: measure
+stage: evaluate
 version: 0.2.1
 depends_on: [build-evals, agent-knowledge-base]
-feeds: [assistant-kpis-cost-per-outcome, ai-roi-quantification, process-ai-redesign, build-evals]
+feeds: [assistant-kpis-cost-per-outcome, ai-roi-quantification, process-ai-redesign, build-evals, error-analysis, production-evals-monitoring]
 autonomy_relevant: true
 sources: [gdpr, own-conversation-classification, repo-chanmeng]
 eval_threshold: 0.80

@@ -72,12 +72,12 @@ Rules:
 - **Real answers become fixtures.** Save the answers of paid runs (`--keep-temp` traces) as `fixtures/good-<run>.md` (with the skill, sound) and `fixtures/bad-<run>.md` (a model-alone answer that crosses a red line). They follow the same rules as `good.md` and `bad.md`, so every later grader change is checked against real answers for free, on every push. Drop an answer that predates a change to the skill.
 - **No judge in the catalogue today.** Every grader is a regex or a tool check, so grading costs nothing beyond the runs themselves. Add an `llm` grader only when a regex cannot decide, and calibrate it first.
 - **`file_exists`** only sees files Claude created, so the case needs `Write` in `allowed_tools`.
-- **Govern skills** use no `llm` or `baseline` grader.
-- **Judges are calibrated** before use: ≥ 80% agreement with 20 human-labelled cases per skill, frontier model to calibrate, then a cheap pinned `--judge-model`. An `llm` grader passes on 2 of 3 votes.
+- **Legal skills** (`legal: true`) use no `llm` or `baseline` grader.
+- **Judges are validated** before use, as `llm-judge-calibration` teaches: one binary criterion per grader, human labels kept apart from the prompt-writing ones, TPR and TNR each ≥ 80% (raw agreement alone never qualifies), frontier model to validate, then a cheap pinned `--judge-model`. An `llm` grader passes on 2 of 3 votes.
 
 ## Scoring and thresholds
 
-- Run score = weighted share of graders passed. Case score = mean of runs. A case passes at ≥ the skill's `eval_threshold` (0.80 default, 0.90 for govern and flagship).
+- Run score = weighted share of graders passed. Case score = mean of runs. A case passes at ≥ the skill's `eval_threshold` (0.80 default, 0.90 for legal and flagship).
 - `claude plugin eval` does not read `eval_threshold`: it fails a case below `--threshold`, which defaults to 1.0. Pass the skill's threshold explicitly.
 - Every run has two arms, with and without the skill. A skill whose mean delta is ≤ 0 fails: it adds nothing over the model alone. The CLI reports the delta but does not fail on it, so the run script checks it from the `--json` output.
 - `run_evals.py` also lists the graders that pass, or fail, in every run of both arms: they measure the model, not the skill. It is a warning; make the grader harder or keep it knowingly as a regression guard.

@@ -1,1 +1,1 @@
-Changelog: v2.4, rule on injury claims, eval delta +2 points, approved by the owner. Set a review date.
+Changelog: v2.4, rule on injury claims, eval delta +2 points per class on the same cases, approved by the owner. Count the cases where exactly one version passes: on a small suite +2 points may be a tie inside the noise. Set a review date.

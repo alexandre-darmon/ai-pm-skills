@@ -37,4 +37,4 @@ A low answer score with high recall points to generation. With low recall it poi
 
 ## Owners
 
-The tool write protocol is in `agent-design-and-tooling`. Attacks and enforcement are in `system-prompt-and-guardrails`, with its redteam set. Source access rules are in `agent-knowledge-base`.
+The full agent method (trials, pass^k, simulated users, level gates) is in `agent-evals`; the full retrieval method is in `retrieval-evaluation`. The tool write protocol is in `agent-design-and-tooling`. Attacks and enforcement are in `system-prompt-and-guardrails`, with its redteam set. Source access rules are in `agent-knowledge-base`.

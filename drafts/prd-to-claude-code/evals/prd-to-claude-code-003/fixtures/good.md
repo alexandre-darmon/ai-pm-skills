@@ -1,1 +1,0 @@
-Fixtures are synthetic. Real complaints never enter the repo; secrets stay out too. Definition of done: tests and evals pass. The eval gate is a required CI check, and a deny rule blocks the agent from the CSV path.

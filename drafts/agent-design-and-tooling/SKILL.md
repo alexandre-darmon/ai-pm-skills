@@ -1,7 +1,7 @@
 ---
 name: agent-design-and-tooling
 description: 'Design an agent''s loop, tools, permissions, stop conditions and traces from its autonomy levels, before any framework. Use for "make it an agent" or a framework debate.'
-stage: build
+stage: specify
 version: 0.2.0
 depends_on: [llm-feature-prd, process-ai-redesign]
 feeds: [system-prompt-and-guardrails, assistant-kpis-cost-per-outcome]
@@ -29,7 +29,7 @@ Ask if missing: failure modes, latency and cost constraints.
 3. List tools with schemas, side effects and whether they can be undone. For each, write the contract the model reads: when to use it over its nearest neighbour, named parameters over a generic tool, and an empty result kept distinct from a failed call. Rate the risk by effect, not by name. Detail in references/tool-contracts.md.
 4. Build the permission matrix: tool × level × approval, following references/autonomy-ladder.md. A tool that moves money or changes records carries a cap and an approval rule.
 5. Write the protocol for each write tool at L3 and above: prepare is separate from commit; where the matrix requires approval, it is bound to the exact action, target and payload, and it expires; the cap is checked on the resulting state in the system of record, where other sessions and channels count too; every write has an idempotency key and is never retried blindly; a write that times out has an unknown result, so reconcile before any retry. How the gate is enforced and attacked belongs to `system-prompt-and-guardrails`.
-6. Write stop conditions for the run. A run ends on a checkable done state or the API's stop signal, never on the model's prose or self-reported confidence. Maximum steps, budget per run and timeout are the safety net: a hit is an alert with its own exit (hand off to a human, never silent). Stop conditions for the initiative itself start in `ai-initiative-pitch`.
+6. Write stop conditions for the run. A run ends on a checkable done state or the API's stop signal, never on the model's prose or self-reported confidence. Maximum steps, budget per run and timeout are the safety net: a hit is an alert with its own exit (hand off to a human, never silent). Stop conditions for the initiative itself start in `ai-opportunity-assessment`; how the agent is tested over repeated trials is `agent-evals`.
 7. Set the memory policy: what persists, for how long, and personal-data limits.
 8. Define the trace schema: every tool call logged with input, output and cost, and an outcome field set from the exit, usable by `assistant-kpis-cost-per-outcome`.
 9. Map frameworks last: each candidate against a named need the raw loop cannot meet, or none.
@@ -46,7 +46,7 @@ When the brief asks which framework to take, the answer still opens with what th
 - The framework comes last, in the answer as much as in the method.
 
 ## Links
-references/autonomy-ladder.md · references/tool-contracts.md · system-prompt-and-guardrails · ai-initiative-pitch · assistant-kpis-cost-per-outcome · process-ai-redesign
+references/autonomy-ladder.md · references/tool-contracts.md · system-prompt-and-guardrails · agent-evals · assistant-kpis-cost-per-outcome · process-ai-redesign
 
 ## Sources
 - anthropic-agents: simple loops first, frameworks last.

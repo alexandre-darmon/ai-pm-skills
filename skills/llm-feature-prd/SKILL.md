@@ -2,9 +2,9 @@
 name: llm-feature-prd
 description: Write the PRD for an LLM feature with autonomy level per step, failure paths, eval plan and guardrails. Use when asked for the PRD of anything that generates, extracts, classifies or acts.
 stage: specify
-version: 0.2.0
+version: 0.2.1
 depends_on: [ai-opportunity-assessment]
-feeds: [build-evals, prd-to-claude-code, system-prompt-and-guardrails, ai-data-requirements, ai-act-classification]
+feeds: [build-evals, error-analysis, system-prompt-and-guardrails, ai-data-requirements, ai-act-classification]
 autonomy_relevant: true
 sources: [cagan-inspired, torres-continuous-discovery, own-prds, repo-chanmeng]
 eval_threshold: 0.80
@@ -34,7 +34,7 @@ If the outcome metric is missing, ask for it and stop, even when asked to skip q
 5. List guardrail requirements per layer: input, output, action. Any step at L3 needs tested output guardrails; any step at L4 needs action guardrails (scope, caps, approvals). Add one Never line under Non-goals: the actions the feature must be unable to take, stated as absent from its tools and credentials, because a prompt instruction can fail. Hand over to `system-prompt-and-guardrails`, which owns enforcement.
 6. Point to data requirements and compliance flags: personal data, high-risk domain, employee impact. Hand over to `ai-data-requirements` and `ai-act-classification`.
 7. Define KPIs as outcomes, each with a quality KPI beside any usage KPI. Define the rollout path: shadow, then canary, then general availability, with the gate for each.
-8. Carry over the stop conditions from `ai-initiative-pitch`, or write them if there was no pitch: a model can sit just under its threshold for months with nobody empowered to end the project. Each names a metric, a threshold, where and when it is read, and the action. Also state what moves the feature to the next stage: date, metric, value, sample size. These end the project; rollback of a bad canary belongs to `release-to-production`.
+8. Carry over the stop conditions from `ai-opportunity-assessment`, or write them if there were none: a model can sit just under its threshold for months with nobody empowered to end the project. Each names a metric, a threshold, where and when it is read, and the action. Also state what moves the feature to the next stage: date, metric, value, sample size. These end the project; rollback of a bad canary belongs to `release-to-production`.
 9. List open questions with an owner each.
 
 ## Output

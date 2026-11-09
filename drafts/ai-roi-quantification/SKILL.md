@@ -1,10 +1,10 @@
 ---
 name: ai-roi-quantification
 description: 'Compute a deployed AI product''s ROI with the five-line model, a baseline and sourced unit values. Use for a budget renewal, a CFO or comex review, "what did it return?" or a scaling decision.'
-stage: measure
+stage: prove
 version: 0.2.2
 depends_on: [assistant-kpis-cost-per-outcome, conversation-analysis]
-feeds: [ai-initiative-pitch, process-ai-redesign]
+feeds: [ai-opportunity-assessment, process-ai-redesign]
 autonomy_relevant: false
 sources: [own-roi-work, repo-yoseph, repo-chanmeng]
 eval_threshold: 0.80
@@ -28,8 +28,8 @@ Ask if missing: the baseline measurement, unit values and their source.
 2. Check the baseline. No measured baseline: the figure is labelled a projection, not an ROI, and the plan to measure the baseline comes with it.
 3. Source each unit value in the assumptions register: source, date, confidence. A figure with no source is flagged, and the interview template is proposed (who, which task, timed on real cases). Keep the conservative value. For a unit value based on time saved, report cash and capacity apart (references/roi-model.md): ask which cost went away or which named work took the freed hours, which P&L line it lands on and who confirms it. If nobody confirms, it stays capacity.
 4. Run sensitivity on the three weakest assumptions, low and high, and show the result. For each, give the measured value at which the use case no longer pays for itself: the renewal decision needs that number, not only a range.
-5. Show each use case on its own and the total. A negative use case stays visible, with a stop-or-fix recommendation. End each use case with a continue, shrink or stop call. Check it against the stop conditions already written in the pitch or PRD (`ai-initiative-pitch`, `llm-feature-prd`), copied as written, never rewritten at decision time. If none exist, say so and propose them, each with the number it is measured against and the action it triggers. When inference cost alone breaks the case, cut scope before tuning the model.
-6. Write the do-not-claim list: gains without baseline, capacity reported as cash. Write one paragraph for `ai-initiative-pitch`.
+5. Show each use case on its own and the total. A negative use case stays visible, with a stop-or-fix recommendation. End each use case with a continue, shrink or stop call. Check it against the stop conditions already written in the assessment or PRD (`ai-opportunity-assessment`, `llm-feature-prd`), copied as written, never rewritten at decision time. If none exist, say so and propose them, each with the number it is measured against and the action it triggers. When inference cost alone breaks the case, cut scope before tuning the model.
+6. Write the do-not-claim list: gains without baseline, capacity reported as cash. Write one paragraph the sponsor can reuse in the go / stop decision (`ai-opportunity-assessment`).
 
 ## Output
 `templates/roi-sheet.md`, all headings present.
@@ -43,7 +43,7 @@ Ask if missing: the baseline measurement, unit values and their source.
 - A decision call has a stated threshold, not only a recommendation.
 
 ## Links
-references/roi-model.md · assistant-kpis-cost-per-outcome · conversation-analysis · ai-initiative-pitch · llm-feature-prd
+references/roi-model.md · assistant-kpis-cost-per-outcome · conversation-analysis · ai-opportunity-assessment · llm-feature-prd
 
 ## Sources
 - own-roi-work: assumptions register and do-not-claim list.

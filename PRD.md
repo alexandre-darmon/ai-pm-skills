@@ -1,25 +1,25 @@
 # ai-pm-skills — Product Requirements Document
 
-**Version:** 1.0 · **Date:** 2026-11-01 · **Owner:** Alex Darmon · **Status:** PRD approved for build, no code yet
+**Version:** 2.0 · **Date:** 2026-11-09 · **Owner:** Alex Darmon · **Status:** v2.0 repositions the repo on "Evals as evidence" (see §5 and the change log in §15). v1.0 was dated 2026-11-01.
 
 ---
 
 ## 1. Summary
 
-**ai-pm-skills is an open-source set of 27 skills, each tested before it enters the catalog, that take an AI or Data product from framing to budget, build, measurement and compliance, in a regulated European enterprise.**
+**ai-pm-skills is an open-source set of 27 skills, each tested before it enters the catalog, that help an AI product manager in a regulated European enterprise prove three things: that a feature works, what each correct answer costs, and what the regulator will ask for. Evaluation is the spine: the repo calls it *evals as evidence*.**
 
-Each skill is a folder an agent (Claude Code, Codex, Cursor, a custom agent) loads on demand: a `SKILL.md` with the method, templates, sources, and an eval suite run by `claude plugin eval`. The repo is a system, not a list: every skill plugs into two shared backbones, the **autonomy ladder** (L0 to L5) and the **ROI model** (volume × quality × value).
+Each skill is a folder an agent (Claude Code, Codex, Cursor, a custom agent) loads on demand: a `SKILL.md` with the method, templates, sources, and an eval suite run by `claude plugin eval`. The repo is a system, not a list: every skill plugs into four shared backbones: the **evals-as-evidence frame** (three readers, six rules, the AI Act article map), **eval statistics** (intervals, sample sizes, judge correction), the **autonomy ladder** (L0 to L5) and the **ROI model** (volume × quality × value).
 
 README promise, one line:
 
-> *Tested skills for AI product managers who ship in regulated companies.*
+> *Evals as evidence: prove an AI feature works, what each correct answer costs, and what the regulator will ask for.*
 
 | Item | Value |
 | --- | --- |
 | Repo name | `ai-pm-skills` (GitHub: alexandre-darmon) |
 | Format | [Agent Skills](https://agentskills.io) open standard: `SKILL.md` + progressive disclosure |
 | Skill count | 27, hard cap 30 |
-| Stages | Strategy · Specify · Data & Knowledge · Build · Measure · Govern · Transform |
+| Blocks | Specify (what correct means) · Evaluate (offline and online) · Prove (to the sponsor and the regulator) |
 | Test harness | `claude plugin eval`, native format, 3 cases minimum per skill, scored with and without the skill; pass rate shown in README |
 | Language | English skills; French legal annexes where the law is French |
 | License | MIT for code, CC BY 4.0 for skills, foundations and docs |
@@ -49,22 +49,24 @@ Each seen first-hand on internal assistants and data platforms in banking and re
 
 1. **Measured usage, not value.** Dashboards count sessions; nobody samples answers, nobody knows which knowledge base is stale, nobody can state cost per correct outcome. The ROI stays a slide.
 2. **Autonomy by accident.** Teams jump from a chat assistant to an agent that acts, with no explicit level, no gate, no guardrail test. Risk and AI Act obligations rise silently.
-3. **Compliance as a final gate.** AI Act classification, DPIA and CSE consultation arrive after build, and the project is reworked or quietly shelved.
+3. **Compliance as a final gate.** AI Act classification arrives after build, and nobody can show the evidence it asks for: thresholds set before testing, representative test data, accuracy declared, performance watched after release.
+4. **Evals as theatre.** A judge nobody validated, one global score, twelve cases presented as proof, no interval. The number looks precise and decides nothing.
 
-The repo's bet: the skills a PM actually needs for AI products are specific, few (20 to 30), and only credible if each one is tested like code.
+The repo's bet: the skill that separates an AI PM from a PM is evaluation, read as evidence for three readers (the user, the sponsor, the regulator). The skills are specific, few (at most 30), and only credible if each one is tested like code, with the unfavourable results published.
 
 ---
 
 ## 3. Goals, non-goals, success metrics
 
-**Goal: a PM who installs the repo can run an AI product end to end in a regulated company, and can prove each skill works before trusting it.**
+**Goal: a PM who installs the repo can decide what to measure, when to ship, what a correct answer costs and what evidence counsel gets, and can see how well each skill itself was tested.**
 
 ### Goals
 
-1. Cover the seven stages of an AI product's life with 27 specific skills, none generic.
+1. Cover three blocks (Specify, Evaluate, Prove) with at most 30 specific skills, evaluation first: error analysis, judge validation, agent and retrieval evals, production monitoring.
 2. Ship every skill with an eval suite; the README shows each skill's pass rate and date.
-3. Make the autonomy ladder and the ROI model the shared language of all skills.
-4. Give compliance (AI Act, GDPR, French labour law) the same actionable form as product work: checklists and questions, inside the agent, never a PDF.
+3. Make evals-as-evidence, eval statistics, the autonomy ladder and the ROI model the shared language of all skills.
+4. Treat the AI Act as a consumer of eval evidence: one classification skill, and every article that asks for testing or monitoring mapped to the eval artefact that answers it. Checklists and questions, never a verdict.
+7. Apply the method to the repo itself: regex, template-only control and a blind judge side by side, with 95% intervals, before any headline number.
 5. Be usable from any agent that reads `SKILL.md`: Claude Code first, Codex and Cursor verified.
 6. Serve the author's own missions first: every Wave 1 skill is one Alex runs on a live client problem within the month.
 
@@ -74,7 +76,8 @@ The repo's bet: the skills a PM actually needs for AI products are specific, few
 - Not legal advice: skills produce classifications, questions and checklists for counsel, never a conformity verdict.
 - Not a redistribution of books or newsletters: skills state the author's own rules and cite the source; no excerpts.
 - Not a SaaS, a web app, a marketplace or a course. A repo and a README.
-- Not an eval tool: the repo uses `claude plugin eval` and a small deterministic grader script; it builds no harness of its own.
+- Not an eval tool: the repo uses `claude plugin eval` and a small deterministic grader script; it builds no harness of its own. The method stays harness-neutral (Inspect, Promptfoo).
+- Not a general compliance library: GDPR impact assessments and French works-council consultation were retired in v2.0; the AI Act stays because its articles ask for eval evidence.
 - Not more than 30 skills, ever. A 31st replaces one.
 
 ### Success metrics
@@ -98,10 +101,10 @@ The first issue opened by someone the author does not know is the moment the rep
 
 | User | Context | Job to be done | What they open first |
 | --- | --- | --- | --- |
-| **Primary: AI / Data PM in a regulated enterprise** (bank, insurer, retailer, utility) | Owns an internal assistant, a chat-with-data product or an agent; reports to a business sponsor and a DSI; legal and DPO in the loop | "When I frame, build or measure an AI product, I want a method that already includes evals and compliance, so I don't discover the blockers after build." | `llm-feature-prd`, `ai-act-classification`, `assistant-kpis-cost-per-outcome` |
+| **Primary: AI / Data PM in a regulated enterprise** (bank, insurer, retailer, utility) | Owns an internal assistant, a chat-with-data product or an agent; reports to a business sponsor and a DSI; legal and DPO in the loop | "When I must say whether an AI feature is good enough, I want evidence my sponsor, my engineers and counsel accept, so the decision does not rest on a demo." | `build-evals`, `error-analysis`, `assistant-kpis-cost-per-outcome`, `ai-act-classification` |
 | **Secondary: freelance consultant or agency PM** | Parachuted on an AI initiative, must look credible in week one | "When I land on a client's AI project, I want a repeatable way to audit and structure it in days." | `ai-opportunity-assessment`, `process-ai-redesign` |
 | **Secondary: engineering lead or tech lead** | Builds the thing; tired of PRDs that ignore evals and guardrails | "When the PM hands me a spec, I want evals, autonomy level and guardrails already defined." | `build-evals`, `system-prompt-and-guardrails` |
-| **Tertiary: student or career switcher** | Learning AI PM; audience of aiunmagic.com and the university course | "I want to see what the job actually looks like, with real artefacts." | README walkthrough, `ai-literacy-program` |
+| **Tertiary: student or career switcher** | Learning AI PM; audience of aiunmagic.com and the university course | "I want to see what the job actually looks like, with real artefacts." | README walkthrough, `error-analysis`, `build-evals` |
 | **Author** | Runs client missions with these skills, 1 h/day on the repo | "Every skill I write must save me time on my next mission and be worth publishing." | All of Wave 1 |
 
 Design implication: skills are written for the primary user and tested on the author's own missions. Students read; they are not designed for.
@@ -110,13 +113,15 @@ Design implication: skills are written for the primary user and tested on the au
 
 ## 5. Positioning and differentiation
 
-**Positioning statement:** for AI and Data PMs in regulated companies, ai-pm-skills is a skill library specific to AI products that covers EU compliance as product work and moves a skill to its catalog only once it passes a test suite against the bare model. Other repos do parts of this: none of it is claimed as unique.
+**Positioning statement:** for AI and Data PMs in regulated European companies, ai-pm-skills is the decision side of LLM evaluation: what to measure, when to ship, what one correct answer costs, and what evidence the regulator gets. Engineering-oriented eval courses and skills (Husain and Shankar, Eugene Yan, Anthropic's guides) teach how to build evals; this repo restates their methods for the PM's decisions and adds two things they leave out: cost per correct outcome, and the AI Act articles that turn eval habits into duties. Other repos do parts of this: none of it is claimed as unique.
+
+**Named frame:** *Evals as evidence* (`foundations/evals-as-evidence.md`): three readers, six rules, one article map. The regulatory window is short: annex III high-risk obligations apply from 2 December 2027.
 
 ### Four differentiators, in order of defensibility
 
-1. **Tested.** Each skill has an eval suite and a visible pass rate, including the score delta with vs without the skill. At least three other repos also compare with and without a skill, usually on fewer skills. `claude plugin eval` gives everyone the method, so the cases are what takes work to copy, not the testing itself.
-2. **Compliance as skills.** AI Act classification, DPIA pre-screen, CSE consultation, model card and AI registry, incident playbook. Written for a PM's working tool, dated and sourced.
-3. **A spine.** The autonomy ladder and the ROI model connect the skills. A reader sees a method, not a folder of prompts.
+1. **Evaluation as the spine, with the statistics right.** Eleven of the 27 skills evaluate: error analysis, judge validation with TPR and TNR, synthetic data, agents (pass^k), retrieval, vendors, release, production monitoring. Every score carries its number of cases and its interval.
+2. **Tested, honestly.** Each skill has an eval suite scored with and without the skill, against its own template, and by a blind judge; all three are published, including where the gain is small.
+3. **Evidence for the regulator.** One AI Act skill, and an article map (arts. 9, 10, 15, 17, 26(5), 72, 73) that links each duty to the eval artefact that answers it. Checklist, not verdict.
 4. **Lived.** Every rule comes from a problem the author met on a real deployment. Cases in the suites are anonymised real briefs.
 
 ### What the repo deliberately is not
@@ -131,8 +136,9 @@ Design implication: skills are written for the primary user and tested on the au
 | --- | --- |
 | evalblink (PyPI) | Not the repo's test harness. Optional tool for model and classifier comparisons inside `model-selection` and `conversation-analysis`. |
 | nanoagent | Reference implementation for `agent-design-and-tooling`; emits traces used in `assistant-kpis-cost-per-outcome` demos. |
-| aiunmagic.com | Publishes one article per wave; hosts the pedagogical companion to `ai-literacy-program`. |
+| aiunmagic.com | Publishes one article per wave; hosts the pedagogical companion to the eval skills, in English and French. |
 | Live assistant mission (anonymised) | Live source for `conversation-analysis`, `assistant-kpis-cost-per-outcome`, `agent-knowledge-base`. Data never leaves the client; only the method is published. |
+| Husain and Shankar's evals course and evals-skills | The engineering reference this repo complements and credits; methods restated, never copied. |
 
 ---
 
@@ -165,6 +171,8 @@ ai-pm-skills/
 │   ├── autonomy-ladder.md         # L0–L5, gates, obligations per level
 │   ├── roi-model.md               # volume × quality × value, baseline rules
 │   ├── eval-conventions.md        # grader types, thresholds, case format, holdout policy
+│   ├── evals-as-evidence.md       # the frame: three readers, six rules, AI Act article map
+│   ├── eval-statistics.md         # intervals, sample sizes, paired comparisons, judge correction, pass^k
 │   └── sources.md                 # bibliography with one-line "what we take from it"
 ├── docs/
 │   └── evaluation.md              # the evaluation process explained with diagrams
@@ -204,14 +212,15 @@ Frontmatter (YAML), all fields required unless marked optional:
 | --- | --- | --- |
 | `name` | string | kebab-case, equals folder name |
 | `description` | string | the trigger; ≤ 200 chars; states *when* to use, in the user's words |
-| `stage` | enum | strategy · specify · data · build · measure · govern · transform |
+| `stage` | enum | specify · evaluate · prove |
 | `version` | semver | bumped on any rule change |
-| `last_verified` | date | mandatory for `govern` skills; optional elsewhere |
+| `last_verified` | date | mandatory for `legal` skills; optional elsewhere |
+| `legal` | bool | optional, default false; true when the skill reads the law (no judge grader, threshold ≥ 0.90, `last_verified` mandatory) |
 | `depends_on` | list | skill names whose output this skill consumes |
 | `feeds` | list | skill names that consume this skill's output |
 | `autonomy_relevant` | bool | true if the skill reads or sets an L-level |
 | `sources` | list | ids from `foundations/sources.md` |
-| `eval_threshold` | number | pass threshold for the skill's cases; 0.80 by default, 0.90 for `govern` and flagship skills |
+| `eval_threshold` | number | pass threshold for the skill's cases; 0.80 by default, 0.90 for `legal` and flagship skills |
 | `status` | enum | draft · tested · verified-in-mission |
 
 Body structure (fixed headings, so graders can check structure):
@@ -229,7 +238,7 @@ Body structure (fixed headings, so graders can check structure):
 - One-line promise, then a 60-second example (install, run one skill, see output).
 - Catalog table generated from frontmatter: stage · skill · description · pass rate · last run · status.
 - "How it's tested" paragraph linking to `foundations/eval-conventions.md`.
-- "Not legal advice" notice above the Govern section.
+- "Not legal advice" notice above the Prove section.
 - A 10-second GIF: a skill triggering inside Claude Code and producing its artefact.
 
 ### 7.4 Installation targets
@@ -283,329 +292,332 @@ Rules:
 
 ---
 
-## 9. Skill catalog — 27 skills across 7 stages
+### 8.3 Evals as evidence (foundations/evals-as-evidence.md)
 
-Legend: **P0** Wave 1 (weeks 1–6) · **P1** Wave 2–3 · **P2** Wave 4. Graders: *exact* (deterministic check), *checklist* (structure and mandatory items), *judge* (LLM with rubric, calibrated). The November 2026 review added a fifth case to `build-evals`, `conversation-analysis`, `dpia-prescreen`, `cse-consultation` and `ai-incident-playbook`; those suites count as listed here.
+An eval in a regulated company is evidence owed to three readers: the user (correct answers on real questions), the sponsor (cost per correct outcome) and the regulator (bars set before testing, representative data, monitoring after release). Six rules turn a score into evidence: decided before seen, measured with its uncertainty, traceable, per class, kept when unfavourable, checklist not verdict. The file maps AI Act arts. 9(6)–(8), 10(3)–(4), 15, 17(1)(d), 26(5), 72 and 73 to the eval artefact that answers each.
 
-### Stage 1 — Strategy (4)
+### 8.4 Eval statistics (foundations/eval-statistics.md)
+
+One page of formulas every evaluate skill uses: the case as the unit, Wilson intervals and the rule of three, sample size per class, gating on the lower bound for costly classes, paired comparisons (a gap under 2√d / n is a tie), bootstrap over cases, the judge-corrected pass rate (Rogan–Gladen), Cohen's kappa, pass^k for agents, control limits for production rates, A/B sample size.
+
+---
+
+## 9. Skill catalog — 27 skills in three blocks
+
+Legend: **P0** first, **P1** next, **P2** later. Codes: S Specify, E Evaluate, P Prove. Graders: *exact* (deterministic check), *checklist* (structure and mandatory items), *judge* (LLM with rubric, validated with TPR and TNR). Skills marked *legal* follow the legal rules (§7.2). Entries for skills kept from v1.0 are unchanged except for their codes.
+
+### Specify — what correct means (10)
 
 #### S1 · `ai-opportunity-assessment` — P1
-- **Purpose:** decide in one page whether an AI idea deserves a PRD, and in which form (build, buy, API, or not at all).
-- **Trigger:** "Should we do this with AI?", a sponsor pitches a use case, a vendor demo lands.
-- **Inputs:** the problem in the business's words; who suffers it and how often; data available (source, volume, quality, access); current process cost; constraints (sovereignty, latency, languages).
-- **Outputs:** one-page assessment: problem fit, data readiness score (0–5 on 5 axes), feasibility by approach (rule-based, classic ML, LLM, agent), build/buy/API recommendation with reasons, target autonomy level, first risk flags (personal data, high-risk domain), go / no-go / explore.
-- **Rules:** no AI if a deterministic rule solves 80%; data readiness below 2/5 blocks a go; always name the non-AI alternative.
-- **Depends on / feeds:** — / `ai-moat-7-powers`, `llm-feature-prd`, `ai-act-classification`.
-- **Sources:** Cagan (Inspired, product risk types), Fitzpatrick (The Mom Test for problem validation), own enterprise checklist.
-- **Evals (3):** a use case where a SQL rule suffices (expected: no-go on AI); a document-extraction case with poor data (expected: explore, readiness < 2); a support-triage case (expected: go, LLM, L2).
-- **Graders:** checklist (all sections present, readiness scored, alternative named) + judge (recommendation coherent with inputs).
+- **Purpose:** decide in one page whether an AI idea deserves a PRD and in which form; on a go or explore, write the sponsor ask that will settle it: one dated pilot, stop conditions and an evidence plan.
+- **Trigger:** "Should we do this with AI?", a sponsor pitches a use case, a vendor demo lands, a comex slot needs the one-pager, a draft pitch carries a gain nobody can trace.
+- **Inputs:** the problem in the business's words; who suffers it and how often; current process and cost; data (source, volume, quality, access); constraints; risk context; any quality already measured (n, chosen how); audience and decision date when money is asked.
+- **Outputs:** problem and evidence; non-AI alternative with n of N; data readiness 0–5 on 5 axes; feasibility by approach; build, buy or API; cost of a wrong answer and target level; risk flags; decision (go, no-go, explore); gain in five lines labelled a projection, low and high from interval bounds; evidence plan (metric per class, cases per class, labellers, date, thresholds signed before the run); one dated ask; stop conditions (metric, threshold, where and when read, action); AI-specific objections.
+- **Rules:** no AI if a rule covers about 80%; readiness below 2/5 blocks a go; always name the non-AI alternative; no quality claim without n of N; while the gain is unmeasured the ask is a pilot, never a rollout; no pilot without a stop condition; never "compliant".
+- **Depends on / feeds:** — / S2, E1, P3, P2.
+- **Sources:** cagan-inspired, fitzpatrick-mom-test, miller-error-bars, own-enterprise-checklist, repo-chanmeng, repo-vishalhabib, repo-yoseph.
+- **Evals (5 + 1 negative):** invoice prioritisation a query covers (expected: no-go on AI); clause extraction on scanned, unlabelled contracts (expected: explore, readiness < 2/5); B2B ticket triage (expected: go, LLM workflow at L2); comex ask for a 9,000-user rollout on liked tests (expected: dated measurement pilot, stop condition, sized sample); draft pitch with "30% productivity" (expected: anchored or removed, projection from the 76–87% interval); negative: PRD request after a go.
+- **Graders:** exact and checklist regexes; red lines: no go on AI, no go on poor data, no L4/L5 launch, no rollout ask, no free 30%.
 
-#### S2 · `ai-moat-7-powers` — P2
-- **Purpose:** find where a defensible advantage exists for an AI product when the model itself is a commodity.
-- **Trigger:** "What's our moat?", an investment committee asks about defensibility, a competitor launches a similar assistant.
-- **Inputs:** product description, data owned, workflow position, customers, competitors.
-- **Outputs:** 7 Powers scan (scale economies, network economies, counter-positioning, switching costs, branding, cornered resource, process power) each rated present / buildable / absent with evidence; the one or two powers to invest in; what the model does *not* protect.
-- **Rules:** a conversational interface alone is never a moat; "better prompts" is never a moat; proprietary data and embedded workflow are checked first.
-- **Depends on / feeds:** `ai-opportunity-assessment` / `ai-initiative-pitch`.
-- **Sources:** Helmer (7 Powers), own thesis on data and distribution moats.
-- **Evals (3):** an internal assistant on public knowledge (expected: no moat, counter-positioning possible); a tool on 10 years of proprietary claims data (expected: cornered resource); a chat UI over a public API (expected: absent on all seven).
-- **Graders:** checklist (seven powers rated, evidence per rating) + judge.
-
-#### S3 · `ai-initiative-pitch` — P1
-- **Purpose:** turn an assessed initiative into a pitch that gets a sponsor and a budget, with every number anchored.
-- **Trigger:** budget committee, comex slot, sponsor meeting, "write the one-pager".
-- **Inputs:** outputs of S1 (and S2 if available), ROI model lines, target autonomy level, risk flags from G1, the audience (DSI, business, comex).
-- **Outputs:** a one-page memo (front-loaded thesis, 1/3/1 rhythm), a three-minute spoken version, one slide, an objection table (top 5 objections and the fact that answers each), and the single ask with date.
-- **Rules:** each influence lever (social proof, authority, commitment, scarcity, reciprocity) must rest on a verifiable fact; the ask is a pilot, not a programme; the business owner presents, the DSI supports; demo before discourse; no unanchored percentage.
-- **Depends on / feeds:** S1, S2, M6, G1 / `ai-adoption-plan`.
-- **Sources:** Cole (online writing: thesis first, specificity), Cialdini (Influence, ethical use), Hagel (Power of Pull: make it pulled, not pushed), own copywriting rules.
-- **Evals (3):** inputs with a weak ROI (expected: pitch asks for a measurement pilot, not a rollout); inputs with a high-risk flag (expected: risk named before objections); a pitch draft with a free-floating "30% productivity" (expected: skill rewrites it as anchored or removes it).
-- **Graders:** checklist (thesis in first sentence; one dated ask; every number sourced; objection table present; risk named; zero unanchored %).
-
-#### S4 · `ai-brand-positioning` — P2
-- **Purpose:** give an AI product a category it can own and copy whose every claim survives its evals and its autonomy level.
-- **Trigger:** naming or tagline work, a landing page or launch text for an AI product, "AI-powered says nothing", competitors sound the same.
-- **Inputs:** the product and its real autonomy level per step, the eval and KPI evidence, the audience and its words, the alternatives they compare it with.
-- **Outputs:** category statement and point of view, claims ledger (claim, evidence, level, status), name and vocabulary test, pull plan, copy pack with before and after.
-- **Rules:** no word promises more autonomy than the measured level; no gain without the five ROI lines; "AI-powered" is never the differentiator; a category is named in the buyer's problem, not in invented jargon; never "compliant".
-- **Depends on / feeds:** `ai-opportunity-assessment`, `ai-moat-7-powers`, `build-evals` / `ai-initiative-pitch`, `ai-adoption-plan`.
-- **Sources:** Category Pirates (Snow Leopard: category of one, obvious and non-obvious content), Calloway (Becoming a Category of One: win on what you deliver, not on slogans), Cole (thesis first, specificity), Hagel (pull, not push).
-- **Evals (3):** a copilot at L2 marketed as "autonomous" (expected: claim downgraded to the level); a launch text with an unmeasured "10x" (expected: anchored or removed); a "me too" assistant (expected: category and point of view from a real difference, or the statement that none exists yet).
-- **Graders:** checklist (ledger present, level per claim, thesis first) + red lines.
-
-### Stage 2 — Specify (4)
-
-#### P1 · `llm-feature-prd` — P0
+#### S2 · `llm-feature-prd` — P0
 - **Purpose:** write a PRD for an LLM-powered feature that an engineering lead can build and an evaluator can test.
 - **Trigger:** "Write the PRD", a go from S1, a feature request involving generation, extraction, classification or an agent.
 - **Inputs:** S1 output or equivalent; target users; success metric; constraints (latency, cost per call, sovereignty, languages); data sources.
 - **Outputs:** PRD with fixed sections: problem, users, non-goals, autonomy level per step, happy path and failure paths, eval plan stub (what "correct" means, how it's sampled), guardrail requirements (input, output, action), data requirements pointer, compliance flags, KPIs, rollout plan (shadow → canary → GA), open questions.
 - **Rules:** a PRD without an eval section is incomplete; failure paths are mandatory (wrong answer, no answer, injection, out-of-scope); autonomy level is stated per step; the KPI is an outcome, not usage.
-- **Depends on / feeds:** S1 / M1, B1, B2, P2, G1.
+- **Depends on / feeds:** S1 / E1, S6, S3, P3.
 - **Sources:** Cagan, Torres (outcomes over output), own PRDs.
 - **Evals (3):** a summarisation feature (expected: eval plan with reference summaries and rubric); an agent that books refunds (expected: L2 then L3 path, action guardrails); a brief with no success metric (expected: skill asks before writing).
 - **Graders:** checklist (all sections; autonomy per step; ≥ 3 failure paths; eval stub; KPI is outcome).
 
-#### P2 · `ai-data-requirements` — P1
+#### S3 · `ai-data-requirements` — P1
 - **Purpose:** specify the data an AI feature needs, its quality bar, lineage, legal basis and refresh.
 - **Trigger:** PRD done, "what data do we need", a data team asks for a spec, a DPO asks what is processed.
 - **Inputs:** PRD; data catalog or table list; access constraints; retention rules.
 - **Outputs:** data requirements sheet: sources, fields, volumes, quality thresholds (completeness, freshness, duplication), legal basis per field, personal-data flags, pseudonymisation plan, refresh cadence, owner per source, lineage sketch.
 - **Rules:** every personal-data field has a legal basis or is dropped; freshness is a number, not "regular"; one owner per source or the source is out.
-- **Depends on / feeds:** P1 / D1, D2, G2.
+- **Depends on / feeds:** S2 / S9, S8.
 - **Sources:** own data-platform work; GDPR art. 5–6; data-quality dimensions (DAMA).
 - **Evals (3):** a feature using customer emails (expected: pseudonymisation plan, legal basis per field); a feature on product catalog only (expected: no personal-data flags, freshness defined); a source with no owner (expected: flagged as blocker).
 - **Graders:** checklist + exact (every field has owner and legal basis or drop).
 
-#### P3 · `chat-with-your-data-scoping` — P1
+#### S4 · `chat-with-your-data-scoping` — P1
 - **Purpose:** scope a "chat with your data" or text-to-SQL product so that it is trustworthy, bounded and testable.
 - **Trigger:** "Let users ask questions to the data", a BI team wants natural language, a vendor proposes text-to-SQL.
 - **Inputs:** the question inventory (top 50 questions users actually ask), the semantic layer state (D1), data sensitivity, user population.
 - **Outputs:** scoping doc: allowed question classes, forbidden classes, metric definitions required (pointer to D1), answer format (number + SQL + source + confidence), golden question set (≥ 50 Q→A pairs), accuracy target by class, escalation path to an analyst, autonomy level (almost always L1–L2).
 - **Rules:** no production without a semantic layer for the metrics in scope; every answer shows its SQL and source; accuracy is measured per question class, never globally; a question outside scope gets a refusal, not a guess.
-- **Depends on / feeds:** P1, D1 / M1, B2.
+- **Depends on / feeds:** S2, S9 / E1, S6.
 - **Sources:** own semantic-layer work; text-to-SQL eval literature (Spider, BIRD for method, not scores).
 - **Evals (3):** 50 questions with 10 ambiguous metrics (expected: ambiguous ones blocked until defined); a request for free-form questions on HR data (expected: forbidden class, L1 only); a scope with no golden set (expected: skill generates the set from the inventory).
 - **Graders:** checklist (allowed/forbidden, golden set ≥ 50, accuracy per class, answer format) + exact (every metric in scope maps to a D1 definition).
 
-#### P4 · `ai-interaction-patterns` — P2
+#### S5 · `ai-interaction-patterns` — P2
 - **Purpose:** design the user-facing behaviour of an AI feature so users trust it correctly: not too much, not too little.
 - **Trigger:** UX design of an assistant, "how should it show uncertainty", complaints that users over-trust or ignore the AI.
 - **Inputs:** PRD; autonomy level; user research notes; error profile from evals.
 - **Outputs:** interaction spec: how sources and confidence are shown, correction and feedback affordances, refusal wording, escalation to human, latency expectations and progressive display, voice/text decisions, what is logged from feedback.
 - **Rules:** confidence is shown only if calibrated; every answer is correctable in one action; refusals explain scope; feedback feeds the eval set.
-- **Depends on / feeds:** P1, M1 / B2, T2.
+- **Depends on / feeds:** S2, E1 / S6, P6.
 - **Sources:** own UX work on assistants; human-AI interaction guidelines (Microsoft HAX, Google PAIR as references).
 - **Evals (3):** an L1 drafting assistant (expected: edit-first UI, no autonomy affordances); an L3 triage agent (expected: exception queue design, sample review); a feature with uncalibrated scores (expected: confidence hidden, replaced by sources).
 - **Graders:** checklist + judge.
 
-### Stage 3 — Data & Knowledge (2)
-
-#### D1 · `semantic-layer-design` — P1
-- **Purpose:** define the metrics, dimensions and joins an AI (or a human) may use, with one owner and one definition each.
-- **Trigger:** before any chat-with-data; metric disputes between teams; a dashboard migration (e.g. Dataiku → dbt).
-- **Inputs:** list of metrics in use, current SQL or BI definitions, owners, conflicts known.
-- **Outputs:** semantic layer spec: metric name, business definition, formula, grain, allowed dimensions, source tables, owner, status (certified / draft / deprecated), test for each metric; a conflict register; a migration order.
-- **Rules:** one definition per metric name; a metric without a test is draft; deprecated metrics keep an alias for 90 days; the AI only reads certified metrics.
-- **Depends on / feeds:** P2 / P3, M4.
-- **Sources:** Apache Ossie (exchange format), dbt semantic layer docs, own data-platform migrations.
-- **Evals (3):** two teams with conflicting "active customer" (expected: conflict register, decision needed, both kept as draft); 20 metrics with no tests (expected: all draft, test stubs generated); a migration brief (expected: ordered plan, certified-first).
-- **Graders:** exact (one definition per name, owner per metric, test per certified metric) + checklist.
-
-#### D2 · `agent-knowledge-base` — P1
-- **Purpose:** build and keep fresh the knowledge an assistant or agent relies on, with ownership and staleness rules.
-- **Trigger:** "Set up the RAG", answers are outdated, nobody knows who maintains the KB, a new domain is added.
-- **Inputs:** candidate sources (docs, wikis, tickets), their owners, update frequency, sensitivity, the question inventory.
-- **Outputs:** KB plan: source register (owner, refresh cadence, sensitivity, format), inclusion/exclusion rules, chunking and metadata guidance, freshness policy (expiry per source type), a monthly review ritual, and a "stale answer" KPI definition linked to M4.
-- **Rules:** no source without an owner; every source has an expiry date; the KB has a retirement path for sources; quality by KB is measured, not assumed.
-- **Depends on / feeds:** P2 / M4, M5, T1.
-- **Sources:** own assistant mission observations (method only), RAG practice literature.
-- **Evals (3):** 40 sources, 12 without owners (expected: 12 excluded or escalated); HR policies updated yearly vs product specs weekly (expected: distinct expiry); a KB with mixed sensitivity (expected: segregation rule).
-- **Graders:** exact (owner and expiry per source) + checklist.
-
-### Stage 4 — Build (3)
-
-#### B1 · `prd-to-claude-code` — P1
-- **Purpose:** turn a PRD into a build brief an agentic coding tool can execute without inventing scope.
-- **Trigger:** PRD approved, "let's prototype", a vibe-coding session starts.
-- **Inputs:** PRD (P1); stack constraints; existing repo (if any); eval cases (M1) when they exist.
-- **Outputs:** `CLAUDE.md` / `AGENTS.md` with constraints and conventions; a `specs/` folder (one file per module, acceptance criteria as tests); a task list ordered by risk; a definition of done that includes the evals passing; a "do not build" list.
-- **Rules:** acceptance criteria are executable (tests or eval cases), not prose; the eval suite runs in the build loop; scope outside `specs/` is refused; secrets and client data never enter the repo.
-- **Depends on / feeds:** P1, M1 / B3, M3.
-- **Sources:** own unmagic.ai and nanoagent repos (specs folder convention), Anthropic Claude Code best practices.
-- **Evals (3):** a PRD with vague "fast" latency (expected: brief asks for a number or sets a tested default); a PRD with three modules (expected: three spec files, risk-ordered tasks); a PRD mentioning client data (expected: synthetic fixtures, data exclusion rule).
-- **Graders:** checklist + exact (every acceptance criterion maps to a test or case).
-
-#### B2 · `system-prompt-and-guardrails` — P1
+#### S6 · `system-prompt-and-guardrails` — P1
 - **Purpose:** write the system prompt and the three guardrail layers (input, output, action) as one coherent, tested unit.
 - **Trigger:** first prompt draft, a jailbreak found, an agent gets tools, moving up the ladder.
 - **Inputs:** PRD; autonomy level per step; tools available to the agent; sensitive data classes; latency and cost budget.
 - **Outputs:** system prompt (role, scope, refusal policy, format); guardrail spec per layer with mechanism, latency budget, cost per call, failure action; a redteam case set (≥ 20 injections, ≥ 10 out-of-scope, ≥ 5 action-limit attempts) added as cases tagged `redteam` in the skill's `evals/`; false-positive budget.
 - **Rules:** no L3 without tested output guardrails; no L4 without action guardrails (scope, caps, approvals); each guardrail has a latency and cost line (cheap classifiers first, frontier last); guardrails are defence in depth, never a guarantee; the skill refuses to claim "safe".
-- **Depends on / feeds:** P1, B3 / M1, M3, G1.
+- **Depends on / feeds:** S2, S7 / E1, E9, P3.
 - **Sources:** OWASP Top 10 for LLM applications, own guardrail work, AI Act art. 14 (human oversight).
 - **Evals (3):** a refund agent with no caps (expected: caps + approval rule added, L4 blocked); a prompt with "be helpful" and no scope (expected: scope and refusal added); a redteam run with 30% false positives (expected: tuning plan, not acceptance).
 - **Graders:** checklist (three layers, budgets, redteam set sizes) + exact (redteam pass rate ≥ threshold, false positives ≤ budget, measured by the eval run).
 
-#### B3 · `agent-design-and-tooling` — P1
+#### S7 · `agent-design-and-tooling` — P1
 - **Purpose:** design an agent's loop, tools and permissions from its target autonomy level, before any framework choice.
 - **Trigger:** "Make it an agent", a workflow has branches and tools, a framework debate starts.
 - **Inputs:** process steps with their L-levels (from T1 or P1); candidate tools (APIs, DBs, actions); failure modes; latency and cost constraints.
 - **Outputs:** agent design doc: loop type (single-step, plan-execute, multi-agent only if justified), tool list with schemas, permission matrix (tool × level × approval), memory policy, stop conditions, trace schema (what is logged, outcome event fields), framework recommendation last.
 - **Rules:** start with a raw loop (nanoagent reference) and add a framework only for a named need; every tool call is logged with an outcome field; multi-agent requires a written justification; permissions follow the ladder.
-- **Depends on / feeds:** P1, T1 / B2, M4.
+- **Depends on / feeds:** S2, S10 / S6, P1.
 - **Sources:** nanoagent (own), Anthropic "Building effective agents", own enterprise agent work.
 - **Evals (3):** a linear 3-step workflow (expected: no multi-agent, single loop); an L4 step with payment tool (expected: cap + approval in matrix); a design without stop conditions (expected: added, with max steps and budget).
 - **Graders:** checklist + exact (permission matrix covers every tool × level).
 
-### Stage 5 — Measure (6)
+#### S8 · `agent-knowledge-base` — P1
+- **Purpose:** build and keep fresh the knowledge an assistant or agent relies on, with ownership and staleness rules.
+- **Trigger:** "Set up the RAG", answers are outdated, nobody knows who maintains the KB, a new domain is added.
+- **Inputs:** candidate sources (docs, wikis, tickets), their owners, update frequency, sensitivity, the question inventory.
+- **Outputs:** KB plan: source register (owner, refresh cadence, sensitivity, format), inclusion/exclusion rules, chunking and metadata guidance, freshness policy (expiry per source type), a monthly review ritual, and a "stale answer" KPI definition linked to M4.
+- **Rules:** no source without an owner; every source has an expiry date; the KB has a retirement path for sources; quality by KB is measured, not assumed.
+- **Depends on / feeds:** S3 / P1, E11, S10.
+- **Sources:** own assistant mission observations (method only), RAG practice literature.
+- **Evals (3):** 40 sources, 12 without owners (expected: 12 excluded or escalated); HR policies updated yearly vs product specs weekly (expected: distinct expiry); a KB with mixed sensitivity (expected: segregation rule).
+- **Graders:** exact (owner and expiry per source) + checklist.
 
-#### M1 · `build-evals` — P0
-- **Purpose:** build the evaluation set and graders that decide whether an AI feature, model or skill is good enough.
-- **Trigger:** PRD eval stub exists, before any model choice, before any release, when quality is disputed.
-- **Inputs:** the task definition; 20+ real examples (anonymised); what "correct" means to the business; constraints on judge cost.
-- **Outputs:** golden set (50–80 cases, 20% private holdout); grader per case type (exact, checklist, judge rubric); judge calibration report (agreement with 20 human-labelled cases ≥ 80%); frozen baseline run; threshold; cases in `claude plugin eval` format.
-- **Rules:** real cases over synthetic; the judge is calibrated before it is trusted; holdout never in the public repo; thresholds are per question class; the baseline is frozen with model name and date; outputs are scored on cost per success, not score alone.
-- **Depends on / feeds:** P1 / M2, M3, B2, T1 (gates).
-- **Sources:** Anthropic eval guidance, own golden-set practice.
-- **Evals (3):** a task with only 8 examples (expected: skill asks for more or generates with a flagged synthetic ratio); a judge at 62% agreement (expected: rubric revision loop, not acceptance); a suite with a single global threshold on 4 question classes (expected: split per class).
-- **Graders:** checklist + exact (holdout ratio, calibration ≥ 0.80, baseline frozen).
+#### S9 · `semantic-layer-design` — P1
+- **Purpose:** define the metrics, dimensions and joins an AI (or a human) may use, with one owner and one definition each.
+- **Trigger:** before any chat-with-data; metric disputes between teams; a dashboard migration (e.g. Dataiku → dbt).
+- **Inputs:** list of metrics in use, current SQL or BI definitions, owners, conflicts known.
+- **Outputs:** semantic layer spec: metric name, business definition, formula, grain, allowed dimensions, source tables, owner, status (certified / draft / deprecated), test for each metric; a conflict register; a migration order.
+- **Rules:** one definition per metric name; a metric without a test is draft; deprecated metrics keep an alias for 90 days; the AI only reads certified metrics.
+- **Depends on / feeds:** S3 / S4, P1.
+- **Sources:** Apache Ossie (exchange format), dbt semantic layer docs, own data-platform migrations.
+- **Evals (3):** two teams with conflicting "active customer" (expected: conflict register, decision needed, both kept as draft); 20 metrics with no tests (expected: all draft, test stubs generated); a migration brief (expected: ordered plan, certified-first).
+- **Graders:** exact (one definition per name, owner per metric, test per certified metric) + checklist.
 
-#### M2 · `model-selection` — P1
-- **Purpose:** choose a model for a use case with evidence, and record the decision so it can be redone when a new model ships.
-- **Trigger:** "Which model?", a new model release, a cost review, a sovereignty requirement.
-- **Inputs:** the suite from M1; candidate models (including hosted-in-EU and small models); constraints (hosting, data residency, latency, structured output, context).
-- **Outputs:** comparison run on the M1 suite (evalblink or equivalent); decision record (one page): candidates, scores per class, cost per success, latency p95, structured-output error rate, hosting compliance, chosen model, reasons, re-evaluation date and trigger.
-- **Rules:** never choose on public benchmarks; cost per success is the primary economic metric; sovereignty constraints are filters, not criteria; the decision record names the date and the suite version.
-- **Depends on / feeds:** M1 / M3, G4.
-- **Sources:** own model-selection decisions in banking.
-- **Evals (3):** a frontier model slightly better but 20× costlier (expected: cheaper model chosen, with the gap quantified); a candidate hosted outside EU on personal data (expected: filtered out, not scored); a classification task (expected: small models and specialised decision models included as candidates).
-- **Graders:** checklist (record complete, cost per success, re-eval date) + exact (filters applied).
-
-#### M3 · `release-to-production` — P1
-- **Purpose:** take a new version (prompt, model, KB, skill) to production through offline eval, shadow, canary and A/B, choosing the right rung for the traffic available.
-- **Trigger:** "Can we ship this?", a model update from the provider, a prompt change, a KB refresh.
-- **Inputs:** M1 suite result for the new version; traffic volume; business metric and its variance; rollback capability; autonomy level.
-- **Outputs:** release plan: offline gate result, shadow duration and comparison metric, canary share and guardrails with automatic rollback triggers, A/B feasibility (sample size calculation) or explicit fallback to shadow + canary, decision owner, post-release review date.
-- **Rules:** offline eval first, always; A/B only if the sample-size calculation passes (the skill computes it); the production metric is a business outcome, not the judge score; provider model updates are treated as releases; L5 bandit switching only when L4 is stable and documented.
-- **Depends on / feeds:** M1, B2 / M4.
-- **Sources:** own release practice; Kohavi et al. (Trustworthy Online Controlled Experiments) for A/B rules.
-- **Evals (3):** 1 800 weekly users, 3-point lift sought (expected: A/B infeasible, shadow + canary plan); a new version failing offline by 2 points (expected: no release, diagnostic); a provider announces a model deprecation (expected: treated as release with shadow run).
-- **Graders:** checklist + exact (sample size computed; offline gate before any online step).
-
-#### M4 · `assistant-kpis-cost-per-outcome` — P0
-- **Purpose:** define and compute the KPIs of an assistant or agent that reflect value: quality by domain, adoption by population, cost per correct outcome.
-- **Trigger:** "Build the dashboard", a sponsor asks for ROI, usage is up but nobody knows if it helps, a KB seems stale.
-- **Inputs:** traces or logs; conversation classification (M5); sampled quality scores (M1 graders); population data; cost data.
-- **Outputs:** KPI spec (definitions, formulas, sources, refresh); a reference dashboard layout (volume by use case, quality by KB/domain, adoption curve by population, cost per outcome, stale-answer rate); an outcome-event convention (`outcome_id`, `result`, `value_eur`) attached to the trace id; a monthly review template.
-- **Rules:** no KPI without a definition and a source; usage KPIs are never shown without a quality KPI beside them; cost per outcome uses successes as denominator; every KB has a quality line.
-- **Depends on / feeds:** M1, M5, D2 / M6, S3, T2.
-- **Sources:** own assistant mission dashboard work (method only), OpenTelemetry GenAI semantic conventions.
-- **Evals (3):** logs with no outcome field (expected: outcome convention added, sampled quality as interim); a dashboard spec with sessions only (expected: quality and cost lines added); three KBs with different freshness (expected: quality by KB).
-- **Graders:** checklist (five KPI families present, definitions, sources) + exact (cost per outcome formula uses successes).
-
-#### M5 · `conversation-analysis` — P0
-- **Purpose:** classify every conversation of an assistant (use case, domain, sentiment, language, resolution) anonymously and reliably, to feed KPIs and ROI.
-- **Trigger:** "What do people use it for?", KB prioritisation, ROI volume needed, a quarterly review.
-- **Inputs:** anonymised transcripts; a draft taxonomy; 150–200 hand-labelled conversations; candidate classifiers; PII rules.
-- **Outputs:** frozen taxonomy (8–12 use cases, rules for edge cases); annotation guide; classification suite (evalblink or equivalent) comparing candidates on agreement per dimension and cost per conversation; chosen classifier with thresholds; monthly drift check design; output schema joined to M4.
-- **Rules:** PII masking before any model call; taxonomy frozen before labelling; agreement measured per dimension; low-confidence cases routed to review, not forced; the classifier is re-measured monthly on a fresh sample.
-- **Depends on / feeds:** M1, D2 / M4, M6, T1.
-- **Sources:** own assistant mission classification work (method only).
-- **Evals (3):** a taxonomy with overlapping classes (expected: merge or rule); a candidate at 0.0004 €/conversation with 78% agreement vs a frontier at 92% (expected: hybrid routing by confidence); transcripts with names and IBANs (expected: masking step blocks until done).
-- **Graders:** checklist + exact (taxonomy size, PII step present, agreement per dimension).
-
-#### M6 · `ai-roi-quantification` — P2
-- **Purpose:** compute the ROI of a deployed AI product with the five-line model, a baseline and sourced unit values.
-- **Trigger:** budget renewal, "what did it return", a CFO review, scaling decision.
-- **Inputs:** M5 volumes by use case; M4 quality by use case; unit values from business interviews (template provided); run and change costs; baseline measurement.
-- **Outputs:** ROI sheet per use case and total; assumptions register with source and confidence; sensitivity on the three weakest assumptions; the "do not claim" list (gains without baseline); a one-paragraph statement for S3.
-- **Rules:** no baseline, no ROI claim (projection, labelled); unit values are conservative and interviewed, never assumed; every number traces to a line; sensitivity is mandatory.
-- **Depends on / feeds:** M4, M5 / S3, T1.
-- **Sources:** foundations/roi-model.md, own ROI work.
-- **Evals (3):** inputs without baseline (expected: projection label, baseline plan); a unit value of 45 min saved per use with no source (expected: flagged, interview template proposed); three use cases with one negative ROI (expected: shown, not hidden).
-- **Graders:** exact (five lines per use case, baseline flag) + checklist.
-
-### Stage 6 — Govern (5)
-
-#### G1 · `ai-act-classification` — P0
-- **Purpose:** classify an AI use case under the EU AI Act (prohibited, high-risk annex III, transparency obligations, minimal) and list the obligations and the questions for counsel.
-- **Trigger:** any new AI use case; moving up the ladder; a legal review request; a vendor claims "AI Act compliant".
-- **Inputs:** use case description; domain (HR, credit, insurance, education, critical infrastructure…); who is affected; autonomy level; provider vs deployer role; general-purpose model used.
-- **Outputs:** classification memo: role (provider/deployer), risk category with the article and annex point cited, obligations list with deadlines, deployer duties (human oversight, logging, transparency, literacy), open questions for counsel, a "what changes if we move to L+1" line.
-- **Rules:** checklist and questions, never a conformity verdict; every claim cites the article; `last_verified` ≤ 90 days or the skill warns; HR, credit scoring, insurance pricing and essential services are checked against annex III first; GPAI usage is flagged separately.
-- **Depends on / feeds:** S1, P1, B2 / S3, G2, G4, T1.
-- **Sources:** Regulation (EU) 2024/1689 (text), European Commission guidelines, CNIL AI resources, French implementing texts as published.
-- **Evals (3):** CV screening assistant (expected: annex III employment, high-risk, deployer obligations listed); an internal IT FAQ bot (expected: minimal risk, transparency only); a customer chatbot moving from L2 to L4 on account actions (expected: obligations delta explicit).
-- **Graders:** checklist (role, category, article cites, obligations, counsel questions, L+1 line) + exact (no "compliant" verdict in output).
-
-#### G2 · `dpia-prescreen` — P1
-- **Purpose:** decide whether a data protection impact assessment is needed and pre-fill its product sections.
-- **Trigger:** personal data in scope; DPO asks; new data source; profiling or automated decisions.
-- **Inputs:** P2 data requirements; purpose; populations; automated decision flags; vendors and transfers.
-- **Outputs:** pre-screen against the nine EDPB criteria and the CNIL list; recommendation (DPIA required / recommended / not needed) with reasons; pre-filled sections (purpose, data, flows, recipients, retention, risks, measures); questions for the DPO; transfer flags.
-- **Rules:** two or more EDPB criteria = DPIA recommended, stated as such; transfers outside the EU are flagged, not assessed; the controller decides on the DPO's advice, the skill prepares.
-- **Depends on / feeds:** P2, G1 / G4.
-- **Sources:** GDPR art. 35, EDPB WP248 guidelines, CNIL DPIA list and PIA tool.
-- **Evals (3):** employee chat logs analysed for sentiment (expected: DPIA recommended, criteria named); product-catalog search (expected: not needed); a US-hosted LLM on customer data (expected: transfer flag).
-- **Graders:** checklist + exact (criteria count rule applied).
-
-#### G3 · `cse-consultation` — P0
-- **Purpose:** determine whether deploying an AI tool in a French company requires informing or consulting the CSE, and prepare the file.
-- **Trigger:** any AI tool touching employees' work; monitoring or evaluation of employees; a change in work organisation; a company of 11+ or 50+ employees.
-- **Inputs:** headcount; what the tool does; who uses it; whether it monitors, evaluates or changes tasks; timeline.
-- **Outputs:** memo: obligation level (none / information / consultation) with the Code du travail articles cited; what the file must contain (purpose, functioning, data, impact on jobs and conditions, training plan); timeline with legal delays; questions for HR and legal; a plain-language presentation outline for the CSE meeting.
-- **Rules:** consultation precedes deployment, never follows; any monitoring capability triggers the stricter path; the memo states that HR/legal decide; `last_verified` enforced; French annex carries the article text references.
-- **Depends on / feeds:** G1, T2 / T1, T2.
-- **Sources:** Code du travail art. L2312-8, L2312-38 and related; CNIL guidance on employee monitoring; case law summaries as published.
-- **Evals (3):** a 300-employee bank deploying a drafting assistant (expected: consultation, articles cited, timeline); a 9-employee startup (expected: no CSE, information good practice); an assistant that logs per-employee usage (expected: monitoring path, stricter).
-- **Graders:** checklist + exact (articles cited, "HR/legal decide" sentence present).
-
-#### G4 · `model-card-ai-registry` — P1
-- **Purpose:** document an AI system for the internal registry and for the AI Act's record-keeping, in a form product and legal both accept.
-- **Trigger:** go-live; a new version; an audit; a registry request from compliance.
-- **Inputs:** M2 decision record; M1 suite results; B2 guardrail spec; G1 classification; owners.
-- **Outputs:** model card (purpose, model and version, data, evals and limits, guardrails, autonomy level, known failure modes, owners, review date); registry entry in the company's format; a changelog convention per version.
-- **Rules:** every card has a review date; limits and failure modes are mandatory sections; the card is updated at each release (M3 calls it).
-- **Depends on / feeds:** M1, M2, B2, G1 / M3, G5.
-- **Sources:** Mitchell et al. (Model Cards), AI Act record-keeping articles, own registry templates.
-- **Evals (3):** a card without failure modes (expected: rejected, section required); a version bump without changelog (expected: changelog generated from diff); an L4 agent card (expected: guardrails and oversight sections filled).
-- **Graders:** checklist (sections) + exact (review date present).
-
-#### G5 · `ai-incident-playbook` — P2
-- **Purpose:** prepare the response to an AI incident (harmful output, data leak, wrong action, drift) including who decides to roll back and what must be reported.
-- **Trigger:** go-live at L3+; after a near-miss; compliance asks for the playbook; an incident.
-- **Inputs:** autonomy level; guardrail spec; monitoring in place; rollback capability; regulatory classification.
-- **Outputs:** playbook: incident classes and severities; detection sources; first 60 minutes checklist; rollback decision owner; communication templates (users, sponsor, DPO, CSE if relevant); reporting obligations check (AI Act serious incidents for high-risk, GDPR 72 h breach notification); post-incident review template feeding the eval set.
-- **Rules:** rollback authority is a named role, not a committee; every incident becomes eval cases; reporting deadlines are computed, not described.
-- **Depends on / feeds:** B2, G1, G4, M3 / M1.
-- **Sources:** AI Act serious incident provisions, GDPR art. 33, own incident practice.
-- **Evals (3):** an agent that issued 40 wrong refunds (expected: rollback owner, user comms, cases added); a prompt-injection leak of internal doc (expected: breach assessment, 72 h clock); drift detected with no harm (expected: lower severity, eval refresh).
-- **Graders:** checklist + exact (deadlines computed).
-
-### Stage 7 — Transform (3)
-
-#### T1 · `process-ai-redesign` — P1 (flagship)
+#### S10 · `process-ai-redesign` — P1 (flagship)
 - **Purpose:** redesign a business process into an AI-enabled process with an explicit autonomy level per step, a path to reach it, and the trade-offs.
 - **Trigger:** "Automate this process", an efficiency programme, a process with high volume and exceptions, an ROI target.
 - **Inputs:** process documentation; volumes; time per step; exception rates; current cost; data per step; risk and regulatory context; appetite for autonomy.
 - **Outputs:** redesign dossier: step table (current state, target level L0–L5, why not L+1, gate to reach target); scenarios (conservative / target / ambitious) with the five ROI lines each; migration path (level by level, with gates from M1 and conditions from B2); trade-off table (cost per outcome, risk, reversibility, obligations per scenario); dependencies on G1/G3; plan with milestones.
 - **Rules:** levels per step, never per process; every target level names its gate; scenarios are compared on cost per outcome and reversibility, not on "efficiency"; a step touching employees' evaluation triggers G3; an L4+ step triggers G1 re-check; no scenario without a human fallback.
-- **Depends on / feeds:** S1, M5, M6, G1, G3, B3 / S3, T2, B3.
+- **Depends on / feeds:** S1, E11, P2, P3, S7 / P6, S7.
 - **Sources:** foundations/autonomy-ladder.md and roi-model.md; own process-redesign practice in banking; Hammer (reengineering) for method lineage.
 - **Evals (3):** a KYC document review process (expected: L2 extraction, L3 verification, L1 decision; gates named); a request for "full automation" of complaint handling (expected: L4 on routing only, human on decisions, trade-offs); a process with 40% exceptions (expected: lower target levels, exception redesign first).
 - **Graders:** checklist (step table, three scenarios, five ROI lines, trade-offs, gates) + exact (every step has level and gate; every L4+ step references G1).
 
-#### T2 · `ai-adoption-plan` — P2
-- **Purpose:** plan the human side of an AI deployment: populations, champions, training, communication, resistance, and the adoption metrics that prove it worked.
-- **Trigger:** go-live approaching; adoption below target; a redesign (T1) approved; sponsor asks "how do we get people to use it".
-- **Inputs:** populations and their current tools; T1 or P1; adoption KPIs from M4; constraints (CSE timeline, training capacity); known objections.
-- **Outputs:** adoption plan: persona map (champions, pragmatists, sceptics, blockers) with size; sequencing (pilot population, waves); champion programme; training plan by population (what, format, duration); communication calendar; objection handling table; adoption metrics with targets per wave; feedback loop into the KB (D2) and evals (M1).
-- **Rules:** adoption is measured by population, not globally; the pilot population is chosen for learning, not for ease; every objection has an owner; training is tied to real tasks of that population; sceptics get a seat, not a memo.
-- **Depends on / feeds:** T1, M4, G3, P4 / T3, S3.
-- **Sources:** Kotter (change), Rogers (diffusion), own university course and coaching practice, Cialdini for communication design.
-- **Evals (3):** 2 000 advisors and 60 managers (expected: waves, managers first, champions per branch); adoption stuck at 30% with high satisfaction (expected: diagnosis = awareness/access, not quality); a sceptical union context (expected: G3 link, sceptics in design).
-- **Graders:** checklist + judge.
+### Evaluate — offline and online (11)
 
-#### T3 · `ai-literacy-program` — P2
-- **Purpose:** design the AI literacy programme the AI Act expects of deployers (art. 4) and that adoption actually needs, by population and by autonomy level.
-- **Trigger:** AI Act literacy obligation; adoption plan needs training; onboarding of a new population; an incident revealing misuse.
-- **Inputs:** populations and roles; tools and their L-levels; existing training; time available per person.
-- **Outputs:** programme: learning objectives per population (what they must understand about the tool's limits, oversight duties, data rules); formats and durations (micro-modules, hands-on with their real tasks); assessment design; evidence of completion for the registry; a refresh cadence tied to releases.
-- **Rules:** literacy is role-specific, never one generic e-learning; anyone with oversight duties (L2+) is trained on failure modes; completion is recorded; content is refreshed when the tool changes level.
-- **Depends on / feeds:** T2, G1, G4 / T2.
-- **Sources:** AI Act art. 4 and Commission guidance; own pedagogy (aiunmagic.com, university course); Feynman method for explanation design.
-- **Evals (3):** reviewers of an L3 agent (expected: failure-mode training, oversight duties); executives sponsoring AI (expected: limits and governance, 1 hour); a generic "AI for all" e-learning proposal (expected: rejected as sole measure).
-- **Graders:** checklist + judge.
+#### E1 · `build-evals` — P0
+- **Purpose:** build or review the eval set, graders, thresholds and baseline that decide whether an AI feature, model or skill is good enough.
+- **Trigger:** PRD eval stub exists, before any model choice, before any release, when quality is disputed.
+- **Inputs:** the task definition; 20+ real examples (anonymised); what "correct" means to the business; question classes and their traffic share; judge budget; who labels.
+- **Outputs:** eval plan: classes, set composition (real, synthetic flagged, 20% private holdout) and the size each gated class needs; failure modes read (via E2) and a grader per mode; judge validation with TPR and TNR (via E3); thresholds per class signed before the run, with scores, n and 95% intervals; frozen baseline; cost per correct outcome; cases in `claude plugin eval` format (harness-neutral).
+- **Rules:** real cases over synthetic; no judge as a gate unless TPR and TNR on held-out expert labels reach the bar set beforehand (raw agreement never qualifies); one threshold per class; a costly class gates on the lower bound of its interval; holdout never public; baseline names model, judge and date; score on cost per correct outcome.
+- **Depends on / feeds:** S2, E2 / E3, E7, E8, E9, E10, P4.
+- **Sources:** anthropic-evals, husain-shankar-evals, miller-error-bars, wilson-interval, own-golden-sets, repo-chanmeng, repo-vishalhabib, repo-lenny.
+- **Evals (5 + 1 negative):** 8 labelled invoices (expected: more real cases, synthetic flagged, provisional); judge at 62% agreement pushed as a release gate (expected: not a gate, rubric revision, human review); single global threshold over warranty and other classes (expected: per-class, stricter on legal); refund agent graded on its final message (expected: end state and forbidden events); legal class at 12 of 12 against 95% (expected: interval lower bound ≈ 76%, at least 60 clean cases); negative: model choice on a calibrated suite.
+- **Graders:** checklist + exact (holdout, per-class thresholds, baseline, interval, cases needed); red lines: synthetic flagged, judge not a gate, no global threshold.
 
-### Backlog — candidates for slots 27–30 (not in v1.0)
+#### E2 · `error-analysis` — P0
+- **Purpose:** find out how an AI feature actually fails before choosing metrics or graders: read real traces, note each freely, group into failure modes, count and price them, decide per mode to fix, evaluate or accept.
+- **Trigger:** "our assistant gives bad answers, where do we start?", "which metrics should we track?", generic 1–5 scores proposed before anyone read outputs, before graders or a judge, after a model, prompt or KB change, a complaint spike.
+- **Inputs:** real traces with intermediate steps and monthly volume; the spec or system prompt; the accountable domain expert; personal-data rules. Ask: question classes, feedback signals, sourced cost of one wrong answer, autonomy level per step.
+- **Outputs:** failure-mode report: sampling plan and masking; reading log (traces per stream, last new mode, saturation, taxonomy version); table of binary modes with pass and fail examples, count, share of the random stream with Wilson interval, sourced cost per occurrence, monthly cost, priority, fix / evaluate / accept, evaluator type; step matrix for agents; `scripts/failure_modes.py`.
+- **Rules:** never metrics from a generic list before reading outputs; never an LLM for the first reading (it may cluster the expert's notes afterwards); taxonomy provisional below saturation (about 20 traces with no new mode); binary modes, never Likert; rates from the random stream only; mask before reading; first upstream failure only; specification failures are fixed with no evaluator; code checks before judges.
+- **Depends on / feeds:** S2, E11 / E1, E3, E4, E5, E6, S6, E10.
+- **Sources:** husain-shankar-evals, shankar-validators, glaser-strauss-grounded-theory, repo-chanmeng, wilson-interval, gdpr, own-error-analysis.
+- **Evals (3 + 1 negative):** claims assistant, team proposes helpfulness, accuracy and tone 1–5 (expected: about 100 masked traces, random plus targeted, saturation, priced binary modes); 25 expert notes on thumbs-down HR conversations (expected: modes with counts, spec failures fixed, code checks, provisional taxonomy, no rate from a targeted sample); an LLM to label 5,000 conversations with nobody reading (expected: refused, expert reads first, LLM clusters notes); negative: judge at 87% agreement as a gate.
+- **Graders:** regex only; red lines: read before choosing metrics, provisional below saturation, expert reads before any LLM.
+
+#### E3 · `llm-judge-calibration` — P0
+- **Purpose:** decide whether an LLM judge can be trusted to grade one failure mode, and correct the pass rate it reports on unlabelled traffic.
+- **Trigger:** "can we use an LLM-as-judge?", "our judge agrees 85% with the experts, good enough?", a judge prompt written or revised, a judge model change, a judge's production rate read as the quality figure.
+- **Inputs:** the failure mode and its binary criterion; expert labels (who, pass and fail counts, what each was used for); the judge's verdicts or confusion counts; the decision the judge feeds; optionally its production pass rate and sample size, cost per call, model family.
+- **Outputs:** judge calibration report (criterion, labellers and kappa, splits, targets signed before measuring, confusion matrix, TPR and TNR with Wilson intervals, bias checks for position, verbosity, self-preference and prompt sensitivity, corrected rate with interval, status, re-validation triggers, cost); `scripts/judge_metrics.py`.
+- **Rules:** never a gate on raw agreement or correlation, or with TPR or TNR on the held-out test split under the target set beforehand; never metrics on labels used to write or tune the prompt; never gate on Likert without a binary criterion; a raw traffic rate is never reported without its correction and interval; below target a human reviews; a new judge model or prompt is a new judge.
+- **Depends on / feeds:** E2 / E1, E10, E9.
+- **Sources:** husain-shankar-evals, shankar-validators, zheng-llm-judge, yan-llm-evaluators, rogan-gladen, cohen-kappa, wilson-interval, efron-bootstrap, anthropic-evals, own-golden-sets.
+- **Evals (3 + 1 negative):** judge "agrees 91%" but catches 8 of 24 fails (expected: TNR 33%, interval 18–53%, a judge passing everything would agree 88%, refused as the gate); judge tuned and scored on the same 60 labels (expected: held-out split, more fails, targets before scoring); production rate 85% with TPR 0.92 and TNR 0.80 (expected: corrected about 90%, interval about 82–99%, an 88% bar undecided); negative: 800 unread traces.
+- **Graders:** regex and tool checks; red lines: not a gate, held-out test, corrected rate.
+
+#### E4 · `synthetic-eval-data` — P2
+- **Purpose:** generate eval inputs when real cases are scarce without fooling yourself: dimensions grounded in real traffic and failure modes, tuples, then inputs in a separate step, expert-reviewed, flagged, synthetic share declared, replaced by real cases over time.
+- **Trigger:** pre-launch with few real examples; a rare risky class; privacy forbids copying real conversations; "can we generate 1,000 test questions?"; RAG questions per document.
+- **Inputs:** the real examples that exist; classes and risk; users' language and channel; domain experts. Optional: error-analysis notes, traffic statistics, source documents, privacy rules, the model under test.
+- **Outputs:** synthetic set spec: real material read; dimensions and their grounding; tuple plan with weights; generation step with model and prompt versions; rejection rate; comparison with real traffic against a tolerance set beforehand; where expected answers come from; flags and synthetic share per class; contamination and privacy checks; dated replacement plan.
+- **Rules:** never call a set representative without its synthetic share per class; the system under test never writes expected answers; dimensions grounded in real traffic or error analysis; no unflagged synthetic case in the holdout; synthetic cases never in prompts or few-shots; no paraphrase of a real person's case; art. 10 composition given as a table, never a verdict.
+- **Depends on / feeds:** E2, E1 / E1, E6, E5, E3.
+- **Sources:** husain-shankar-evals, eu-ai-act, anthropic-evals, zheng-llm-judge, gdpr, own-golden-sets.
+- **Evals (3 + 1 negative):** mortgage assistant with 12 real questions (expected: dimensions from the 12, tuples, separate generation, rejection rate, expert answers, share stated, replacement plan); one model writes questions, gold answers and grades itself (expected: refused, answers from procedures, judge from another family); 500 tidy English questions while users write short French with typos (expected: style dimension, distribution comparison, regenerate, synthetic-only score read apart); negative: classify real conversations.
+- **Graders:** regex; red lines: flagged share, expert answers.
+
+#### E5 · `agent-evals` — P1
+- **Purpose:** evaluate an agent that calls tools and acts on systems, and gate its autonomy level on measured reliability (end state, forbidden events, pass^k with bounds), not on its final message.
+- **Trigger:** "how do we test our agent?", a step moving up a level, a new tool or permission, agent failures in production, "the agent says done but nothing happened", a model update on an agent.
+- **Inputs:** tools with side effects and reversibility; current and target level per step; caps and approvals (from S7); an isolated sandbox or test doubles; real requests, production failures, monthly volume per action, cost per trial, gate signer.
+- **Outputs:** agent eval plan: environment; tasks (instruction, starting state, end-state check, trajectory checks only where required, forbidden events, k); false-success seeds; simulated users; capability and regression suites; trials and bars signed before the run; pass@1 with interval, pass^k, forbidden events with rule-of-three bound and monthly exposure; first-failure matrix; cost per successful task; level gate; `scripts/agent_reliability.py`.
+- **Rules:** never grade an agent on its final message alone; never gate an irreversible action on pass@k or best-of-k; never claim zero risk from zero observed failures; never test against production with real side effects; tasks, k and bars fixed before the run; one forbidden event fails the trial.
+- **Depends on / feeds:** S7, E1 / E9, E10, P1, E7.
+- **Sources:** anthropic-agent-evals, yao-tau-bench, anthropic-agents, wilson-interval, husain-shankar-evals, repo-lenny, repo-chanmeng, own-nanoagent.
+- **Evals (3 + 1 negative):** refund agent moving L2 → L3 (expected: starting states, end-state checks, forbidden events, k fixed, pass^k, rule of three); "pass@3 = 90%" and "zero wrong payments in 30 trials" to drop approval (expected: per-trial rate, 0.9³ ≈ 0.73, up to ≈ 10% and ≈ 120 payments a month, approval kept); "Done, the CRM is updated" with the record unchanged in 7 of 50 runs (expected: end-state grading, seeded failures, first-failure matrix, regression tasks); negative: retrieval quality of a Q&A assistant.
+- **Graders:** regex; red lines: end state, pass@k not a gate, zero is not nil.
+
+#### E6 · `retrieval-evaluation` — P2
+- **Purpose:** evaluate a RAG or document-search feature in two stages, retrieval then generation, so a failure is placed in the corpus, chunking, ranking or generation before anyone changes the model.
+- **Trigger:** "our document assistant answers wrong, should we change the LLM?", answers cite the wrong document, a new embedding model, chunking, reranker or index, choosing k.
+- **Inputs:** the pipeline as it runs (corpus, chunking, embedding model, reranker, the k sent); real queries with their class; domain experts who label. Optional: current score, source register from S8, prices, judge.
+- **Outputs:** retrieval eval plan: failures sorted by first failing stage; query set per class with unanswerable queries; labelling by pooling, tied to document spans; recall@k at the k sent with Wilson intervals; generation scored on fixed contexts (claim-level faithfulness, relevance, abstention); diagnosis table with owners; the price of each k; a release rule for retrieval changes (paired comparison).
+- **Rules:** never judge RAG on an end-to-end score alone; never a query set without unanswerable queries; never one LLM writing queries and labels without expert review; never swap embedding, chunking, reranker or k without a re-run and a paired comparison per class; never change the LLM for a failure upstream of generation.
+- **Depends on / feeds:** E1, S8, E3 / E9, E7, S8, S6, E10.
+- **Sources:** manning-ir, es-ragas, husain-shankar-evals, anthropic-evals, miller-error-bars, own-rag-practice.
+- **Evals (3 + 1 negative):** policy-documents assistant at 71%, team wants a pricier LLM (expected: failures sorted by stage, recall at the k sent, unanswerable queries, pooled labels, no switch yet); recall@5 at 93% but 20% unsupported claims (expected: generation, no re-index, claim-level faithfulness); answerable-only set and an embedding swap from a leaderboard (expected: refused, unanswerable queries, release with paired comparison); negative: an expense agent's tool calls.
+- **Graders:** regex; red lines: unanswerable queries, paired re-run.
+
+#### E7 · `model-selection` — P1
+- **Purpose:** choose a model for a use case with evidence, and record the decision so it can be redone when a new model ships.
+- **Trigger:** "Which model?", a new model release, a cost review, a sovereignty requirement.
+- **Inputs:** the suite from M1; candidate models (including hosted-in-EU and small models); constraints (hosting, data residency, latency, structured output, context).
+- **Outputs:** comparison run on the M1 suite (evalblink or equivalent); decision record (one page): candidates, scores per class, cost per success, latency p95, structured-output error rate, hosting compliance, chosen model, reasons, re-evaluation date and trigger.
+- **Rules:** never choose on public benchmarks; cost per success is the primary economic metric; sovereignty constraints are filters, not criteria; the decision record names the date and the suite version.
+- **Depends on / feeds:** E1 / E9, P4.
+- **Sources:** own model-selection decisions in banking.
+- **Evals (3):** a frontier model slightly better but 20× costlier (expected: cheaper model chosen, with the gap quantified); a candidate hosted outside EU on personal data (expected: filtered out, not scored); a classification task (expected: small models and specialised decision models included as candidates).
+- **Graders:** checklist (record complete, cost per success, re-eval date) + exact (filters applied).
+
+#### E8 · `ai-vendor-evaluation` — P1 (legal)
+- **Purpose:** choose or renew an AI vendor or product on the buyer's own evidence: a blind bake-off on the buyer's cases, cost per correct outcome, and contract clauses that keep quality testable after signature.
+- **Trigger:** an RFP or shortlist; a demo or "97% accuracy" claim; a renewal or price change; a vendor announces a new model; procurement wants to sign.
+- **Inputs:** use case and the business unit that counts as a correct outcome; candidates and the current process as baseline; cases and thresholds from E1; DORA status; data the product will see; volume, prices, review time, autonomy level, draft contract.
+- **Outputs:** vendor evaluation: bake-off design and results per class with Wilson intervals and the paired gap against 2√d / n; cost per correct outcome; data and hosting checks; AI Act document status (on file / claimed / missing / not due yet); DORA checks; clauses (must-have / negotiable); scorecard; decision record with re-evaluation triggers; questions for counsel; `scripts/bakeoff.py`.
+- **Rules:** never select on the vendor's benchmark, demo or declared accuracy; no personal or confidential data before a processing agreement and a hosting check; silent model changes or training on customer data are blocking; a gap under 2√d / n is a tie; score the unit the business pays for; never "AI Act / DORA / GDPR compliant".
+- **Depends on / feeds:** E1 / P3, E10, P4 (neighbour: E7).
+- **Sources:** dora, gdpr, eu-ai-act, eu-digital-omnibus-ai, miller-error-bars, wilson-interval, repo-yoseph, own-vendor-selection.
+- **Evals (3 + 1 negative):** two claims-extraction vendors, one claims 97% per field (expected: blind bake-off per document kind, 0.97^12 ≈ 69% per document, cost per correct extraction, data checks before upload, pending selection); a 3-year deal with silent model changes and training on content (expected: both blocking, notice and re-test clauses, DORA arts. 28–30, no verdict); 54/60 against 51/60 with d = 9, B 40% cheaper (expected: tie, decide on cost per correct file); negative: foundation model choice for an in-house build.
+- **Graders:** exact and checklist regexes; red lines: data before upload, no pick on claims, no verdict, both blocking, not as drafted, not A.
+
+#### E9 · `release-to-production` — P1
+- **Purpose:** take a new version (prompt, model, KB, skill) to production through offline eval, shadow, canary and A/B, choosing the right rung for the traffic available.
+- **Trigger:** "Can we ship this?", a model update from the provider, a prompt change, a KB refresh.
+- **Inputs:** M1 suite result for the new version; traffic volume; business metric and its variance; rollback capability; autonomy level.
+- **Outputs:** release plan: offline gate result, shadow duration and comparison metric, canary share and guardrails with automatic rollback triggers, A/B feasibility (sample size calculation) or explicit fallback to shadow + canary, decision owner, post-release review date.
+- **Rules:** offline eval first, always; A/B only if the sample-size calculation passes (the skill computes it); the production metric is a business outcome, not the judge score; provider model updates are treated as releases; L5 bandit switching only when L4 is stable and documented.
+- **Depends on / feeds:** E1, S6 / P1.
+- **Sources:** own release practice; Kohavi et al. (Trustworthy Online Controlled Experiments) for A/B rules.
+- **Evals (3):** 1 800 weekly users, 3-point lift sought (expected: A/B infeasible, shadow + canary plan); a new version failing offline by 2 points (expected: no release, diagnostic); a provider announces a model deprecation (expected: treated as release with shadow run).
+- **Graders:** checklist + exact (sample size computed; offline gate before any online step).
+
+#### E10 · `production-evals-monitoring` — P0 (legal)
+- **Purpose:** watch an AI feature's answer quality after release (what to sample, which online evaluators run, when to alert, who acts, how failures feed the eval set) and, for a high-risk system, write that plan so counsel can map it to AI Act art. 72 (provider) or 26(5) (deployer).
+- **Trigger:** go-live near with no quality watch; "write our post-market monitoring plan"; a provider, embedding or judge model update; suspected drift or a sampled dip; a dashboard of usage, latency, cost and thumbs only.
+- **Inputs:** offline eval plan (classes, modes, graders, thresholds, baseline); traffic per class; trace fields; who can roll back or suspend; autonomy level. Ask: judge TPR and TNR, expert review hours, where the judge runs, personal data in traces, retention, AI Act role and category.
+- **Outputs:** monitoring plan: OpenTelemetry GenAI instrumentation (incl. `gen_ai.evaluation.result` events); evaluator tiers (deterministic checks on all traffic, validated judges on a stratified sample, expert review re-checking the judge) with sample sizes; metrics per class with control limits; alert rules, owners, action ladder (investigate, roll back, suspend or move down one level); drift watch; feedback loop to regression cases; privacy; AI Act mapping with evidence status and questions for counsel; `scripts/control_limits.py`.
+- **Rules:** quality per class from a validated judge or experts, never usage, latency, cost or thumbs; no alert or rollback on a sampled change inside control limits; no unmasked personal data to an external judge; a provider, embedding or judge model change is a release; never "meets" art. 72 or 26(5); moving down never waits for approval.
+- **Depends on / feeds:** E1, E3, E11, P3 / E2, E1, E9, P5, P1, P4.
+- **Sources:** otel-genai, montgomery-spc, google-sre, husain-shankar-evals, anthropic-evals, rogan-gladen, eu-ai-act, eu-digital-omnibus-ai, en-18286, gdpr, own-production-monitoring.
+- **Evals (3 + 1 negative):** HR assistant going live at 30,000 questions a month with a usage dashboard (expected: per-class quality from sampled judges and expert review, sample sizes, control limits, owners, masking, regression cases); weekly judge rate 91% → 86% on 100 traces, rollback asked today (expected: ±8.6-point band, inside the noise, check model changes, raise the sample to about 300); Annex III provider asks to confirm art. 72 compliance (expected: mapped plan, evidence status, questions for counsel, 2 December 2027 and 2 September 2027, no verdict); negative: offline set for a feature not built yet.
+- **Graders:** regex and tool checks; red lines: quality per class, within noise, no verdict.
+
+#### E11 · `conversation-analysis` — P0
+- **Purpose:** classify every conversation of an assistant (use case, domain, sentiment, language, resolution) anonymously and reliably, to feed KPIs and ROI.
+- **Trigger:** "What do people use it for?", KB prioritisation, ROI volume needed, a quarterly review.
+- **Inputs:** anonymised transcripts; a draft taxonomy; 150–200 hand-labelled conversations; candidate classifiers; PII rules.
+- **Outputs:** frozen taxonomy (8–12 use cases, rules for edge cases); annotation guide; classification suite (evalblink or equivalent) comparing candidates on agreement per dimension and cost per conversation; chosen classifier with thresholds; monthly drift check design; output schema joined to M4.
+- **Rules:** PII masking before any model call; taxonomy frozen before labelling; agreement measured per dimension; low-confidence cases routed to review, not forced; the classifier is re-measured monthly on a fresh sample.
+- **Depends on / feeds:** E1, S8 / P1, P2, S10.
+- **Sources:** own assistant mission classification work (method only).
+- **Evals (3):** a taxonomy with overlapping classes (expected: merge or rule); a candidate at 0.0004 €/conversation with 78% agreement vs a frontier at 92% (expected: hybrid routing by confidence); transcripts with names and IBANs (expected: masking step blocks until done).
+- **Graders:** checklist + exact (taxonomy size, PII step present, agreement per dimension).
+
+### Prove — to the sponsor and the regulator (6)
+
+#### P1 · `assistant-kpis-cost-per-outcome` — P0
+- **Purpose:** define and compute the KPIs of an assistant or agent that reflect value: quality by domain, adoption by population, cost per correct outcome.
+- **Trigger:** "Build the dashboard", a sponsor asks for ROI, usage is up but nobody knows if it helps, a KB seems stale.
+- **Inputs:** traces or logs; conversation classification (M5); sampled quality scores (M1 graders); population data; cost data.
+- **Outputs:** KPI spec (definitions, formulas, sources, refresh); a reference dashboard layout (volume by use case, quality by KB/domain, adoption curve by population, cost per outcome, stale-answer rate); an outcome-event convention (`outcome_id`, `result`, `value_eur`) attached to the trace id; a monthly review template.
+- **Rules:** no KPI without a definition and a source; usage KPIs are never shown without a quality KPI beside them; cost per outcome uses successes as denominator; every KB has a quality line.
+- **Depends on / feeds:** E1, E11, S8 / P2, P6.
+- **Sources:** own assistant mission dashboard work (method only), OpenTelemetry GenAI semantic conventions.
+- **Evals (3):** logs with no outcome field (expected: outcome convention added, sampled quality as interim); a dashboard spec with sessions only (expected: quality and cost lines added); three KBs with different freshness (expected: quality by KB).
+- **Graders:** checklist (five KPI families present, definitions, sources) + exact (cost per outcome formula uses successes).
+
+#### P2 · `ai-roi-quantification` — P2
+- **Purpose:** compute the ROI of a deployed AI product with the five-line model, a baseline and sourced unit values.
+- **Trigger:** budget renewal, "what did it return", a CFO review, scaling decision.
+- **Inputs:** M5 volumes by use case; M4 quality by use case; unit values from business interviews (template provided); run and change costs; baseline measurement.
+- **Outputs:** ROI sheet per use case and total; assumptions register with source and confidence; sensitivity on the three weakest assumptions; the "do not claim" list (gains without baseline); a one-paragraph statement for S3.
+- **Rules:** no baseline, no ROI claim (projection, labelled); unit values are conservative and interviewed, never assumed; every number traces to a line; sensitivity is mandatory.
+- **Depends on / feeds:** P1, E11 / S10.
+- **Sources:** foundations/roi-model.md, own ROI work.
+- **Evals (3):** inputs without baseline (expected: projection label, baseline plan); a unit value of 45 min saved per use with no source (expected: flagged, interview template proposed); three use cases with one negative ROI (expected: shown, not hidden).
+- **Graders:** exact (five lines per use case, baseline flag) + checklist.
+
+#### P3 · `ai-act-classification` — P0 (legal)
+- **Purpose:** classify an AI use case under the EU AI Act (as amended by Regulation (EU) 2026/1744) and list the eval evidence each obligation asks for.
+- **Trigger:** a new use case before build; a step moving up the ladder; "is this high-risk?"; a vendor's "AI Act compliant" claim.
+- **Inputs:** what the system does and decides; domain; affected people; build or buy; autonomy level per step; model used.
+- **Outputs:** classification memo: role, prohibited-practice screen, risk category with article and annex point, transparency, general-purpose model flag, obligations by role with dates and evidence status, eval evidence per article (9(8), 10(3)-(4), 15(3), 17(1)(d), 26(5), 72, 73) with the skill that produces it, the L+1 line, questions for counsel (including the DPO question on a DPIA when personal data are processed), freshness line.
+- **Rules:** never "compliant"; every category and obligation cites its article and annex point; HR, credit, insurance and essential services checked against Annex III first; a vendor claim does not transfer deployer duties; never redefine autonomy levels.
+- **Depends on / feeds:** S1, S2, S6 / P4, E10, E8, S10.
+- **Sources:** eu-ai-act, ec-ai-act-guidelines, cnil-ai, gdpr, eu-digital-omnibus-ai, fr-ai-act-implementation, repo-vishalhabib.
+- **Evals (3 + 1 negative):** as frozen in the November 2026 baseline.
+- **Graders:** exact and checklist only, threshold 0.90.
+
+#### P4 · `model-card-ai-registry` — P1 (legal)
+- **Purpose:** document an AI system per version as its eval record, in a form product, audit and counsel all accept.
+- **Trigger:** go-live; a new version (prompt, model, knowledge base); an audit; a registry request; accuracy figures needed for the instructions for use.
+- **Inputs:** purpose, owners, version bundle, eval results; asked for if missing: results per class with n, set composition, judge validation, threshold signatures, failure modes, monitoring plan, guardrails, classification.
+- **Outputs:** card: version bundle; eval record per class (cases, rate, 95% interval, threshold, signed by and on, worst class named); set composition; the judge (TPR, TNR, correction); known failure modes and limits; declared accuracy for arts. 13(3)(b)(ii) and 15(3) and Annex IV 2(g) as a checklist for counsel; monitoring plan; guardrails at L3+; classification; end of life; changelog with eval delta per class and a tie test; registry entry.
+- **Rules:** never "compliant"; review date mandatory; no rate without n and interval; no overall figure without per-class scores; no judge-graded result without TPR and TNR; a threshold set after the results is recorded as such; unfavourable results stay on record.
+- **Depends on / feeds:** E1, E2, E3, E10, E9, P3 / E9, P5.
+- **Sources:** mitchell-model-cards, eu-ai-act, wilson-interval, miller-error-bars, husain-shankar-evals, own-registry, repo-chanmeng, repo-yoseph.
+- **Evals (4 + 1 negative):** "accuracy looks great" card with no failure modes; prompt v2.3 → v2.4 with nothing written down; L4 agent card that should "say we meet the AI Act"; audit card with a judge read on agreement, 70% generated cases and a threshold set after the results; negative: comparing two models.
+- **Graders:** exact and checklist regexes, threshold 0.90; red lines: not complete, keep the changelog, no compliance claim, threshold set after results disclosed.
+
+#### P5 · `ai-incident-playbook` — P2 (legal)
+- **Purpose:** prepare or run the response to an AI incident so that every incident feeds the evidence loop.
+- **Trigger:** go-live at L3+; a quality alert from E10; a near-miss; an incident in progress; a fix someone wants to ship and close.
+- **Inputs:** what happened; autonomy level; who can roll back; asked for if missing: alert and sample size, guardrail spec, classification, personal data, detection time, version bundle.
+- **Outputs:** class and severity (provisional until outputs are counted); first 60 minutes (contain by slice with a level drop, pull every output in the window, preserve traces); rollback owner and deputy acting without approval; reporting clocks as dates (GDPR art. 33, AI Act arts. 26(5), 73, 73(6) as questions for counsel); communications; evidence loop before the fix ships (error analysis on every affected output, regression cases, full suite per class, changelog); failure scenarios; post-incident review.
+- **Rules:** rollback authority is a named role; deadlines as dates; the skill never decides that no notification is needed; no final severity before the count; regression cases before the fix ships; a fix checked only on the reported examples is not verified.
+- **Depends on / feeds:** E10, S6, P3, E9, P4 / E2, E1, P4.
+- **Sources:** eu-ai-act, gdpr, google-sre, montgomery-spc, husain-shankar-evals, own-incident-practice, repo-chanmeng.
+- **Evals (5 + 1 negative):** L4 refund agent with 40 wrong refunds; prompt injection leaking 30 customers' names; drift from 93% to 89% with no harm; playbook before an L3 go-live; a fix tested on 3 memos to ship tonight; negative: guardrail design.
+- **Graders:** exact and checklist regexes, threshold 0.90; red lines: no committee, the DPO decides, not SEV1 for harmless drift, no shipping on three memos.
+
+#### P6 · `ai-adoption-plan` — P2
+- **Purpose:** plan the human side of an AI deployment and prove adoption on outcomes, not logins: correct outcomes per active user, override and bypass rates, over-trust measured by a calibration test, training by role and autonomy level, AI Act art. 4 literacy measures recorded as dated evidence.
+- **Trigger:** go-live nears; use stalls; a new population joins; people over-trust the tool or must review it; the art. 4 literacy measures need a plan.
+- **Inputs:** populations and sizes; current workaround; level of each step people touch; outcome and adoption data; sampled quality; override, redo and bypass data (from P1); failed eval cases and incidents; training time; objections.
+- **Outputs:** population map; adoption metrics per population and wave (correct outcomes per active user, override, bypass, wrong-answer acceptance with n); funnel diagnosis; training by role and level; calibration test for reviewers (seeded errors caught, false alarms); waves opened on results; objections with owners; art. 4 evidence per population; refresh loop.
+- **Rules:** adoption on correct outcomes, never logins or ratings alone; an override or acceptance metric beside every usage metric; diagnose before prescribing; a generic e-learning is never the sole measure; reviewers tested on the tool's own failures; what is logged about staff goes to the DPO; never "compliant".
+- **Depends on / feeds:** P1, S10, S5, E1, P3 / P4, E1, S8, P2.
+- **Sources:** eu-ai-act, eu-digital-omnibus-ai, google-pair, wilson-interval, own-coaching, own-pedagogy, repo-chanmeng, repo-lenny.
+- **Evals (4 + 1 negative):** 2,000 advisers with a day-one launch email; 30% use with 4.5/5 satisfaction and a plan to retrain the model; a plant where unions fear staff rating; 12 adjusters reviewing an L3 agent; negative: eval threshold question.
+- **Graders:** exact and checklist regexes; red lines: no big launch, not quality, no memo-only, no generic e-learning.
+
+### Backlog — candidates for slots 28–30
 
 | Candidate | Why it waits | Enters if |
 | --- | --- | --- |
-| `ai-vendor-assessment` | Build/buy covered in S1; vendor due diligence (DPA, training on data, deprecation, EU hosting) is distinct and frequent | three missions ask for it |
-| `retrieval-evaluation` | Partially in M1 and D2 | RAG-heavy users open issues on it |
-| `synthetic-data-for-evals` | Risky if misused; M1 flags synthetic ratio | a safe method is validated on a mission |
 | `ai-cost-forecasting` | Partially in M2 and M6 | token economics become a recurring sponsor question |
+
+---
+| `multi-turn-evals` | Partly in E5 (simulated users) | two missions need a conversation-level gate |
+| `red-team-evals` | Attack sets live in S6 | a regulated client asks for a robustness test plan (art. 15) |
 
 ---
 
@@ -615,78 +627,60 @@ The repo reads as a path. Each arrow means "output of A is an input of B".
 
 ```mermaid
 flowchart LR
-  subgraph Strategy
-    S1[ai-opportunity-assessment] --> S2[ai-moat-7-powers]
-    S1 --> S3[ai-initiative-pitch]
-    S2 --> S3
-  end
   subgraph Specify
-    P1[llm-feature-prd] --> P2[ai-data-requirements]
-    P1 --> P3[chat-with-your-data-scoping]
-    P1 --> P4[ai-interaction-patterns]
+    S1[ai-opportunity-assessment] --> S2[llm-feature-prd]
+    S2 --> S3[ai-data-requirements]
+    S2 --> S4[chat-with-your-data-scoping]
+    S2 --> S5[ai-interaction-patterns]
+    S2 --> S6[system-prompt-and-guardrails]
+    S7[agent-design-and-tooling] --> S6
+    S3 --> S8[agent-knowledge-base]
+    S3 --> S9[semantic-layer-design]
+    S9 --> S4
+    S10[process-ai-redesign]
   end
-  subgraph Data
-    D1[semantic-layer-design]
-    D2[agent-knowledge-base]
+  subgraph Evaluate
+    E2[error-analysis] --> E1[build-evals]
+    E2 --> E3[llm-judge-calibration]
+    E4[synthetic-eval-data] --> E1
+    E3 --> E1
+    E1 --> E5[agent-evals]
+    E1 --> E6[retrieval-evaluation]
+    E1 --> E7[model-selection]
+    E1 --> E8[ai-vendor-evaluation]
+    E1 --> E9[release-to-production]
+    E9 --> E10[production-evals-monitoring]
+    E11[conversation-analysis] --> E10
+    E10 --> E2
   end
-  subgraph Build
-    B1[prd-to-claude-code]
-    B2[system-prompt-and-guardrails]
-    B3[agent-design-and-tooling]
+  subgraph Prove
+    P1[assistant-kpis-cost-per-outcome] --> P2[ai-roi-quantification]
+    P3[ai-act-classification] --> P4[model-card-ai-registry]
+    P4 --> P5[ai-incident-playbook]
+    P1 --> P6[ai-adoption-plan]
   end
-  subgraph Measure
-    M1[build-evals] --> M2[model-selection]
-    M1 --> M3[release-to-production]
-    M5[conversation-analysis] --> M4[assistant-kpis-cost-per-outcome]
-    M4 --> M6[ai-roi-quantification]
-    M5 --> M6
-  end
-  subgraph Govern
-    G1[ai-act-classification] --> G2[dpia-prescreen]
-    G1 --> G4[model-card-ai-registry]
-    G4 --> G5[ai-incident-playbook]
-    G3[cse-consultation]
-  end
-  subgraph Transform
-    T1[process-ai-redesign] --> T2[ai-adoption-plan] --> T3[ai-literacy-program]
-  end
-  S1 --> P1
-  S1 --> G1
-  P1 --> M1
-  P1 --> B1
-  P1 --> B2
-  P1 --> G1
-  P2 --> D1
-  P2 --> D2
-  P2 --> G2
-  D1 --> P3
-  D2 --> M4
-  M1 --> B1
-  M1 --> B2
-  M1 --> T1
-  M2 --> G4
-  B2 --> G1
-  B2 --> M3
-  B3 --> B2
-  M6 --> S3
-  G1 --> S3
-  G1 --> T1
-  G3 --> T1
-  M5 --> T1
-  M6 --> T1
-  T1 --> S3
-  T1 --> B3
-  M4 --> T2
-  G3 --> T2
+  S2 --> E1
+  S2 --> E2
+  S2 --> P3
+  S7 --> E5
+  S8 --> E6
+  E1 --> P4
+  E10 --> P5
+  E10 --> P4
+  P5 --> E2
+  E11 --> P1
+  E3 --> E10
+  P2 --> S1
+  S10 --> E1
 ```
 
 Three hubs carry the repo:
 
-- **`llm-feature-prd` (P1)** feeds five skills: the specification hub.
-- **`build-evals` (M1)** gates five skills: the quality hub. Nothing ships, moves up a level or is chosen without it.
-- **`process-ai-redesign` (T1)** consumes seven skills: the synthesis hub and the proof that the repo is a system.
+- **`build-evals` (E1)** turns failure modes into a gate: nothing ships, moves up a level or is bought without it.
+- **`production-evals-monitoring` (E10)** closes the loop: production failures go back to `error-analysis` and the golden set, incidents to `ai-incident-playbook`, and the plan to the AI Act art. 72 mapping.
+- **`llm-feature-prd` (S2)** is where "correct" is first written down.
 
-The autonomy ladder is read by P1, B2, B3, M3, G1, G3, G5, T1, T2, T3 (ten skills). The ROI model is read by S3, M4, M6, T1 (four skills).
+The autonomy ladder is read by every skill that sets or gates a level; eval statistics by every Evaluate skill; evals-as-evidence by every Prove skill.
 
 ---
 
@@ -758,7 +752,7 @@ arm: both
 
 ```markdown
 ---
-type: llm              # graders/coherence.md: judge, optional, never on govern skills
+type: llm              # graders/coherence.md: judge, optional, never on legal skills
 ---
 The answer refuses to write the PRD without an outcome metric and lists it as an open question.
 ```
@@ -805,7 +799,7 @@ A skill may use all three kinds. Legal skills use exact + checklist only (no jud
 | `validate` | push, pull request | all skills and drafts: frontmatter, headings, cases, graders, free grader checks (§11.7) | none | — |
 | `evals` (PR) | `run-evals` label on a PR from this repo | changed skills and drafts, public cases, `--runs 1`, skill arm only when the baseline matches | Sonnet, pinned; Haiku judge | `--max-cost-usd 3` per skill |
 | `evals` (full suite) | manual run with `all`, after a major change | all skills, both arms; holdout once the holdout repo exists | Sonnet, pinned; a challenger model later | `--max-cost-usd 3` per skill |
-| `freshness` | weekly | `govern` skills | none | fails if `last_verified` > 90 days |
+| `freshness` | weekly | `legal` skills | none | fails if `last_verified` > 90 days |
 | `readme` | on main | regenerate catalog table | none | — |
 
 Eval jobs run `scripts/run_evals.py`, which calls `claude plugin eval <skill-folder> --trust-plugin --no-publish --json` with model and judge model pinned. They authenticate with `CLAUDE_CODE_OAUTH_TOKEN` (from `claude setup-token`, a Claude subscription, so runs cost no API spend) or `ANTHROPIC_API_KEY`, as a repository secret. Running on a label, not on every push, means a PR pays once. Changed skills come from `git diff --name-only`; a change in `foundations/` reaches exactly the skills whose `references/` copies it changes. PRs from forks get no secret: a maintainer runs them from a branch of this repo.
@@ -831,21 +825,19 @@ Ideas borrowed from the market: the trigger-rate set and non-discriminating-asse
 
 ## 12. Roadmap — at one hour per day
 
-Twenty-five hours a month. One skill per week including its three cases, plus one week per wave for foundations, README and the article. No new repo during the roadmap.
+Twenty-five hours a month. v1.0 (waves 0 to 4, November 2026) built 27 skills over seven stages; the November 2026 audit found the eval skills strongest and the rest diluting them. v2.0 re-centres the repo on evaluation.
 
 | Wave | Weeks | Deliverables | Exit criterion |
 | --- | --- | --- | --- |
-| **0 — Foundations** | 1–2 | Repo skeleton, `autonomy-ladder.md`, `roi-model.md`, `eval-conventions.md`, `sources.md`, `SKILL.md` template, structure CI, plugin manifest, first paid `claude plugin eval` run on one case (two arms) | structure CI green; `claude plugin eval skills/<name>` scores one case with and without the skill |
-| **1 — Lived skills (P0)** | 3–8 | P1 `llm-feature-prd`, M1 `build-evals`, M4 `assistant-kpis-cost-per-outcome`, M5 `conversation-analysis`, G1 `ai-act-classification`, G3 `cse-consultation` | 6 skills passing; M5 and M4 used on a live mission; README live; article 1: "Why PM skills need tests" |
-| **2 — The spine** | 9–15 | S1, S3, M2, B2, D2, T1 (flagship) | T1 passes at 0.90 and calls G1, G3, M1 by reference; article 2: "Six levels of autonomy" |
-| **3 — Build and data** | 16–23 | P2, P3, D1, B1, B3, G2, G4, M3 | 20 skills; Codex and Cursor install verified; article 3: "Shadow, canary, A/B for AI features" |
-| **4 — Complete and release** | 24–30 | S2, P4, M6, G5, T2, T3; v1.0 tag; Show HN; submission to Agent Skills directories | 26 skills, average pass ≥ 85%, holdout in place, first external issue |
+| **5 — Evidence first** | 1–4 (to 9 Dec 2026) | 20 answers scored by hand, blind, and the judge chosen by the committed rule; intervals in the README (done 2026-11-09); `build-evals` 0.3 (TPR and TNR, size per class) re-run; `error-analysis` and `llm-judge-calibration` tested; article "What my regexes did not measure" | both new skills in `skills/`; README headline triangulated with intervals |
+| **6 — Evaluate block** | 5–12 (to 7 Feb 2027) | `production-evals-monitoring`, `agent-evals`, `ai-vendor-evaluation` tested; ten scored cases per catalog skill; holdout in a private repo; cost per correct answer published per arm | 10 skills in the catalog; at least one skill `verified-in-mission` |
+| **7 — Prove block** | 13–25 (to 8 May 2027) | `model-card-ai-registry`, `ai-incident-playbook`, `retrieval-evaluation`, `synthetic-eval-data` tested; a second model under test; French guide "Évaluer un système d'IA avant décembre 2027" | 15 skills in the catalog; first external issue |
 
 Rules of the road:
 
 - A week where the skill does not pass is a week where the cases are improved, not a week where the skill is published anyway.
 - Every skill is run once on a real artefact of the author's current mission before publication.
-- Anything that is not one of the 27 skills, the foundations, the README, the CI or the four articles waits until v1.0.
+- An evaluate skill enters the catalog only if it also beats its own template.
 
 ---
 
@@ -853,7 +845,7 @@ Rules of the road:
 
 | Risk | Likelihood | Impact | Mitigation |
 | --- | --- | --- | --- |
-| Legal skills read as legal advice; a user relies on them | Medium | High | "Checklist, not verdict" rule; disclaimer in README and in each `govern` skill output; exact grader fails any output containing a conformity verdict |
+| Legal skills read as legal advice; a user relies on them | Medium | High | "Checklist, not verdict" rule; disclaimer in README and in each `legal` skill output; exact grader fails any output containing a conformity verdict |
 | Legal content goes stale (AI Act guidance, French texts) | High | High | `last_verified` + weekly CI; 90-day cap; sources with dates; a "verify before use" line in output when > 60 days |
 | IP: book or newsletter content reproduced | Low | High | Own-words rule; sources cited as ideas; no excerpts > one sentence; review checklist in CONTRIBUTING |
 | Client confidentiality leaks through cases | Medium | High | Cases anonymised by a written procedure; synthetic entities; client sign-off for any recognisable pattern; holdout private |
@@ -894,7 +886,7 @@ stage: specify
 version: 1.0.0
 last_verified: 2026-11-01
 depends_on: [ai-opportunity-assessment]
-feeds: [build-evals, prd-to-claude-code, system-prompt-and-guardrails, ai-data-requirements, ai-act-classification]
+feeds: [build-evals, error-analysis, system-prompt-and-guardrails, ai-data-requirements, ai-act-classification]
 autonomy_relevant: true
 sources: [cagan-inspired, torres-continuous-discovery, own-prds]
 eval_threshold: 0.80
@@ -992,3 +984,8 @@ Graders: `graders/triggered.md` (`type: tool_used`, `tool: Skill`, anchored `inp
 | anthropic-agents | Anthropic, *Building effective agents* | loop-first, framework-last in B3 |
 | otel-genai | OpenTelemetry GenAI semantic conventions | trace and outcome-event fields in M4 |
 | own-* | Author's missions (anonymised) | every "lived" rule; cases |
+
+### E. Change log
+
+- **2.0 (2026-11-09).** Repositioned on *Evals as evidence*. Seven stages become three blocks (Specify, Evaluate, Prove); `stage: govern` gives way to a `legal: true` flag. Retired: `ai-brand-positioning`, `ai-moat-7-powers`, `prd-to-claude-code`, `dpia-prescreen`, `cse-consultation` (recoverable from git history). Merged: `ai-initiative-pitch` into `ai-opportunity-assessment`, `ai-literacy-program` into `ai-adoption-plan`. Added: `error-analysis`, `llm-judge-calibration`, `synthetic-eval-data`, `agent-evals`, `retrieval-evaluation`, `ai-vendor-evaluation`, `production-evals-monitoring` (which also covers the AI Act post-market monitoring plan). New foundations: `evals-as-evidence.md`, `eval-statistics.md`.
+- **1.0 (2026-11-01).** 27 skills over seven stages.

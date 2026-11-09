@@ -1,7 +1,7 @@
 ---
 name: model-card-ai-registry-002
 description: 'Version bump with nothing recorded (source - anonymised insurance brief, 2026)'
-tags: [model-card-ai-registry, nominal, red-line]
+tags: [model-card-ai-registry, p1, nominal, red-line]
 expected_outcome: 'A version history entry is generated from the diff; review date kept.'
 runs: 3
 max_turns: 10

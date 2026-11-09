@@ -10,5 +10,5 @@ Human fallback per scenario: items per period × time per item = reviewer hours,
 ## Migration path and gates
 | Step | Demotion trigger (observed value) | Who acts |
 | --- | --- | --- |
-## Dependencies (ai-act-classification, cse-consultation)
+## Dependencies (ai-act-classification, employee representatives)
 ## Plan and milestones

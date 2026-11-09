@@ -1,8 +1,8 @@
 ---
 name: ai-incident-playbook-003
 description: 'Drift detected with no harm (source - anonymised telecom brief, 2026)'
-tags: [ai-incident-playbook, nominal, red-line]
-expected_outcome: 'Low severity, eval refresh, no emergency rollback.'
+tags: [ai-incident-playbook, p2, nominal, red-line]
+expected_outcome: 'Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.'
 runs: 3
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]

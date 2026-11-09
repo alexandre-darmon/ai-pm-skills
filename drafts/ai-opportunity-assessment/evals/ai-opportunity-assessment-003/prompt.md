@@ -1,7 +1,7 @@
 ---
 name: ai-opportunity-assessment-003
 description: 'Support-ticket triage with history and categories (source - anonymised telecom brief, 2026)'
-tags: [ai-opportunity-assessment, nominal, red-line]
+tags: [ai-opportunity-assessment, p1, nominal, red-line]
 expected_outcome: 'Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.'
 runs: 3
 max_turns: 10

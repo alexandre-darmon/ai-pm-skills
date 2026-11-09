@@ -1,48 +1,53 @@
-<p align="center"><img src="assets/banner.svg" alt="AI PM Skills: Strategy, Specify, Data, Build, Measure, Govern, Transform" width="100%"></p>
+<p align="center"><img src="assets/banner.svg" alt="AI PM Skills: Specify, Evaluate, Prove" width="100%"></p>
 
-<p align="center">Agent Skills for Claude Code, Codex, Cursor or your own agent. Skills enter the catalog only after scoring at least 10 points above the model alone.</p>
+<p align="center"><b>Evals as evidence.</b> Agent Skills that help AI product managers prove a feature works, what each correct answer costs, and what the regulator will ask for. Every skill is scored with and without it, against its own template, and by a blind judge; all three are published, including where the gain is small.</p>
 
 <!-- gains:start -->
 | Same cases, Sonnet 5.5 answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 6 skills, 21 cases × 3 runs | 44% | 83% | **99%** | +55 [+49, +63] | +16 [+9, +23] |
+| Regex graders: 5 skills, 17 cases × 3 runs | 39% | 82% | **99%** | +60 [+51, +68] | +17 [+9, +26] |
 | Blind LLM judge, Haiku 5.5: 4 of these skills, 14 cases, not calibrated | 71% | 78% | 81% | +10 [+6, +14] | +3 [+1, +5] |
 | Blind LLM judge, Sonnet 5.5: 4 of these skills, 14 cases, not calibrated | 70% | 76% | 82% | +11 [+6, +17] | +5 [+3, +7] |
-| Red lines held (the one thing the answer must never do) | 61% | 91% | **100%** | | |
+| Red lines held (the one thing the answer must never do) | 54% | 90% | **100%** | | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
 <sub>Sonnet 5.5 answers each case 3 times per arm. **Regex graders** check that the answer contains what the skill asks for; the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; it is not calibrated on human scores yet, tends to favour longer answers, and never grades the legal skills. Gains in points; brackets: 95% interval from resampling the cases, which shows how much the gain depends on the cases written, not on the graders chosen. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>
 <!-- gains:end -->
 
-## Why AI PM Skills?
+## Why evals as evidence?
 
-Generic AI gives you a plausible document. AI PM Skills gives you one that holds up in front of an engineering lead, a DPO and a works council.
+In a bank or an insurer, "is it good enough?" is not a feeling. Three readers ask for proof, and each asks a different question:
 
-Each skill encodes how an AI product is actually framed, specified, measured and governed in a bank, an insurer or an industrial group: an autonomy level per step, a gate before each level, cost per correct outcome instead of usage, and compliance as a checklist for counsel, never a verdict. The method comes from real deployments and from the work of Marty Cagan, Teresa Torres, Hamilton Helmer and the EU texts themselves, built into the agent instead of sitting on a shelf.
+| Reader | Asks | Answered by |
+| --- | --- | --- |
+| The user, and the team that serves them | Does it give correct answers on the questions people really ask? | `error-analysis`, `build-evals`, `llm-judge-calibration`, `production-evals-monitoring` |
+| The sponsor | What does one correct answer cost, and is it worth it? | `assistant-kpis-cost-per-outcome`, `ai-roi-quantification`, `model-selection` |
+| The regulator, the auditor, counsel | Were the bars set before testing? Are the test data representative? Is performance watched after release? | `ai-act-classification`, `model-card-ai-registry`, `production-evals-monitoring` |
+
+Engineering courses teach how to build evals. These skills encode the decisions around them, the way a PM has to take them in a regulated company: read real outputs before choosing metrics, validate a judge with TPR and TNR rather than raw agreement, give every score its number of cases and its interval, set thresholds per class before the run, gate an agent on pass^k, and turn the AI Act articles that ask for testing and monitoring (arts. 9, 10, 15, 17, 26, 72, 73) into a checklist for counsel, never a verdict. The frame fits on one page: [evals as evidence](foundations/evals-as-evidence.md); the numbers behind it on another: [eval statistics](foundations/eval-statistics.md).
 
 What makes it different:
 
-1. **Tested.** Each skill ships with eval cases run by `claude plugin eval`, with and without the skill. A skill that does not beat the model alone by at least 10 points stays in `drafts/`. The results above also set each skill against its own output template and a blind LLM judge, with 95% intervals, because a grader written by the skill's author is an easy test. [How a skill is evaluated](docs/evaluation.md).
-2. **Compliance as skills.** AI Act classification, CSE consultation, DPIA pre-screen, model card, incident playbook: classifications, checklists and questions for counsel.
-3. **One spine.** The skills share the same [autonomy ladder](foundations/autonomy-ladder.md) (L0 to L5) and [ROI model](foundations/roi-model.md) (volume × quality × unit value − costs).
-4. **No free-floating numbers.** A gain that cannot be traced to volume, quality and unit value is rewritten or removed.
+1. **Evaluation is the spine.** Eleven of the 27 skills evaluate: error analysis, judge validation, synthetic data, agents, retrieval, vendors, release and production monitoring.
+2. **Tested, and the unfavourable results stay visible.** A skill that does not beat the model alone by at least 10 points stays in `drafts/`. The table above also sets each skill against its own output template and a blind judge, with 95% intervals. [How a skill is evaluated](docs/evaluation.md).
+3. **One AI Act skill, wired to the evidence.** `ai-act-classification` names the role, the risk category and the obligations, then maps each testing or monitoring duty to the eval artefact that answers it.
+4. **No free-floating numbers.** Every gain traces to volume × quality × unit value − costs ([ROI model](foundations/roi-model.md)), and every autonomy step to the [ladder](foundations/autonomy-ladder.md) (L0 to L5).
 
-## The lifecycle
+## Three blocks
 
-<p align="center"><img src="assets/lifecycle.svg" alt="Seven stages with their 27 skills, marked tested or draft" width="100%"></p>
+<p align="center"><img src="assets/lifecycle.svg" alt="Three blocks, Specify, Evaluate and Prove, with their skills, marked tested or draft" width="100%"></p>
 
-| You need to… | Run | Stage |
+| You need to… | Run | Block |
 | --- | --- | --- |
 | Write the PRD of a feature that generates, extracts, classifies or acts | `/ai-pm-skills:llm-feature-prd` | Specify |
-| Decide whether the feature is good enough to ship | `/ai-pm-skills:build-evals` | Measure |
-| Show the comex whether the assistant actually helps, and what a correct answer costs | `/ai-pm-skills:assistant-kpis-cost-per-outcome` | Measure |
-| Find out what people really ask the assistant, and how it goes | `/ai-pm-skills:conversation-analysis` | Measure |
-| Classify a use case under the EU AI Act | `/ai-pm-skills:ai-act-classification` | Govern |
-| Know whether a French CSE must be informed or consulted | `/ai-pm-skills:cse-consultation` | Govern |
+| Decide whether the feature is good enough to ship | `/ai-pm-skills:build-evals` | Evaluate |
+| Find out what people really ask the assistant, and how it goes | `/ai-pm-skills:conversation-analysis` | Evaluate |
+| Show the comex whether the assistant helps, and what a correct answer costs | `/ai-pm-skills:assistant-kpis-cost-per-outcome` | Prove |
+| Classify a use case under the EU AI Act and list the evidence it asks for | `/ai-pm-skills:ai-act-classification` | Prove |
 
-You rarely need the command: skills load on their own when the request matches. The other 21 skills have passed one eval check; they stay in [`drafts/`](drafts/) until a 3-run confirmation. Below, what each one does.
+You rarely need the command: skills load on their own when the request matches. The other 22 skills are drafts: written, checked for structure and graders, not yet scored over three runs. They stay in [`drafts/`](drafts/) until they pass.
 
-**Looking for discovery?** Not here on purpose: generic discovery reads the same with or without AI, and Teresa Torres, Marty Cagan or [pm-skills](https://github.com/phuryn/pm-skills) already cover it. What AI changes is here: `ai-opportunity-assessment` checks that the problem is real and the data ready before you build, and `conversation-analysis` shows what people really ask once it runs.
+**Looking for discovery, roadmaps or positioning?** Not here on purpose: they read the same with or without AI, and Teresa Torres, Marty Cagan or [pm-skills](https://github.com/phuryn/pm-skills) already cover them. **Looking for how to build an eval harness?** Hamel Husain and Shreya Shankar's [evals course and skills](https://github.com/ai-evals-course/evals-skills) are the engineering reference; this repo is the decision side and credits them.
 
 ## Install
 
@@ -61,49 +66,48 @@ claude plugin install ai-pm-skills@ai-pm-skills
 Or a single skill, by its name:
 
 ```bash
-claude plugin install llm-feature-prd@ai-pm-skills
+claude plugin install build-evals@ai-pm-skills
 ```
 
-Each per-skill plugin is named after its skill: `llm-feature-prd`, `build-evals`, `assistant-kpis-cost-per-outcome`, `conversation-analysis`, `ai-act-classification`, `cse-consultation`. Pick the bundle or single skills, not both. The bundle adds about 330 tokens to every session; a skill's full text loads only when it fires. Drafts are not installable: they join the marketplace once they pass their eval run.
+Each per-skill plugin is named after its skill: `llm-feature-prd`, `build-evals`, `conversation-analysis`, `assistant-kpis-cost-per-outcome`, `ai-act-classification`. Pick the bundle or single skills, not both. A skill's full text loads only when it fires. Drafts are not installable: they join the marketplace once they pass their eval run.
 
-Other agents (Codex, Cursor, custom): each folder in `skills/` follows the [Agent Skills](https://agentskills.io) standard and is self-contained; copy it into your agent's skills directory.
+Other agents (Codex, Cursor, custom): each folder in `skills/` follows the [Agent Skills](https://agentskills.io) standard and is self-contained, so the skills CLI can install it:
+
+```bash
+npx skills add alexandre-darmon/ai-pm-skills
+```
+
+Not yet verified on every agent; copying a folder into your agent's skills directory also works.
 
 ## Catalog
 
-27 skills across 7 stages, hard cap 30. **Available** skills are in `skills/` with a passing eval suite. **Drafts** have passed one scored eval check, most of them on a single run per case, and are not installable yet.
+27 skills in three blocks, hard cap 30. **Available** skills are in `skills/` with a passing eval suite. **Drafts** are written and pass the free checks, and are not installable yet.
 
 ### Available
 
-| Skill | Stage | What it does |
+| Skill | Block | What it does |
 | --- | --- | --- |
-| [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | Specify | PRD for an LLM feature: autonomy level per step, four failure paths, eval stub, guardrails, outcome KPIs, shadow → canary → GA. |
-| [`build-evals`](skills/build-evals/SKILL.md) | Measure | Builds or reviews the eval set, graders, threshold and baseline that decide if an AI feature is good enough. |
-| [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | Measure | KPIs for an assistant or agent: quality by domain, adoption, cost per correct outcome, not usage alone. |
-| [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | Measure | Classifies conversations by use case, resolution and sentiment, PII masked, to learn what people use the assistant for. |
-| [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | Govern | EU AI Act role, risk category, obligations and dated questions for counsel. Never a compliance verdict. |
-| [`cse-consultation`](skills/cse-consultation/SKILL.md) | Govern | Whether an AI tool in a French company needs CSE information or consultation, and the file to prepare. |
+| [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | Specify | PRD for an LLM feature: autonomy level per step, four failure paths, eval stub, guardrails, outcome KPIs, stop conditions. |
+| [`build-evals`](skills/build-evals/SKILL.md) | Evaluate | Eval set, graders, per-class thresholds signed before the run, judge validated with TPR and TNR, scores with intervals, baseline. |
+| [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | Evaluate | Classifies conversations by use case, resolution and sentiment, PII masked, to learn what people use the assistant for. |
+| [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | Prove | KPIs for an assistant or agent: quality by domain, adoption, cost per correct outcome, not usage alone. |
+| [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | Prove | EU AI Act role, risk category, obligations, the eval evidence each article asks for, and dated questions for counsel. Never a compliance verdict. |
 
 ### Drafts
 
-| Stage | Skills |
+| Block | Skills |
 | --- | --- |
-| Strategy | `ai-opportunity-assessment` (AI or not, in which form) · `ai-initiative-pitch` (one-pager with anchored numbers and one dated ask) · `ai-moat-7-powers` (where defensibility lies when the model is a commodity) · `ai-brand-positioning` (a category and copy whose claims survive the evals and the autonomy level) |
-| Specify | `ai-data-requirements` (fields, quality bar, legal basis, owner) · `chat-with-your-data-scoping` (bounded text-to-SQL with a golden set) · `ai-interaction-patterns` (trust calibration, correction, refusal UX) |
-| Data & Knowledge | `semantic-layer-design` (one definition and one owner per metric, exported in Apache Ossie) · `agent-knowledge-base` (source register, owners, expiry) |
-| Build | `prd-to-claude-code` (brief an agentic coding tool) · `system-prompt-and-guardrails` (prompt plus input, output and action guardrails) · `agent-design-and-tooling` (loop, tools, permission matrix) |
-| Measure | `model-selection` (cost per success on your suite, sovereignty as a filter) · `release-to-production` (shadow, canary, A/B) · `ai-roi-quantification` (volume × quality × value − costs) |
-| Govern | `dpia-prescreen` (the nine EDPB criteria) · `model-card-ai-registry` · `ai-incident-playbook` |
-| Transform | `process-ai-redesign` (flagship: level per step, gates, three scenarios) · `ai-adoption-plan` · `ai-literacy-program` (AI Act art. 4) |
+| Specify | `ai-opportunity-assessment` (AI or not, in which form, the dated ask and its stop conditions) · `ai-data-requirements` (fields, quality bar, legal basis, owner) · `chat-with-your-data-scoping` (bounded text-to-SQL with a golden set) · `ai-interaction-patterns` (trust calibration, correction, refusal UX) · `system-prompt-and-guardrails` (prompt plus input, output and action guardrails) · `agent-design-and-tooling` (loop, tools, permission matrix) · `agent-knowledge-base` (source register, owners, expiry) · `semantic-layer-design` (one definition and one owner per metric) · `process-ai-redesign` (level per step, gates, scenarios) |
+| Evaluate | `error-analysis` (read traces, find failure modes before metrics) · `llm-judge-calibration` (TPR, TNR, bias checks, corrected pass rate, with a script) · `synthetic-eval-data` (dimensions, tuples, synthetic share declared) · `agent-evals` (end state, forbidden events, pass^k) · `retrieval-evaluation` (retrieval apart from generation) · `model-selection` (cost per success on your suite) · `ai-vendor-evaluation` (bake-off on your cases, clauses that keep quality testable) · `release-to-production` (shadow, canary, A/B) · `production-evals-monitoring` (online evals, control limits, AI Act art. 72 plan) |
+| Prove | `ai-roi-quantification` (volume × quality × value − costs) · `model-card-ai-registry` (the eval record per version) · `ai-incident-playbook` (incident to regression case, art. 73) · `ai-adoption-plan` (adoption proven on outcomes, AI literacy evidence) |
 
-Numbers at the top: the 6 catalog skills, 3 runs per case, November 2026, after two red-line graders that rejected correct answers were fixed and the saved answers re-scored. `ai-incident-playbook` and `ai-roi-quantification` also passed at 3 runs; the other 19 drafts have one run per case. Graders are written by the skills' author, and no template-only control has been run yet.
-
-> **Not legal advice.** Govern skills produce classifications, checklists and questions for counsel, never a conformity verdict.
+> **Not legal advice.** Skills marked legal (`ai-act-classification` and the drafts that map the AI Act, DORA or GDPR) produce classifications, checklists and questions for counsel, never a conformity verdict.
 
 ## Contributing a skill
 
 ```bash
 cp -r templates/skill drafts/<your-skill-name>
-pip install pyyaml   # node is needed too
+pip install pyyaml   # node is needed too; Python 3.10 or later
 python3 scripts/validate_skills.py
 ```
 
@@ -121,12 +125,17 @@ python3 scripts/eval_gains.py
 
 ## Built on the work of
 
-This repo evolves with product practice, AI capabilities and the law. The skills cite these works by idea, in their own words ([full register](foundations/sources.md)):
+The skills cite these works by idea, in their own words ([full register](foundations/sources.md)):
 
-- **Product.** Marty Cagan, [*Inspired*](https://svpg.com) · Teresa Torres, [*Continuous Discovery Habits*](https://www.producttalk.org) · Rob Fitzpatrick, [*The Mom Test*](https://www.momtestbook.com) · Hamilton Helmer, [*7 Powers*](https://7powers.com) · Ron Kohavi, Diane Tang, Ya Xu, [*Trustworthy Online Controlled Experiments*](https://experimentguide.com)
-- **Persuasion and change.** Robert Cialdini, [*Influence*](https://www.influenceatwork.com) · Nicolas Cole, *The Art and Business of Online Writing* · John Hagel et al., *The Power of Pull* · John Kotter, *Leading Change* · Everett Rogers, *Diffusion of Innovations* · Michael Hammer, James Champy, *Reengineering the Corporation*
-- **AI engineering.** Anthropic, [*Building effective agents*](https://www.anthropic.com/engineering/building-effective-agents) · OWASP, [*Top 10 for LLM Applications*](https://genai.owasp.org/llm-top-10/) · Mitchell et al., [*Model Cards for Model Reporting*](https://arxiv.org/abs/1810.03993) · Microsoft, [*Guidelines for Human-AI Interaction*](https://www.microsoft.com/en-us/haxtoolkit/) · Google, [*People + AI Guidebook*](https://pair.withgoogle.com/guidebook/) · [OpenTelemetry GenAI conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/) · [dbt Semantic Layer](https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl) · [Apache Ossie](https://ossie.apache.org/) · DAMA, [*DMBOK*](https://www.dama.org/cpages/body-of-knowledge)
-- **Regulation.** [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) · [GDPR](https://eur-lex.europa.eu/eli/reg/2016/679/oj) · [EDPB](https://www.edpb.europa.eu) guidelines on DPIA · [CNIL](https://www.cnil.fr/fr/intelligence-artificielle) on AI and employee monitoring · French [Code du travail](https://www.legifrance.gouv.fr/codes/texte_lc/LEGITEXT000006072050)
+- **Evaluation.** Hamel Husain and Shreya Shankar, [*AI Evals for Engineers and PMs*](https://maven.com/parlance-labs/evals) and their evals FAQ on [hamel.dev](https://hamel.dev) · Shankar et al., [*Who Validates the Validators?*](https://arxiv.org/abs/2404.12272) · Zheng et al., [*Judging LLM-as-a-Judge*](https://arxiv.org/abs/2306.05685) · Eugene Yan, [*Evaluating the Effectiveness of LLM-Evaluators*](https://eugeneyan.com/writing/llm-evaluators/) · Evan Miller, [*Adding Error Bars to Evals*](https://arxiv.org/abs/2411.00640) · Anthropic, [*Demystifying evals for AI agents*](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents) · Yao et al., [*τ-bench*](https://arxiv.org/abs/2406.12045) · Es et al., [*RAGAS*](https://arxiv.org/abs/2309.15217) · Manning, Raghavan, Schütze, [*Introduction to Information Retrieval*](https://nlp.stanford.edu/IR-book/)
+- **Statistics.** Wilson (1927) and the rule of three · Rogan and Gladen (1978) on correcting a rate with a test's errors · Cohen's kappa (1960) · Efron and Tibshirani, *An Introduction to the Bootstrap* · Montgomery, *Introduction to Statistical Quality Control* · Kohavi, Tang, Xu, [*Trustworthy Online Controlled Experiments*](https://experimentguide.com)
+- **Product.** Marty Cagan, [*Inspired*](https://svpg.com) · Teresa Torres, [*Continuous Discovery Habits*](https://www.producttalk.org) · Rob Fitzpatrick, [*The Mom Test*](https://www.momtestbook.com)
+- **AI engineering and operations.** Anthropic, [*Building effective agents*](https://www.anthropic.com/engineering/building-effective-agents) · OWASP, [*Top 10 for LLM Applications*](https://genai.owasp.org/llm-top-10/) · Mitchell et al., [*Model Cards for Model Reporting*](https://arxiv.org/abs/1810.03993) · [OpenTelemetry GenAI conventions](https://opentelemetry.io/docs/specs/semconv/gen-ai/) · Beyer et al., [*Site Reliability Engineering*](https://sre.google/sre-book/table-of-contents/) · Microsoft, [*Guidelines for Human-AI Interaction*](https://www.microsoft.com/en-us/haxtoolkit/) · Google, [*People + AI Guidebook*](https://pair.withgoogle.com/guidebook/)
+- **Regulation.** [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) as amended by Regulation (EU) 2026/1744 · [GDPR](https://eur-lex.europa.eu/eli/reg/2016/679/oj) · [DORA](https://eur-lex.europa.eu/eli/reg/2022/2554/oj) · EN 18286 (quality management for the AI Act)
+
+## Author
+
+Alex Darmon, AI and data product manager in banking and retail, with an analytics and observability background. The skills come from client missions on internal assistants, chat-with-your-data products and agents; client data never leaves the client. Writing at [aiunmagic.com](https://aiunmagic.com).
 
 ## License
 

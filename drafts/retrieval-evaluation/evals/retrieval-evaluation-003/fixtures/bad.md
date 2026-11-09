@@ -1,0 +1,1 @@
+The plan is sound: a model at the top of the MTEB leaderboard will retrieve better. Change note: "On Tuesday we move the HR assistant to the vendor's new multilingual embedding model and rebuild the index overnight. Employees should see more relevant answers. The June test (88% in the top 4) remains our reference."

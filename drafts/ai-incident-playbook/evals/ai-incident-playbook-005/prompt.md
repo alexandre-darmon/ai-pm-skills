@@ -1,7 +1,7 @@
 ---
 name: ai-incident-playbook-005
 description: 'Prepare a playbook before an L3 go-live (source - synthetic go-live brief, 2026)'
-tags: [ai-incident-playbook, nominal]
+tags: [ai-incident-playbook, p2, nominal]
 expected_outcome: 'At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.'
 runs: 3
 max_turns: 10

@@ -1,10 +1,10 @@
 ---
 name: process-ai-redesign
 description: 'Redesign a business process with AI: autonomy level and gate per step, three scenarios with ROI lines, trade-offs, migration path. Use for "automate this process" or an efficiency target.'
-stage: transform
+stage: specify
 version: 0.2.0
-depends_on: [ai-opportunity-assessment, conversation-analysis, ai-roi-quantification, ai-act-classification, cse-consultation, agent-design-and-tooling]
-feeds: [ai-initiative-pitch, ai-adoption-plan, agent-design-and-tooling]
+depends_on: [ai-opportunity-assessment, conversation-analysis, ai-roi-quantification, ai-act-classification, agent-design-and-tooling]
+feeds: [ai-opportunity-assessment, ai-adoption-plan, agent-design-and-tooling, build-evals]
 autonomy_relevant: true
 sources: [hammer-reengineering, own-process-redesign, repo-chanmeng]
 eval_threshold: 0.90
@@ -31,7 +31,7 @@ If the exception rate is unknown, measure it before setting any level above L2.
 4. When exceptions exceed about a quarter of cases, redesign the exception handling first and lower the target levels: autonomy on a process that is mostly exceptions moves work, it does not remove it.
 5. Build three scenarios (conservative, target, ambitious), each with the five ROI lines of references/roi-model.md: volume, quality, unit value, run cost, change cost.
 6. Compare scenarios in a trade-off table on cost per outcome, risk, reversibility and obligations, not on "efficiency". Every scenario keeps a human fallback, and sizes it: expected review and exception items per period × time per item = reviewer hours, against the hours the team still has. Name the queue owner, the SLA and what happens at timeout. The hours go into the change cost line. If time per item is unknown, write the formula and mark it to measure; do not invent it. A fallback the team cannot staff does not count: lower the level or the volume.
-7. Check triggers. A step at L4 or above calls `ai-act-classification` for a re-check. A step that changes how employees work, or measures them, calls `cse-consultation`. The migration path moves one level at a time, each move behind its gate from `build-evals`. Each step also names its demotion trigger: the observed value that sends it back one level, also read after a model change, and who acts on it. Moving down needs no approval (ladder rule 3). The rollback mechanism belongs to `release-to-production`.
+7. Check triggers. A step at L4 or above calls `ai-act-classification` for a re-check. A step that changes how employees work, or measures them, is flagged for HR and counsel: workers' representatives are informed before use (AI Act art. 26(7)), and in France the CSE is informed and consulted. The migration path moves one level at a time, each move behind its gate from `build-evals`. Each step also names its demotion trigger: the observed value that sends it back one level, also read after a model change, and who acts on it. Moving down needs no approval (ladder rule 3). The rollback mechanism belongs to `release-to-production`.
 8. Write the plan with milestones and owners.
 
 ## Output
@@ -42,10 +42,10 @@ If the exception rate is unknown, measure it before setting any level above L2.
 - No decision with legal or financial effect on a person above L2.
 - No scenario without a human fallback sized in reviewer hours, or its formula marked to measure.
 - No full automation (L5) of a process with exceptions or decisions on people.
-- Every L4+ step references `ai-act-classification`; any step touching employees' work or evaluation references `cse-consultation`.
+- Every L4+ step references `ai-act-classification`; any step touching employees' work or evaluation is flagged for employee-representative information or consultation.
 
 ## Links
-references/autonomy-ladder.md · references/roi-model.md · build-evals · release-to-production · ai-act-classification · cse-consultation · agent-design-and-tooling · ai-initiative-pitch
+references/autonomy-ladder.md · references/roi-model.md · build-evals · release-to-production · ai-act-classification · agent-design-and-tooling · ai-opportunity-assessment
 
 ## Sources
 - hammer-reengineering: redesign the process, do not automate the old one.

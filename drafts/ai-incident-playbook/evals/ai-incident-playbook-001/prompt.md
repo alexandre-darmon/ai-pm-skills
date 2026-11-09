@@ -1,8 +1,8 @@
 ---
 name: ai-incident-playbook-001
 description: 'Agent issued 40 wrong refunds (source - anonymised retail brief, 2026)'
-tags: [ai-incident-playbook, nominal, red-line]
-expected_outcome: 'Rollback owner named, level dropped, customers told, eval cases added; every output since the change pulled and counted; the owner acts without waiting for approval.'
+tags: [ai-incident-playbook, p2, nominal, red-line]
+expected_outcome: 'Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.'
 runs: 3
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]

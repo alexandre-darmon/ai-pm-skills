@@ -18,7 +18,7 @@ Skills cite levels as `L3 (references/autonomy-ladder.md)`, a synced copy of thi
 
 The gate numbers (5 people, 4 weeks, 2 weeks, 3 months) are defaults, not measured laws. Adjust them to the cost of an error and write down why; the gate itself stays a measured fact.
 
-The last column shows when an obligation typically becomes salient as autonomy rises. It is not a legal map: whether an obligation applies depends on the use case, not on the level (AI Act classification, personal data, effect on employees). The Govern skills check the actual triggers.
+The last column shows when an obligation typically becomes salient as autonomy rises. It is not a legal map: whether an obligation applies depends on the use case, not on the level (AI Act classification, personal data, effect on employees). `ai-act-classification` checks the actual AI Act triggers; GDPR and labour-law triggers go to the DPO and HR.
 
 ## Rules
 
@@ -32,10 +32,12 @@ The last column shows when an obligation typically becomes salient as autonomy r
 | Gate evidence | Produced by |
 | --- | --- |
 | Offline eval on golden set, threshold, baseline; eval gate automated | `build-evals` |
+| Judge validated against expert labels (TPR, TNR) | `llm-judge-calibration` |
+| Agent reliability over repeated trials (pass^k), forbidden events, end state | `agent-evals` |
 | Output and action guardrails tested, redteam results, guardrail false-positive rate | `system-prompt-and-guardrails` |
 | Shadow run, canary, rollback | `release-to-production` |
-| Quality KPI stable in production | `assistant-kpis-cost-per-outcome` |
-| Drift check design | `conversation-analysis` |
+| Quality KPI stable in production | `assistant-kpis-cost-per-outcome`, `production-evals-monitoring` |
+| Drift check design | `conversation-analysis`, `production-evals-monitoring` |
 | Escalation path | `ai-interaction-patterns`, `chat-with-your-data-scoping` |
 
 No skill produces "user tested on 5 people", "L1 in production 4 weeks" or "L4 stable 3 months": they are measured facts recorded in the release plan.
@@ -45,11 +47,12 @@ No skill produces "user tested on 5 people", "L1 in production 4 weeks" or "L4 s
 | Obligation | Handled by |
 | --- | --- |
 | Transparency to users | `ai-interaction-patterns` |
-| AI literacy | `ai-literacy-program` |
+| AI literacy | `ai-adoption-plan` |
 | Logging (trace schema, outcome events) | `agent-design-and-tooling`, `assistant-kpis-cost-per-outcome` |
-| DPIA pre-screen | `dpia-prescreen` |
+| DPIA pre-screen | the DPO; `ai-data-requirements` flags personal data |
 | Incident playbook | `ai-incident-playbook` |
-| CSE information or consultation | `cse-consultation` |
+| Continuous monitoring, post-market monitoring plan | `production-evals-monitoring` |
+| CSE information or consultation | HR and employee representatives; `ai-act-classification` lists art. 26(7) |
 | High-risk classification check, deployer duties | `ai-act-classification` |
 | Human oversight design (art. 14) | `system-prompt-and-guardrails`, `agent-design-and-tooling` |
 | Model card, registry update | `model-card-ai-registry` |

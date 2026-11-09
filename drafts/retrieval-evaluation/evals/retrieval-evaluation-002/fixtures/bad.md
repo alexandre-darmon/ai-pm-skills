@@ -1,0 +1,1 @@
+Yes, go ahead with the two sprints. Smaller pieces will make each passage more focused and a newer embedding model will retrieve better passages, which should bring the hallucinations down. Re-run the 180 questions afterwards to confirm.

@@ -1,7 +1,7 @@
 ---
 name: ai-opportunity-assessment-001
 description: 'Overdue-invoice prioritisation that a query covers (source - anonymised finance brief, 2026)'
-tags: [ai-opportunity-assessment, nominal, red-line]
+tags: [ai-opportunity-assessment, p1, nominal, red-line]
 expected_outcome: 'No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.'
 runs: 3
 max_turns: 10

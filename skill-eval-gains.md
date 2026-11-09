@@ -4,10 +4,10 @@ Same model, same cases, three arms: the model alone, the model given only the sk
 
 | Same cases, Sonnet 5.5 answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 6 skills, 21 cases × 3 runs | 44% | 83% | **99%** | +55 [+49, +63] | +16 [+9, +23] |
+| Regex graders: 5 skills, 17 cases × 3 runs | 39% | 82% | **99%** | +60 [+51, +68] | +17 [+9, +26] |
 | Blind LLM judge, Haiku 5.5: 4 of these skills, 14 cases, not calibrated | 71% | 78% | 81% | +10 [+6, +14] | +3 [+1, +5] |
 | Blind LLM judge, Sonnet 5.5: 4 of these skills, 14 cases, not calibrated | 70% | 76% | 82% | +11 [+6, +17] | +5 [+3, +7] |
-| Red lines held (the one thing the answer must never do) | 61% | 91% | **100%** | | |
+| Red lines held (the one thing the answer must never do) | 54% | 90% | **100%** | | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
 Gains in points. Brackets: 95% interval over cases (see below).
@@ -20,7 +20,6 @@ Gains in points. Brackets: 95% interval over cases (see below).
 | [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | 27% | 78% | **99%** | +72 pts (+48 to +100) | +21 pts | 56% / 100% / 100% | 3 × 3 | 2026-11-06 |
 | [`build-evals`](skills/build-evals/SKILL.md) | 51% | 85% | **100%** | +49 pts (+33 to +67) | +15 pts | 58% / 100% / 100% | 4 × 3 | 2026-11-06 |
 | [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | 21% | 80% | **96%** | +75 pts (+48 to +100) | +17 pts | 50% / 83% / 100% | 4 × 3 | 2026-11-06 |
-| [`cse-consultation`](skills/cse-consultation/SKILL.md) | 65% | 91% | **99%** | +35 pts (+28 to +44) | +8 pts | 100% / 100% / 100% | 4 × 3 | 2026-11-06 |
 | [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | 29% | 76% | **100%** | +71 pts (+67 to +75) | +24 pts | 0% / 50% / 100% | 3 × 3 | 2026-11-06 |
 
 ## Per skill, blind LLM judges

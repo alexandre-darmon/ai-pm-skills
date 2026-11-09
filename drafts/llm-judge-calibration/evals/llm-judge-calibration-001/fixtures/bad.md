@@ -1,0 +1,1 @@
+Yes. 91% agreement with two senior handlers on 200 classifications is a strong result, above the usual 80–85% bar for LLM judges. Tell the committee the judge is good enough: officers review only what it flags plus the 5% sample, and you re-check agreement each quarter.

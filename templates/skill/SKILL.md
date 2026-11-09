@@ -1,14 +1,15 @@
 ---
 name: my-skill
 description: <What the skill produces>. Use when <trigger situation, in the user's words>. Max 200 characters.
-stage: specify  # strategy | specify | data | build | measure | govern | transform
+stage: specify  # specify | evaluate | prove
 version: 0.1.0
-last_verified: 2026-11-01  # mandatory for govern skills
+last_verified: 2026-11-01  # mandatory for legal skills
+legal: false  # true if the skill reads the law: no judge grader, eval_threshold >= 0.90, last_verified
 depends_on: []
 feeds: []
 autonomy_relevant: false
 sources: [own-practice]  # ids from foundations/sources.md
-eval_threshold: 0.80  # 0.90 for govern and flagship skills
+eval_threshold: 0.80  # 0.90 for legal and flagship skills
 status: draft  # draft | tested | verified-in-mission
 ---
 

@@ -38,11 +38,16 @@ class ValidateSkillsTest(unittest.TestCase):
     def test_draft_status_rejected_in_catalog(self):
         self.assertIn("status 'draft' belongs in drafts/, not skills/", check_skill(self.skill, in_catalog=True))
 
-    def test_govern_rules(self):
-        self.edit("stage: specify", "stage: govern")
+    def test_legal_rules(self):
+        self.edit("stage: specify", "stage: prove")
+        self.edit("legal: false", "legal: true")
         (self.skill / "evals/my-skill-001/graders/judge.md").write_text("---\ntype: llm\n---\nCoherent.\n")
         self.assertError("eval_threshold >= 0.90")
         self.assertError("no judge")
+
+    def test_old_stage_rejected(self):
+        self.edit("stage: specify", "stage: govern")
+        self.assertError("stage 'govern' must be one of")
 
     def test_unknown_source(self):
         self.edit("sources: [own-practice]", "sources: [own-practice, cagan-inspired, made-up]")

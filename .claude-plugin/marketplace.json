@@ -4,13 +4,13 @@
     "name": "Alex Darmon"
   },
   "metadata": {
-    "description": "Tested skills for AI product managers who ship in regulated companies.",
+    "description": "Evals as evidence: tested skills for AI product managers who must prove a feature works, what a correct answer costs, and what the regulator will ask.",
     "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "ai-pm-skills",
-      "description": "All tested skills: specify, measure and govern AI products.",
+      "description": "All tested skills: specify what correct means, evaluate it, prove it to the sponsor and the regulator.",
       "source": "./",
       "strict": false,
       "skills": [
@@ -18,7 +18,6 @@
         "./skills/assistant-kpis-cost-per-outcome",
         "./skills/build-evals",
         "./skills/conversation-analysis",
-        "./skills/cse-consultation",
         "./skills/llm-feature-prd"
       ]
     },
@@ -56,15 +55,6 @@
       "strict": false,
       "skills": [
         "./skills/conversation-analysis"
-      ]
-    },
-    {
-      "name": "cse-consultation",
-      "description": "Check whether deploying an AI tool in a French company means informing or consulting the CSE, and prepare the file. Use for any AI tool that touches employees' work in France.",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./skills/cse-consultation"
       ]
     },
     {

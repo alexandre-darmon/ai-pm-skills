@@ -1,0 +1,1 @@
+Objectives: failure modes of the agent, the pull to over-trust it once errors get rare, oversight duties, when to override. Material comes from failed eval cases and past incidents. Assessment: a test batch of sound outputs and seeded errors, scoring errors caught and false alarms. Completion and results recorded as dated evidence per population.

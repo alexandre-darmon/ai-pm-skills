@@ -1,7 +1,7 @@
 ---
 name: ai-incident-playbook-002
 description: 'Prompt injection leaks an internal document with names (source - anonymised bank brief, 2026)'
-tags: [ai-incident-playbook, nominal, red-line]
+tags: [ai-incident-playbook, p2, nominal, red-line]
 expected_outcome: 'Breach assessment for the DPO with a computed 72-hour deadline.'
 runs: 3
 max_turns: 10

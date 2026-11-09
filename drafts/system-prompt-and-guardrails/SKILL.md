@@ -1,7 +1,7 @@
 ---
 name: system-prompt-and-guardrails
 description: 'Write or tune an LLM feature''s system prompt and guardrails, with budgets and a redteam set. Use for a first prompt, a jailbreak, a redteam result to judge, or an agent given tools.'
-stage: build
+stage: specify
 version: 0.2.0
 depends_on: [llm-feature-prd, agent-design-and-tooling]
 feeds: [build-evals, release-to-production, ai-act-classification]

@@ -1,7 +1,7 @@
 ---
 name: release-to-production
 description: 'Plan the release of an AI change (prompt, model, KB) through offline eval, shadow, canary and A/B if the sample allows. Use for "can we ship this?" or a provider model update.'
-stage: measure
+stage: evaluate
 version: 0.2.0
 depends_on: [build-evals, system-prompt-and-guardrails]
 feeds: [assistant-kpis-cost-per-outcome, model-card-ai-registry]

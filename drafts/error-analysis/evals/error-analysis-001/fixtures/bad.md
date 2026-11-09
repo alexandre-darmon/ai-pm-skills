@@ -1,0 +1,1 @@
+Your plan is sound. Helpfulness, accuracy and tone cover what matters for claims handlers. Have the LLM judge score every answer 1 to 5, average weekly per team, and alert if accuracy drops under 4.0. Add a calibration check later, once it runs.

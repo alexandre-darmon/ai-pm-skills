@@ -1,7 +1,7 @@
 ---
 name: ai-opportunity-assessment-002
 description: 'Contract-clause extraction with scanned, unlabelled data (source - anonymised insurance brief, 2026)'
-tags: [ai-opportunity-assessment, nominal, red-line]
+tags: [ai-opportunity-assessment, p1, nominal, red-line]
 expected_outcome: 'Explore: data readiness below 2/5 blocks a go; a data task comes first.'
 runs: 3
 max_turns: 10

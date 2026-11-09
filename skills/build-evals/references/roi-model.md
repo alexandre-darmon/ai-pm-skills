@@ -42,4 +42,4 @@ Any skill that states a gain writes down its unit-value assumption with its sour
 
 ## Who reads this model
 
-`ai-initiative-pitch`, `assistant-kpis-cost-per-outcome`, `ai-roi-quantification`, `process-ai-redesign`.
+`ai-opportunity-assessment`, `assistant-kpis-cost-per-outcome`, `ai-roi-quantification`, `process-ai-redesign`, `model-selection`, `ai-vendor-evaluation`, `error-analysis`.

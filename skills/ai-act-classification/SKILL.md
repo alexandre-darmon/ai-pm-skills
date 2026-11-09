@@ -1,13 +1,14 @@
 ---
 name: ai-act-classification
 description: Classify an AI use case under the EU AI Act (role, risk category, obligations, questions for counsel). Use for a new AI use case, an autonomy level change, or a vendor's AI Act claim.
-stage: govern
-version: 0.2.0
+stage: prove
+version: 0.3.0
 last_verified: 2026-11-04
+legal: true
 depends_on: [ai-opportunity-assessment, llm-feature-prd, system-prompt-and-guardrails]
-feeds: [ai-initiative-pitch, dpia-prescreen, model-card-ai-registry, process-ai-redesign]
+feeds: [model-card-ai-registry, production-evals-monitoring, ai-vendor-evaluation, process-ai-redesign]
 autonomy_relevant: true
-sources: [eu-ai-act, ec-ai-act-guidelines, cnil-ai, fr-ai-act-implementation, repo-vishalhabib]
+sources: [eu-ai-act, ec-ai-act-guidelines, cnil-ai, gdpr, eu-digital-omnibus-ai, fr-ai-act-implementation, repo-vishalhabib]
 eval_threshold: 0.90
 status: tested
 ---
@@ -19,8 +20,8 @@ status: tested
 - A step moves up the autonomy ladder (e.g. L2 → L4), or the use case changes purpose, users or domain.
 - Legal, compliance or a sponsor asks "is this high-risk?" or "what does the AI Act require of us?".
 - A vendor says its product is "AI Act compliant" and you need to know what remains yours to do.
-- Do not use to decide whether a GDPR impact assessment is needed: that is `dpia-prescreen`.
-- Do not use for informing or consulting French employee representatives: that is `cse-consultation`.
+- Do not use to design how quality is watched after release: that is `production-evals-monitoring`, which maps its plan to arts. 72 and 26(5).
+- Do not use to vet a vendor's contract, hosting and data terms: that is `ai-vendor-evaluation`.
 
 ## Inputs
 Mandatory: what the system does and what it decides or influences, in one sentence; the domain (HR, credit, insurance, education, essential services, critical infrastructure…); who is affected (employees, candidates, customers, the public); build or buy; the autonomy level of each step (references/autonomy-ladder.md); the model used (own, a general-purpose model through an API, fine-tuned).
@@ -41,12 +42,13 @@ Article numbers refer to Regulation (EU) 2024/1689 as amended by Regulation (EU)
    - High-risk provider: risk management, data governance, technical documentation, logging, instructions, human oversight design, accuracy and robustness (arts. 9–15), quality management (art. 17), conformity assessment (art. 43), registration (art. 49), post-market monitoring and serious-incident reporting (arts. 72–73).
    - Dates (art. 113 as amended in 2026): prohibitions and AI literacy from 2 February 2025; general-purpose model obligations from 2 August 2025; transparency (art. 50) from 2 August 2026; Annex III high-risk obligations (arts. 6–27) from 2 December 2027; Annex I high-risk from 2 August 2028. Say which date applies to each obligation, and ask counsel for arts. 72–73 and 86.
    - Evidence: for each obligation, record what is on paper: document on file (link), claimed, not verified, or missing. A vendor's claim stays at claimed, not verified until the document is shown; for a high-risk system, ask for the instructions for use (art. 13), the EU declaration of conformity (art. 47) and the registration (art. 49). These provider duties may not be due yet (dates above), so ask what exists today. The status records paper, not conformity.
-8. **Write the L+1 line.** For each step, what changes if it moves one level up (references/autonomy-ladder.md): does it now decide about people, act without prior human review, or fall into an Annex III point? Name the obligations that appear or tighten (human oversight design, logging, informing affected people).
-9. **List the questions for counsel**: every judgement call (role, art. 6(3) exception, scope, dates), each with the facts counsel needs.
-10. **State freshness.** If `last_verified` is more than 90 days old, say so at the top of the memo and ask counsel to confirm the application dates.
+8. **Map the eval evidence.** For a high-risk system, list per article the eval evidence that answers it, the skill that produces it and its evidence status (references/evals-as-evidence.md): thresholds defined before testing (art. 9(8), `build-evals`), test data composition (art. 10(3)-(4), `build-evals`, `synthetic-eval-data`), accuracy metrics declared in the instructions (art. 15(3), `model-card-ai-registry`), test procedures inside the quality system (art. 17(1)(d)), deployer monitoring (art. 26(5)) and post-market monitoring (art. 72, `production-evals-monitoring`), serious incidents (art. 73, `ai-incident-playbook`). Below high risk, mark the same rows as good practice, not as obligations.
+9. **Write the L+1 line.** For each step, what changes if it moves one level up (references/autonomy-ladder.md): does it now decide about people, act without prior human review, or fall into an Annex III point? Name the obligations that appear or tighten (human oversight design, logging, informing affected people).
+10. **List the questions for counsel**: every judgement call (role, art. 6(3) exception, scope, dates), each with the facts counsel needs. If personal data are processed, add a question for the DPO on a data protection impact assessment (GDPR art. 35): it is outside this memo.
+11. **State freshness.** If `last_verified` is more than 90 days old, say so at the top of the memo and ask counsel to confirm the application dates.
 
 ## Output
-A classification memo following `templates/classification-memo.md`: system and role, prohibited-practice screen, risk category with article and annex point, transparency, general-purpose model flag, obligations by role with dates and evidence status, the L+1 line, questions for counsel, freshness line. It ends with: "This memo is a checklist for counsel, not a conformity assessment."
+A classification memo following `templates/classification-memo.md`: system and role, prohibited-practice screen, risk category with article and annex point, transparency, general-purpose model flag, obligations by role with dates and evidence status, the eval evidence per article, the L+1 line, questions for counsel, freshness line. It ends with: "This memo is a checklist for counsel, not a conformity assessment."
 
 ## Rules and red lines
 - Never state that a system, a vendor or the organisation is "compliant", "AI Act compliant" or "has no obligations". The memo is a classification, a checklist and questions; counsel decides.
@@ -57,11 +59,13 @@ A classification memo following `templates/classification-memo.md`: system and r
 - Never redefine autonomy levels: use references/autonomy-ladder.md.
 
 ## Links
-references/ai-act-map.md · references/autonomy-ladder.md · dpia-prescreen · cse-consultation · model-card-ai-registry · system-prompt-and-guardrails
+references/ai-act-map.md · references/autonomy-ladder.md · references/evals-as-evidence.md · build-evals · production-evals-monitoring · model-card-ai-registry · ai-incident-playbook · ai-vendor-evaluation · system-prompt-and-guardrails
 
 ## Sources
 - eu-ai-act: Regulation (EU) 2024/1689, articles as cited.
 - ec-ai-act-guidelines: Commission guidelines on the AI system definition and prohibited practices (final, 2025), on general-purpose model providers, and the draft on high-risk classification (2026); not binding.
 - cnil-ai: CNIL resources on AI systems and personal data.
+- gdpr: art. 35, only to route the impact-assessment question to the DPO.
+- eu-digital-omnibus-ai: the amended application dates and art. 4.
 - fr-ai-act-implementation: French designation of competent authorities, still a bill at last verification (references/ai-act-map.md).
 - repo-vishalhabib: the idea of marking a claim with nothing to point at as unverified (agent-trust-review, MIT), applied here to obligations.

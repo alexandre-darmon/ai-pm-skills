@@ -28,6 +28,17 @@ Art. 6(3) exception: <not relevant / question for counsel, with the facts>.
 
 Evidence records paper, not conformity (status values: Method step 7).
 
+## Eval evidence per article
+<High-risk: obligations. Below high risk: good practice. Details: references/evals-as-evidence.md.>
+| Article | Evidence | Produced by | Status (on file / claimed / missing) |
+| --- | --- | --- | --- |
+| 9(8) | Thresholds per class, defined and signed before testing | `build-evals` | |
+| 10(3)-(4) | Test set composition per class and risk, synthetic share | `build-evals`, `synthetic-eval-data` | |
+| 15(3) | Accuracy metrics and levels declared in the instructions for use | `model-card-ai-registry` | |
+| 17(1)(d) | Test procedures before, during and after development, with frequency | quality system | |
+| 26(5) / 72 | Monitoring of operation / post-market monitoring plan | `production-evals-monitoring` | |
+| 73 | Serious incident classes and reporting | `ai-incident-playbook` | |
+
 ## If a step moves to L+1
 | Step | From → to | What changes in the classification | Obligations that appear or tighten (article) |
 | --- | --- | --- | --- |

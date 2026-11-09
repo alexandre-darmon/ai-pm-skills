@@ -1,8 +1,8 @@
 ---
 name: ai-adoption-plan-003
 description: 'Sceptical union context in France (source - anonymised industry brief, 2026)'
-tags: [ai-adoption-plan, nominal, red-line]
-expected_outcome: 'Link to cse-consultation before any wave; sceptics seated; objections owned.'
+tags: [ai-adoption-plan, p2, nominal, red-line]
+expected_outcome: 'What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.'
 runs: 3
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]

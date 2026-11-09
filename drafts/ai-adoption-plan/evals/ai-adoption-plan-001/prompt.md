@@ -1,7 +1,7 @@
 ---
 name: ai-adoption-plan-001
 description: '2,000 advisers and 60 managers (source - anonymised bank brief, 2026)'
-tags: [ai-adoption-plan, nominal, red-line]
+tags: [ai-adoption-plan, p2, nominal, red-line]
 expected_outcome: 'Waves with managers first, champions per branch, metrics per population.'
 runs: 3
 max_turns: 10

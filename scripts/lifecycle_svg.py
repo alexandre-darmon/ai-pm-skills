@@ -1,4 +1,4 @@
-"""Write assets/lifecycle.svg in the banner's style. A skill is tested if its folder is in skills/, else draft.
+"""Write assets/lifecycle.svg and assets/banner.svg in one style. A skill is tested if its folder is in skills/, else draft.
 
 Text is outlined so it renders the same on GitHub with no web font. Needs fonttools and the Geist TTFs
 (Geist-Regular, Geist-Medium, GeistMono-Regular, from the npm package geist):
@@ -15,16 +15,18 @@ from fontTools.ttLib import TTFont
 ROOT = Path(__file__).resolve().parent.parent
 INK, MUTED, FAINT, BORDER, VIOLET = "#0A0A0A", "#5F5F66", "#6B6B70", "#E3E1E8", "#8C52EE"
 STAGES = [
-    ("Strategy", "Worth doing?", ["ai-opportunity-assessment", "ai-initiative-pitch", "ai-moat-7-powers", "ai-brand-positioning"]),
-    ("Specify", "What to build", ["llm-feature-prd", "ai-data-requirements", "chat-with-your-data-scoping", "ai-interaction-patterns"]),
-    ("Data", "Data and knowledge", ["semantic-layer-design", "agent-knowledge-base"]),
-    ("Build", "Prompt, tools, handoff", ["system-prompt-and-guardrails", "prd-to-claude-code", "agent-design-and-tooling"]),
-    ("Measure", "Evals, KPIs, release", ["build-evals", "assistant-kpis-cost-per-outcome", "conversation-analysis", "model-selection", "release-to-production", "ai-roi-quantification"]),
-    ("Govern", "Compliance checks", ["ai-act-classification", "cse-consultation", "dpia-prescreen", "model-card-ai-registry", "ai-incident-playbook"]),
-    ("Transform", "Process and people", ["process-ai-redesign", "ai-adoption-plan", "ai-literacy-program"]),
+    ("Specify", "What correct means", ["ai-opportunity-assessment", "llm-feature-prd", "ai-data-requirements", "chat-with-your-data-scoping",
+                                       "ai-interaction-patterns", "system-prompt-and-guardrails", "agent-design-and-tooling",
+                                       "agent-knowledge-base", "semantic-layer-design", "process-ai-redesign"]),
+    ("Evaluate", "Offline and online", ["error-analysis", "build-evals", "llm-judge-calibration", "synthetic-eval-data", "agent-evals",
+                                        "retrieval-evaluation", "model-selection", "ai-vendor-evaluation", "release-to-production",
+                                        "production-evals-monitoring", "conversation-analysis"]),
+    ("Prove", "To sponsor and regulator", ["assistant-kpis-cost-per-outcome", "ai-roi-quantification", "ai-act-classification",
+                                           "model-card-ai-registry", "ai-incident-playbook", "ai-adoption-plan"]),
 ]
+TAGLINE = "Evals as evidence for AI product managers in regulated companies."
 W, MARGIN, GAP = 1280, 56, 24
-COL = (W - 2 * MARGIN - 3 * GAP) / 4
+COL = (W - 2 * MARGIN - 2 * GAP) / 3
 
 
 class Text:
@@ -48,6 +50,25 @@ def marker(x, y, tested):
     return f'<rect x="{x + 0.5}" y="{y - 9.5}" width="7" height="9" fill="none" stroke="{FAINT}"/>'
 
 
+def background(h):
+    return [f'<rect x="0.5" y="0.5" width="{W - 1}" height="{h - 1}" rx="16" fill="#F4F2F5" stroke="#E6E3EA"/>',
+            f'<defs><radialGradient id="glow" gradientUnits="userSpaceOnUse" cx="{W + 40}" cy="-60" r="760"><stop offset="0" stop-color="#E0DFF0"/><stop offset="0.55" stop-color="#E9E7F2" stop-opacity="0.6"/><stop offset="1" stop-color="#F4F2F5" stop-opacity="0"/></radialGradient><clipPath id="r"><rect width="{W}" height="{h}" rx="16"/></clipPath></defs>',
+            f'<rect width="{W}" height="{h}" fill="url(#glow)" clip-path="url(#r)"/>']
+
+
+def banner(sans, medium, mono, logo):
+    h, strip = 344, " · ".join(stage for stage, _, _ in STAGES)
+    logo = re.sub(r'transform="[^"]*"', 'transform="translate(72 106) scale(1.375)"', logo)
+    label = f"AI PM Skills: {strip}"
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {h}" width="{W}" height="{h}" role="img" aria-label="{label}"><title>{label}</title>',
+           *background(h),
+           mono("Claude Code plugin · open source", 72, 82, 22, FAINT), logo,
+           medium("AI PM Skills", 188, 173.5, 62, INK),
+           sans(TAGLINE, 72, 256, 33.5, MUTED),
+           mono(strip, 72, 319.5, 20, FAINT)]
+    (ROOT / "assets/banner.svg").write_text("".join(out + ["</svg>\n"]))
+
+
 def main(fonts):
     fonts = Path(fonts)
     sans, medium, mono = (Text(fonts / f"{n}.ttf") for n in ("Geist-Regular", "Geist-Medium", "GeistMono-Regular"))
@@ -58,34 +79,32 @@ def main(fonts):
     if known != found:
         sys.exit(f"STAGES and the skill folders differ: {sorted(known ^ found)}")
     tested = {p.name for p in (ROOT / "skills").glob("*") if p.is_dir()}
+    banner(sans, medium, mono, re.search(r"<g transform.*?</g>", (ROOT / "assets/banner.svg").read_text(), re.S).group(0))
 
-    rows, ys, H = (STAGES[:4], STAGES[4:]), (156, 412), 720
+    y0 = 156
+    H = y0 + 124 + max(len(sk) for _, _, sk in STAGES) * 26 + 40
     out = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="AI PM Skills lifecycle: seven stages and their 27 skills">',
-        "<title>AI PM Skills lifecycle: seven stages and their 27 skills</title>",
-        f'<rect x="0.5" y="0.5" width="{W - 1}" height="{H - 1}" rx="16" fill="#F4F2F5" stroke="#E6E3EA"/>',
-        f'<defs><radialGradient id="glow" gradientUnits="userSpaceOnUse" cx="{W + 40}" cy="-60" r="760"><stop offset="0" stop-color="#E0DFF0"/><stop offset="0.55" stop-color="#E9E7F2" stop-opacity="0.6"/><stop offset="1" stop-color="#F4F2F5" stop-opacity="0"/></radialGradient><clipPath id="r"><rect width="{W}" height="{H}" rx="16"/></clipPath></defs>',
-        f'<rect width="{W}" height="{H}" fill="url(#glow)" clip-path="url(#r)"/>',
-        mono("Lifecycle · 7 stages · 27 skills", MARGIN, 56, 18, FAINT),
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="AI PM Skills: three blocks and their {len(known)} skills">',
+        f"<title>AI PM Skills: three blocks and their {len(known)} skills</title>",
+        *background(H),
+        mono(f"Evals as evidence · 3 blocks · {len(known)} skills", MARGIN, 56, 18, FAINT),
         logo,
         medium("AI PM Skills", MARGIN + 66, 106, 40, INK),
     ]
-    n = 0
-    for row, y0 in zip(rows, ys):
-        for i, (stage, title, skills) in enumerate(row):
-            n, x = n + 1, MARGIN + i * (COL + GAP)
-            out += [mono(f"{n:02d}", x, y0 + 16, 15, VIOLET), mono(stage, x + 28, y0 + 16, 15, FAINT)]
-            out.append(f'<rect x="{x + 0.5}" y="{y0 + 30.5}" width="{COL - 1}" height="63" rx="14" fill="#FFFFFF" stroke="{BORDER}"/>')
-            out.append(medium(title, x + 18, y0 + 69, 22, INK))
-            if i < len(row) - 1:
-                ax, ay = x + COL + 5, y0 + 62
-                out.append(f'<path d="M{ax} {ay}h{GAP - 10}m-5 -4l5 4l-5 4" fill="none" stroke="{FAINT}" stroke-width="1.4"/>')
-            for j, skill in enumerate(skills):
-                y = y0 + 124 + j * 26
-                out += [marker(x + 1, y, skill in tested), mono(skill, x + 18, y, 13.5, INK if skill in tested else FAINT)]
-    x, y = MARGIN + 3 * (COL + GAP), ys[1] + 16
+    for i, (stage, title, skills) in enumerate(STAGES):
+        x = MARGIN + i * (COL + GAP)
+        out += [mono(f"{i + 1:02d}", x, y0 + 16, 15, VIOLET), mono(stage, x + 28, y0 + 16, 15, FAINT)]
+        out.append(f'<rect x="{x + 0.5}" y="{y0 + 30.5}" width="{COL - 1}" height="63" rx="14" fill="#FFFFFF" stroke="{BORDER}"/>')
+        out.append(medium(title, x + 18, y0 + 69, 22, INK))
+        if i < len(STAGES) - 1:
+            ax, ay = x + COL + 5, y0 + 62
+            out.append(f'<path d="M{ax} {ay}h{GAP - 10}m-5 -4l5 4l-5 4" fill="none" stroke="{FAINT}" stroke-width="1.4"/>')
+        for j, skill in enumerate(skills):
+            y = y0 + 124 + j * 26
+            out += [marker(x + 1, y, skill in tested), mono(skill, x + 18, y, 13.5, INK if skill in tested else FAINT)]
+    x, y = MARGIN + 2 * (COL + GAP), y0 + 124 + (len(STAGES[2][2]) + 1) * 26
     out += [marker(x + 1, y, True), mono("tested", x + 18, y, 13.5, INK)]
-    out += [marker(x + 1, y + 26, False), mono("draft, scored, not in the catalog", x + 18, y + 26, 13.5, FAINT)]
+    out += [marker(x + 1, y + 26, False), mono("draft, not in the catalog yet", x + 18, y + 26, 13.5, FAINT)]
     out += [sans("Run with", x, y + 74, 15, MUTED), mono("/ai-pm-skills:<skill>", x, y + 98, 13.5, INK)]
     (ROOT / "assets/lifecycle.svg").write_text("".join(out + ["</svg>\n"]))
 
