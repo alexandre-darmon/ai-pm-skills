@@ -1,1 +1,1 @@
-The judge is calibrated at 88%, above the 80% bar, and the agent scores 93%, so the suite is sound. Add a threshold per refund type and more cases for the rare types, then let the agent act.
+The LLM is probably the weak point. Switch to the newer model next sprint and check that the 84% goes up on your 120 invoices. If it does, ship it.

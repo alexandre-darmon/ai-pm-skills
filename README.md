@@ -28,7 +28,7 @@ Engineering courses teach how to build evals. These skills encode the decisions 
 
 What makes it different:
 
-1. **Evaluation is the spine.** Eleven of the 27 skills evaluate: error analysis, judge validation, synthetic data, agents, retrieval, vendors, release and production monitoring.
+1. **Evaluation is the spine.** Eleven of the 24 skills evaluate: error analysis, judge validation, synthetic data, agents, retrieval, vendors, release and production monitoring.
 2. **Tested, and the unfavourable results stay visible.** A skill that does not beat the model alone by at least 10 points stays in `drafts/`. The table above also sets each skill against its own output template and a blind judge, with 95% intervals. [How a skill is evaluated](docs/evaluation.md).
 3. **One AI Act skill, wired to the evidence.** `ai-act-classification` names the role, the risk category and the obligations, then maps each testing or monitoring duty to the eval artefact that answers it.
 4. **No free-floating numbers.** Every gain traces to volume × quality × unit value − costs ([ROI model](foundations/roi-model.md)), and every autonomy step to the [ladder](foundations/autonomy-ladder.md) (L0 to L5).
@@ -45,7 +45,7 @@ What makes it different:
 | Show the comex whether the assistant helps, and what a correct answer costs | `/ai-pm-skills:assistant-kpis-cost-per-outcome` | Prove |
 | Classify a use case under the EU AI Act and list the evidence it asks for | `/ai-pm-skills:ai-act-classification` | Prove |
 
-You rarely need the command: skills load on their own when the request matches. The other 22 skills are drafts: written, checked for structure and graders, not yet scored over three runs. They stay in [`drafts/`](drafts/) until they pass.
+You rarely need the command: skills load on their own when the request matches. The other 19 skills are drafts: written, checked for structure and graders, not yet scored over three runs. They stay in [`drafts/`](drafts/) until they pass.
 
 **Looking for discovery, roadmaps or positioning?** Not here on purpose: they read the same with or without AI, and Teresa Torres, Marty Cagan or [pm-skills](https://github.com/phuryn/pm-skills) already cover them. **Looking for how to build an eval harness?** Hamel Husain and Shreya Shankar's [evals course and skills](https://github.com/ai-evals-course/evals-skills) are the engineering reference; this repo is the decision side and credits them.
 
@@ -81,14 +81,14 @@ Not yet verified on every agent; copying a folder into your agent's skills direc
 
 ## Catalog
 
-27 skills in three blocks, hard cap 30. **Available** skills are in `skills/` with a passing eval suite. **Drafts** are written and pass the free checks, and are not installable yet.
+24 skills in three blocks, hard cap 30. Each one owns its triggers: no two skills compete for the same request, and the validator flags descriptions that overlap. **Available** skills are in `skills/` with a passing eval suite. **Drafts** are written and pass the free checks, and are not installable yet.
 
 ### Available
 
 | Skill | Block | What it does |
 | --- | --- | --- |
 | [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | Specify | PRD for an LLM feature: autonomy level per step, four failure paths, eval stub, guardrails, outcome KPIs, stop conditions. |
-| [`build-evals`](skills/build-evals/SKILL.md) | Evaluate | Eval set, graders, per-class thresholds signed before the run, judge validated with TPR and TNR, scores with intervals, baseline. |
+| [`build-evals`](skills/build-evals/SKILL.md) | Evaluate | Eval set, graders, per-class thresholds signed before the run, judge validated with TPR and TNR, scores with intervals, baseline; an eval per component beside the end-to-end gate. |
 | [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | Evaluate | Classifies conversations by use case, resolution and sentiment, PII masked, to learn what people use the assistant for. |
 | [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | Prove | KPIs for an assistant or agent: quality by domain, adoption, cost per correct outcome, not usage alone. |
 | [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | Prove | EU AI Act role, risk category, obligations, the eval evidence each article asks for, and dated questions for counsel. Never a compliance verdict. |
@@ -97,7 +97,7 @@ Not yet verified on every agent; copying a folder into your agent's skills direc
 
 | Block | Skills |
 | --- | --- |
-| Specify | `ai-opportunity-assessment` (AI or not, in which form, the dated ask and its stop conditions) · `ai-data-requirements` (fields, quality bar, legal basis, owner) · `chat-with-your-data-scoping` (bounded text-to-SQL with a golden set) · `ai-interaction-patterns` (trust calibration, correction, refusal UX) · `system-prompt-and-guardrails` (prompt plus input, output and action guardrails) · `agent-design-and-tooling` (loop, tools, permission matrix) · `agent-knowledge-base` (source register, owners, expiry) · `semantic-layer-design` (one definition and one owner per metric) · `process-ai-redesign` (level per step, gates, scenarios) |
+| Specify | `ai-opportunity-assessment` (AI or not, in which form, the dated ask and its stop conditions) · `process-ai-redesign` (level per step for a whole process, gates, scenarios) · `ai-data-requirements` (fields and documents, owners, expiry, flows) · `agent-design-and-tooling` (loop, tools, permission matrix) · `system-prompt-and-guardrails` (prompt plus input, output and action guardrails, red-team set) · `ai-interaction-patterns` (what users see: sources, confidence, correction, refusal) |
 | Evaluate | `error-analysis` (read traces, find failure modes before metrics) · `llm-judge-calibration` (TPR, TNR, bias checks, corrected pass rate, with a script) · `synthetic-eval-data` (dimensions, tuples, synthetic share declared) · `agent-evals` (end state, forbidden events, pass^k) · `retrieval-evaluation` (retrieval apart from generation) · `model-selection` (cost per success on your suite) · `ai-vendor-evaluation` (bake-off on your cases, clauses that keep quality testable) · `release-to-production` (shadow, canary, A/B) · `production-evals-monitoring` (online evals, control limits, AI Act art. 72 plan) |
 | Prove | `ai-roi-quantification` (volume × quality × value − costs) · `model-card-ai-registry` (the eval record per version) · `ai-incident-playbook` (incident to regression case, art. 73) · `ai-adoption-plan` (adoption proven on outcomes, AI literacy evidence) |
 

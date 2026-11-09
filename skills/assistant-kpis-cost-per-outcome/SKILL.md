@@ -1,9 +1,9 @@
 ---
 name: assistant-kpis-cost-per-outcome
-description: Define an AI assistant's or agent's KPIs (quality by domain, adoption, cost per correct outcome). Use when asked for its dashboard or ROI, or when usage grows and nobody knows if it helps.
+description: Define an AI assistant's or agent's KPIs (quality by domain, adoption, cost per correct outcome). Use when asked for its dashboard, or when usage grows and nobody knows if it helps.
 stage: prove
-version: 0.2.0
-depends_on: [build-evals, conversation-analysis, agent-knowledge-base]
+version: 0.2.1
+depends_on: [build-evals, conversation-analysis, ai-data-requirements]
 feeds: [ai-roi-quantification, ai-opportunity-assessment, ai-adoption-plan, production-evals-monitoring]
 autonomy_relevant: true
 sources: [otel-genai, own-assistant-dashboards, repo-chanmeng]
@@ -14,11 +14,12 @@ status: tested
 # assistant-kpis-cost-per-outcome
 
 ## When to use
-- A sponsor asks for "the dashboard" of an assistant or agent in production, or for its ROI.
+- A sponsor asks for "the dashboard" of an assistant or agent in production.
 - Usage is up (sessions, messages, active users) but nobody knows if the answers are right or if it helps.
 - Traces or logs exist but no outcome is recorded: you can count conversations, not results.
 - Quality differs by domain, or a knowledge base (KB) seems out of date.
 - Do not use to build the eval set, graders or judge: that is `build-evals`.
+- Do not use to compute the return for a budget decision: that is `ai-roi-quantification`.
 - Do not use for a product with no model in it (web funnel, app retention, BI on sales): a generic analytics method is enough.
 
 ## Inputs
@@ -55,7 +56,7 @@ A KPI spec following `templates/kpi-spec.md`: source inventory, outcome-event co
 - No gain or ROI figure without volume × quality × unit value − run cost − change cost (references/roi-model.md).
 
 ## Links
-references/roi-model.md · references/autonomy-ladder.md · build-evals · conversation-analysis · agent-knowledge-base · ai-roi-quantification · production-evals-monitoring
+references/roi-model.md · references/autonomy-ladder.md · build-evals · conversation-analysis · ai-data-requirements · ai-roi-quantification · production-evals-monitoring
 
 ## Sources
 - otel-genai: trace fields for model and token usage; the outcome event extends them.

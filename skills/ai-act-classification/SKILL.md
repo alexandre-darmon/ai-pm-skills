@@ -17,7 +17,7 @@ status: tested
 
 ## When to use
 - A new AI use case is scoped, before build: after `ai-opportunity-assessment` or `llm-feature-prd`.
-- A step moves up the autonomy ladder (e.g. L2 → L4), or the use case changes purpose, users or domain.
+- A step moving up the autonomy ladder (e.g. L2 → L4) starts to decide about people without prior human review, or the use case changes purpose, users or domain.
 - Legal, compliance or a sponsor asks "is this high-risk?" or "what does the AI Act require of us?".
 - A vendor says its product is "AI Act compliant" and you need to know what remains yours to do.
 - Do not use to design how quality is watched after release: that is `production-evals-monitoring`, which maps its plan to arts. 72 and 26(5).

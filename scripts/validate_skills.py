@@ -379,6 +379,29 @@ def check_graders(case: Path, where: str, skill: str, legal: bool, tags: list | 
     return errors
 
 
+# Two skills whose descriptions share too many words compete for the same request.
+MAX_OVERLAP = 0.30
+OVERLAP_STOP = set("a an the and or of to for in on with by is are it its as at be use when if from that this what which who how do does not your our their ai llm feature skill".split())
+
+
+def description_words(text: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z][a-z0-9-]+", text.lower()) if w not in OVERLAP_STOP and len(w) > 2}
+
+
+def overlapping_descriptions(descriptions: dict[str, str]) -> list[str]:
+    """Pairs of skills whose descriptions share more than MAX_OVERLAP of their words (Jaccard)."""
+    words = {name: description_words(d) for name, d in descriptions.items()}
+    names, problems = sorted(words), []
+    for i, a in enumerate(names):
+        for b in names[i + 1:]:
+            union = words[a] | words[b]
+            score = len(words[a] & words[b]) / len(union) if union else 0
+            if score > MAX_OVERLAP:
+                problems.append(f"{a} and {b}: descriptions share {score:.0%} of their words, so they compete for the same requests; "
+                                f"give each a distinct trigger")
+    return problems
+
+
 def main(root: Path, sync: bool = False) -> int:
     problems = []
     catalog = sorted(p for p in (root / "skills").glob("*") if p.is_dir())
@@ -392,6 +415,15 @@ def main(root: Path, sync: bool = False) -> int:
             sync_foundations(folder, foundations)
         for e in check_skill(folder, folder in catalog, known_sources, foundations):
             problems.append(f"{folder.relative_to(root)}: {e}")
+    descriptions = {}
+    for folder in catalog + drafts:
+        try:
+            fm, _ = read_frontmatter(folder / "SKILL.md")
+            if isinstance(fm.get("description"), str):
+                descriptions[folder.name] = fm["description"]
+        except (OSError, ValueError):
+            pass
+    problems += overlapping_descriptions(descriptions)
     market = root / ".claude-plugin" / "marketplace.json"
     if market.is_file():  # the bundle plugin installs exactly the catalogue, drafts never
         if (root / ".claude-plugin" / "plugin.json").is_file():  # claude plugin validate misses this: installs, then fails to load

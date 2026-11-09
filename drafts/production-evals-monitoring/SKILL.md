@@ -1,8 +1,8 @@
 ---
 name: production-evals-monitoring
-description: Plan how an AI feature's answer quality is watched in production (samples, online evals, alerts, owners, drift). Use before go-live, for a post-market monitoring plan, a model update or a quality dip.
+description: Plan how an AI feature's answer quality is watched in production (samples, online evals, alerts, owners, drift). Use before go-live, for a post-market monitoring plan, drift or a quality dip.
 stage: evaluate
-version: 0.1.0
+version: 0.1.1
 last_verified: 2026-11-09
 legal: true
 depends_on: [build-evals, llm-judge-calibration, conversation-analysis, ai-act-classification]
@@ -18,10 +18,10 @@ status: draft
 ## When to use
 - Go-live is near and nobody has written how answer quality will be watched once real traffic arrives.
 - "Write our post-market monitoring plan", or a deployer must monitor a high-risk system (AI Act arts. 72 and 26(5)).
-- A provider model, embedding model or judge model changes, or the knowledge base is refreshed.
 - A sampled quality score dips, or drift is suspected, and someone wants to roll back or to call it fine.
 - The production dashboard shows usage, latency, cost and thumbs, and no measured quality.
 - Do not use to build the offline eval set, graders and thresholds before launch: that is `build-evals`.
+- Do not use to ship a change, including a provider model update: that is `release-to-production`; this skill watches what runs after it.
 - Do not use for the sponsor's dashboard of adoption, cost per correct outcome or ROI: that is `assistant-kpis-cost-per-outcome`.
 
 ## Inputs

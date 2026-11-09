@@ -37,7 +37,7 @@ The last column shows when an obligation typically becomes salient as autonomy r
 | Shadow run, canary, rollback | `release-to-production` |
 | Quality KPI stable in production | `assistant-kpis-cost-per-outcome`, `production-evals-monitoring` |
 | Drift check design | `conversation-analysis`, `production-evals-monitoring` |
-| Escalation path | `ai-interaction-patterns`, `chat-with-your-data-scoping` |
+| Escalation path | `ai-interaction-patterns` |
 
 No skill produces "user tested on 5 people", "L1 in production 4 weeks" or "L4 stable 3 months": they are measured facts recorded in the release plan.
 
@@ -58,7 +58,7 @@ No skill produces "user tested on 5 people", "L1 in production 4 weeks" or "L4 s
 
 ## Step table format
 
-`llm-feature-prd` and `process-ai-redesign` assign a level per step and output this table. `agent-design-and-tooling` takes it as input and turns it into its permission matrix (tool × level × approval). `ai-opportunity-assessment` and `chat-with-your-data-scoping` give a single target level.
+`llm-feature-prd` and `process-ai-redesign` assign a level per step and output this table. `agent-design-and-tooling` takes it as input and turns it into its permission matrix (tool × level × approval). `ai-opportunity-assessment` gives a single target level.
 
 | Step | Current level | Target level | Why not L+1 | Gate to reach target |
 | --- | --- | --- | --- | --- |

@@ -1,7 +1,7 @@
 ---
 name: ai-data-requirements-002
 description: 'Product-catalog search with no personal data (source - anonymised retail brief, 2026)'
-tags: [ai-data-requirements, nominal, red-line]
+tags: [ai-data-requirements, p1, nominal, red-line]
 expected_outcome: 'No personal-data flags, freshness stated as a number, volumes stated or asked.'
 runs: 3
 max_turns: 10

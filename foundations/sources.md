@@ -64,11 +64,9 @@ The backbone of the Evaluate block. Each row is a method the skills restate in t
 | anthropic-agents | Anthropic, *Building effective agents* (2024) | loop first, framework last | `agent-design-and-tooling`, `agent-evals` |
 | anthropic-evals | Anthropic documentation on building evaluations | eval design, judge use | `build-evals`, `llm-judge-calibration`, `production-evals-monitoring`, `retrieval-evaluation`, `synthetic-eval-data` |
 | otel-genai | OpenTelemetry, GenAI semantic conventions | trace, outcome-event and evaluation-result fields | `assistant-kpis-cost-per-outcome`, `production-evals-monitoring` |
-| apache-ossie | [Apache Ossie](https://ossie.apache.org/) (incubating), Core Metadata Specification | vendor-neutral exchange of metrics, dimensions and joins; AI context | `semantic-layer-design` |
-| dbt-semantic-layer | dbt, semantic layer documentation | metric definitions, grain, dimensions | `semantic-layer-design` |
 | ms-hax | Amershi et al., *Guidelines for Human-AI Interaction* (Microsoft, 2019) | interaction guidelines as a reference | `ai-interaction-patterns` |
 | google-pair | Google PAIR, *People + AI Guidebook* | trust calibration, explanation patterns | `ai-adoption-plan`, `ai-interaction-patterns` |
-| text-to-sql-benchmarks | Spider (Yu et al., 2018), BIRD (Li et al., 2023) | eval method for text-to-SQL, not their scores | `chat-with-your-data-scoping` |
+| text-to-sql-benchmarks | Spider (Yu et al., 2018), BIRD (Li et al., 2023) | eval method for text-to-SQL, not their scores | `build-evals` |
 
 ## Other skill repositories
 
@@ -76,12 +74,11 @@ Read in the November 2026 review. Ideas only, restated in our own words; no text
 
 | id | Work | What the repo takes from it | Used by |
 | --- | --- | --- | --- |
-| repo-chanmeng | [ChanMeng666/ai-product-manager-skill](https://github.com/ChanMeng666/ai-product-manager-skill) (MIT) | solution selection, agent and production checks, eval depth | `agent-design-and-tooling`, `agent-evals`, `agent-knowledge-base`, `ai-adoption-plan`, `ai-data-requirements`, `ai-incident-playbook`, `ai-interaction-patterns`, `ai-opportunity-assessment`, `ai-roi-quantification`, `assistant-kpis-cost-per-outcome`, `build-evals`, `chat-with-your-data-scoping`, `conversation-analysis`, `error-analysis`, `llm-feature-prd`, `model-card-ai-registry`, `model-selection`, `process-ai-redesign`, `release-to-production`, `semantic-layer-design`, `system-prompt-and-guardrails` |
+| repo-chanmeng | [ChanMeng666/ai-product-manager-skill](https://github.com/ChanMeng666/ai-product-manager-skill) (MIT) | solution selection, agent and production checks, eval depth | `agent-design-and-tooling`, `agent-evals`, `ai-adoption-plan`, `ai-data-requirements`, `ai-incident-playbook`, `ai-interaction-patterns`, `ai-opportunity-assessment`, `ai-roi-quantification`, `assistant-kpis-cost-per-outcome`, `build-evals`, `conversation-analysis`, `error-analysis`, `llm-feature-prd`, `model-card-ai-registry`, `model-selection`, `process-ai-redesign`, `release-to-production`, `system-prompt-and-guardrails` |
 | repo-yoseph | [Yoseph-Zuskin/AI-Product-Manager](https://github.com/Yoseph-Zuskin/AI-Product-Manager) (MIT) | business case lines, vendor checks | `ai-opportunity-assessment`, `ai-roi-quantification`, `ai-vendor-evaluation`, `model-card-ai-registry` |
-| repo-lenny | [RefoundAI/lenny-skills](https://github.com/RefoundAI/lenny-skills) (MIT) | eval practice and AI UX, as ideas; guest quotes are not reused | `agent-evals`, `ai-adoption-plan`, `build-evals`, `chat-with-your-data-scoping`, `model-selection` |
+| repo-lenny | [RefoundAI/lenny-skills](https://github.com/RefoundAI/lenny-skills) (MIT) | eval practice and AI UX, as ideas; guest quotes are not reused | `agent-evals`, `ai-adoption-plan`, `build-evals`, `model-selection` |
 | repo-vishalhabib | [vishalhabib99/ai-pm-skills](https://github.com/vishalhabib99/ai-pm-skills) (MIT) | fixing the bar before looking at cases, declined lists | `ai-act-classification`, `ai-data-requirements`, `ai-opportunity-assessment`, `build-evals` |
 | repo-product-on-purpose | [product-on-purpose/pm-skills](https://github.com/product-on-purpose/pm-skills) (Apache-2.0) | template-only control, routing checks | `ai-data-requirements` |
-| repo-anthropic-kwp | [anthropics/knowledge-work-plugins](https://github.com/anthropics/knowledge-work-plugins) (Apache-2.0) | workflow packaging, as ideas | `chat-with-your-data-scoping`, `semantic-layer-design` |
 
 ## Own experience
 

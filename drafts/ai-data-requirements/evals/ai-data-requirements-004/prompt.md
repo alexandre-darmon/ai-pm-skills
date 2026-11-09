@@ -1,11 +1,13 @@
 ---
 name: ai-data-requirements-004
-description: 'Metric definition dispute (negative)'
-tags: [ai-data-requirements, negative]
-expected_outcome: 'Handles the metric dispute without loading ai-data-requirements.'
+description: '40 candidate sources, 12 with no owner (source - anonymised bank brief, 2026)'
+tags: [ai-data-requirements, p0, nominal, red-line]
+expected_outcome: 'The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.'
 runs: 3
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
 
-Sales and finance disagree on how to compute monthly recurring revenue on our dashboards. Help us write one agreed definition with a formula and a grain.
+We want our internal assistant to answer branch staff questions. The project listed 40 candidate sources (procedures, product sheets, FAQ pages, two SharePoint sites). For 12 of them nobody could tell us who maintains them; some date back to 2019. The sponsor says: index everything, more content means better answers.
+
+Set up the knowledge base.

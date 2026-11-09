@@ -2,9 +2,9 @@
 name: ai-adoption-plan
 description: 'Plan and prove adoption of an AI tool on outcomes: correct results per user, overrides, over-trust test, training by role and level, art. 4 evidence. Use when go-live nears or use stalls.'
 stage: prove
-version: 0.3.0
+version: 0.3.1
 depends_on: [assistant-kpis-cost-per-outcome, process-ai-redesign, ai-interaction-patterns, build-evals, ai-act-classification]
-feeds: [model-card-ai-registry, build-evals, agent-knowledge-base, ai-roi-quantification]
+feeds: [model-card-ai-registry, build-evals, ai-data-requirements, ai-roi-quantification]
 autonomy_relevant: true
 sources: [eu-ai-act, eu-digital-omnibus-ai, google-pair, wilson-interval, own-coaching, own-pedagogy, repo-chanmeng, repo-lenny]
 eval_threshold: 0.80
@@ -19,6 +19,7 @@ status: draft
 - People over-trust a tool, accept its output unread, or must review or supervise it: they need training and a way to show they can catch its errors.
 - The AI Act literacy measures (art. 4) need a concrete, dated plan.
 - Do not use to set eval thresholds or a release gate: that is `build-evals`.
+- Do not use to design what the interface shows (sources, scores, correction): that is `ai-interaction-patterns`.
 - Do not use to define KPI formulas or the dashboard: that is `assistant-kpis-cost-per-outcome`; for a tool with no model in it, generic change management is enough.
 
 ## Inputs
@@ -44,7 +45,7 @@ Logins, sessions and satisfaction ratings are not adoption data: if they are all
 6. **Sequence waves.** Managers before their teams. The pilot population is chosen for learning, not for ease: include hard cases and sceptics. At least one champion per team or branch, with time allocated. A wave opens when the previous one meets its outcome targets, not on a calendar date.
 7. **Handle objections.** An objection table, each objection with its answer and an owner. Sceptics get a seat in the pilot or the steering group, not a memo. Where staff fear the tool rates them, list what is logged and who sees it, and take it to the DPO and HR before any wave; whether employee representatives must be informed or consulted is a question for counsel.
 8. **Record the literacy measures as dated evidence.** As amended by Regulation (EU) 2026/1744, art. 4 asks providers and deployers to take measures to support the AI literacy of staff and others operating AI systems on their behalf, with no required level. Per population: the measure, its date, completion, the latest calibration result, the next refresh. Checklist, not verdict: whether the measures suffice goes to counsel through `ai-act-classification`.
-9. **Refresh and close the loop.** Retrain and retest with fresh errors at each change of level or major release, and after an incident. Wrong outputs that users catch become cases in `build-evals`; missing knowledge goes to `agent-knowledge-base`. Training and support hours go to the change-cost line of `ai-roi-quantification`.
+9. **Refresh and close the loop.** Retrain and retest with fresh errors at each change of level or major release, and after an incident. Wrong outputs that users catch become cases in `build-evals`; missing knowledge goes to `ai-data-requirements`. Training and support hours go to the change-cost line of `ai-roi-quantification`.
 
 ## Output
 `templates/adoption-plan.md`, all headings present.
@@ -60,7 +61,7 @@ Logins, sessions and satisfaction ratings are not adoption data: if they are all
 - Never state that the plan makes the company compliant.
 
 ## Links
-references/autonomy-ladder.md · references/eval-statistics.md · references/calibration-test.md · assistant-kpis-cost-per-outcome · build-evals · ai-interaction-patterns · ai-incident-playbook · ai-act-classification · model-card-ai-registry · agent-knowledge-base · ai-roi-quantification
+references/autonomy-ladder.md · references/eval-statistics.md · references/calibration-test.md · assistant-kpis-cost-per-outcome · build-evals · ai-interaction-patterns · ai-incident-playbook · ai-act-classification · model-card-ai-registry · ai-data-requirements · ai-roi-quantification
 
 ## Sources
 - eu-ai-act: art. 4 on literacy; art. 14(4)(b) on awareness of over-reliance, for high-risk systems.

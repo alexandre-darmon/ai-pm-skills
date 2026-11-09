@@ -6,7 +6,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from validate_skills import check_skill, main  # noqa: E402
+from validate_skills import overlapping_descriptions, check_skill, main  # noqa: E402
 
 TEMPLATE = Path(__file__).parent.parent / "templates" / "skill"
 
@@ -44,6 +44,11 @@ class ValidateSkillsTest(unittest.TestCase):
         (self.skill / "evals/my-skill-001/graders/judge.md").write_text("---\ntype: llm\n---\nCoherent.\n")
         self.assertError("eval_threshold >= 0.90")
         self.assertError("no judge")
+
+    def test_overlapping_descriptions(self):
+        same = "Build the eval set, graders and thresholds for an AI feature. Use for a release gate."
+        self.assertEqual(len(overlapping_descriptions({"a": same, "b": same + " Also a review."})), 1)
+        self.assertEqual(overlapping_descriptions({"a": same, "b": "Classify a use case under the EU AI Act."}), [])
 
     def test_old_stage_rejected(self):
         self.edit("stage: specify", "stage: govern")

@@ -1,7 +1,7 @@
 ---
 name: ai-data-requirements-001
 description: 'Assistant drafting replies from customer emails (source - anonymised bank brief, 2026)'
-tags: [ai-data-requirements, nominal, red-line]
+tags: [ai-data-requirements, p0, nominal, red-line]
 expected_outcome: 'A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.'
 runs: 3
 max_turns: 10

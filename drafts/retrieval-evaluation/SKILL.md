@@ -3,8 +3,8 @@ name: retrieval-evaluation
 description: 'Evaluate a RAG or search feature in two stages, retrieval then generation. Use when answers are wrong or cite the wrong document, before changing the LLM, or for a new embedding model or re-index.'
 stage: evaluate
 version: 0.1.0
-depends_on: [build-evals, agent-knowledge-base, llm-judge-calibration]
-feeds: [release-to-production, model-selection, agent-knowledge-base, system-prompt-and-guardrails, production-evals-monitoring]
+depends_on: [build-evals, ai-data-requirements, llm-judge-calibration]
+feeds: [release-to-production, model-selection, ai-data-requirements, system-prompt-and-guardrails, production-evals-monitoring]
 autonomy_relevant: false
 sources: [manning-ir, es-ragas, husain-shankar-evals, anthropic-evals, miller-error-bars, own-rag-practice]
 eval_threshold: 0.80
@@ -19,11 +19,11 @@ status: draft
 - A change to the retrieval stack: new embedding model, chunking, reranker, hybrid search, re-index, or choosing k (how many passages the generator receives).
 - A RAG eval reports one end-to-end answer score and nobody can say whether the corpus, the ranking or the generation fails.
 - Do not use to evaluate an agent's tool calls, end state or forbidden actions: that is `agent-evals`.
-- Do not use to decide which documents enter the corpus, who owns them or how often they are refreshed: that is `agent-knowledge-base`.
+- Do not use to decide which documents enter the corpus, who owns them or how often they are refreshed: that is `ai-data-requirements`.
 
 ## Inputs
 Mandatory: the pipeline as it runs (corpus and its size, chunking, embedding model, reranker, the k the generator actually receives), a sample of real queries from logs or tickets with their class, and who can label relevance (domain experts, not the build team).
-Ask if missing: the current end-to-end score and how it was graded, traffic share per class, the source register from `agent-knowledge-base` (owners, versions, effective dates), price and latency per call, any judge in use and its validation.
+Ask if missing: the current end-to-end score and how it was graded, traffic share per class, the source register from `ai-data-requirements` (owners, versions, effective dates), price and latency per call, any judge in use and its validation.
 
 ## Method
 1. **Locate before you change.** A RAG answer fails at one of four stages: the answer is not in the corpus (coverage), it is cut across chunks or stripped of its context (chunking), the right chunk is not in the top k the generator receives (ranking), or the generator misuses a passage it received (generation). Changing the LLM can only fix the last one. If graded failures already exist, attribute each to its first failing stage now: was the right passage in the context sent? That split takes a day and often settles the debate.
@@ -39,10 +39,10 @@ Ask if missing: the current end-to-end score and how it was graded, traffic shar
 
    | Signal | Points to | Next step, owner |
    | --- | --- | --- |
-   | Low recall@k; experts find no document with the answer | Corpus coverage | Add or certify a source: `agent-knowledge-base` owners |
+   | Low recall@k; experts find no document with the answer | Corpus coverage | Add or certify a source: `ai-data-requirements` owners |
    | Low recall@k; answer exists but is split across chunks, or a table lost its header | Chunking | Chunk along document structure, keep titles on chunks; re-run step 4 |
    | Low recall@k, high recall at 50 | Ranking | Reranker, hybrid keyword + dense, query rewriting, or k (step 7) |
-   | Right passage retrieved, but a superseded version | Stale corpus | Effective dates and expiry: `agent-knowledge-base` owners |
+   | Right passage retrieved, but a superseded version | Stale corpus | Effective dates and expiry: `ai-data-requirements` owners |
    | High recall@k, unsupported claims or wrong use of the passage | Generation | Prompt: answer only from passages, cite a passage per claim, abstain when none fits; then, measured on fixed contexts, `model-selection` |
    | Unanswerable queries get answered | Abstention | Abstention rule and retrieval-score floor: `system-prompt-and-guardrails` |
 
@@ -62,7 +62,7 @@ A retrieval eval plan following `templates/retrieval-eval-plan.md`: pipeline as 
 - Never change the LLM to fix a failure the diagnosis puts in the corpus, chunking or ranking.
 
 ## Links
-references/eval-statistics.md · references/roi-model.md · references/retrieval-metrics.md · build-evals · llm-judge-calibration · error-analysis · agent-knowledge-base · model-selection · release-to-production · system-prompt-and-guardrails · production-evals-monitoring
+references/eval-statistics.md · references/roi-model.md · references/retrieval-metrics.md · build-evals · llm-judge-calibration · error-analysis · ai-data-requirements · model-selection · release-to-production · system-prompt-and-guardrails · production-evals-monitoring
 
 ## Sources
 - manning-ir: recall at k, mean reciprocal rank, nDCG, pooled relevance judgements with unjudged passages counted as not relevant.

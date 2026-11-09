@@ -30,11 +30,11 @@ When a level change is the thing being gated (references/autonomy-ladder.md), th
 
 If the right passage never arrives, the answer cannot be judged fairly, so measure in this order:
 
-1. **Retrieval**, on labelled queries (`agent-knowledge-base` hands them over): recall at k, and mean reciprocal rank when order matters. Report per class. Include queries whose answer is not in the corpus.
+1. **Retrieval**, on labelled queries (`ai-data-requirements` names the sources): recall at k, and mean reciprocal rank when order matters. Report per class. Include queries whose answer is not in the corpus.
 2. **Generation**, given the retrieved context: faithfulness to the passages, relevance to the question, and a plain "not found" when nothing fits.
 
 A low answer score with high recall points to generation. With low recall it points to the corpus, chunking or ranking. A single end-to-end score cannot tell these apart.
 
 ## Owners
 
-The full agent method (trials, pass^k, simulated users, level gates) is in `agent-evals`; the full retrieval method is in `retrieval-evaluation`. The tool write protocol is in `agent-design-and-tooling`. Attacks and enforcement are in `system-prompt-and-guardrails`, with its redteam set. Source access rules are in `agent-knowledge-base`.
+The full agent method (trials, pass^k, simulated users, level gates) is in `agent-evals`; the full retrieval method is in `retrieval-evaluation`. The tool write protocol is in `agent-design-and-tooling`. Attacks and enforcement are in `system-prompt-and-guardrails`, with its redteam set. Source access rules are in `ai-data-requirements`.

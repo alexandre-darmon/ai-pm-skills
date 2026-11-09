@@ -1,8 +1,8 @@
-The 93% says the agent writes a good closing message, not that it refunds correctly. A run can fail its tool calls and still tell the customer the right thing, so the judge cannot gate a move to acting alone (references/autonomy-ladder.md).
+Don't switch models yet: 84% end to end says something fails, not which step.
 
-Add to each case:
-
-1. End state: after the run, check the refund record in the payment system has the right amount and order.
-2. Forbidden events: a refund above 200 EUR with no manager approval fails the run, whatever the message says. So does a second refund on the same order.
-3. False-success cases: make issue_refund time out, and check the agent says the refund did not go through.
-4. Retrieval scored apart: recall at k on labelled policy queries, then faithfulness of the answer to the passage.
+1. **Keep the end-to-end score as the release gate.** It is what accounts payable lives with, per invoice type, with its interval (120 invoices: roughly 76% to 89%).
+2. **Add an eval per step.** Label 30 to 50 invoices at each step: OCR text against the PDF, each extracted field against the true value, each validation-rule verdict, each ERP posting. Score the unit the business pays for: an invoice fully right, not a field.
+3. **Label the first failing step** on the 19 failed invoices. If most first go wrong at OCR (rotated scans, stamps over the amount), a new LLM will not help.
+4. **Score extraction on frozen OCR output**, stored once, so a change in OCR does not move the extraction score at the same time.
+5. **Before any swap, run old and new extraction on the same invoices** and compare paired: a gap under 2√d / n, with d the invoices where only one model is right, is a tie, and a tie goes to the cheaper model.
+6. Then re-run end to end before release.

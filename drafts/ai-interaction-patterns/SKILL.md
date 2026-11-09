@@ -2,7 +2,7 @@
 name: ai-interaction-patterns
 description: 'Design how an AI feature behaves for users: sources, confidence scores, correction, refusal, escalation. Use for assistant UX, showing a score or "% sure", or users who over-trust the AI.'
 stage: specify
-version: 0.2.1
+version: 0.2.2
 depends_on: [llm-feature-prd, build-evals]
 feeds: [system-prompt-and-guardrails, ai-adoption-plan]
 autonomy_relevant: true
@@ -18,6 +18,7 @@ status: draft
 - Someone asks how to show uncertainty, or users over-trust or ignore the AI.
 - Do not use for prompt wording or guardrails: use `system-prompt-and-guardrails`.
 - Do not use for visual design of a non-AI screen.
+- Do not use to train users or measure whether they catch the AI's errors: that is `ai-adoption-plan`.
 
 ## Inputs
 Mandatory: the feature, the autonomy level per step.
@@ -25,7 +26,7 @@ Ask if missing: user research notes, error profile from evals, whether scores ar
 
 ## Method
 1. Start from the level in references/autonomy-ladder.md. L1: the draft is editable first, nothing goes out by itself. L2: approve or edit each output. L3: an exception queue plus a sample to review, not an inbox of everything.
-2. Show sources next to the answer so people can check. Show confidence only if calibrated, meaning measured against outcomes; otherwise hide the score and rely on sources.
+2. Show sources next to the answer so people can check. Show confidence only if calibrated, meaning measured against outcomes (how to check it: `build-evals`, references/component-evals.md); otherwise hide the score and rely on sources.
 3. Make every answer correctable in one action, and log the correction.
 4. Write refusals that explain scope and point to the next step.
 5. Escalate on explicit conditions: the user asks for a person (honour it at once), the case falls outside policy, the AI makes no progress, or the action sits above its level on the ladder. Sentiment is not a trigger, and a score is not one until calibrated: neither tracks how hard the case is. Where a person takes over, name the queue's owner, its SLA, what happens and what the user reads when it lapses, and the handoff summary (who, the request, what the AI found and tried, what it recommends, why it stopped), because that person does not see the transcript. State that the user is dealing with an AI (hand over to `ai-act-classification` on transparency duties).

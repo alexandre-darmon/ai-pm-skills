@@ -1,14 +1,12 @@
 ---
 name: build-evals-005
-description: Refund agent gated on a judge that reads only the final message, before it acts alone (source - synthetic scenario written for the skills review, 2026)
+description: Invoice pipeline at 84% end to end; the team wants to swap the extraction model without knowing which step fails (source - anonymised accounts-payable brief, 2026)
 tags: [build-evals, p1, edge-case]
-expected_outcome: Says grading the final message cannot gate an agent that acts, and adds checks on the resulting system state and on actions that must never occur, such as a refund above the limit with no manager sign-off.
+expected_outcome: Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]
 ---
 
-Our refund agent reads the order, looks up the policy in our knowledge base and calls issue_refund. Refunds above 200 EUR need a manager's OK first. Today it only suggests refunds; we want it to issue them alone next month.
+Our supplier-invoice pipeline has four steps: OCR on the PDF, an LLM that extracts supplier, amount, VAT and due date, business rules that validate the fields, and posting to the ERP. On our 120 test invoices, 84% end up posted correctly. The team thinks the LLM is the weak point and wants to switch to a newer model next sprint.
 
-Our eval suite is 60 past conversations across refund types. An LLM judge, calibrated at 88% agreement with our support leads, reads the agent's closing message and says whether the customer was told the right thing. The agent scores 93%.
-
-Review the suite and tell us what is missing before we let it act.
+What should we measure before deciding?

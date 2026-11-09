@@ -1,8 +1,8 @@
 ---
 name: agent-design-and-tooling
-description: 'Design an agent''s loop, tools, permissions, stop conditions and traces from its autonomy levels, before any framework. Use for "make it an agent" or a framework debate.'
+description: 'Design an agent''s loop, tools, permissions, stop conditions and traces from its autonomy levels, before any framework. Use for "make it an agent", a new tool or permission, or a framework debate.'
 stage: specify
-version: 0.2.0
+version: 0.2.1
 depends_on: [llm-feature-prd, process-ai-redesign]
 feeds: [system-prompt-and-guardrails, assistant-kpis-cost-per-outcome]
 autonomy_relevant: true
@@ -16,8 +16,10 @@ status: draft
 ## When to use
 - Someone asks to "make it an agent", or a workflow has branches and tools.
 - A framework debate starts before the design exists.
+- An agent gets a new tool, a higher cap or a new permission, and its matrix must change.
 - Do not use for the prompt and guardrail wording: use `system-prompt-and-guardrails`.
 - Do not use when one model call answers the need: say so and stop.
+- Do not use to test the agent: that is `agent-evals`.
 
 ## Inputs
 Mandatory: the process steps with their L-levels, the candidate tools.

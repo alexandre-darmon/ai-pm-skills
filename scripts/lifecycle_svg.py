@@ -15,9 +15,8 @@ from fontTools.ttLib import TTFont
 ROOT = Path(__file__).resolve().parent.parent
 INK, MUTED, FAINT, BORDER, VIOLET = "#0A0A0A", "#5F5F66", "#6B6B70", "#E3E1E8", "#8C52EE"
 STAGES = [
-    ("Specify", "What correct means", ["ai-opportunity-assessment", "llm-feature-prd", "ai-data-requirements", "chat-with-your-data-scoping",
-                                       "ai-interaction-patterns", "system-prompt-and-guardrails", "agent-design-and-tooling",
-                                       "agent-knowledge-base", "semantic-layer-design", "process-ai-redesign"]),
+    ("Specify", "What correct means", ["ai-opportunity-assessment", "llm-feature-prd", "process-ai-redesign", "ai-data-requirements",
+                                       "agent-design-and-tooling", "system-prompt-and-guardrails", "ai-interaction-patterns"]),
     ("Evaluate", "Offline and online", ["error-analysis", "build-evals", "llm-judge-calibration", "synthetic-eval-data", "agent-evals",
                                         "retrieval-evaluation", "model-selection", "ai-vendor-evaluation", "release-to-production",
                                         "production-evals-monitoring", "conversation-analysis"]),
