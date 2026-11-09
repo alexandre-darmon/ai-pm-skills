@@ -8,7 +8,7 @@ feeds: [ai-opportunity-assessment, process-ai-redesign]
 autonomy_relevant: false
 sources: [own-roi-work, repo-yoseph, repo-chanmeng]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # ai-roi-quantification

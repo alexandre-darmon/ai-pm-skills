@@ -8,7 +8,7 @@ feeds: [release-to-production, model-card-ai-registry]
 autonomy_relevant: false
 sources: [own-model-selection, repo-chanmeng, repo-lenny]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # model-selection

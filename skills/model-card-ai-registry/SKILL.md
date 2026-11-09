@@ -10,7 +10,7 @@ feeds: [release-to-production, ai-incident-playbook]
 autonomy_relevant: true
 sources: [mitchell-model-cards, eu-ai-act, wilson-interval, miller-error-bars, husain-shankar-evals, own-registry, repo-chanmeng, repo-yoseph]
 eval_threshold: 0.90
-status: draft
+status: tested
 ---
 
 # model-card-ai-registry

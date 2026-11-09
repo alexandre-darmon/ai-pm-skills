@@ -1,176 +1,176 @@
 {
-  "skill": "ai-act-classification",
-  "model": "claude-sonnet-5-5",
-  "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.302",
-  "date": "2026-11-06",
-  "casesHash": "35083e4a3d51f2627665a813eaf967e0a49325c76f9c2e3da7d06f9253f89c76",
-  "partial": false,
-  "costUsd": 1.684809,
-  "cases": {
-    "ai-act-classification-001": {
-      "score": 1.0,
-      "scoreWithout": 0.5897435897435898,
-      "fired": 3,
-      "runs": 3,
-      "runsWithout": 3,
-      "negative": false,
-      "graders": {
-        "annex-iii-4a": [
-          3,
-          3
-        ],
-        "art-26": [
-          3,
-          3
-        ],
-        "counsel": [
-          3,
-          0
-        ],
-        "date-2027": [
-          3,
-          0
-        ],
-        "date-not-aug-2026": [
-          3,
-          0
-        ],
-        "deployer": [
-          3,
-          3
-        ],
-        "logs-6-months": [
-          3,
-          3
-        ],
-        "redline-no-verdict": [
-          3,
-          2
-        ],
-        "vendor-claim-unverified": [
-          3,
-          0
-        ],
-        "vendor-claim": [
-          3,
-          2
-        ],
-        "workers-informed": [
-          3,
-          3
-        ]
-      },
-      "delta": 0.41025641025641024
-    },
-    "ai-act-classification-002": {
-      "score": 1.0,
-      "scoreWithout": 0.7333333333333334,
-      "fired": 3,
-      "runs": 3,
-      "runsWithout": 3,
-      "negative": false,
-      "graders": {
-        "art-4-literacy": [
-          3,
-          3
-        ],
-        "art-5-screened": [
-          3,
-          3
-        ],
-        "art-50": [
-          3,
-          3
-        ],
-        "counsel": [
-          3,
-          0
-        ],
-        "gpai-flag": [
-          3,
-          0
-        ],
-        "not-high-risk": [
-          3,
-          3
-        ],
-        "redline-no-verdict": [
-          3,
-          3
-        ],
-        "role": [
-          3,
-          1
-        ]
-      },
-      "delta": 0.2666666666666666
-    },
-    "ai-act-classification-003": {
-      "score": 1.0,
-      "scoreWithout": 0.7222222222222222,
-      "fired": 3,
-      "runs": 3,
-      "runsWithout": 3,
-      "negative": false,
-      "graders": {
-        "annex-5b": [
-          3,
-          3
-        ],
-        "art-50": [
-          3,
-          3
-        ],
-        "counsel": [
-          3,
-          0
-        ],
-        "date-2027": [
-          3,
-          0
-        ],
-        "date-not-aug-2026": [
-          3,
-          2
-        ],
-        "explanation-art-86": [
-          3,
-          3
-        ],
-        "fria": [
-          3,
-          3
-        ],
-        "ladder-levels": [
-          3,
-          0
-        ],
-        "oversight": [
-          3,
-          3
-        ],
-        "redline-no-verdict": [
-          3,
-          3
-        ]
-      },
-      "delta": 0.2777777777777778
-    },
-    "ai-act-classification-004": {
-      "score": 1.0,
-      "scoreWithout": 1.0,
-      "fired": 0,
-      "runs": 3,
-      "runsWithout": 3,
-      "negative": true,
-      "graders": {
-        "not-triggered": [
-          3,
-          3
-        ]
-      }
-    }
+ "skill": "ai-act-classification",
+ "model": "claude-sonnet-5-5",
+ "judgeModel": "claude-haiku-5-5",
+ "claudeVersion": "2.1.317",
+ "date": "2026-11-09",
+ "casesHash": "35083e4a3d51f2627665a813eaf967e0a49325c76f9c2e3da7d06f9253f89c76",
+ "partial": false,
+ "costUsd": 1.5514062,
+ "cases": {
+  "ai-act-classification-001": {
+   "score": 1.0,
+   "scoreWithout": 0.6666666666666666,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "annex-iii-4a": [
+     3,
+     3
+    ],
+    "art-26": [
+     3,
+     3
+    ],
+    "counsel": [
+     3,
+     0
+    ],
+    "date-2027": [
+     3,
+     0
+    ],
+    "date-not-aug-2026": [
+     3,
+     0
+    ],
+    "deployer": [
+     3,
+     3
+    ],
+    "logs-6-months": [
+     3,
+     3
+    ],
+    "redline-no-verdict": [
+     3,
+     3
+    ],
+    "vendor-claim-unverified": [
+     3,
+     0
+    ],
+    "vendor-claim": [
+     3,
+     2
+    ],
+    "workers-informed": [
+     3,
+     3
+    ]
+   },
+   "delta": 0.33333333333333337
   },
-  "meanDelta": 0.31823361823361823
+  "ai-act-classification-002": {
+   "score": 1.0,
+   "scoreWithout": 0.7999999999999999,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "art-4-literacy": [
+     3,
+     3
+    ],
+    "art-5-screened": [
+     3,
+     3
+    ],
+    "art-50": [
+     3,
+     3
+    ],
+    "counsel": [
+     3,
+     0
+    ],
+    "gpai-flag": [
+     3,
+     1
+    ],
+    "not-high-risk": [
+     3,
+     3
+    ],
+    "redline-no-verdict": [
+     3,
+     3
+    ],
+    "role": [
+     3,
+     2
+    ]
+   },
+   "delta": 0.20000000000000007
+  },
+  "ai-act-classification-003": {
+   "score": 1.0,
+   "scoreWithout": 0.75,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "annex-5b": [
+     3,
+     3
+    ],
+    "art-50": [
+     3,
+     3
+    ],
+    "counsel": [
+     3,
+     0
+    ],
+    "date-2027": [
+     3,
+     0
+    ],
+    "date-not-aug-2026": [
+     3,
+     3
+    ],
+    "explanation-art-86": [
+     3,
+     3
+    ],
+    "fria": [
+     3,
+     3
+    ],
+    "ladder-levels": [
+     3,
+     0
+    ],
+    "oversight": [
+     3,
+     3
+    ],
+    "redline-no-verdict": [
+     3,
+     3
+    ]
+   },
+   "delta": 0.25
+  },
+  "ai-act-classification-004": {
+   "score": 1.0,
+   "scoreWithout": 1.0,
+   "fired": 0,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": true,
+   "graders": {
+    "not-triggered": [
+     3,
+     3
+    ]
+   }
+  }
+ },
+ "meanDelta": 0.2611111111111111
 }

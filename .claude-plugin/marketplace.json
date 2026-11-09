@@ -15,10 +15,17 @@
       "strict": false,
       "skills": [
         "./skills/ai-act-classification",
+        "./skills/ai-adoption-plan",
+        "./skills/ai-roi-quantification",
         "./skills/assistant-kpis-cost-per-outcome",
         "./skills/build-evals",
         "./skills/conversation-analysis",
-        "./skills/llm-feature-prd"
+        "./skills/llm-feature-prd",
+        "./skills/llm-judge-calibration",
+        "./skills/model-card-ai-registry",
+        "./skills/model-selection",
+        "./skills/release-to-production",
+        "./skills/system-prompt-and-guardrails"
       ]
     },
     {
@@ -28,6 +35,24 @@
       "strict": false,
       "skills": [
         "./skills/ai-act-classification"
+      ]
+    },
+    {
+      "name": "ai-adoption-plan",
+      "description": "Plan and prove adoption of an AI tool on outcomes: correct results per user, overrides, over-trust test, training by role and level, art. 4 evidence. Use when go-live nears or use stalls.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/ai-adoption-plan"
+      ]
+    },
+    {
+      "name": "ai-roi-quantification",
+      "description": "Compute a deployed AI product's ROI with the five-line model, a baseline and sourced unit values. Use for a budget renewal, a CFO or comex review, \"what did it return?\" or a scaling decision.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/ai-roi-quantification"
       ]
     },
     {
@@ -64,6 +89,51 @@
       "strict": false,
       "skills": [
         "./skills/llm-feature-prd"
+      ]
+    },
+    {
+      "name": "llm-judge-calibration",
+      "description": "Check if an LLM judge can be trusted on a failure mode and correct the pass rate it reports. Use for \"can we use LLM-as-judge?\", a judge's agreement with experts, a judge change or drift.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/llm-judge-calibration"
+      ]
+    },
+    {
+      "name": "model-card-ai-registry",
+      "description": "Write an AI system's model card and registry entry as its eval record: results per class with intervals, set, judge, signed thresholds, limits, monitoring. Use at go-live, a new version or an audit.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/model-card-ai-registry"
+      ]
+    },
+    {
+      "name": "model-selection",
+      "description": "Choose a model for an AI use case on your own eval suite (cost per success, latency, hosting) and write the decision record. Use for \"which model?\", a new release or a cost review.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/model-selection"
+      ]
+    },
+    {
+      "name": "release-to-production",
+      "description": "Plan the release of an AI change (prompt, model, KB) through offline eval, shadow, canary and A/B if the sample allows. Use for \"can we ship this?\" or a provider model update.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/release-to-production"
+      ]
+    },
+    {
+      "name": "system-prompt-and-guardrails",
+      "description": "Write or tune an LLM feature's system prompt and guardrails, with budgets and a redteam set. Use for a first prompt, a jailbreak or injection, a redteam result to judge, or disputed false positives.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/system-prompt-and-guardrails"
       ]
     }
   ]

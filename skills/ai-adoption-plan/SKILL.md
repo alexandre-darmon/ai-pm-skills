@@ -8,7 +8,7 @@ feeds: [model-card-ai-registry, build-evals, ai-data-requirements, ai-roi-quanti
 autonomy_relevant: true
 sources: [eu-ai-act, eu-digital-omnibus-ai, google-pair, wilson-interval, own-coaching, own-pedagogy, repo-chanmeng, repo-lenny]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # ai-adoption-plan

@@ -8,7 +8,7 @@ feeds: [assistant-kpis-cost-per-outcome, model-card-ai-registry]
 autonomy_relevant: true
 sources: [kohavi-experiments, own-release-practice, repo-chanmeng]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # release-to-production

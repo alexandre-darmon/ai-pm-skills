@@ -8,7 +8,7 @@ feeds: [build-evals, release-to-production, ai-act-classification]
 autonomy_relevant: true
 sources: [owasp-llm-top10, eu-ai-act, own-guardrails, repo-chanmeng]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # system-prompt-and-guardrails

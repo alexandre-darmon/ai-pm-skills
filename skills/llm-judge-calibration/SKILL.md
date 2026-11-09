@@ -8,7 +8,7 @@ feeds: [build-evals, production-evals-monitoring, release-to-production]
 autonomy_relevant: true
 sources: [husain-shankar-evals, shankar-validators, zheng-llm-judge, yan-llm-evaluators, rogan-gladen, cohen-kappa, wilson-interval, efron-bootstrap, anthropic-evals, own-golden-sets]
 eval_threshold: 0.80
-status: draft
+status: tested
 ---
 
 # llm-judge-calibration
