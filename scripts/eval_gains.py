@@ -52,13 +52,20 @@ def point_gain(cases, a, b):
     return f"{pts(macro_mean(g))} pts" if g else "—"
 
 
+def cost_cell(c, score_without, score_with):
+    """API-equivalent cost of one answer divided by its regex score, without → with."""
+    if not c or not score_without or not score_with:
+        return "—"
+    return f"${c[0] / score_without:.3f} → ${c[1] / score_with:.3f}"
+
+
 def held(runs):  # [held, total]
     return runs[0] / runs[1] if runs[1] else None
 
 
 def main(root=ROOT, draws=DRAWS):
     base = root / "baselines"
-    regex, per_skill, models = {}, [], set()
+    regex, per_skill, models, costs = {}, [], set(), {}
     rl = {"without": [0, 0], "template": [0, 0], "with": [0, 0]}
     neg = [0, 0]
     for f in sorted(base.glob("*.json")):
@@ -84,6 +91,10 @@ def main(root=ROOT, draws=DRAWS):
         for c in b["cases"].values():
             if c["negative"]:
                 neg[0] += c["runs"] - c["fired"]; neg[1] += c["runs"]
+        if all(c.get("costPerAnswer") and None not in c["costPerAnswer"] for c in pos.values()):
+            cw = sum(c["costPerAnswer"][0] for c in pos.values()) / len(pos)
+            cwo = sum(c["costPerAnswer"][1] for c in pos.values()) / len(pos)
+            costs[skill] = (cwo, cw)
         one = {skill: regex[skill]}
         deltas = [c["with"] - c["without"] for c in regex[skill].values()]
         runs = sorted({c["runs"] for c in pos.values()})
@@ -92,7 +103,7 @@ def main(root=ROOT, draws=DRAWS):
             f"| [`{skill}`](skills/{skill}/SKILL.md) | {pct(arm_mean(one, 'without'))} | {pct(arm_mean(one, 'template'))} "
             f"| **{pct(arm_mean(one, 'with'))}** | {pts(macro_mean([deltas]))} pts ({pts(min(deltas))} to {pts(max(deltas))}) "
             f"| {point_gain(one, 'with', 'template')} "
-            f"| {rlw} | {len(pos)} × {'/'.join(map(str, runs))} | {b['date']} |")
+            f"| {rlw} | {cost_cell(costs.get(skill), arm_mean(one, 'without'), arm_mean(one, 'with'))} | {len(pos)} × {'/'.join(map(str, runs))} | {b['date']} |")
 
     judges, judge_rows = [], []
     for d in sorted(p for p in (base / "judge").glob("*") if p.is_dir()) if (base / "judge").is_dir() else []:
@@ -136,6 +147,10 @@ def main(root=ROOT, draws=DRAWS):
         lines.append(row(f"Blind LLM judge, {name}: {len(cases)} of these skills, {n} cases, {'calibrated' if cal else 'not calibrated'}", cases))
     lines.append(f"| Red lines held (the one thing the answer must never do) | {pct(held(rl['without']))} | {pct(held(rl['template']))} "
                  f"| **{pct(held(rl['with']))}** | | |")
+    if costs:
+        cwo = sum(c[0] / arm_mean({k: regex[k]}, "without") for k, c in costs.items()) / len(costs)
+        cw = sum(c[1] / arm_mean({k: regex[k]}, "with") for k, c in costs.items()) / len(costs)
+        lines.append(f"| Cost per correct answer, API equivalent ({len(costs)} skills) | ${cwo:.3f} | — | **${cw:.3f}** | {round(100 * (cw / cwo - 1)):+d}% | |")
     lines.append(f"| Stays silent on near-miss requests | — | — | **{pct(held(neg))}** | | |")
     headline = "\n".join(lines)
 
@@ -149,8 +164,8 @@ Gains in points. Brackets: 95% interval over cases (see below).
 
 ## Per skill, regex graders
 
-| Skill | Without | Template only | With | Gain over the model alone (lowest to highest case) | Gain over the template | Red lines held: without / template / with | Cases × runs | Run date |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Skill | Without | Template only | With | Gain over the model alone (lowest to highest case) | Gain over the template | Red lines held: without / template / with | Cost per correct answer: without → with | Cases × runs | Run date |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 {chr(10).join(per_skill)}
 
 ## Per skill, blind LLM judges
@@ -165,6 +180,7 @@ Gains in points. Brackets: 95% interval over cases (see below).
 - **Template only**: the model gets the skill's own output template without its method. The gain over the template is what the method adds beyond the format ([template-only control](docs/evaluation.md)).
 - **Blind LLM judge**: a model grades each answer twice on a generic rubric (sound, actionable, honest about unknowns, risk-aware, specific) without knowing the arm. Not calibrated on human scores yet, so a signal, not a measure; it tends to favour longer answers and never grades the legal skills. Both judges are shown until the calibration rule committed in [docs/evaluation.md](docs/evaluation.md) picks one. Judge noise is the mean gap between its two passes on the same answer.
 - **Intervals**: resample the cases within each skill 10,000 times and keep the middle 95% of the gains, with a small-sample correction (Rao-Wu rescaling, [scripts/eval_stats.py](scripts/eval_stats.py)). They show how much the gain depends on which cases were written. They do not cover the choice of graders, the judge's biases, or another model. Per skill, 3 to 5 cases are too few for an interval: the table gives the lowest and highest case gain instead.
+- **Cost per correct answer**: the API-equivalent cost of one answer (as `claude plugin eval` reports it) divided by its regex score, averaged over skills; shown only for skills whose frozen run recorded the cost of each arm. A skill makes answers longer, so each answer costs more; the question is whether a correct one costs less.
 - **Red lines**: a red line fails the case on its own (e.g. a refund agent launched without human validation, a "compliant" verdict). Shown as the share of runs where it held.
 - **Pass rule**: a skill enters the catalogue when its regex score reaches the threshold (0.80, 0.90 for govern and flagship skills), every red line holds in every run, and the gain over the model alone is at least 10 points. Details in [docs/evaluation.md](docs/evaluation.md).
 - **Runs**: 3 per case and per arm, November 2026. Two red-line graders (`assistant-kpis-cost-per-outcome`, `conversation-analysis`) were corrected after that run because they rejected correct answers; the saved answers were then re-scored.

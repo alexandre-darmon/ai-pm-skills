@@ -2,7 +2,7 @@
 name: error-analysis
 description: 'Turn an AI feature''s real traces into counted, priced failure modes before choosing metrics or graders. Use for bad answers with no clear cause, "which metrics should we track?", or unread traces.'
 stage: evaluate
-version: 0.1.0
+version: 0.1.1
 legal: false
 depends_on: [llm-feature-prd, conversation-analysis]
 feeds: [build-evals, llm-judge-calibration, synthetic-eval-data, agent-evals, system-prompt-and-guardrails, production-evals-monitoring]
@@ -43,7 +43,7 @@ No traces yet: generate inputs with `synthetic-eval-data`, run the prototype, re
    With the reading log as a CSV, `python3 scripts/failure_modes.py log.csv --costs costs.csv --monthly-volume N` computes counts, shares with intervals, the saturation point and monthly cost; by hand, apply the same rules.
 7. **Decide per mode: fix, evaluate or accept.**
    - **Specification failure → fix now, no evaluator yet.** The prompt, the inputs, the KB or a tool never gave the model what it needed: an instruction nobody wrote, the user's country never passed, a new policy missing from the KB. Fix it, re-run the failing traces after the fix, and keep them as regression cases. A judge built for a failure the spec never asked to avoid measures the gap instead of closing it.
-   - **Generalisation failure → evaluate.** The instruction and the inputs were there and the model still fails sometimes. Pick the cheapest evaluator that decides it: a code check first (a number against the system of record, a required field or link present, language, length, schema, tool called); an LLM judge only when code cannot decide (an unsupported claim, a wrong reasoning step). One binary judge per mode, never one overall judge, validated against the expert's labels with `llm-judge-calibration` before anyone trusts it.
+   - **Generalisation failure → evaluate.** The instruction and the inputs were there and the model still fails sometimes. Pick the cheapest evaluator that decides it: a code check first (a number against the system of record, a required field or link present, language, length, schema, tool called); an LLM judge only when code cannot decide (an unsupported claim, a wrong reasoning step). One binary judge per mode, never one overall judge, validated against the expert's labels with `llm-judge-calibration` before it scores the full traffic or anyone trusts it: read it as TPR and TNR, since raw agreement hides a judge that passes everything.
    - **Accept**, with a written rationale, an owner and a re-check date, when the expected cost is below the cost of fixing and evaluating and the mode has no legal, privacy or irreversible effect.
 8. **Agents and pipelines.** For multi-step traces, also record for each failing trace the last step that succeeded and the first step that failed. The matrix of those pairs shows where runs break; hand it to `agent-evals`. A mode rooted in retrieval goes to `retrieval-evaluation`.
 9. **Hand over and re-run.** Modes to evaluate go to `build-evals` (graders, per-class thresholds, the failing traces as cases); judges to `llm-judge-calibration`; classes with too few traces to `synthetic-eval-data`; prompt and guardrail fixes to `system-prompt-and-guardrails`; KB gaps to the KB owner. Re-run the analysis after every significant change (model, prompt, KB, provider version), after a complaint spike, and on a fixed cadence on fresh production traces (`production-evals-monitoring`). Each new mode becomes regression cases.

@@ -1,0 +1,152 @@
+{
+ "skill": "release-to-production",
+ "model": "claude-sonnet-5-5",
+ "judgeModel": "claude-haiku-5-5",
+ "claudeVersion": "2.1.317",
+ "date": "2026-11-09",
+ "casesHash": "6a42fae3a1003ca1ea700ed14d484a507a0ee22764230486c0cd56f964a7e7b4",
+ "partial": false,
+ "costUsd": 1.1060436,
+ "cases": {
+  "release-to-production-001": {
+   "score": 1.0,
+   "scoreWithout": 0.611111111111111,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "autonomy-level": [
+     3,
+     0
+    ],
+    "canary": [
+     3,
+     2
+    ],
+    "infeasible": [
+     3,
+     1
+    ],
+    "redline-no-ab": [
+     3,
+     3
+    ],
+    "rollback-rehearsed": [
+     3,
+     0
+    ],
+    "rollback": [
+     3,
+     1
+    ],
+    "sample": [
+     3,
+     3
+    ],
+    "shadow": [
+     3,
+     0
+    ]
+   },
+   "delta": 0.38888888888888895,
+   "costPerAnswer": [
+    0.056195466666666666,
+    0.044618
+   ]
+  },
+  "release-to-production-002": {
+   "score": 0.9259259259259259,
+   "scoreWithout": 0.5555555555555556,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "class": [
+     3,
+     0
+    ],
+    "diagnostic": [
+     3,
+     0
+    ],
+    "hold": [
+     3,
+     0
+    ],
+    "owner": [
+     1,
+     0
+    ],
+    "redline-no-release": [
+     3,
+     3
+    ]
+   },
+   "delta": 0.37037037037037035,
+   "costPerAnswer": [
+    0.03691253333333333,
+    0.028362666666666665
+   ]
+  },
+  "release-to-production-003": {
+   "score": 1.0,
+   "scoreWithout": 0.6666666666666666,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "offline": [
+     3,
+     0
+    ],
+    "redline-no-direct-swap": [
+     3,
+     3
+    ],
+    "release": [
+     3,
+     0
+    ],
+    "rollback": [
+     3,
+     3
+    ],
+    "shadow": [
+     3,
+     1
+    ],
+    "version-bundle": [
+     3,
+     1
+    ]
+   },
+   "delta": 0.33333333333333337,
+   "costPerAnswer": [
+    0.043480700000000004,
+    0.08935583333333334
+   ]
+  },
+  "release-to-production-004": {
+   "score": 1.0,
+   "scoreWithout": 1.0,
+   "fired": 0,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": true,
+   "graders": {
+    "not-triggered": [
+     3,
+     3
+    ]
+   },
+   "costPerAnswer": [
+    0.034944,
+    0.034812
+   ]
+  }
+ },
+ "meanDelta": 0.36419753086419754
+}

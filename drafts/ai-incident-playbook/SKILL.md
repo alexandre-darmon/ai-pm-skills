@@ -2,7 +2,7 @@
 name: ai-incident-playbook
 description: 'Prepare or run the response to an AI incident: severity, containment, rollback owner, reporting clocks, the regression case it adds. Use at L3+ go-live, after a quality alert or in an incident.'
 stage: prove
-version: 0.3.0
+version: 0.4.0
 last_verified: 2026-11-09
 legal: true
 depends_on: [production-evals-monitoring, system-prompt-and-guardrails, ai-act-classification, release-to-production, model-card-ai-registry]
@@ -40,20 +40,20 @@ Ask if missing: the alert and its sample size, guardrail spec, the AI Act classi
 6. Feed the evidence loop before the fix ships (references/evals-as-evidence.md):
    - an `error-analysis` note on every affected output of the window, not only the reported ones: what went wrong in each, which failure mode, new or known, which question class;
    - regression cases from those outputs added to the golden set through `build-evals`, failing on the faulty version;
-   - the fix ships only when the regression cases pass and the full suite shows no class below its threshold, compared with the previous version on the same cases. A fix checked only on the reported examples is not verified;
+   - the fix ships only when the regression cases pass and the full suite shows no class below its threshold, compared with the previous version on the same cases. A fix checked only on the reported examples is not verified. Shipping the fix and closing the incident are two gates, and this one comes first: an unverified fix never ships as a mitigation, nor because the rollback is quick; until it passes, the containment of step 2 (a slice stopped, a human check added) carries the risk;
    - the incident, the fix and the eval delta go to the card's changelog (`model-card-ai-registry`); a missed alert goes back to `production-evals-monitoring` as a new check.
    For a serious incident on a high-risk system, ask counsel before any investigation that alters the system whether the authority must be informed first (art. 73(6)).
    Then the post-incident review: timeline, cause, fix, what the monitoring missed.
 7. When preparing before go-live, write at least three failure scenarios specific to this system: symptom, how to confirm it, action, how to verify the fix. One is the service looking healthy while its answers are wrong, so detection needs an alarm on an AI quality signal, not uptime alone. State the fallback path while the system is off.
 
 ## Output
-`templates/playbook.md`, all headings present when preparing. During an incident or for a quick triage question, answer with what is needed now, and open with the class and the severity, provisional until the count is in.
+`templates/playbook.md`, all headings present when preparing. During an incident or for a quick triage question, answer with what is needed now, and open with the class and the severity, provisional until the count is in. Asked whether a fix can ship, the first line answers it: not before the gate of step 6.
 
 ## Rules and red lines
 - Rollback authority is a named role.
 - Deadlines are computed as dates, never a limit alone or a date alone.
 - Checklist, not verdict: the skill never decides that a breach needs no notification; the controller does, on the DPO's advice.
-- Every incident becomes regression cases in the golden set before its fix ships; a fix checked only on the reported examples is not verified.
+- Every incident becomes regression cases in the golden set before its fix ships; a fix checked only on the reported examples is not verified, and does not ship as a mitigation either.
 - Once something wrong has reached people, no severity is final before the affected outputs are counted.
 
 ## Links

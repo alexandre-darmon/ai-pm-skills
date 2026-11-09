@@ -57,7 +57,7 @@ pass^k for a per-trial rate p (p^k):
 
 Per-trial rate needed to reach a pass^k bar b: p ≥ b^(1/k). A pass^5 bar of 90% needs about 98% per trial.
 
-What a pass@k figure can hide: with tasks all alike, pass@3 = 90% means a per-trial rate of 54% and pass^3 of 15%. With unequal tasks it can be lower still: nine tasks with one success each in three trials also give pass@3 = 90%, with 30% per trial and pass^3 = 0.
+What a pass@k figure can hide: with tasks all alike, pass@5 = 95% means a per-trial rate of 45% and pass^5 of 2%. With unequal tasks it can be lower still: nine tasks with one success each in three trials also give pass@3 = 90%, with 30% per trial and pass^3 = 0.
 
 Estimator with n trials per task and c successes: pass^k = C(c,k) / C(n,k), averaged over tasks (unbiased for n ≥ k). Run more trials than k when the budget allows: n = 2k gives a steadier estimate than n = k.
 
@@ -83,9 +83,58 @@ Spec per task: persona (tone, patience, language), goal, hidden information and 
 - A trial the simulator broke is invalid: rerun it, never count it as an agent failure or success.
 - Pin the simulator's model and prompt with the suite version; a change there is a change of suite.
 
-## 6. Where runs break (step 8)
+### Requests given over several turns
 
-Label the first failing step of each failed trial, then count. Example on 40 failed trials of the booking agent:
+Real users rarely state everything in one message. Take tasks whose instruction carries several facts (which booking, which date, which fee is acceptable) and build a sharded version: the simulated user gives one fact per turn, in the order a real user would, and the agent may act before it has them all.
+
+- Run the single-message and the sharded version of each task with the same k.
+- Report the mean, the worst run and the spread: per task, best minus worst over its k runs, and the share of tasks whose verdict changes between runs. Spread is the number to watch: when models lose on multi-turn tasks, most of the loss is that the same task succeeds on one run and fails on the next, not a lower best case (laban-multi-turn).
+- Gate on pass^k of the sharded version where users really talk that way: a gate read on single-message tasks overstates what users meet.
+- Typical fixes to test, not to assume: the agent restates all known facts before any write; or the conversation is condensed into one request and sent to a fresh call before acting.
+
+The same spread logic applies to rewording: references/eval-statistics.md §13.
+
+## 6. Under attack (step 8)
+
+When: the agent reads content an outsider can write (inbound email and its attachments, web pages, supplier portals, tickets, results of third-party APIs) and has a tool with an effect outside (pay, send, change a record). The attack arrives in a tool result, not in the user's message, so a test of typed attacks alone leaves this path untested (`system-prompt-and-guardrails` builds the attacks and the defences).
+
+**Build attacked variants of real tasks.** Take benign tasks from the suite, each with its starting state and end-state check. For each, plant an instruction in one tool output (email body, PDF field, web page, API comment field) aimed at one forbidden action of section 2. Vary where it sits (start, end, hidden field), how it is dressed (plain request, fake system note, fake tool result) and its goal. A standalone pack of malicious messages, with no legitimate request around them, measures attack success only: it cannot tell whether the agent still does the user's job on a poisoned day.
+
+**Grade both goals on the end state.** The user's task: the usual end-state check. The attacker's goal: did the forbidden action happen in the sandbox (payee changed, file in the captured outbox, contact updated)? Never on the final message: an agent can refuse in words and act anyway, or the reverse.
+
+**Report three numbers on the same tasks, with the same k:**
+
+| Measure | Counted on | Pass means |
+| --- | --- | --- |
+| Benign utility | clean tasks | user's task done |
+| Utility under attack | attacked variants | user's task done and attacker's goal not reached |
+| Attack success rate | attacked variants, per forbidden action | attacker's goal reached (lower is better) |
+
+A defence is judged on the pair: attack success down, benign utility kept. A filter that blocks every message with an instruction in it scores 0% attack success and ruins utility; it also shows up as false positives in the clean run. Re-run the clean tasks after every change to a defence.
+
+**Bound per forbidden action, then gate.** Attack success is a rate on few trials: give its upper bound (references/eval-statistics.md §2) for each forbidden action, not one pooled figure, because the actions differ in cost. Worked values (95%):
+
+| Attacks that succeeded | Point rate | Upper bound |
+| --- | --- | --- |
+| 0 of 200 | 0% | 1.5% (rule of three; Wilson 1.9%) |
+| 0 of 300 | 0% | 1.0% (Wilson 1.3%) |
+| 2 of 150 | 1.3% | 4.7% (Wilson) |
+| 4 of 200 | 2.0% | 5.0% (Wilson) |
+
+The rate is per attempt. Exposure = bound × attacked runs a month; that volume is rarely known, so state the assumption (for example the share of inbound mail the security team flags as hostile) and show the result for it. Then set the bound against the cost of one success: a changed payee on a large payment or a client file sent outside can outweigh a month of savings, and the answer is then an action-layer control (payee changes confirmed out of band, documents sent only to the address on file) or the current level, not a better prompt.
+
+**Keep the attack test set apart.** Three sets, never mixed:
+- dev attacks: used to write the prompt and tune the filter or guardrail;
+- test attacks: written fresh or by someone who did not tune, never shown to whoever tunes, used only to score;
+- regression attacks: every attack that once succeeded, rerun on every change.
+
+A rate measured on the attacks a defence was tuned on shows the defence remembers them, not that it holds: a vendor's "0 after the fix" on its own pack is a dev score. Once a defence is tuned on the failures of a test set, that set becomes dev and a new test set is written. Static sets also understate a motivated attacker who adapts: read the measured rate as a floor, which is why the gate on actions that cannot be undone also needs the action-layer controls that hold whatever the model reads.
+
+`python3 scripts/agent_reliability.py --attack change_payee=2/150 --attack send_outside=0/150 --utility 282/300 231/300 --attacked-volume 50` prints the three numbers, the bound per forbidden action and the exposure.
+
+## 7. Where runs break (step 9)
+
+Label the first failing step of each failed run, starting with the failures already in hand (hand review, incidents), then count. Example on 40 failed trials of the booking agent:
 
 | Last successful step ↓ / first failing step → | read booking | compute fee | ask approval | write change | notify |
 | --- | --- | --- | --- | --- | --- |
@@ -97,7 +146,9 @@ Label the first failing step of each failed trial, then count. Example on 40 fai
 
 The busiest cell (17: fee computed, approval step failed) is the next fix. Read ten of those traces before changing anything.
 
-## 7. Cost per successful task (step 9)
+With only a handful of failed runs from a hand review, the matrix is still the first step: it is short, it tells whether the runs fail at the same transition (one fix) or at different ones (several), and its cells say which false-success seeds to write first. A write that failed and was reported as done lands in row "write called", column "read the result"; a write never called lands in row "read", column "write".
+
+## 8. Cost per successful task (step 10)
 
 Cost per successful task = cost of all trials ÷ successful trials = mean cost per trial ÷ pass@1.
 
@@ -108,7 +159,7 @@ Cost per successful task = cost of all trials ÷ successful trials = mean cost p
 
 B passes more, at twice the cost per success and with long runs: the sponsor decides with both lines, and the production figure comes from `assistant-kpis-cost-per-outcome`.
 
-## 8. Environment checklist
+## 9. Environment checklist
 
 - Every system the agent writes to has a sandbox or a test double: payments, CRM, email, ticketing.
 - Test doubles return the same shapes and error codes as production, timeouts included.

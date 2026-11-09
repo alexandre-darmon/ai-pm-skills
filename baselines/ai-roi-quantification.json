@@ -1,0 +1,148 @@
+{
+ "skill": "ai-roi-quantification",
+ "model": "claude-sonnet-5-5",
+ "judgeModel": "claude-haiku-5-5",
+ "claudeVersion": "2.1.317",
+ "date": "2026-11-09",
+ "casesHash": "f90b1207bcb75af6e64d528f962e94313762705879e6c6e0e3818e737211feca",
+ "partial": false,
+ "costUsd": 1.3059788,
+ "cases": {
+  "ai-roi-quantification-001": {
+   "score": 0.9333333333333332,
+   "scoreWithout": 0.5666666666666667,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "baseline": [
+     1,
+     2
+    ],
+    "lines": [
+     3,
+     0
+    ],
+    "projection": [
+     3,
+     0
+    ],
+    "redline-no-roi-claim": [
+     3,
+     3
+    ],
+    "sensitivity": [
+     3,
+     0
+    ],
+    "stop-threshold": [
+     3,
+     0
+    ]
+   },
+   "delta": 0.3666666666666666,
+   "costPerAnswer": [
+    0.06153126666666667,
+    0.03592066666666666
+   ]
+  },
+  "ai-roi-quantification-002": {
+   "score": 0.9696969696969697,
+   "scoreWithout": 0.6060606060606061,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "capacity-owner": [
+     3,
+     0
+    ],
+    "cost-coverage": [
+     2,
+     0
+    ],
+    "flag": [
+     3,
+     2
+    ],
+    "interview": [
+     3,
+     0
+    ],
+    "redline-no-unsourced-gain": [
+     3,
+     3
+    ],
+    "register": [
+     3,
+     0
+    ],
+    "sensitivity": [
+     3,
+     3
+    ]
+   },
+   "delta": 0.36363636363636365,
+   "costPerAnswer": [
+    0.1323887333333333,
+    0.07706933333333334
+   ]
+  },
+  "ai-roi-quantification-003": {
+   "score": 1.0,
+   "scoreWithout": 0.8888888888888888,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "negative": [
+     3,
+     2
+    ],
+    "per-use-case": [
+     3,
+     1
+    ],
+    "redline-no-hiding": [
+     3,
+     3
+    ],
+    "stop-fix": [
+     3,
+     3
+    ],
+    "total": [
+     3,
+     3
+    ]
+   },
+   "delta": 0.11111111111111116,
+   "costPerAnswer": [
+    0.040500266666666666,
+    0.028408
+   ]
+  },
+  "ai-roi-quantification-004": {
+   "score": 1.0,
+   "scoreWithout": 1.0,
+   "fired": 0,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": true,
+   "graders": {
+    "not-triggered": [
+     3,
+     3
+    ]
+   },
+   "costPerAnswer": [
+    0.030023333333333336,
+    0.02948466666666667
+   ]
+  }
+ },
+ "meanDelta": 0.2804713804713805
+}

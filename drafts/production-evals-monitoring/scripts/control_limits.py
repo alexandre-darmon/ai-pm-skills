@@ -3,7 +3,7 @@
 
 Rates may be given in percent (91) or as fractions (0.91).
 
-  python3 scripts/control_limits.py --history 92,90,93,89,91,92,90,91,93,89 --n 100 --latest 86 --drop 5
+  python3 scripts/control_limits.py --history 95,93,94,96,94,93,95,94,96,94 --n 150 --latest 90 --drop 3
   python3 scripts/control_limits.py --centre 90 --drop 5
 """
 import argparse

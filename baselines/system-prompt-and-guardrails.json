@@ -1,0 +1,144 @@
+{
+ "skill": "system-prompt-and-guardrails",
+ "model": "claude-sonnet-5-5",
+ "judgeModel": "claude-haiku-5-5",
+ "claudeVersion": "2.1.317",
+ "date": "2026-11-09",
+ "casesHash": "82c0f20e0b84e69658446c143bd44f86e2cca989f11414621ce3d13eb97421b8",
+ "partial": false,
+ "costUsd": 1.1251267,
+ "cases": {
+  "system-prompt-and-guardrails-001": {
+   "score": 0.9696969696969697,
+   "scoreWithout": 0.7575757575757577,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "approval": [
+     3,
+     3
+    ],
+    "caps": [
+     3,
+     3
+    ],
+    "fail-closed": [
+     3,
+     2
+    ],
+    "l4-blocked": [
+     2,
+     0
+    ],
+    "redline-no-l4-now": [
+     3,
+     3
+    ],
+    "redteam": [
+     3,
+     2
+    ],
+    "three-legs": [
+     3,
+     0
+    ]
+   },
+   "delta": 0.21212121212121204,
+   "costPerAnswer": [
+    0.09877029999999999,
+    0.04656733333333333
+   ]
+  },
+  "system-prompt-and-guardrails-002": {
+   "score": 0.9,
+   "scoreWithout": 0.7666666666666666,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "format": [
+     0,
+     1
+    ],
+    "indirect-injection": [
+     3,
+     2
+    ],
+    "out-of-scope": [
+     3,
+     2
+    ],
+    "redline-no-safe-claim": [
+     3,
+     3
+    ],
+    "refusal": [
+     3,
+     0
+    ],
+    "scope": [
+     3,
+     3
+    ]
+   },
+   "delta": 0.13333333333333341,
+   "costPerAnswer": [
+    0.05050413333333334,
+    0.033902666666666664
+   ]
+  },
+  "system-prompt-and-guardrails-003": {
+   "score": 1.0,
+   "scoreWithout": 0.7916666666666666,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "budget": [
+     3,
+     0
+    ],
+    "re-run": [
+     3,
+     1
+    ],
+    "redline-no-accept": [
+     3,
+     3
+    ],
+    "tuning": [
+     3,
+     3
+    ]
+   },
+   "delta": 0.20833333333333337,
+   "costPerAnswer": [
+    0.04229513333333334,
+    0.031633999999999995
+   ]
+  },
+  "system-prompt-and-guardrails-004": {
+   "score": 1.0,
+   "scoreWithout": 1.0,
+   "fired": 0,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": true,
+   "graders": {
+    "not-triggered": [
+     3,
+     3
+    ]
+   },
+   "costPerAnswer": [
+    0.036595333333333334,
+    0.03477333333333334
+   ]
+  }
+ },
+ "meanDelta": 0.18459595959595962
+}

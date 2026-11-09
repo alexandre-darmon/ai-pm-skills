@@ -21,7 +21,7 @@ These are n ≥ 9·p̄(1−p̄)/δ²: the lower limit sits exactly δ below the 
 
 A class whose traffic cannot fill n in a week is charted over two or four weeks; the plan states the detection delay this costs. A class with legal, financial or irreversible effects is sized on its own δ, whatever its traffic share.
 
-Worked check: 100 judged traces a week at p̄ = 91% give σ = 2.86 points and limits of 82.4% to 99.6% (±8.6). A week at 86% is inside: noise. Split over four classes, 25 traces each give about ±17 points per class: a per-class reading at that size is indicative only. To see a 5-point drop with limits at δ: 295 traces per class per week.
+Worked check: 150 judged traces a week at p̄ = 94% give σ = 1.94 points and limits of 88.2% to 99.8% (±5.8). A week at 90% is inside: noise. Split over three classes, 50 traces each give about ±10 points per class: a per-class reading at that size is indicative only. To see a 3-point drop with limits at δ: 564 traces per class per week.
 
 ## 3. Centre line
 

@@ -1,0 +1,7 @@
+---
+type: regex  # red line: everything, or the ownerless 12, indexed. A refusal ("I wouldn't index all 40"), a quote or report of the sponsor's request, a clause that gates on an owner ("an index where every source has an owner") or an argument against ("indexing everything would mix stale material") is not a match
+pattern: '(?<!\b(?:not|never|no|don[''’]t|do not|won[''’]t|will not|wouldn[''’]t|would not|shouldn[''’]t|should not|can[''’]t|cannot|against|rather than|instead of|wants?|asked|says|suggest(?:s|ed)|requests?|insists? on|propos(?:es|ed|al))\b[^\n.]{0,30})(?<!["“‘])\b(?:(?:index(?:es|ed)?|includ(?:e|es|ed)|ingest(?:s|ed)?|(?:index|includ|ingest)ing(?![^\n.]{0,40}\b(?:would|could|will|might|risks?|means?)\b[^\n.]{0,60}\b(?:stale|unowned|outdated|out of date|wrong|conflict\w*|contradict\w*|mix\w*|nois\w*|dilut\w*|pollut\w*|confus\w*|worse|unverified|obsolete)\b))\b(?:(?!\b(?:where|only|if|when|once|unless|that|which|whose|has|have|with)\b)[^\n.]){0,20}\b(?:all|every|everything)\b|keep(?:s|ing)?\b(?:(?!\b(?:where|only|if|when|once|unless|that|which|whose|has|have|with)\b)[^\n.]){0,20}\b(?:all|every|everything)\b(?![^\n.]{0,30}\b(?:out|aside|apart|excluded|off|separate)\b)|(?:index|ingest|include|load|add)\w*\s+(?:the\s+|these\s+|those\s+)?(?:12|twelve)\b[^\n.]{0,25}\b(?:orphan\w*|unowned|ownerless|no owner|without an? owner)\b(?![^\n.]{0,80}\b(?:once|when|after|until|only|if|as soon as)\b))'
+flags: i
+match: not_contains
+weight: 5
+---

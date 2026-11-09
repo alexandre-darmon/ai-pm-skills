@@ -1,0 +1,195 @@
+{
+ "skill": "model-card-ai-registry",
+ "model": "claude-sonnet-5-5",
+ "judgeModel": "claude-haiku-5-5",
+ "claudeVersion": "2.1.317",
+ "date": "2026-11-09",
+ "casesHash": "b2acd4fd1d3a1e4cb2583674ed29505a9e557d0a698a47c4ad86971bae088ab2",
+ "partial": false,
+ "costUsd": 2.4761245000000005,
+ "cases": {
+  "model-card-ai-registry-001": {
+   "score": 1.0,
+   "scoreWithout": 0.5555555555555555,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "bundle": [
+     3,
+     0
+    ],
+    "failure": [
+     3,
+     0
+    ],
+    "incomplete": [
+     3,
+     1
+    ],
+    "interval-n": [
+     3,
+     3
+    ],
+    "limits": [
+     3,
+     0
+    ],
+    "redline-not-complete": [
+     3,
+     3
+    ],
+    "review": [
+     3,
+     1
+    ],
+    "threshold-signed": [
+     3,
+     0
+    ]
+   },
+   "delta": 0.44444444444444453,
+   "costPerAnswer": [
+    0.0773529,
+    0.03266323333333333
+   ]
+  },
+  "model-card-ai-registry-002": {
+   "score": 0.9333333333333332,
+   "scoreWithout": 0.7999999999999999,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "approved": [
+     3,
+     3
+    ],
+    "changelog": [
+     3,
+     3
+    ],
+    "delta": [
+     1,
+     1
+    ],
+    "noise": [
+     3,
+     2
+    ],
+    "redline-keep-record": [
+     3,
+     3
+    ],
+    "review": [
+     3,
+     0
+    ]
+   },
+   "delta": 0.1333333333333333,
+   "costPerAnswer": [
+    0.04659806666666667,
+    0.03237266666666667
+   ]
+  },
+  "model-card-ai-registry-003": {
+   "score": 1.0,
+   "scoreWithout": 0.5,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "classification": [
+     3,
+     0
+    ],
+    "end-of-life": [
+     3,
+     0
+    ],
+    "guardrail": [
+     3,
+     0
+    ],
+    "monitoring": [
+     3,
+     0
+    ],
+    "oversight": [
+     3,
+     3
+    ],
+    "per-class": [
+     3,
+     0
+    ],
+    "redline-no-compliance": [
+     3,
+     3
+    ],
+    "review": [
+     3,
+     0
+    ]
+   },
+   "delta": 0.5,
+   "costPerAnswer": [
+    0.09611286666666667,
+    0.059221366666666664
+   ]
+  },
+  "model-card-ai-registry-004": {
+   "score": 1.0,
+   "scoreWithout": 1.0,
+   "fired": 0,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": true,
+   "graders": {
+    "not-triggered": [
+     3,
+     3
+    ]
+   },
+   "costPerAnswer": [
+    0.2083982666666667,
+    0.17743563333333331
+   ]
+  },
+  "model-card-ai-registry-005": {
+   "score": 1.0,
+   "scoreWithout": 0.7916666666666666,
+   "fired": 3,
+   "runs": 3,
+   "runsWithout": 3,
+   "negative": false,
+   "graders": {
+    "next-threshold-signed": [
+     3,
+     2
+    ],
+    "real-vs-synthetic": [
+     3,
+     2
+    ],
+    "redline-posthoc-disclosed": [
+     3,
+     3
+    ],
+    "tpr-tnr": [
+     3,
+     0
+    ]
+   },
+   "delta": 0.20833333333333337,
+   "costPerAnswer": [
+    0.05554049999999999,
+    0.03967933333333334
+   ]
+  }
+ },
+ "meanDelta": 0.3215277777777778
+}

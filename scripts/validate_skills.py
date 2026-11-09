@@ -428,9 +428,18 @@ def main(root: Path, sync: bool = False) -> int:
     if market.is_file():  # the bundle plugin installs exactly the catalogue, drafts never
         if (root / ".claude-plugin" / "plugin.json").is_file():  # claude plugin validate misses this: installs, then fails to load
             problems.append(".claude-plugin/plugin.json: remove it, it conflicts with marketplace.json entries that list skills")
-        bundle = json.loads(market.read_text())["plugins"][0]["skills"]
+        data = json.loads(market.read_text())
+        bundle = data["plugins"][0]["skills"]
         if sorted(bundle) != [f"./skills/{p.name}" for p in catalog]:
             problems.append(".claude-plugin/marketplace.json: the first plugin must list exactly the skills/ folders")
+        stale = [pl for pl in data["plugins"][1:] if pl.get("name") in descriptions and pl.get("description") != descriptions[pl["name"]]]
+        if stale and sync:  # a plugin's description is what triggers it once installed: keep it equal to SKILL.md
+            for pl in stale:
+                pl["description"] = descriptions[pl["name"]]
+            market.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+        elif stale:
+            problems.append(f".claude-plugin/marketplace.json: descriptions differ from SKILL.md for {sorted(pl['name'] for pl in stale)}; "
+                            "run python3 scripts/validate_skills.py --sync")
 
     for p in problems:
         print(p)
