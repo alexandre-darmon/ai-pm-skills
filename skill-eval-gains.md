@@ -4,11 +4,11 @@ Same model, same cases, three arms: the model alone, the model given only the sk
 
 | Same cases, Sonnet 5.5 answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 29 skills, 109 cases × 3 runs | 52% | 82% | **96%** | +44 [+41, +47] | +17 [+6, +32] |
+| Regex graders: 29 skills, 109 cases × 3 runs | 52% | 82% | **96%** | +45 [+41, +48] | +17 [+6, +32] |
 | Blind LLM judge, Haiku 5.5: 5 of these skills, 17 cases, earlier runs, not calibrated | 71% | 78% | 80% | +10 [+6, +13] | +3 [+1, +5] |
 | Blind LLM judge, Sonnet 5.5: 5 of these skills, 17 cases, earlier runs, not calibrated | 69% | 76% | 80% | +11 [+6, +17] | +5 [+3, +7] |
-| Red lines held (the one thing the answer must never do) | 72% | 88% | **100%** | | |
-| Cost per correct answer, API equivalent (22 skills) | $0.096 | — | **$0.076** | -21% | |
+| Red lines held (the one thing the answer must never do) | 71% | 88% | **100%** | | |
+| Cost per correct answer, API equivalent (22 skills) | $0.097 | — | **$0.076** | -22% | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
 Gains in points. Brackets: 95% interval over cases (see below).
@@ -40,7 +40,7 @@ Gains in points. Brackets: 95% interval over cases (see below).
 | [`process-ai-redesign`](skills/process-ai-redesign/SKILL.md) | 57% | — | **99%** | +42 pts (+26 to +53) | — | 100% / — / 100% | $0.076 → $0.103 | 3 × 3 | 2026-11-09 |
 | [`production-evals-monitoring`](skills/production-evals-monitoring/SKILL.md) | 45% | — | **100%** | +55 pts (+53 to +58) | — | 33% / — / 100% | $0.158 → $0.102 | 3 × 3 | 2026-11-11 |
 | [`prototype-handover`](skills/prototype-handover/SKILL.md) | 48% | — | **96%** | +48 pts (+25 to +56) | — | 83% / — / 100% | $0.105 → $0.127 | 5 × 3 | 2026-11-11 |
-| [`red-team-evals`](skills/red-team-evals/SKILL.md) | 61% | — | **94%** | +33 pts (+4 to +55) | — | 71% / — / 100% | $0.064 → $0.069 | 5 × 3 | 2026-11-12 |
+| [`red-team-evals`](skills/red-team-evals/SKILL.md) | 49% | — | **96%** | +47 pts (+30 to +64) | — | 58% / — / 100% | $0.086 → $0.071 | 5 × 3 | 2026-11-12 |
 | [`release-to-production`](skills/release-to-production/SKILL.md) | 61% | — | **99%** | +38 pts (+33 to +41) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-12 |
 | [`retrieval-evaluation`](skills/retrieval-evaluation/SKILL.md) | 51% | — | **87%** | +36 pts (+10 to +56) | — | 17% / — / 100% | $0.077 → $0.065 | 3 × 3 | 2026-11-09 |
 | [`synthetic-eval-data`](skills/synthetic-eval-data/SKILL.md) | 30% | — | **96%** | +66 pts (+58 to +79) | — | 33% / — / 100% | $0.131 → $0.060 | 3 × 3 | 2026-11-09 |
