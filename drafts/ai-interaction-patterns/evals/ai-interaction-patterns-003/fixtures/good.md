@@ -1,6 +1,0 @@
-Don't stop one-by-one validation on this figure. 97% acceptance at about 9 seconds a claim looks like rubber-stamping, not trust: 9 seconds is too short to read a claim file. It is an inference to confirm, not a fact.
-
-1. **Confirm with a seeded sample.** Seed 20 known-wrong recommendations into the handlers' queue over two weeks and count how many are caught. Have an expert re-review a random sample of 100 accepted claims. If most seeded errors pass, the review is not working.
-2. **Change the screen, not the level.** Put the evidence beside the recommendation: the policy clause, the photos and the three facts that drove it, so the check is possible in the time spent. Ask for the decision before showing the AI's recommendation on a sample of claims, to measure agreement.
-3. **No badge.** A green "high confidence" badge would speed up rubber-stamping. Show a confidence badge only once the score has been checked against real outcomes: when it says 90%, it must be right about 9 times in 10. Until then show sources, not a number.
-4. **L3 later, behind its gate.** Moving to L3 needs the gate in the autonomy ladder: a shadow run, a known error rate and a tested escalation path, not an acceptance rate.

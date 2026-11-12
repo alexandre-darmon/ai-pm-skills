@@ -1,0 +1,7 @@
+---
+type: regex  # red line: an "I have reviewed this" checkbox or tick gets clicked unread; flagged items need an action each instead
+pattern: '(?:(?<!\b(no|not|never|without|avoid\w*|instead of|rather than|drop\w*|remov\w*|replac\w*|skip\w*|reject\w*|consider\w*|ban\w*|don[''’]t|do not|isn[''’]t|is not)\b[^\n.]{0,40})(\b(review|reviewed|attestation|attest|confirm\w*|required|mandatory|accuracy|sign[- ]?off)\b[^\n.]{0,10}\b(check ?box|tick ?box)\b|\b(tick|check)(s|ed|ing)?\b[^\n.]{0,6}\b(a|the|this)? ?box\b[^\n.]{0,15}\b(confirm|attest|stat|declar|certif)\w*|\b(ticks?|ticked|ticking|check|checks|checked|box|checkbox|tickbox|confirm|sign)\b[^\n.\"“]{0,30}[\"“]I( have|[''’]ve| confirm| attest| certify)\b[^\"”\n]{0,40}\b(reviewed|read|checked|verified|accurate|correct)|\b(check ?box|tick ?box)\b[^\n.]{0,10}[\"“]I( have|[''’]ve| confirm| attest| certify)\b[^\"”\n]{0,40}\b(reviewed|read|checked|verified|accurate|correct)|[\"“]I( have|[''’]ve| confirm| attest| certify)\b[^\"”\n]{0,40}\b(reviewed|read|checked|verified|accurate|correct)[^\"”\n]{0,30}[\"”] ?(check ?box|tick ?box|box)\b)(?![^\n.]*\b(gets?|is|are) (ticked|clicked|checked)|[^\n.]*\b(unread|without reading|trains?|rejected|removed|replaced|proves nothing|is not (a )?review|isn[''’]t (a )?review|theatre|theater)\b))(?![^\n.]{0,60}\b(is|are|isn[''’]t|aren[''’]t) (not |never )?(an option|allowed|permitted|acceptable|used)\b(?<!\b(is|are) (an option|allowed|permitted|acceptable|used)))'
+flags: i
+match: not_contains
+weight: 4
+---

@@ -63,6 +63,7 @@ def held(runs):  # [held, total]
     return runs[0] / runs[1] if runs[1] else None
 
 
+# Reads under root: keep check_generated.INPUTS in step with any new folder read here.
 def main(root=ROOT, draws=DRAWS):
     base = root / "baselines"
     regex, per_skill, models, costs = {}, [], set(), {}

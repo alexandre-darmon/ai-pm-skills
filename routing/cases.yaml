@@ -1,0 +1,344 @@
+# Routing cases: with every catalog skill and draft installed together, which skill should fire?
+# Each skill's own negative case tests it alone; these test the whole set at once, on the known collision zones.
+# expected: one skill name from skills/ or drafts/, or "none" for a request no skill should take.
+# zone: the collision zone the case probes (free text, used to group the report).
+# Requests are anonymised and never name a skill. Read by scripts/routing_check.py (free, lexical, CI)
+# and scripts/routing_eval.py (paid, the real model, by hand).
+cases:
+  # Specify or build: is it worth doing, can the model do it, which model
+  - id: route-001
+    zone: opportunity-spike-model
+    expected: ai-opportunity-assessment
+    request: >-
+      The head of operations came back from a conference wanting "an AI agent" for supplier invoice
+      disputes: about 6,000 a year, handled today by four people. Does this need an LLM, classic ML or
+      nothing at all? She wants a one-page answer before the steering committee next month.
+  - id: route-002
+    zone: opportunity-spike-model
+    expected: ai-feasibility-spike
+    request: >-
+      Before anyone writes a spec, I want to know whether a model can pull the 14 key clauses out of our
+      supplier contracts. I have 30 real contracts and two days with a coding agent. How do I set up the
+      test so the result actually means something?
+  - id: route-003
+    zone: opportunity-spike-model
+    expected: ai-feasibility-spike
+    request: >-
+      We ran a two-day prototype last week: the model routed 22 of 30 test emails to the right team. The
+      sponsor wants to put "the AI works" in the business case on the strength of it. How should I read
+      this result and write it up?
+  - id: route-004
+    zone: opportunity-spike-model
+    expected: model-selection
+    request: >-
+      Our mortgage document extractor runs on a 400-case test suite. The current model costs 4 cents per
+      document; a newer mid-size one scores two points lower at a quarter of the price, and hosting has
+      to stay in the EU. Which one do we go with, and how do we record the decision?
+  - id: route-005
+    zone: opportunity-spike-model
+    expected: ai-opportunity-assessment
+    request: >-
+      Our claims director wants generative AI to look at damage photos and set the reserve on its own,
+      on 40,000 claims a year. The business case says it will save 30% of handler time but nobody can say
+      where that figure comes from. What should I ask her before we commit any budget?
+
+  # Evaluate: build the evals, ship the change, or pick the model
+  - id: route-006
+    zone: evals-release-model
+    expected: model-selection
+    request: >-
+      Which model should we put in production for the KYC document checker? We scored three candidates
+      on our 250-case suite: A passes 94% at 0.9 cents a call, B passes 96% at 3 cents, C passes 91% at
+      0.3 cents. Latency matters for the branch staff.
+  - id: route-007
+    zone: evals-release-model
+    expected: build-evals
+    request: >-
+      The spec for our tax-letter classifier says "evaluation: to be defined". Engineering starts in three
+      weeks. What test set do we need, how many examples per category, and what pass rule should we sign
+      off on?
+  - id: route-008
+    zone: evals-release-model
+    expected: release-to-production
+    request: >-
+      Our provider is retiring the model version behind the underwriting assistant in 60 days and moving
+      us to its successor. Brokers use the assistant every day. How do we make the switch without hurting
+      them?
+  - id: route-009
+    zone: evals-release-model
+    expected: build-evals
+    request: >-
+      Business users say the contract summariser "works for them" and the thumbs-up rate is 82%, but the
+      legal team keeps finding mistakes. How do we settle, with numbers, whether it is good enough?
+  - id: route-010
+    zone: evals-release-model
+    expected: release-to-production
+    request: >-
+      We rewrote the system prompt of the HR policy assistant and its offline score went up three points.
+      Can we roll it out to all 12,000 employees on Monday?
+  - id: route-011
+    zone: evals-release-model
+    expected: build-evals
+    request: >-
+      Our invoice pipeline extracts fields, matches the purchase order, then posts. End-to-end accuracy is
+      78% against a 90% target and the team wants to swap the extraction model. How do we find out which
+      step is actually failing first?
+
+  # Evaluate: read the traces, label them, or count what people ask
+  - id: route-012
+    zone: traces-errors-conversations
+    expected: trace-review-tool
+    request: >-
+      Five underwriters must label 300 answers from the pricing assistant next week. Right now they paste
+      outputs into a spreadsheet and lose track of which version produced what. Can you spec a small app a
+      coding agent could build for them, and tell engineering what each call has to log?
+  - id: route-013
+    zone: traces-errors-conversations
+    expected: error-analysis
+    request: >-
+      We have 2,000 logged answers from the claims assistant and complaints are piling up. Nobody can say
+      what goes wrong. Someone suggests scoring helpfulness and tone from 1 to 5. Where do we really start?
+  - id: route-014
+    zone: traces-errors-conversations
+    expected: conversation-analysis
+    request: >-
+      Management wants to know what employees actually use the internal assistant for: 45,000
+      conversations last quarter. We need topics, volumes and which topics end unresolved, without
+      exposing anyone's personal data.
+  - id: route-015
+    zone: traces-errors-conversations
+    expected: error-analysis
+    request: >-
+      Reviewers left free-text notes on 180 bad answers from the credit memo drafter. How do we turn
+      those notes into categories we can count, cost and fix?
+  - id: route-016
+    zone: traces-errors-conversations
+    expected: conversation-analysis
+    request: >-
+      Every month we want to tag the customer chatbot's conversations by topic and by whether the issue
+      got solved. Is a small cheap model good enough to do the tagging, or do we need a frontier model?
+
+  # Build or prove: what the prototype becomes, its release, its record, its legal class
+  - id: route-017
+    zone: handover-release-card-act
+    expected: prototype-handover
+    request: >-
+      I built a contract-review prompt app with a coding agent for a two-week test. Twelve lawyers now use
+      it every day and their manager wants to keep it. Its planned end date was last Friday. What should
+      happen to it?
+  - id: route-018
+    zone: handover-release-card-act
+    expected: model-card-ai-registry
+    request: >-
+      The complaint triage system goes live on 1 December. Compliance wants its entry in the company AI
+      inventory, with the accuracy figures we will declare to users and when the thresholds were set. What
+      goes in it?
+  - id: route-019
+    zone: handover-release-card-act
+    expected: ai-act-classification
+    request: >-
+      HR wants a tool that ranks applicants' CVs and shortlists the top 20 for recruiters. Legal asks
+      whether this is high-risk under the European AI regulation and what it would oblige us to do.
+  - id: route-020
+    zone: handover-release-card-act
+    expected: release-to-production
+    request: >-
+      Engineering has rebuilt the claims triage tool properly and it passes the offline suite. How do we
+      put it in front of real adjusters: shadow mode first, a canary, an A/B test?
+  - id: route-021
+    zone: handover-release-card-act
+    expected: prototype-handover
+    request: >-
+      IT risk asks whether the notebook I wrote to pre-score supplier risk, which three buyers now run
+      every week, is in the ICT asset inventory. Engineering offers to take it over but asks what they
+      should rebuild.
+  - id: route-022
+    zone: handover-release-card-act
+    expected: ai-act-classification
+    request: >-
+      A vendor tells us its credit-scoring copilot is "fully AI Act compliant". What remains on us as the
+      bank that deploys it?
+
+  # Build or evaluate: design the agent, or test it
+  - id: route-023
+    zone: agent-design-evals
+    expected: agent-design-and-tooling
+    request: >-
+      The team wants to turn our refund-handling workflow into an agent and is already arguing about which
+      framework to use. What tools, permissions and stop conditions should it have before anyone picks one?
+  - id: route-024
+    zone: agent-design-evals
+    expected: agent-evals
+    request: >-
+      Our procurement agent creates purchase orders in the ERP. Twice last month it reported "done" and
+      nothing had been created. How do we test it before it is allowed to approve orders under 5,000 EUR
+      on its own?
+  - id: route-025
+    zone: agent-design-evals
+    expected: agent-design-and-tooling
+    request: >-
+      We are giving the collections agent a new "send email to customer" tool. What caps, approval steps
+      and permissions should that tool come with, and what should the agent log each time it uses it?
+  - id: route-026
+    zone: agent-design-evals
+    expected: agent-evals
+    request: >-
+      The mailbox agent reads supplier emails and will soon update bank details by itself. How do we
+      measure whether instructions hidden inside those emails can make it act?
+
+  # Build or specify: the prompt and its guardrails, or what the user sees
+  - id: route-027
+    zone: prompt-interaction
+    expected: system-prompt-and-guardrails
+    request: >-
+      Write the first system prompt for our pension assistant. It must refuse personalised investment
+      advice and never reveal the internal fee grid.
+  - id: route-028
+    zone: prompt-interaction
+    expected: ai-interaction-patterns
+    request: >-
+      Product design asks whether customers should see a "92% sure" badge next to each answer from the
+      insurance assistant, and how a customer corrects a wrong answer or reaches a human.
+  - id: route-029
+    zone: prompt-interaction
+    expected: system-prompt-and-guardrails
+    request: >-
+      A tester got the HR assistant to reveal salary bands by asking it to role-play. Our new input filter
+      blocks that trick but also blocks 8% of legitimate questions. Is the filter worth keeping?
+  - id: route-030
+    zone: prompt-interaction
+    expected: ai-interaction-patterns
+    request: >-
+      Branch advisers accept the assistant's suggested product without opening the sources. How should
+      the screen present sources and uncertainty so that they actually check?
+
+  # Evaluate or prove: watch quality, or respond to an incident
+  - id: route-031
+    zone: monitoring-incident
+    expected: production-evals-monitoring
+    request: >-
+      Our weekly sampled pass rate on the claims assistant dropped from 91% to 86% on a sample of 200.
+      The operations lead wants to roll back today. Is the drop real?
+  - id: route-032
+    zone: monitoring-incident
+    expected: ai-incident-playbook
+    request: >-
+      The customer chatbot told several customers that their policy covers flood damage when it does
+      not. Screenshots are on social media. What do we do in the next few hours, and whom do we have to
+      notify?
+  - id: route-033
+    zone: monitoring-incident
+    expected: production-evals-monitoring
+    request: >-
+      Go-live is in three weeks and nobody has written down how we will check answer quality once real
+      traffic arrives. The dashboard only shows latency, cost and thumbs.
+  - id: route-034
+    zone: monitoring-incident
+    expected: ai-incident-playbook
+    request: >-
+      Our agent starts acting without review next month and compliance wants the plan for when it takes a
+      wrong action: severity levels, who can roll it back, and the reporting deadlines.
+
+  # Prove: the assistant's KPIs, or its return
+  - id: route-035
+    zone: kpis-roi
+    expected: assistant-kpis-cost-per-outcome
+    request: >-
+      The sponsor wants "the dashboard" for our internal IT helpdesk assistant. Usage is up 40% since
+      spring but nobody knows whether it actually resolves anything. What should we track?
+  - id: route-036
+    zone: kpis-roi
+    expected: ai-roi-quantification
+    request: >-
+      The CFO is reviewing the 1.2 M EUR renewal of our underwriting assistant, live for a year, and asks
+      what it actually returned. We have handling times from before and after launch.
+  - id: route-037
+    zone: kpis-roi
+    expected: assistant-kpis-cost-per-outcome
+    request: >-
+      We pay per token and per seat for the claims assistant. Management wants one monthly cost figure
+      per useful result, split by line of business. How do we define it?
+
+  # One case per skill no zone above expects, each written against its closest neighbour
+  - id: route-038
+    zone: vendor-act
+    expected: ai-vendor-evaluation
+    request: >-
+      The document AI we bought for KYC files renews in March. The incumbent says 98% accuracy and "AI Act
+      ready"; two other bidders say the same. Procurement wants to know whether to renew or switch, and
+      what to put in the new contract.
+  - id: route-039
+    zone: judge-monitoring
+    expected: llm-judge-calibration
+    request: >-
+      A model grades 200 sampled answers a week for unsupported claims and reports 94% pass. Two
+      compliance officers relabelled 60 of those answers and disagree with the grader on 9. Can we keep
+      reporting 94% to the risk committee?
+  - id: route-040
+    zone: retrieval-errors
+    expected: retrieval-evaluation
+    request: >-
+      Our policy Q&A assistant searches 3,000 internal procedures and gets about one question in five
+      wrong, often quoting a superseded version. The team wants to switch to a bigger model. What should
+      we check first?
+  - id: route-041
+    zone: synthetic-evals
+    expected: synthetic-eval-data
+    request: >-
+      The mortgage pre-qualification assistant launches in two months. Legal will not release real chat
+      logs and the team wrote only 40 test questions. Someone suggests having a model write 2,000 more.
+      How do we do that without fooling ourselves?
+  - id: route-042
+    zone: prd-evals
+    expected: llm-feature-prd
+    request: >-
+      Engineering starts in three weeks on a feature that drafts replies to broker emails, which
+      underwriters edit and send. I need the PRD they will build from, including what happens when a
+      draft is wrong.
+  - id: route-043
+    zone: redesign-opportunity
+    expected: process-ai-redesign
+    request: >-
+      The COO set a 25% efficiency target on claims intake: 11 steps and 40 FTE from first notice of loss
+      to handler assignment. Which steps should the model take over, under what control, and what are our
+      options?
+  - id: route-044
+    zone: adoption-kpis
+    expected: ai-adoption-plan
+    request: >-
+      We rolled the drafting copilot out to 600 relationship managers three months ago. Only 140 open it
+      weekly and some accept every suggestion unedited. The second wave goes live in January: how do we
+      get real use, and what training does each role need?
+  - id: route-045
+    zone: data-retrieval
+    expected: ai-data-requirements
+    request: >-
+      Before the first users get access, the DPO wants a written list of what our claims summariser will read and keep:
+      claim files, medical reports, call notes, and the knowledge base it searches. Half the documents in
+      that base have no owner. What do we write down?
+
+  # Out of scope: no skill should fire
+  - id: route-046
+    zone: out-of-scope
+    expected: none
+    request: >-
+      I am running eight discovery interviews with claims handlers next week about their daily pain
+      points. Can you draft the interview guide?
+  - id: route-047
+    zone: out-of-scope
+    expected: none
+    request: >-
+      Write a SQL query that returns the monthly churn rate per region from our subscriptions table.
+  - id: route-048
+    zone: out-of-scope
+    expected: none
+    request: >-
+      Checkout conversion on our website dropped from 3.1% to 2.6% after the redesign. How should we
+      analyse what happened?
+  - id: route-049
+    zone: monitoring-incident
+    expected: ai-incident-playbook
+    request: >-
+      Since this morning our claims assistant has been telling customers that water damage is excluded
+      when it is covered. Dozens of answers went out. What do we do now: contain it, roll back, decide
+      whether this is a serious incident we must report and by when, and make sure it cannot happen again?
