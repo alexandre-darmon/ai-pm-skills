@@ -25,7 +25,7 @@ jobs:
       - name: Package
         run: |
           DATE=$(git log -1 --format=%cs "$GITHUB_REF_NAME")
-          python scripts/package_skills.py --date "$DATE" | tee dist/SHA256SUMS
+          python scripts/package_skills.py --date "$DATE"  # writes dist/*.zip and dist/SHA256SUMS
       - name: Upload to the release
         env:
           GH_TOKEN: ${{ github.token }}
