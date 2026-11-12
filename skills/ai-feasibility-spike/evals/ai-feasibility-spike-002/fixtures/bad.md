@@ -1,0 +1,1 @@
+Here is a plan for the week. Monday: export the 2,000 complaints from the CRM and clean the spreadsheet. Tuesday: run them through the API with a prompt that drafts a first response. Wednesday: read 100 drafts and score them. Thursday: tune the prompt. Friday: compute the share of good drafts and present it. Keep the spreadsheet on your laptop and delete it afterwards.

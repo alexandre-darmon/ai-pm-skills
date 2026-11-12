@@ -1,16 +1,18 @@
 ---
 name: ai-vendor-evaluation
 description: 'Choose or renew a bought AI product or vendor (copilot, chatbot, document AI) on your own bake-off, cost per correct outcome and contract terms. Use for an RFP, a vendor demo or claim, a renewal.'
-stage: evaluate
-version: 0.2.0
-last_verified: 2026-11-09
-legal: true
-depends_on: [build-evals]
-feeds: [ai-act-classification, production-evals-monitoring, model-card-ai-registry]
-autonomy_relevant: true
-sources: [dora, gdpr, eu-ai-act, eu-digital-omnibus-ai, miller-error-bars, wilson-interval, zhu-agentic-benchmarks, zhang-gsm1k, repo-yoseph, own-vendor-selection]
-eval_threshold: 0.90
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "evaluate"
+  version: "0.2.0"
+  status: "tested"
+  eval_threshold: "0.90"
+  legal: "true"
+  last_verified: "2026-11-09"
+  autonomy_relevant: "true"
+  depends_on: "build-evals"
+  feeds: "ai-act-classification, production-evals-monitoring, model-card-ai-registry"
+  sources: "dora, gdpr, eu-ai-act, eu-digital-omnibus-ai, miller-error-bars, wilson-interval, zhu-agentic-benchmarks, zhang-gsm1k, repo-yoseph, own-vendor-selection"
 ---
 
 # ai-vendor-evaluation

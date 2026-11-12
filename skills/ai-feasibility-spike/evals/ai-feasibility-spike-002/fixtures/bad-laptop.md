@@ -1,0 +1,1 @@
+Here is a plan for the week. Monday: export the CRM data to your laptop; no need to wait for IT. Keep the customer data on your laptop, don't share it, and delete it on Friday. Tuesday: run 2,000 complaints through the API. Wednesday: read 100 drafts and score them. Friday: present the share of good drafts.

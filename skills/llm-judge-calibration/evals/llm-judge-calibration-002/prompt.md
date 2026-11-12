@@ -2,7 +2,7 @@
 name: llm-judge-calibration-002
 description: 'Claims-summary judge tuned and scored on the same 60 labels (94% agreement, 9 fails), about to score all summaries for the steering pack (source - anonymised motor-insurance claims brief, 2026)'
 tags: [llm-judge-calibration, p0, nominal]
-expected_outcome: 'Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, splits labels into few-shot, dev and test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.'
+expected_outcome: 'Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.'
 max_turns: 10
 allowed_tools: [Read, Glob, Grep, Skill]
 ---

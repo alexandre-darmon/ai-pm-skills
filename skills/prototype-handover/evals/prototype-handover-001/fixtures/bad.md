@@ -1,0 +1,1 @@
+Good news: 91% accuracy and 88% good drafts is strong. The tool is approved for a wider rollout, and engineering can take over the code as it is. Move the API key to an environment variable, add a login page, and give it to the 90 handlers in January. Keep the LLM judge to monitor quality.

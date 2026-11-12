@@ -1,16 +1,18 @@
 ---
 name: model-card-ai-registry
 description: 'Write an AI system''s model card and registry entry as its eval record: results per class with intervals, set, judge, signed thresholds, limits, monitoring. Use at go-live, a new version or an audit.'
-stage: prove
-version: 0.3.0
-last_verified: 2026-11-09
-legal: true
-depends_on: [build-evals, error-analysis, llm-judge-calibration, production-evals-monitoring, release-to-production, ai-act-classification]
-feeds: [release-to-production, ai-incident-playbook]
-autonomy_relevant: true
-sources: [mitchell-model-cards, eu-ai-act, wilson-interval, miller-error-bars, husain-shankar-evals, own-registry, repo-chanmeng, repo-yoseph]
-eval_threshold: 0.90
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "prove"
+  version: "0.3.0"
+  status: "tested"
+  eval_threshold: "0.90"
+  legal: "true"
+  last_verified: "2026-11-09"
+  autonomy_relevant: "true"
+  depends_on: "build-evals, error-analysis, llm-judge-calibration, production-evals-monitoring, release-to-production, ai-act-classification"
+  feeds: "release-to-production, ai-incident-playbook"
+  sources: "mitchell-model-cards, eu-ai-act, wilson-interval, miller-error-bars, husain-shankar-evals, own-registry, repo-chanmeng, repo-yoseph"
 ---
 
 # model-card-ai-registry

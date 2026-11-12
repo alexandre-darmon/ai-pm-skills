@@ -1,14 +1,16 @@
 ---
 name: process-ai-redesign
 description: 'Redesign a business process with AI: autonomy level and gate per step, three scenarios with ROI lines, trade-offs, migration path. Use for "automate this process" or an efficiency target.'
-stage: specify
-version: 0.2.0
-depends_on: [ai-opportunity-assessment, conversation-analysis, ai-roi-quantification, ai-act-classification, agent-design-and-tooling]
-feeds: [ai-opportunity-assessment, ai-adoption-plan, agent-design-and-tooling, build-evals]
-autonomy_relevant: true
-sources: [hammer-reengineering, own-process-redesign, repo-chanmeng]
-eval_threshold: 0.90
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "specify"
+  version: "0.2.0"
+  status: "tested"
+  eval_threshold: "0.90"
+  autonomy_relevant: "true"
+  depends_on: "ai-opportunity-assessment, conversation-analysis, ai-roi-quantification, ai-act-classification, agent-design-and-tooling"
+  feeds: "ai-opportunity-assessment, ai-adoption-plan, agent-design-and-tooling, build-evals"
+  sources: "hammer-reengineering, own-process-redesign, repo-chanmeng"
 ---
 
 # process-ai-redesign

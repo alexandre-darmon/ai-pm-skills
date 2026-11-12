@@ -1,0 +1,269 @@
+{
+  "skill": "trace-review-tool",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-11",
+  "casesHash": "621f54aa0a21f1e9f4f3f956efcca2ece9dd6d32b6dc99fbf97e4ad5781e8043",
+  "partial": false,
+  "costUsd": 1.6821985000000002,
+  "cases": {
+    "trace-review-tool-001": {
+      "score": 0.8888888888888888,
+      "scoreWithout": 0.25925925925925924,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "approved-storage": [
+          3,
+          0
+        ],
+        "interval": [
+          3,
+          0
+        ],
+        "leak-bound": [
+          3,
+          0
+        ],
+        "mask-before-load": [
+          3,
+          1
+        ],
+        "override": [
+          1,
+          0
+        ],
+        "random-rate": [
+          2,
+          0
+        ],
+        "reviewer-identity": [
+          3,
+          3
+        ],
+        "sampling-separate": [
+          3,
+          1
+        ],
+        "timestamp": [
+          3,
+          2
+        ]
+      },
+      "costPerAnswer": [
+        0.07556890000000001,
+        0.05670333333333333
+      ],
+      "delta": 0.6296296296296295
+    },
+    "trace-review-tool-002": {
+      "score": 0.9814814814814815,
+      "scoreWithout": 0.7962962962962963,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "art-19": [
+          3,
+          3
+        ],
+        "art-26-6": [
+          3,
+          3
+        ],
+        "financial-institution": [
+          2,
+          3
+        ],
+        "guardrail-hits": [
+          3,
+          2
+        ],
+        "high-risk": [
+          3,
+          3
+        ],
+        "join-key": [
+          3,
+          3
+        ],
+        "labels-as-logs": [
+          3,
+          0
+        ],
+        "omnibus-date": [
+          3,
+          3
+        ],
+        "override": [
+          3,
+          1
+        ],
+        "prompt-version": [
+          3,
+          3
+        ],
+        "provider-or-both": [
+          3,
+          1
+        ],
+        "redline-no-verdict": [
+          3,
+          3
+        ],
+        "retrieved-ids": [
+          3,
+          3
+        ],
+        "six-months": [
+          3,
+          3
+        ],
+        "tokens-cost": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.05935033333333333,
+        0.04643333333333333
+      ],
+      "delta": 0.18518518518518523
+    },
+    "trace-review-tool-003": {
+      "score": 0.9375,
+      "scoreWithout": 0.5208333333333334,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "approved-storage": [
+          3,
+          0
+        ],
+        "ict-asset-first": [
+          3,
+          0
+        ],
+        "leak-bound": [
+          3,
+          0
+        ],
+        "leak-check": [
+          3,
+          0
+        ],
+        "mask-in-export": [
+          3,
+          0
+        ],
+        "placeholders": [
+          3,
+          1
+        ],
+        "redline-mask-before-load": [
+          3,
+          3
+        ],
+        "redline-reviewer-identity": [
+          3,
+          3
+        ],
+        "reviewer-identity": [
+          3,
+          0
+        ],
+        "source-system": [
+          0,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.07220976666666667,
+        0.045524666666666665
+      ],
+      "delta": 0.41666666666666663
+    },
+    "trace-review-tool-004": {
+      "score": 0.8666666666666667,
+      "scoreWithout": 0.6,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "binary": [
+          3,
+          0
+        ],
+        "cost-per-correct": [
+          2,
+          0
+        ],
+        "expert-first": [
+          3,
+          3
+        ],
+        "interval": [
+          3,
+          3
+        ],
+        "rate-from-random": [
+          3,
+          3
+        ],
+        "review-cost": [
+          3,
+          3
+        ],
+        "reviewer-identity": [
+          3,
+          2
+        ],
+        "sampling-separate": [
+          3,
+          2
+        ],
+        "split": [
+          0,
+          0
+        ],
+        "targeted-overcount": [
+          3,
+          2
+        ]
+      },
+      "costPerAnswer": [
+        0.07574183333333333,
+        0.04906666666666667
+      ],
+      "delta": 0.2666666666666667
+    },
+    "trace-review-tool-005": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.039848666666666664,
+        0.04028533333333333
+      ]
+    }
+  },
+  "skillHash": "0131efc10e80d66468850b27c74df489265fe616d70459501cb95ce5a49bde34",
+  "meanDelta": 0.374537037037037,
+  "failures": []
+}

@@ -13,8 +13,11 @@ misses in any run with the skill, a negative case fires the skill, or its mean d
 is under 10 points (negative cases left out: without the skill they cannot fire).
 The report also lists graders that do not tell the two arms apart (a warning, not a failure).
 
-Writes eval-out/<skill>.json (the baseline format: commit it to baselines/ to
-freeze a baseline) and prints a Markdown summary, also to $GITHUB_STEP_SUMMARY.
+Writes eval-out/<skill>.json and prints a Markdown summary, also to $GITHUB_STEP_SUMMARY.
+A recorded run (--runs 3 or more, or a regrade of one on the same skill text) also
+replaces baselines/<skill>.json, pass or fail, and appends a line to
+baselines/history.jsonl: the validator shows a catalog skill only with a passing
+recorded run on its current text and cases, so rerunning until a pass shows in the log.
 Every paid run also saves each run's final answer to eval-out/answers/<skill>/.
 --regrade re-scores those saved answers with the current graders: no model call,
 no cost. It checks grader changes only; after a change to the skill itself the
@@ -22,7 +25,6 @@ answers are stale, and the report says so.
 Exits 1 if a skill fails.
 """
 import argparse
-import hashlib
 import json
 import os
 import subprocess
@@ -30,7 +32,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from validate_skills import read_frontmatter, regex_passes, run_js_regex  # noqa: E402
+from validate_skills import (RECORD_RUNS, cases_hash, read_frontmatter, read_skill, regex_passes,  # noqa: E402
+                             run_js_regex, skill_hash)
 
 ROOT = Path(__file__).parent.parent
 MODEL = "claude-sonnet-5-5"
@@ -46,16 +49,6 @@ def changed_skills(base: str) -> list[Path]:
     folders = {ROOT / p.split("/")[0] / p.split("/")[1] for p in names
                if p.split("/")[0] in ("skills", "drafts") and p.count("/") >= 2}
     return sorted(f for f in folders if (f / "SKILL.md").is_file())
-
-
-def cases_hash(folder: Path) -> str:
-    """Fingerprint of the cases and graders: a change means stored "without" scores are stale."""
-    h = hashlib.sha256()
-    evals = folder / "evals"
-    # results/ is output and fixtures/ is only read by the validator: neither changes a run.
-    for f in sorted(p for p in evals.rglob("*") if p.is_file() and not {"results", "fixtures"} & set(p.relative_to(evals).parts)):
-        h.update(str(f.relative_to(evals)).encode() + b"\0" + f.read_bytes())
-    return h.hexdigest()
 
 
 def skill_check(grader: dict) -> str | None:
@@ -162,14 +155,6 @@ def warnings(summary: dict) -> list[str]:
     return found
 
 
-def skill_hash(folder: Path) -> str:
-    """Fingerprint of what the agent reads (SKILL.md, references, templates): a change makes saved answers stale."""
-    h = hashlib.sha256()
-    for f in sorted(p for p in folder.rglob("*") if p.is_file() and "evals" not in p.relative_to(folder).parts):
-        h.update(str(f.relative_to(folder)).encode() + b"\0" + f.read_bytes())
-    return h.hexdigest()
-
-
 def final_answer(trace: str | None) -> str:
     path = Path(trace) if trace else None
     if not path or not path.is_file():
@@ -188,7 +173,7 @@ def save_answers(result: dict, folder: Path, out: Path) -> None:
                 name = f"{case['name']}/{arm}-{i}.md"
                 (out / name).parent.mkdir(parents=True, exist_ok=True)
                 (out / name).write_text(final_answer(r.get("tracePath")), encoding="utf-8")
-                runs.setdefault(case["name"], {}).setdefault(arm, []).append({"file": name, "error": r.get("error"), "graders": {
+                runs.setdefault(case["name"], {}).setdefault(arm, []).append({"file": name, "error": r.get("error"), "costUsd": r.get("costUsd"), "graders": {
                     g["name"]: g["passed"] for g in r.get("graders", []) if g["name"] not in regex}})
     meta = {"startedAt": result.get("startedAt"), "claudeVersion": result.get("claudeVersion"), "skillHash": skill_hash(folder)}
     (out / "runs.json").write_text(json.dumps({**meta, "cases": runs}, indent=2) + "\n")
@@ -208,6 +193,9 @@ def case_graders(folder: Path, case: str) -> list[dict]:
 def regrade(folder: Path, answers: Path) -> dict:
     """Score saved answers with the current graders, in the harness result format. Tool graders keep their recorded result."""
     saved = json.loads((answers / "runs.json").read_text())
+    raw = answers.parent.parent / f"{answers.name}.raw.json"  # answers saved before costs were kept: read them from the raw result
+    raw_costs = {(c["name"], arm, i): r.get("costUsd") for c in json.loads(raw.read_text()).get("cases", [])
+                 for arm, rs in (c.get("arms") or {}).items() for i, r in enumerate(rs)} if raw.is_file() else {}
     cases = []
     for name, arms in saved["cases"].items():
         graders = case_graders(folder, name)
@@ -216,14 +204,31 @@ def regrade(folder: Path, answers: Path) -> dict:
         for arm, rs in arms.items():
             texts = [(answers / r["file"]).read_text(encoding="utf-8") for r in rs]
             res = run_js_regex([(g["config"]["pattern"], str(g["config"].get("flags", ""))) for g in regex], texts) if regex else []
-            out_arms[arm] = [{"error": r["error"], "graders": [
+            out_arms[arm] = [{"error": r["error"], "costUsd": r.get("costUsd", raw_costs.get((name, arm, i))), "graders": [
                 {"name": g["name"], "weight": g["weight"], "passed": not isinstance(res[k], str) and regex_passes(g["config"], *res[k][i])}
                 for k, g in enumerate(regex)] + [
                 {"name": g["name"], "weight": g["weight"], "passed": r["graders"][g["name"]]}
                 for g in graders if g["type"] != "regex" and g["name"] in r["graders"]]} for i, r in enumerate(rs)]
         cases.append({"name": name, "graders": graders, "arms": out_arms})
     return {"cases": cases, "partial": False, "costUsd": 0, "claudeVersion": saved.get("claudeVersion"),
-            "startedAt": saved.get("startedAt"), "stale": saved.get("skillHash") != skill_hash(folder)}
+            "startedAt": saved.get("startedAt"), "skillHash": saved.get("skillHash"),
+            "stale": saved.get("skillHash") != skill_hash(folder)}
+
+
+def record(summary: dict, failures: list[str], kind: str) -> bool:
+    """Keep the last recorded run of a skill, pass or fail, and log it: the evidence gate reads baselines/<skill>.json."""
+    runs = [c["runs"] for c in summary["cases"].values()]
+    if not runs or min(runs) < RECORD_RUNS or summary.get("stale"):
+        return False
+    summary["failures"] = failures
+    base = ROOT / "baselines"
+    (base / f"{summary['skill']}.json").write_text(json.dumps(summary, indent=2) + "\n")
+    line = {"skill": summary["skill"], "kind": kind, "date": summary.get("date"), "pass": not failures,
+            "meanDelta": None if summary.get("meanDelta") is None else round(summary["meanDelta"], 4),
+            "skillHash": summary["skillHash"][:12], "casesHash": summary["casesHash"][:12], "failures": failures}
+    with open(base / "history.jsonl", "a", encoding="utf-8") as f:
+        f.write(json.dumps(line) + "\n")
+    return True
 
 
 def load_baseline(skill: str, chash: str) -> dict | None:
@@ -236,7 +241,7 @@ def load_baseline(skill: str, chash: str) -> dict | None:
 
 def evaluate(folder: Path, full: bool, out: Path, runs: int = 1, offline: bool = False, jobs: int = 1,
              max_cost: float = MAX_COST_USD) -> tuple[dict, list[str], str]:
-    fm, _ = read_frontmatter(folder / "SKILL.md")
+    fm, _ = read_skill(folder / "SKILL.md")
     skill, threshold = fm["name"], float(fm["eval_threshold"])
     chash = cases_hash(folder)
     answers = out / "answers" / skill
@@ -245,8 +250,9 @@ def evaluate(folder: Path, full: bool, out: Path, runs: int = 1, offline: bool =
             return {"skill": skill, "cases": {}}, [f"no saved answers in {answers}: run a paid eval first"], "regrade"
         result = regrade(folder, answers)
         summary = summarise(result, skill, chash)
-        summary["regraded"], summary["stale"] = True, result["stale"]
+        summary["regraded"], summary["stale"], summary["skillHash"] = True, result["stale"], result["skillHash"]
         failures = verdict(summary, threshold, load_baseline(skill, chash))
+        record(summary, failures, "regrade")
         return summary, failures, "regrade"
     baseline = None if full else load_baseline(skill, chash)
     ablation = "none" if baseline else "with-without"
@@ -261,8 +267,10 @@ def evaluate(folder: Path, full: bool, out: Path, runs: int = 1, offline: bool =
     result = json.loads(raw.read_text())
     save_answers(result, folder, answers)
     summary = summarise(result, skill, chash)
+    summary["skillHash"] = skill_hash(folder)
     failures = verdict(summary, threshold, baseline)
-    (out / f"{skill}.json").write_text(json.dumps(summary, indent=2) + "\n")
+    (out / f"{skill}.json").write_text(json.dumps({**summary, "failures": failures}, indent=2) + "\n")
+    record(summary, failures, "full" if full else "with-arm")
     return summary, failures, ablation
 
 

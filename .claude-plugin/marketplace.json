@@ -15,24 +15,30 @@
       "strict": false,
       "skills": [
         "./skills/agent-design-and-tooling",
+        "./skills/agent-evals",
         "./skills/ai-act-classification",
         "./skills/ai-adoption-plan",
         "./skills/ai-data-requirements",
+        "./skills/ai-feasibility-spike",
         "./skills/ai-opportunity-assessment",
         "./skills/ai-roi-quantification",
         "./skills/ai-vendor-evaluation",
         "./skills/assistant-kpis-cost-per-outcome",
         "./skills/build-evals",
         "./skills/conversation-analysis",
+        "./skills/error-analysis",
         "./skills/llm-feature-prd",
         "./skills/llm-judge-calibration",
         "./skills/model-card-ai-registry",
         "./skills/model-selection",
         "./skills/process-ai-redesign",
+        "./skills/production-evals-monitoring",
+        "./skills/prototype-handover",
         "./skills/release-to-production",
         "./skills/retrieval-evaluation",
         "./skills/synthetic-eval-data",
-        "./skills/system-prompt-and-guardrails"
+        "./skills/system-prompt-and-guardrails",
+        "./skills/trace-review-tool"
       ]
     },
     {
@@ -42,6 +48,15 @@
       "strict": false,
       "skills": [
         "./skills/agent-design-and-tooling"
+      ]
+    },
+    {
+      "name": "agent-evals",
+      "description": "Test an agent that calls tools or acts on systems and gate its autonomy on measured reliability. Use for \"how do we test our agent?\", a level change, a new tool, or \"it says done, nothing changed\".",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/agent-evals"
       ]
     },
     {
@@ -69,6 +84,15 @@
       "strict": false,
       "skills": [
         "./skills/ai-data-requirements"
+      ]
+    },
+    {
+      "source": "./",
+      "strict": false,
+      "name": "ai-feasibility-spike",
+      "description": "Use when someone wants to prototype or spike an AI feature or agent on the real model before a PRD, or has spike results to read, write up as a go note or offer as validation evidence.",
+      "skills": [
+        "./skills/ai-feasibility-spike"
       ]
     },
     {
@@ -109,7 +133,7 @@
     },
     {
       "name": "build-evals",
-      "description": "Build or review the eval set, graders, thresholds and baseline that say if an AI feature works. Use for an eval stub, a suite to review, a release gate, disputed quality, or which pipeline step fails.",
+      "description": "Build or review AI eval sets, graders, thresholds. For an eval stub, disputed quality, which pipeline step fails, a costly class at N of M just over its signed bar. Not to pick between scored models.",
       "source": "./",
       "strict": false,
       "skills": [
@@ -123,6 +147,15 @@
       "strict": false,
       "skills": [
         "./skills/conversation-analysis"
+      ]
+    },
+    {
+      "source": "./",
+      "strict": false,
+      "name": "error-analysis",
+      "description": "Turn an AI feature's traces or reviewers' notes into counted, priced failure modes before any metric or judge. Use for unexplained bad answers, \"what should we measure?\", or notes to group.",
+      "skills": [
+        "./skills/error-analysis"
       ]
     },
     {
@@ -171,6 +204,24 @@
       ]
     },
     {
+      "source": "./",
+      "strict": false,
+      "name": "production-evals-monitoring",
+      "description": "Watch an AI feature's answer quality in production (samples, judges, alerts, drift). Use before go-live, for a post-market monitoring plan, or when a pass rate drops and someone wants to roll back.",
+      "skills": [
+        "./skills/production-evals-monitoring"
+      ]
+    },
+    {
+      "source": "./",
+      "strict": false,
+      "name": "prototype-handover",
+      "description": "Decide what a PM-built AI prototype becomes: rebuilt by engineers, registered at its EUC tier, or retired. Use when a prototype gets users, nears its kill date, or someone asks to keep it.",
+      "skills": [
+        "./skills/prototype-handover"
+      ]
+    },
+    {
       "name": "release-to-production",
       "description": "Plan the release of an AI change (prompt, model, KB) through offline eval, shadow, canary and A/B if the sample allows. Use for \"can we ship this?\" or a provider model update.",
       "source": "./",
@@ -204,6 +255,15 @@
       "strict": false,
       "skills": [
         "./skills/system-prompt-and-guardrails"
+      ]
+    },
+    {
+      "source": "./",
+      "strict": false,
+      "name": "trace-review-tool",
+      "description": "Spec the thin trace-labelling app a coding agent builds for domain experts, and the fields each model call must log. Use for \"build us a labelling tool\" or before experts review outputs.",
+      "skills": [
+        "./skills/trace-review-tool"
       ]
     }
   ]

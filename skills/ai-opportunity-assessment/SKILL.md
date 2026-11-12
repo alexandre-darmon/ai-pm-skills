@@ -1,14 +1,16 @@
 ---
 name: ai-opportunity-assessment
 description: 'Decide in one page if an AI idea deserves a PRD, in which form, and what to ask the sponsor: a dated pilot, stop conditions, an evidence plan. Use for "should we do this with AI?" or an AI pitch.'
-stage: specify
-version: 0.3.0
-depends_on: []
-feeds: [llm-feature-prd, build-evals, ai-act-classification, ai-roi-quantification]
-autonomy_relevant: true
-sources: [cagan-inspired, fitzpatrick-mom-test, miller-error-bars, own-enterprise-checklist, repo-chanmeng, repo-vishalhabib, repo-yoseph]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "specify"
+  version: "0.4.0"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "true"
+  depends_on: ""
+  feeds: "llm-feature-prd, ai-feasibility-spike, build-evals, ai-act-classification, ai-roi-quantification"
+  sources: "cagan-inspired, fitzpatrick-mom-test, miller-error-bars, own-enterprise-checklist, repo-chanmeng, repo-vishalhabib, repo-yoseph"
 ---
 
 # ai-opportunity-assessment
@@ -20,6 +22,7 @@ status: tested
 - A draft pitch or business case for an AI project carries a gain nobody can trace.
 - Do not use once the go is decided and the pilot funded: write the PRD with `llm-feature-prd`.
 - Do not use to compute the return of a system already live: that is `ai-roi-quantification`.
+- Do not use to build or run the prototype itself on the model: that is `ai-feasibility-spike`.
 
 ## Inputs
 Mandatory: the problem in the business's words, who suffers it and how often, the current process and its cost.
@@ -34,7 +37,7 @@ If the data situation is unknown, score readiness as unknown and the decision ca
 5. Recommend build, buy or API with the reason (data sensitivity, differentiation, time to value, run cost).
 6. State the cost of a wrong answer: what breaks, who catches it and how long it stays uncaught. Then give the target autonomy level for the use case as a whole, as defined in references/autonomy-ladder.md (read it first). That cost caps the level: if a wrong output can reach a customer or become irreversible before anyone sees it, L3 and above are out, whatever accuracy is hoped for. A low tolerance for error changes the design (cited sources, human confirmation), not by itself the decision. Start low: a new use case rarely launches above L2.
 7. Flag first risks: personal data, employees affected, a possible AI Act high-risk domain. Name them on the page before any ask: a sponsor who learns them later withdraws. Each goes to its owner with the question to settle before money is spent: `ai-act-classification` and counsel for the classification, the DPO for personal data.
-8. Decide: go, no-go or explore, with the next step and its owner.
+8. Decide: go, no-go or explore, with the next step and its owner. On explore, when the open question is whether the model can do the task well enough and at what cost, the next step is a time-boxed spike with `ai-feasibility-spike`; when it is a data gap, it is the data task from step 3.
 9. Anchor every number. A gain is volume × quality × unit value − run cost − change cost (references/roi-model.md). Before deployment it is a projection: label it and give a low and a high value for its weakest line. When that line is a measured rate, take the bounds of its 95% interval (references/eval-statistics.md): 82% on 200 test cases reads 76% to 87%. A percentage with no lines behind it is rewritten from the lines or removed, and the page says which. Testers liking a prototype is not quality: quality is the share of sampled outputs judged correct. Hours freed are capacity, not cash, until someone removes a cost. Show what the sponsor is choosing between: the ask, doing nothing, the non-AI alternative, with figures where known and "not costed" elsewhere.
 10. On go or explore, write the evidence plan that will decide go or stop:
     - the deciding metric per question class: quality on the classes that carry the cost of a wrong answer (step 6), plus the baseline lines still unknown (volume today, time per case, current error rate);
@@ -61,7 +64,7 @@ If the data situation is unknown, score readiness as unknown and the decision ca
 - Never call the initiative compliant: risk flags go to `ai-act-classification`, counsel and the DPO.
 
 ## Links
-references/autonomy-ladder.md · references/roi-model.md · references/eval-statistics.md · llm-feature-prd · build-evals · ai-act-classification · ai-roi-quantification
+references/autonomy-ladder.md · references/roi-model.md · references/eval-statistics.md · llm-feature-prd · ai-feasibility-spike · build-evals · ai-act-classification · ai-roi-quantification
 
 ## Sources
 - cagan-inspired: value and feasibility risks structure the assessment.

@@ -1,16 +1,18 @@
 ---
 name: ai-act-classification
 description: Classify an AI use case under the EU AI Act (role, risk category, obligations, questions for counsel). Use for a new AI use case, an autonomy level change, or a vendor's AI Act claim.
-stage: prove
-version: 0.3.0
-last_verified: 2026-11-04
-legal: true
-depends_on: [ai-opportunity-assessment, llm-feature-prd, system-prompt-and-guardrails]
-feeds: [model-card-ai-registry, production-evals-monitoring, ai-vendor-evaluation, process-ai-redesign]
-autonomy_relevant: true
-sources: [eu-ai-act, ec-ai-act-guidelines, cnil-ai, gdpr, eu-digital-omnibus-ai, fr-ai-act-implementation, repo-vishalhabib]
-eval_threshold: 0.90
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "prove"
+  version: "0.3.0"
+  status: "tested"
+  eval_threshold: "0.90"
+  legal: "true"
+  last_verified: "2026-11-04"
+  autonomy_relevant: "true"
+  depends_on: "ai-opportunity-assessment, llm-feature-prd, system-prompt-and-guardrails"
+  feeds: "model-card-ai-registry, production-evals-monitoring, ai-vendor-evaluation, process-ai-redesign"
+  sources: "eu-ai-act, ec-ai-act-guidelines, cnil-ai, gdpr, eu-digital-omnibus-ai, fr-ai-act-implementation, repo-vishalhabib"
 ---
 
 # ai-act-classification

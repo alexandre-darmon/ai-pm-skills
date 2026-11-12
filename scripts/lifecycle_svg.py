@@ -16,16 +16,18 @@ ROOT = Path(__file__).resolve().parent.parent
 INK, MUTED, FAINT, BORDER, VIOLET = "#0A0A0A", "#5F5F66", "#6B6B70", "#E3E1E8", "#8C52EE"
 STAGES = [
     ("Specify", "What correct means", ["ai-opportunity-assessment", "llm-feature-prd", "process-ai-redesign", "ai-data-requirements",
-                                       "agent-design-and-tooling", "system-prompt-and-guardrails", "ai-interaction-patterns"]),
+                                       "ai-interaction-patterns"]),
+    ("Build", "Build to learn", ["ai-feasibility-spike", "system-prompt-and-guardrails", "agent-design-and-tooling",
+                                 "trace-review-tool", "prototype-handover"]),
     ("Evaluate", "Offline and online", ["error-analysis", "build-evals", "llm-judge-calibration", "synthetic-eval-data", "agent-evals",
                                         "retrieval-evaluation", "model-selection", "ai-vendor-evaluation", "release-to-production",
                                         "production-evals-monitoring", "conversation-analysis"]),
     ("Prove", "To sponsor and regulator", ["assistant-kpis-cost-per-outcome", "ai-roi-quantification", "ai-act-classification",
                                            "model-card-ai-registry", "ai-incident-playbook", "ai-adoption-plan"]),
 ]
-TAGLINE = "Evals as evidence for AI product managers in regulated companies."
+TAGLINE = "Evals as evidence for AI PMs who build, in regulated companies."
 W, MARGIN, GAP = 1280, 56, 24
-COL = (W - 2 * MARGIN - 2 * GAP) / 3
+COL = (W - 2 * MARGIN - (len(STAGES) - 1) * GAP) / len(STAGES)
 
 
 class Text:
@@ -81,12 +83,12 @@ def main(fonts):
     banner(sans, medium, mono, re.search(r"<g transform.*?</g>", (ROOT / "assets/banner.svg").read_text(), re.S).group(0))
 
     y0 = 156
-    H = y0 + 124 + max(len(sk) for _, _, sk in STAGES) * 26 + 40
+    H = y0 + 124 + max(len(sk) for _, _, sk in STAGES) * 26 + 64
     out = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="AI PM Skills: three blocks and their {len(known)} skills">',
-        f"<title>AI PM Skills: three blocks and their {len(known)} skills</title>",
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" role="img" aria-label="AI PM Skills: four blocks in a loop and their {len(known)} skills">',
+        f"<title>AI PM Skills: four blocks in a loop and their {len(known)} skills</title>",
         *background(H),
-        mono(f"Evals as evidence · 3 blocks · {len(known)} skills", MARGIN, 56, 18, FAINT),
+        mono(f"Evals as evidence · {len(STAGES)} blocks · {len(known)} skills", MARGIN, 56, 18, FAINT),
         logo,
         medium("AI PM Skills", MARGIN + 66, 106, 40, INK),
     ]
@@ -94,17 +96,22 @@ def main(fonts):
         x = MARGIN + i * (COL + GAP)
         out += [mono(f"{i + 1:02d}", x, y0 + 16, 15, VIOLET), mono(stage, x + 28, y0 + 16, 15, FAINT)]
         out.append(f'<rect x="{x + 0.5}" y="{y0 + 30.5}" width="{COL - 1}" height="63" rx="14" fill="#FFFFFF" stroke="{BORDER}"/>')
-        out.append(medium(title, x + 18, y0 + 69, 22, INK))
+        out.append(medium(title, x + 16, y0 + 69, 20, INK))
         if i < len(STAGES) - 1:
             ax, ay = x + COL + 5, y0 + 62
             out.append(f'<path d="M{ax} {ay}h{GAP - 10}m-5 -4l5 4l-5 4" fill="none" stroke="{FAINT}" stroke-width="1.4"/>')
         for j, skill in enumerate(skills):
             y = y0 + 124 + j * 26
-            out += [marker(x + 1, y, skill in tested), mono(skill, x + 18, y, 13.5, INK if skill in tested else FAINT)]
-    x, y = MARGIN + 2 * (COL + GAP), y0 + 124 + (len(STAGES[2][2]) + 1) * 26
-    out += [marker(x + 1, y, True), mono("tested", x + 18, y, 13.5, INK)]
-    out += [marker(x + 1, y + 26, False), mono("draft, not in the catalog yet", x + 18, y + 26, 13.5, FAINT)]
-    out += [sans("Run with", x, y + 74, 15, MUTED), mono("/ai-pm-skills:<skill>", x, y + 98, 13.5, INK)]
+            out += [marker(x + 1, y, skill in tested), mono(skill, x + 16, y, 12.5, INK if skill in tested else FAINT)]
+    # the loop: what Prove and production find goes back to Specify and to error analysis
+    ly = y0 + 124 + max(len(sk) for _, _, sk in STAGES) * 26 + 6
+    lx0, lx1 = MARGIN + COL / 2, MARGIN + 3 * (COL + GAP) + COL / 2
+    out.append(f'<path d="M{lx1} {ly - 14}v14H{lx0}v-14m-4 6l4 -6l4 6" fill="none" stroke="{VIOLET}" stroke-width="1.4" stroke-opacity="0.6"/>')
+    out.append(sans("Production failures and incidents come back as regression cases and new requirements", lx0 + 16, ly + 22, 14, MUTED))
+    x, y = MARGIN + 3 * (COL + GAP), y0 + 124 + (len(STAGES[3][2]) + 1) * 26
+    out += [marker(x + 1, y, True), mono("tested", x + 16, y, 12.5, INK)]
+    out += [marker(x + 1, y + 26, False), mono("draft, not in the catalog yet", x + 16, y + 26, 12.5, FAINT)]
+    out += [sans("Run with", x, y + 74, 15, MUTED), mono("/ai-pm-skills:<skill>", x, y + 98, 12.5, INK)]
     (ROOT / "assets/lifecycle.svg").write_text("".join(out + ["</svg>\n"]))
 
 

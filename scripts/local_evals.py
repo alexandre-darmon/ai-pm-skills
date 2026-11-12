@@ -34,7 +34,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from validate_skills import read_frontmatter  # noqa: E402
+from validate_skills import read_frontmatter, read_skill  # noqa: E402
 from run_evals import (ROOT, case_graders, cases_hash, mean, regrade, skill_hash,  # noqa: E402
                        summarise, verdict, warnings)
 from concurrent.futures import ThreadPoolExecutor  # noqa: E402
@@ -84,7 +84,7 @@ def skill_folders(args: list[Path]) -> list[Path]:
 
 def tools_for(folder: Path, arm: str) -> list[dict]:
     """Same tools in both arms, as in Claude Code with and without the plugin: only the skill list differs."""
-    fm, _ = read_frontmatter(folder / "SKILL.md")
+    fm, _ = read_skill(folder / "SKILL.md")
     listing = f"- {fm['name']}: {fm['description']}" if arm == "with" else "(none)"
     return [
         {"type": "function", "function": {
@@ -242,7 +242,7 @@ def grade(args) -> int:
               "required": [*CRITERIA, "meets_goal", "weakest_point"]}
     workers = args.j if args.judge.startswith("claude-") else 1  # one local model answers one request at a time
     for folder in skill_folders(args.skills):
-        fm, _ = read_frontmatter(folder / "SKILL.md")
+        fm, _ = read_skill(folder / "SKILL.md")
         skill, answers = fm["name"], out_dir / "answers" / folder.name
         if not (answers / "runs.json").is_file():
             print(f"{skill}: no answers, skipped", flush=True)

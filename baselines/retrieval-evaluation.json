@@ -1,152 +1,156 @@
 {
- "skill": "retrieval-evaluation",
- "model": "claude-sonnet-5-5",
- "judgeModel": "claude-haiku-5-5",
- "claudeVersion": "2.1.317",
- "date": "2026-11-09",
- "casesHash": "c4f23ec741fc7f3780e6a094db8d7c21b2294dd00e0cd936c994ec0c0e301c07",
- "partial": false,
- "costUsd": 1.1078939,
- "cases": {
-  "retrieval-evaluation-001": {
-   "score": 0.9444444444444445,
-   "scoreWithout": 0.38888888888888884,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "attribute-failures": [
-     3,
-     3
-    ],
-    "fixed-contexts": [
-     3,
-     2
-    ],
-    "no-switch-yet": [
-     2,
-     0
-    ],
-    "pooling": [
-     3,
-     0
-    ],
-    "recall-at-k-sent": [
-     3,
-     1
-    ],
-    "unanswerable": [
-     3,
-     1
-    ]
-   },
-   "costPerAnswer": [
-    0.05949093333333333,
-    0.04172
-   ],
-   "delta": 0.5555555555555557
+  "skill": "retrieval-evaluation",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-09",
+  "casesHash": "c4f23ec741fc7f3780e6a094db8d7c21b2294dd00e0cd936c994ec0c0e301c07",
+  "partial": false,
+  "costUsd": 0,
+  "cases": {
+    "retrieval-evaluation-001": {
+      "score": 0.9444444444444445,
+      "scoreWithout": 0.38888888888888884,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "attribute-failures": [
+          3,
+          3
+        ],
+        "fixed-contexts": [
+          3,
+          2
+        ],
+        "no-switch-yet": [
+          2,
+          0
+        ],
+        "pooling": [
+          3,
+          0
+        ],
+        "recall-at-k-sent": [
+          3,
+          1
+        ],
+        "unanswerable": [
+          3,
+          1
+        ]
+      },
+      "costPerAnswer": [
+        0.05949093333333333,
+        0.04172
+      ],
+      "delta": 0.5555555555555557
+    },
+    "retrieval-evaluation-002": {
+      "score": 0.8095238095238094,
+      "scoreWithout": 0.7142857142857143,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "claim-level": [
+          3,
+          3
+        ],
+        "fixed-contexts": [
+          3,
+          1
+        ],
+        "generation-stage": [
+          2,
+          2
+        ],
+        "judge-validated": [
+          1,
+          2
+        ],
+        "no-reindex": [
+          3,
+          2
+        ],
+        "prompt-abstention": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.05117463333333333,
+        0.03970733333333334
+      ],
+      "delta": 0.09523809523809512
+    },
+    "retrieval-evaluation-003": {
+      "score": 0.8484848484848485,
+      "scoreWithout": 0.42424242424242425,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "leaderboard-not-ours": [
+          1,
+          2
+        ],
+        "no-confirm": [
+          3,
+          3
+        ],
+        "per-class": [
+          3,
+          3
+        ],
+        "redline-paired-rerun": [
+          3,
+          1
+        ],
+        "redline-unanswerable": [
+          3,
+          0
+        ],
+        "release": [
+          3,
+          3
+        ],
+        "unjudged-passages": [
+          0,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.0572164,
+        0.03604466666666667
+      ],
+      "delta": 0.42424242424242425
+    },
+    "retrieval-evaluation-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.04303733333333334,
+        0.04090666666666667
+      ]
+    }
   },
-  "retrieval-evaluation-002": {
-   "score": 0.8095238095238094,
-   "scoreWithout": 0.7142857142857143,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "claim-level": [
-     3,
-     3
-    ],
-    "fixed-contexts": [
-     3,
-     1
-    ],
-    "generation-stage": [
-     2,
-     2
-    ],
-    "judge-validated": [
-     1,
-     2
-    ],
-    "no-reindex": [
-     3,
-     2
-    ],
-    "prompt-abstention": [
-     3,
-     3
-    ]
-   },
-   "costPerAnswer": [
-    0.05117463333333333,
-    0.03970733333333334
-   ],
-   "delta": 0.09523809523809512
-  },
-  "retrieval-evaluation-003": {
-   "score": 0.8484848484848485,
-   "scoreWithout": 0.42424242424242425,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "leaderboard-not-ours": [
-     1,
-     2
-    ],
-    "no-confirm": [
-     3,
-     3
-    ],
-    "per-class": [
-     3,
-     3
-    ],
-    "redline-paired-rerun": [
-     3,
-     1
-    ],
-    "redline-unanswerable": [
-     3,
-     0
-    ],
-    "release": [
-     3,
-     3
-    ],
-    "unjudged-passages": [
-     0,
-     0
-    ]
-   },
-   "costPerAnswer": [
-    0.0572164,
-    0.03604466666666667
-   ],
-   "delta": 0.42424242424242425
-  },
-  "retrieval-evaluation-004": {
-   "score": 1.0,
-   "scoreWithout": 1.0,
-   "fired": 0,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": true,
-   "graders": {
-    "not-triggered": [
-     3,
-     3
-    ]
-   },
-   "costPerAnswer": [
-    0.04303733333333334,
-    0.04090666666666667
-   ]
-  }
- },
- "meanDelta": 0.35834535834535836
+  "regraded": true,
+  "stale": false,
+  "skillHash": "157b4d77aaff0f88227ffba4204a9268b1db4c7a07f00254ee7ac5bb7b53e4ef",
+  "meanDelta": 0.35834535834535836,
+  "failures": []
 }

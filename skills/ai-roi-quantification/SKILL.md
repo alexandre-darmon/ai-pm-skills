@@ -1,14 +1,16 @@
 ---
 name: ai-roi-quantification
 description: 'Compute a deployed AI product''s ROI with the five-line model, a baseline and sourced unit values. Use for a budget renewal, a CFO or comex review, "what did it return?" or a scaling decision.'
-stage: prove
-version: 0.2.2
-depends_on: [assistant-kpis-cost-per-outcome, conversation-analysis]
-feeds: [ai-opportunity-assessment, process-ai-redesign]
-autonomy_relevant: false
-sources: [own-roi-work, repo-yoseph, repo-chanmeng]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "prove"
+  version: "0.2.2"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "false"
+  depends_on: "assistant-kpis-cost-per-outcome, conversation-analysis"
+  feeds: "ai-opportunity-assessment, process-ai-redesign"
+  sources: "own-roi-work, repo-yoseph, repo-chanmeng"
 ---
 
 # ai-roi-quantification

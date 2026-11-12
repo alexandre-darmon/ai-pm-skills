@@ -1,0 +1,1 @@
+Yes, tell them it's a go. 147 of 150 clears the 97% bar; the 95% Wilson interval has a lower bound of 94.3%, so add a sampled handler review of 5% of injury claims for the first month. About 1,100 cases would tighten the estimate.

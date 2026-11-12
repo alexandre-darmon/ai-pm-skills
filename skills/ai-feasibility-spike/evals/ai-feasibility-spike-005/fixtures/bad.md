@@ -1,0 +1,1 @@
+Summary for the CFO: in three days, the agent coded 41 of 50 invoices correctly (82%). The API cost was 0.62 EUR per invoice, already below the 0.90 EUR an accountant costs, and model prices will keep falling with the next generation. On 22,000 invoices a month, that is a saving of about 6,200 EUR a month. We recommend we go to the PRD now.

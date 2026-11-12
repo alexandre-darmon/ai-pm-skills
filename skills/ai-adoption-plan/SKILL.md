@@ -1,14 +1,16 @@
 ---
 name: ai-adoption-plan
 description: 'Plan and prove adoption of an AI tool on outcomes: correct results per user, overrides, over-trust test, training by role and level, art. 4 evidence. Use when go-live nears or use stalls.'
-stage: prove
-version: 0.3.1
-depends_on: [assistant-kpis-cost-per-outcome, process-ai-redesign, ai-interaction-patterns, build-evals, ai-act-classification]
-feeds: [model-card-ai-registry, build-evals, ai-data-requirements, ai-roi-quantification]
-autonomy_relevant: true
-sources: [eu-ai-act, eu-digital-omnibus-ai, google-pair, wilson-interval, own-coaching, own-pedagogy, repo-chanmeng, repo-lenny]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "prove"
+  version: "0.3.1"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "true"
+  depends_on: "assistant-kpis-cost-per-outcome, process-ai-redesign, ai-interaction-patterns, build-evals, ai-act-classification"
+  feeds: "model-card-ai-registry, build-evals, ai-data-requirements, ai-roi-quantification"
+  sources: "eu-ai-act, eu-digital-omnibus-ai, google-pair, wilson-interval, own-coaching, own-pedagogy, repo-chanmeng, repo-lenny"
 ---
 
 # ai-adoption-plan

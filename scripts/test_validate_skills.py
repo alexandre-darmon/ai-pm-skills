@@ -6,7 +6,10 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from validate_skills import overlapping_descriptions, check_skill, main  # noqa: E402
+import json  # noqa: E402
+
+from validate_skills import cases_hash, check_evidence, check_skill, main, skill_hash  # noqa: E402
+from validate_skills import overlapping_descriptions  # noqa: E402
 
 TEMPLATE = Path(__file__).parent.parent / "templates" / "skill"
 
@@ -39,8 +42,8 @@ class ValidateSkillsTest(unittest.TestCase):
         self.assertIn("status 'draft' belongs in drafts/, not skills/", check_skill(self.skill, in_catalog=True))
 
     def test_legal_rules(self):
-        self.edit("stage: specify", "stage: prove")
-        self.edit("legal: false", "legal: true")
+        self.edit('stage: "specify"', 'stage: "prove"')
+        self.edit('legal: "false"', 'legal: "true"')
         (self.skill / "evals/my-skill-001/graders/judge.md").write_text("---\ntype: llm\n---\nCoherent.\n")
         self.assertError("eval_threshold >= 0.90")
         self.assertError("no judge")
@@ -51,11 +54,34 @@ class ValidateSkillsTest(unittest.TestCase):
         self.assertEqual(overlapping_descriptions({"a": same, "b": "Classify a use case under the EU AI Act."}), [])
 
     def test_old_stage_rejected(self):
-        self.edit("stage: specify", "stage: govern")
+        self.edit('stage: "specify"', 'stage: "govern"')
         self.assertError("stage 'govern' must be one of")
 
+    def test_spec_frontmatter(self):
+        self.edit("license: CC-BY-4.0", "license: CC-BY-4.0\nversion: 0.1.0")
+        self.assertError("not in the Agent Skills spec")
+        self.edit('eval_threshold: "0.80"', "eval_threshold: 0.80")
+        self.assertError("metadata values must be quoted strings")
+
+    def test_evidence_gate(self):
+        skill = self.root / "skills" / "my-skill"
+        shutil.move(self.skill, skill)
+        self.assertIn("no baselines/my-skill.json", check_evidence(self.root, skill)[0])
+        (self.root / "baselines").mkdir()
+        record = {"skillHash": skill_hash(skill), "casesHash": cases_hash(skill), "failures": [],
+                  "cases": {"my-skill-001": {"runs": 3}}}
+        (self.root / "baselines/my-skill.json").write_text(json.dumps(record))
+        self.assertEqual(check_evidence(self.root, skill), [])
+        path = skill / "SKILL.md"
+        path.write_text(path.read_text().replace('status: "draft"', 'status: "tested"'))  # metadata is not what the model reads
+        self.assertEqual(check_evidence(self.root, skill), [])
+        path.write_text(path.read_text() + "\nOne more rule.\n")
+        self.assertIn("another text of the skill", check_evidence(self.root, skill)[0])
+        (self.root / "baselines/my-skill.json").write_text(json.dumps({**record, "skillHash": skill_hash(skill), "failures": ["x: red line"]}))
+        self.assertIn("the last recorded run fails", check_evidence(self.root, skill)[0])
+
     def test_unknown_source(self):
-        self.edit("sources: [own-practice]", "sources: [own-practice, cagan-inspired, made-up]")
+        self.edit('sources: "own-practice"', 'sources: "own-practice, cagan-inspired, made-up"')
         errors = check_skill(self.skill, in_catalog=False, known_sources={"cagan-inspired"})
         self.assertEqual(errors, ["sources ['made-up'] are not in foundations/sources.md (own-* ids are free)"])
 

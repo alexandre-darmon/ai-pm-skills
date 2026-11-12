@@ -71,9 +71,13 @@ def main(root=ROOT, draws=DRAWS):
     for f in sorted(base.glob("*.json")):
         b = json.loads(f.read_text())
         skill = b["skill"]
+        if not (root / "skills" / skill).is_dir():  # drafts keep their recorded runs but are not shown
+            continue
         models.add(b.get("model", ""))
         t = base / "template-arm" / f.name
-        tcases = json.loads(t.read_text())["cases"] if t.is_file() else {}
+        tarm = json.loads(t.read_text()) if t.is_file() else {}
+        # a template arm run on other cases than the frozen run is not comparable with it
+        tcases = tarm["cases"] if tarm.get("casesHash") == b.get("casesHash") else {}
         pos = {cid: c for cid, c in b["cases"].items() if not c["negative"]}
         regex[skill] = {cid: {"with": c["score"], "without": c["scoreWithout"]} for cid, c in pos.items()}
         srl = {"without": [0, 0], "template": [0, 0], "with": [0, 0]}
@@ -129,7 +133,8 @@ def main(root=ROOT, draws=DRAWS):
             judges.append((model_name(d.name), calibrated, cases))
 
     ncases = sum(len(cs) for cs in regex.values())
-    runs = sorted({c["runs"] for f in base.glob("*.json") for c in json.loads(f.read_text())["cases"].values()})
+    runs = sorted({c["runs"] for f in base.glob("*.json") if (root / "skills" / f.stem).is_dir()
+                   for c in json.loads(f.read_text())["cases"].values()})
     model = model_name(models.pop()) if len(models) == 1 else "the same model"
 
     def row(label, cases, bold=False):
@@ -144,7 +149,8 @@ def main(root=ROOT, draws=DRAWS):
     ]
     for name, cal, cases in judges:
         n = sum(len(cs) for cs in cases.values())
-        lines.append(row(f"Blind LLM judge, {name}: {len(cases)} of these skills, {n} cases, {'calibrated' if cal else 'not calibrated'}", cases))
+        # judge files carry no fingerprint: they grade answers of an earlier run, not necessarily the recorded one
+        lines.append(row(f"Blind LLM judge, {name}: {len(cases)} of these skills, {n} cases, earlier runs, {'calibrated' if cal else 'not calibrated'}", cases))
     lines.append(f"| Red lines held (the one thing the answer must never do) | {pct(held(rl['without']))} | {pct(held(rl['template']))} "
                  f"| **{pct(held(rl['with']))}** | | |")
     if costs:

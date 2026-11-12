@@ -1,0 +1,1 @@
+88% agreement with senior underwriters is good. The agent is compliant with internal policy as long as underwriters check every proposal. Roll it out to the 40 underwriters in Q1 and move simple files to automatic decisions once agreement passes 90%.

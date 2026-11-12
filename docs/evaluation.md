@@ -26,15 +26,19 @@ flowchart TD
     A["Write or change a skill<br/>in drafts/"] --> V{"validate<br/>free, every push"}
     V -- "fails" --> A
     V -- "passes" --> E{"evals<br/>paid, on request"}
-    E -- "fails" --> A
-    E -- "passes" --> B["Freeze baseline<br/>baselines/skill-name.json"]
-    B --> P["Move to skills/<br/>status tested"]
+    E --> B["Recorded run, pass or fail<br/>baselines/skill-name.json + history.jsonl"]
+    B -- "fails" --> A
+    B -- "passes" --> P["Move to skills/<br/>status tested"]
+    P --> Q{"Evidence gate<br/>free, every push"}
+    Q -- "text or cases changed since the run" --> E
 ```
+
+A run of 3 per case or more is a **recorded run**: it replaces `baselines/<skill>.json` whatever its result and appends one line to `baselines/history.jsonl`, so rerunning until a pass shows in the log. Each record carries two fingerprints: `skillHash` (what the model reads: the SKILL.md name, description and body, `references/`, `templates/`, `scripts/`; the `metadata:` block and the folder are left out, so promoting a skill or moving it to another block keeps its record) and `casesHash` (prompts and graders). On every push the validator checks each skill in `skills/`: its record must match both fingerprints and pass. A grader-only change is regraded for free on the saved answers (the regrade is recorded too, if the answers were made on today's text); anything else needs a paid run, or the skill goes back to `drafts/`. The README and [skill-eval-gains.md](../skill-eval-gains.md) show only these records, for catalog skills only, and a template-arm result only when it ran on the same cases.
 
 | Step | Command | Cost | What it checks |
 | --- | --- | --- | --- |
-| validate | `python3 scripts/validate_skills.py` (needs Python with pyyaml, and node) | free | structure, the harness schema (unknown keys fail the load), plus the free checks below |
-| evals | `python3 scripts/run_evals.py --full drafts/<skill>` | a few cents per case | real answers, with and without the skill; every answer is saved to `eval-out/answers/` |
+| validate | `python3 scripts/validate_skills.py` (needs Python with pyyaml, and node; `--no-evidence` skips the evidence gate while editing) | free | structure, the Agent Skills frontmatter (only the spec's keys at the top level, the repo's own under `metadata:` as strings), the harness schema (unknown keys fail the load), the free checks below, and the evidence gate |
+| evals | `python3 scripts/run_evals.py --full --runs 3 drafts/<skill>` | a few cents per case and run | real answers, with and without the skill; every answer is saved to `eval-out/answers/`; 3 runs per case or more make a recorded run. Without `--full`, the "without" scores come from the record when its cases still match: the model alone never sees the skill |
 | regrade | `python3 scripts/run_evals.py --regrade drafts/<skill>` | free | the saved answers re-scored with the current graders, no model call; valid for grader changes, stale after a change to the skill |
 
 ## Anatomy of a case
@@ -122,6 +126,17 @@ A mean over 21 cases can move a lot with a few other cases. Since 2026-11-09, ev
 - **Per skill, no interval.** Three to five cases are too few; the lowest and highest case gain are shown instead.
 
 The pass rule does not change: it stays a mean gain of at least 10 points. Gating a skill on the lower bound of its interval would need more cases per skill, and would be committed before the run it judges.
+
+## When a run fails: grader, skill or leak?
+
+A failed case says that a grader did not match, not why. The November 2026 runs set the order in which a failure is read, before anything is changed:
+
+1. **Did the skill fire?** A "with" answer where the skill never loaded is an answer without it. Fix the description, not the method, and rerun.
+2. **Grader false negative?** Read the answer. If it does what the grader checks in other words (a line break inside a table, a plural, a negation the pattern took for a crossing), widen the pattern, then run the new pattern on every saved answer **without** the skill: a red line must not start passing an answer that really crosses it. The real answer becomes a `good-<run>.md` fixture, and a real crossing a `bad-<run>.md`.
+3. **Skill gap?** If the answer really misses the point, change the skill, bump its version and rerun: saved answers no longer describe it.
+4. **Answer leak?** If the skill or its references contain the exact number a case asks for, the case tests copying. Replace the example with other values.
+
+A skill whose skill text did not change, only its graders, is re-scored on its saved answers for free (`run_evals.py --regrade`). A skill whose text changed is rerun. Runs cut by a usage limit are errors, not scores: they are rerun, never counted.
 
 ## The four free checks
 

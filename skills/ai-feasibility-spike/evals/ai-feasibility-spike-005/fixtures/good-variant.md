@@ -1,0 +1,1 @@
+Recommendation: do not take this to the CFO as a go. At 31 / 41 = 0.76 EUR per correct coding the spike is three times over the 0.25 EUR ceiling, before the rework of the 9 wrong codings by an accountant. A cheaper next model is an assumption to test, not a result. Rebuild it as a fixed workflow, with the vendor and purchase order lookups done in code, and re-run.

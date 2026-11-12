@@ -1,14 +1,16 @@
 ---
 name: agent-design-and-tooling
 description: 'Design an agent''s loop, tools, permissions, stop conditions and traces from its autonomy levels, before any framework. Use for "make it an agent", a new tool or permission, or a framework debate.'
-stage: specify
-version: 0.2.1
-depends_on: [llm-feature-prd, process-ai-redesign]
-feeds: [system-prompt-and-guardrails, assistant-kpis-cost-per-outcome]
-autonomy_relevant: true
-sources: [anthropic-agents, own-nanoagent, repo-chanmeng]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "build"
+  version: "0.3.1"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "true"
+  depends_on: "llm-feature-prd, process-ai-redesign"
+  feeds: "system-prompt-and-guardrails, assistant-kpis-cost-per-outcome"
+  sources: "anthropic-agents, anthropic-agent-tools, mcp-spec, own-nanoagent, repo-chanmeng"
 ---
 
 # agent-design-and-tooling
@@ -34,7 +36,8 @@ Ask if missing: failure modes, latency and cost constraints.
 6. Write stop conditions for the run. A run ends on a checkable done state or the API's stop signal, never on the model's prose or self-reported confidence. Maximum steps, budget per run and timeout are the safety net: a hit is an alert with its own exit (hand off to a human, never silent). Stop conditions for the initiative itself start in `ai-opportunity-assessment`; how the agent is tested over repeated trials is `agent-evals`.
 7. Set the memory policy: what persists, for how long, and personal-data limits.
 8. Define the trace schema: every tool call logged with input, output and cost, and an outcome field set from the exit, usable by `assistant-kpis-cost-per-outcome`.
-9. Map frameworks last: each candidate against a named need the raw loop cannot meet, or none.
+9. Before handing the design to engineering, prototype the tool set on a local MCP server (synthetic or anonymised data, no production credentials: references/build-to-learn.md) and run about 10 representative tasks. Read the traces from step 8: which tools the agent called, in which order, where it looped or picked the wrong neighbour. Fix tool names, descriptions and response sizes before touching the prompt. The prototype is evidence for the design, not the build; record it in the Prototype check section, or "not yet run".
+10. Map frameworks last: each candidate against a named need the raw loop cannot meet, or none.
 
 ## Output
 `templates/agent-design.md`, all headings present. The loop line reads `Loop type: <type>`.
@@ -48,9 +51,11 @@ When the brief asks which framework to take, the answer still opens with what th
 - The framework comes last, in the answer as much as in the method.
 
 ## Links
-references/autonomy-ladder.md · references/tool-contracts.md · system-prompt-and-guardrails · agent-evals · assistant-kpis-cost-per-outcome · process-ai-redesign
+references/autonomy-ladder.md · references/tool-contracts.md · references/build-to-learn.md · system-prompt-and-guardrails · agent-evals · assistant-kpis-cost-per-outcome · process-ai-redesign
 
 ## Sources
 - anthropic-agents: simple loops first, frameworks last.
+- anthropic-agent-tools: prototype a few tools, run realistic tasks, read the transcripts, then refine.
+- mcp-spec: tools exposed by a server to the model, which a local prototype server reuses.
 - own-nanoagent: raw loop reference, trace with an outcome field.
 - repo-chanmeng: ideas for tool contracts, the write protocol, trigger and exits, rewritten in our own words.

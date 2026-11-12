@@ -1,14 +1,16 @@
 ---
 name: release-to-production
 description: 'Plan the release of an AI change (prompt, model, KB) through offline eval, shadow, canary and A/B if the sample allows. Use for "can we ship this?" or a provider model update.'
-stage: evaluate
-version: 0.2.0
-depends_on: [build-evals, system-prompt-and-guardrails]
-feeds: [assistant-kpis-cost-per-outcome, model-card-ai-registry]
-autonomy_relevant: true
-sources: [kohavi-experiments, own-release-practice, repo-chanmeng]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "evaluate"
+  version: "0.2.0"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "true"
+  depends_on: "build-evals, system-prompt-and-guardrails"
+  feeds: "assistant-kpis-cost-per-outcome, model-card-ai-registry"
+  sources: "kohavi-experiments, own-release-practice, repo-chanmeng"
 ---
 
 # release-to-production
