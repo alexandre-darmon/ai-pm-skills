@@ -66,5 +66,7 @@ jobs:
         if: always()
         with:
           name: eval-out
-          path: eval-out/
+          path: |
+            eval-out/
+            baselines/
           if-no-files-found: ignore

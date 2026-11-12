@@ -1,14 +1,16 @@
 ---
 name: retrieval-evaluation
 description: 'Evaluate a RAG or search feature in two stages, retrieval then generation. Use when answers are wrong or cite the wrong document, before changing the LLM, or for a new embedding model or re-index.'
-stage: evaluate
-version: 0.1.1
-depends_on: [build-evals, ai-data-requirements, llm-judge-calibration]
-feeds: [release-to-production, model-selection, ai-data-requirements, system-prompt-and-guardrails, production-evals-monitoring]
-autonomy_relevant: false
-sources: [manning-ir, es-ragas, husain-shankar-evals, anthropic-evals, miller-error-bars, own-rag-practice]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "evaluate"
+  version: "0.1.1"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "false"
+  depends_on: "build-evals, ai-data-requirements, llm-judge-calibration"
+  feeds: "release-to-production, model-selection, ai-data-requirements, system-prompt-and-guardrails, production-evals-monitoring"
+  sources: "manning-ir, es-ragas, husain-shankar-evals, anthropic-evals, miller-error-bars, own-rag-practice"
 ---
 
 # retrieval-evaluation

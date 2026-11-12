@@ -1,222 +1,226 @@
 {
- "skill": "ai-opportunity-assessment",
- "model": "claude-sonnet-5-5",
- "judgeModel": "claude-haiku-5-5",
- "claudeVersion": "2.1.317",
- "date": "2026-11-09",
- "casesHash": "a84618588ae5f54bb2504c45e5a49c19e33f7e50fa8014d475c583bf64271364",
- "partial": false,
- "costUsd": 2.9653097999999996,
- "cases": {
-  "ai-opportunity-assessment-001": {
-   "score": 1.0,
-   "scoreWithout": 0.6666666666666666,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "no-go": [
-     3,
-     0
-    ],
-    "non-ai": [
-     3,
-     0
-    ],
-    "redline-no-go-on-ai": [
-     3,
-     3
-    ],
-    "rule-alternative": [
-     3,
-     3
-    ],
-    "rule-evidence": [
-     3,
-     0
-    ]
-   },
-   "delta": 0.33333333333333337,
-   "costPerAnswer": [
-    0.06169326666666666,
-    0.029516666666666667
-   ]
+  "skill": "ai-opportunity-assessment",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-11",
+  "casesHash": "7c0741f21ab96e16e68e2ae94e2e8619630165fa7df73146e53c8ce5e5ca9495",
+  "partial": false,
+  "costUsd": 0,
+  "cases": {
+    "ai-opportunity-assessment-001": {
+      "score": 1.0,
+      "scoreWithout": 0.6666666666666666,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "no-go": [
+          3,
+          0
+        ],
+        "non-ai": [
+          3,
+          0
+        ],
+        "redline-no-go-on-ai": [
+          3,
+          3
+        ],
+        "rule-alternative": [
+          3,
+          3
+        ],
+        "rule-evidence": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.0643137,
+        0.030153333333333334
+      ],
+      "delta": 0.33333333333333337
+    },
+    "ai-opportunity-assessment-002": {
+      "score": 0.875,
+      "scoreWithout": 0.6666666666666666,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "explore": [
+          3,
+          0
+        ],
+        "labels": [
+          1,
+          1
+        ],
+        "readiness-low": [
+          2,
+          0
+        ],
+        "redline-no-go-on-poor-data": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.10620303333333332,
+        0.034366
+      ],
+      "delta": 0.20833333333333337
+    },
+    "ai-opportunity-assessment-003": {
+      "score": 0.8611111111111112,
+      "scoreWithout": 0.5,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "agent-ruled-out": [
+          2,
+          0
+        ],
+        "go": [
+          0,
+          0
+        ],
+        "l2": [
+          3,
+          0
+        ],
+        "llm": [
+          3,
+          3
+        ],
+        "non-ai": [
+          3,
+          0
+        ],
+        "readiness": [
+          3,
+          0
+        ],
+        "redline-no-autonomous-launch": [
+          3,
+          3
+        ],
+        "wrong-answer-catcher": [
+          2,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.10967753333333334,
+        0.043514
+      ],
+      "delta": 0.36111111111111116
+    },
+    "ai-opportunity-assessment-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.11509396666666667,
+        0.1365759666666667
+      ]
+    },
+    "ai-opportunity-assessment-005": {
+      "score": 0.9259259259259259,
+      "scoreWithout": 0.2962962962962963,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "ask-dated": [
+          1,
+          0
+        ],
+        "liked-not-quality": [
+          3,
+          0
+        ],
+        "redline-no-rollout-ask": [
+          3,
+          1
+        ],
+        "sample-size": [
+          3,
+          3
+        ],
+        "stop-condition": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.10639383333333334,
+        0.042145999999999996
+      ],
+      "delta": 0.6296296296296297
+    },
+    "ai-opportunity-assessment-006": {
+      "score": 1.0,
+      "scoreWithout": 0.6363636363636364,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "interval": [
+          3,
+          3
+        ],
+        "pilot": [
+          3,
+          3
+        ],
+        "projection-range": [
+          3,
+          0
+        ],
+        "quality": [
+          3,
+          0
+        ],
+        "redline-no-free-30": [
+          3,
+          3
+        ],
+        "removed-or-anchored": [
+          3,
+          0
+        ],
+        "volume": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.10614083333333334,
+        0.037810666666666666
+      ],
+      "delta": 0.36363636363636365
+    }
   },
-  "ai-opportunity-assessment-002": {
-   "score": 0.9583333333333334,
-   "scoreWithout": 0.7083333333333334,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "explore": [
-     3,
-     0
-    ],
-    "labels": [
-     2,
-     2
-    ],
-    "readiness-low": [
-     3,
-     0
-    ],
-    "redline-no-go-on-poor-data": [
-     3,
-     3
-    ]
-   },
-   "delta": 0.25,
-   "costPerAnswer": [
-    0.11168233333333333,
-    0.034237333333333335
-   ]
-  },
-  "ai-opportunity-assessment-003": {
-   "score": 0.9166666666666666,
-   "scoreWithout": 0.5,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "agent-ruled-out": [
-     3,
-     0
-    ],
-    "go": [
-     1,
-     0
-    ],
-    "l2": [
-     3,
-     0
-    ],
-    "llm": [
-     3,
-     3
-    ],
-    "non-ai": [
-     3,
-     0
-    ],
-    "readiness": [
-     3,
-     0
-    ],
-    "redline-no-autonomous-launch": [
-     3,
-     3
-    ],
-    "wrong-answer-catcher": [
-     2,
-     0
-    ]
-   },
-   "delta": 0.41666666666666663,
-   "costPerAnswer": [
-    0.12885116666666666,
-    0.042234
-   ]
-  },
-  "ai-opportunity-assessment-004": {
-   "score": 1.0,
-   "scoreWithout": 1.0,
-   "fired": 0,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": true,
-   "graders": {
-    "not-triggered": [
-     3,
-     3
-    ]
-   },
-   "costPerAnswer": [
-    0.14031556666666667,
-    0.1360645
-   ]
-  },
-  "ai-opportunity-assessment-005": {
-   "score": 0.9629629629629629,
-   "scoreWithout": 0.2962962962962963,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "ask-dated": [
-     3,
-     1
-    ],
-    "liked-not-quality": [
-     3,
-     0
-    ],
-    "redline-no-rollout-ask": [
-     3,
-     1
-    ],
-    "sample-size": [
-     2,
-     2
-    ],
-    "stop-condition": [
-     3,
-     0
-    ]
-   },
-   "delta": 0.6666666666666666,
-   "costPerAnswer": [
-    0.09716093333333332,
-    0.041863333333333336
-   ]
-  },
-  "ai-opportunity-assessment-006": {
-   "score": 0.8181818181818182,
-   "scoreWithout": 0.5757575757575757,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "interval": [
-     3,
-     3
-    ],
-    "pilot": [
-     3,
-     1
-    ],
-    "projection-range": [
-     3,
-     0
-    ],
-    "quality": [
-     3,
-     0
-    ],
-    "redline-no-free-30": [
-     2,
-     3
-    ],
-    "removed-or-anchored": [
-     2,
-     0
-    ],
-    "volume": [
-     3,
-     0
-    ]
-   },
-   "delta": 0.24242424242424254,
-   "costPerAnswer": [
-    0.1275775,
-    0.03724
-   ]
-  }
- },
- "meanDelta": 0.38181818181818183
+  "regraded": true,
+  "stale": false,
+  "skillHash": "e2d2bc44a4f5625c74bcec9a9f582d0878599162d0956e5d325a72e22d7838f9",
+  "meanDelta": 0.3792087542087542,
+  "failures": []
 }

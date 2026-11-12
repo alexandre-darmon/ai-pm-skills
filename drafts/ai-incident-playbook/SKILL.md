@@ -1,16 +1,18 @@
 ---
 name: ai-incident-playbook
 description: 'Prepare or run the response to an AI incident: severity, containment, rollback owner, reporting clocks, the regression case it adds. Use at L3+ go-live, after a quality alert or in an incident.'
-stage: prove
-version: 0.4.0
-last_verified: 2026-11-09
-legal: true
-depends_on: [production-evals-monitoring, system-prompt-and-guardrails, ai-act-classification, release-to-production, model-card-ai-registry]
-feeds: [error-analysis, build-evals, model-card-ai-registry]
-autonomy_relevant: true
-sources: [eu-ai-act, gdpr, google-sre, montgomery-spc, husain-shankar-evals, own-incident-practice, repo-chanmeng]
-eval_threshold: 0.90
-status: draft
+license: CC-BY-4.0
+metadata:
+  stage: "prove"
+  version: "0.4.0"
+  status: "draft"
+  eval_threshold: "0.90"
+  legal: "true"
+  last_verified: "2026-11-09"
+  autonomy_relevant: "true"
+  depends_on: "production-evals-monitoring, system-prompt-and-guardrails, ai-act-classification, release-to-production, model-card-ai-registry"
+  feeds: "error-analysis, build-evals, model-card-ai-registry"
+  sources: "eu-ai-act, gdpr, google-sre, montgomery-spc, husain-shankar-evals, own-incident-practice, repo-chanmeng"
 ---
 
 # ai-incident-playbook

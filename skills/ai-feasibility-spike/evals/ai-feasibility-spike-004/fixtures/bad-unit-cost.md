@@ -1,0 +1,1 @@
+Go note: both document types meet the 90% bar at a unit cost of 0.03 EUR. Both meet the 90% bar, so we don't need more cases. The net result is a go to the PRD for passports and registry extracts, saving 0.65 EUR per file.

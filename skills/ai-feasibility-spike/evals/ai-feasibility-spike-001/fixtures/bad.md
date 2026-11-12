@@ -1,0 +1,1 @@
+Great idea. Over the next three or four weeks, build an AI agent with tools to read the inbox, classify each email, look up the policy and forward it to the right team. Use a sample of last month's emails to test it, measure overall accuracy, and show the COO a live demo plus the accuracy figure. If accuracy is above 90%, propose a rollout.

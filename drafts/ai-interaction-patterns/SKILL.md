@@ -1,14 +1,16 @@
 ---
 name: ai-interaction-patterns
 description: 'Design how an AI feature behaves for users: sources, confidence scores, correction, refusal, escalation. Use for assistant UX, showing a score or "% sure", or users who over-trust the AI.'
-stage: specify
-version: 0.2.2
-depends_on: [llm-feature-prd, build-evals]
-feeds: [system-prompt-and-guardrails, ai-adoption-plan]
-autonomy_relevant: true
-sources: [ms-hax, google-pair, own-assistant-ux, repo-chanmeng]
-eval_threshold: 0.80
-status: draft
+license: CC-BY-4.0
+metadata:
+  stage: "specify"
+  version: "0.2.2"
+  status: "draft"
+  eval_threshold: "0.80"
+  autonomy_relevant: "true"
+  depends_on: "llm-feature-prd, build-evals"
+  feeds: "system-prompt-and-guardrails, ai-adoption-plan"
+  sources: "ms-hax, google-pair, own-assistant-ux, repo-chanmeng"
 ---
 
 # ai-interaction-patterns

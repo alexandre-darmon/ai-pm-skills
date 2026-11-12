@@ -1,14 +1,16 @@
 ---
 name: llm-judge-calibration
 description: Check if an LLM judge can be trusted on a failure mode and correct the pass rate it reports. Use for "can we use LLM-as-judge?", a judge's agreement with experts, a judge change or drift.
-stage: evaluate
-version: 0.1.0
-depends_on: [error-analysis]
-feeds: [build-evals, production-evals-monitoring, release-to-production]
-autonomy_relevant: true
-sources: [husain-shankar-evals, shankar-validators, zheng-llm-judge, yan-llm-evaluators, rogan-gladen, cohen-kappa, wilson-interval, efron-bootstrap, anthropic-evals, own-golden-sets]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "evaluate"
+  version: "0.1.0"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "true"
+  depends_on: "error-analysis"
+  feeds: "build-evals, production-evals-monitoring, release-to-production"
+  sources: "husain-shankar-evals, shankar-validators, zheng-llm-judge, yan-llm-evaluators, rogan-gladen, cohen-kappa, wilson-interval, efron-bootstrap, anthropic-evals, own-golden-sets"
 ---
 
 # llm-judge-calibration

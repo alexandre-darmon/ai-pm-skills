@@ -1,14 +1,16 @@
 ---
 name: system-prompt-and-guardrails
 description: 'Write or tune an LLM feature''s system prompt and guardrails, with budgets and a redteam set. Use for a first prompt, a jailbreak or injection, a redteam result to judge, or disputed false positives.'
-stage: specify
-version: 0.2.1
-depends_on: [llm-feature-prd, agent-design-and-tooling]
-feeds: [build-evals, release-to-production, ai-act-classification]
-autonomy_relevant: true
-sources: [owasp-llm-top10, eu-ai-act, own-guardrails, repo-chanmeng]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "build"
+  version: "0.2.1"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "true"
+  depends_on: "llm-feature-prd, agent-design-and-tooling"
+  feeds: "build-evals, release-to-production, ai-act-classification"
+  sources: "owasp-llm-top10, eu-ai-act, own-guardrails, repo-chanmeng"
 ---
 
 # system-prompt-and-guardrails

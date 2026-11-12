@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Check the structure of every skill in skills/ and drafts/ against PRD §7.2 and §11.1.
 
-Usage: python3 scripts/validate_skills.py [--sync] [repo_root]
+Usage: python3 scripts/validate_skills.py [--sync] [--no-evidence] [repo_root]
 Exits 1 and prints one line per problem if anything is wrong.
 --sync first rewrites each skill's references/ copies of the foundations/ files it cites.
+Evidence (skip with --no-evidence while editing): every skill in skills/ needs baselines/<skill>.json from a recorded
+run (3 runs per case or more) on its current text and cases, and that run must pass. The README shows those numbers.
 
 Free checks on the eval cases (foundations/eval-conventions.md, "Free checks"):
 - red lines: graders/redline-*.md must weigh enough to fail the case on their own;
@@ -12,6 +14,7 @@ Free checks on the eval cases (foundations/eval-conventions.md, "Free checks"):
 - triggering: input_match is anchored on the skill name, and one case tagged negative checks the skill stays silent.
 """
 import datetime
+import hashlib
 import json
 import re
 import shutil
@@ -21,7 +24,13 @@ from pathlib import Path
 
 import yaml
 
-STAGES = {"specify", "evaluate", "prove"}  # what correct means, measure it offline and online, prove it to sponsor and regulator
+STAGES = {"specify", "build", "evaluate", "prove"}  # what correct means, build to learn, measure it offline and online, prove it
+# Agent Skills spec: only these keys at the top level (claude.ai, the Skills API and skills-ref reject any other).
+TOP_KEYS = {"name", "description", "license", "compatibility", "metadata", "allowed-tools"}
+# The repo's own keys live under metadata:, as strings (the spec maps string keys to string values).
+META_KEYS = {"stage", "version", "status", "eval_threshold", "legal", "last_verified", "autonomy_relevant", "depends_on", "feeds", "sources"}
+LIST_KEYS = {"depends_on", "feeds", "sources"}
+BOOL_KEYS = {"legal", "autonomy_relevant"}
 STATUSES = {"draft", "tested", "verified-in-mission"}
 # Keys the harness accepts per grader type (claude plugin eval 2.1.302, strict schema: anything else fails the load).
 GRADER_KEYS = {
@@ -44,6 +53,7 @@ MAX_SKILLS = 30
 MAX_DESCRIPTION = 200
 MAX_WORDS = 2000
 MIN_CASES = 3
+RECORD_RUNS = 3  # runs per case that make a recorded run: it replaces baselines/<skill>.json, pass or fail
 REDLINE = "redline-"
 # The Skill tool input reaches input_match as JSON, e.g. {"skill":"llm-feature-prd:llm-feature-prd"}.
 # Anchoring on the whole name stops a sibling such as llm-feature-prd-lite from counting as this skill.
@@ -65,6 +75,103 @@ def read_frontmatter(path: Path) -> tuple[dict, str]:
     if not isinstance(fm, dict):
         raise ValueError("frontmatter must be a mapping")
     return fm, parts[2]
+
+
+def skill_meta(fm: dict) -> tuple[dict, list[str]]:
+    """Typed view of a SKILL.md frontmatter: top-level keys plus the metadata: strings parsed (lists, booleans, number, date).
+
+    A value that does not parse is kept as the raw string, so the field checks in check_skill report it.
+    """
+    errors = []
+    unknown = sorted(set(fm) - TOP_KEYS)
+    if unknown:
+        errors.append(f"top-level keys {unknown} are not in the Agent Skills spec; move them under metadata:")
+    meta = fm.get("metadata")
+    if not isinstance(meta, dict):
+        return dict(fm), errors + ["metadata: must be a mapping holding stage, version, status, eval_threshold, sources..."]
+    not_str = sorted(k for k, v in meta.items() if not isinstance(v, str))
+    if not_str:
+        errors.append(f"metadata values must be quoted strings (Agent Skills spec): {not_str}")
+    extra = sorted(set(meta) - META_KEYS)
+    if extra:
+        errors.append(f"metadata keys {extra} are unknown; allowed: {sorted(META_KEYS)}")
+    out = {k: v for k, v in fm.items() if k != "metadata"}
+    for key, raw in meta.items():
+        value = raw
+        if isinstance(raw, str):
+            if key in LIST_KEYS:
+                value = [x.strip() for x in raw.split(",") if x.strip()]
+            elif key in BOOL_KEYS and raw in ("true", "false"):
+                value = raw == "true"
+            elif key == "eval_threshold":
+                try:
+                    value = float(raw)
+                except ValueError:
+                    pass
+            elif key == "last_verified":
+                try:
+                    value = datetime.date.fromisoformat(raw)
+                except ValueError:
+                    pass
+        out[key] = value
+    return out, errors
+
+
+def read_skill(path: Path) -> tuple[dict, str]:
+    """(typed frontmatter, body) of a SKILL.md, the metadata: keys flattened. Raises ValueError if malformed."""
+    fm, body = read_frontmatter(path)
+    return skill_meta(fm)[0], body
+
+
+def cases_hash(folder: Path) -> str:
+    """Fingerprint of the cases and graders: a change means stored scores are stale."""
+    h = hashlib.sha256()
+    evals = folder / "evals"
+    # results/ is output and fixtures/ is only read by the validator: neither changes a run.
+    for f in sorted(p for p in evals.rglob("*") if p.is_file() and not {"results", "fixtures"} & set(p.relative_to(evals).parts)):
+        h.update(str(f.relative_to(evals)).encode() + b"\0" + f.read_bytes())
+    return h.hexdigest()
+
+
+def skill_hash(folder: Path) -> str:
+    """Fingerprint of what the agent reads: SKILL.md name, description and body, then references/, templates/, scripts/.
+
+    metadata: (stage, status, version) is left out: promoting a skill or moving it to another block does not change
+    what the model reads, so it does not make a recorded run stale. Neither does the folder (drafts/ or skills/).
+    """
+    h = hashlib.sha256()
+    fm, body = read_frontmatter(folder / "SKILL.md")
+    h.update(f"{fm.get('name')}\0{fm.get('description')}\0{body}".encode())
+    for f in sorted(p for p in folder.rglob("*") if p.is_file() and p.name != "SKILL.md" and p.suffix != ".pyc"
+                    and not {"evals", "__pycache__"} & set(p.relative_to(folder).parts)):
+        h.update(str(f.relative_to(folder)).encode() + b"\0" + f.read_bytes())
+    return h.hexdigest()
+
+
+def check_evidence(root: Path, folder: Path) -> list[str]:
+    """A catalog skill is shown with the numbers of its last recorded run: that run must be on today's text and cases, and pass."""
+    path = root / "baselines" / f"{folder.name}.json"
+    fix = f"python3 scripts/run_evals.py --full --runs {RECORD_RUNS} {folder.relative_to(root)}"
+    if not path.is_file():
+        return [f"no baselines/{folder.name}.json: a catalog skill needs a recorded run ({fix})"]
+    b = json.loads(path.read_text(encoding="utf-8"))
+    errors = []
+    if b.get("skillHash") != skill_hash(folder):
+        errors.append(f"baselines/{folder.name}.json was recorded on another text of the skill (SKILL.md body, description, "
+                      f"references, templates or scripts): rerun it ({fix}) or move the skill back to drafts/")
+    if b.get("casesHash") != cases_hash(folder):
+        errors.append(f"baselines/{folder.name}.json was recorded on other cases or graders: a grader-only change is regraded "
+                      f"for free (run_evals.py --regrade --out <dir of that run>), a new or changed prompt needs {fix}")
+    if errors:
+        pass  # a stale run's verdict says nothing about today's skill
+    elif "failures" not in b:
+        errors.append(f"baselines/{folder.name}.json has no recorded verdict: rerun it ({fix})")
+    elif b["failures"]:
+        errors.append(f"the last recorded run fails ({'; '.join(b['failures'][:3])}): fix the skill and rerun, or move it back to drafts/")
+    short = sorted(n for n, c in b.get("cases", {}).items() if c.get("runs", 0) < RECORD_RUNS)
+    if short:
+        errors.append(f"baselines/{folder.name}.json: cases {short} ran fewer than {RECORD_RUNS} times with the skill")
+    return errors
 
 
 def load_sources(root: Path) -> set[str] | None:
@@ -113,6 +220,8 @@ def check_skill(folder: Path, in_catalog: bool, known_sources: set[str] | None =
         fm, body = read_frontmatter(skill_md)
     except ValueError as e:
         return [f"SKILL.md {e}"]
+    fm, meta_errors = skill_meta(fm)
+    errors += meta_errors
 
     name = fm.get("name")
     if name != folder.name or not KEBAB.match(str(name)):
@@ -143,10 +252,10 @@ def check_skill(folder: Path, in_catalog: bool, known_sources: set[str] | None =
     for key in ("depends_on", "feeds"):
         value = fm.get(key)
         if not isinstance(value, list) or not all(isinstance(v, str) and KEBAB.match(v) for v in value):
-            err(f"{key} must be a list of kebab-case skill names (can be empty)")
+            err(f"{key} must be comma-separated kebab-case skill names (can be empty)")
     sources = fm.get("sources")
     if not isinstance(sources, list) or not sources or not all(isinstance(s, str) for s in sources):
-        err("sources must be a non-empty list of ids")
+        err("sources must be comma-separated ids, at least one")
     elif known_sources is not None:
         unknown = [s for s in sources if s not in known_sources and not s.startswith("own-")]
         if unknown:
@@ -402,7 +511,7 @@ def overlapping_descriptions(descriptions: dict[str, str]) -> list[str]:
     return problems
 
 
-def main(root: Path, sync: bool = False) -> int:
+def main(root: Path, sync: bool = False, evidence: bool = True) -> int:
     problems = []
     catalog = sorted(p for p in (root / "skills").glob("*") if p.is_dir())
     drafts = sorted(p for p in (root / "drafts").glob("*") if p.is_dir())
@@ -413,7 +522,10 @@ def main(root: Path, sync: bool = False) -> int:
     for folder in catalog + drafts:
         if sync and (folder / "SKILL.md").is_file():
             sync_foundations(folder, foundations)
-        for e in check_skill(folder, folder in catalog, known_sources, foundations):
+        errors = check_skill(folder, folder in catalog, known_sources, foundations)
+        if folder in catalog and not errors and evidence:
+            errors = check_evidence(root, folder)
+        for e in errors:
             problems.append(f"{folder.relative_to(root)}: {e}")
     descriptions = {}
     for folder in catalog + drafts:
@@ -448,5 +560,6 @@ def main(root: Path, sync: bool = False) -> int:
 
 
 if __name__ == "__main__":
-    args = [a for a in sys.argv[1:] if a != "--sync"]
-    sys.exit(main(Path(args[0]) if args else Path(__file__).parent.parent, sync="--sync" in sys.argv))
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    sys.exit(main(Path(args[0]) if args else Path(__file__).parent.parent, sync="--sync" in sys.argv,
+                  evidence="--no-evidence" not in sys.argv))

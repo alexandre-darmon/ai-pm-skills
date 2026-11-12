@@ -11,4 +11,5 @@ Loop type: <single step | plan-execute | multi-agent, with justification>
 ## Stop conditions
 ## Memory policy
 ## Trace schema (with outcome field)
+## Prototype check (tasks run | tools misused or looping | fixes to names, descriptions, response sizes), or "not yet run"
 ## Framework (only for a named need: need and candidate, or none)

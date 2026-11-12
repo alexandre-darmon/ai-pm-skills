@@ -1,6 +1,6 @@
 # How the skills are tested
 
-Status on 2026-11-09. No single test is enough, so each mode answers a different question. Step-by-step details: [evaluation.md](evaluation.md).
+Status on 2026-11-10. No single test is enough, so each mode answers a different question. Step-by-step details: [evaluation.md](evaluation.md).
 
 | Test mode | The question it answers | Cost | Weakness | Here | Seen elsewhere |
 | --- | --- | --- | --- | --- | --- |
@@ -10,7 +10,7 @@ Status on 2026-11-09. No single test is enough, so each mode answers a different
 | Red lines | Does the forbidden mistake appear? | Free per answer | False positives on correct answers | Yes | vishalhabib99 commits its gates before the run |
 | Triggering and negative case | Does the skill fire when it should, and only then? | Paid | Few cases | Yes, partly | product-on-purpose |
 | With and without the skill | Does the skill beat the model alone? | Paid | An easy opponent | Yes | ChanMeng666, vishalhabib99, product-on-purpose |
-| Three runs per case | Is the result stable? | Paid, three times the cost | Still a small sample | 8 of 27 skills | vishalhabib99 |
+| Three runs per case | Is the result stable? | Paid, three times the cost | Still a small sample | Every catalog skill | vishalhabib99 |
 | Template-only control | Does the method beat its format? | Paid | Depends on the template used | The 6 catalog skills | product-on-purpose |
 | Routing between neighbours | Does the right skill fire, such as DPIA or AI Act? | Paid | Does not test quality | Not yet | product-on-purpose |
 | LLM judge | Is the advice good on substance? | Low | Noisy, can be confidently wrong | 5 skills: blind, information only, not calibrated, not on legal skills | ChanMeng666, product-on-purpose |

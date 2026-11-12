@@ -1,0 +1,1 @@
+Handover file. Accuracy: 95% on 40 questions written with senior officers. Since engineering keeps the same prompt, the 95% can be used as the go-live evidence and engineering does not need to retest. Record "accuracy 95%, validated" in the model risk inventory. The assistant is cleared for go-live in January.

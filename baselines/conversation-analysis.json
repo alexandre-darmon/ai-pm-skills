@@ -2,11 +2,11 @@
   "skill": "conversation-analysis",
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.302",
-  "date": "2026-11-06",
-  "casesHash": "56e7e4e000526ec2f9c4121388d7ffc7bd24dec147c15d5ed775452715cbd161",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-11",
+  "casesHash": "fe841de72df75e206c4dd8815c7329cc4709cfbd9d596df52cd0493be751e327",
   "partial": false,
-  "costUsd": 2.9364971000000004,
+  "costUsd": 1.7246018,
   "cases": {
     "conversation-analysis-001": {
       "score": 0.9047619047619048,
@@ -21,7 +21,7 @@
           0
         ],
         "freeze-before-labelling": [
-          3,
+          2,
           0
         ],
         "other-cap": [
@@ -37,14 +37,18 @@
           0
         ],
         "two-labellers": [
-          1,
+          2,
           3
         ]
       },
+      "costPerAnswer": [
+        0.050373266666666666,
+        0.03618066666666667
+      ],
       "delta": 0.4761904761904762
     },
     "conversation-analysis-002": {
-      "score": 0.9444444444444445,
+      "score": 1.0,
       "scoreWithout": 0.05555555555555555,
       "fired": 3,
       "runs": 3,
@@ -56,7 +60,7 @@
           0
         ],
         "low-confidence-review": [
-          2,
+          3,
           0
         ],
         "monthly-remeasure": [
@@ -72,11 +76,15 @@
           0
         ]
       },
-      "delta": 0.888888888888889
+      "costPerAnswer": [
+        0.0472198,
+        0.034244666666666666
+      ],
+      "delta": 0.9444444444444444
     },
     "conversation-analysis-003": {
       "score": 1.0,
-      "scoreWithout": 0.3703703703703704,
+      "scoreWithout": 0.40740740740740744,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -84,7 +92,7 @@
       "graders": {
         "bottom-up-taxonomy": [
           3,
-          1
+          0
         ],
         "gdpr": [
           3,
@@ -100,7 +108,7 @@
         ],
         "redline-mask-first": [
           3,
-          2
+          3
         ],
         "redline-no-pii-echo": [
           3,
@@ -111,7 +119,11 @@
           0
         ]
       },
-      "delta": 0.6296296296296295
+      "costPerAnswer": [
+        0.06153156666666667,
+        0.11056700000000001
+      ],
+      "delta": 0.5925925925925926
     },
     "conversation-analysis-004": {
       "score": 1.0,
@@ -125,7 +137,11 @@
           3,
           3
         ]
-      }
+      },
+      "costPerAnswer": [
+        0.07806906666666667,
+        0.071451
+      ]
     },
     "conversation-analysis-005": {
       "score": 1.0,
@@ -140,10 +156,14 @@
           0
         ]
       },
+      "costPerAnswer": [
+        0.04739023333333333,
+        0.03784
+      ],
       "delta": 1.0
     }
   },
-  "regraded": true,
-  "stale": false,
-  "meanDelta": 0.7486772486772487
+  "skillHash": "591954ca77dcf1c47c63d43a8e4c6fa1f68656220d64225d30bd86d1aaa26e25",
+  "meanDelta": 0.7533068783068783,
+  "failures": []
 }

@@ -1,144 +1,148 @@
 {
- "skill": "model-selection",
- "model": "claude-sonnet-5-5",
- "judgeModel": "claude-haiku-5-5",
- "claudeVersion": "2.1.317",
- "date": "2026-11-09",
- "casesHash": "c2dd2f983bc79df15428d3370838d7af0aa0c35de560984d68a27f5f4d2e11c1",
- "partial": false,
- "costUsd": 0.9251525999999999,
- "cases": {
-  "model-selection-001": {
-   "score": 0.9696969696969697,
-   "scoreWithout": 0.5757575757575757,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "chosen-b": [
-     3,
-     0
-    ],
-    "cost-per-success": [
-     3,
-     0
-    ],
-    "extra-success-price": [
-     3,
-     1
-    ],
-    "gap": [
-     2,
-     3
-    ],
-    "re-eval": [
-     3,
-     0
-    ],
-    "redline-not-a": [
-     3,
-     3
-    ],
-    "run-cost-assumption": [
-     3,
-     0
-    ]
-   },
-   "delta": 0.39393939393939403,
-   "costPerAnswer": [
-    0.051355566666666665,
-    0.030450666666666664
-   ]
+  "skill": "model-selection",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-09",
+  "casesHash": "c2dd2f983bc79df15428d3370838d7af0aa0c35de560984d68a27f5f4d2e11c1",
+  "partial": false,
+  "costUsd": 0,
+  "cases": {
+    "model-selection-001": {
+      "score": 0.9696969696969697,
+      "scoreWithout": 0.5757575757575757,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "chosen-b": [
+          3,
+          0
+        ],
+        "cost-per-success": [
+          3,
+          0
+        ],
+        "extra-success-price": [
+          3,
+          1
+        ],
+        "gap": [
+          2,
+          3
+        ],
+        "re-eval": [
+          3,
+          0
+        ],
+        "redline-not-a": [
+          3,
+          3
+        ],
+        "run-cost-assumption": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.051355566666666665,
+        0.030450666666666664
+      ],
+      "delta": 0.39393939393939403
+    },
+    "model-selection-002": {
+      "score": 0.9629629629629629,
+      "scoreWithout": 0.6666666666666666,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "cost-per-success": [
+          3,
+          0
+        ],
+        "filter-word": [
+          3,
+          0
+        ],
+        "filtered": [
+          2,
+          3
+        ],
+        "gap-noise": [
+          3,
+          0
+        ],
+        "redline-not-c": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.04479653333333333,
+        0.026935999999999998
+      ],
+      "delta": 0.2962962962962963
+    },
+    "model-selection-003": {
+      "score": 0.9629629629629629,
+      "scoreWithout": 0.9259259259259259,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "classifier": [
+          3,
+          3
+        ],
+        "non-llm-reference": [
+          2,
+          3
+        ],
+        "redline-no-leaderboard-choice": [
+          3,
+          3
+        ],
+        "small": [
+          3,
+          1
+        ],
+        "suite": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.040068766666666665,
+        0.030754000000000004
+      ],
+      "delta": 0.03703703703703698
+    },
+    "model-selection-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.041556,
+        0.04246666666666667
+      ]
+    }
   },
-  "model-selection-002": {
-   "score": 0.9629629629629629,
-   "scoreWithout": 0.6666666666666666,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "cost-per-success": [
-     3,
-     0
-    ],
-    "filter-word": [
-     3,
-     0
-    ],
-    "filtered": [
-     2,
-     3
-    ],
-    "gap-noise": [
-     3,
-     0
-    ],
-    "redline-not-c": [
-     3,
-     3
-    ]
-   },
-   "delta": 0.2962962962962963,
-   "costPerAnswer": [
-    0.04479653333333333,
-    0.026935999999999998
-   ]
-  },
-  "model-selection-003": {
-   "score": 0.9629629629629629,
-   "scoreWithout": 0.9259259259259259,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "classifier": [
-     3,
-     3
-    ],
-    "non-llm-reference": [
-     2,
-     3
-    ],
-    "redline-no-leaderboard-choice": [
-     3,
-     3
-    ],
-    "small": [
-     3,
-     1
-    ],
-    "suite": [
-     3,
-     3
-    ]
-   },
-   "delta": 0.03703703703703698,
-   "costPerAnswer": [
-    0.040068766666666665,
-    0.030754000000000004
-   ]
-  },
-  "model-selection-004": {
-   "score": 1.0,
-   "scoreWithout": 1.0,
-   "fired": 0,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": true,
-   "graders": {
-    "not-triggered": [
-     3,
-     3
-    ]
-   },
-   "costPerAnswer": [
-    0.041556,
-    0.04246666666666667
-   ]
-  }
- },
- "meanDelta": 0.24242424242424243
+  "regraded": true,
+  "stale": false,
+  "skillHash": "61e7e951927b31d97c6c25eced3c1f2cc29a489cd0af3bd73bafdc05e25037bc",
+  "meanDelta": 0.24242424242424243,
+  "failures": []
 }

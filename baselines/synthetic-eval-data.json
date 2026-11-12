@@ -1,144 +1,148 @@
 {
- "skill": "synthetic-eval-data",
- "model": "claude-sonnet-5-5",
- "judgeModel": "claude-haiku-5-5",
- "claudeVersion": "2.1.317",
- "date": "2026-11-09",
- "casesHash": "173cc1ec68bb9a6b69268ac66c39c530296fd97cfbe5b4549a78b2d5c0ee86be",
- "partial": false,
- "costUsd": 1.0785533,
- "cases": {
-  "synthetic-eval-data-001": {
-   "score": 0.9166666666666666,
-   "scoreWithout": 0.125,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "dimensions-grounded": [
-     2,
-     0
-    ],
-    "expected-from-experts": [
-     3,
-     2
-    ],
-    "redline-flagged-share": [
-     3,
-     0
-    ],
-    "rejection-rate": [
-     3,
-     0
-    ],
-    "replacement-plan": [
-     3,
-     1
-    ],
-    "tuples-separate-step": [
-     2,
-     0
-    ]
-   },
-   "costPerAnswer": [
-    0.05903733333333333,
-    0.042567999999999995
-   ],
-   "delta": 0.7916666666666666
+  "skill": "synthetic-eval-data",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-09",
+  "casesHash": "173cc1ec68bb9a6b69268ac66c39c530296fd97cfbe5b4549a78b2d5c0ee86be",
+  "partial": false,
+  "costUsd": 0,
+  "cases": {
+    "synthetic-eval-data-001": {
+      "score": 0.9166666666666666,
+      "scoreWithout": 0.125,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "dimensions-grounded": [
+          2,
+          0
+        ],
+        "expected-from-experts": [
+          3,
+          2
+        ],
+        "redline-flagged-share": [
+          3,
+          0
+        ],
+        "rejection-rate": [
+          3,
+          0
+        ],
+        "replacement-plan": [
+          3,
+          1
+        ],
+        "tuples-separate-step": [
+          2,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.05903733333333333,
+        0.042567999999999995
+      ],
+      "delta": 0.7916666666666666
+    },
+    "synthetic-eval-data-002": {
+      "score": 0.9583333333333334,
+      "scoreWithout": 0.375,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "judge-apart": [
+          3,
+          1
+        ],
+        "real-grounding": [
+          3,
+          0
+        ],
+        "redline-expert-answers": [
+          3,
+          2
+        ],
+        "rejection-rate": [
+          2,
+          0
+        ],
+        "share-declared": [
+          3,
+          0
+        ],
+        "unanswerable": [
+          3,
+          2
+        ]
+      },
+      "costPerAnswer": [
+        0.06120446666666667,
+        0.044216000000000005
+      ],
+      "delta": 0.5833333333333334
+    },
+    "synthetic-eval-data-003": {
+      "score": 1.0,
+      "scoreWithout": 0.4000000000000001,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "distribution-compare": [
+          3,
+          0
+        ],
+        "real-pilot-cases": [
+          3,
+          3
+        ],
+        "reject-regenerate": [
+          3,
+          0
+        ],
+        "score-split": [
+          3,
+          3
+        ],
+        "style-dimension": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.051062633333333336,
+        0.03145666666666667
+      ],
+      "delta": 0.5999999999999999
+    },
+    "synthetic-eval-data-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.035768,
+        0.03420466666666667
+      ]
+    }
   },
-  "synthetic-eval-data-002": {
-   "score": 0.9583333333333334,
-   "scoreWithout": 0.375,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "judge-apart": [
-     3,
-     1
-    ],
-    "real-grounding": [
-     3,
-     0
-    ],
-    "redline-expert-answers": [
-     3,
-     2
-    ],
-    "rejection-rate": [
-     2,
-     0
-    ],
-    "share-declared": [
-     3,
-     0
-    ],
-    "unanswerable": [
-     3,
-     2
-    ]
-   },
-   "costPerAnswer": [
-    0.06120446666666667,
-    0.044216000000000005
-   ],
-   "delta": 0.5833333333333334
-  },
-  "synthetic-eval-data-003": {
-   "score": 1.0,
-   "scoreWithout": 0.4000000000000001,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "distribution-compare": [
-     3,
-     0
-    ],
-    "real-pilot-cases": [
-     3,
-     3
-    ],
-    "reject-regenerate": [
-     3,
-     0
-    ],
-    "score-split": [
-     3,
-     3
-    ],
-    "style-dimension": [
-     3,
-     0
-    ]
-   },
-   "costPerAnswer": [
-    0.051062633333333336,
-    0.03145666666666667
-   ],
-   "delta": 0.5999999999999999
-  },
-  "synthetic-eval-data-004": {
-   "score": 1.0,
-   "scoreWithout": 1.0,
-   "fired": 0,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": true,
-   "graders": {
-    "not-triggered": [
-     3,
-     3
-    ]
-   },
-   "costPerAnswer": [
-    0.035768,
-    0.03420466666666667
-   ]
-  }
- },
- "meanDelta": 0.6583333333333333
+  "regraded": true,
+  "stale": false,
+  "skillHash": "e282c3fc94a32d920960ac7a47f8762772b6bcbb1efe385c0243d313fcbe3b1d",
+  "meanDelta": 0.6583333333333333,
+  "failures": []
 }

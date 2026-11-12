@@ -1,14 +1,16 @@
 ---
 name: synthetic-eval-data
 description: 'Generate synthetic eval inputs when real cases are scarce, without fooling yourself. Use pre-launch, for a rare risky class, when privacy blocks real data, or before "generate 1,000 test questions".'
-stage: evaluate
-version: 0.2.0
-depends_on: [error-analysis, build-evals]
-feeds: [build-evals, retrieval-evaluation, agent-evals, llm-judge-calibration]
-autonomy_relevant: false
-sources: [husain-shankar-evals, eu-ai-act, anthropic-evals, zheng-llm-judge, gdpr, tamkin-discrim-eval, sclar-format-spread, own-golden-sets]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "evaluate"
+  version: "0.2.0"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "false"
+  depends_on: "error-analysis, build-evals"
+  feeds: "build-evals, retrieval-evaluation, agent-evals, llm-judge-calibration"
+  sources: "husain-shankar-evals, eu-ai-act, anthropic-evals, zheng-llm-judge, gdpr, tamkin-discrim-eval, sclar-format-spread, own-golden-sets"
 ---
 
 # synthetic-eval-data

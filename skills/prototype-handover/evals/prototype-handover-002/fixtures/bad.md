@@ -1,0 +1,1 @@
+Here is the handover. Since five relationship managers rely on it, you can keep running it until Q2 while engineering rebuilds it. Document the notebook, list the data sources and share your credentials setup with engineering so they can reproduce it. The tool is approved as an interim solution.

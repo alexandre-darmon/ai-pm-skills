@@ -18,9 +18,12 @@ def scores(root=ROOT):
     rows = []
     for f in sorted((root / "baselines").glob("*.json")):
         b = json.loads(f.read_text())
+        if not (root / "skills" / b["skill"]).is_dir():
+            continue
         pos = [(cid, c) for cid, c in b["cases"].items() if not c["negative"]]
         t = root / "baselines" / "template-arm" / f.name
-        tc = json.loads(t.read_text())["cases"] if t.is_file() else {}
+        tarm = json.loads(t.read_text()) if t.is_file() else {}
+        tc = tarm["cases"] if tarm.get("casesHash") == b.get("casesHash") else {}
         tmpl = [tc[cid]["score"] for cid, _ in pos if cid in tc]
         rows.append((b["skill"], sum(c["scoreWithout"] for _, c in pos) / len(pos),
                      sum(tmpl) / len(tmpl) if len(tmpl) == len(pos) else None,

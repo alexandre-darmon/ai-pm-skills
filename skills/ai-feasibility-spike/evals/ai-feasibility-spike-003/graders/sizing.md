@@ -1,0 +1,5 @@
+---
+type: regex  # each category sized for the margin between expected rate and bar, not 40 cases in total (a count with an expected rate counts only after a category or class is named; "expected rate close to the bar" counts only with a size direction: more cases)
+pattern: '\b([2-9]\d\d)\b[^\n]{0,50}(cases|complaints|per (category|class)|each)|\b1[34]\d\b[^\n]{0,50}(cases|complaints|per (category|class)|each)|\b(margin|gap|distance)\b[^\n.]{0,60}(bar|threshold)|lower (the )?bar|\b(8[0-9]\d|[0-9][, ]?[0-9]{3})\b (cases|complaints) (in total|overall|across)|per (gated |each )?(category|class|type|document type)[^\n.]{0,60}\b(if|when|at|assuming) (you |we )?(an? |the )?expect\w*|\b(more|larger|bigger|\d{2,3})\b[^\n.]{0,40}\bexpected (rate|accuracy)\b[^\n.]{0,60}\b(closer|nearer|near|close) (to )?the (bar|threshold|target)|\b(categor(y|ies)|class(es)?|type)\w*\b[^\n]{0,120}?\b\d{2,3}\b (or more )?(cases|documents|complaints|emails)\b[^\n.]{0,30}\b(at|if|assuming) (you |we )?(an? |the )?expect\w*'
+flags: i
+---

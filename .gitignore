@@ -1,3 +1,4 @@
 # claude plugin eval writes run results next to the cases
 **/evals/results/
 eval-out/
+__pycache__/

@@ -1,14 +1,16 @@
 ---
 name: ai-data-requirements
 description: 'Specify what an AI feature reads and writes. Use on "what data do we need", a DPO asking what is processed, or to set up or review a RAG store: stale answers, mixed sensitivity, unowned docs.'
-stage: specify
-version: 0.3.0
-depends_on: [llm-feature-prd]
-feeds: [synthetic-eval-data, build-evals, retrieval-evaluation, production-evals-monitoring, assistant-kpis-cost-per-outcome, process-ai-redesign]
-autonomy_relevant: false
-sources: [dama-dmbok, gdpr, own-data-platform, own-assistant-mission, own-rag-practice, repo-vishalhabib, repo-product-on-purpose, repo-chanmeng]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "specify"
+  version: "0.3.0"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "false"
+  depends_on: "llm-feature-prd"
+  feeds: "synthetic-eval-data, build-evals, retrieval-evaluation, production-evals-monitoring, assistant-kpis-cost-per-outcome, process-ai-redesign"
+  sources: "dama-dmbok, gdpr, own-data-platform, own-assistant-mission, own-rag-practice, repo-vishalhabib, repo-product-on-purpose, repo-chanmeng"
 ---
 
 # ai-data-requirements

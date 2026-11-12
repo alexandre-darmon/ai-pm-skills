@@ -1,0 +1,318 @@
+{
+  "skill": "prototype-handover",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-11",
+  "casesHash": "d5e557cff1c6076e0125259e49ecc23dfa22b82469032ca40a3afdaf79d6e6f7",
+  "partial": false,
+  "costUsd": 0,
+  "cases": {
+    "prototype-handover-001": {
+      "score": 0.9111111111111111,
+      "scoreWithout": 0.4222222222222222,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "baseline-interval": [
+          3,
+          0
+        ],
+        "baseline": [
+          2,
+          0
+        ],
+        "change-control": [
+          3,
+          1
+        ],
+        "fraud-class": [
+          1,
+          3
+        ],
+        "ict-asset": [
+          3,
+          0
+        ],
+        "it-risk": [
+          3,
+          0
+        ],
+        "judge-not-measured": [
+          3,
+          0
+        ],
+        "judge-tpr-tnr": [
+          3,
+          0
+        ],
+        "per-class": [
+          3,
+          3
+        ],
+        "rebuild": [
+          3,
+          3
+        ],
+        "redline-no-verdict": [
+          3,
+          3
+        ],
+        "row-level": [
+          2,
+          0
+        ],
+        "tier-3": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.08656016666666666,
+        0.0409
+      ],
+      "delta": 0.4888888888888889
+    },
+    "prototype-handover-002": {
+      "score": 1.0,
+      "scoreWithout": 0.4444444444444444,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "credentials": [
+          3,
+          3
+        ],
+        "dpo": [
+          3,
+          2
+        ],
+        "it-risk": [
+          3,
+          0
+        ],
+        "named-owner": [
+          3,
+          3
+        ],
+        "production-data-rule": [
+          3,
+          0
+        ],
+        "redline-decision-now": [
+          3,
+          2
+        ],
+        "redline-no-drift": [
+          3,
+          0
+        ],
+        "redline-no-verdict": [
+          3,
+          2
+        ],
+        "tier": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.13436586666666664,
+        0.04589543333333334
+      ],
+      "delta": 0.5555555555555556
+    },
+    "prototype-handover-003": {
+      "score": 1.0,
+      "scoreWithout": 0.6923076923076922,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "change-control": [
+          3,
+          0
+        ],
+        "interval": [
+          3,
+          3
+        ],
+        "model-version": [
+          3,
+          0
+        ],
+        "no-validated-label": [
+          3,
+          3
+        ],
+        "per-topic": [
+          3,
+          0
+        ],
+        "redline-no-spike-evidence": [
+          3,
+          3
+        ],
+        "redline-no-verdict": [
+          3,
+          3
+        ],
+        "release-evidence": [
+          3,
+          0
+        ],
+        "rerun": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.1727022,
+        0.06314396666666666
+      ],
+      "delta": 0.3076923076923078
+    },
+    "prototype-handover-004": {
+      "score": 0.9444444444444443,
+      "scoreWithout": 0.4166666666666667,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "autonomy": [
+          3,
+          0
+        ],
+        "change-control": [
+          3,
+          0
+        ],
+        "eval-set": [
+          3,
+          0
+        ],
+        "no-rebuild": [
+          1,
+          1
+        ],
+        "owner": [
+          3,
+          2
+        ],
+        "redline-no-verdict": [
+          3,
+          3
+        ],
+        "register": [
+          3,
+          3
+        ],
+        "review-date": [
+          3,
+          0
+        ],
+        "tier-1": [
+          3,
+          0
+        ],
+        "tier-2": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.0614496,
+        0.03502333333333333
+      ],
+      "delta": 0.5277777777777777
+    },
+    "prototype-handover-005": {
+      "score": 0.9487179487179488,
+      "scoreWithout": 0.38461538461538464,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "act-flag": [
+          3,
+          0
+        ],
+        "annex": [
+          3,
+          0
+        ],
+        "autonomy": [
+          3,
+          0
+        ],
+        "dpo": [
+          3,
+          3
+        ],
+        "interval": [
+          3,
+          3
+        ],
+        "own-use": [
+          1,
+          0
+        ],
+        "provider": [
+          3,
+          0
+        ],
+        "rebuild": [
+          3,
+          0
+        ],
+        "redline-no-verdict": [
+          3,
+          3
+        ],
+        "tier-3": [
+          3,
+          0
+        ],
+        "tier-4": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.15293543333333334,
+        0.06797333333333333
+      ],
+      "delta": 0.5641025641025641
+    },
+    "prototype-handover-006": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.03536466666666667,
+        0.035004
+      ]
+    }
+  },
+  "regraded": true,
+  "stale": false,
+  "skillHash": "d301a32c28d41163d8e3cfefe9702b900e7670fa1c7d57e326f13188851ffa45",
+  "meanDelta": 0.4888034188034188,
+  "failures": []
+}

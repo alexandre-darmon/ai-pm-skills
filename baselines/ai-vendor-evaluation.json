@@ -1,228 +1,232 @@
 {
- "skill": "ai-vendor-evaluation",
- "model": "claude-sonnet-5-5",
- "judgeModel": "claude-haiku-5-5",
- "claudeVersion": "2.1.317",
- "date": "2026-11-09",
- "casesHash": "295862b60b23c6976551f6e6f30c9b4f33972d24fbb742a951ce42a0b9cf0a65",
- "partial": false,
- "costUsd": 1.1668983,
- "cases": {
-  "ai-vendor-evaluation-001": {
-   "score": 1.0,
-   "scoreWithout": 0.5873015873015873,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "blind": [
-     3,
-     1
-    ],
-    "claim-not-evidence": [
-     3,
-     2
-    ],
-    "cost-per-correct": [
-     3,
-     1
-    ],
-    "counsel": [
-     3,
-     0
-    ],
-    "decision-pending": [
-     3,
-     0
-    ],
-    "document-level": [
-     3,
-     3
-    ],
-    "dora": [
-     3,
-     0
-    ],
-    "human-time": [
-     3,
-     3
-    ],
-    "instructions-for-use": [
-     3,
-     0
-    ],
-    "interval": [
-     3,
-     0
-    ],
-    "per-kind": [
-     3,
-     3
-    ],
-    "redline-data-before-upload": [
-     3,
-     2
-    ],
-    "redline-no-claim-pick": [
-     3,
-     3
-    ],
-    "redline-no-verdict": [
-     3,
-     3
-    ],
-    "special-category": [
-     3,
-     0
-    ]
-   },
-   "costPerAnswer": [
-    0.0697742,
-    0.04330933333333333
-   ],
-   "delta": 0.4126984126984127
+  "skill": "ai-vendor-evaluation",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-09",
+  "casesHash": "295862b60b23c6976551f6e6f30c9b4f33972d24fbb742a951ce42a0b9cf0a65",
+  "partial": false,
+  "costUsd": 0,
+  "cases": {
+    "ai-vendor-evaluation-001": {
+      "score": 1.0,
+      "scoreWithout": 0.5873015873015873,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "blind": [
+          3,
+          1
+        ],
+        "claim-not-evidence": [
+          3,
+          2
+        ],
+        "cost-per-correct": [
+          3,
+          1
+        ],
+        "counsel": [
+          3,
+          0
+        ],
+        "decision-pending": [
+          3,
+          0
+        ],
+        "document-level": [
+          3,
+          3
+        ],
+        "dora": [
+          3,
+          0
+        ],
+        "human-time": [
+          3,
+          3
+        ],
+        "instructions-for-use": [
+          3,
+          0
+        ],
+        "interval": [
+          3,
+          0
+        ],
+        "per-kind": [
+          3,
+          3
+        ],
+        "redline-data-before-upload": [
+          3,
+          2
+        ],
+        "redline-no-claim-pick": [
+          3,
+          3
+        ],
+        "redline-no-verdict": [
+          3,
+          3
+        ],
+        "special-category": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.0697742,
+        0.04330933333333333
+      ],
+      "delta": 0.4126984126984127
+    },
+    "ai-vendor-evaluation-002": {
+      "score": 0.9833333333333334,
+      "scoreWithout": 0.6333333333333333,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "counsel": [
+          3,
+          0
+        ],
+        "critical-important": [
+          3,
+          1
+        ],
+        "dora-article": [
+          2,
+          1
+        ],
+        "exit": [
+          3,
+          3
+        ],
+        "gdpr-28": [
+          3,
+          3
+        ],
+        "log-access": [
+          3,
+          3
+        ],
+        "no-training": [
+          3,
+          3
+        ],
+        "notice-retest": [
+          3,
+          0
+        ],
+        "quality-sla": [
+          3,
+          2
+        ],
+        "redline-both-blocking": [
+          3,
+          0
+        ],
+        "redline-no-sign-as-drafted": [
+          3,
+          3
+        ],
+        "redline-no-verdict": [
+          3,
+          3
+        ],
+        "register": [
+          3,
+          2
+        ],
+        "version-pin": [
+          3,
+          2
+        ]
+      },
+      "costPerAnswer": [
+        0.06211493333333332,
+        0.03730666666666666
+      ],
+      "delta": 0.3500000000000001
+    },
+    "ai-vendor-evaluation-003": {
+      "score": 0.9696969696969697,
+      "scoreWithout": 0.5757575757575758,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "b-figure": [
+          3,
+          0
+        ],
+        "cost-per-correct": [
+          3,
+          0
+        ],
+        "interval": [
+          3,
+          3
+        ],
+        "noise-10": [
+          3,
+          3
+        ],
+        "per-class": [
+          3,
+          2
+        ],
+        "re-eval": [
+          2,
+          0
+        ],
+        "redline-not-a": [
+          3,
+          3
+        ],
+        "selected-b": [
+          3,
+          0
+        ],
+        "tie": [
+          3,
+          2
+        ]
+      },
+      "costPerAnswer": [
+        0.06889363333333333,
+        0.03880666666666666
+      ],
+      "delta": 0.3939393939393939
+    },
+    "ai-vendor-evaluation-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.036997999999999996,
+        0.03176266666666667
+      ]
+    }
   },
-  "ai-vendor-evaluation-002": {
-   "score": 0.9833333333333334,
-   "scoreWithout": 0.6333333333333333,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "counsel": [
-     3,
-     0
-    ],
-    "critical-important": [
-     3,
-     1
-    ],
-    "dora-article": [
-     2,
-     1
-    ],
-    "exit": [
-     3,
-     3
-    ],
-    "gdpr-28": [
-     3,
-     3
-    ],
-    "log-access": [
-     3,
-     3
-    ],
-    "no-training": [
-     3,
-     3
-    ],
-    "notice-retest": [
-     3,
-     0
-    ],
-    "quality-sla": [
-     3,
-     2
-    ],
-    "redline-both-blocking": [
-     3,
-     0
-    ],
-    "redline-no-sign-as-drafted": [
-     3,
-     3
-    ],
-    "redline-no-verdict": [
-     3,
-     3
-    ],
-    "register": [
-     3,
-     2
-    ],
-    "version-pin": [
-     3,
-     2
-    ]
-   },
-   "costPerAnswer": [
-    0.06211493333333332,
-    0.03730666666666666
-   ],
-   "delta": 0.3500000000000001
-  },
-  "ai-vendor-evaluation-003": {
-   "score": 0.9696969696969697,
-   "scoreWithout": 0.5757575757575758,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "b-figure": [
-     3,
-     0
-    ],
-    "cost-per-correct": [
-     3,
-     0
-    ],
-    "interval": [
-     3,
-     3
-    ],
-    "noise-10": [
-     3,
-     3
-    ],
-    "per-class": [
-     3,
-     2
-    ],
-    "re-eval": [
-     2,
-     0
-    ],
-    "redline-not-a": [
-     3,
-     3
-    ],
-    "selected-b": [
-     3,
-     0
-    ],
-    "tie": [
-     3,
-     2
-    ]
-   },
-   "costPerAnswer": [
-    0.06889363333333333,
-    0.03880666666666666
-   ],
-   "delta": 0.3939393939393939
-  },
-  "ai-vendor-evaluation-004": {
-   "score": 1.0,
-   "scoreWithout": 1.0,
-   "fired": 0,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": true,
-   "graders": {
-    "not-triggered": [
-     3,
-     3
-    ]
-   },
-   "costPerAnswer": [
-    0.036997999999999996,
-    0.03176266666666667
-   ]
-  }
- },
- "meanDelta": 0.3855459355459356
+  "regraded": true,
+  "stale": false,
+  "skillHash": "166b3434bf74c7c79cd48970435d59f626686bfb1fb6a73c6032e0e67f97c9aa",
+  "meanDelta": 0.3855459355459356,
+  "failures": []
 }

@@ -1,0 +1,188 @@
+{
+  "skill": "error-analysis",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-11",
+  "casesHash": "a23dee359047a2e6b85ad1dba207d431403407ebb1b91b597db3fc0538c2a6c5",
+  "partial": false,
+  "costUsd": 0,
+  "cases": {
+    "error-analysis-001": {
+      "score": 1.0,
+      "scoreWithout": 0.4615384615384615,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "binary-per-mode": [
+          3,
+          3
+        ],
+        "cost-caught": [
+          3,
+          3
+        ],
+        "first-upstream": [
+          3,
+          2
+        ],
+        "mask": [
+          3,
+          3
+        ],
+        "one-expert": [
+          3,
+          2
+        ],
+        "prevalence-from-random": [
+          3,
+          1
+        ],
+        "price-formula": [
+          3,
+          2
+        ],
+        "redline-read-before-metrics": [
+          3,
+          0
+        ],
+        "sample-mix": [
+          3,
+          2
+        ],
+        "saturation": [
+          3,
+          0
+        ],
+        "spec-fix": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.0636255,
+        0.05188266666666667
+      ],
+      "delta": 0.5384615384615385
+    },
+    "error-analysis-002": {
+      "score": 0.9666666666666667,
+      "scoreWithout": 0.43333333333333335,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "binary-definitions": [
+          2,
+          2
+        ],
+        "code-check": [
+          3,
+          0
+        ],
+        "country-count": [
+          3,
+          3
+        ],
+        "first-upstream": [
+          3,
+          0
+        ],
+        "needs-random": [
+          3,
+          3
+        ],
+        "redline-provisional": [
+          3,
+          0
+        ],
+        "severity": [
+          3,
+          3
+        ],
+        "spec-fix-no-eval": [
+          3,
+          2
+        ]
+      },
+      "costPerAnswer": [
+        0.0716738,
+        0.049726
+      ],
+      "delta": 0.5333333333333333
+    },
+    "error-analysis-003": {
+      "score": 0.9666666666666667,
+      "scoreWithout": 0.13333333333333333,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "binary": [
+          3,
+          0
+        ],
+        "generic-categories": [
+          3,
+          0
+        ],
+        "judge-calibrated": [
+          2,
+          1
+        ],
+        "llm-clusters-notes": [
+          3,
+          0
+        ],
+        "redline-expert-reads-first": [
+          3,
+          0
+        ],
+        "sample-size": [
+          3,
+          0
+        ],
+        "saturation": [
+          3,
+          0
+        ],
+        "time-budget": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.06598396666666667,
+        0.04418666666666667
+      ],
+      "delta": 0.8333333333333334
+    },
+    "error-analysis-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.033138,
+        0.03326466666666667
+      ]
+    }
+  },
+  "regraded": true,
+  "stale": false,
+  "skillHash": "dad6a5ca5ab0ad7d800f80f2948b889dc0efdcab7d4b5bb63d729d4db61712d9",
+  "meanDelta": 0.6350427350427351,
+  "failures": []
+}

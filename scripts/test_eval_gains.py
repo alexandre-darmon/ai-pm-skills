@@ -18,7 +18,10 @@ class EvalGainsTest(unittest.TestCase):
     def setUp(self):
         self.root = Path(tempfile.mkdtemp())
         (self.root / "baselines").mkdir()
-        (self.root / "baselines/s.json").write_text(json.dumps({"skill": "s", "model": "claude-sonnet-5-5", "date": "2026-11-01", "cases": {
+        (self.root / "skills/s").mkdir(parents=True)  # only catalog skills are shown
+        (self.root / "baselines/d.json").write_text(json.dumps({"skill": "d", "model": "claude-sonnet-5-5", "date": "2026-11-01",
+                                                               "cases": {"d-001": case(0.0, 0.0, [0, 0])}}))  # a draft: left out
+        (self.root / "baselines/s.json").write_text(json.dumps({"skill": "s", "model": "claude-sonnet-5-5", "date": "2026-11-01", "casesHash": "h", "cases": {
             "s-001": case(1.0, 0.5, [3, 0]), "s-002": case(0.8, 0.3, [3, 3]),
             "s-003": {"runs": 3, "fired": 0, "negative": True, "graders": {}}}}))
         (self.root / "README.md").write_text("top\n<!-- gains:start -->\nold\n<!-- gains:end -->\nbottom\n")
@@ -34,7 +37,7 @@ class EvalGainsTest(unittest.TestCase):
 
     def test_template_and_judge_arms(self):
         (self.root / "baselines/template-arm").mkdir()
-        (self.root / "baselines/template-arm/s.json").write_text(json.dumps({"cases": {
+        (self.root / "baselines/template-arm/s.json").write_text(json.dumps({"casesHash": "h", "cases": {
             "s-001": case(0.7, 0.5, [3, 0]), "s-002": case(0.7, 0.3, [2, 3])}}))
         (self.root / "baselines/judge/claude-haiku-5-5").mkdir(parents=True)
         answers = [{"case": c, "arm": arm, "judge": v} for c in ("s-001", "s-002")
@@ -44,9 +47,15 @@ class EvalGainsTest(unittest.TestCase):
             "arms": {a: {"words": 500} for a in ("without", "template", "with")}}))
         out = main(self.root, draws=200)
         self.assertIn("| 40% | 70% | **90%** | +50 [+50, +50] |", out)
-        self.assertIn("| Blind LLM judge, Haiku 5.5: 1 of these skills, 2 cases, not calibrated | 60% | 70% | 80% | +20 [+20, +20] | +10 [+10, +10] |", out)
+        self.assertIn("| Blind LLM judge, Haiku 5.5: 1 of these skills, 2 cases, earlier runs, not calibrated | 60% | 70% | 80% | +20 [+20, +20] | +10 [+10, +10] |", out)
         self.assertIn("| 50% | 83% | **100%** |", out)
         self.assertIn("| `s` | Haiku 5.5 | 60% | 70% | 80% | +20 pts | +10 pts | 5 pts | 500 / 500 / 500 |", out)
+
+    def test_template_arm_on_other_cases_is_left_out(self):
+        (self.root / "baselines/template-arm").mkdir()
+        (self.root / "baselines/template-arm/s.json").write_text(json.dumps({"casesHash": "old", "cases": {
+            "s-001": case(0.7, 0.5, [3, 0]), "s-002": case(0.7, 0.3, [2, 3])}}))
+        self.assertIn("| 40% | — | **90%** |", main(self.root, draws=200))
 
 
 if __name__ == "__main__":

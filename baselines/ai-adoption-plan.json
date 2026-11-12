@@ -1,191 +1,193 @@
 {
- "skill": "ai-adoption-plan",
- "model": "claude-sonnet-5-5",
- "judgeModel": "claude-haiku-5-5",
- "claudeVersion": "2.1.317",
- "date": "2026-11-09",
- "casesHash": "616338100a5997e226ac3576ce21d1af317ec25e2c5d1fd06c47a1355f945b95",
- "partial": false,
- "costUsd": 1.2606894999999998,
- "cases": {
-  "ai-adoption-plan-001": {
-   "score": 1.0,
-   "scoreWithout": 0.5757575757575758,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "champion": [
-     3,
-     3
-    ],
-    "current-workaround": [
-     3,
-     0
-    ],
-    "managers-first": [
-     3,
-     3
-    ],
-    "outcome-metric": [
-     3,
-     0
-    ],
-    "population": [
-     3,
-     0
-    ],
-    "redline-no-big-launch": [
-     3,
-     2
-    ],
-    "wave": [
-     3,
-     3
-    ]
-   },
-   "delta": 0.4242424242424242,
-   "costPerAnswer": [
-    0.0719742,
-    0.040398666666666666
-   ]
+  "skill": "ai-adoption-plan",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-11",
+  "casesHash": "616338100a5997e226ac3576ce21d1af317ec25e2c5d1fd06c47a1355f945b95",
+  "partial": false,
+  "costUsd": 0.7850440999999999,
+  "cases": {
+    "ai-adoption-plan-001": {
+      "score": 0.9696969696969697,
+      "scoreWithout": 0.5757575757575758,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "champion": [
+          2,
+          3
+        ],
+        "current-workaround": [
+          3,
+          0
+        ],
+        "managers-first": [
+          3,
+          3
+        ],
+        "outcome-metric": [
+          3,
+          0
+        ],
+        "population": [
+          3,
+          0
+        ],
+        "redline-no-big-launch": [
+          3,
+          2
+        ],
+        "wave": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.08410523333333332,
+        null
+      ],
+      "delta": 0.3939393939393939
+    },
+    "ai-adoption-plan-002": {
+      "score": 0.8666666666666667,
+      "scoreWithout": 0.6333333333333333,
+      "fired": 1,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "access": [
+          1,
+          0
+        ],
+        "awareness": [
+          3,
+          2
+        ],
+        "depth-of-use": [
+          3,
+          0
+        ],
+        "funnel": [
+          3,
+          2
+        ],
+        "owner": [
+          1,
+          0
+        ],
+        "redline-not-quality": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.0374017,
+        null
+      ],
+      "delta": 0.2333333333333334
+    },
+    "ai-adoption-plan-003": {
+      "score": 0.9629629629629629,
+      "scoreWithout": 0.6666666666666666,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "objection": [
+          3,
+          0
+        ],
+        "owner": [
+          2,
+          0
+        ],
+        "redline-no-memo-only": [
+          3,
+          3
+        ],
+        "seat": [
+          3,
+          0
+        ],
+        "staff-data": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.052358966666666666,
+        null
+      ],
+      "delta": 0.2962962962962963
+    },
+    "ai-adoption-plan-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.032256,
+        null
+      ]
+    },
+    "ai-adoption-plan-005": {
+      "score": 1.0,
+      "scoreWithout": 0.5454545454545454,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "catches-and-false-alarms": [
+          3,
+          0
+        ],
+        "dated-evidence": [
+          3,
+          0
+        ],
+        "failure": [
+          3,
+          1
+        ],
+        "over-trust": [
+          3,
+          2
+        ],
+        "oversight": [
+          3,
+          0
+        ],
+        "own-failures": [
+          3,
+          0
+        ],
+        "redline-no-generic": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.05555946666666667,
+        null
+      ],
+      "delta": 0.4545454545454546
+    }
   },
-  "ai-adoption-plan-002": {
-   "score": 0.9333333333333332,
-   "scoreWithout": 0.6333333333333333,
-   "fired": 2,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "access": [
-     2,
-     0
-    ],
-    "awareness": [
-     3,
-     2
-    ],
-    "depth-of-use": [
-     3,
-     0
-    ],
-    "funnel": [
-     3,
-     2
-    ],
-    "owner": [
-     2,
-     0
-    ],
-    "redline-not-quality": [
-     3,
-     3
-    ]
-   },
-   "delta": 0.29999999999999993,
-   "costPerAnswer": [
-    0.04123996666666667,
-    0.030457333333333336
-   ]
-  },
-  "ai-adoption-plan-003": {
-   "score": 0.8888888888888888,
-   "scoreWithout": 0.6666666666666666,
-   "fired": 2,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "objection": [
-     2,
-     0
-    ],
-    "owner": [
-     2,
-     0
-    ],
-    "redline-no-memo-only": [
-     3,
-     3
-    ],
-    "seat": [
-     2,
-     0
-    ],
-    "staff-data": [
-     3,
-     3
-    ]
-   },
-   "delta": 0.2222222222222222,
-   "costPerAnswer": [
-    0.04809096666666667,
-    0.033992
-   ]
-  },
-  "ai-adoption-plan-004": {
-   "score": 1.0,
-   "scoreWithout": 1.0,
-   "fired": 0,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": true,
-   "graders": {
-    "not-triggered": [
-     3,
-     3
-    ]
-   },
-   "costPerAnswer": [
-    0.031926666666666666,
-    0.03222933333333333
-   ]
-  },
-  "ai-adoption-plan-005": {
-   "score": 1.0,
-   "scoreWithout": 0.5454545454545454,
-   "fired": 3,
-   "runs": 3,
-   "runsWithout": 3,
-   "negative": false,
-   "graders": {
-    "catches-and-false-alarms": [
-     3,
-     0
-    ],
-    "dated-evidence": [
-     3,
-     0
-    ],
-    "failure": [
-     3,
-     1
-    ],
-    "over-trust": [
-     3,
-     2
-    ],
-    "oversight": [
-     3,
-     0
-    ],
-    "own-failures": [
-     3,
-     0
-    ],
-    "redline-no-generic": [
-     3,
-     3
-    ]
-   },
-   "delta": 0.4545454545454546,
-   "costPerAnswer": [
-    0.0541927,
-    0.035728
-   ]
-  }
- },
- "meanDelta": 0.35025252525252526
+  "skillHash": "7ba06435ff1237e870252cd1ce6682b76b5d401b350732b7237d5a5271cedd6c",
+  "meanDelta": 0.3445286195286196,
+  "failures": []
 }

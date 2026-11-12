@@ -2,14 +2,14 @@
   "skill": "assistant-kpis-cost-per-outcome",
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.302",
-  "date": "2026-11-06",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-11",
   "casesHash": "e4415d1b78c698ebb5084b23b5f2b2f16e4e42806c29f2c6366d92acd74c3207",
   "partial": false,
-  "costUsd": 1.2398643000000003,
+  "costUsd": 0.7170491000000001,
   "cases": {
     "assistant-kpis-cost-per-outcome-001": {
-      "score": 1.0,
+      "score": 0.9523809523809524,
       "scoreWithout": 0.3333333333333333,
       "fired": 3,
       "runs": 3,
@@ -29,7 +29,7 @@
           2
         ],
         "rework-not-success": [
-          3,
+          2,
           0
         ],
         "sampled-quality": [
@@ -41,7 +41,11 @@
           3
         ]
       },
-      "delta": 0.6666666666666667
+      "costPerAnswer": [
+        0.06451886666666667,
+        null
+      ],
+      "delta": 0.6190476190476191
     },
     "assistant-kpis-cost-per-outcome-002": {
       "score": 1.0,
@@ -76,6 +80,10 @@
           0
         ]
       },
+      "costPerAnswer": [
+        0.0613516,
+        null
+      ],
       "delta": 1.0
     },
     "assistant-kpis-cost-per-outcome-003": {
@@ -91,7 +99,7 @@
           2
         ],
         "cost-per-correct": [
-          3,
+          2,
           2
         ],
         "interim": [
@@ -107,7 +115,7 @@
           0
         ],
         "quality-beside-usage": [
-          2,
+          3,
           0
         ],
         "redline-quality-per-kb": [
@@ -119,6 +127,10 @@
           1
         ]
       },
+      "costPerAnswer": [
+        0.0695719,
+        null
+      ],
       "delta": 0.48148148148148145
     },
     "assistant-kpis-cost-per-outcome-004": {
@@ -133,10 +145,14 @@
           3,
           3
         ]
-      }
+      },
+      "costPerAnswer": [
+        0.043574,
+        null
+      ]
     }
   },
-  "regraded": true,
-  "stale": false,
-  "meanDelta": 0.7160493827160495
+  "skillHash": "5c99df677e2b572e69c8c9c594ebd79a850f753905fb932fb5e0fab4c7449d69",
+  "meanDelta": 0.7001763668430335,
+  "failures": []
 }

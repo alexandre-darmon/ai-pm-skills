@@ -1,16 +1,18 @@
 ---
 name: my-skill
 description: <What the skill produces>. Use when <trigger situation, in the user's words>. Max 200 characters.
-stage: specify  # specify | evaluate | prove
-version: 0.1.0
-last_verified: 2026-11-01  # mandatory for legal skills
-legal: false  # true if the skill reads the law: no judge grader, eval_threshold >= 0.90, last_verified
-depends_on: []
-feeds: []
-autonomy_relevant: false
-sources: [own-practice]  # ids from foundations/sources.md
-eval_threshold: 0.80  # 0.90 for legal and flagship skills
-status: draft  # draft | tested | verified-in-mission
+license: CC-BY-4.0
+metadata:  # Agent Skills spec: only name, description, license, compatibility, metadata, allowed-tools at top level; metadata values are strings
+  stage: "specify"  # specify | build | evaluate | prove
+  version: "0.1.0"
+  status: "draft"  # draft | tested | verified-in-mission
+  eval_threshold: "0.80"  # 0.90 for legal and flagship skills
+  legal: "false"  # true if the skill reads the law: no judge grader, eval_threshold >= 0.90, last_verified
+  last_verified: "2026-11-01"  # mandatory for legal skills
+  autonomy_relevant: "false"
+  depends_on: ""  # comma-separated skill names
+  feeds: ""
+  sources: "own-practice"  # comma-separated ids from foundations/sources.md
 ---
 
 # my-skill

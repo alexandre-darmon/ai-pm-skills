@@ -1,14 +1,16 @@
 ---
 name: assistant-kpis-cost-per-outcome
 description: Define an AI assistant's or agent's KPIs (quality by domain, adoption, cost per correct outcome). Use when asked for its dashboard, or when usage grows and nobody knows if it helps.
-stage: prove
-version: 0.2.1
-depends_on: [build-evals, conversation-analysis, ai-data-requirements]
-feeds: [ai-roi-quantification, ai-opportunity-assessment, ai-adoption-plan, production-evals-monitoring]
-autonomy_relevant: true
-sources: [otel-genai, own-assistant-dashboards, repo-chanmeng]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "prove"
+  version: "0.2.1"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "true"
+  depends_on: "build-evals, conversation-analysis, ai-data-requirements"
+  feeds: "ai-roi-quantification, ai-opportunity-assessment, ai-adoption-plan, production-evals-monitoring"
+  sources: "otel-genai, own-assistant-dashboards, repo-chanmeng"
 ---
 
 # assistant-kpis-cost-per-outcome

@@ -1,14 +1,16 @@
 ---
 name: model-selection
 description: 'Choose a model for an AI use case on your own eval suite (cost per success, latency, hosting) and write the decision record. Use for "which model?", a new release or a cost review.'
-stage: evaluate
-version: 0.2.0
-depends_on: [build-evals]
-feeds: [release-to-production, model-card-ai-registry]
-autonomy_relevant: false
-sources: [own-model-selection, repo-chanmeng, repo-lenny]
-eval_threshold: 0.80
-status: tested
+license: CC-BY-4.0
+metadata:
+  stage: "evaluate"
+  version: "0.2.0"
+  status: "tested"
+  eval_threshold: "0.80"
+  autonomy_relevant: "false"
+  depends_on: "build-evals"
+  feeds: "release-to-production, model-card-ai-registry"
+  sources: "own-model-selection, repo-chanmeng, repo-lenny"
 ---
 
 # model-selection

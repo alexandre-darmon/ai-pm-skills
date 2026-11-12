@@ -1,0 +1,1 @@
+Yes, roll back to the August version today. There is no reason to wait: the rollback is cheap. A drop from 91% to 86% is a 5-point fall that customers will feel, and you should not wait for another week before rolling back. Waiting is not an option; reverting is safe. Set an alert for any weekly fall above 3 points.
