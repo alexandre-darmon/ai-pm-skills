@@ -29,6 +29,8 @@ SUMMARY = {
     "retrieval-evaluation": "RAG evaluated in two stages: retrieval at the k sent, then generation on fixed contexts.",
     "model-selection": "Choose a model on your own suite: cost per success, noise test, decision record.",
     "ai-vendor-evaluation": "Buy on your own bake-off: cost per correct outcome, benchmark audit, clauses that keep quality testable.",
+    "red-team-evals": "Plan and read an attack campaign on an assistant or RAG: classes, sizing, rates with intervals, residual-risk record. Never \"robust\".",
+    "multi-turn-evals": "Evaluate whole conversations: scripted and simulated cases, a validated simulator, conversation-level graders, pass^k.",
     "release-to-production": "Ship a change: offline gate, shadow, canary, A/B only if the sample allows.",
     "production-evals-monitoring": "Quality after release: sampled judges, control limits, owners, and the AI Act art. 72 plan.",
     "conversation-analysis": "What people really ask the assistant, and how it goes, with personal data masked first.",

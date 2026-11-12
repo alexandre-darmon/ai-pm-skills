@@ -1,10 +1,10 @@
 ---
 name: system-prompt-and-guardrails
-description: 'Write or tune an LLM feature''s system prompt and guardrails, with budgets and a redteam set. Use for a first prompt, a jailbreak or injection, a redteam result to judge, or disputed false positives.'
+description: 'Write or tune an LLM feature''s system prompt and guardrails. Use for a first prompt, a jailbreak, injection or leak, a guardrail refusing too much (false positives), or a redteam result to judge.'
 license: CC-BY-4.0
 metadata:
   stage: "build"
-  version: "0.2.1"
+  version: "0.2.2"
   status: "tested"
   eval_threshold: "0.80"
   autonomy_relevant: "true"
@@ -17,7 +17,7 @@ metadata:
 
 ## When to use
 - A first system prompt is drafted for an LLM feature or an agent.
-- A jailbreak or an injection was found, a redteam run must be judged before a guardrail goes live, or its false-positive rate is disputed.
+- Someone got the assistant to break its rules or leak what it should keep (jailbreak, injection), a redteam run must be judged before a guardrail goes live, or a guardrail refuses too many normal requests and its false-positive rate is disputed.
 - The action guardrails an agent's design calls for (scope, caps, approvals) must be written and enforced.
 - Do not use to write the PRD itself: use `llm-feature-prd`.
 - Do not use for a legal classification: use `ai-act-classification`.

@@ -1,12 +1,12 @@
 # ai-pm-skills — Product Requirements Document
 
-**Version:** 2.3 · **Date:** 2026-11-11 · **Owner:** Alex Darmon · **Status:** v2.3 adds a Build block between Specify and Evaluate (see §9 and the change log in §15). v2.0 (2026-11-09) repositioned the repo on "Evals as evidence"; v1.0 was dated 2026-11-01.
+**Version:** 2.4 · **Date:** 2026-11-12 · **Owner:** Alex Darmon · **Status:** v2.4 brings the catalog to 29 skills: `red-team-evals` and `multi-turn-evals` join the Evaluate block (see §9 and the change log in §15). v2.3 (2026-11-11) added a Build block between Specify and Evaluate. v2.0 (2026-11-09) repositioned the repo on "Evals as evidence"; v1.0 was dated 2026-11-01.
 
 ---
 
 ## 1. Summary
 
-**ai-pm-skills is an open-source set of 27 skills in four blocks (Specify, Build, Evaluate, Prove), each tested before it enters the catalog, that help an AI product manager in a regulated European enterprise build to learn, then prove three things: that a feature works, what each correct answer costs, and what the regulator will ask for. Evaluation is the spine: the repo calls it *evals as evidence*.**
+**ai-pm-skills is an open-source set of 29 skills in four blocks (Specify, Build, Evaluate, Prove), each tested before it enters the catalog, that help an AI product manager in a regulated European enterprise build to learn, then prove three things: that a feature works, what each correct answer costs, and what the regulator will ask for. Evaluation is the spine: the repo calls it *evals as evidence*.**
 
 Each skill is a folder an agent (Claude Code, Codex, Cursor, a custom agent) loads on demand: a `SKILL.md` with the method, templates, sources, and an eval suite run by `claude plugin eval`. The repo is a system, not a list: every skill plugs into shared backbones: the **evals-as-evidence frame** (three readers, six rules, the AI Act article map), **eval statistics** (intervals, sample sizes, judge correction), the **autonomy ladder** (L0 to L5), the **ROI model** (volume × quality × value) and, for Build skills, **build to learn** (what a PM-built artefact is for, who owns what, the red lines).
 
@@ -18,7 +18,7 @@ README promise, one line:
 | --- | --- |
 | Repo name | `ai-pm-skills` (GitHub: alexandre-darmon) |
 | Format | [Agent Skills](https://agentskills.io) open standard: `SKILL.md` + progressive disclosure |
-| Skill count | 27, hard cap 30 |
+| Skill count | 29, hard cap 30 |
 | Blocks | Specify (what correct means) · Build (build to learn) · Evaluate (offline and online) · Prove (to the sponsor and the regulator), drawn as a loop |
 | Test harness | `claude plugin eval`, native format, 3 cases minimum per skill, scored with and without the skill; pass rate shown in README |
 | Language | English skills; French legal annexes where the law is French |
@@ -119,7 +119,7 @@ Design implication: skills are written for the primary user and tested on the au
 
 ### Four differentiators, in order of defensibility
 
-1. **Evaluation as the spine, with the statistics right.** Eleven of the 27 skills evaluate: error analysis, judge validation with TPR and TNR, synthetic data, agents (pass^k), retrieval, vendors, release, production monitoring. Every score carries its number of cases and its interval.
+1. **Evaluation as the spine, with the statistics right.** Thirteen of the 29 skills evaluate: error analysis, judge validation with TPR and TNR, synthetic data, agents (pass^k), retrieval, vendors, release, production monitoring, attack campaigns, whole conversations. Every score carries its number of cases and its interval.
 2. **Tested, honestly.** Each skill has an eval suite scored with and without the skill, against its own template, and by a blind judge; all three are published, including where the gain is small.
 3. **Evidence for the regulator.** One AI Act skill, and an article map (arts. 9, 10, 15, 17, 26(5), 72, 73) that links each duty to the eval artefact that answers it. Checklist, not verdict.
 4. **Lived.** Every rule comes from a problem the author met on a real deployment. Cases in the suites are anonymised real briefs.
@@ -304,11 +304,11 @@ One page of formulas every evaluate skill uses: the case as the unit, Wilson int
 
 ---
 
-## 9. Skill catalog — 27 skills in four blocks
+## 9. Skill catalog — 29 skills in four blocks
 
 Legend: **P0** first, **P1** next, **P2** later. Codes: S Specify, B Build, E Evaluate, P Prove. Graders: *exact* (deterministic check), *checklist* (structure and mandatory items), *judge* (LLM with rubric, validated with TPR and TNR). Skills marked *legal* follow the legal rules (§7.2). Entries for skills kept from v1.0 are unchanged except for their codes.
 
-Status (2026-11-12): all 27 entries are in the catalog (`skills/`, status `tested`), each with a passing recorded run on its current text. The last two in were `ai-interaction-patterns` (S4) and `ai-incident-playbook` (P5); `drafts/` is empty.
+Status (2026-11-12): all 29 entries are in the catalog (`skills/`, status `tested`), each with a passing recorded run on its current text. The last two in were `red-team-evals` (E12) and `multi-turn-evals` (E13), in slots 28 and 29; slot 30 stays free and `drafts/` is empty.
 
 ### Specify — what correct means (5)
 
@@ -426,7 +426,7 @@ The Build skills that make something (B1, B3, B4, B5) cite `references/build-to-
 - **Evals (5 + 1 negative):** motor claims triage app at 364 of 400 by an unvalidated LLM judge, engineering offers to take it over (expected: tier 3, rebuild against the suite, about 88–93% per category, judge not validated without TPR and TNR, change control, row-level access, ICT asset entry, IT risk questions); covenant-breach notebook on production loan data with the PM's credentials, past its kill date, sponsor wants it until Q2 (expected: containment first, dated decision by a named owner now, credentials revoked, exception in weeks at most, tier 3, RTS art. 16 and 16(9), DPO question); sponsor wants 38 of 40 recorded as validated while engineering moves to a newer model version (expected: refused as release evidence, about 84–99% per topic, version change invalidates it, suite re-run on the engineering build); personal competitor-summary app 15 colleagues want (expected: tier 1 now, tier 2 shared, registered not rebuilt, owner, change control, small eval set, review date, autonomy level); in-house underwriting agent at 221 of 250, autonomous simple files wanted (expected: tier 3 then tier 4, rebuild, about 84–92%, possible provider for own use, Annex III point 5(c) flag to P3, health data to the DPO); negative: release plan for a new prompt version of a service engineering already runs (E9).
 - **Graders:** exact and checklist regexes only, threshold 0.90; red lines: no verdict (every positive case), decision now and no drift past the kill date, no spike number as release evidence.
 
-### Evaluate — offline and online (11)
+### Evaluate — offline and online (13)
 
 #### E1 · `build-evals` — P0
 - **Purpose:** build or review the eval set, graders, thresholds and baseline that decide whether an AI feature, model or skill is good enough.
@@ -549,6 +549,28 @@ The Build skills that make something (B1, B3, B4, B5) cite `references/build-to-
 - **Evals (3):** a taxonomy with overlapping classes (expected: merge or rule); a candidate at 0.0004 €/conversation with 78% agreement vs a frontier at 92% (expected: hybrid routing by confidence); transcripts with names and IBANs (expected: masking step blocks until done).
 - **Graders:** checklist + exact (taxonomy size, PII step present, agreement per dimension).
 
+#### E12 · `red-team-evals` — P1
+- **Purpose:** plan, size and read an attack campaign on an AI assistant or RAG feature: what users or planted content can make it say or disclose. Attack classes from the feature's own harms, a success criterion and tolerance per class signed beforehand, n per class, independent testers, a sealed held-out set, rates per class with intervals, regression cases, a residual-risk record. An agent that acts on systems (L3 and above) goes to E5: what injected instructions make it do is `agent-evals`' job.
+- **Trigger:** before release or a level move; after a model, prompt, knowledge-base or lookup-tool change; model risk, an auditor or the second line asks for robustness evidence; attack results (a scan, a vendor figure, "0 out of 50") are about to become a conclusion in a release memo, model card or register.
+- **Inputs:** what the feature is (assistant or RAG), the data classes and lookups it reaches, tools the user triggers on their own records, where its output goes, who writes what it reads, level per step, monthly volume. Ask: estimated attack attempts a month with their source (never the conversation count), the harm list, past findings, tolerable rate per harm and who signs it, the testers and their relation to the build team, versions, the decision date. No harm list: that list is the first deliverable.
+- **Outputs:** campaign plan and results (`templates/red-team-campaign.md`): classes as attacker goal × entry point (direct, indirect, multi-turn) × consequence; coverage against OWASP LLM Top 10 (2025), NIST AI 100-2 and MITRE ATLAS (tested, untested, not applicable with reason, coverage share); a binary success criterion per class (canary, trace, named content), fixed generation settings, the seed as the unit (best of k attempts); n per class sized on the Wilson bound, about 4/r held-out seeds (381 at 1%, 765 at 0.5%); testers by source (automated, human, regression) with their independence; development and sealed held-out sets, with the tuned-versus-fresh gap; per-class table with Wilson intervals and a reading (under, over, undecided); findings as regression cases (`build-evals`); residual-risk record (`templates/residual-risk-record.md`) with a counsel checklist (AI Act arts. 15(4)–(5), 9(5), 9(6), 9(8), 13(3)(b)(ii); DORA testing as a question for ICT risk) and acceptance by a named owner outside the build team; `scripts/redteam_rates.py`.
+- **Rules:** never "robust", "secure", "jailbreak-proof" or "compliant"; zero successes in n is never zero risk (about 3/n, Wilson about 4/n), and exposure is read on estimated attack attempts, never on all conversations; never a pooled rate alone; never a rate on attacks used for tuning; a vendor or public benchmark figure is never evidence for this feature, not even supporting evidence; criteria, settings and tolerances signed before the campaign; every success becomes a regression case; residual risk accepted outside the build team.
+- **Depends on / feeds:** B2, E1 / E9, P4, P3, E1.
+- **Sources:** owasp-llm-top10, nist-ai-100-2, mitre-atlas, mazeika-harmbench, openai-external-red-teaming, anthropic-red-teaming, wilson-interval, zhang-gsm1k, eu-ai-act, dora, pyrit, garak, own-redteam.
+- **Evals (5 + 1 negative):** claims assistant with RAG, a customer-scoped claim lookup and uploads; model risk wants attack evidence in six weeks and developers tried 30 internet jailbreaks (expected: classes from the harms incl. instructions hidden in uploads, success criterion and tolerance per class, about 765–800 held-out seeds for the 0.5% classes, the 30 not evidence, sealed held-out set kept outside the build team, untested list, regression cases); "robust against prompt injection and jailbreaks" in a bank's model card after 0 of 50 public jailbreaks (expected: word refused, bound about 6% (Wilson about 7%), build team not independent, public list likely patched, indirect injection and other customers' data untested, exposure on attack attempts not the 25,000 conversations, sentence rewritten as a measured rate); vendor whitepaper "99% jailbreak resistance" offered as the robustness evidence for a consumer-credit chatbot (expected: not evidence for this configuration, unknown criterion and settings, possibly tuned on its own benchmark, own campaign per class on the configured transaction lookup and dispute tickets); advisor copilot at 21 of 600, 3.5% under a 5% bar, with uploads at 12 of 40 (expected: pooled rate refused, 30% (about 18–45%), client-data leak at 3 of 110 with an upper bound near 8% and its own stricter tolerance, no-go, regression cases, fresh re-test); 0 of 200 on attacks the team tuned against for three weeks (expected: not evidence, sealed held-out set by independent testers, tuned-versus-fresh gap, about 1.5% bound (Wilson about 1.9%), the 200 moved to regression); negative: rewrite an HR assistant's prompt after one "debug mode" role-play (B2).
+- **Graders:** regex and tool checks, no judge; red lines: the 30 jailbreaks not evidence, no robust claim, zero bound, exposure not on all conversations, vendor figure not evidence, pooled rate hides the class, no-go, tuned attacks not evidence.
+
+#### E13 · `multi-turn-evals` — P1
+- **Purpose:** evaluate a chat assistant or copilot on whole conversations, not single replies: binary outcomes per conversation, scripted cases from real logs and simulated users checked against real conversations, the one-shot to multi-turn drop, pass^k over repeated runs, the first failing turn. An assistant that calls tools or writes to systems goes to E5.
+- **Trigger:** users work over several turns while evals score one question and one answer; one-shot evals pass but users say it forgets, contradicts itself, drifts or ignores corrections; a per-turn average or a simulated-conversation rate is offered as readiness; an assistant that only talks, drafts or proposes moves up a level and a human stops reading the whole exchange.
+- **Inputs:** what the assistant does and for whom; real conversations (anonymised) with their length; the facts and constraints users state, and when; the decision fed and the monthly volume. Ask: the one-shot suite and scores, complaints, length distribution, who reads conversations today and at which level, an existing simulator, the cost of one failed conversation from the business owner.
+- **Outputs:** multi-turn eval plan (`templates/multi-turn-eval-plan.md`): outcomes per conversation (goal reached, constraints kept, no self-contradiction, recovery after correction, correct hand-off, no premature answer), all must hold; per-turn checks kept only where a turn has its own correct answer; scripted cases from real logs with decisive turns marked and a diverged status; simulated-user cards (persona, goal, a hidden fact revealed late); simulator validation against real conversations (turns at median and 90th percentile, corrections, vague openings, facts given only when asked, abandonment) and on outcomes paired card by card, the whole paired interval inside a tolerance written beforehand; the one-shot to multi-turn drop on the same tasks with the spread across runs; scenarios per class and k, per-conversation rate with Wilson interval on n = scenarios, observed pass^k (p^k as a projection only), sizing for a lower-bound gate, cost of the run; first failing turn by position and type; graders; gate with a separate pass^k bar and the exposure (failure rate × monthly conversations of the population sampled × cost per failure).
+- **Rules:** never ready or a level move on averaged per-turn scores; never gate on a simulator not compared with real conversations on behaviour and outcomes; turns and repeated runs are not independent cases (the scenario is the unit); never read a one-shot score as evidence for multi-turn use without the drop on the same tasks; report observed pass^k and the spread, not only the mean; failed conversations located at their first failing turn before any fix; scenarios, k, tolerances and bars fixed before the run.
+- **Depends on / feeds:** E1, E2, E11, E3 / E9, E10, P4.
+- **Sources:** laban-multi-turn, kwan-mt-eval, bai-mt-bench-101, dou-simulatorarena, zhou-sim2real-users, yao-tau-bench, anthropic-agent-evals, sierra-adlc, wilson-interval, miller-error-bars, husain-shankar-evals.
+- **Evals (4 + 1 negative):** home-insurance assistant at 92% of replies correct while 24 of 120 long conversations lose a stated constraint, director wants to stop agent review (expected: graded per conversation, 20% fail, about 1,080 a month on the 5,400 long conversations, first failing turn, repeated runs and pass^k, agent review kept); card-dispute simulator "validated" on 50 cards with a 6-point gap inside ±8 and 9 discordant pairs, its 91% wanted as the gate (expected: paired interval about ±12 points crosses the tolerance, about 1,700 cards at that gap or fix and re-check on about 110, missing behaviour checks, simulator too cooperative, 91% gates nothing yet); private-bank copilot at 188 of 200 one-message questions while 31 of 140 advisers say it forgets (expected: drop on the same 200 tasks spread over turns, spread across runs, constraints kept, decisive turns, simulated advisers with hidden facts); savings assistant L2 → L3 gate on 50 conversations × 8 replies run once at a 90% mean (expected: the conversation is the unit, about 113 scenarios for ±5 points, about 830 for a lower-bound gate at 90% when the rate is 92%, k runs, 0.92³ ≈ 0.78 as a projection, run cost or exposure); negative: one-shot eval set for an HR assistant (E1).
+- **Graders:** regex and tool checks, no judge; red lines: full review kept, not ready on averaged reply scores, simulator score not a gate before validation, the conversation is the unit.
+
 ### Prove — to the sponsor and the regulator (6)
 
 #### P1 · `assistant-kpis-cost-per-outcome` — P0
@@ -617,12 +639,10 @@ The Build skills that make something (B1, B3, B4, B5) cite `references/build-to-
 - **Evals (4 + 1 negative):** 2,000 advisers with a day-one launch email; 30% use with 4.5/5 satisfaction and a plan to retrain the model; a plant where unions fear staff rating; 12 adjusters reviewing an L3 agent; negative: eval threshold question.
 - **Graders:** exact and checklist regexes; red lines: no big launch, not quality, no memo-only, no generic e-learning.
 
-### Backlog — candidates for slots 28–30
+### Backlog — candidates for slot 30
 
 | Candidate | Why it waits | Enters if |
 | --- | --- | --- |
-| `red-team-evals` | Attack sets live in B2 | a regulated client asks for a robustness test plan (art. 15) |
-| `multi-turn-evals` | Partly in E5 (simulated users) | two missions need a conversation-level gate |
 | Reserve (`ai-experiment-loop` if needed) | The improve step lives in E1 `references/improve-loop.md` | a with/without run shows a gap the reference does not close |
 | `ai-cost-forecasting` | Partially in E7 and P2 | token economics become a recurring sponsor question; it would take the reserve slot |
 
@@ -662,6 +682,15 @@ flowchart LR
     E9 --> E10[production-evals-monitoring]
     E11[conversation-analysis] --> E10
     E10 --> E2
+    E1 --> E12[red-team-evals]
+    E12 --> E1
+    E12 --> E9
+    E1 --> E13[multi-turn-evals]
+    E2 --> E13
+    E3 --> E13
+    E11 --> E13
+    E13 --> E9
+    E13 --> E10
   end
   subgraph Prove
     P1[assistant-kpis-cost-per-outcome] --> P2[ai-roi-quantification]
@@ -692,6 +721,10 @@ flowchart LR
   E3 --> E10
   P2 --> S1
   S5 --> E1
+  B2 --> E12
+  E12 --> P3
+  E12 --> P4
+  E13 --> P4
 ```
 
 Three hubs carry the repo:
@@ -1010,6 +1043,7 @@ Graders: `graders/triggered.md` (`type: tool_used`, `tool: Skill`, anchored `inp
 ### E. Change log
 
 - **2.0 (2026-11-09).** Repositioned on *Evals as evidence*. Seven stages become three blocks (Specify, Evaluate, Prove); `stage: govern` gives way to a `legal: true` flag. Retired: `ai-brand-positioning`, `ai-moat-7-powers`, `prd-to-claude-code`, `dpia-prescreen`, `cse-consultation` (recoverable from git history). Merged: `ai-initiative-pitch` into `ai-opportunity-assessment`, `ai-literacy-program` into `ai-adoption-plan`. Added: `error-analysis`, `llm-judge-calibration`, `synthetic-eval-data`, `agent-evals`, `retrieval-evaluation`, `ai-vendor-evaluation`, `production-evals-monitoring` (which also covers the AI Act post-market monitoring plan). New foundations: `evals-as-evidence.md`, `eval-statistics.md`.
+- **2.4 (2026-11-12).** `red-team-evals` (E12) and `multi-turn-evals` (E13) join the catalog in slots 28 and 29: 29 skills, 13 in Evaluate, slot 30 free. `red-team-evals` plans and reads attack campaigns on assistants and RAG features; an agent's actions under injection stay with `agent-evals`. `multi-turn-evals` grades whole conversations. `system-prompt-and-guardrails` widens its description to role-play tricks and a guardrail that refuses too much. Routing suite: 58 requests, 172 of 174 runs correct with all 29 skills installed.
 - **2.3 (2026-11-11).** Four blocks, drawn as a loop: Specify, Build, Evaluate, Prove. The new Build block holds what a PM builds with a coding agent to learn, not to earn. `system-prompt-and-guardrails` and `agent-design-and-tooling` move from Specify to Build; the agent skill adds a step: prototype the tool set on a local MCP server and run about 10 tasks before handoff. Three new drafts: `ai-feasibility-spike`, `trace-review-tool` and `prototype-handover` (legal). New foundation: `build-to-learn.md`. `ai-opportunity-assessment` hands its "explore" outcome to the spike; `llm-feature-prd` takes the spike report as an optional input and writes gates a Spec Kit constitution can import; `build-evals` adds an improve loop (references/improve-loop.md) and cases 006–007. Frontmatter follows the Agent Skills specification, with the repo's own keys under `metadata:` as strings. Evidence gate: a run of 3 per case or more is a recorded run; it replaces `baselines/<skill>.json`, appends to `baselines/history.jsonl`, and carries a `skillHash` and a `casesHash`; the validator fails CI when a catalog skill's record is stale or failing; grader-only changes are regraded for free. Backlog slots 28–30: `red-team-evals`, `multi-turn-evals` and one reserve.
 - **2.2 (2026-11-10).** Night runs: every changed skill run three times per case with and without it; 20 skills in the catalog. Grader false negatives fixed and checked against the answers without the skill; two answer leaks removed; cost per correct answer recorded per arm; research folded in (clustering and power, abstention-aware scoring, robustness to rewording, two suites, prompt injection as utility under attack, counterfactual variants, benchmark validity audit).
 - **2.1 (2026-11-10).** 24 skills, one owner per trigger. Retired: `semantic-layer-design`, `chat-with-your-data-scoping` (its text-to-SQL eval method moves to `build-evals` references/component-evals.md). Merged: `agent-knowledge-base` into `ai-data-requirements`. `build-evals` adds evaluation per component beside the end-to-end gate. Shared triggers sharpened; the validator now flags descriptions that overlap.

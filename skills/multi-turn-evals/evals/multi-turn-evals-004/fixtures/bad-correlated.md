@@ -1,0 +1,1 @@
+Replies within a conversation are somewhat correlated, but 400 replies still give a margin of about ±3 points, so the plan is fine. Run the 50 conversations once and pass on a mean reply score of 90%.
