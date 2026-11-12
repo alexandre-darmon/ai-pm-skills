@@ -114,6 +114,19 @@ Rules, written and committed before the full run (2026-11-06):
 - **If both pass,** the closer one is kept, measured by mean absolute gap; on a gap under 0.2 points, the cheaper one.
 - **If neither passes,** the judge stays out of any reported score, and the rubric is revised before a new test.
 
+### Human labels
+
+`scripts/human_rating.py` applies that rule. It makes no model call and costs nothing.
+
+1. First run `judge_answers.py` with every judge on the recorded answers of the skills to sample: by default the tool draws only answers that every judge in `baselines/judge/` scored (same answer id, same word count), and refuses when they cannot fill the sample. The judge files of November 2026 scored answers that are no longer saved, so today it refuses.
+2. `python3 scripts/human_rating.py sample` draws 20 answers (`--n` for more, `--skills` to restrict). "With" answers come from the run recorded in `baselines/<skill>.json` (same skill hash). "Without" answers come from that run, or, when `run_evals.py` reused the baseline's "without" score, from the latest earlier run of the same model that holds every "without" run the baseline counts; the tool names the skills with no such answers left. It takes them skill by skill, one per arm (with, without, template where saved), and never the same request twice, so no request comes back under another arm. It writes `sheet.md` for the grader and `key.json` (id to skill, case, arm and run) under `eval-out/human/<date>/`, and prints the with/without balance. `--any-answer` drops the judge filter, for a human-only sheet that cannot pick a judge. `--include-legal` adds `--legal-n` legal answers (6) on top of the 20: they count for human pass rates, never for the judge.
+3. The grader gets the sheet only: each request, its goal (the `expected_outcome` the judge is also given), and the answer, redacted like the judge's copy; then every sentence still pointing at the repo (a masked reference, a `templates/` or `references/` path, any skill name) is dropped, since even a mask token shows up almost only with the skill. The ladder levels stay: they are content. For each answer: an overall grade from 1 to 5 on the judge's five criteria, pass or fail (could the PM act on it as it stands?), and its weakest point in one line. Blank answers are left out, not counted as fails. A last question asks which answers had extra guidance, once all are graded.
+4. `python3 scripts/human_rating.py score --key <key.json> --sheet <filled sheet.md>` joins the judge scores and writes `baselines/human/<date>.json`.
+
+It decides one thing: which judge, if any, is calibrated and kept, by the rule above, computed for every judge on the same list of answers, the ones that both the person and every judge scored (legal ones excluded); with fewer than 20, it says the sample is too small to pick. It also reports, for information: each judge's TPR and TNR against the human pass or fail (a judge mean of 4 or more counts as a pass, `--judge-pass`), with Wilson intervals; Cohen's kappa between judge and human; the human gain with the skill, paired within each skill (on different cases), with a bootstrap interval over skills; and the arm guess, as accuracy and kappa against the true arm (near 0: the blinding held). A second filled sheet (`--sheet` twice) adds the kappa between two people.
+
+One gap remains: the judge's copy of the answer is redacted by `judge_answers.py` only, so it still sees what the person's copy drops. Until the judge is rerun on the person's text, the calibration compares a judge on the redacted answer with a person on the blinded one, both with the goal in view.
+
 ## How sure are the numbers
 
 A mean over 21 cases can move a lot with a few other cases. Since 2026-11-09, every gain published in the README and in [skill-eval-gains.md](../skill-eval-gains.md) carries a 95% interval, computed by `scripts/eval_gains.py` from the frozen baselines, at no cost:

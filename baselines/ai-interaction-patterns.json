@@ -1,0 +1,201 @@
+{
+  "skill": "ai-interaction-patterns",
+  "model": "claude-sonnet-5-5",
+  "judgeModel": "claude-haiku-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-12",
+  "casesHash": "6a64149214019a3b009f9e920481a7d682a177c31f88afd8d298c644844525bc",
+  "partial": false,
+  "costUsd": 1.4319463000000001,
+  "cases": {
+    "ai-interaction-patterns-001": {
+      "score": 0.9761904761904763,
+      "scoreWithout": 0.5238095238095238,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "correct": [
+          3,
+          1
+        ],
+        "edit": [
+          3,
+          1
+        ],
+        "feedback": [
+          2,
+          0
+        ],
+        "over-trust-signal": [
+          3,
+          1
+        ],
+        "redline-no-attestation-checkbox": [
+          3,
+          1
+        ],
+        "redline-no-direct-send": [
+          3,
+          3
+        ],
+        "sources": [
+          3,
+          0
+        ]
+      },
+      "costPerAnswer": [
+        0.06892676666666667,
+        0.03814466666666667
+      ],
+      "delta": 0.45238095238095244
+    },
+    "ai-interaction-patterns-002": {
+      "score": 0.9722222222222222,
+      "scoreWithout": 0.6388888888888888,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "correct": [
+          2,
+          1
+        ],
+        "eval": [
+          3,
+          2
+        ],
+        "queue-lapse": [
+          3,
+          1
+        ],
+        "queue": [
+          3,
+          1
+        ],
+        "redline-no-review-all": [
+          3,
+          3
+        ],
+        "rubber-stamp": [
+          3,
+          0
+        ],
+        "sample-size": [
+          3,
+          0
+        ],
+        "sample": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.0676027,
+        0.04342066666666667
+      ],
+      "delta": 0.33333333333333337
+    },
+    "ai-interaction-patterns-003": {
+      "score": 1.0,
+      "scoreWithout": 0.6666666666666666,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "automated-decision": [
+          3,
+          1
+        ],
+        "evidence-beside": [
+          3,
+          2
+        ],
+        "l3-gate": [
+          3,
+          0
+        ],
+        "no-badge": [
+          3,
+          1
+        ],
+        "redline-no-l3-on-acceptance": [
+          3,
+          3
+        ],
+        "rubber-stamp": [
+          3,
+          3
+        ],
+        "seeded-errors": [
+          3,
+          2
+        ]
+      },
+      "costPerAnswer": [
+        0.056463566666666666,
+        0.03589666666666667
+      ],
+      "delta": 0.33333333333333337
+    },
+    "ai-interaction-patterns-004": {
+      "score": 1.0,
+      "scoreWithout": 1.0,
+      "fired": 0,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": true,
+      "graders": {
+        "not-triggered": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.03496733333333333,
+        0.036144
+      ]
+    },
+    "ai-interaction-patterns-005": {
+      "score": 0.8666666666666667,
+      "scoreWithout": 0.7333333333333334,
+      "fired": 3,
+      "runs": 3,
+      "runsWithout": 3,
+      "negative": false,
+      "graders": {
+        "disclosure": [
+          3,
+          0
+        ],
+        "low-handoff": [
+          1,
+          2
+        ],
+        "mid-rate": [
+          3,
+          3
+        ],
+        "top-interval": [
+          3,
+          3
+        ],
+        "top-rate": [
+          3,
+          3
+        ]
+      },
+      "costPerAnswer": [
+        0.05869173333333333,
+        0.03705733333333334
+      ],
+      "delta": 0.1333333333333333
+    }
+  },
+  "skillHash": "48037223c55915ad62b84a219c4870a26d723fb8400298a89ce915d1817b1f79",
+  "meanDelta": 0.3130952380952381,
+  "failures": []
+}

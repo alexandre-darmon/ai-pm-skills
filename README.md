@@ -5,11 +5,11 @@
 <!-- gains:start -->
 | Same cases, Sonnet 5.5 answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 25 skills, 91 cases × 3 runs | 52% | 82% | **96%** | +44 [+41, +48] | +17 [+6, +32] |
+| Regex graders: 27 skills, 100 cases × 3 runs | 52% | 82% | **96%** | +44 [+41, +48] | +17 [+6, +32] |
 | Blind LLM judge, Haiku 5.5: 5 of these skills, 17 cases, earlier runs, not calibrated | 71% | 78% | 80% | +10 [+6, +13] | +3 [+1, +5] |
 | Blind LLM judge, Sonnet 5.5: 5 of these skills, 17 cases, earlier runs, not calibrated | 69% | 76% | 80% | +11 [+6, +17] | +5 [+3, +7] |
-| Red lines held (the one thing the answer must never do) | 71% | 88% | **100%** | | |
-| Cost per correct answer, API equivalent (19 skills) | $0.098 | — | **$0.075** | -23% | |
+| Red lines held (the one thing the answer must never do) | 72% | 88% | **100%** | | |
+| Cost per correct answer, API equivalent (20 skills) | $0.097 | — | **$0.076** | -22% | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
 <sub>Sonnet 5.5 answers each case 3 times per arm. **Regex graders** check that the answer contains what the skill asks for; the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; it is not calibrated on human scores yet, tends to favour longer answers, and never grades the legal skills. Gains in points; brackets: 95% interval from resampling the cases, which shows how much the gain depends on the cases written, not on the graders chosen. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>
@@ -78,6 +78,7 @@ You rarely need the command: skills load on their own when the request matches. 
 <p align="center"><img src="assets/evals.svg" alt="Per catalog skill: regex score without the skill, with its template only, and with the skill" width="100%"></p>
 
 - **Every skill is scored twice on the same cases**, with and without it, three runs per case. It enters the catalog only if it clears its threshold in every case, holds every red line in every run, and beats the model alone by at least 10 points. The numbers shown are those of its last recorded run, kept pass or fail with a log of every run; the validator fails the build if a catalog skill's text or cases changed since that run, so no number here describes a text that is not the one you install.
+- **The right skill fires when all 27 are installed.** A routing suite of 49 requests aimed at the known collision zones (spike vs opportunity vs model choice, eval set vs release, handover vs model card vs AI Act, and 3 out-of-scope requests) picked the expected skill, or none, in 147 of 147 runs on 2026-11-12 ([results](routing/results-2026-11-12.md)). The requests were written by the repo's author, so this rules out collisions on known pairs, not on every phrasing. A free lexical check (`scripts/routing_check.py`) guards the same cases on every push.
 - **Three ways of scoring, side by side**, in the table at the top: regex graders, the skill's own template as a control, and a blind LLM judge. The judge sees a much smaller gain than the regexes; that is published, not hidden.
 - **What we fix when a run fails**: in the November 2026 runs, most failures were graders refusing correct wording, not weak skills. Every grader change is checked against the answers given without the skill, and real answers become fixtures. Two skills held the exact numbers their own cases asked for; they were rewritten. Details: [how the skills are tested](docs/testing-approach.md) and [per-skill numbers](skill-eval-gains.md).
 
@@ -116,7 +117,7 @@ Not yet verified on every agent; copying a folder into your agent's skills direc
 <!-- catalog:start -->
 27 skills in four blocks, hard cap 30. Each one owns its triggers: no two skills compete for the same request, and the validator flags descriptions that overlap. **Available** skills are in `skills/`: their last recorded run (three runs per case, on today's text and cases) passes, the validator checks it on every push, and they install from the marketplace. **Drafts** are written and pass the free checks, not yet the paid runs.
 
-### Available (25)
+### Available (27)
 
 | Skill | Block | What it does |
 | --- | --- | --- |
@@ -124,6 +125,7 @@ Not yet verified on every agent; copying a folder into your agent's skills direc
 | [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | Specify | PRD for an LLM feature: autonomy level per step, failure paths, eval stub, guardrails, stop conditions. |
 | [`process-ai-redesign`](skills/process-ai-redesign/SKILL.md) | Specify | Level per step for a whole process, gates, scenarios with ROI lines, migration path. |
 | [`ai-data-requirements`](skills/ai-data-requirements/SKILL.md) | Specify | Fields and documents a feature reads and writes: owners, expiry, flows, lawful basis. |
+| [`ai-interaction-patterns`](skills/ai-interaction-patterns/SKILL.md) | Specify | What users see: sources, confidence only when calibrated, correction, refusal, escalation. |
 | [`agent-design-and-tooling`](skills/agent-design-and-tooling/SKILL.md) | Build | An agent's loop, tools, permission matrix, stop conditions and traces. |
 | [`ai-feasibility-spike`](skills/ai-feasibility-spike/SKILL.md) | Build | A throwaway prototype on the real model: one question, appetite and bar set first, n of N with intervals, cost per correct answer. |
 | [`system-prompt-and-guardrails`](skills/system-prompt-and-guardrails/SKILL.md) | Build | System prompt plus input, output and action guardrails, with a red-team set. |
@@ -144,14 +146,8 @@ Not yet verified on every agent; copying a folder into your agent's skills direc
 | [`ai-roi-quantification`](skills/ai-roi-quantification/SKILL.md) | Prove | ROI of a live AI product: volume × quality × unit value − costs, baseline, sensitivity. |
 | [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | Prove | EU AI Act role, risk category, obligations and the eval evidence each article asks for. Never a verdict. |
 | [`model-card-ai-registry`](skills/model-card-ai-registry/SKILL.md) | Prove | The eval record of each version: results per class with intervals, judge, signed thresholds, limits. |
+| [`ai-incident-playbook`](skills/ai-incident-playbook/SKILL.md) | Prove | Contain, roll back, report on time, and turn every incident into regression cases before the fix ships. |
 | [`ai-adoption-plan`](skills/ai-adoption-plan/SKILL.md) | Prove | Adoption proven on correct outcomes, over-trust measured, training by role, AI Act art. 4 evidence. |
-
-### Drafts (2)
-
-| Skill | Block | What it does |
-| --- | --- | --- |
-| `ai-interaction-patterns` | Specify | What users see: sources, confidence only when calibrated, correction, refusal, escalation. |
-| `ai-incident-playbook` | Prove | Contain, roll back, report on time, and turn every incident into regression cases before the fix ships. |
 <!-- catalog:end -->
 
 > **Not legal advice.** Skills marked `legal: true` (`ai-act-classification`, `ai-vendor-evaluation`, `model-card-ai-registry`, `production-evals-monitoring`, `ai-incident-playbook`) produce classifications, checklists and questions for counsel, never a conformity verdict.

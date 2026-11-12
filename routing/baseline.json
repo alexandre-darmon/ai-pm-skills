@@ -1,0 +1,283 @@
+{
+  "rule": "a case recorded at rank 1 by at least 0.02 keeps rank 1, a case recorded in the top 3 by at least 0.02 stays there, cases under 0.02 lose at most 1 top-1 hit, recorded cases may not vanish; 'none' cases are not gated (lexical overlap cannot show that no skill fires)",
+  "floor": 0.02,
+  "top1Hits": 29,
+  "cases": {
+    "route-001": {
+      "rank": 2,
+      "winner": "production-evals-monitoring",
+      "margin": null,
+      "edge": 0.026
+    },
+    "route-002": {
+      "rank": 1,
+      "winner": "ai-feasibility-spike",
+      "margin": 0.0232,
+      "edge": 0.0893
+    },
+    "route-003": {
+      "rank": 1,
+      "winner": "ai-feasibility-spike",
+      "margin": 0.161,
+      "edge": 0.2029
+    },
+    "route-004": {
+      "rank": 1,
+      "winner": "model-selection",
+      "margin": 0.3252,
+      "edge": 0.3452
+    },
+    "route-005": {
+      "rank": 13,
+      "winner": "ai-act-classification",
+      "margin": null,
+      "edge": null
+    },
+    "route-006": {
+      "rank": 1,
+      "winner": "model-selection",
+      "margin": 0.058,
+      "edge": 0.1828
+    },
+    "route-007": {
+      "rank": 3,
+      "winner": "model-card-ai-registry",
+      "margin": null,
+      "edge": 0.0138
+    },
+    "route-008": {
+      "rank": 1,
+      "winner": "release-to-production",
+      "margin": 0.0427,
+      "edge": 0.0578
+    },
+    "route-009": {
+      "rank": 17,
+      "winner": "prototype-handover",
+      "margin": null,
+      "edge": null
+    },
+    "route-010": {
+      "rank": 1,
+      "winner": "release-to-production",
+      "margin": 0.0073,
+      "edge": 0.1098
+    },
+    "route-011": {
+      "rank": 1,
+      "winner": "build-evals",
+      "margin": 0.097,
+      "edge": 0.1613
+    },
+    "route-012": {
+      "rank": 1,
+      "winner": "trace-review-tool",
+      "margin": 0.494,
+      "edge": 0.5208
+    },
+    "route-013": {
+      "rank": 9,
+      "winner": "retrieval-evaluation",
+      "margin": null,
+      "edge": null
+    },
+    "route-014": {
+      "rank": 2,
+      "winner": "assistant-kpis-cost-per-outcome",
+      "margin": null,
+      "edge": 0.1119
+    },
+    "route-015": {
+      "rank": 1,
+      "winner": "error-analysis",
+      "margin": 0.467,
+      "edge": 0.4928
+    },
+    "route-016": {
+      "rank": 3,
+      "winner": "model-selection",
+      "margin": null,
+      "edge": 0.0175
+    },
+    "route-017": {
+      "rank": 2,
+      "winner": "trace-review-tool",
+      "margin": null,
+      "edge": 0.1046
+    },
+    "route-018": {
+      "rank": 1,
+      "winner": "model-card-ai-registry",
+      "margin": 0.2587,
+      "edge": 0.3
+    },
+    "route-019": {
+      "rank": 1,
+      "winner": "ai-act-classification",
+      "margin": 0.0673,
+      "edge": 0.1296
+    },
+    "route-020": {
+      "rank": 1,
+      "winner": "release-to-production",
+      "margin": 0.0792,
+      "edge": 0.1167
+    },
+    "route-021": {
+      "rank": 3,
+      "winner": "ai-act-classification",
+      "margin": null,
+      "edge": 0.001
+    },
+    "route-022": {
+      "rank": 2,
+      "winner": "ai-vendor-evaluation",
+      "margin": null,
+      "edge": 0.1487
+    },
+    "route-023": {
+      "rank": 1,
+      "winner": "agent-design-and-tooling",
+      "margin": 0.4887,
+      "edge": 0.5781
+    },
+    "route-024": {
+      "rank": 1,
+      "winner": "agent-evals",
+      "margin": 0.2684,
+      "edge": 0.3021
+    },
+    "route-025": {
+      "rank": 1,
+      "winner": "agent-design-and-tooling",
+      "margin": 0.1483,
+      "edge": 0.4327
+    },
+    "route-026": {
+      "rank": 1,
+      "winner": "agent-evals",
+      "margin": 0.1226,
+      "edge": 0.1839
+    },
+    "route-027": {
+      "rank": 1,
+      "winner": "system-prompt-and-guardrails",
+      "margin": 0.2624,
+      "edge": 0.2859
+    },
+    "route-028": {
+      "rank": 1,
+      "winner": "ai-interaction-patterns",
+      "margin": 0.1576,
+      "edge": 0.2572
+    },
+    "route-029": {
+      "rank": 26,
+      "winner": "synthetic-eval-data",
+      "margin": null,
+      "edge": null
+    },
+    "route-030": {
+      "rank": 1,
+      "winner": "ai-interaction-patterns",
+      "margin": 0.0844,
+      "edge": 0.2093
+    },
+    "route-031": {
+      "rank": 1,
+      "winner": "production-evals-monitoring",
+      "margin": 0.3799,
+      "edge": 0.4207
+    },
+    "route-032": {
+      "rank": 8,
+      "winner": "ai-vendor-evaluation",
+      "margin": null,
+      "edge": null
+    },
+    "route-033": {
+      "rank": 3,
+      "winner": "assistant-kpis-cost-per-outcome",
+      "margin": null,
+      "edge": 0.0607
+    },
+    "route-034": {
+      "rank": 4,
+      "winner": "production-evals-monitoring",
+      "margin": null,
+      "edge": null
+    },
+    "route-035": {
+      "rank": 1,
+      "winner": "assistant-kpis-cost-per-outcome",
+      "margin": 0.3452,
+      "edge": 0.4
+    },
+    "route-036": {
+      "rank": 1,
+      "winner": "ai-roi-quantification",
+      "margin": 0.2606,
+      "edge": 0.2766
+    },
+    "route-037": {
+      "rank": 1,
+      "winner": "assistant-kpis-cost-per-outcome",
+      "margin": 0.0886,
+      "edge": 0.1298
+    },
+    "route-038": {
+      "rank": 1,
+      "winner": "ai-vendor-evaluation",
+      "margin": 0.2278,
+      "edge": 0.3
+    },
+    "route-039": {
+      "rank": 2,
+      "winner": "production-evals-monitoring",
+      "margin": null,
+      "edge": 0.0649
+    },
+    "route-040": {
+      "rank": 1,
+      "winner": "retrieval-evaluation",
+      "margin": 0.1344,
+      "edge": 0.1867
+    },
+    "route-041": {
+      "rank": 1,
+      "winner": "synthetic-eval-data",
+      "margin": 0.3251,
+      "edge": 0.3648
+    },
+    "route-042": {
+      "rank": 2,
+      "winner": "retrieval-evaluation",
+      "margin": null,
+      "edge": 0.0977
+    },
+    "route-043": {
+      "rank": 1,
+      "winner": "process-ai-redesign",
+      "margin": 0.0986,
+      "edge": 0.1706
+    },
+    "route-044": {
+      "rank": 1,
+      "winner": "ai-adoption-plan",
+      "margin": 0.1556,
+      "edge": 0.1948
+    },
+    "route-045": {
+      "rank": 1,
+      "winner": "ai-data-requirements",
+      "margin": 0.0006,
+      "edge": 0.0384
+    },
+    "route-049": {
+      "rank": 3,
+      "winner": "ai-interaction-patterns",
+      "margin": null,
+      "edge": 0.1237
+    }
+  }
+}

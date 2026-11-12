@@ -46,6 +46,7 @@ def stage(folder):
     return m.group(1) if m else "specify"
 
 
+# Reads under root: keep check_generated.INPUTS in step with any new folder read here.
 def main(root=ROOT):
     order = list(SUMMARY)
     found = {p.name: p for d in ("skills", "drafts") for p in (root / d).glob("*") if (p / "SKILL.md").is_file()}

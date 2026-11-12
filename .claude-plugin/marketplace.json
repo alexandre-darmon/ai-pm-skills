@@ -20,6 +20,8 @@
         "./skills/ai-adoption-plan",
         "./skills/ai-data-requirements",
         "./skills/ai-feasibility-spike",
+        "./skills/ai-incident-playbook",
+        "./skills/ai-interaction-patterns",
         "./skills/ai-opportunity-assessment",
         "./skills/ai-roi-quantification",
         "./skills/ai-vendor-evaluation",
@@ -93,6 +95,24 @@
       "description": "Use when someone wants to prototype or spike an AI feature or agent on the real model before a PRD, or has spike results to read, write up as a go note or offer as validation evidence.",
       "skills": [
         "./skills/ai-feasibility-spike"
+      ]
+    },
+    {
+      "source": "./",
+      "strict": false,
+      "name": "ai-incident-playbook",
+      "description": "Prepare or run the response to an AI incident: severity, containment, rollback owner, reporting clocks, the regression case it adds. Use at L3+ go-live, after a quality alert or in an incident.",
+      "skills": [
+        "./skills/ai-incident-playbook"
+      ]
+    },
+    {
+      "source": "./",
+      "strict": false,
+      "name": "ai-interaction-patterns",
+      "description": "Decide what users see of an AI answer: sources, a confidence label or score, correction, refusal, hand-off per autonomy level. Use for assistant UX, a \"% sure\" badge, or reviewers who accept all.",
+      "skills": [
+        "./skills/ai-interaction-patterns"
       ]
     },
     {

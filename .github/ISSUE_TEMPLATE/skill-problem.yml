@@ -1,0 +1,16 @@
+name: Skill problem
+description: A skill gave wrong or dated guidance, fired on the wrong request, or a grader misjudged a correct answer
+labels: ["skill-problem"]
+body:
+  - type: input
+    id: skill
+    attributes: {label: Skill, placeholder: "e.g. agent-evals"}
+    validations: {required: true}
+  - type: dropdown
+    id: kind
+    attributes: {label: Kind, options: [wrong or dated guidance, fired on the wrong request, did not fire, grader false negative, grader false positive, script value wrong]}
+    validations: {required: true}
+  - type: textarea
+    id: what
+    attributes: {label: What happened, description: "Request (anonymised), answer excerpt, what you expected. For a dated legal or standard fact, give the source."}
+    validations: {required: true}

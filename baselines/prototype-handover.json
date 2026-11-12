@@ -4,7 +4,7 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-11",
-  "casesHash": "d5e557cff1c6076e0125259e49ecc23dfa22b82469032ca40a3afdaf79d6e6f7",
+  "casesHash": "0b5d66ba6ad88cf32c8186c93782a285c40d8552fcd17ff16a09ab0793b6f812",
   "partial": false,
   "costUsd": 0,
   "cases": {
@@ -128,7 +128,7 @@
     },
     "prototype-handover-003": {
       "score": 1.0,
-      "scoreWithout": 0.6923076923076922,
+      "scoreWithout": 0.75,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -154,11 +154,19 @@
           3,
           0
         ],
-        "redline-no-spike-evidence": [
+        "redline-no-rerun": [
           3,
           3
         ],
         "redline-no-verdict": [
+          3,
+          3
+        ],
+        "redline-spike-as-evidence": [
+          3,
+          3
+        ],
+        "redline-validated-label": [
           3,
           3
         ],
@@ -175,7 +183,7 @@
         0.1727022,
         0.06314396666666666
       ],
-      "delta": 0.3076923076923078
+      "delta": 0.25
     },
     "prototype-handover-004": {
       "score": 0.9444444444444443,
@@ -313,6 +321,6 @@
   "regraded": true,
   "stale": false,
   "skillHash": "d301a32c28d41163d8e3cfefe9702b900e7670fa1c7d57e326f13188851ffa45",
-  "meanDelta": 0.4888034188034188,
+  "meanDelta": 0.47726495726495727,
   "failures": []
 }

@@ -1,0 +1,29 @@
+name: New skill
+description: Propose a skill for the catalog (read CONTRIBUTING.md first)
+labels: ["new-skill"]
+body:
+  - type: dropdown
+    id: block
+    attributes: {label: Block, options: [specify, build, evaluate, prove]}
+    validations: {required: true}
+  - type: textarea
+    id: triggers
+    attributes: {label: When to use, description: "3 to 5 requests, in the user's words, that should trigger it"}
+    validations: {required: true}
+  - type: textarea
+    id: gap
+    attributes: {label: What a strong model gets wrong without it, description: "The judgment, method or computed number the evals will measure"}
+    validations: {required: true}
+  - type: input
+    id: neighbour
+    attributes: {label: Closest existing skill, description: "And why the two will not compete for the same request (the negative case)"}
+    validations: {required: true}
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Rules
+      options:
+        - label: Specific to AI products (would not read the same for a non-AI product)
+        - label: No verdicts on legal points, only checklists and questions for counsel
+        - label: Numbers anchored on volume × quality × unit value − costs
+        - label: No client data in the cases

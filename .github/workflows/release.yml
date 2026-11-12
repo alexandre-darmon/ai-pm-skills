@@ -1,0 +1,35 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4  # regex graders are checked with JavaScript RegExp
+        with:
+          node-version: "22"
+      - run: pip install pyyaml==6.0.2
+      - run: python -m unittest discover -s scripts
+      - run: python scripts/validate_skills.py
+      - run: python scripts/check_generated.py
+      - name: Package
+        run: |
+          DATE=$(git log -1 --format=%cs "$GITHUB_REF_NAME")
+          python scripts/package_skills.py --date "$DATE" | tee dist/SHA256SUMS
+      - name: Upload to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || \
+            gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --generate-notes --verify-tag
+          gh release upload "$GITHUB_REF_NAME" dist/*.zip dist/SHA256SUMS --clobber

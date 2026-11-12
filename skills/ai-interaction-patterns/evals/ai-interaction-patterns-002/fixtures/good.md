@@ -1,0 +1,3 @@
+Exception queue for policy gaps and tickets bounced by the receiving team, plus a weekly random sample. Size the sample from the error rate it must bound: zero misroutes in n tickets still allows up to 3/n (rule of three), so about 300 clean tickets per costly category to bound it at 1%. Re-route in one action, logged into the eval set. An exception unreviewed past its SLA goes to the backup supervisor. Supervisors who stopped reading the inbox may rubber-stamp flags too: test them with seeded misroutes and measure the catch rate.
+
+Stop asking supervisors to review all tickets. Replace the inbox where supervisors check every routed ticket. Supervisors should read every ticket flagged by the agent.

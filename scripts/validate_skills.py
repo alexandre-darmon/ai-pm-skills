@@ -511,6 +511,32 @@ def overlapping_descriptions(descriptions: dict[str, str]) -> list[str]:
     return problems
 
 
+def check_routing(path: Path, names: set[str], catalog: set[str] = frozenset()) -> list[str]:
+    """routing/cases.yaml (scripts/routing_check.py): ids unique, each expected skill a skills/ or drafts/ folder, or none,
+    and every catalog skill expected by at least one case (else the routing set cannot see it under- or over-fire)."""
+    try:
+        cases = (yaml.safe_load(path.read_text(encoding="utf-8")) or {}).get("cases")
+    except yaml.YAMLError as e:
+        return [f"routing/cases.yaml: not valid YAML: {e}"]
+    if not isinstance(cases, list) or not cases:
+        return ["routing/cases.yaml: needs a non-empty cases: list"]
+    problems, seen = [], set()
+    for c in cases:
+        cid = c.get("id") if isinstance(c, dict) else None
+        if not cid or not isinstance(c.get("request"), str) or not c["request"].strip():
+            problems.append(f"routing/cases.yaml: every case needs an id and a request ({c!r:.60})")
+            continue
+        if cid in seen:
+            problems.append(f"routing/cases.yaml: {cid} appears twice")
+        seen.add(cid)
+        if c.get("expected") != "none" and c.get("expected") not in names:
+            problems.append(f"routing/cases.yaml: {cid} expects '{c.get('expected')}', which is not in skills/ or drafts/")
+    expected = {c.get("expected") for c in cases if isinstance(c, dict)}
+    problems += [f"routing/cases.yaml: no case expects {n}: add one written against its closest neighbour"
+                 for n in sorted(catalog - expected)]
+    return problems
+
+
 def main(root: Path, sync: bool = False, evidence: bool = True) -> int:
     problems = []
     catalog = sorted(p for p in (root / "skills").glob("*") if p.is_dir())
@@ -536,6 +562,8 @@ def main(root: Path, sync: bool = False, evidence: bool = True) -> int:
         except (OSError, ValueError):
             pass
     problems += overlapping_descriptions(descriptions)
+    if (root / "routing" / "cases.yaml").is_file():
+        problems += check_routing(root / "routing" / "cases.yaml", {p.name for p in catalog + drafts}, {p.name for p in catalog})
     market = root / ".claude-plugin" / "marketplace.json"
     if market.is_file():  # the bundle plugin installs exactly the catalogue, drafts never
         if (root / ".claude-plugin" / "plugin.json").is_file():  # claude plugin validate misses this: installs, then fails to load

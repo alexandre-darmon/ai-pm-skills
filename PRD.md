@@ -308,6 +308,8 @@ One page of formulas every evaluate skill uses: the case as the unit, Wilson int
 
 Legend: **P0** first, **P1** next, **P2** later. Codes: S Specify, B Build, E Evaluate, P Prove. Graders: *exact* (deterministic check), *checklist* (structure and mandatory items), *judge* (LLM with rubric, validated with TPR and TNR). Skills marked *legal* follow the legal rules (§7.2). Entries for skills kept from v1.0 are unchanged except for their codes.
 
+Status (2026-11-12): all 27 entries are in the catalog (`skills/`, status `tested`), each with a passing recorded run on its current text. The last two in were `ai-interaction-patterns` (S4) and `ai-incident-playbook` (P5); `drafts/` is empty.
+
 ### Specify — what correct means (5)
 
 #### S1 · `ai-opportunity-assessment` — P1
@@ -358,12 +360,12 @@ Legend: **P0** first, **P1** next, **P2** later. Codes: S Specify, B Build, E Ev
 - **Purpose:** redesign a business process into an AI-enabled process with an explicit autonomy level per step, a path to reach it, and the trade-offs.
 - **Trigger:** "Automate this process", an efficiency programme, a process with high volume and exceptions, an ROI target.
 - **Inputs:** process documentation; volumes; time per step; exception rates; current cost; data per step; risk and regulatory context; appetite for autonomy.
-- **Outputs:** redesign dossier: step table (current state, target level L0–L5, why not L+1, gate to reach target); scenarios (conservative / target / ambitious) with the five ROI lines each; migration path (level by level, with gates from M1 and conditions from B2); trade-off table (cost per outcome, risk, reversibility, obligations per scenario); dependencies on G1/G3; plan with milestones.
-- **Rules:** levels per step, never per process; every target level names its gate; scenarios are compared on cost per outcome and reversibility, not on "efficiency"; a step touching employees' evaluation triggers G3; an L4+ step triggers G1 re-check; no scenario without a human fallback.
+- **Outputs:** redesign dossier: step table (current state, target level L0–L5, why not L+1, gate to reach target); scenarios (conservative / target / ambitious) with the five ROI lines each; migration path (level by level, with gates from E1 and conditions from B2); trade-off table (cost per outcome, risk, reversibility, obligations per scenario); dependencies on P3 and on employee-representative information; plan with milestones.
+- **Rules:** levels per step, never per process; every target level names its gate; scenarios are compared on cost per outcome and reversibility, not on "efficiency"; a step touching employees' work or evaluation is flagged for HR and counsel (workers' representatives informed before use); an L4+ step triggers a P3 re-check; no scenario without a human fallback.
 - **Depends on / feeds:** S1, E11, P2, P3, B3 / P6, B3.
 - **Sources:** foundations/autonomy-ladder.md and roi-model.md; own process-redesign practice in banking; Hammer (reengineering) for method lineage.
 - **Evals (3):** a KYC document review process (expected: L2 extraction, L3 verification, L1 decision; gates named); a request for "full automation" of complaint handling (expected: L4 on routing only, human on decisions, trade-offs); a process with 40% exceptions (expected: lower target levels, exception redesign first).
-- **Graders:** checklist (step table, three scenarios, five ROI lines, trade-offs, gates) + exact (every step has level and gate; every L4+ step references G1).
+- **Graders:** checklist (step table, three scenarios, five ROI lines, trade-offs, gates) + exact (every step has level and gate; every L4+ step references P3).
 
 ### Build — build to learn (5)
 
@@ -495,8 +497,8 @@ The Build skills that make something (B1, B3, B4, B5) cite `references/build-to-
 #### E7 · `model-selection` — P1
 - **Purpose:** choose a model for a use case with evidence, and record the decision so it can be redone when a new model ships.
 - **Trigger:** "Which model?", a new model release, a cost review, a sovereignty requirement.
-- **Inputs:** the suite from M1; candidate models (including hosted-in-EU and small models); constraints (hosting, data residency, latency, structured output, context).
-- **Outputs:** comparison run on the M1 suite (evalblink or equivalent); decision record (one page): candidates, scores per class, cost per success, latency p95, structured-output error rate, hosting compliance, chosen model, reasons, re-evaluation date and trigger.
+- **Inputs:** the suite from E1; candidate models (including hosted-in-EU and small models); constraints (hosting, data residency, latency, structured output, context).
+- **Outputs:** comparison run on the E1 suite (evalblink or equivalent); decision record (one page): candidates, scores per class, cost per success, latency p95, structured-output error rate, hosting compliance, chosen model, reasons, re-evaluation date and trigger.
 - **Rules:** never choose on public benchmarks; cost per success is the primary economic metric; sovereignty constraints are filters, not criteria; the decision record names the date and the suite version.
 - **Depends on / feeds:** E1 / E9, P4.
 - **Sources:** own model-selection decisions in banking.
@@ -517,9 +519,9 @@ The Build skills that make something (B1, B3, B4, B5) cite `references/build-to-
 #### E9 · `release-to-production` — P1
 - **Purpose:** take a new version (prompt, model, KB, skill) to production through offline eval, shadow, canary and A/B, choosing the right rung for the traffic available.
 - **Trigger:** "Can we ship this?", a model update from the provider, a prompt change, a KB refresh.
-- **Inputs:** M1 suite result for the new version; traffic volume; business metric and its variance; rollback capability; autonomy level.
-- **Outputs:** release plan: offline gate result, shadow duration and comparison metric, canary share and guardrails with automatic rollback triggers, A/B feasibility (sample size calculation) or explicit fallback to shadow + canary, decision owner, post-release review date.
-- **Rules:** offline eval first, always; A/B only if the sample-size calculation passes (the skill computes it); the production metric is a business outcome, not the judge score; provider model updates are treated as releases; L5 bandit switching only when L4 is stable and documented.
+- **Inputs:** E1 suite result for the new version; for an engineering rebuild of a prototype, the B5 handover file (frozen suite, baseline per class) and the PRD's pre-declared scenarios; traffic volume; business metric and its variance; rollback capability; autonomy level.
+- **Outputs:** release plan: read-only acceptance of the engineering build (scenarios and frozen suite per class against the handover baseline), offline gate result, shadow duration and comparison metric, canary share and guardrails with automatic rollback triggers, A/B feasibility (sample size calculation) or explicit fallback to shadow + canary, decision owner, post-release review date.
+- **Rules:** acceptance of an engineering rebuild runs read-only on its build, the prototype baseline only the floor; offline gate before any online step; A/B only if the sample-size calculation passes (the skill computes it); the production metric is a business outcome, not the judge score; provider model updates are treated as releases; L5 bandit switching only when L4 is stable and documented.
 - **Depends on / feeds:** E1, B2, B5 / P1.
 - **Sources:** own release practice; Kohavi et al. (Trustworthy Online Controlled Experiments) for A/B rules.
 - **Evals (3):** 1 800 weekly users, 3-point lift sought (expected: A/B infeasible, shadow + canary plan); a new version failing offline by 2 points (expected: no release, diagnostic); a provider announces a model deprecation (expected: treated as release with shadow run).
@@ -540,7 +542,7 @@ The Build skills that make something (B1, B3, B4, B5) cite `references/build-to-
 - **Purpose:** classify every conversation of an assistant (use case, domain, sentiment, language, resolution) anonymously and reliably, to feed KPIs and ROI.
 - **Trigger:** "What do people use it for?", KB prioritisation, ROI volume needed, a quarterly review.
 - **Inputs:** anonymised transcripts; a draft taxonomy; 150–200 hand-labelled conversations; candidate classifiers; PII rules.
-- **Outputs:** frozen taxonomy (8–12 use cases, rules for edge cases); annotation guide; classification suite (evalblink or equivalent) comparing candidates on agreement per dimension and cost per conversation; chosen classifier with thresholds; monthly drift check design; output schema joined to M4.
+- **Outputs:** frozen taxonomy (8–12 use cases, rules for edge cases); annotation guide; classification suite (evalblink or equivalent) comparing candidates on agreement per dimension and cost per conversation; chosen classifier with thresholds; monthly drift check design; output schema joined to P1.
 - **Rules:** PII masking before any model call; taxonomy frozen before labelling; agreement measured per dimension; low-confidence cases routed to review, not forced; the classifier is re-measured monthly on a fresh sample.
 - **Depends on / feeds:** E1, S3 / P1, P2, S5.
 - **Sources:** own assistant mission classification work (method only).
@@ -552,7 +554,7 @@ The Build skills that make something (B1, B3, B4, B5) cite `references/build-to-
 #### P1 · `assistant-kpis-cost-per-outcome` — P0
 - **Purpose:** define and compute the KPIs of an assistant or agent that reflect value: quality by domain, adoption by population, cost per correct outcome.
 - **Trigger:** "Build the dashboard", a sponsor asks for ROI, usage is up but nobody knows if it helps, a KB seems stale.
-- **Inputs:** traces or logs; conversation classification (M5); sampled quality scores (M1 graders); population data; cost data.
+- **Inputs:** traces or logs; conversation classification (E11); sampled quality scores (E1 graders); population data; cost data.
 - **Outputs:** KPI spec (definitions, formulas, sources, refresh); a reference dashboard layout (volume by use case, quality by KB/domain, adoption curve by population, cost per outcome, stale-answer rate); an outcome-event convention (`outcome_id`, `result`, `value_eur`) attached to the trace id; a monthly review template.
 - **Rules:** no KPI without a definition and a source; usage KPIs are never shown without a quality KPI beside them; cost per outcome uses successes as denominator; every KB has a quality line.
 - **Depends on / feeds:** E1, E11, S3 / P2, P6.
@@ -563,8 +565,8 @@ The Build skills that make something (B1, B3, B4, B5) cite `references/build-to-
 #### P2 · `ai-roi-quantification` — P2
 - **Purpose:** compute the ROI of a deployed AI product with the five-line model, a baseline and sourced unit values.
 - **Trigger:** budget renewal, "what did it return", a CFO review, scaling decision.
-- **Inputs:** M5 volumes by use case; M4 quality by use case; unit values from business interviews (template provided); run and change costs; baseline measurement.
-- **Outputs:** ROI sheet per use case and total; assumptions register with source and confidence; sensitivity on the three weakest assumptions; the "do not claim" list (gains without baseline); a one-paragraph statement for S3.
+- **Inputs:** E11 volumes by use case; P1 quality by use case; unit values from business interviews (template provided); run and change costs; baseline measurement.
+- **Outputs:** ROI sheet per use case and total; assumptions register with source and confidence; sensitivity on the three weakest assumptions; the "do not claim" list (gains without baseline); a one-paragraph statement for the sponsor.
 - **Rules:** no baseline, no ROI claim (projection, labelled); unit values are conservative and interviewed, never assumed; every number traces to a line; sensitivity is mandatory.
 - **Depends on / feeds:** P1, E11 / S5.
 - **Sources:** foundations/roi-model.md, own ROI work.
@@ -622,7 +624,7 @@ The Build skills that make something (B1, B3, B4, B5) cite `references/build-to-
 | `red-team-evals` | Attack sets live in B2 | a regulated client asks for a robustness test plan (art. 15) |
 | `multi-turn-evals` | Partly in E5 (simulated users) | two missions need a conversation-level gate |
 | Reserve (`ai-experiment-loop` if needed) | The improve step lives in E1 `references/improve-loop.md` | a with/without run shows a gap the reference does not close |
-| `ai-cost-forecasting` | Partially in M2 and M6 | token economics become a recurring sponsor question; it would take the reserve slot |
+| `ai-cost-forecasting` | Partially in E7 and P2 | token economics become a recurring sponsor question; it would take the reserve slot |
 
 ---
 
@@ -797,7 +799,7 @@ A skill may use all three kinds. Legal skills use exact + checklist only (no jud
 
 ### 11.3 Thresholds and baseline
 
-- Pass threshold per skill: **0.80** by default, set in `eval_threshold`. Flagship (T1) and legal skills: 0.90. `scripts/run_evals.py` passes it as `--threshold`.
+- Pass threshold per skill: **0.80** by default, set in `eval_threshold`. Flagship (S5) and legal skills: 0.90. `scripts/run_evals.py` passes it as `--threshold`.
 - **With vs without.** Every run has two arms, with and without the skill (`--ablation with-without`, the default). A skill must beat the model alone by at least 10 points: a mean delta under 10 points fails the skill whatever its score. This is rule 1, "specific or absent", measured.
 - **One skill per run.** Runs always target one skill folder (`claude plugin eval skills/<name>` or `drafts/<name>`). A run from the repo root would also pick up the cases of drafts and templates, whose skills are not loaded.
 - **Recorded run.** A run of 3 per case or more is a recorded run. Whatever its result, it replaces `baselines/<skill>.json` (model, judge model, date, scores with and without) and appends one line to `baselines/history.jsonl`. Rerunning until a pass therefore shows in the log. A `--runs 1` run is a check, not a record.
@@ -889,9 +891,9 @@ Rules of the road:
 | Decision | Options | Leaning | Decide by |
 | --- | --- | --- | --- |
 | License | MIT for everything · Apache-2.0 · MIT code + CC BY 4.0 skill text | **Decided 2026-11-02:** MIT code + CC BY 4.0 text (attribution for the method, freedom for the scripts) | Done |
-| Skill language | English only · English with French legal annexes · bilingual | English with French annexes for G1, G3 (articles and texts) | Wave 0 |
+| Skill language | English only · English with French legal annexes · bilingual | English with French annexes only where the law is French (articles and texts) | Wave 0 |
 | Final name | `ai-pm-skills` · `aipm-skills` · `regulated-ai-pm` | `ai-pm-skills` (clear, searchable) | Wave 0 |
-| Eval format | evalblink suite · native `claude plugin eval` · both | **Decided 2026-11-01:** native `claude plugin eval` cases inside each skill; evalblink only for model and classifier comparisons (M2, M5) | Done |
+| Eval format | evalblink suite · native `claude plugin eval` · both | **Decided 2026-11-01:** native `claude plugin eval` cases inside each skill; evalblink only for model and classifier comparisons (E7, E11) | Done |
 | Distribution surface | GitHub only · also Claude Code plugin manifest · also skills directories | GitHub + plugin manifest at v1.0; directories at Show HN | Wave 4 |
 | Holdout storage | private repo · encrypted folder in main repo | private repo (simpler CI secret) | Wave 0 |
 | Judge model policy | frontier for all · cheap after calibration · decision model when available | frontier to calibrate, then a cheap pinned `--judge-model` | Wave 1 |
@@ -996,18 +998,13 @@ Graders: `graders/triggered.md` (`type: tool_used`, `tool: Skill`, anchored `inp
 | cagan-inspired | Cagan, *Inspired* | the four product risks; PM owns outcomes |
 | torres-continuous-discovery | Torres, *Continuous Discovery Habits* | outcome over output; opportunity trees as framing |
 | fitzpatrick-mom-test | Fitzpatrick, *The Mom Test* | problem validation questions in S1 |
-| helmer-7-powers | Helmer, *7 Powers* | the moat scan in S2 |
-| cialdini-influence | Cialdini, *Influence* | ethical persuasion levers in S3 and T2 |
-| cole-online-writing | Cole, *The Art and Business of Online Writing* | thesis-first, specificity, rhythm in S3 |
-| hagel-power-of-pull | Hagel, Seely Brown, Davison, *The Power of Pull* | make initiatives pulled, not pushed (S3) |
-| kohavi-experiments | Kohavi et al., *Trustworthy Online Controlled Experiments* | A/B feasibility and pitfalls in M3 |
-| mitchell-model-cards | Mitchell et al., *Model Cards for Model Reporting* | card structure in G4 |
+| kohavi-experiments | Kohavi et al., *Trustworthy Online Controlled Experiments* | A/B feasibility and pitfalls in E1 and E9 |
+| mitchell-model-cards | Mitchell et al., *Model Cards for Model Reporting* | card structure in P4 |
 | eu-ai-act | Regulation (EU) 2024/1689 | classification, obligations, literacy, incidents |
 | gdpr | Regulation (EU) 2016/679 + EDPB WP248 | DPIA criteria, breach notification |
-| code-du-travail | Code du travail, L2312-8 and related | CSE information and consultation |
 | owasp-llm-top10 | OWASP Top 10 for LLM Applications | guardrail threat classes in B2 |
 | anthropic-agents | Anthropic, *Building effective agents* | loop-first, framework-last in B3 |
-| otel-genai | OpenTelemetry GenAI semantic conventions | trace and outcome-event fields in M4 |
+| otel-genai | OpenTelemetry GenAI semantic conventions | trace and outcome-event fields in B4, E10 and P1 |
 | own-* | Author's missions (anonymised) | every "lived" rule; cases |
 
 ### E. Change log
