@@ -24,6 +24,7 @@ KNOWN = {
     "ai-interaction-patterns/scripts/reliability_table.py",
     "ai-feasibility-spike/scripts/spike_readout.py",
     "ai-vendor-evaluation/scripts/bakeoff.py",
+    "red-team-evals/scripts/redteam_rates.py",
     "error-analysis/scripts/failure_modes.py",
     "llm-judge-calibration/scripts/judge_metrics.py",
     "production-evals-monitoring/scripts/control_limits.py",
@@ -79,6 +80,7 @@ def wilson_ref(k, n, z=Z):
 
 
 WILSON_COPIES = [
+    ("red-team-evals/scripts/redteam_rates.py", lambda m, k, n: m.wilson(k, n)),
     ("ai-interaction-patterns/scripts/reliability_table.py", lambda m, k, n: m.wilson(k, n)),
     ("agent-evals/scripts/agent_reliability.py", lambda m, k, n: m.wilson(k, n)),
     ("ai-feasibility-spike/scripts/spike_readout.py", lambda m, k, n: m.wilson(k, n)),
@@ -112,6 +114,23 @@ class ReliabilityTable(unittest.TestCase):
     def test_low_bucket_shows_no_figure(self):
         self.assertIn("no figure", self.m.verdict(48, 100, claim=None, tolerate=0.85, min_cases=30)["show"])
         self.assertIn("fewer than 30", self.m.verdict(9, 10, claim=None, tolerate=0.85, min_cases=30)["show"])
+
+
+class RedTeamRates(unittest.TestCase):
+    """red-team-evals: a class reads "under" a tolerance only when the Wilson upper bound falls below it."""
+
+    def setUp(self):
+        self.m = load("red-team-evals/scripts/redteam_rates.py")
+
+    def test_sizing_with_zero_successes(self):
+        self.assertEqual(self.m.seeds_needed(0.01, 0), 381)  # 0/381: upper bound just under 1%
+        self.assertLess(self.m.wilson(0, 381)[1], 0.01)
+        self.assertGreater(self.m.wilson(0, 380)[1], 0.01)  # one seed fewer reads undecided
+        self.assertGreater(self.m.seeds_needed(0.01, 1), 381)  # a success needs more seeds
+
+    def test_share_parses_percent_and_fraction(self):
+        self.assertAlmostEqual(self.m.share("1%"), 0.01)
+        self.assertAlmostEqual(self.m.share("0.01"), 0.01)
 
 
 class WilsonReference(unittest.TestCase):

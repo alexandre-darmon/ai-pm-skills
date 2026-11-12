@@ -5,11 +5,11 @@
 <!-- gains:start -->
 | Same cases, Sonnet 5.5 answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 27 skills, 100 cases × 3 runs | 52% | 82% | **96%** | +44 [+41, +48] | +17 [+6, +32] |
+| Regex graders: 29 skills, 109 cases × 3 runs | 52% | 82% | **96%** | +44 [+41, +47] | +17 [+6, +32] |
 | Blind LLM judge, Haiku 5.5: 5 of these skills, 17 cases, earlier runs, not calibrated | 71% | 78% | 80% | +10 [+6, +13] | +3 [+1, +5] |
 | Blind LLM judge, Sonnet 5.5: 5 of these skills, 17 cases, earlier runs, not calibrated | 69% | 76% | 80% | +11 [+6, +17] | +5 [+3, +7] |
 | Red lines held (the one thing the answer must never do) | 72% | 88% | **100%** | | |
-| Cost per correct answer, API equivalent (20 skills) | $0.097 | — | **$0.076** | -22% | |
+| Cost per correct answer, API equivalent (22 skills) | $0.096 | — | **$0.076** | -21% | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
 <sub>Sonnet 5.5 answers each case 3 times per arm. **Regex graders** check that the answer contains what the skill asks for; the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; it is not calibrated on human scores yet, tends to favour longer answers, and never grades the legal skills. Gains in points; brackets: 95% interval from resampling the cases, which shows how much the gain depends on the cases written, not on the graders chosen. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>
@@ -29,7 +29,7 @@ Engineering courses teach how to build evals. These skills encode the decisions 
 
 What makes it different:
 
-1. **Evaluation is the spine.** Eleven of the 27 skills evaluate: error analysis, judge validation, synthetic data, agents, retrieval, vendors, release and production monitoring.
+1. **Evaluation is the spine.** Thirteen of the 29 skills evaluate: error analysis, judge validation, synthetic data, agents, retrieval, attacks, whole conversations, vendors, release and production monitoring.
 2. **Built for a PM who builds.** The Build block covers what a PM makes with a coding agent to get evidence (a feasibility spike, a prompt with its red-team set, an agent's tools, a trace review app) and the handover of that prototype into a bank's IT estate, where engineers own production.
 3. **Tested, and the unfavourable results stay visible.** A skill that does not beat the model alone by at least 10 points stays in `drafts/`. The table above also sets each skill against its own output template and a blind judge, with 95% intervals. [How a skill is evaluated](docs/evaluation.md).
 4. **One AI Act skill, wired to the evidence.** `ai-act-classification` names the role, the risk category and the obligations, then maps each testing or monitoring duty to the eval artefact that answers it.
@@ -78,7 +78,7 @@ You rarely need the command: skills load on their own when the request matches. 
 <p align="center"><img src="assets/evals.svg" alt="Per catalog skill: regex score without the skill, with its template only, and with the skill" width="100%"></p>
 
 - **Every skill is scored twice on the same cases**, with and without it, three runs per case. It enters the catalog only if it clears its threshold in every case, holds every red line in every run, and beats the model alone by at least 10 points. The numbers shown are those of its last recorded run, kept pass or fail with a log of every run; the validator fails the build if a catalog skill's text or cases changed since that run, so no number here describes a text that is not the one you install.
-- **The right skill fires when all 27 are installed.** A routing suite of 49 requests aimed at the known collision zones (spike vs opportunity vs model choice, eval set vs release, handover vs model card vs AI Act, and 3 out-of-scope requests) picked the expected skill, or none, in 147 of 147 runs on 2026-11-12 ([results](routing/results-2026-11-12.md)). The requests were written by the repo's author, so this rules out collisions on known pairs, not on every phrasing. A free lexical check (`scripts/routing_check.py`) guards the same cases on every push.
+- **The right skill fires when all 29 are installed.** A routing suite of 58 requests aimed at the known collision zones (spike vs opportunity vs model choice, eval set vs release, handover vs model card vs AI Act, attack campaign vs guardrails vs agent tests, whole conversations vs single answers, and out-of-scope requests) picked the expected skill, or none, in 172 of 174 runs on 2026-11-12; the 2 misses fired no skill at all ([results](routing/results-2026-11-12b.md)). The requests were written by the repo's author, so this rules out collisions on known pairs, not on every phrasing. A free lexical check (`scripts/routing_check.py`) guards the same cases on every push.
 - **Three ways of scoring, side by side**, in the table at the top: regex graders, the skill's own template as a control, and a blind LLM judge. The judge sees a much smaller gain than the regexes; that is published, not hidden.
 - **What we fix when a run fails**: in the November 2026 runs, most failures were graders refusing correct wording, not weak skills. Every grader change is checked against the answers given without the skill, and real answers become fixtures. Two skills held the exact numbers their own cases asked for; they were rewritten. Details: [how the skills are tested](docs/testing-approach.md) and [per-skill numbers](skill-eval-gains.md).
 
@@ -125,9 +125,9 @@ Not yet verified on every agent; copying a folder into your agent's skills direc
 ## Catalog
 
 <!-- catalog:start -->
-27 skills in four blocks, hard cap 30. Each one owns its triggers: no two skills compete for the same request, and the validator flags descriptions that overlap. **Available** skills are in `skills/`: their last recorded run (three runs per case, on today's text and cases) passes, the validator checks it on every push, and they install from the marketplace. **Drafts** are written and pass the free checks, not yet the paid runs.
+29 skills in four blocks, hard cap 30. Each one owns its triggers: no two skills compete for the same request, and the validator flags descriptions that overlap. **Available** skills are in `skills/`: their last recorded run (three runs per case, on today's text and cases) passes, the validator checks it on every push, and they install from the marketplace. **Drafts** are written and pass the free checks, not yet the paid runs.
 
-### Available (27)
+### Available (29)
 
 | Skill | Block | What it does |
 | --- | --- | --- |
@@ -149,6 +149,8 @@ Not yet verified on every agent; copying a folder into your agent's skills direc
 | [`retrieval-evaluation`](skills/retrieval-evaluation/SKILL.md) | Evaluate | RAG evaluated in two stages: retrieval at the k sent, then generation on fixed contexts. |
 | [`model-selection`](skills/model-selection/SKILL.md) | Evaluate | Choose a model on your own suite: cost per success, noise test, decision record. |
 | [`ai-vendor-evaluation`](skills/ai-vendor-evaluation/SKILL.md) | Evaluate | Buy on your own bake-off: cost per correct outcome, benchmark audit, clauses that keep quality testable. |
+| [`red-team-evals`](skills/red-team-evals/SKILL.md) | Evaluate | Plan and read an attack campaign on an assistant or RAG: classes, sizing, rates with intervals, residual-risk record. Never "robust". |
+| [`multi-turn-evals`](skills/multi-turn-evals/SKILL.md) | Evaluate | Evaluate whole conversations: scripted and simulated cases, a validated simulator, conversation-level graders, pass^k. |
 | [`release-to-production`](skills/release-to-production/SKILL.md) | Evaluate | Ship a change: offline gate, shadow, canary, A/B only if the sample allows. |
 | [`production-evals-monitoring`](skills/production-evals-monitoring/SKILL.md) | Evaluate | Quality after release: sampled judges, control limits, owners, and the AI Act art. 72 plan. |
 | [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | Evaluate | What people really ask the assistant, and how it goes, with personal data masked first. |

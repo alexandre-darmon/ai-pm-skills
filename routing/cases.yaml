@@ -342,3 +342,66 @@ cases:
       Since this morning our claims assistant has been telling customers that water damage is excluded
       when it is covered. Dozens of answers went out. What do we do now: contain it, roll back, decide
       whether this is a serious incident we must report and by when, and make sure it cannot happen again?
+
+  # Evaluate or build: attack the system, or fix its prompt; test one turn, or the whole conversation
+  - id: route-050
+    zone: redteam-prompt-agent
+    expected: red-team-evals
+    request: >-
+      Our claims assistant goes live in March. Model risk will not sign until we show how it was
+      attacked: which kinds of attack, how many attempts of each, who ran them, and what we say about
+      the kinds we did not try. How do we plan that?
+  - id: route-051
+    zone: redteam-prompt-agent
+    expected: red-team-evals
+    request: >-
+      An external firm ran its scanner on our mortgage Q&A assistant: 0 of 50 jailbreak attempts got
+      through. We have since moved to a newer model version. The product owner wants to write "resists
+      attacks" in the release memo. What can we honestly conclude from that report?
+  - id: route-052
+    zone: redteam-prompt-agent
+    expected: system-prompt-and-guardrails
+    request: >-
+      In testing, someone got the travel insurance chatbot to print its system prompt by pasting a fake
+      "system update" message into the chat. How do we change the prompt and the input checks so that
+      stops working, without blocking normal questions?
+  - id: route-053
+    zone: redteam-prompt-agent
+    expected: agent-evals
+    request: >-
+      Our invoice agent can approve payments under 2,000 EUR. Security hid instructions in a few test
+      invoices and it followed one of them. Before it approves without a reviewer, how do we measure how
+      often planted text makes it take a forbidden action, and whether it still clears normal invoices?
+  - id: route-054
+    zone: multiturn-evals-conversations
+    expected: multi-turn-evals
+    request: >-
+      Our tax copilot passes 94% of our single-question test set, but advisers say that after five or six
+      exchanges it forgets the client's country of residence given at the start and contradicts what it
+      said earlier. How do we test for that?
+  - id: route-055
+    zone: multiturn-evals-conversations
+    expected: multi-turn-evals
+    request: >-
+      The vendor had simulated customers hold 300 chats with our onboarding assistant, scored each reply
+      and reports a 91% average. They say it is ready to go live. Is that evidence enough, and what would
+      we check before agreeing?
+  - id: route-056
+    zone: multiturn-evals-conversations
+    expected: build-evals
+    request: >-
+      We need a test set and graders for the assistant that answers one-off questions about our travel
+      policy wording: what goes in, how each answer is scored, and what pass mark we set before launch.
+  - id: route-057
+    zone: multiturn-evals-conversations
+    expected: conversation-analysis
+    request: >-
+      We have 120,000 chats from the banking assistant last quarter. Management wants to know what people
+      actually ask it, how many get resolved, and which topics leave customers unhappy.
+  - id: route-058
+    zone: prompt-interaction
+    expected: system-prompt-and-guardrails
+    request: >-
+      A customer got our claims chatbot to read out internal underwriting notes by asking it to tell the
+      story of how the claim was assessed. We added a rule that stops it, but now it refuses about one
+      ordinary policy question in twelve. How should we fix the instructions and the check?

@@ -33,9 +33,11 @@
         "./skills/llm-judge-calibration",
         "./skills/model-card-ai-registry",
         "./skills/model-selection",
+        "./skills/multi-turn-evals",
         "./skills/process-ai-redesign",
         "./skills/production-evals-monitoring",
         "./skills/prototype-handover",
+        "./skills/red-team-evals",
         "./skills/release-to-production",
         "./skills/retrieval-evaluation",
         "./skills/synthetic-eval-data",
@@ -215,6 +217,15 @@
       ]
     },
     {
+      "source": "./",
+      "strict": false,
+      "name": "multi-turn-evals",
+      "description": "Evaluate whole conversations. Use when a chat assistant forgets, contradicts itself or drifts over turns while one-shot tests pass, or a per-turn average or simulated-chat score is offered as ready.",
+      "skills": [
+        "./skills/multi-turn-evals"
+      ]
+    },
+    {
       "name": "process-ai-redesign",
       "description": "Redesign a business process with AI: autonomy level and gate per step, three scenarios with ROI lines, trade-offs, migration path. Use for \"automate this process\" or an efficiency target.",
       "source": "./",
@@ -239,6 +250,15 @@
       "description": "Decide what a PM-built AI prototype becomes: rebuilt by engineers, registered at its EUC tier, or retired. Use when a prototype gets users, nears its kill date, or someone asks to keep it.",
       "skills": [
         "./skills/prototype-handover"
+      ]
+    },
+    {
+      "source": "./",
+      "strict": false,
+      "name": "red-team-evals",
+      "description": "Plan or read attack tests on an AI assistant or RAG feature: what users can make it say or disclose. Use for jailbreak results, a vendor resistance figure, \"robust\" wording, a campaign before release.",
+      "skills": [
+        "./skills/red-team-evals"
       ]
     },
     {
@@ -270,7 +290,7 @@
     },
     {
       "name": "system-prompt-and-guardrails",
-      "description": "Write or tune an LLM feature's system prompt and guardrails, with budgets and a redteam set. Use for a first prompt, a jailbreak or injection, a redteam result to judge, or disputed false positives.",
+      "description": "Write or tune an LLM feature's system prompt and guardrails. Use for a first prompt, a jailbreak, injection or leak, a guardrail refusing too much (false positives), or a redteam result to judge.",
       "source": "./",
       "strict": false,
       "skills": [

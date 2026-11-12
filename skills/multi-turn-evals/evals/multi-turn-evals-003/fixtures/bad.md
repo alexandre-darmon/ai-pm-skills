@@ -1,0 +1,1 @@
+188/200 is 94%, a strong score with an interval of about 90% to 97%. The survey reflects how advisers phrase requests. Recommend a short training on writing complete prompts with the full client profile in one message, and add 20 more questions to the suite for the next version.

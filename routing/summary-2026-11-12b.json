@@ -1,0 +1,1943 @@
+{
+  "model": "claude-sonnet-5-5",
+  "claudeVersion": "2.1.317",
+  "date": "2026-11-12",
+  "partial": false,
+  "costUsd": 11.4811382,
+  "accuracy": 0.9885057471264368,
+  "firstAccuracy": 0.9770114942528736,
+  "runs": 174,
+  "zones": {
+    "adoption-kpis": {
+      "correct": 3,
+      "runs": 3
+    },
+    "agent-design-evals": {
+      "correct": 12,
+      "runs": 12
+    },
+    "data-retrieval": {
+      "correct": 3,
+      "runs": 3
+    },
+    "evals-release-model": {
+      "correct": 18,
+      "runs": 18
+    },
+    "handover-release-card-act": {
+      "correct": 18,
+      "runs": 18
+    },
+    "judge-monitoring": {
+      "correct": 2,
+      "runs": 3
+    },
+    "kpis-roi": {
+      "correct": 9,
+      "runs": 9
+    },
+    "monitoring-incident": {
+      "correct": 15,
+      "runs": 15
+    },
+    "multiturn-evals-conversations": {
+      "correct": 12,
+      "runs": 12
+    },
+    "opportunity-spike-model": {
+      "correct": 15,
+      "runs": 15
+    },
+    "out-of-scope": {
+      "correct": 9,
+      "runs": 9
+    },
+    "prd-evals": {
+      "correct": 3,
+      "runs": 3
+    },
+    "prompt-interaction": {
+      "correct": 14,
+      "runs": 15
+    },
+    "redesign-opportunity": {
+      "correct": 3,
+      "runs": 3
+    },
+    "redteam-prompt-agent": {
+      "correct": 12,
+      "runs": 12
+    },
+    "retrieval-errors": {
+      "correct": 3,
+      "runs": 3
+    },
+    "synthetic-evals": {
+      "correct": 3,
+      "runs": 3
+    },
+    "traces-errors-conversations": {
+      "correct": 15,
+      "runs": 15
+    },
+    "vendor-act": {
+      "correct": 3,
+      "runs": 3
+    }
+  },
+  "confusion": [
+    {
+      "expected": "agent-evals",
+      "loaded": "red-team-evals",
+      "count": 2
+    },
+    {
+      "expected": "llm-judge-calibration",
+      "loaded": "none",
+      "count": 1
+    },
+    {
+      "expected": "system-prompt-and-guardrails",
+      "loaded": "none",
+      "count": 1
+    }
+  ],
+  "cases": [
+    {
+      "id": "route-001",
+      "zone": "opportunity-spike-model",
+      "expected": "ai-opportunity-assessment",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-opportunity-assessment",
+          "all": [
+            "ai-opportunity-assessment"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-opportunity-assessment",
+          "all": [
+            "ai-opportunity-assessment"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-opportunity-assessment",
+          "all": [
+            "ai-opportunity-assessment"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-002",
+      "zone": "opportunity-spike-model",
+      "expected": "ai-feasibility-spike",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-feasibility-spike",
+          "all": [
+            "ai-feasibility-spike"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-feasibility-spike",
+          "all": [
+            "ai-feasibility-spike"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-feasibility-spike",
+          "all": [
+            "ai-feasibility-spike"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-003",
+      "zone": "opportunity-spike-model",
+      "expected": "ai-feasibility-spike",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-feasibility-spike",
+          "all": [
+            "ai-feasibility-spike"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-feasibility-spike",
+          "all": [
+            "ai-feasibility-spike"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-feasibility-spike",
+          "all": [
+            "ai-feasibility-spike"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-004",
+      "zone": "opportunity-spike-model",
+      "expected": "model-selection",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "model-selection",
+          "all": [
+            "model-selection"
+          ],
+          "error": null
+        },
+        {
+          "first": "model-selection",
+          "all": [
+            "model-selection"
+          ],
+          "error": null
+        },
+        {
+          "first": "model-selection",
+          "all": [
+            "model-selection"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-005",
+      "zone": "opportunity-spike-model",
+      "expected": "ai-opportunity-assessment",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-opportunity-assessment",
+          "all": [
+            "ai-opportunity-assessment"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-opportunity-assessment",
+          "all": [
+            "ai-opportunity-assessment"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-opportunity-assessment",
+          "all": [
+            "ai-opportunity-assessment"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-006",
+      "zone": "evals-release-model",
+      "expected": "model-selection",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "model-selection",
+          "all": [
+            "model-selection"
+          ],
+          "error": null
+        },
+        {
+          "first": "model-selection",
+          "all": [
+            "model-selection"
+          ],
+          "error": null
+        },
+        {
+          "first": "model-selection",
+          "all": [
+            "model-selection"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-007",
+      "zone": "evals-release-model",
+      "expected": "build-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-008",
+      "zone": "evals-release-model",
+      "expected": "release-to-production",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "release-to-production",
+          "all": [
+            "release-to-production"
+          ],
+          "error": null
+        },
+        {
+          "first": "release-to-production",
+          "all": [
+            "release-to-production"
+          ],
+          "error": null
+        },
+        {
+          "first": "release-to-production",
+          "all": [
+            "release-to-production"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-009",
+      "zone": "evals-release-model",
+      "expected": "build-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-010",
+      "zone": "evals-release-model",
+      "expected": "release-to-production",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "release-to-production",
+          "all": [
+            "release-to-production"
+          ],
+          "error": null
+        },
+        {
+          "first": "release-to-production",
+          "all": [
+            "release-to-production"
+          ],
+          "error": null
+        },
+        {
+          "first": "release-to-production",
+          "all": [
+            "release-to-production"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-011",
+      "zone": "evals-release-model",
+      "expected": "build-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-012",
+      "zone": "traces-errors-conversations",
+      "expected": "trace-review-tool",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "trace-review-tool",
+          "all": [
+            "trace-review-tool"
+          ],
+          "error": null
+        },
+        {
+          "first": "trace-review-tool",
+          "all": [
+            "trace-review-tool"
+          ],
+          "error": null
+        },
+        {
+          "first": "trace-review-tool",
+          "all": [
+            "trace-review-tool"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-013",
+      "zone": "traces-errors-conversations",
+      "expected": "error-analysis",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "error-analysis",
+          "all": [
+            "error-analysis"
+          ],
+          "error": null
+        },
+        {
+          "first": "error-analysis",
+          "all": [
+            "error-analysis"
+          ],
+          "error": null
+        },
+        {
+          "first": "error-analysis",
+          "all": [
+            "error-analysis"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-014",
+      "zone": "traces-errors-conversations",
+      "expected": "conversation-analysis",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "conversation-analysis",
+          "all": [
+            "conversation-analysis"
+          ],
+          "error": null
+        },
+        {
+          "first": "conversation-analysis",
+          "all": [
+            "conversation-analysis"
+          ],
+          "error": null
+        },
+        {
+          "first": "conversation-analysis",
+          "all": [
+            "conversation-analysis"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-015",
+      "zone": "traces-errors-conversations",
+      "expected": "error-analysis",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "error-analysis",
+          "all": [
+            "error-analysis"
+          ],
+          "error": null
+        },
+        {
+          "first": "error-analysis",
+          "all": [
+            "error-analysis"
+          ],
+          "error": null
+        },
+        {
+          "first": "error-analysis",
+          "all": [
+            "error-analysis"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-016",
+      "zone": "traces-errors-conversations",
+      "expected": "conversation-analysis",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "conversation-analysis",
+          "all": [
+            "conversation-analysis"
+          ],
+          "error": null
+        },
+        {
+          "first": "conversation-analysis",
+          "all": [
+            "conversation-analysis"
+          ],
+          "error": null
+        },
+        {
+          "first": "conversation-analysis",
+          "all": [
+            "conversation-analysis"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-017",
+      "zone": "handover-release-card-act",
+      "expected": "prototype-handover",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "prototype-handover",
+          "all": [
+            "prototype-handover"
+          ],
+          "error": null
+        },
+        {
+          "first": "prototype-handover",
+          "all": [
+            "prototype-handover"
+          ],
+          "error": null
+        },
+        {
+          "first": "prototype-handover",
+          "all": [
+            "prototype-handover"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-018",
+      "zone": "handover-release-card-act",
+      "expected": "model-card-ai-registry",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "model-card-ai-registry",
+          "all": [
+            "model-card-ai-registry"
+          ],
+          "error": null
+        },
+        {
+          "first": "model-card-ai-registry",
+          "all": [
+            "model-card-ai-registry"
+          ],
+          "error": null
+        },
+        {
+          "first": "model-card-ai-registry",
+          "all": [
+            "model-card-ai-registry"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-019",
+      "zone": "handover-release-card-act",
+      "expected": "ai-act-classification",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-act-classification",
+          "all": [
+            "ai-act-classification"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-act-classification",
+          "all": [
+            "ai-act-classification"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-act-classification",
+          "all": [
+            "ai-act-classification"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-020",
+      "zone": "handover-release-card-act",
+      "expected": "release-to-production",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "release-to-production",
+          "all": [
+            "release-to-production"
+          ],
+          "error": null
+        },
+        {
+          "first": "release-to-production",
+          "all": [
+            "release-to-production"
+          ],
+          "error": null
+        },
+        {
+          "first": "release-to-production",
+          "all": [
+            "release-to-production"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-021",
+      "zone": "handover-release-card-act",
+      "expected": "prototype-handover",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "prototype-handover",
+          "all": [
+            "prototype-handover"
+          ],
+          "error": null
+        },
+        {
+          "first": "prototype-handover",
+          "all": [
+            "prototype-handover"
+          ],
+          "error": null
+        },
+        {
+          "first": "prototype-handover",
+          "all": [
+            "prototype-handover"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-022",
+      "zone": "handover-release-card-act",
+      "expected": "ai-act-classification",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-act-classification",
+          "all": [
+            "ai-act-classification"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-act-classification",
+          "all": [
+            "ai-act-classification"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-act-classification",
+          "all": [
+            "ai-act-classification"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-023",
+      "zone": "agent-design-evals",
+      "expected": "agent-design-and-tooling",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "agent-design-and-tooling",
+          "all": [
+            "agent-design-and-tooling"
+          ],
+          "error": null
+        },
+        {
+          "first": "agent-design-and-tooling",
+          "all": [
+            "agent-design-and-tooling"
+          ],
+          "error": null
+        },
+        {
+          "first": "agent-design-and-tooling",
+          "all": [
+            "agent-design-and-tooling"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-024",
+      "zone": "agent-design-evals",
+      "expected": "agent-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "agent-evals",
+          "all": [
+            "agent-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "agent-evals",
+          "all": [
+            "agent-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "agent-evals",
+          "all": [
+            "agent-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-025",
+      "zone": "agent-design-evals",
+      "expected": "agent-design-and-tooling",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "agent-design-and-tooling",
+          "all": [
+            "agent-design-and-tooling"
+          ],
+          "error": null
+        },
+        {
+          "first": "agent-design-and-tooling",
+          "all": [
+            "agent-design-and-tooling"
+          ],
+          "error": null
+        },
+        {
+          "first": "agent-design-and-tooling",
+          "all": [
+            "agent-design-and-tooling"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-026",
+      "zone": "agent-design-evals",
+      "expected": "agent-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 1,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "red-team-evals",
+          "all": [
+            "red-team-evals",
+            "agent-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "agent-evals",
+          "all": [
+            "agent-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "red-team-evals",
+          "all": [
+            "red-team-evals",
+            "agent-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-027",
+      "zone": "prompt-interaction",
+      "expected": "system-prompt-and-guardrails",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        },
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        },
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-028",
+      "zone": "prompt-interaction",
+      "expected": "ai-interaction-patterns",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-interaction-patterns",
+          "all": [
+            "ai-interaction-patterns"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-interaction-patterns",
+          "all": [
+            "ai-interaction-patterns"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-interaction-patterns",
+          "all": [
+            "ai-interaction-patterns"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-029",
+      "zone": "prompt-interaction",
+      "expected": "system-prompt-and-guardrails",
+      "runs": 3,
+      "correct": 2,
+      "firstCorrect": 2,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        },
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        },
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-030",
+      "zone": "prompt-interaction",
+      "expected": "ai-interaction-patterns",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-interaction-patterns",
+          "all": [
+            "ai-interaction-patterns"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-interaction-patterns",
+          "all": [
+            "ai-interaction-patterns"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-interaction-patterns",
+          "all": [
+            "ai-interaction-patterns"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-031",
+      "zone": "monitoring-incident",
+      "expected": "production-evals-monitoring",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "production-evals-monitoring",
+          "all": [
+            "production-evals-monitoring"
+          ],
+          "error": null
+        },
+        {
+          "first": "production-evals-monitoring",
+          "all": [
+            "production-evals-monitoring"
+          ],
+          "error": null
+        },
+        {
+          "first": "production-evals-monitoring",
+          "all": [
+            "production-evals-monitoring"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-032",
+      "zone": "monitoring-incident",
+      "expected": "ai-incident-playbook",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-incident-playbook",
+          "all": [
+            "ai-incident-playbook"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-incident-playbook",
+          "all": [
+            "ai-incident-playbook"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-incident-playbook",
+          "all": [
+            "ai-incident-playbook"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-033",
+      "zone": "monitoring-incident",
+      "expected": "production-evals-monitoring",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "production-evals-monitoring",
+          "all": [
+            "production-evals-monitoring"
+          ],
+          "error": null
+        },
+        {
+          "first": "production-evals-monitoring",
+          "all": [
+            "production-evals-monitoring"
+          ],
+          "error": null
+        },
+        {
+          "first": "production-evals-monitoring",
+          "all": [
+            "production-evals-monitoring"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-034",
+      "zone": "monitoring-incident",
+      "expected": "ai-incident-playbook",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-incident-playbook",
+          "all": [
+            "ai-incident-playbook"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-incident-playbook",
+          "all": [
+            "ai-incident-playbook"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-incident-playbook",
+          "all": [
+            "ai-incident-playbook"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-035",
+      "zone": "kpis-roi",
+      "expected": "assistant-kpis-cost-per-outcome",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "assistant-kpis-cost-per-outcome",
+          "all": [
+            "assistant-kpis-cost-per-outcome"
+          ],
+          "error": null
+        },
+        {
+          "first": "assistant-kpis-cost-per-outcome",
+          "all": [
+            "assistant-kpis-cost-per-outcome"
+          ],
+          "error": null
+        },
+        {
+          "first": "assistant-kpis-cost-per-outcome",
+          "all": [
+            "assistant-kpis-cost-per-outcome"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-036",
+      "zone": "kpis-roi",
+      "expected": "ai-roi-quantification",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-roi-quantification",
+          "all": [
+            "ai-roi-quantification"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-roi-quantification",
+          "all": [
+            "ai-roi-quantification"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-roi-quantification",
+          "all": [
+            "ai-roi-quantification"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-037",
+      "zone": "kpis-roi",
+      "expected": "assistant-kpis-cost-per-outcome",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "assistant-kpis-cost-per-outcome",
+          "all": [
+            "assistant-kpis-cost-per-outcome"
+          ],
+          "error": null
+        },
+        {
+          "first": "assistant-kpis-cost-per-outcome",
+          "all": [
+            "assistant-kpis-cost-per-outcome"
+          ],
+          "error": null
+        },
+        {
+          "first": "assistant-kpis-cost-per-outcome",
+          "all": [
+            "assistant-kpis-cost-per-outcome"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-038",
+      "zone": "vendor-act",
+      "expected": "ai-vendor-evaluation",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-vendor-evaluation",
+          "all": [
+            "ai-vendor-evaluation"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-vendor-evaluation",
+          "all": [
+            "ai-vendor-evaluation"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-vendor-evaluation",
+          "all": [
+            "ai-vendor-evaluation"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-039",
+      "zone": "judge-monitoring",
+      "expected": "llm-judge-calibration",
+      "runs": 3,
+      "correct": 2,
+      "firstCorrect": 2,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "llm-judge-calibration",
+          "all": [
+            "llm-judge-calibration"
+          ],
+          "error": null
+        },
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        },
+        {
+          "first": "llm-judge-calibration",
+          "all": [
+            "llm-judge-calibration"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-040",
+      "zone": "retrieval-errors",
+      "expected": "retrieval-evaluation",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "retrieval-evaluation",
+          "all": [
+            "retrieval-evaluation"
+          ],
+          "error": null
+        },
+        {
+          "first": "retrieval-evaluation",
+          "all": [
+            "retrieval-evaluation"
+          ],
+          "error": null
+        },
+        {
+          "first": "retrieval-evaluation",
+          "all": [
+            "retrieval-evaluation"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-041",
+      "zone": "synthetic-evals",
+      "expected": "synthetic-eval-data",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "synthetic-eval-data",
+          "all": [
+            "synthetic-eval-data"
+          ],
+          "error": null
+        },
+        {
+          "first": "synthetic-eval-data",
+          "all": [
+            "synthetic-eval-data"
+          ],
+          "error": null
+        },
+        {
+          "first": "synthetic-eval-data",
+          "all": [
+            "synthetic-eval-data"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-042",
+      "zone": "prd-evals",
+      "expected": "llm-feature-prd",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "llm-feature-prd",
+          "all": [
+            "llm-feature-prd"
+          ],
+          "error": null
+        },
+        {
+          "first": "llm-feature-prd",
+          "all": [
+            "llm-feature-prd"
+          ],
+          "error": null
+        },
+        {
+          "first": "llm-feature-prd",
+          "all": [
+            "llm-feature-prd"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-043",
+      "zone": "redesign-opportunity",
+      "expected": "process-ai-redesign",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "process-ai-redesign",
+          "all": [
+            "process-ai-redesign"
+          ],
+          "error": null
+        },
+        {
+          "first": "process-ai-redesign",
+          "all": [
+            "process-ai-redesign"
+          ],
+          "error": null
+        },
+        {
+          "first": "process-ai-redesign",
+          "all": [
+            "process-ai-redesign"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-044",
+      "zone": "adoption-kpis",
+      "expected": "ai-adoption-plan",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-adoption-plan",
+          "all": [
+            "ai-adoption-plan"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-adoption-plan",
+          "all": [
+            "ai-adoption-plan"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-adoption-plan",
+          "all": [
+            "ai-adoption-plan"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-045",
+      "zone": "data-retrieval",
+      "expected": "ai-data-requirements",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-data-requirements",
+          "all": [
+            "ai-data-requirements"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-data-requirements",
+          "all": [
+            "ai-data-requirements"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-data-requirements",
+          "all": [
+            "ai-data-requirements"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-046",
+      "zone": "out-of-scope",
+      "expected": "none",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        },
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        },
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-047",
+      "zone": "out-of-scope",
+      "expected": "none",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        },
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        },
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-048",
+      "zone": "out-of-scope",
+      "expected": "none",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        },
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        },
+        {
+          "first": "none",
+          "all": [],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-049",
+      "zone": "monitoring-incident",
+      "expected": "ai-incident-playbook",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "ai-incident-playbook",
+          "all": [
+            "ai-incident-playbook"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-incident-playbook",
+          "all": [
+            "ai-incident-playbook"
+          ],
+          "error": null
+        },
+        {
+          "first": "ai-incident-playbook",
+          "all": [
+            "ai-incident-playbook"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-050",
+      "zone": "redteam-prompt-agent",
+      "expected": "red-team-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "red-team-evals",
+          "all": [
+            "red-team-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "red-team-evals",
+          "all": [
+            "red-team-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "red-team-evals",
+          "all": [
+            "red-team-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-051",
+      "zone": "redteam-prompt-agent",
+      "expected": "red-team-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "red-team-evals",
+          "all": [
+            "red-team-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "red-team-evals",
+          "all": [
+            "red-team-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "red-team-evals",
+          "all": [
+            "red-team-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-052",
+      "zone": "redteam-prompt-agent",
+      "expected": "system-prompt-and-guardrails",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        },
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        },
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-053",
+      "zone": "redteam-prompt-agent",
+      "expected": "agent-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "agent-evals",
+          "all": [
+            "agent-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "agent-evals",
+          "all": [
+            "agent-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "agent-evals",
+          "all": [
+            "agent-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-054",
+      "zone": "multiturn-evals-conversations",
+      "expected": "multi-turn-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "multi-turn-evals",
+          "all": [
+            "multi-turn-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "multi-turn-evals",
+          "all": [
+            "multi-turn-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "multi-turn-evals",
+          "all": [
+            "multi-turn-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-055",
+      "zone": "multiturn-evals-conversations",
+      "expected": "multi-turn-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "multi-turn-evals",
+          "all": [
+            "multi-turn-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "multi-turn-evals",
+          "all": [
+            "multi-turn-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "multi-turn-evals",
+          "all": [
+            "multi-turn-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-056",
+      "zone": "multiturn-evals-conversations",
+      "expected": "build-evals",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        },
+        {
+          "first": "build-evals",
+          "all": [
+            "build-evals"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-057",
+      "zone": "multiturn-evals-conversations",
+      "expected": "conversation-analysis",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "conversation-analysis",
+          "all": [
+            "conversation-analysis"
+          ],
+          "error": null
+        },
+        {
+          "first": "conversation-analysis",
+          "all": [
+            "conversation-analysis"
+          ],
+          "error": null
+        },
+        {
+          "first": "conversation-analysis",
+          "all": [
+            "conversation-analysis"
+          ],
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "route-058",
+      "zone": "prompt-interaction",
+      "expected": "system-prompt-and-guardrails",
+      "runs": 3,
+      "correct": 3,
+      "firstCorrect": 3,
+      "errors": 0,
+      "calls": [
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        },
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        },
+        {
+          "first": "system-prompt-and-guardrails",
+          "all": [
+            "system-prompt-and-guardrails"
+          ],
+          "error": null
+        }
+      ]
+    }
+  ]
+}

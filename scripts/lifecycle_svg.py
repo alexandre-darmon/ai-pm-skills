@@ -20,7 +20,7 @@ STAGES = [
     ("Build", "Build to learn", ["ai-feasibility-spike", "system-prompt-and-guardrails", "agent-design-and-tooling",
                                  "trace-review-tool", "prototype-handover"]),
     ("Evaluate", "Offline and online", ["error-analysis", "build-evals", "llm-judge-calibration", "synthetic-eval-data", "agent-evals",
-                                        "retrieval-evaluation", "model-selection", "ai-vendor-evaluation", "release-to-production",
+                                        "retrieval-evaluation", "red-team-evals", "multi-turn-evals", "model-selection", "ai-vendor-evaluation", "release-to-production",
                                         "production-evals-monitoring", "conversation-analysis"]),
     ("Prove", "To sponsor and regulator", ["assistant-kpis-cost-per-outcome", "ai-roi-quantification", "ai-act-classification",
                                            "model-card-ai-registry", "ai-incident-playbook", "ai-adoption-plan"]),

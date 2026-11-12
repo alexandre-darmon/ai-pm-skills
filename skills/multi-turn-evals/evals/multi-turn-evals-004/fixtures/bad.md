@@ -1,0 +1,1 @@
+The plan is reasonable. 400 scored replies at about 90% give a margin of about ±3 points, already tighter than the ±5 you need. Run the 50 conversations once, average the reply scores, and pass if the mean is at least 90%. Add a few more conversations for rare products if budget allows.
