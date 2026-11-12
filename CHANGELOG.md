@@ -2,12 +2,16 @@
 
 Each release lists what changed for someone who installs the skills. Per-skill versions live in each `SKILL.md` (`metadata.version`); eval records and their history are in [`baselines/`](baselines/).
 
-## Unreleased
+## v1.1.0 (2026-11-12)
+
+Release notes: [docs/releases/v1.1.0.md](docs/releases/v1.1.0.md).
 
 - **Two skills join the catalog (29 of 30)**: `red-team-evals` plans and reads an attack campaign on an assistant or RAG (classes, sizing, rates with intervals, coverage, residual-risk record; never "robust"), and `multi-turn-evals` evaluates whole conversations (scripted and simulated cases, a validated user simulator, conversation-level graders, pass^k).
 - `system-prompt-and-guardrails`: the description now covers role-play tricks, leaks and a guardrail refusing too much; rerun, pass.
 - Routing suite: 58 requests, 172 of 174 runs correct with all 29 skills installed.
-- `ai-feasibility-spike`: two stronger cases; `judge_answers.py --key` grades the exact answers of a blind human sheet.
+- `ai-feasibility-spike`: two stronger cases (+37 and +36 points, were +3 and +5).
+- `red-team-evals` case 005 replaced by one the model alone fails (+45 points, was +4); two grader false negatives fixed.
+- Tooling: `judge_answers.py --key` grades the exact answers of a blind human rating sheet; `human_rating.py` stores request and goal hashes in the key.
 
 ## v1.0.0 (2026-11-12)
 

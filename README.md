@@ -114,7 +114,7 @@ Not yet verified on every agent; copying a folder into your agent's skills direc
 
 **claude.ai, the Claude apps, the Skills API.** Download a skill's zip from the [latest release](https://github.com/alexandre-darmon/ai-pm-skills/releases/latest) and upload it under Customize > Skills. Each zip is one skill folder without its eval cases, with its licence; `SHA256SUMS` lists the checksums.
 
-**Pin a version.** Add the marketplace at a tag and it stays on that tag until you add it again: `claude plugin marketplace add alexandre-darmon/ai-pm-skills#v1.0.0`. Without a tag you follow `main`; refresh with `claude plugin marketplace update ai-pm-skills`, then `claude plugin update ai-pm-skills@ai-pm-skills`. What changed between versions: [CHANGELOG](CHANGELOG.md).
+**Pin a version.** Add the marketplace at a tag and it stays on that tag until you add it again: `claude plugin marketplace add alexandre-darmon/ai-pm-skills#v1.1.0`. Without a tag you follow `main`; refresh with `claude plugin marketplace update ai-pm-skills`, then `claude plugin update ai-pm-skills@ai-pm-skills`. What changed between versions: [CHANGELOG](CHANGELOG.md).
 
 **Roll it out in your company.**
 
