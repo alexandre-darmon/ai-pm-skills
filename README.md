@@ -112,6 +112,16 @@ npx skills add alexandre-darmon/ai-pm-skills
 
 Not yet verified on every agent; copying a folder into your agent's skills directory also works.
 
+**claude.ai, the Claude apps, the Skills API.** Download a skill's zip from the [latest release](https://github.com/alexandre-darmon/ai-pm-skills/releases/latest) and upload it under Customize > Skills. Each zip is one skill folder without its eval cases, with its licence; `SHA256SUMS` lists the checksums.
+
+**Pin a version.** Add the marketplace at a tag and it stays on that tag until you add it again: `claude plugin marketplace add alexandre-darmon/ai-pm-skills#v1.0.0`. Without a tag you follow `main`; refresh with `claude plugin marketplace update ai-pm-skills`, then `claude plugin update ai-pm-skills@ai-pm-skills`. What changed between versions: [CHANGELOG](CHANGELOG.md).
+
+**Roll it out in your company.**
+
+- **Claude Code**: an admin registers the marketplace pinned to a tag in managed settings (`extraKnownMarketplaces`, source `alexandre-darmon/ai-pm-skills` with `ref` set to the tag) and turns on the plugins people should have (`enabledPlugins`). `strictKnownMarketplaces` keeps everything else out. See the [organisation guide](https://code.claude.com/docs/en/plugins/org.md).
+- **claude.ai Team or Enterprise**: an owner uploads the release zips under Organization settings > Plugins & skills and chooses who gets each skill.
+- **Before rollout**: each skill's eval record (`baselines/<skill>.json`) is the evidence your model risk or IT risk reviewer can read. The legal skills give checklists and questions for counsel, never a verdict.
+
 ## Catalog
 
 <!-- catalog:start -->

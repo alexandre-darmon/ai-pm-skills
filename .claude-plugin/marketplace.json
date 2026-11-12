@@ -4,13 +4,13 @@
     "name": "Alex Darmon"
   },
   "metadata": {
-    "description": "Evals as evidence: tested skills for AI product managers who must prove a feature works, what a correct answer costs, and what the regulator will ask.",
-    "version": "0.1.0"
+    "description": "Evals as evidence: tested skills for AI product managers who build, then prove a feature works, what a correct answer costs, and what the regulator will ask.",
+    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "ai-pm-skills",
-      "description": "All tested skills: specify what correct means, evaluate it, prove it to the sponsor and the regulator.",
+      "description": "All tested skills: specify what correct means, build to learn, evaluate it, prove it to the sponsor and the regulator.",
       "source": "./",
       "strict": false,
       "skills": [
