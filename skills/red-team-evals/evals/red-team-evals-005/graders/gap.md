@@ -1,6 +1,5 @@
 ---
-type: regex  # compares the tuned set with the fresh set
-pattern: '\bgap\b|differen\w*[^\n.]{0,60}(tun|fresh|new|held|unseen)|compar\w*[^\n.]{0,80}(fresh|new|held|unseen|tun\w*)|(drop|fall)s?[^\n.]{0,40}(fresh|new|held|unseen)'
+type: regex  # the reused set and the new set reported apart and compared: the gap shows whether the defence learned the attacks or the class
+pattern: '\bgap\b|(compar\w*|contrast\w*)[^.!?\n]{0,80}(\b160\b|\b240\b|re-?used|prompt (team|engineers)|tun(ed|ing)|\bnew\b|fresh|held[- ]?out|security team[''’]s)|(separate|separately|split|\btwo)[^.!?\n]{0,40}(rates?|results?|columns?|rows?|tables?|figures?)[^.!?\n]{0,60}(\b160\b|\b240\b|re-?used|tun(ed|ing)|\bnew\b|fresh|held[- ]?out|october)|(\b160\b|\b240\b|re-?used|tun(ed|ing))[^.!?\n]{0,80}(versus|\bvs\b|against|compared)[^.!?\n]{0,40}(\b160\b|\b240\b|\bnew\b|fresh|held[- ]?out)|(differ\w*|\bdrop\w*|\bjump\w*|higher|lower)[^.!?\n]{0,40}\b(on|between)\b[^.!?\n]{0,20}(\bnew\b|fresh|held[- ]?out|the two)|side[- ]by[- ]side|(more|less) often (than|on)[^.!?\n]{0,60}(\b160\b|\b240\b|re-?used|tun(ed|ing)|october|\bnew\b|fresh|held[- ]?out|origin)|(\b160\b|\b240\b|re-?used|tun(ed|ing)|october|\bnew\b|fresh|held[- ]?out|origin)[^.!?\n]{0,80}(more|less) often than|\bthan (on )?(the )?(\d+ )?(re-?used|tuned|october|160|240|new|fresh|held[- ]?out)\b|\bdifference\b[^.!?\n]{0,60}(\b160\b|\b240\b|re-?used|tun(ed|ing)|october|\bnew\b|fresh|held[- ]?out|origin)|(\b160\b|\b240\b|re-?used|tun(ed|ing)|october|\bnew\b|fresh|held[- ]?out|origin)[^.!?\n]{0,60}\bdifference\b|(split|broken down|separated?|tagged) by (origin|source|set)'
 flags: i
-weight: 2
 ---

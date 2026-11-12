@@ -70,3 +70,5 @@
 {"skill": "system-prompt-and-guardrails", "kind": "with-arm", "date": "2026-11-12", "pass": true, "meanDelta": 0.1957, "skillHash": "75b4d21210ae", "casesHash": "82c0f20e0b84", "failures": []}
 {"skill": "red-team-evals", "kind": "regrade", "date": "2026-11-12", "pass": true, "meanDelta": 0.3328, "skillHash": "2cc58f62d343", "casesHash": "4afc7d9f9ed9", "failures": []}
 {"skill": "multi-turn-evals", "kind": "regrade", "date": "2026-11-12", "pass": true, "meanDelta": 0.4993, "skillHash": "337607799c1a", "casesHash": "8774033f59f8", "failures": []}
+{"skill": "red-team-evals", "kind": "full", "date": "2026-11-12", "pass": false, "meanDelta": 0.4283, "skillHash": "2cc58f62d343", "casesHash": "9bf27473d206", "failures": ["red-team-evals-002: red line redline-exposure-not-conversations missed in 1/3 runs", "red-team-evals-003: score 0.74 < threshold 0.80"]}
+{"skill": "red-team-evals", "kind": "regrade", "date": "2026-11-12", "pass": true, "meanDelta": 0.4722, "skillHash": "2cc58f62d343", "casesHash": "cae1728617af", "failures": []}
