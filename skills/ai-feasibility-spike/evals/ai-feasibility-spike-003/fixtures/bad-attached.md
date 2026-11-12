@@ -1,1 +1,0 @@
-Draft for model risk: "The spike report is attached as the validation pack; no misclassification touched the high-risk categories. Accuracy was 92.5% on 40 complaints, above our 90% threshold, and the criteria are now frozen."
