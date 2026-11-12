@@ -13,7 +13,7 @@ baseline counts (run_evals.py reuses the baseline's "without" score when only th
 skills and arms (with, without, template where saved), never the same (skill, case) twice, so no request comes
 back under another arm. By default only answers that every judge in baselines/judge/ scored (same id, same word
 count) are drawn, and it refuses when they cannot fill --n: run judge_answers.py on the sampled skills first.
---any-answer drops that filter, for a human-only sheet. Writes a blinded Markdown sheet, with the judge's rubric
+--any-answer drops that filter; the judges then score the sheet with judge_answers.py --key before score can pick one. Writes a blinded Markdown sheet, with the judge's rubric
 and the request's goal (the judge sees both), and a separate key mapping each id to skill, case, arm and run. The
 person grading gets the sheet only, never the key. --include-legal adds --legal-n legal answers on top of the
 --n others: they never count for the judge, only for human pass rates.
@@ -38,9 +38,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from eval_stats import bootstrap_ci  # noqa: E402
-from judge_answers import CRITERIA, PROMPT, redact  # noqa: E402
+from judge_answers import (CRITERIA, PROMPT, blind, case_texts, git, judge_id, load_judges, recorded_answers,  # noqa: E402,F401
+                           repo_names, sha256, template_answers, without_answers)
 from run_evals import ROOT, case_graders, mean, skill_check  # noqa: E402
-from validate_skills import read_frontmatter, read_skill  # noqa: E402
+from validate_skills import read_skill  # noqa: E402
 
 # The committed rule (docs/evaluation.md, 2026-11-07). Changing these after a human score is a new rule.
 MIN_ANSWERS = 20
@@ -54,61 +55,6 @@ PASS_WORDS = {"yes": True, "y": True, "pass": True, "1": True, "no": False, "n":
 ITEM = "<!-- rating-item: {id} -->"
 GUESS = "<!-- arm-guess -->"
 LEGAL_N = 6
-
-
-def judge_id(skill: str, case: str, arm: str, run: int) -> str:
-    """The id judge_answers.py gives the same answer, so the two files can be joined."""
-    return hashlib.sha1(f"{skill}/{case}/{arm}/{run}".encode()).hexdigest()[:10]
-
-
-def recorded_answers(root: Path, skill: str) -> Path | None:
-    """The saved answers of the run recorded in baselines/<skill>.json: same skillHash, the latest start if several."""
-    path = root / "baselines" / f"{skill}.json"
-    if not path.is_file():
-        return None
-    record = json.loads(path.read_text())
-    found = []
-    for runs in sorted(root.glob(f"eval-out/*/answers/{skill}/runs.json")) + sorted(root.glob(f"eval-out/answers/{skill}/runs.json")):
-        saved = json.loads(runs.read_text())
-        if record.get("skillHash") and saved.get("skillHash") == record["skillHash"]:
-            same_day = str(saved.get("startedAt", ""))[:10] == record.get("date")
-            found.append((same_day, str(saved.get("startedAt", "")), runs.parent))
-    return max(found)[2] if found else None
-
-
-def without_answers(root: Path, skill: str, recorded: Path) -> Path | None:
-    """Where the "without" answers behind the baseline's scoreWithout are saved.
-
-    The recorded run when it has them. Otherwise run_evals.py reused the baseline's "without" score (same cases,
-    model and judge), so they come from an earlier run: the latest one, on or before the record's date, of the same
-    model (a run without a model field is the Claude account's), that holds every "without" run the baseline counts.
-    """
-    record = json.loads((root / "baselines" / f"{skill}.json").read_text())
-    expected = {c: v.get("runsWithout") for c, v in (record.get("cases") or {}).items() if not v.get("negative") and v.get("runsWithout")}
-    found = []
-    for runs in sorted(root.glob(f"eval-out/*/answers/{skill}/runs.json")) + sorted(root.glob(f"eval-out/answers/{skill}/runs.json")):
-        saved = json.loads(runs.read_text())
-        counts = {c: len(arms.get("without") or []) for c, arms in saved.get("cases", {}).items()}
-        if not any(counts.values()):
-            continue
-        if runs.parent == recorded:
-            return recorded
-        started = str(saved.get("startedAt", ""))
-        if saved.get("model") not in (None, record.get("model")) or started[:10] > str(record.get("date", "")):
-            continue
-        if not expected or any(counts.get(c) != n for c, n in expected.items()):
-            continue
-        found.append((started, runs.parent))
-    return max(found)[1] if found else None
-
-
-def template_answers(root: Path, skill: str) -> Path | None:
-    """The template-only arm's answers, when saved and dated like baselines/template-arm/<skill>.json."""
-    record, answers = root / "baselines" / "template-arm" / f"{skill}.json", root / "eval-out" / "template-arm" / "answers" / skill
-    if not record.is_file() or not (answers / "runs.json").is_file():
-        return None
-    started = str(json.loads((answers / "runs.json").read_text()).get("startedAt", ""))[:10]
-    return answers if started == json.loads(record.read_text()).get("date") else None
 
 
 def collect(root: Path, folder: Path, answers: Path, legal: bool, label: str | None = None,
@@ -200,21 +146,6 @@ def rubric() -> str:
     return "\n".join(f"- {c}: {lines[c]}" for c in CRITERIA)
 
 
-def blind(text: str, skill: str, names: list[str]) -> str:
-    """The judge's redaction, then every sentence that still points at the repo is dropped, as redact drops "skill".
-
-    A masked "[ref]", a templates/ or references/ path, or a sibling skill name shows up almost only in "with"
-    answers, so even a neutral token would give the arm away. The ladder levels (L0-L5) stay: they are content.
-    """
-    text = redact(text, skill)
-    tells = [r"\[ref\]", r"\b(?:templates|references)/[\w./-]+"] + [rf"\b{re.escape(n)}\b" for n in sorted(names, key=len, reverse=True)]
-    return re.sub(rf"[^.\n]*(?:{'|'.join(tells)})[^.\n]*[.\n]?", "", text)
-
-
-def repo_names(root: Path) -> list[str]:
-    return [p.name for d in ("skills", "drafts") if (root / d).is_dir() for p in (root / d).iterdir() if (p / "SKILL.md").is_file()]
-
-
 def write_sheet(root: Path, picked: list[dict], sheet: Path, key: Path, seed: int, date: str) -> None:
     names = repo_names(root)
     head = [f"# Blind rating sheet, {date}", "",
@@ -230,14 +161,13 @@ def write_sheet(root: Path, picked: list[dict], sheet: Path, key: Path, seed: in
     body, entries = [], {}
     for k, it in enumerate(picked, start=1):
         item_id = f"a{k:02d}"
-        folder = root / "skills" / it["skill"]
-        fm, request = read_frontmatter(folder / "evals" / it["case"] / "prompt.md")
+        request, goal_text = case_texts((root / "skills" / it["skill"] / "evals" / it["case"] / "prompt.md").read_text(encoding="utf-8"))
         text = (root / it["runDir"] / it["file"]).read_text(encoding="utf-8")
-        goal = ["### Goal", "", quote(str(fm["expected_outcome"])), ""] if fm.get("expected_outcome") else []
+        goal = ["### Goal", "", quote(goal_text), ""] if goal_text else []
         body += ["---", "", ITEM.format(id=item_id), f"## {item_id}", "",
                  "- overall (1-5): ", "- pass (yes/no): ", "- critique: ", "",
                  "### Request", "", quote(request), "", *goal, "### Answer", "", quote(blind(text, it["skill"], names)), ""]
-        entries[item_id] = it
+        entries[item_id] = {**it, "requestSha256": sha256(request), "goalSha256": sha256(goal_text)}  # judge_answers.py --key checks them
     body += ["---", "", GUESS, "## Last question", "",
              "Answer it once every answer above is graded, and do not change a grade after it. For some requests the",
              "assistant was given extra guidance before answering. Which answers do you think had it? List their ids",
@@ -245,7 +175,8 @@ def write_sheet(root: Path, picked: list[dict], sheet: Path, key: Path, seed: in
     sheet.parent.mkdir(parents=True, exist_ok=True)
     key.parent.mkdir(parents=True, exist_ok=True)
     sheet.write_text("\n".join(head + body) + "\n", encoding="utf-8")
-    key.write_text(json.dumps({"created": date, "seed": seed, "sheet": sheet.name, "items": entries}, indent=2) + "\n")
+    head_commit = (git(root, "rev-parse", "HEAD") or "").strip() or None  # where judge_answers.py --key looks if a prompt changes after
+    key.write_text(json.dumps({"created": date, "seed": seed, "sheet": sheet.name, "promptsCommit": head_commit, "items": entries}, indent=2) + "\n")
 
 
 def parse_guess(text: str) -> set[str] | None:
@@ -302,20 +233,6 @@ def cohen_kappa(a: list[bool], b: list[bool]) -> float | None:
     return None if chance == 1 else (observed - chance) / (1 - chance)
 
 
-def load_judges(root: Path) -> dict:
-    """{model: {"skills": {skill: {judgeId: answer}}, "costPerAnswer": usd}} from baselines/judge/."""
-    judges = {}
-    for model_dir in sorted(p for p in (root / "baselines" / "judge").glob("*") if p.is_dir()):
-        skills, cost, calls = {}, 0.0, 0
-        for f in sorted(model_dir.glob("*.json")):
-            d = json.loads(f.read_text())
-            skills[d["skill"]] = {a["id"]: a for a in d.get("answers", [])}
-            cost += d.get("costUsd") or 0
-            calls += len(d.get("answers", [])) * (d.get("passes") or 1)
-        judges[model_dir.name] = {"skills": skills, "costPerAnswer": cost / calls if calls else None}
-    return judges
-
-
 def judge_score(judge: dict, it: dict) -> float | None:
     """The judge's 1-5 mean on this answer, if it read this one: same id and same length, not an older answer saved
     under the same name."""
@@ -350,7 +267,7 @@ def decide(metrics: dict, costs: dict) -> tuple[str | None, str]:
         return None, "no judge scores found in baselines/judge/"
     if not any(v["answers"] for v in metrics.values()):
         return None, ("sample too small to pick: no judge scored these answers (same id and word count); "
-                      "run scripts/judge_answers.py on the recorded answers, then score again")
+                      "run scripts/judge_answers.py --key <key.json> with every judge, then score again")
     shared = min(v["answers"] for v in metrics.values())
     if shared < MIN_ANSWERS:
         return None, (f"sample too small to pick: {shared} human-scored answers that every judge also scored, "
@@ -452,7 +369,7 @@ def main(argv: list[str] | None = None, root: Path = ROOT) -> int:
     s.add_argument("--seed", type=int, help="default: drawn at random and written to the key")
     s.add_argument("--include-legal", action="store_true", help="add --legal-n legal answers on top of --n, for human pass rates only")
     s.add_argument("--legal-n", type=int, default=LEGAL_N)
-    s.add_argument("--any-answer", action="store_true", help="also draw answers no judge scored (a human-only sheet: it cannot pick a judge)")
+    s.add_argument("--any-answer", action="store_true", help="also draw answers no judge scored; run judge_answers.py --key on the key before score")
     s.add_argument("--skills", help="comma-separated catalog skills to draw from (default: all)")
     s.add_argument("--date", default=str(datetime.date.today()))
     s.add_argument("--sheet", type=Path)
@@ -488,8 +405,8 @@ def main(argv: list[str] | None = None, root: Path = ROOT) -> int:
         if len(picked) < args.n:
             print(f"only {len(picked)} answers can be drawn (one per skill and case), {args.n} asked")
             if not args.any_answer:
-                print("refused: run scripts/judge_answers.py with every judge on the recorded answers of the skills to "
-                      "sample, or lower --n (under 20 it cannot pick a judge), or --any-answer for a human-only sheet")
+                print("refused: run scripts/judge_answers.py --recorded with every judge on the recorded answers of the skills to "
+                      "sample, or lower --n (under 20 it cannot pick a judge), or --any-answer, then judge_answers.py --key on the key")
                 return 1
         if args.include_legal:
             picked += stratified_sample(legal, args.legal_n, seed)

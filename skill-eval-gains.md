@@ -22,7 +22,7 @@ Gains in points. Brackets: 95% interval over cases (see below).
 | [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | 74% | 91% | **100%** | +26 pts (+20 to +33) | +9 pts | 100% / 100% / 100% | $0.065 → $0.100 | 3 × 3 | 2026-11-09 |
 | [`ai-adoption-plan`](skills/ai-adoption-plan/SKILL.md) | 61% | — | **95%** | +34 pts (+23 to +45) | — | 92% / — / 100% | — | 4 × 3 | 2026-11-11 |
 | [`ai-data-requirements`](skills/ai-data-requirements/SKILL.md) | 65% | — | **94%** | +30 pts (+12 to +57) | — | 93% / — / 100% | $0.068 → $0.078 | 5 × 3 | 2026-11-09 |
-| [`ai-feasibility-spike`](skills/ai-feasibility-spike/SKILL.md) | 47% | — | **93%** | +47 pts (+3 to +67) | — | 62% / — / 100% | $0.082 → $0.066 | 5 × 3 | 2026-11-11 |
+| [`ai-feasibility-spike`](skills/ai-feasibility-spike/SKILL.md) | 46% | — | **96%** | +50 pts (+36 to +71) | — | 61% / — / 100% | $0.088 → $0.069 | 5 × 3 | 2026-11-12 |
 | [`ai-incident-playbook`](skills/ai-incident-playbook/SKILL.md) | 45% | — | **98%** | +53 pts (+23 to +93) | — | 67% / — / 100% | $0.117 → $0.074 | 5 × 3 | 2026-11-12 |
 | [`ai-interaction-patterns`](skills/ai-interaction-patterns/SKILL.md) | 64% | — | **95%** | +31 pts (+13 to +45) | — | 83% / — / 100% | $0.060 → $0.066 | 4 × 3 | 2026-11-12 |
 | [`ai-opportunity-assessment`](skills/ai-opportunity-assessment/SKILL.md) | 55% | — | **93%** | +38 pts (+21 to +63) | — | 87% / — / 100% | $0.068 → $0.106 | 5 × 3 | 2026-11-11 |

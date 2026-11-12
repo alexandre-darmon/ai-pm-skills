@@ -36,7 +36,8 @@ def make_repo(root: Path) -> None:
             case = f"{name}-00{k}"
             graders = folder / "evals" / case / "graders"
             graders.mkdir(parents=True)
-            (folder / "evals" / case / "prompt.md").write_text(f"---\nname: {case}\n---\nRequest {case} for the PM.\n")
+            goal = f"expected_outcome: Goal of {case}.\n" if k % 2 else ""  # some cases have no goal: the sheet shows none
+            (folder / "evals" / case / "prompt.md").write_text(f"---\nname: {case}\n{goal}---\nRequest {case} for the PM.\n")
             (graders / "triggered.md").write_text("---\ntype: tool_used\ntool: Skill\ninput_match: 'x'\n" + ("max: 0\n" if k == 9 else "") + "---\n")
             cases[case] = {}
             for arm in ("with", "without"):
