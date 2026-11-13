@@ -46,3 +46,7 @@ python3 scripts/check_generated.py         # README and skill-eval-gains.md matc
 ## Licence
 
 Skills, foundations and docs are CC BY 4.0 ([LICENSE-CC-BY-4.0](LICENSE-CC-BY-4.0)); code in `scripts/`, `.github/` and `.claude-plugin/` is MIT ([LICENSE](LICENSE)). By contributing you agree your work is published under these licences.
+
+## Releases
+
+Maintainers release by bumping `metadata.version` in `.claude-plugin/marketplace.json` and the same version in every other manifest (the validator checks they agree), adding `docs/releases/v<version>.md` and a CHANGELOG entry, then pushing the tag `v<version>` on `main`. The release workflow refuses a tag that differs from the manifests. Version numbers follow the rule at the top of [CHANGELOG.md](CHANGELOG.md): major for a removed or renamed skill or a changed output template, minor for a new skill or method step, patch for wording, graders, docs and manifests.

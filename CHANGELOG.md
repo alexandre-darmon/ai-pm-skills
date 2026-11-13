@@ -1,6 +1,16 @@
 # Changelog
 
-Each release lists what changed for someone who installs the skills. Per-skill versions live in each `SKILL.md` (`metadata.version`); eval records and their history are in [`baselines/`](baselines/).
+Each release lists what changed for someone who installs the skills.
+
+**Version numbers.** Major (2.0): a skill is removed or renamed, or an output template changes shape, so installs or downstream documents can break. Minor (1.2): a skill is added, or a skill gains a method step. Patch (1.1.1): wording, graders, docs, manifests. The release version is the same in every manifest; each skill also has its own version in `metadata.version`. Per-skill versions live in each `SKILL.md` (`metadata.version`); eval records and their history are in [`baselines/`](baselines/).
+
+## v1.1.1 (2026-11-13)
+
+Packaging only: same skills and evidence as v1.1.0. Release notes: [docs/releases/v1.1.1.md](docs/releases/v1.1.1.md).
+
+- Install on 12 agents: one short route per tool in the README, details in docs/install.md.
+- Manifests for Codex, Gemini CLI and Antigravity; every manifest carries the release version, the validator checks they agree, and the release workflow refuses a tag that differs.
+- Evals chart: model alone and with the skill only.
 
 ## v1.1.0 (2026-11-12)
 
