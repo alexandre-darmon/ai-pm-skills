@@ -537,6 +537,29 @@ def check_routing(path: Path, names: set[str], catalog: set[str] = frozenset()) 
     return problems
 
 
+OTHER_MANIFESTS = (".codex-plugin/plugin.json", ".agents/plugins/marketplace.json",  # Codex
+                   "gemini-extension.json", ".antigravity-plugin/plugin.json")      # Gemini CLI, Antigravity
+
+
+def check_other_manifests(root: Path, version: str | None) -> list[str]:
+    """Other agents' manifests (docs/install.md): valid JSON, same version as the Claude marketplace, skills from skills/ only."""
+    problems = []
+    for rel in OTHER_MANIFESTS:
+        path = root / rel
+        if not path.is_file():
+            continue
+        try:
+            data = json.loads(path.read_text())
+        except ValueError as e:
+            problems.append(f"{rel}: not valid JSON ({e})")
+            continue
+        if "version" in data and data["version"] != version:
+            problems.append(f"{rel}: version {data['version']} differs from .claude-plugin/marketplace.json ({version})")
+        if "skills" in data and data["skills"] != "./skills/":
+            problems.append(f"{rel}: skills must be \"./skills/\" (drafts and templates never ship)")
+    return problems
+
+
 def main(root: Path, sync: bool = False, evidence: bool = True) -> int:
     problems = []
     catalog = sorted(p for p in (root / "skills").glob("*") if p.is_dir())
@@ -580,6 +603,7 @@ def main(root: Path, sync: bool = False, evidence: bool = True) -> int:
         elif stale:
             problems.append(f".claude-plugin/marketplace.json: descriptions differ from SKILL.md for {sorted(pl['name'] for pl in stale)}; "
                             "run python3 scripts/validate_skills.py --sync")
+        problems += check_other_manifests(root, data.get("metadata", {}).get("version"))
 
     for p in problems:
         print(p)
