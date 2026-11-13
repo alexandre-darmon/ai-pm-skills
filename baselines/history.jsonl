@@ -78,3 +78,5 @@
 {"skill": "llm-judge-calibration", "kind": "with-arm", "date": "2026-11-13", "pass": true, "meanDelta": 0.3157, "skillHash": "0af577a2e844", "casesHash": "45e1fafd8bb5", "failures": []}
 {"skill": "agent-design-and-tooling", "kind": "full", "date": "2026-11-13", "pass": true, "meanDelta": 0.4778, "skillHash": "a8f8f0146f46", "casesHash": "d8453c03a2e2", "failures": []}
 {"skill": "agent-design-and-tooling", "kind": "with-arm", "date": "2026-11-13", "pass": true, "meanDelta": 0.4667, "skillHash": "c001484c4522", "casesHash": "d8453c03a2e2", "failures": []}
+{"skill": "ai-act-classification", "kind": "with-arm", "date": "2026-11-13", "pass": true, "meanDelta": 0.2611, "skillHash": "4ac7f071ffc5", "casesHash": "35083e4a3d51", "failures": []}
+{"skill": "ai-act-classification", "kind": "with-arm", "date": "2026-11-13", "pass": true, "meanDelta": 0.2611, "skillHash": "dff2b946979e", "casesHash": "35083e4a3d51", "failures": []}

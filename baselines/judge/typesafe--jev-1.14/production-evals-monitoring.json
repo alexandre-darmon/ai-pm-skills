@@ -1,0 +1,376 @@
+{
+  "skill": "production-evals-monitoring",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "legal": true,
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.0067777777777777775,
+  "costUsd": 0.004423608,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8785833333333333,
+      "meetsGoal": 0.8923611111111112,
+      "regex": 1.0,
+      "words": 1236.2222222222222
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7951388888888888,
+      "meetsGoal": 0.6670833333333334,
+      "regex": 0.44999999999999996,
+      "words": 1028.5555555555557
+    }
+  },
+  "answers": [
+    {
+      "id": "349916f09c",
+      "case": "production-evals-monitoring-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1576,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.917,
+        0.9159999999999999
+      ],
+      "judge": 0.9165,
+      "meetsGoal": 0.93625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "840854a008",
+      "case": "production-evals-monitoring-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 1135,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.8069999999999999,
+        0.7969999999999999
+      ],
+      "judge": 0.8019999999999999,
+      "meetsGoal": 0.63,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e37532feaf",
+      "case": "production-evals-monitoring-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1625,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.9209999999999998,
+        0.9255
+      ],
+      "judge": 0.9232499999999999,
+      "meetsGoal": 0.94875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e86a4371b2",
+      "case": "production-evals-monitoring-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 502,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.9155,
+        0.9159999999999999
+      ],
+      "judge": 0.91575,
+      "meetsGoal": 0.9575,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4cc5129e71",
+      "case": "production-evals-monitoring-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 506,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.8980000000000001,
+        0.893
+      ],
+      "judge": 0.8955000000000001,
+      "meetsGoal": 0.95,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6eb8799b5c",
+      "case": "production-evals-monitoring-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 536,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.897,
+        0.9004999999999999
+      ],
+      "judge": 0.8987499999999999,
+      "meetsGoal": 0.865,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a4c9265503",
+      "case": "production-evals-monitoring-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5833333333333334,
+      "words": 1331,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.7515000000000001,
+        0.7224999999999999
+      ],
+      "judge": 0.737,
+      "meetsGoal": 0.6100000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3a82974f63",
+      "case": "production-evals-monitoring-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 522,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.839,
+        0.8285
+      ],
+      "judge": 0.83375,
+      "meetsGoal": 0.71,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "891c59b898",
+      "case": "production-evals-monitoring-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1648,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.9159999999999999,
+        0.9244999999999999
+      ],
+      "judge": 0.9202499999999999,
+      "meetsGoal": 0.9412499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "40f4b95029",
+      "case": "production-evals-monitoring-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1317,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.7625,
+        0.7835000000000001
+      ],
+      "judge": 0.773,
+      "meetsGoal": 0.7,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3ed0d37d0f",
+      "case": "production-evals-monitoring-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1717,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.8325,
+        0.8355000000000001
+      ],
+      "judge": 0.8340000000000001,
+      "meetsGoal": 0.8287500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "cafd372b42",
+      "case": "production-evals-monitoring-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.4,
+      "words": 1269,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.825,
+        0.8225
+      ],
+      "judge": 0.82375,
+      "meetsGoal": 0.655,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c489dbefd2",
+      "case": "production-evals-monitoring-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 1367,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.8445,
+        0.8400000000000001
+      ],
+      "judge": 0.84225,
+      "meetsGoal": 0.67875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "67f0d2de81",
+      "case": "production-evals-monitoring-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 561,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.9004999999999999,
+        0.9015
+      ],
+      "judge": 0.9009999999999999,
+      "meetsGoal": 0.94875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "f0d1213656",
+      "case": "production-evals-monitoring-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.4,
+      "words": 527,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.8039999999999998,
+        0.7995000000000001
+      ],
+      "judge": 0.80175,
+      "meetsGoal": 0.72875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b7b8023b4b",
+      "case": "production-evals-monitoring-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.3333333333333333,
+      "words": 1224,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.6515000000000001,
+        0.6555
+      ],
+      "judge": 0.6535,
+      "meetsGoal": 0.5662499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7a8ab2142f",
+      "case": "production-evals-monitoring-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1674,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.829,
+        0.827
+      ],
+      "judge": 0.828,
+      "meetsGoal": 0.8200000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "61c87a5ef9",
+      "case": "production-evals-monitoring-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 1346,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.76,
+        0.7669999999999999
+      ],
+      "judge": 0.7635,
+      "meetsGoal": 0.56,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

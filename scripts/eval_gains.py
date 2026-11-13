@@ -142,23 +142,37 @@ def main(root=ROOT, draws=DRAWS):
                    for c in json.loads(f.read_text())["cases"].values()})
     model = model_name(models.pop()) if len(models) == 1 else "the same model"
 
+    def with_template(cases):
+        """True when every skill of the row has a template-only run: only then do the row's columns share one base."""
+        return all(any("template" in c for c in cs.values()) for cs in cases.values())
+
     def row(label, cases, bold=False):
-        w = pct(arm_mean(cases, "with"))
-        return (f"| {label} | {pct(arm_mean(cases, 'without'))} | {pct(arm_mean(cases, 'template'))} | {f'**{w}**' if bold else w} "
-                f"| {gain(cases, 'with', 'without', draws)} | {gain(cases, 'with', 'template', draws)} |")
+        w, t = pct(arm_mean(cases, "with")), with_template(cases)
+        return (f"| {label} | {pct(arm_mean(cases, 'without'))} | {pct(arm_mean(cases, 'template')) if t else '—'} | {f'**{w}**' if bold else w} "
+                f"| {gain(cases, 'with', 'without', draws)} | {gain(cases, 'with', 'template', draws) if t else '—'} |")
 
     def readme_row(label, cases, bold=False):
-        # the README shows the point gain only; skill-eval-gains.md keeps the intervals
+        """The README shows one gain per column, read off the rounded scores shown in the same row, so a reader can
+        check it by subtraction (80% - 71% = +9). skill-eval-gains.md keeps the case-level gains and their intervals."""
+        shown = {arm: (None if arm_mean(cases, arm) is None else round(100 * arm_mean(cases, arm))) for arm in ("without", "template", "with")}
+        if not with_template(cases):  # a template mean over fewer skills than the row: not comparable, not shown
+            shown["template"] = None
+        diff = lambda b: "—" if shown["with"] is None or shown[b] is None else f"{shown['with'] - shown[b]:+d} pts"
         w = pct(arm_mean(cases, "with"))
-        return (f"| {label} | {pct(arm_mean(cases, 'without'))} | {pct(arm_mean(cases, 'template'))} | {f'**{w}**' if bold else w} "
-                f"| {point_gain(cases, 'with', 'without')} | {point_gain(cases, 'with', 'template')} |")
+        t = "—" if shown["template"] is None else f"{shown['template']}%"
+        return (f"| {label} | {pct(arm_mean(cases, 'without'))} | {t} | {f'**{w}**' if bold else w} "
+                f"| {diff('without')} | {diff('template')} |")
 
     def table(row):
         lines = [
-            f"| Same cases, {model} answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |",
+            f"| Test performed | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |",
             "| --- | --- | --- | --- | --- | --- |",
             row(f"Regex graders: {len(regex)} skill{'s' if len(regex) != 1 else ''}, {ncases} cases × {'/'.join(map(str, runs))} runs", regex, bold=True),
         ]
+        subset = {k: cs for k, cs in regex.items() if any("template" in c for c in cs.values())}
+        if subset and len(subset) < len(regex):
+            lines.append(row(f"Regex graders, the {len(subset)} skills also run with their template only: "
+                             f"{sum(len(cs) for cs in subset.values())} cases", subset))
         for name, cal, cases, meta in judges:
             n = sum(len(cs) for cs in cases.values())
             # files written with --recorded grade the run in baselines/<skill>.json; older ones an earlier run
@@ -168,7 +182,7 @@ def main(root=ROOT, draws=DRAWS):
         return lines + tail
 
     tail = []
-    tail.append(f"| Red lines held (the one thing the answer must never do) | {pct(held(rl['without']))} | {pct(held(rl['template']))} "
+    tail.append(f"| Red lines held (the one thing the answer must never do) | {pct(held(rl['without']))} | — "
                  f"| **{pct(held(rl['with']))}** | | |")
     if costs:
         cwo = sum(c[0] / arm_mean({k: regex[k]}, "without") for k, c in costs.items()) / len(costs)
@@ -180,7 +194,7 @@ def main(root=ROOT, draws=DRAWS):
 
     out = f"""# Skill eval gains
 
-Same model, same cases, three arms: the model alone, the model given only the skill's output template, and the model with the skill. Generated from [`baselines/`](baselines/) by `python3 scripts/eval_gains.py`; do not edit by hand.
+Same cases, {model} answering, three arms: the model alone, the model given only the skill's output template, and the model with the skill. Generated from [`baselines/`](baselines/) by `python3 scripts/eval_gains.py`; do not edit by hand.
 
 {headline}
 
@@ -201,8 +215,8 @@ Gains in points. Brackets: 95% interval over cases (see below).
 ## How to read it
 
 - **Regex graders**: share of graders passed on a case, averaged over runs, then over a skill's scored cases, then over skills. A grader checks one thing the answer must contain or must not contain. The skills' author wrote them, so they reward what the skill asks for.
-- **Template only**: the model gets the skill's own output template without its method. The gain over the template is what the method adds beyond the format ([template-only control](docs/evaluation.md)).
-- **Blind LLM judge**: a model grades each answer twice on a generic rubric (sound, actionable, honest about unknowns, risk-aware, specific) without knowing the arm. It tends to favour longer answers and never grades the legal skills. Judge noise is the mean gap between its two passes on the same answer.
+- **Template only**: the model gets the skill's own output template without its method. The gain over the template is what the method adds beyond the format ([template-only control](docs/evaluation.md)). A row shows it only when every skill in the row has a template-only run on its current cases, so all its columns cover the same skills.
+- **Blind LLM judge**: a model grades each answer twice on a generic rubric (sound, actionable, honest about unknowns, risk-aware, specific) without knowing the arm. It tends to favour longer answers. On the legal skills it grades the same rubric and does not check legal correctness: counsel's review stays the evidence there. Judge noise is the mean gap between its two passes on the same answer.
 - **Intervals**: resample the cases within each skill 10,000 times and keep the middle 95% of the gains, with a small-sample correction (Rao-Wu rescaling, [scripts/eval_stats.py](scripts/eval_stats.py)). They show how much the gain depends on which cases were written. They do not cover the choice of graders, the judge's biases, or another model. Per skill, 3 to 5 cases are too few for an interval: the table gives the lowest and highest case gain instead.
 - **Cost per correct answer**: the API-equivalent cost of one answer (as `claude plugin eval` reports it) divided by its regex score, averaged over skills; shown only for skills whose frozen run recorded the cost of each arm. A skill makes answers longer, so each answer costs more; the question is whether a correct one costs less.
 - **Red lines**: a red line fails the case on its own (e.g. a refund agent launched without human validation, a "compliant" verdict). Shown as the share of runs where it held.
@@ -216,8 +230,8 @@ Gains in points. Brackets: 95% interval over cases (see below).
         head, rest = readme.read_text().split("<!-- gains:start -->", 1)
         note = (f"<sub>{model} answers each case {'/'.join(map(str, runs))} times per arm. **Regex graders** check that the answer contains what the skill asks for; "
                 "the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; "
-                "it tends to favour longer answers and never grades the legal skills. "
-                "Gains in points; 95% intervals are in the per-skill numbers. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>")
+                "it tends to favour longer answers, and on the legal skills it does not check legal correctness. "
+                "Gains in points: each is the row's score with the skill minus the score it is compared with, on the same skills; 95% intervals are in the per-skill numbers. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>")
         readme.write_text(f"{head}<!-- gains:start -->\n{readme_table}\n\n{note}\n<!-- gains:end -->{rest.split('<!-- gains:end -->', 1)[1]}")
     return out
 

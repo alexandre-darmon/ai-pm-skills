@@ -13,7 +13,7 @@ Status on 2026-11-10. No single test is enough, so each mode answers a different
 | Three runs per case | Is the result stable? | Paid, three times the cost | Still a small sample | Every catalog skill | vishalhabib99 |
 | Template-only control | Does the method beat its format? | Paid | Depends on the template used | The 6 catalog skills | product-on-purpose |
 | Routing between neighbours | Does the right skill fire, such as DPIA or AI Act? | Paid | Does not test quality | Not yet | product-on-purpose |
-| LLM judge | Is the advice good on substance? | Low | Noisy, can be confidently wrong | 5 skills: blind, information only, not calibrated, not on legal skills | ChanMeng666, product-on-purpose |
+| LLM judge | Is the advice good on substance? | Low | Noisy, can be confidently wrong | all 29 skills, by Claude, GPT and Jev: blind, information only, not calibrated; on legal skills it does not check legal correctness | ChanMeng666, product-on-purpose |
 | Blind scoring | Is the grader biased by the arm? | Varies | Heavier to organise | Judge only | ChanMeng666, on part of its scenarios |
 | Expert human review | Would a PM or a lawyer use this? | Human time | Slow, few cases | Not yet | Not seen |
 | Real use on a mission | Does it save time? | One mission | Hard to reproduce | Not yet measured | Not seen |

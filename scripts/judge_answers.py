@@ -460,6 +460,8 @@ def main(argv: list[str] | None = None, root: Path = ROOT, call=call_judge) -> i
     ap.add_argument("--model", default=JUDGE_MODEL, help="a Claude id (claude-haiku-5-5) or an OpenRouter id with a slash "
                     "(openai/..., typesafe/jev-1.14), which needs OPENROUTER_API_KEY")
     ap.add_argument("--passes", type=int, default=2, help="judge each answer this many times, to measure its noise")
+    ap.add_argument("--include-legal", action="store_true", help="folders: judge legal skills too; the rubric does not check legal "
+                    "correctness, and eval_gains.py shows them on rows of their own")
     ap.add_argument("--limit", type=int, help="folders: only the first N answers per skill, to try it out")
     ap.add_argument("-j", type=int, default=4)
     args = ap.parse_args(argv)
@@ -472,8 +474,9 @@ def main(argv: list[str] | None = None, root: Path = ROOT, call=call_judge) -> i
     for folder in args.folders:
         folder = folder if folder.is_absolute() else root / folder
         folder, skill = folder.resolve(), folder.resolve().name
-        if (folder / "SKILL.md").is_file() and read_skill(folder / "SKILL.md")[0].get("legal") is True:
-            print(f"{skill}: {LEGAL_SKIP}", flush=True)
+        legal = (folder / "SKILL.md").is_file() and read_skill(folder / "SKILL.md")[0].get("legal") is True
+        if legal and not args.include_legal:
+            print(f"{skill}: {LEGAL_SKIP} (--include-legal to judge it anyway)", flush=True)
             continue
         if args.recorded:
             answers = recorded_answers(root, skill)
@@ -503,7 +506,7 @@ def main(argv: list[str] | None = None, root: Path = ROOT, call=call_judge) -> i
             continue
         results = run_judge(items, args.model, args.passes, args.j, call)
         errors = score_items(items, results)
-        out = {"skill": skill, "judgeModel": args.model, **judge_meta(args.model, call), "answerSet": "recorded" if args.recorded else "latest",
+        out = {"skill": skill, "judgeModel": args.model, **judge_meta(args.model, call), "answerSet": "recorded" if args.recorded else "latest", "legal": legal,
                "limit": args.limit, "calibrated": False, "passes": args.passes, "errors": len(errors), "firstError": errors[0] if errors else None,
                "noise": noise(items), "costUsd": sum(r.get("costUsd") or 0 for _, r in results), "longContextCalls": sum(bool(r.get("longContext")) for _, r in results), "arms": summarise(items), "answers": items}
         dest.mkdir(parents=True, exist_ok=True)

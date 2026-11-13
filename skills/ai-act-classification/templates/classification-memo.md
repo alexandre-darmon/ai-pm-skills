@@ -1,9 +1,9 @@
 # AI Act classification memo — <use case>
 
-Freshness: skill verified on <last_verified>. <If more than 90 days old: "Application dates and guidance may have changed: counsel to confirm.">
+Freshness: dates as last checked on <last_verified>. <If more than 90 days old: "Application dates and guidance may have changed: counsel to confirm.">
 
 ## System and role
-| System or step | What it does and decides | Autonomy level (references/autonomy-ladder.md) | Role (art. 3(3) provider / art. 3(4) deployer / art. 25 deployer turned provider) |
+| System or step | What it does and decides | Autonomy level (L0–L5) | Role (art. 3(3) provider / art. 3(4) deployer / art. 25 deployer turned provider) |
 | --- | --- | --- | --- |
 
 ## Prohibited practices (art. 5)
@@ -26,21 +26,22 @@ Art. 6(3) exception: <not relevant / question for counsel, with the facts>.
 | Who | Obligation | Article | Applies from | Owner | Evidence status |
 | --- | --- | --- | --- | --- | --- |
 
-Evidence records paper, not conformity (status values: Method step 7).
+Evidence records paper, not conformity.
 
 ## Eval evidence per article
-<High-risk: obligations. Below high risk: good practice. Details: references/evals-as-evidence.md.>
-| Article | Evidence | Produced by | Status (on file / claimed / missing) |
+<High-risk: obligations. Below high risk: good practice.>
+| Article | Evidence | Held in | Status (on file / claimed / missing) |
 | --- | --- | --- | --- |
-| 9(8) | Thresholds per class, defined and signed before testing | `build-evals` | |
-| 10(3)-(4) | Test set composition per class and risk, synthetic share | `build-evals`, `synthetic-eval-data` | |
-| 15(3) | Accuracy metrics and levels declared in the instructions for use | `model-card-ai-registry` | |
+| 9(8) | Thresholds per class, defined and signed before testing | eval plan | |
+| 10(3)-(4) | Test set composition per class and risk, synthetic share | eval set documentation | |
+| 15(3) | Accuracy metrics and levels declared in the instructions for use | instructions for use, model card | |
 | 17(1)(d) | Test procedures before, during and after development, with frequency | quality system | |
-| 26(5) / 72 | Monitoring of operation / post-market monitoring plan | `production-evals-monitoring` | |
-| 73 | Serious incident classes and reporting | `ai-incident-playbook` | |
+| 26(5) / 72 | Monitoring of operation / post-market monitoring plan | monitoring plan | |
+| 73 | Serious incident classes and reporting | incident procedure | |
 
 ## If a step moves to L+1
-| Step | From → to | What changes in the classification | Obligations that appear or tighten (article) |
+Autonomy levels L0–L5 are this team's own scale, not an AI Act category.
+| Step | From → to | Category (set by the use, at every level) | Oversight and obligations that appear or tighten (article) |
 | --- | --- | --- | --- |
 
 ## Questions for counsel

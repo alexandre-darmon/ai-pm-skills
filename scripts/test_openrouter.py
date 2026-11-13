@@ -232,6 +232,12 @@ class JudgeMainTest(unittest.TestCase):
         self.assertEqual((code, fake.items), (0, []))
         self.assertIn("lex: legal, never judged", printed)
 
+    def test_legal_skills_are_judged_only_on_request(self):
+        fake = FakeJev()
+        code, _ = self.run_main("--model", "typesafe/jev-1.14", "--include-legal", "skills/lex", call=fake)
+        written = json.loads((self.root / "baselines/judge/typesafe--jev-1.14/lex.json").read_text())
+        self.assertEqual((code, written["legal"], len(fake.items) > 0), (0, True, True))
+
     def test_dry_run_needs_no_key_and_a_real_run_needs_one(self):
         with mock.patch.dict(os.environ, {}, clear=True):
             code, printed = self.run_main("--dry-run", "--model", "typesafe/jev-1.14", "skills/alpha")

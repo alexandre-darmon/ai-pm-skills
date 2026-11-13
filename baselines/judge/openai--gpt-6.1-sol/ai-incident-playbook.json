@@ -1,0 +1,604 @@
+{
+  "skill": "ai-incident-playbook",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": true,
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.02666666666666667,
+  "costUsd": 0.2303628,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 15,
+      "judge": 0.6616666666666667,
+      "meetsGoal": 0.6,
+      "regex": 0.9806060606060606,
+      "words": 921.8666666666667
+    },
+    "without": {
+      "answers": 15,
+      "judge": 0.6183333333333334,
+      "meetsGoal": 0.3333333333333333,
+      "regex": 0.4484848484848485,
+      "words": 659.3333333333334
+    }
+  },
+  "answers": [
+    {
+      "id": "17399878de",
+      "case": "ai-incident-playbook-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1915,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The rollback owner remains a placeholder, so the plan does not meet the explicit named-owner requirement.",
+        "Rollback ownership remains unassigned, while unsupported dates and inaccurate legal timing undermine sign-off."
+      ]
+    },
+    {
+      "id": "a872827077",
+      "case": "ai-incident-playbook-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 793,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It leaves the rollback owner unnamed and requires counting issued refunds rather than every output since the change.",
+        "It leaves the rollback owner unassigned and does not explicitly require pulling and counting every output since the change."
+      ]
+    },
+    {
+      "id": "d54597d34b",
+      "case": "ai-incident-playbook-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.25,
+      "words": 2136,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.75,
+        0.65
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Rollback ownership remains a placeholder, and the failure scenarios lack explicit scenario-specific verification steps.",
+        "Scenario-specific verification, operational alert thresholds, and an actual named rollback owner remain unresolved."
+      ]
+    },
+    {
+      "id": "f4a95d7d83",
+      "case": "ai-incident-playbook-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.4,
+      "words": 423,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never requires turning the actual leak into a regression test that demonstrably fails on the faulty version before the fix ships.",
+        "It never requires turning the actual leak into a regression test that fails on the faulty version and passes before the fix ships."
+      ]
+    },
+    {
+      "id": "31e17c7ca9",
+      "case": "ai-incident-playbook-006",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 797,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It limits error analysis to wrong memos and puts the card changelog update after shipping, missing two required release gates.",
+        "It limits error analysis to wrong memos and puts the card changelog update after shipping, rather than making both explicit pre-ship gates."
+      ]
+    },
+    {
+      "id": "891f157134",
+      "case": "ai-incident-playbook-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 415,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It names no empowered rollback owner and does not require customer notification, counting every output, or adding incident regression cases before shipping the fix.",
+        "It names no empowered rollback owner and omits direct customer notification, a count of every output since the change, and explicit incident regression cases before the fix ships."
+      ]
+    },
+    {
+      "id": "aa3ee6658c",
+      "case": "ai-incident-playbook-006",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 659,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It requires error analysis only on affected outputs, not every memo in the window, and defers the card changelog until after shipping.",
+        "It limits error analysis to affected outputs rather than every memo in the window and defers the card changelog until after shipping."
+      ]
+    },
+    {
+      "id": "7361afa194",
+      "case": "ai-incident-playbook-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6,
+      "words": 412,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It recommends low-severity handling, but gives unreliable statistical guidance and never explicitly calls for refreshing the evaluation set.",
+        "It makes unsupported statistical claims about sampling noise and omits an explicit evaluation-set refresh."
+      ]
+    },
+    {
+      "id": "c818677eb2",
+      "case": "ai-incident-playbook-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 568,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It overstates statistical certainty and invents playbook details and regulatory reporting conclusions.",
+        "It overstates statistical certainty and invents reporting conclusions, severity rules, and a playbook without the necessary context."
+      ]
+    },
+    {
+      "id": "c2afd7f46c",
+      "case": "ai-incident-playbook-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1731,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.6,
+        0.65
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The rollback owner remains a placeholder, and the quality alarm lacks an actionable trigger and response owner.",
+        "The rollback owner remains a placeholder, and the quality alarm lacks an operational trigger and responder."
+      ]
+    },
+    {
+      "id": "461a8e16f0",
+      "case": "ai-incident-playbook-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 716,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.8,
+        0.7
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It leaves the rollback owner unassigned and audits refunds rather than every agent output since the change.",
+        "It leaves the rollback owner unassigned and audits issued refunds rather than every output since the change."
+      ]
+    },
+    {
+      "id": "3a5dbb1cea",
+      "case": "ai-incident-playbook-006",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.0,
+      "words": 326,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It approves shipping before window-wide error analysis, golden-set additions, full per-class regression comparisons, and a card changelog update.",
+        "It approves shipping before window-wide error analysis, golden-set additions, full per-class regression testing against the previous version, and a card changelog update."
+      ]
+    },
+    {
+      "id": "b16ed36e17",
+      "case": "ai-incident-playbook-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 416,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It names no accountable owner empowered to act immediately, leaves autonomy reduction optional, and omits customer notification and a counted audit of every output since the change.",
+        "It names no owner empowered to act immediately and does not require an autonomy downgrade, customer notification, or counting every output since the change."
+      ]
+    },
+    {
+      "id": "a65bcb6509",
+      "case": "ai-incident-playbook-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9090909090909091,
+      "words": 664,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It leaves the rollback owner unassigned and audits issued refunds rather than every output since the change.",
+        "It leaves the rollback owner unassigned and audits only issued refunds rather than every output since the change."
+      ]
+    },
+    {
+      "id": "cb148421e0",
+      "case": "ai-incident-playbook-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.9,
+      "words": 405,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never requires reproducing the leak as a regression test that fails on the faulty version before the fix ships.",
+        "It never requires reproducing the leak as a regression test that fails on the faulty version and gates the fix's release."
+      ]
+    },
+    {
+      "id": "c6a27b12df",
+      "case": "ai-incident-playbook-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 398,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.5,
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It names no rollback owner empowered to act immediately, omits customer notification, and does not require counting every output or adding incident-specific regression cases before release.",
+        "It names no empowered rollback owner and omits mandatory autonomy reduction, customer notification, counting every output, and incident regression tests before shipping."
+      ]
+    },
+    {
+      "id": "793ecef987",
+      "case": "ai-incident-playbook-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.9,
+      "words": 495,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never requires reproducing the leak as a regression test that fails on the faulty version and passes before the fix ships.",
+        "It never requires reproducing this leak as a regression test that fails on the faulty version and passes before the fix ships."
+      ]
+    },
+    {
+      "id": "ba5caf3b2e",
+      "case": "ai-incident-playbook-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 987,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.6,
+        0.55
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It invents the current date and introduces inaccurate regulatory timing claims into otherwise useful breach and regression guidance.",
+        "It invents the current date and gives unreliable regulatory guidance, undermining otherwise strong deadline and regression-test instructions."
+      ]
+    },
+    {
+      "id": "a452b854b5",
+      "case": "ai-incident-playbook-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 375,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It projects a threshold breach from an unverified trend and omits an explicit evaluation refresh.",
+        "It assumes a real trend before checking sampling noise and never explicitly calls for an eval refresh."
+      ]
+    },
+    {
+      "id": "e63867363f",
+      "case": "ai-incident-playbook-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 882,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It invents the year and current date, asserts potentially overdue regulatory deadlines, and omits GDPR\u2019s risk-based authority-notification test.",
+        "It invents the year and current date, asserts unsupported regulatory deadlines, and omits GDPR\u2019s authority-notification risk threshold."
+      ]
+    },
+    {
+      "id": "0d420f4a89",
+      "case": "ai-incident-playbook-006",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.1,
+      "words": 355,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.5,
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It permits an unverified release without window-wide error analysis, golden-set additions, full per-class regression against the previous version, or a card changelog update.",
+        "It permits an unverified release instead of requiring window-wide error analysis, golden-set additions, full per-class regression against the previous version, and a card changelog update before shipping."
+      ]
+    },
+    {
+      "id": "2cbf74d47f",
+      "case": "ai-incident-playbook-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 794,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It invents two elapsed days and fails to state the GDPR notification threshold or assess complaint sensitivity.",
+        "It invents elapsed time and does not give the DPO an explicit risk-based GDPR notification assessment."
+      ]
+    },
+    {
+      "id": "5591d0d0dc",
+      "case": "ai-incident-playbook-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1603,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The rollback owner and operational AI-quality alarm thresholds remain placeholders, leaving the plan short of sign-off readiness.",
+        "The rollback owner and operational alarm thresholds remain placeholders, while unsupported legal assumptions weaken an otherwise case-specific plan."
+      ]
+    },
+    {
+      "id": "823595dd7f",
+      "case": "ai-incident-playbook-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.25,
+      "words": 1503,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8,
+        0.7
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Scenarios lack explicit verification steps, quality alarms lack operational triggers, and rollback ownership remains unassigned to a named person.",
+        "Scenarios lack explicit verification steps, AI-quality alarms lack operational triggers, and rollback accountability is split between the IC and Engineering."
+      ]
+    },
+    {
+      "id": "71e08c1f85",
+      "case": "ai-incident-playbook-006",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 336,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.5,
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It permits shipping before exhaustive window analysis, golden-set regressions, per-class comparison against the previous version, and a card changelog update.",
+        "It permits shipping before every memo in the window is analyzed, golden-set regressions and per-class comparisons against the previous version pass, and the card changelog is updated."
+      ]
+    },
+    {
+      "id": "9038cf7895",
+      "case": "ai-incident-playbook-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 532,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It overstates statistical certainty and rules out regulatory reporting obligations without enough evidence.",
+        "It rules out regulatory reporting without enough facts and overstates what the sample-size calculation proves."
+      ]
+    },
+    {
+      "id": "87da35f1a0",
+      "case": "ai-incident-playbook-006",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9,
+      "words": 627,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.55,
+        0.6
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It omits the card changelog gate and asserts without evidence that analysts caught the errors before submission.",
+        "The ship gate omits the card changelog update and does not explicitly require error analysis on every memo in the window."
+      ]
+    },
+    {
+      "id": "8ec3a8f1d0",
+      "case": "ai-incident-playbook-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 560,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It overstates statistical certainty and assumes playbook requirements and reporting exemptions not established in the request.",
+        "It overstates statistical certainty and invents playbook requirements and reporting-clock conclusions."
+      ]
+    },
+    {
+      "id": "90d1422c63",
+      "case": "ai-incident-playbook-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 1470,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It leaves the rollback owner unnamed, quality-alarm thresholds unset, and scenario-specific verification criteria undefined.",
+        "The three failure scenarios lack explicit verification steps, quality-alarm thresholds remain unset, and no individual rollback owner is named."
+      ]
+    },
+    {
+      "id": "f91ef8e56a",
+      "case": "ai-incident-playbook-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 425,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.6,
+        0.65
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It assumes sample size and SLO status, extrapolates the decline, and leaves eval refresh optional rather than choosing a low-severity response.",
+        "It extrapolates a noisy decline and leaves eval refresh optional rather than explicitly recommending low-severity tracking, noise validation, and no emergency rollback."
+      ]
+    }
+  ]
+}
