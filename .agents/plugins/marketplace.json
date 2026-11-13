@@ -1,0 +1,20 @@
+{
+  "name": "ai-pm-skills",
+  "interface": {
+    "displayName": "AI PM Skills"
+  },
+  "plugins": [
+    {
+      "name": "ai-pm-skills",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
