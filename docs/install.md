@@ -28,7 +28,7 @@ Sources: [discover plugins](https://code.claude.com/docs/en/discover-plugins), [
 
 - **One command.** Claude Code 2.1.292 or later can add the marketplace and install in one go: `claude plugin install ai-pm-skills --marketplace alexandre-darmon/ai-pm-skills` (in a session, `/plugin install ... --marketplace ...` from 2.1.275).
 - **Bundle or single skills.** `ai-pm-skills@ai-pm-skills` installs all 29; each skill is also its own plugin, named after the skill (see the [catalog](../README.md#catalog)). Pick one or the other, not both. Drafts are not installable: they join the marketplace once they pass their eval run.
-- **Pin a version.** Add the marketplace at a tag and it stays there: `claude plugin marketplace add alexandre-darmon/ai-pm-skills#v1.2.0`. Without a tag you follow `main`.
+- **Pin a version.** Add the marketplace at a tag and it stays there: `claude plugin marketplace add alexandre-darmon/ai-pm-skills#v1.3.0`. Without a tag you follow `main`.
 - **Update.** `claude plugin marketplace update ai-pm-skills`, then `claude plugin update ai-pm-skills@ai-pm-skills`. What changed: [CHANGELOG](../CHANGELOG.md).
 - **Company rollout.** An admin registers the marketplace, pinned to a tag, in managed settings (`extraKnownMarketplaces`, source `alexandre-darmon/ai-pm-skills` with `ref` set to the tag) and turns on the plugins people should have (`enabledPlugins`). `strictKnownMarketplaces` keeps every other marketplace out.
 - **Before rollout.** Each skill's eval record (`baselines/<skill>.json`) is the evidence a model risk or IT risk reviewer can read. The legal skills give checklists and questions for counsel, never a verdict.
@@ -82,7 +82,7 @@ Sources: [CLI plugin reference](https://docs.github.com/en/copilot/reference/cop
   ```bash
   gh skill install alexandre-darmon/ai-pm-skills --all --scope user      # all 29
   gh skill install alexandre-darmon/ai-pm-skills build-evals             # one skill, this project
-  gh skill install alexandre-darmon/ai-pm-skills build-evals@v1.2.0      # pinned to a tag
+  gh skill install alexandre-darmon/ai-pm-skills build-evals@v1.3.0      # pinned to a tag
   gh skill update --all
   ```
 

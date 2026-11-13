@@ -4,7 +4,9 @@ Each release lists what changed for someone who installs the skills.
 
 **Version numbers.** Major (2.0): a skill is removed or renamed, or an output template changes shape, so installs or downstream documents can break. Minor (1.2): a skill is added, or a skill gains a method step. Patch (1.1.1): wording, graders, docs, manifests. The release version is the same in every manifest; each skill also has its own version in `metadata.version`. Per-skill versions live in each `SKILL.md` (`metadata.version`); eval records and their history are in [`baselines/`](baselines/).
 
-## Unreleased
+## v1.3.0 (2026-11-13)
+
+Same 29 skills; `ai-act-classification` gains method rules, so a minor release. Release notes: [docs/releases/v1.3.0.md](docs/releases/v1.3.0.md).
 
 - **Legal skills judged too**, on request (`judge_answers.py --include-legal`): GPT-6.1 Sol, Jev and Haiku 5.5 grade the 6 legal skills on the same rubric, information only; it does not check legal correctness, and counsel's review stays the evidence. Five skills gain +3 to +5 (GPT), +8 to +14 (Jev); `ai-act-classification` stays negative for GPT (−11), which marks down the 2026 amendments it does not know.
 - **`ai-act-classification`** (0.4.0), from the judges' critiques and a legal review: emotion recognition means inferring emotions from biometric data (art. 3(39), 5(1)(f)); the use sets the Annex III category at every autonomy level, and the levels are the team's scale, not a legal category; art. 26(5) and 26(9) completed; no invented "today" date; the memo names documents, not this repo's skills or files. Rerun: 100% on every case.
