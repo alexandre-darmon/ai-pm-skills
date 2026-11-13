@@ -2,5 +2,23 @@
   "name": "ai-pm-skills",
   "version": "1.1.0",
   "description": "Evals as evidence: tested skills for AI product managers who build, then prove a feature works, what a correct answer costs, and what the regulator will ask.",
-  "skills": "./skills/"
+  "author": {
+    "name": "Alex Darmon"
+  },
+  "homepage": "https://github.com/alexandre-darmon/ai-pm-skills",
+  "repository": "https://github.com/alexandre-darmon/ai-pm-skills",
+  "license": "CC-BY-4.0",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "AI PM Skills",
+    "shortDescription": "Tested skills for AI product managers: specify, build, evaluate, prove.",
+    "longDescription": "29 skills for AI and data product managers in regulated companies: define what a correct answer is, build to learn, write and run evals, and prove the result to the sponsor and the regulator. Legal skills give checklists and questions for counsel, never a verdict.",
+    "developerName": "Alex Darmon",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "defaultPrompt": [
+      "Use AI PM Skills to write the eval set for my AI feature",
+      "Use AI PM Skills to estimate what this assistant is worth"
+    ]
+  }
 }
