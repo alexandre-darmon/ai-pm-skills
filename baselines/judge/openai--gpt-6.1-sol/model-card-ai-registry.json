@@ -1,0 +1,490 @@
+{
+  "skill": "model-card-ai-registry",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": true,
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.029166666666666664,
+  "costUsd": 0.1644454,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 12,
+      "judge": 0.64375,
+      "meetsGoal": 0.5208333333333334,
+      "regex": 0.9916666666666667,
+      "words": 654.25
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.59375,
+      "meetsGoal": 0.19791666666666666,
+      "regex": 0.6618055555555555,
+      "words": 479.9166666666667
+    }
+  },
+  "answers": [
+    {
+      "id": "291dada30a",
+      "case": "model-card-ai-registry-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 588,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.55,
+        0.5
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "Oversight remains largely TBD, per-class evaluation is not requested, and end-of-life and model-deprecation plans are absent.",
+        "Oversight remains largely TBD, per-class evaluation is not required, and end-of-life and model-deprecation procedures are absent."
+      ]
+    },
+    {
+      "id": "0954f4c75c",
+      "case": "model-card-ai-registry-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.9,
+      "words": 393,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.6,
+        0.65
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It neither generates a diff-based version-history entry nor preserves the review date, and it invents a record date and repository status.",
+        "It neither generates a version-history entry from the diff nor explicitly preserves the existing review date."
+      ]
+    },
+    {
+      "id": "d10d9b43be",
+      "case": "model-card-ai-registry-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9,
+      "words": 624,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It prescribes documentation work but does not draft the version-history entry or explicitly preserve the existing review date.",
+        "It gives a documentation plan rather than drafting the version-history entry, and does not explicitly preserve the existing review date."
+      ]
+    },
+    {
+      "id": "e645de4603",
+      "case": "model-card-ai-registry-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 921,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Guardrails and oversight remain largely placeholders, classification is deferred to an unexplained tool, and retirement lacks an operational shutdown plan.",
+        "Guardrails and oversight remain placeholders rather than operational controls, and retirement lacks a shutdown or migration plan."
+      ]
+    },
+    {
+      "id": "47e355fd2f",
+      "case": "model-card-ai-registry-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8,
+      "words": 444,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.125,
+      "weakest": [
+        "It recommends a changelog but neither generates a diff-based version history entry nor preserves the existing review date.",
+        "It recommends a changelog update but neither generates a version-history entry from the diff nor explicitly preserves the existing review date."
+      ]
+    },
+    {
+      "id": "135df20512",
+      "case": "model-card-ai-registry-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 674,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never requests per-class evaluation results or covers end-of-life and model deprecation.",
+        "It omits end-of-life and model-deprecation plans and never requires per-ticket-class evaluation results."
+      ]
+    },
+    {
+      "id": "a5ad0a1881",
+      "case": "model-card-ai-registry-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 451,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Many missing sections lack accountable providers, and the unblock checklist omits several requirements the answer itself identifies.",
+        "It marks the entry incomplete but does not explicitly reject registration or assign providers for most missing sections."
+      ]
+    },
+    {
+      "id": "c5230e7faa",
+      "case": "model-card-ai-registry-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 266,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.44999999999999996,
+        0.4
+      ],
+      "judge": 0.425,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It does not reject the submission as incomplete or assign providers for missing sections, and omits the prompt version and pinned model snapshot.",
+        "It never explicitly rejects the submission as incomplete or assigns providers for missing sections, and omits the prompt version and pinned model snapshot."
+      ]
+    },
+    {
+      "id": "4e11a178a7",
+      "case": "model-card-ai-registry-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 465,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.5,
+        0.55
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never clearly rejects registration, contradicts itself about registration status, and leaves several missing sections without accountable providers.",
+        "It never clearly rejects registration as incomplete, contradicts its registration status, and leaves several missing sections without named providers."
+      ]
+    },
+    {
+      "id": "7e04547598",
+      "case": "model-card-ai-registry-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 532,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It prescribes a broad model-card exercise instead of drafting the version-history entry from the diff and explicitly preserving the existing review date.",
+        "It prescribes a broad model card but neither drafts the version-history entry nor explicitly preserves the existing review date."
+      ]
+    },
+    {
+      "id": "9df3d23beb",
+      "case": "model-card-ai-registry-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7,
+      "words": 444,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.125,
+      "weakest": [
+        "It neither generates a version-history entry from the diff nor explicitly preserves the existing review date.",
+        "It neither generates the version-history entry nor preserves the review date, and it invents a repository observation."
+      ]
+    },
+    {
+      "id": "edc3a337de",
+      "case": "model-card-ai-registry-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.625,
+      "words": 540,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits explicit judge TPR/TNR, separate real and synthetic results, and a signed threshold required before the next run.",
+        "It omits explicit judge TPR/TNR, separate real-versus-synthetic results, and a signed threshold before the next run."
+      ]
+    },
+    {
+      "id": "8120e831f1",
+      "case": "model-card-ai-registry-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 610,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It imposes unsupported evaluation requirements while leaving transcript privacy controls and an explicitly pinned model snapshot unresolved.",
+        "It marks the record incomplete but does not explicitly reject registration or require a pinned model snapshot, and leaves transcript privacy controls largely unspecified."
+      ]
+    },
+    {
+      "id": "c5ef9dba12",
+      "case": "model-card-ai-registry-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.875,
+      "words": 644,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.65,
+        0.7
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It defers separate results, never explicitly requests judge TPR and TNR, and does not require a signed threshold before the next run.",
+        "It never explicitly requests judge TPR/TNR or requires a signed threshold before the next run, and defers separate real/synthetic reporting."
+      ]
+    },
+    {
+      "id": "5463c03b7f",
+      "case": "model-card-ai-registry-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 308,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.44999999999999996,
+        0.4
+      ],
+      "judge": 0.425,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It does not explicitly reject the submission as incomplete, assign providers for each missing section, or require a prompt version and pinned model snapshot.",
+        "It does not reject the submission as incomplete or assign providers for missing sections, including the prompt version and pinned model snapshot."
+      ]
+    },
+    {
+      "id": "84c7970950",
+      "case": "model-card-ai-registry-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 583,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "Oversight remains unresolved, the aggregate score is not challenged with per-class results, and end-of-life and model-deprecation procedures are missing.",
+        "Oversight remains unresolved, the aggregate score is not challenged with per-class results, and end-of-life and model-deprecation procedures are missing."
+      ]
+    },
+    {
+      "id": "136ef45bea",
+      "case": "model-card-ai-registry-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 598,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.65,
+        0.8
+      ],
+      "judge": 0.7250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It proposes a broad model-card exercise rather than producing a provisional version-history entry and explicitly preserving the existing review date.",
+        "It requests a diff-based changelog but provides no provisional entry and does not explicitly preserve the existing review date."
+      ]
+    },
+    {
+      "id": "295cfbad72",
+      "case": "model-card-ai-registry-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 591,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It asserts an effective sample size near 120 without evidence and requests real-only results but not synthetic-only results.",
+        "It asserts an unsupported effective sample size near 120 and requests real-only results without explicitly requiring synthetic-only results."
+      ]
+    },
+    {
+      "id": "247111e321",
+      "case": "model-card-ai-registry-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 893,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "Guardrails, oversight, and retirement remain mostly placeholders rather than actionable controls and procedures.",
+        "Guardrails, oversight, and retirement remain mostly placeholders rather than concrete controls and procedures."
+      ]
+    },
+    {
+      "id": "74afac7897",
+      "case": "model-card-ai-registry-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.875,
+      "words": 611,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.75,
+        0.8500000000000001
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never explicitly requests judge TPR and TNR or requires a signed threshold before the next run.",
+        "It does not explicitly request the judge\u2019s TPR and TNR or require a signed threshold before the next run."
+      ]
+    },
+    {
+      "id": "5b396daf03",
+      "case": "model-card-ai-registry-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 717,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It requests real-case results but not separate synthetic-case results, and incorrectly asserts that the 120 source documents are independent.",
+        "It requests real-case results but never explicitly requires separate synthetic-case results, leaving the reporting goal incomplete."
+      ]
+    },
+    {
+      "id": "02000b03be",
+      "case": "model-card-ai-registry-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 264,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.44999999999999996,
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It never rejects the submission as incomplete or assigns providers for missing sections, and omits both the prompt version and a pinned model snapshot.",
+        "It does not reject the submission as incomplete or assign providers for missing sections, and it omits the prompt version and pinned model snapshot."
+      ]
+    },
+    {
+      "id": "f3854a4c69",
+      "case": "model-card-ai-registry-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 841,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.55,
+        0.6
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It lists missing evidence instead of deciding deployment gates, operational safeguards, and a concrete retirement or model-deprecation plan.",
+        "It catalogs gaps rather than deciding safe operating controls and retirement procedures, while inventing a date, internal tools, and a default shadow-run requirement."
+      ]
+    },
+    {
+      "id": "f83f61ba83",
+      "case": "model-card-ai-registry-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 608,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It requires real-only results but does not require synthetic-only results to be reported separately.",
+        "It requests real-only results but never explicitly requires synthetic-only results to be reported separately."
+      ]
+    }
+  ]
+}

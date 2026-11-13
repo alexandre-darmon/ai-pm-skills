@@ -1,0 +1,376 @@
+{
+  "skill": "production-evals-monitoring",
+  "judgeModel": "claude-haiku-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": true,
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.038888888888888876,
+  "costUsd": 0.03584466,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8333333333333334,
+      "meetsGoal": 0.8194444444444444,
+      "regex": 1.0,
+      "words": 1236.2222222222222
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7222222222222222,
+      "meetsGoal": 0.4305555555555556,
+      "regex": 0.44999999999999996,
+      "words": 1028.5555555555557
+    }
+  },
+  "answers": [
+    {
+      "id": "349916f09c",
+      "case": "production-evals-monitoring-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1576,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The sample sizes rest on assumed pass rates and detection deltas, and the AI Act high-risk date (2 December 2027) is stated without a caveat to verify it.",
+        "It says go-live is 20 days away when 1 December is 18 days from 13 November, and it states the AI Act high-risk date (2 December 2027) with more confidence than the uncertain timeline supports."
+      ]
+    },
+    {
+      "id": "840854a008",
+      "case": "production-evals-monitoring-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 1135,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.65,
+        0.75
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never masks personal data before sending conversations to an external judge, sets no statistically derived sample sizes or control limits, and its 1.5-hours-a-week reviewer estimate is implausibly low for 200 conversations a month.",
+        "It never says to mask personal data before the external LLM judge sees it, and it gives no statistical sample sizing per class or formal control limits."
+      ]
+    },
+    {
+      "id": "e37532feaf",
+      "case": "production-evals-monitoring-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1625,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.8,
+        0.8999999999999999
+      ],
+      "judge": 0.85,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It cites 'Regulation (EU) 2026/1744' and a 2 December 2027 Annex III date as settled fact, with no hedge or verification, which may be invented.",
+        "The EU AI Act citation (Regulation (EU) 2026/1744) and the 2 December 2027 date are stated as fact without a verification caveat, and the judge's cost and budget are never sized."
+      ]
+    },
+    {
+      "id": "e86a4371b2",
+      "case": "production-evals-monitoring-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 502,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It proposes a one-off 300\u2013400 sample for this investigation but never explicitly raises the standing weekly sample to about 300 so future 5-point drops become visible.",
+        "It recommends a 300\u2013400 sample only as a one-off check today and never makes raising the weekly sample to about 300 a standing change, so future 5-point drops would stay invisible."
+      ]
+    },
+    {
+      "id": "4cc5129e71",
+      "case": "production-evals-monitoring-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 506,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The rollback trigger of eight consecutive weeks below 91% is a poor run rule, since with 91% as the centre about half of weeks fall below it by chance.",
+        "The 324-conversation figure doesn't match the 3\u03c3 detectability it's meant to support (about 300), and the rollback triggers such as 'eight weeks below 91%' are asserted without justification."
+      ]
+    },
+    {
+      "id": "6eb8799b5c",
+      "case": "production-evals-monitoring-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 536,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never computes the 3-sigma band (about \u00b18.6 points, lower limit near 82.4%) or addresses the regulatory and customer-harm exposure of a motor insurer's assistant.",
+        "It never states the 3-sigma band (about \u00b18.6 points, lower limit near 82.4%) and treats the weekly sample increase as an optional suggestion instead of a concrete target of about 300."
+      ]
+    },
+    {
+      "id": "a4c9265503",
+      "case": "production-evals-monitoring-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5833333333333334,
+      "words": 1331,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never gives the 2 December 2027 Annex III application date or the 2 September 2027 template deadline, deferring them to counsel instead of stating them.",
+        "It omits the 2 December 2027 application date and the 2 September 2027 template deadline, and grounds fairness testing on special-category data in a DPO lawful basis rather than the AI Act's Art. 10(5) provision."
+      ]
+    },
+    {
+      "id": "3a82974f63",
+      "case": "production-evals-monitoring-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 522,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It uses an approximate 95% interval (with an arithmetic slip, 78 to 92) instead of the 3-sigma band around 91% (about 82.4 to 99.6), and it never recommends raising the weekly sample to about 300 so a 5-point drop becomes detectable.",
+        "It wrongly says the 78\u201392 interval includes the whole historical range (93 falls outside), and it never computes the 3-sigma band or raises the weekly sample to about 300."
+      ]
+    },
+    {
+      "id": "891c59b898",
+      "case": "production-evals-monitoring-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1648,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It states the AI Act Annex III date (2 December 2027) with unwarranted confidence and gives a judged-volume figure (about 800 per week) that doesn't match its own sample sizes.",
+        "The AI Act section is vague, with an unexplained 'arts. 72, 26(5) and 26(6) rows' fragment, and the sensitive-class detection plan (a two-week chart on about 24 offline cases) is thin for the riskiest class."
+      ]
+    },
+    {
+      "id": "40f4b95029",
+      "case": "production-evals-monitoring-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1317,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It cites a specific amending regulation number (EU 2026/1744) and the 2 December 2027 date as fact, and only asks the user to verify them rather than flagging them as unconfirmed.",
+        "It states the Regulation (EU) 2026/1744 citation and the 2 December 2027 and 2 September 2027 dates as settled fact without verification, though it does tell the user to check them."
+      ]
+    },
+    {
+      "id": "3ed0d37d0f",
+      "case": "production-evals-monitoring-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1717,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It cites unverified specifics as fact, including an 84% detection rate, a regulation number (Reg. 2026/1744) and a '27 July 2026 consolidated text', which undercuts its own no-invented-numbers stance.",
+        "It cites an unverified regulation number and consolidated-text date and gives an unsourced 84% detection-power figure, despite claiming to invent no numbers."
+      ]
+    },
+    {
+      "id": "cafd372b42",
+      "case": "production-evals-monitoring-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.4,
+      "words": 1269,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.75,
+        0.65
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It runs an external LLM judge on 100% of answers without masking personal data first, and never validates the judge against expert review or sets statistical control limits.",
+        "It sends 100% of HR answers to an external LLM judge with no PII masking first and no validation of the judge against expert review."
+      ]
+    },
+    {
+      "id": "c489dbefd2",
+      "case": "production-evals-monitoring-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 1367,
+      "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It sizes the review sample arbitrarily instead of per class, sets thresholds without statistical control limits, and never says to mask personal data before the external LLM judge sees conversations.",
+        "It never says to mask personal data before the external LLM judge sees it, and it sets no statistical control limits or derived per-class sample sizes."
+      ]
+    },
+    {
+      "id": "67f0d2de81",
+      "case": "production-evals-monitoring-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 561,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It re-scores 300-400 extra conversations for last week but never makes the weekly sample permanently about 300, and it gives the upper control limit as 99.6% when the 3\u03c3 value is about 99.4%.",
+        "It recommends a one-off resample of 300\u2013400 instead of permanently raising the weekly sample to about 300, so a future 5-point drop would still be hidden at n=100."
+      ]
+    },
+    {
+      "id": "f0d1213656",
+      "case": "production-evals-monitoring-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.4,
+      "words": 527,
+      "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It uses a 1-sigma and 95% band instead of the 3-sigma band (about \u00b18.6), and it never proposes raising the weekly sample to about 300 so a 5-point drop becomes visible.",
+        "It uses a \u00b13-point one-sigma band and a rough 95% interval instead of the 3-sigma band (\u00b18.6 points, lower limit about 82.4%), and it never recommends raising the weekly sample to about 300."
+      ]
+    },
+    {
+      "id": "b7b8023b4b",
+      "case": "production-evals-monitoring-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.3333333333333333,
+      "words": 1224,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It omits the 2 December 2027 application date and the 2 September 2027 template deadline, and the plan lacks per-row evidence status and counsel questions for each Article 72 mapping row.",
+        "It never gives the 2 December 2027 application date or the 2 September 2027 template deadline, and it has no per-row Art. 72 mapping with an evidence status."
+      ]
+    },
+    {
+      "id": "7a8ab2142f",
+      "case": "production-evals-monitoring-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1674,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It states an unverified regulation number and a claim that Write is disabled as fact, and gives sample-size figures more precision than the missing inputs support.",
+        "It states the Regulation (EU) 2026/1744 citation and the 2 December 2027 application date as settled fact without flagging that they need verification by counsel."
+      ]
+    },
+    {
+      "id": "61c87a5ef9",
+      "case": "production-evals-monitoring-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 1346,
+      "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never gives the 2 December 2027 Annex III date or the 2 September 2027 template deadline, and it treats the Annex III timing as an open question rather than a dated milestone the PM can plan against.",
+        "It never states the 2 December 2027 application date or the 2 September 2027 template deadline, so the timeline the PM needs is missing."
+      ]
+    }
+  ]
+}

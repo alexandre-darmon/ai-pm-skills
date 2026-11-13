@@ -1,20 +1,21 @@
 <p align="center"><img src="assets/banner.svg" alt="AI PM Skills: Specify, Build, Evaluate, Prove" width="100%"></p>
 
-<p align="center"><b>Evals as evidence.</b> Agent Skills that help AI product managers build to learn, then prove a feature works, what each correct answer costs, and what the regulator will ask for. Every skill is scored with and without it, against its own template, and by a blind judge; all three are published, including where the gain is small.</p>
+<p align="center"><b>Evals as evidence.</b> Agent Skills that help AI product managers build to learn, then prove a feature works, what each correct answer costs, and what the regulator will ask for. Every skill is scored with and without it, and by blind judges from three vendors; a few also against their own output template. All of it is published, including where the gain is small.</p>
 
 <!-- gains:start -->
-| Same cases, Sonnet 5.5 answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
+| Test performed | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 29 skills, 109 cases × 3 runs | 52% | 82% | **96%** | +45 pts | +17 pts |
-| Blind LLM judge, Haiku 5.5: 5 of these skills, 17 cases, earlier runs | 71% | 78% | 80% | +10 pts | +3 pts |
-| Blind LLM judge, Sonnet 5.5: 9 of these skills, 29 cases, earlier runs | 72% | 76% | 82% | +9 pts | +5 pts |
-| Blind LLM judge, openai/gpt-6.1-sol: 23 of these skills, 86 cases, recorded runs | 63% | — | 72% | +9 pts | — |
-| Blind decision model, typesafe/jev-1.14: 23 of these skills, 86 cases, recorded runs | 81% | — | 90% | +9 pts | — |
-| Red lines held (the one thing the answer must never do) | 71% | 88% | **100%** | | |
-| Cost per correct answer, API equivalent (20 skills) | $0.102 | — | **$0.078** | -23% | |
+| Regex graders: 29 skills, 109 cases × 3 runs | 52% | — | **96%** | +44 pts | — |
+| Regex graders, the 3 skills also run with their template only: 9 cases | 43% | 82% | 99% | +56 pts | +17 pts |
+| Blind LLM judge, Haiku 5.5: 11 of these skills, 40 cases, earlier runs | 70% | — | 79% | +9 pts | — |
+| Blind LLM judge, Sonnet 5.5: 9 of these skills, 29 cases, earlier runs | 72% | — | 82% | +10 pts | — |
+| Blind LLM judge, openai/gpt-6.1-sol: 29 of these skills, 109 cases, recorded runs | 63% | — | 70% | +7 pts | — |
+| Blind decision model, typesafe/jev-1.14: 29 of these skills, 109 cases, recorded runs | 80% | — | 89% | +9 pts | — |
+| Red lines held (the one thing the answer must never do) | 71% | — | **100%** | | |
+| Cost per correct answer, API equivalent (19 skills) | $0.104 | — | **$0.077** | -26% | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
-<sub>Sonnet 5.5 answers each case 3 times per arm. **Regex graders** check that the answer contains what the skill asks for; the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; it tends to favour longer answers and never grades the legal skills. Gains in points; 95% intervals are in the per-skill numbers. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>
+<sub>Sonnet 5.5 answers each case 3 times per arm. **Regex graders** check that the answer contains what the skill asks for; the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; it tends to favour longer answers, and on the legal skills it does not check legal correctness. Gains in points: each is the row's score with the skill minus the score it is compared with, on the same skills; 95% intervals are in the per-skill numbers. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>
 <!-- gains:end -->
 
 ## Why evals as evidence?
@@ -33,7 +34,7 @@ What makes it different:
 
 1. **Evaluation is the spine.** Thirteen of the 29 skills evaluate: error analysis, judge validation, synthetic data, agents, retrieval, attacks, whole conversations, vendors, release and production monitoring.
 2. **Built for a PM who builds.** The Build block covers what a PM makes with a coding agent to get evidence (a feasibility spike, a prompt with its red-team set, an agent's tools, a trace review app) and the handover of that prototype into a bank's IT estate, where engineers own production.
-3. **Tested, and the unfavourable results stay visible.** A skill that does not beat the model alone by at least 10 points stays in `drafts/`. The table above also sets each skill against its own output template and a blind judge, with 95% intervals. [How a skill is evaluated](docs/evaluation.md).
+3. **Tested, and the unfavourable results stay visible.** A skill that does not beat the model alone by at least 10 points stays in `drafts/`. The table above also shows blind judges from three vendors and, for a few skills, the skill's own output template; the [per-skill numbers](skill-eval-gains.md) add 95% intervals. [How a skill is evaluated](docs/evaluation.md).
 4. **One AI Act skill, wired to the evidence.** `ai-act-classification` names the role, the risk category and the obligations, then maps each testing or monitoring duty to the eval artefact that answers it.
 5. **No free-floating numbers.** Every gain traces to volume × quality × unit value − costs ([ROI model](foundations/roi-model.md)), and every autonomy step to the [ladder](foundations/autonomy-ladder.md) (L0 to L5).
 
@@ -81,7 +82,7 @@ You rarely need the command: skills load on their own when the request matches. 
 
 - **Every skill is scored twice on the same cases**, with and without it, three runs per case. It enters the catalog only if it clears its threshold in every case, holds every red line in every run, and beats the model alone by at least 10 points. The numbers shown are those of its last recorded run, kept pass or fail with a log of every run; the validator fails the build if a catalog skill's text or cases changed since that run, so no number here describes a text that is not the one you install.
 - **The right skill fires when all 29 are installed.** A routing suite of 58 requests aimed at the known collision zones (spike vs opportunity vs model choice, eval set vs release, handover vs model card vs AI Act, attack campaign vs guardrails vs agent tests, whole conversations vs single answers, and out-of-scope requests) picked the expected skill, or none, in 172 of 174 runs on 2026-11-12; the 2 misses fired no skill at all ([results](routing/results-2026-11-12b.md)). The requests were written by the repo's author, so this rules out collisions on known pairs, not on every phrasing. A free lexical check (`scripts/routing_check.py`) guards the same cases on every push.
-- **Three ways of scoring, side by side**, in the table at the top: regex graders, the skill's own template as a control, and a blind LLM judge. The judge sees a much smaller gain than the regexes; that is published, not hidden.
+- **Three ways of scoring, side by side**, in the table at the top: regex graders, blind judges (Claude, OpenAI's GPT, TypeSafe's Jev), and, for a few skills, the skill's own template as a control. The judges see a much smaller gain than the regexes; that is published, not hidden.
 - **What we fix when a run fails**: in the November 2026 runs, most failures were graders refusing correct wording, not weak skills. Every grader change is checked against the answers given without the skill, and real answers become fixtures. Two skills held the exact numbers their own cases asked for; they were rewritten. Details: [how the skills are tested](docs/testing-approach.md) and [per-skill numbers](skill-eval-gains.md).
 
 ## Install

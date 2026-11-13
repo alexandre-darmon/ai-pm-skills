@@ -1,0 +1,490 @@
+{
+  "skill": "model-card-ai-registry",
+  "judgeModel": "claude-haiku-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": true,
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.031250000000000014,
+  "costUsd": 0.03281559,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 12,
+      "judge": 0.7875000000000001,
+      "meetsGoal": 0.6458333333333334,
+      "regex": 0.9916666666666667,
+      "words": 654.25
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.7395833333333334,
+      "meetsGoal": 0.34375,
+      "regex": 0.6618055555555555,
+      "words": 479.9166666666667
+    }
+  },
+  "answers": [
+    {
+      "id": "291dada30a",
+      "case": "model-card-ai-registry-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 588,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "Omits end-of-life and model deprecation coverage and does not challenge the 96% aggregate score for per-class results beyond a brief note, so the goal is only partly met.",
+        "It omits end-of-life and model deprecation entirely and only implicitly challenges the 96% aggregate by asking for failure modes, not per-class results."
+      ]
+    },
+    {
+      "id": "0954f4c75c",
+      "case": "model-card-ai-registry-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.9,
+      "words": 393,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It states an unverified git status and a wrong record date (2026-11-09 rather than today, 2026-11-13), and it offers to pull the diff instead of producing the version history entry from it.",
+        "It claims git status shows no commits, which contradicts the environment (not a git repo), and it uses a record date of 2026-11-09 instead of today's 2026-11-13. It also never generates the version history entry from the diff."
+      ]
+    },
+    {
+      "id": "d10d9b43be",
+      "case": "model-card-ai-registry-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9,
+      "words": 624,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never produces the requested output, a version history entry generated from the diff with the review date kept; it only describes how to build one and asks for inputs.",
+        "It describes how to build the v2.4 changelog entry from the diff but never drafts the entry, deferring that until the user supplies the diff."
+      ]
+    },
+    {
+      "id": "e645de4603",
+      "case": "model-card-ai-registry-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 921,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "Most sections are MISSING placeholders, so the PM gets a checklist rather than a usable card, and the 3-month review suggestion is asserted without justification.",
+        "Most guardrail and oversight fields are still MISSING, so the card falls short of the requested goal of filled guardrails and oversight sections."
+      ]
+    },
+    {
+      "id": "47e355fd2f",
+      "case": "model-card-ai-registry-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8,
+      "words": 444,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never generates the version history entry from the v2.3\u2192v2.4 diff or addresses keeping the review date, deferring both to an offer.",
+        "It offers to generate the version history entry from the diff later instead of drafting it now, and never addresses keeping the review date."
+      ]
+    },
+    {
+      "id": "135df20512",
+      "case": "model-card-ai-registry-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 674,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never covers end-of-life or model deprecation, and it only implicitly asks for per-class results instead of challenging the overall 96% directly.",
+        "It never covers end-of-life or model deprecation, and it leaves the AI Act risk classification as a to-do rather than carrying one over."
+      ]
+    },
+    {
+      "id": "a5ad0a1881",
+      "case": "model-card-ai-registry-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 451,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It omits the requested listing of the prompt version and pinned model snapshot as a rejection-level gap, instead folding them into a generic version bundle row and an unblock item, and it never explicitly states the response is rejected as incomplete.",
+        "It never asks for vendor data-processing terms or transcript retention, and it dates the card 2026-11-11 although today is 2026-11-13."
+      ]
+    },
+    {
+      "id": "c5230e7faa",
+      "case": "model-card-ai-registry-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 266,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never asks for the prompt version or a pinned Vendor-X 4.2 model snapshot, and it doesn't say who provides each missing item.",
+        "It never lists the prompt version or a pinned model snapshot as missing, and it doesn't assign a provider to each gap or state the registration is rejected as incomplete."
+      ]
+    },
+    {
+      "id": "4e11a178a7",
+      "case": "model-card-ai-registry-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 465,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The card header is dated 2026-11-11 when today is 2026-11-13, and it registers an incomplete draft rather than explicitly rejecting the request as the goal requires.",
+        "It never explicitly rejects the registration as incomplete, and the draft is dated 2026-11-11 when today is 2026-11-13."
+      ]
+    },
+    {
+      "id": "7e04547598",
+      "case": "model-card-ai-registry-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 532,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It tells the PM how to build the changelog entry from the diff but does not generate one, and the review date is only mentioned in passing.",
+        "The changelog entry is described but not generated, because the prompt diff was never provided, and the discordant-pairs noise formula is garbled."
+      ]
+    },
+    {
+      "id": "9df3d23beb",
+      "case": "model-card-ai-registry-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7,
+      "words": 444,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It offers to draft the change record rather than generating the version history entry from the diff, and it never sets a review date.",
+        "It gives a made-up example date (2026-11-09) when today is 2026-11-13, and it offers to draft the version history entry from the diff without actually generating one."
+      ]
+    },
+    {
+      "id": "edc3a337de",
+      "case": "model-card-ai-registry-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.625,
+      "words": 540,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never asks for the judge's true-positive and true-negative rates or reports real and synthetic results separately, and it only implies a signed threshold before the next run.",
+        "It never asks for the judge's true-positive and true-negative rates or reports real and synthetic results separately, and the threshold is not required to be signed before the next run."
+      ]
+    },
+    {
+      "id": "8120e831f1",
+      "case": "model-card-ai-registry-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 610,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It returns a draft model card with a prioritized gap list instead of the required rejection stating it is incomplete, and it never explicitly says 'rejected' or asks for the prompt version and pinned model snapshot as a clear rejection reason.",
+        "It never rejects the request outright as incomplete or explicitly lists the prompt version and pinned model snapshot as a rejection gate, instead treating them as one row among many."
+      ]
+    },
+    {
+      "id": "c5ef9dba12",
+      "case": "model-card-ai-registry-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.875,
+      "words": 644,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never asks for the judge's TPR and TNR, and the headline still reports 94% without splitting real from synthetic cases.",
+        "It never asks for the judge's true-positive and true-negative rates, treating the 88% agreement as one number, and its 95.9% upper bound is slightly off (about 95.7%)."
+      ]
+    },
+    {
+      "id": "5463c03b7f",
+      "case": "model-card-ai-registry-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 308,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.44999999999999996,
+        0.55
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.125,
+      "weakest": [
+        "It fills the record with an unsupported date (2026-11-09, while today is 2026-11-13) and never lists the missing prompt version or pinned model snapshot the goal requires.",
+        "It records an invented date of 2026-11-09 (today is 2026-11-13) and never rejects the request as incomplete or asks for the prompt version and pinned model snapshot."
+      ]
+    },
+    {
+      "id": "84c7970950",
+      "case": "model-card-ai-registry-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 583,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It omits end-of-life and model deprecation entirely and does not challenge the 96% overall score for per-class results.",
+        "It never covers end-of-life or model deprecation and does not challenge the aggregate 96% with per-class results."
+      ]
+    },
+    {
+      "id": "136ef45bea",
+      "case": "model-card-ai-registry-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 598,
+      "goal": "A version history entry is generated from the diff; review date kept.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It describes how to generate the v2.4 changelog entry from the diff but doesn't produce one, deferring it until the prompts are supplied.",
+        "It describes how to build the changelog entry but doesn't produce one, deferring to the prompts and widening into a full model card the request didn't ask for."
+      ]
+    },
+    {
+      "id": "295cfbad72",
+      "case": "model-card-ai-registry-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 591,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never explains how the judge's 88% agreement could bias the 94% pass rate in either direction, so the judge caveat stays vague for auditors.",
+        "The 95% interval (91.2% to 96.0%) is presented as computed from 376/400 but matches neither the Wilson (about 90.6% to 96.6%) nor the normal approximation (about 91.7% to 96.3%), so a stated number is wrong."
+      ]
+    },
+    {
+      "id": "247111e321",
+      "case": "model-card-ai-registry-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 893,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.75,
+        0.65
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It opens with a garbled fragment and leaves a stray '[ref]' placeholder, and the guardrails and oversight sections stay mostly MISSING rather than being filled.",
+        "The opening is a garbled fragment about denied file access, the card leaves placeholders like '[ref]' unresolved, and most sections are MISSING, so the PM gets a template rather than a usable draft."
+      ]
+    },
+    {
+      "id": "74afac7897",
+      "case": "model-card-ai-registry-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.875,
+      "words": 611,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never asks for the judge's true-positive and true-negative rates, and it treats a pre-signed threshold as a someday follow-up rather than a requirement before the next run.",
+        "It never asks for the judge's true-positive and true-negative rates, only overall agreement and bias direction, and it doesn't require a signed threshold before the next run."
+      ]
+    },
+    {
+      "id": "5b396daf03",
+      "case": "model-card-ai-registry-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 717,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.8500000000000001,
+        0.95
+      ],
+      "judge": 0.9,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It never separates real from synthetic pass rates or propagates the judge's 88% agreement into the reported 94%, so the headline figure stays unadjusted.",
+        "Most of the section is still placeholders, so the PM cannot give auditors a finished record today even though the owner table helps."
+      ]
+    },
+    {
+      "id": "02000b03be",
+      "case": "model-card-ai-registry-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 264,
+      "goal": "Rejected as incomplete; missing sections and who provides them are listed, including the prompt version and a pinned model snapshot.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never flags the missing prompt version or pinned model snapshot, never states the submission is rejected as incomplete, and does not assign each missing item to a named provider.",
+        "It never flags the missing prompt version or the unpinned Vendor-X 4.2 model snapshot, and it does not say the submission is incomplete."
+      ]
+    },
+    {
+      "id": "f3854a4c69",
+      "case": "model-card-ai-registry-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 841,
+      "goal": "Guardrails and oversight sections filled; classification carried over, no compliance claim; the overall score challenged for per-class results; end of life and model deprecation covered.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents a draft date (2026-11-11) that doesn't match today's date and states a '2 weeks by default' shadow-run period with no source.",
+        "It states an unsourced draft date (2026-11-11, not today's 2026-11-13) and an unsourced '2 weeks by default' shadow-run length, both presented as fact."
+      ]
+    },
+    {
+      "id": "f83f61ba83",
+      "case": "model-card-ai-registry-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 608,
+      "goal": "Records the threshold as set after the results, not as a gate passed; asks for the judge's TPR and TNR; reports real and synthetic cases apart; requires a threshold signed before the next run.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It asks for the real-only results but does not report them apart, and its opening line misframes the user's request as a refusal to make the card read well.",
+        "It withholds the requested readable eval section and gives no concrete framing for the post-hoc 92% threshold beyond saying it must be disclosed, and the per-class thresholds are left unspecified."
+      ]
+    }
+  ]
+}

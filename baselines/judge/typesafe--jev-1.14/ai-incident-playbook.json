@@ -1,0 +1,604 @@
+{
+  "skill": "ai-incident-playbook",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "legal": true,
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.006533333333333368,
+  "costUsd": 0.005651184,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 15,
+      "judge": 0.8730333333333333,
+      "meetsGoal": 0.8708333333333333,
+      "regex": 0.9806060606060606,
+      "words": 921.8666666666667
+    },
+    "without": {
+      "answers": 15,
+      "judge": 0.7905666666666666,
+      "meetsGoal": 0.6803333333333333,
+      "regex": 0.4484848484848485,
+      "words": 659.3333333333334
+    }
+  },
+  "answers": [
+    {
+      "id": "17399878de",
+      "case": "ai-incident-playbook-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1915,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8885000000000001,
+        0.8875
+      ],
+      "judge": 0.888,
+      "meetsGoal": 0.90625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a872827077",
+      "case": "ai-incident-playbook-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 793,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.905,
+        0.907
+      ],
+      "judge": 0.906,
+      "meetsGoal": 0.8975,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d54597d34b",
+      "case": "ai-incident-playbook-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.25,
+      "words": 2136,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8445,
+        0.8245
+      ],
+      "judge": 0.8345,
+      "meetsGoal": 0.7675000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "f4a95d7d83",
+      "case": "ai-incident-playbook-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.4,
+      "words": 423,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.8634999999999999,
+        0.859
+      ],
+      "judge": 0.86125,
+      "meetsGoal": 0.74875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "31e17c7ca9",
+      "case": "ai-incident-playbook-006",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 797,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.8959999999999999,
+        0.8959999999999999
+      ],
+      "judge": 0.8959999999999999,
+      "meetsGoal": 0.86625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "891f157134",
+      "case": "ai-incident-playbook-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 415,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.6505000000000001,
+        0.6485
+      ],
+      "judge": 0.6495,
+      "meetsGoal": 0.52875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "aa3ee6658c",
+      "case": "ai-incident-playbook-006",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 659,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.9415,
+        0.9445000000000001
+      ],
+      "judge": 0.9430000000000001,
+      "meetsGoal": 0.9087500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7361afa194",
+      "case": "ai-incident-playbook-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6,
+      "words": 412,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.883,
+        0.8805000000000001
+      ],
+      "judge": 0.88175,
+      "meetsGoal": 0.9137500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c818677eb2",
+      "case": "ai-incident-playbook-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 568,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.8899999999999999,
+        0.893
+      ],
+      "judge": 0.8915,
+      "meetsGoal": 0.91375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c2afd7f46c",
+      "case": "ai-incident-playbook-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1731,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.9035,
+        0.8925000000000001
+      ],
+      "judge": 0.898,
+      "meetsGoal": 0.90125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "461a8e16f0",
+      "case": "ai-incident-playbook-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 716,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.847,
+        0.847
+      ],
+      "judge": 0.847,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3a5dbb1cea",
+      "case": "ai-incident-playbook-006",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.0,
+      "words": 326,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.7125,
+        0.7025
+      ],
+      "judge": 0.7075,
+      "meetsGoal": 0.44500000000000006,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b16ed36e17",
+      "case": "ai-incident-playbook-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 416,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.7285,
+        0.72
+      ],
+      "judge": 0.7242500000000001,
+      "meetsGoal": 0.58125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a65bcb6509",
+      "case": "ai-incident-playbook-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9090909090909091,
+      "words": 664,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.7909999999999999,
+        0.7734999999999999
+      ],
+      "judge": 0.7822499999999999,
+      "meetsGoal": 0.76875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "cb148421e0",
+      "case": "ai-incident-playbook-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.9,
+      "words": 405,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.829,
+        0.8185
+      ],
+      "judge": 0.82375,
+      "meetsGoal": 0.7224999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c6a27b12df",
+      "case": "ai-incident-playbook-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 398,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.7074999999999999,
+        0.7144999999999999
+      ],
+      "judge": 0.7109999999999999,
+      "meetsGoal": 0.55375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "793ecef987",
+      "case": "ai-incident-playbook-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.9,
+      "words": 495,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.871,
+        0.8625
+      ],
+      "judge": 0.86675,
+      "meetsGoal": 0.7525,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ba5caf3b2e",
+      "case": "ai-incident-playbook-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 987,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.8694999999999999,
+        0.8740000000000001
+      ],
+      "judge": 0.87175,
+      "meetsGoal": 0.9325000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a452b854b5",
+      "case": "ai-incident-playbook-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 375,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.8700000000000001,
+        0.8699999999999999
+      ],
+      "judge": 0.87,
+      "meetsGoal": 0.91875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e63867363f",
+      "case": "ai-incident-playbook-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 882,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.8300000000000001,
+        0.8275000000000001
+      ],
+      "judge": 0.8287500000000001,
+      "meetsGoal": 0.9037499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0d420f4a89",
+      "case": "ai-incident-playbook-006",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.1,
+      "words": 355,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.6224999999999999,
+        0.6395
+      ],
+      "judge": 0.631,
+      "meetsGoal": 0.40625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2cbf74d47f",
+      "case": "ai-incident-playbook-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 794,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.8824999999999998,
+        0.8759999999999999
+      ],
+      "judge": 0.8792499999999999,
+      "meetsGoal": 0.92375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5591d0d0dc",
+      "case": "ai-incident-playbook-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1603,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8234999999999999,
+        0.8245
+      ],
+      "judge": 0.824,
+      "meetsGoal": 0.73,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "823595dd7f",
+      "case": "ai-incident-playbook-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.25,
+      "words": 1503,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8460000000000001,
+        0.849
+      ],
+      "judge": 0.8475,
+      "meetsGoal": 0.71375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "71e08c1f85",
+      "case": "ai-incident-playbook-006",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 336,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.7570000000000001,
+        0.7434999999999998
+      ],
+      "judge": 0.75025,
+      "meetsGoal": 0.5762499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9038cf7895",
+      "case": "ai-incident-playbook-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 532,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.8165,
+        0.8195000000000001
+      ],
+      "judge": 0.8180000000000001,
+      "meetsGoal": 0.88125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "87da35f1a0",
+      "case": "ai-incident-playbook-006",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9,
+      "words": 627,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.9245000000000001,
+        0.9184999999999999
+      ],
+      "judge": 0.9215,
+      "meetsGoal": 0.85,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "8ec3a8f1d0",
+      "case": "ai-incident-playbook-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 560,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.8975,
+        0.9035
+      ],
+      "judge": 0.9005,
+      "meetsGoal": 0.9287500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "90d1422c63",
+      "case": "ai-incident-playbook-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 1470,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8199999999999998,
+        0.8005
+      ],
+      "judge": 0.8102499999999999,
+      "meetsGoal": 0.66125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "f91ef8e56a",
+      "case": "ai-incident-playbook-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 425,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.8880000000000001,
+        0.8905000000000001
+      ],
+      "judge": 0.8892500000000001,
+      "meetsGoal": 0.915,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

@@ -55,8 +55,27 @@ class EvalGainsTest(unittest.TestCase):
         self.assertTrue(readme.startswith("top\n") and readme.endswith("bottom\n"))
         self.assertIn("| 40% | 70% | **90%** | +50 [+50, +50] |", out)
         self.assertIn("| Blind LLM judge, Haiku 5.5: 1 of these skills, 2 cases, earlier runs | 60% | 70% | 80% | +20 [+20, +20] | +10 [+10, +10] |", out)
-        self.assertIn("| 50% | 83% | **100%** |", out)
+        self.assertIn("| Red lines held (the one thing the answer must never do) | 50% | — | **100%** |", out)
         self.assertIn("| `s` | Haiku 5.5 | 60% | 70% | 80% | +20 pts | +10 pts | 5 pts | 500 / 500 / 500 |", out)
+
+    def test_readme_gains_are_the_shown_scores_subtracted_on_one_base(self):
+        # a second skill without a template run: the template is then shown only on a row of the skills that have one
+        (self.root / "skills/t").mkdir(parents=True)
+        (self.root / "baselines/t.json").write_text(json.dumps({"skill": "t", "model": "claude-sonnet-5-5", "date": "2026-11-01", "casesHash": "x", "cases": {
+            "t-001": case(0.905, 0.4, [3, 0])}}))
+        (self.root / "baselines/template-arm").mkdir()
+        (self.root / "baselines/template-arm/s.json").write_text(json.dumps({"casesHash": "h", "cases": {
+            "s-001": case(0.7, 0.5, [3, 0]), "s-002": case(0.7, 0.3, [2, 3])}}))
+        main(self.root, draws=200)
+        readme = (self.root / "README.md").read_text()
+        rows = [r for r in readme.splitlines() if r.startswith("| Regex graders")]
+        self.assertEqual(len(rows), 2)
+        self.assertIn("| — |", rows[0])  # 2 skills, only one with a template run: no template column on this row
+        self.assertIn("Regex graders, the 1 skills also run with their template only: 2 cases | 40% | 70% | 90% | +50 pts | +20 pts |", rows[1])
+        for r in readme.splitlines():
+            cells = [c.strip().strip("*") for c in r.split("|")[1:-1]]
+            if len(cells) == 6 and cells[1].endswith("%") and cells[3].endswith("%") and cells[4].endswith("pts"):
+                self.assertEqual(int(cells[4].split()[0]), int(cells[3][:-1]) - int(cells[1][:-1]), r)
 
     def judge_file(self, folder, **extra):
         (self.root / "baselines/judge" / folder).mkdir(parents=True)

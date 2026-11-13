@@ -81,7 +81,7 @@ Exception (art. 6(3)): an Annex III system is not high-risk when it poses no sig
 | Deployer, high-risk | use according to the instructions; technical and organisational measures | 26(1) |
 | | human oversight by competent, trained people with the necessary authority and support | 26(2) |
 | | input data relevant and sufficiently representative for the purpose, to the extent the deployer controls it | 26(4) |
-| | monitor operation per the instructions; on a risk, inform provider and market surveillance authority and suspend use; report serious incidents to the provider first, then importer or distributor and authorities (financial institutions: internal governance rules count) | 26(5) |
+| | monitor operation per the instructions; on a risk, inform the provider or distributor and the market surveillance authority and suspend use; report serious incidents to the provider first, then importer or distributor and authorities (financial institutions: internal governance rules count) | 26(5) |
 | | keep the logs under its control for a period appropriate to the purpose, at least six months unless EU or national law (e.g. GDPR) says otherwise; financial institutions within their financial-services documentation | 26(6) |
 | | inform workers' representatives and affected workers before putting into service at the workplace | 26(7) |
 | | use the provider's information for the GDPR impact assessment | 26(9) |
