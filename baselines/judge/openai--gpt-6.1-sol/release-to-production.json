@@ -1,0 +1,375 @@
+{
+  "skill": "release-to-production",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.02499999999999999,
+  "costUsd": 0.1192512,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.5888888888888889,
+      "meetsGoal": 0.75,
+      "regex": 0.9876543209876544,
+      "words": 556.7777777777778
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.5583333333333332,
+      "meetsGoal": 0.3611111111111111,
+      "regex": 0.6111111111111112,
+      "words": 490.44444444444446
+    }
+  },
+  "answers": [
+    {
+      "id": "0972f20961",
+      "case": "release-to-production-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7,
+      "words": 377,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents today's date and the available migration window, making its proposed schedule unreliable.",
+        "It invents today's date and omits explicit release acceptance criteria and regulatory sign-off."
+      ]
+    },
+    {
+      "id": "4459612a53",
+      "case": "release-to-production-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 488,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.7,
+        0.6
+      ],
+      "judge": 0.6499999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents a four-and-a-half-month runway and omits explicit compliance approval and shadow-data controls for a regulated deployment.",
+        "It invents four and a half months of runway and omits regulated-release approval and shadow-data safeguards."
+      ]
+    },
+    {
+      "id": "019069e071",
+      "case": "release-to-production-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5555555555555556,
+      "words": 364,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.55,
+        0.6
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It offers live rollout and exception paths despite the failed gate, rather than firmly blocking release and requiring a class-level diagnostic that accounts for severity, not just frequency.",
+        "It undermines the no-release decision with rollout and exception options before a class-level diagnostic establishes severity and regulatory risk."
+      ]
+    },
+    {
+      "id": "56105f7241",
+      "case": "release-to-production-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 646,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.44999999999999996,
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It incorrectly treats repeated weeks with the same users as a route to sufficient A/B power instead of declaring A/B infeasible and committing to shadow followed by canary.",
+        "It incorrectly treats repeated weeks with the same users as a route to sufficient A/B power instead of declaring the proposed test infeasible and committing to shadow plus canary."
+      ]
+    },
+    {
+      "id": "3630f768f4",
+      "case": "release-to-production-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 784,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Shadow outputs cannot establish real task completion, and an underpowered canary cannot demonstrate non-inferiority.",
+        "Shadow cannot measure actual task completion, and the plan lacks a valid substitute for that release gate."
+      ]
+    },
+    {
+      "id": "fcc2e00ccb",
+      "case": "release-to-production-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5555555555555556,
+      "words": 338,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It recommends a partial production rollout despite the failed gate instead of holding release and requiring a class-by-class regression diagnostic.",
+        "It recommends a partial release despite the failed gate instead of firmly blocking release and commissioning a class-level regression diagnostic."
+      ]
+    },
+    {
+      "id": "94151b9569",
+      "case": "release-to-production-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 397,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It invents a release policy forbidding shadow, canary, and A/B testing rather than identifying the actual policy as unknown.",
+        "It invents a release policy prohibiting shadow, canary and A/B testing rather than identifying that policy as unknown."
+      ]
+    },
+    {
+      "id": "dd3cf883c2",
+      "case": "release-to-production-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7,
+      "words": 399,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.7,
+        0.6
+      ],
+      "judge": 0.6499999999999999,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It proposes offline evaluation but omits shadow testing and explicit release gates before switching live traffic.",
+        "It omits shadow testing before live rollout and explicit release gates and approvals for a regulated environment."
+      ]
+    },
+    {
+      "id": "135a1e08aa",
+      "case": "release-to-production-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 627,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents today's date and available runway, making the proposed release calendar potentially unusable.",
+        "It invents today's date and available lead time, making the dated migration schedule unjustified."
+      ]
+    },
+    {
+      "id": "c9e73c61a2",
+      "case": "release-to-production-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 382,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.65,
+        0.55
+      ],
+      "judge": 0.6000000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It invents a mandatory release process and calls class-based routing safe without checking critical-class failures or routing errors.",
+        "It invents a mandatory release process and calls class-based routing safe without evidence."
+      ]
+    },
+    {
+      "id": "bb68ea7319",
+      "case": "release-to-production-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5555555555555556,
+      "words": 316,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.5,
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.125,
+      "weakest": [
+        "It recommends partial release or a canary despite the failed gate, rather than holding release and requiring a class-by-class diagnostic.",
+        "It recommends partial release or a canary despite the failed gate, rather than holding release and requiring a diagnostic by task and risk class."
+      ]
+    },
+    {
+      "id": "2a895c78d1",
+      "case": "release-to-production-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6,
+      "words": 393,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.55,
+        0.6
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It recommends offline evaluation but omits shadow testing before switching live traffic.",
+        "It recommends offline evaluation but omits shadow testing before the production switch."
+      ]
+    },
+    {
+      "id": "4f08dcd629",
+      "case": "release-to-production-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 683,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.4,
+        0.4
+      ],
+      "judge": 0.4,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It leaves A/B conditionally feasible using unsupported assumptions instead of deciding it is infeasible and committing to a gated shadow-and-canary release.",
+        "It computes sample size but reopens A/B using unsupported assumptions instead of committing to the shadow-and-canary fallback."
+      ]
+    },
+    {
+      "id": "933fe1c099",
+      "case": "release-to-production-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 687,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.44999999999999996,
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It defaults to an inadequately justified A/B test instead of a shadow-and-canary fallback, and permits shipping despite inconclusive evidence of harm.",
+        "It defaults to an unsupported A/B timeline instead of a shadow-to-canary fallback, and treats an inconclusive result as evidence of safety."
+      ]
+    },
+    {
+      "id": "6a5c3ffbdc",
+      "case": "release-to-production-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 610,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents today's date and the available runway, making its proposed release calendar potentially unsafe.",
+        "It invents today's date and available runway, making the proposed release schedule potentially unusable."
+      ]
+    },
+    {
+      "id": "5e5391b89f",
+      "case": "release-to-production-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 754,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.44999999999999996,
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.125,
+      "weakest": [
+        "It computes sample size but recommends an A/B test instead of establishing infeasibility and falling back to shadow evaluation and a gated canary.",
+        "It proceeds with an unsupported A/B timeline instead of establishing infeasibility and falling back to shadow evaluation and a gated canary."
+      ]
+    },
+    {
+      "id": "bfd1a78a2c",
+      "case": "release-to-production-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 394,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It invents release-policy rules, then inconsistently suggests that clearing 86% could suffice despite remaining below production.",
+        "It invents a release policy, then contradicts it by proposing rollout after clearing 86% but potentially remaining below 88%."
+      ]
+    },
+    {
+      "id": "7a82d2241f",
+      "case": "release-to-production-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 786,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.5,
+        0.55
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It computes sample size but never concludes A/B is infeasible or provides the required shadow-to-canary fallback.",
+        "It computes sample size but leaves A/B feasibility unresolved and never provides the required shadow-first, canary-based fallback."
+      ]
+    }
+  ]
+}

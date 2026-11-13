@@ -20,8 +20,11 @@ before those hashes existed is read from --prompts-rev (the commit current when 
 an item whose prompt.md has uncommitted changes is skipped.
 
 Before any call it prints the number of calls and a rough cost, the mean cost per call of the same model's past
-calls saved under baselines/judge/<model>/ times the calls planned. --dry-run stops there and shows the prompts' sizes. Runs on the Claude account,
-never on an API key.
+calls saved under baselines/judge/<model>/ times the calls planned. --dry-run stops there and shows the prompts' sizes.
+A Claude model id (no slash) runs on the Claude account, never on an API key. A model id with a slash runs through
+OpenRouter on the key in OPENROUTER_API_KEY (openrouter.py): a general LLM gets the same prompt, TypeSafe's Jev decision
+model (typesafe/jev-...) the same rubric as one score question per criterion. Its files go to
+baselines/judge/<vendor>--<model>/.
 """
 import argparse
 import hashlib
@@ -37,7 +40,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from run_evals import regrade, run_score, skill_check, mean, ROOT  # noqa: E402
-from validate_skills import read_frontmatter  # noqa: E402
+from validate_skills import read_frontmatter, read_skill  # noqa: E402
+import openrouter  # noqa: E402
 import yaml  # noqa: E402
 
 JUDGE_MODEL = "claude-haiku-5-5"
@@ -287,6 +291,29 @@ def judge_prompt(item: dict) -> str:
     return PROMPT.format(goal=item["goal"], request=item["request"], answer=item["answer"])
 
 
+def judge_dir(root: Path, model: str) -> Path:
+    """baselines/judge/<model>/, one level: an OpenRouter id's slash becomes -- (openrouter.dir_name)."""
+    return root / "baselines" / "judge" / openrouter.dir_name(model)
+
+
+def judge_meta(model: str, call) -> dict:
+    """What kind of judge wrote a file: eval_gains.py labels its row from this."""
+    if not openrouter.is_openrouter(model):
+        return {"provider": "claude", "judgeKind": "llm"}
+    return {"provider": "openrouter", "judgeKind": "decision" if getattr(call, "takes_item", False) else "llm"}
+
+
+def pick_call(model: str, call, dry_run: bool):
+    """The call for this model: the one given (tests), claude -p for a Claude id, OpenRouter for an id with a slash.
+    Checks the model id and the key before any call; a dry run needs no key."""
+    if call is not call_judge or not openrouter.is_openrouter(model):
+        return call
+    chosen = openrouter.caller(model)
+    if not dry_run:
+        openrouter.api_key()
+    return chosen
+
+
 def judge_files(model_dir: Path) -> list[Path]:
     return sorted(model_dir.glob("*.json")) + sorted((model_dir / KEY_DIR).glob("*.json"))
 
@@ -314,14 +341,15 @@ def estimate_cost(root: Path, model: str, items: list[dict], passes: int) -> tup
     calls planned. Per call, not per answer word: most of a call is fixed (claude -p's own prompt, the rubric, the
     request and the goal), so scaling by answer words underestimated it by about 40%."""
     cost, calls = 0.0, 0
-    model_dir = root / "baselines" / "judge" / model
+    model_dir = judge_dir(root, model)
     for f in judge_files(model_dir) if model_dir.is_dir() else []:
         d = json.loads(f.read_text())
         if d.get("costUsd") and d.get("answers"):
             cost += d["costUsd"]
             calls += len(d["answers"]) * (d.get("passes") or 1)
     if not calls:
-        return None, f"no past call of {model} in baselines/judge/ to estimate from: try --limit 1 first"
+        return None, (f"no past call of {model} in baselines/judge/ to estimate from: try --limit 1 first "
+                      "(a --limit file stays out of the README and skill-eval-gains.md)")
     return cost / calls * len(items) * passes, f"rough: ${cost / calls:.4f} per call, the mean of {calls} past calls of {model}"
 
 
@@ -332,9 +360,9 @@ def run_judge(items: list[dict], model: str, passes: int, workers: int, call=cal
     def run(job):
         k, _ = job
         try:
-            return k, call(judge_prompt(items[k]), model)
-        except Exception as e:
-            return k, {"error": str(e)[:200]}
+            return k, call(items[k] if getattr(call, "takes_item", False) else judge_prompt(items[k]), model)
+        except Exception as e:  # a billed reply that could not be used keeps its cost (openrouter.BilledError)
+            return k, {"error": str(e)[:200], "costUsd": getattr(e, "costUsd", None)}
 
     with ThreadPoolExecutor(workers) as pool:
         return list(pool.map(run, jobs))
@@ -391,6 +419,7 @@ def main_key(args, root: Path, call) -> int:
     if not items:
         print("nothing to judge")
         return 1
+    call = pick_call(args.model, call, args.dry_run)
     announce(root, args.model, items, args.passes, f"key {args.key.name}")
     if args.dry_run:
         chars = sizes(items)
@@ -404,10 +433,10 @@ def main_key(args, root: Path, call) -> int:
         item.pop("sheetId")  # the file joins on skill, id and words; the sheet's order stays out of it
     judged = [i for i in items if i["judge"] is not None]
     result = {"key": {"created": key.get("created"), "seed": key.get("seed"), "sheet": key.get("sheet"), "items": len(key["items"])},
-              "judgeModel": args.model, "calibrated": False, "blinding": "sheet", "promptsRev": args.prompts_rev, "passes": args.passes,
+              "judgeModel": args.model, **judge_meta(args.model, call), "calibrated": False, "blinding": "sheet", "promptsRev": args.prompts_rev, "passes": args.passes,
               "errors": len(errors), "firstError": errors[0] if errors else None, "noise": noise(items),
-              "costUsd": sum(r.get("costUsd") or 0 for _, r in results), "answers": items}
-    out = args.out or root / "baselines" / "judge" / args.model / KEY_DIR / f"{key.get('created')}-{key.get('seed')}.json"
+              "costUsd": sum(r.get("costUsd") or 0 for _, r in results), "longContextCalls": sum(bool(r.get("longContext")) for _, r in results), "answers": items}
+    out = args.out or judge_dir(root, args.model) / KEY_DIR / f"{key.get('created')}-{key.get('seed')}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(result, indent=2) + "\n")
     print(f"{args.model}: {len(judged)} of {len(items)} answers judged, errors {len(errors)}, noise {round(result['noise'] or 0, 3)}, "
@@ -428,7 +457,8 @@ def main(argv: list[str] | None = None, root: Path = ROOT, call=call_judge) -> i
                     "request hashes: the commit current when it was drawn)")
     ap.add_argument("--recorded", action="store_true", help="folders: judge the run recorded in baselines/<skill>.json, not eval-out/answers/")
     ap.add_argument("--dry-run", action="store_true", help="print the calls, the estimated cost and the prompts' sizes, no model call")
-    ap.add_argument("--model", default=JUDGE_MODEL)
+    ap.add_argument("--model", default=JUDGE_MODEL, help="a Claude id (claude-haiku-5-5) or an OpenRouter id with a slash "
+                    "(openai/..., typesafe/jev-1.14), which needs OPENROUTER_API_KEY")
     ap.add_argument("--passes", type=int, default=2, help="judge each answer this many times, to measure its noise")
     ap.add_argument("--limit", type=int, help="folders: only the first N answers per skill, to try it out")
     ap.add_argument("-j", type=int, default=4)
@@ -437,10 +467,14 @@ def main(argv: list[str] | None = None, root: Path = ROOT, call=call_judge) -> i
         ap.error("give either --key or one or more skill folders")
     if args.key:
         return main_key(args, root, call)
-    dest = root / "baselines" / "judge" / args.model
+    dest = judge_dir(root, args.model)
+    call = pick_call(args.model, call, args.dry_run)
     for folder in args.folders:
         folder = folder if folder.is_absolute() else root / folder
         folder, skill = folder.resolve(), folder.resolve().name
+        if (folder / "SKILL.md").is_file() and read_skill(folder / "SKILL.md")[0].get("legal") is True:
+            print(f"{skill}: {LEGAL_SKIP}", flush=True)
+            continue
         if args.recorded:
             answers = recorded_answers(root, skill)
             if not answers:
@@ -469,8 +503,9 @@ def main(argv: list[str] | None = None, root: Path = ROOT, call=call_judge) -> i
             continue
         results = run_judge(items, args.model, args.passes, args.j, call)
         errors = score_items(items, results)
-        out = {"skill": skill, "judgeModel": args.model, "calibrated": False, "passes": args.passes, "errors": len(errors), "firstError": errors[0] if errors else None,
-               "noise": noise(items), "costUsd": sum(r.get("costUsd") or 0 for _, r in results), "arms": summarise(items), "answers": items}
+        out = {"skill": skill, "judgeModel": args.model, **judge_meta(args.model, call), "answerSet": "recorded" if args.recorded else "latest",
+               "limit": args.limit, "calibrated": False, "passes": args.passes, "errors": len(errors), "firstError": errors[0] if errors else None,
+               "noise": noise(items), "costUsd": sum(r.get("costUsd") or 0 for _, r in results), "longContextCalls": sum(bool(r.get("longContext")) for _, r in results), "arms": summarise(items), "answers": items}
         dest.mkdir(parents=True, exist_ok=True)
         (dest / f"{skill}.json").write_text(json.dumps(out, indent=2) + "\n")
         print(skill, "errors", len(errors), "noise", round(out["noise"] or 0, 3), "cost", round(out["costUsd"], 2),

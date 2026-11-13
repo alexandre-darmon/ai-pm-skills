@@ -1,0 +1,375 @@
+{
+  "skill": "synthetic-eval-data",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.019444444444444462,
+  "costUsd": 0.1386204,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.7555555555555555,
+      "meetsGoal": 0.6111111111111112,
+      "regex": 0.9583333333333334,
+      "words": 814.0
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.6805555555555556,
+      "meetsGoal": 0.3194444444444444,
+      "regex": 0.30000000000000004,
+      "words": 662.6666666666666
+    }
+  },
+  "answers": [
+    {
+      "id": "07861fc3d6",
+      "case": "synthetic-eval-data-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.75,
+      "words": 880,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It defers the tuple table, recorded rejection rates, per-class synthetic shares and dated replacement plan instead of specifying them.",
+        "It does not provide actual tuples, explicitly require recording rejection rates, or commit to a dated replacement plan."
+      ]
+    },
+    {
+      "id": "ba4c844db1",
+      "case": "synthetic-eval-data-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 675,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It treats escalation rate as a quality signal without distinguishing appropriate safety escalations from avoidable failures.",
+        "It treats escalation as evidence of failure without separating appropriate handoffs from avoidable escalations."
+      ]
+    },
+    {
+      "id": "0ffba56831",
+      "case": "synthetic-eval-data-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.4,
+      "words": 402,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It lacks an explicit length, language and topic-mix comparison against pilot traffic and a reject-and-regenerate loop for mismatched synthetic cases.",
+        "It never requires comparing test-set length, language/style and topic mix against pilot traffic, then rejecting and regenerating mismatched synthetic cases."
+      ]
+    },
+    {
+      "id": "3af7d66db8",
+      "case": "synthetic-eval-data-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.125,
+      "words": 672,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits explicit tuples before generation, expert rejection rates, synthetic shares per class, and a dated plan to replace synthetic cases with real ones.",
+        "It omits explicit tuples before input generation, expert rejection-rate tracking, synthetic shares per class, and a dated plan to replace synthetic cases with real ones."
+      ]
+    },
+    {
+      "id": "3c2771421c",
+      "case": "synthetic-eval-data-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.4,
+      "words": 498,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It lacks an explicit compare\u2013reject\u2013regenerate loop against pilot length, language, writing style and topic distributions.",
+        "It lacks explicit pilot-based acceptance checks for length, language, writing style and class mix, followed by rejection and regeneration of mismatched synthetic cases."
+      ]
+    },
+    {
+      "id": "74cd9ff4f2",
+      "case": "synthetic-eval-data-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.875,
+      "words": 870,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "Despite rejecting model-written gold answers, it lets Model X draft expected key points and makes an independent judge optional.",
+        "Judge independence remains optional, and no validation acceptance criteria are defined before using its scores for go-live."
+      ]
+    },
+    {
+      "id": "fc79268fd8",
+      "case": "synthetic-eval-data-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1129,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It still lets Model X author gold answers, with only sampled expert approval, and makes independent judging optional.",
+        "It still permits Model X to generate gold answers, with only sampled expert review, and makes an independent judge optional."
+      ]
+    },
+    {
+      "id": "e20f59ac89",
+      "case": "synthetic-eval-data-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 795,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.55,
+        0.5
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It still lets Model X write the gold answers, while making real-traffic grounding and independent judge validation optional and omitting synthetic-share disclosure.",
+        "It still lets Model X write the gold answers, while making real-traffic grounding and independent judge validation optional and leaving the synthetic share undeclared."
+      ]
+    },
+    {
+      "id": "eab8578ec2",
+      "case": "synthetic-eval-data-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 792,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It defers the actual tuple list, per-class synthetic shares and dated replacement commitments instead of providing them.",
+        "It prescribes tuple lists, per-class synthetic shares and a replacement date without actually providing them."
+      ]
+    },
+    {
+      "id": "c12ef7a971",
+      "case": "synthetic-eval-data-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.4,
+      "words": 469,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It lacks an explicit length, language/style, and class-mix comparison against pilot traffic with rejection and regeneration of mismatched synthetic cases.",
+        "It lacks an explicit comparison of length, language/style and class mix against pilot traffic, with rejection and regeneration of mismatched synthetic cases."
+      ]
+    },
+    {
+      "id": "f96c78ebca",
+      "case": "synthetic-eval-data-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 591,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It wrongly assumes disagreement with escalation patterns proves the sampling or expected answers are wrong, overlooking appropriate escalations and operational causes.",
+        "It wrongly assumes disagreement with escalations proves sampling or answer-label errors, ignoring appropriate handoffs and operational causes."
+      ]
+    },
+    {
+      "id": "9c200a2b68",
+      "case": "synthetic-eval-data-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 639,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It incorrectly treats alignment with escalation rates as validation, although appropriate handoffs and operational issues can also drive escalations.",
+        "It wrongly treats alignment with escalation rates as validation, although appropriate handoffs and operational issues can also drive escalations."
+      ]
+    },
+    {
+      "id": "26f7468681",
+      "case": "synthetic-eval-data-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.125,
+      "words": 822,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.5,
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.125,
+      "weakest": [
+        "It flags circular evaluation but still lets Model X author gold answers, without real-traffic grounding, an independent validated judge, or declared synthetic share.",
+        "It still lets Model X author gold answers and judge itself, without real-traffic grounding or a declared synthetic share."
+      ]
+    },
+    {
+      "id": "fe9fb413b2",
+      "case": "synthetic-eval-data-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 962,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It identifies circular evaluation but still lets Model X write the gold answers, while making independent judging and real-traffic testing optional.",
+        "It still lets Model X author the gold answers, while making real-traffic grounding and an independent judge optional."
+      ]
+    },
+    {
+      "id": "c28afe5843",
+      "case": "synthetic-eval-data-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.0,
+      "words": 625,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits explicit coverage tuples before input generation, expert rejection-rate tracking, synthetic shares per class, and a dated replacement plan.",
+        "It omits explicit coverage tuples before generation, expert rejection-rate tracking, synthetic shares per class, and a dated plan to replace synthetic cases with real ones."
+      ]
+    },
+    {
+      "id": "290f0c4509",
+      "case": "synthetic-eval-data-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 846,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It defers the actual tuple list and exact 150-case allocation, and requests replacement dates rather than setting them.",
+        "It defers the actual tuple list and never commits to a dated replacement plan for synthetic cases."
+      ]
+    },
+    {
+      "id": "99e4c166b0",
+      "case": "synthetic-eval-data-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.25,
+      "words": 719,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits tuples before input generation, expert rejection-rate tracking, per-case synthetic flags and per-class shares, and a dated real-case replacement plan.",
+        "It omits explicit dimension tuples before generation, expert rejection-rate tracking, per-case synthetic flags and per-class shares, and a dated real-case replacement plan."
+      ]
+    },
+    {
+      "id": "b7d67ed8aa",
+      "case": "synthetic-eval-data-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 904,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It still has Model X draft expected answers and makes separation of the judge optional.",
+        "It still lets Model X draft the expected answers and makes independent judging optional, preserving the core circularity."
+      ]
+    }
+  ]
+}

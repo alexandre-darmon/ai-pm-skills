@@ -1,0 +1,375 @@
+{
+  "skill": "system-prompt-and-guardrails",
+  "judgeModel": "claude-sonnet-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.0361111111111111,
+  "costUsd": 0.3281155,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8888888888888888,
+      "meetsGoal": 0.9027777777777778,
+      "regex": 0.9666666666666666,
+      "words": 1138.4444444444443
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7694444444444444,
+      "meetsGoal": 0.5972222222222222,
+      "regex": 0.771969696969697,
+      "words": 653.4444444444445
+    }
+  },
+  "answers": [
+    {
+      "id": "da69d2d465",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7272727272727273,
+      "words": 984,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It never states that L4 stays blocked until action guardrails pass red-teaming; the red-team gate is only at the approval-mode stage, and it implies L4 is reachable next month with raised caps.",
+        "It never states plainly that L4 stays blocked until action guardrails pass red-teaming; the red-team gate appears only at the L2/L3 stage, with no pass criteria and no explicit re-gate before L4."
+      ]
+    },
+    {
+      "id": "1f944ce585",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8181818181818182,
+      "words": 909,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never states that L4 stays blocked until action guardrails pass red-teaming; it treats red-teaming as a rollout step and leaves autonomy timing to a staged ramp, with no explicit gate or pass criteria.",
+        "It never explicitly states that L4 stays blocked until action guardrails pass red-team; it only gestures at a staged rollout with pre-launch red-teaming and leaves cap values as placeholders, so the gate and approval rule are not a firm decision."
+      ]
+    },
+    {
+      "id": "689114129a",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.75,
+      "words": 414,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never frames a concrete tuning loop against an explicit false-positive budget with a re-run on the same redteam and legitimate sets; the 1-in-1,000 attack rate is assumed, and the tuning plan is only a short step among staged-rollout advice.",
+        "It does not lay out a concrete tuning plan against a defined false-positive budget with a re-run on the same redteam and legitimate-query sets; it leans on shadow mode and staged rollout, and its 1-in-1,000 base rate is an illustrative assumption."
+      ]
+    },
+    {
+      "id": "e94c45c4ef",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1994,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.95,
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Caps and approval thresholds are left as placeholders (\u20acX, N) with no proposed starting values or method for setting them, and the answer is long and slightly inconsistent in naming (request_refund wrapper vs. issue_refund in the output-guardrail commitment check).",
+        "Cap values, rate limits and the SLA are left as placeholders (\u20acX, N), so the PM still has to get them set before the caps can be enforced, and the answer is long enough that the one decision the PM needs could get buried."
+      ]
+    },
+    {
+      "id": "5d5c0de4d2",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 536,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.8,
+        0.8999999999999999
+      ],
+      "judge": 0.85,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The tuning plan is generic and lacks concrete iteration mechanics: no sample size for the legitimate-question set, no confidence-interval reasoning on the 5% budget, and no explicit stop or iteration limit if tuning fails to reach the budget.",
+        "The tuning plan lacks concrete iteration mechanics, such as how many tuning cycles to run, who signs off, and what happens if the 5% budget cannot be hit without losing attack recall."
+      ]
+    },
+    {
+      "id": "3819ce266d",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 639,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Refusal wording is only described in general terms rather than given as exact sample refusal and out-of-scope phrasing, and the explicit-scope definition of what HR topics are in-bounds is thin; it also never states that the prompt is no guarantee of safety, and the harassment 'don't ask for details' rule may conflict with mandatory reporting duties.",
+        "The prompt has no concrete refusal wording (exact decline phrases for out-of-scope, confidential, or legal questions), and it never says the prompt itself is no guarantee of safety or compliance, so it leaves regulated-company limits implicit."
+      ]
+    },
+    {
+      "id": "cd1a5dfbb3",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 640,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Refusal wording is mostly described rather than given as concrete scripted phrases, and out-of-scope handling is thin, with no explicit wording for declining or redirecting.",
+        "The refusal wording is only described in general terms, with no exact sample refusal or out-of-scope phrasing, and the out-of-scope handling is a thin one-liner."
+      ]
+    },
+    {
+      "id": "fa777cfcd8",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9,
+      "words": 772,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.8999999999999999,
+        0.8500000000000001
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The suggested red-team counts and false-positive budget are arbitrary, and the prompt leaves the refusal wording for several categories (legal advice, individual decisions) to the model instead of giving exact phrases.",
+        "The refusal wording is only given for off-topic requests and gap cases, while refusals for individual decisions, legal advice and other employees' data are described rather than given as exact scripts, and the 'red team' numbers are arbitrary."
+      ]
+    },
+    {
+      "id": "3750fba263",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2024,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.95,
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Cap values (\u20acX, \u20acY, \u20acZ) and eligibility rules are left as placeholders, and the L2-to-L4 path is somewhat inconsistent with the claim that L3 shadow is needed, so the PM still lacks concrete numbers to deploy today.",
+        "Cap values are left as placeholders (\u20acX, \u20acY, \u20acZ) and some figures like the 2% / 3% false-positive budget and 90% out-of-scope target are assumed, so the PM still has to propose starting numbers before the caps can be enforced."
+      ]
+    },
+    {
+      "id": "268fa9855f",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 865,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The prompt discusses 'the asker's own' data as refused and proposes an invented 2% false-positive figure and a three-leg check framing, while the answer is long on guardrail infrastructure beyond the scope/refusal/out-of-scope ask and slightly overreaches with a safety-adjacent framing.",
+        "It proposes an arbitrary 2% false-positive figure and adds heavy guardrail/eval machinery, and the prompt's 'no individual data, including the asker's own' rule and its 'ask once' location behavior are asserted rather than justified."
+      ]
+    },
+    {
+      "id": "0545012641",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.875,
+      "words": 390,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never sets an explicit false-positive budget (only 'low single digits') or a concrete re-run pass/fail criterion, and the 1% base rate and 87-100% interval are illustrative rather than tied to the user's actual traffic.",
+        "It never sets an explicit false-positive budget or a concrete pass/fail threshold for the re-run (only 'low single digits'), and the 1% attack base rate is an assumed figure, not tied to the PM's actual traffic."
+      ]
+    },
+    {
+      "id": "c51673edc1",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.75,
+      "words": 352,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.75,
+        0.65
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never lays out a concrete tuning plan against a false-positive budget with a re-run (threshold/rule tuning on the blocked legit questions); it defers analysis of the 30% to an offer and sets only a loose 2-5% bar.",
+        "It never lays out a tuning plan against an explicit false-positive budget with a re-run on the same red-team and legitimate sets; it defers tuning to an offer and substitutes shadow-mode launch and tiering."
+      ]
+    },
+    {
+      "id": "79244771ee",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 509,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It never sets a firm false-positive budget or concrete re-run pass criteria, only an assumed 2-5% pending confirmation, and the tuning steps stay generic with no owner or timeline.",
+        "It never states the false-positive budget as a firm decision or a concrete re-run pass/fail gate, and it leaves the \u22642\u20135% range open instead of committing to one number with a deadline."
+      ]
+    },
+    {
+      "id": "9f42b142f8",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7272727272727273,
+      "words": 1004,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never states that L4 stays blocked until action guardrails pass red-team: the rollout plan raises caps in week 3-4 on loss-rate thresholds, and the evals are only a gate in loose terms, with no explicit pass criteria or hard block on L4.",
+        "It never explicitly states that L4 stays blocked until action guardrails pass red-team; it gates on evals and a rollout schedule that raises caps by week 4, without a hard red-team pass criterion or a firm no-L4 decision."
+      ]
+    },
+    {
+      "id": "9d2f9f9be1",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2125,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        1.0,
+        1.0
+      ],
+      "judge": 1.0,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Shadow-run and L4 gates are well defined, but the answer gives no concrete numbers for the global hourly budget (left as \u20acX) and does not say who owns the redteam sign-off for L4.",
+        "Heavy volume of tables and assumptions may overwhelm; some numbers (95% pass rate, 2-week shadow run) are asserted as targets without justification, and the shadow-mode note slightly muddies the L4 gate."
+      ]
+    },
+    {
+      "id": "ccbd0c8519",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 539,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.8999999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The false-positive budget of 2-5% is only a proposed placeholder with no concrete tuning steps, thresholds, or sample sizes for the re-run, and the shadow-mode fallback is somewhat generic.",
+        "The false-positive budget is only a proposed 2-5% range with no concrete numeric pass thresholds, sample sizes, or iteration/stop criteria for the re-run, so the tuning plan stays somewhat generic."
+      ]
+    },
+    {
+      "id": "372f9932dd",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9,
+      "words": 882,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.8999999999999999,
+        1.0
+      ],
+      "judge": 0.95,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Refusal wording is given for only one example (other people's pay) rather than a set of scripted refusals for each out-of-scope category such as legal advice, individual case decisions, and off-topic questions.",
+        "Refusal wording is given for only one example while other refusals (legal advice, individual decisions, off-topic) lack concrete scripted phrasing, and the closing says guardrails reduce risk rather than the prompt itself avoiding any safety framing."
+      ]
+    },
+    {
+      "id": "455d781b9a",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7,
+      "words": 549,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "Refusal policy lacks concrete example wording and out-of-scope handling is thin (just 'politely decline'), and the 'Remind them reports can be confidential' line risks an unsupported assurance in a regulated context.",
+        "Refusal wording is only described, not given as exact sample phrases for out-of-scope or declined requests, and it lacks concrete handling for prompt-injection or conflicting-document cases and for the privacy-vs-own-data distinction."
+      ]
+    }
+  ]
+}

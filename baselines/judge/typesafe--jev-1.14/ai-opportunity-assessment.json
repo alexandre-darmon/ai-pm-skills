@@ -1,0 +1,603 @@
+{
+  "skill": "ai-opportunity-assessment",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.005983333333333326,
+  "costUsd": 0.006385764,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 15,
+      "judge": 0.9046166666666667,
+      "meetsGoal": 0.9300833333333334,
+      "regex": 0.9324074074074074,
+      "words": 1278.0
+    },
+    "without": {
+      "answers": 15,
+      "judge": 0.7645666666666667,
+      "meetsGoal": 0.7000833333333334,
+      "regex": 0.5531986531986531,
+      "words": 587.8
+    }
+  },
+  "answers": [
+    {
+      "id": "79b48ca36f",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8333333333333334,
+      "words": 1651,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.9175,
+        0.9179999999999999
+      ],
+      "judge": 0.91775,
+      "meetsGoal": 0.95125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "523bdf9cb1",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 369,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.825,
+        0.825
+      ],
+      "judge": 0.825,
+      "meetsGoal": 0.9537500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9968e4682f",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6363636363636364,
+      "words": 463,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.5890000000000001,
+        0.5805
+      ],
+      "judge": 0.5847500000000001,
+      "meetsGoal": 0.47125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2a297731f7",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 754,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.8805000000000001,
+        0.8740000000000001
+      ],
+      "judge": 0.8772500000000001,
+      "meetsGoal": 0.9175,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b33b86f1ee",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9166666666666666,
+      "words": 1547,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.9199999999999999,
+        0.9215
+      ],
+      "judge": 0.92075,
+      "meetsGoal": 0.9637499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "493861c372",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.75,
+      "words": 567,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.9295,
+        0.9285000000000001
+      ],
+      "judge": 0.929,
+      "meetsGoal": 0.9400000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4d283e4c80",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.625,
+      "words": 539,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.9059999999999999,
+        0.899
+      ],
+      "judge": 0.9025,
+      "meetsGoal": 0.9199999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7cb5b27dbd",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1026,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.9185000000000001,
+        0.9199999999999999
+      ],
+      "judge": 0.91925,
+      "meetsGoal": 0.965,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1aa9b13a46",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6363636363636364,
+      "words": 503,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.5185,
+        0.5105
+      ],
+      "judge": 0.5145,
+      "meetsGoal": 0.4475,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d53fdf07cc",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8333333333333334,
+      "words": 1485,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.8999999999999999,
+        0.895
+      ],
+      "judge": 0.8975,
+      "meetsGoal": 0.9437500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "df66503275",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.875,
+      "words": 1457,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.925,
+        0.9259999999999999
+      ],
+      "judge": 0.9255,
+      "meetsGoal": 0.95625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "8ea9f3af87",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.1111111111111111,
+      "words": 748,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.6060000000000001,
+        0.608
+      ],
+      "judge": 0.607,
+      "meetsGoal": 0.345,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "572c62a510",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 994,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.909,
+        0.8980000000000001
+      ],
+      "judge": 0.9035000000000001,
+      "meetsGoal": 0.96875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0a6c144020",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 1186,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.8965000000000001,
+        0.9024999999999999
+      ],
+      "judge": 0.8995,
+      "meetsGoal": 0.9112500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b7cda681d9",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 1469,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.9300000000000002,
+        0.921
+      ],
+      "judge": 0.9255000000000001,
+      "meetsGoal": 0.9225,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a38cd10c21",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1454,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.9300000000000002,
+        0.9289999999999998
+      ],
+      "judge": 0.9295,
+      "meetsGoal": 0.95875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ed850f446a",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 771,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.861,
+        0.8714999999999999
+      ],
+      "judge": 0.86625,
+      "meetsGoal": 0.9462499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d102a78be9",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 831,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.8649999999999998,
+        0.847
+      ],
+      "judge": 0.8559999999999999,
+      "meetsGoal": 0.81875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "41b6d24b41",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.1111111111111111,
+      "words": 907,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.6744999999999999,
+        0.6769999999999999
+      ],
+      "judge": 0.6757499999999999,
+      "meetsGoal": 0.4575,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "23ee338c1f",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 642,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.768,
+        0.762
+      ],
+      "judge": 0.765,
+      "meetsGoal": 0.59625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4835c94731",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 596,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.8050000000000002,
+        0.8
+      ],
+      "judge": 0.8025000000000001,
+      "meetsGoal": 0.72125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e14547be91",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.625,
+      "words": 555,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.9430000000000001,
+        0.9410000000000001
+      ],
+      "judge": 0.9420000000000001,
+      "meetsGoal": 0.9537500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "cce24716cd",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1189,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.8679999999999999,
+        0.8595000000000002
+      ],
+      "judge": 0.86375,
+      "meetsGoal": 0.8799999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c4ce26e7d5",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 377,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.8365,
+        0.835
+      ],
+      "judge": 0.83575,
+      "meetsGoal": 0.9662499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "47b142546e",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.75,
+      "words": 1379,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.9324999999999999,
+        0.933
+      ],
+      "judge": 0.93275,
+      "meetsGoal": 0.9537500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "cb43521dbf",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1344,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.8895,
+        0.8844999999999998
+      ],
+      "judge": 0.8869999999999999,
+      "meetsGoal": 0.8899999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b273c926d3",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1464,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.9055,
+        0.9015
+      ],
+      "judge": 0.9035,
+      "meetsGoal": 0.8225,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9e3eda9f04",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 478,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.5820000000000001,
+        0.5814999999999999
+      ],
+      "judge": 0.58175,
+      "meetsGoal": 0.3975000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "31d239d417",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 851,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.7755000000000001,
+        0.733
+      ],
+      "judge": 0.7542500000000001,
+      "meetsGoal": 0.5562499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "207e9e2775",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 391,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.891,
+        0.8945000000000001
+      ],
+      "judge": 0.89275,
+      "meetsGoal": 0.9562499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

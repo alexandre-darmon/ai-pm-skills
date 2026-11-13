@@ -1,0 +1,375 @@
+{
+  "skill": "retrieval-evaluation",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.0035833333333333333,
+  "costUsd": 0.003365544,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.9451388888888889,
+      "meetsGoal": 0.9648611111111111,
+      "regex": 0.8674843674843675,
+      "words": 765.1111111111111
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.8976111111111111,
+      "meetsGoal": 0.8018055555555557,
+      "regex": 0.5091390091390091,
+      "words": 634.8888888888889
+    }
+  },
+  "answers": [
+    {
+      "id": "7424411aee",
+      "case": "retrieval-evaluation-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.16666666666666666,
+      "words": 736,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.927,
+        0.933
+      ],
+      "judge": 0.93,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5b29a166d2",
+      "case": "retrieval-evaluation-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6363636363636364,
+      "words": 573,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.8050000000000002,
+        0.8134999999999999
+      ],
+      "judge": 0.80925,
+      "meetsGoal": 0.6000000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "eee7744266",
+      "case": "retrieval-evaluation-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8333333333333334,
+      "words": 865,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.9530000000000001,
+        0.9535
+      ],
+      "judge": 0.95325,
+      "meetsGoal": 0.975,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c455e0ba29",
+      "case": "retrieval-evaluation-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 642,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.9445000000000001,
+        0.9445000000000001
+      ],
+      "judge": 0.9445000000000001,
+      "meetsGoal": 0.9612499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "096b9ec5d9",
+      "case": "retrieval-evaluation-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9090909090909091,
+      "words": 842,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.931,
+        0.9345000000000001
+      ],
+      "judge": 0.9327500000000001,
+      "meetsGoal": 0.9537500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6755eb558b",
+      "case": "retrieval-evaluation-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.36363636363636365,
+      "words": 678,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.8374999999999999,
+        0.855
+      ],
+      "judge": 0.84625,
+      "meetsGoal": 0.665,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "df285decca",
+      "case": "retrieval-evaluation-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.2857142857142857,
+      "words": 522,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.9544999999999999,
+        0.9564999999999999
+      ],
+      "judge": 0.9554999999999999,
+      "meetsGoal": 0.9312500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5d4d6bb3c2",
+      "case": "retrieval-evaluation-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.2727272727272727,
+      "words": 640,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.7565,
+        0.7565
+      ],
+      "judge": 0.7565,
+      "meetsGoal": 0.5974999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "8b235edf4b",
+      "case": "retrieval-evaluation-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8571428571428571,
+      "words": 581,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.9484999999999999,
+        0.9490000000000001
+      ],
+      "judge": 0.94875,
+      "meetsGoal": 0.9375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e21cd01f96",
+      "case": "retrieval-evaluation-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 732,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.9490000000000001,
+        0.948
+      ],
+      "judge": 0.9485,
+      "meetsGoal": 0.9725000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "11decc5beb",
+      "case": "retrieval-evaluation-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 1.0,
+      "words": 547,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.9510000000000001,
+        0.956
+      ],
+      "judge": 0.9535,
+      "meetsGoal": 0.91,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b18ccc696c",
+      "case": "retrieval-evaluation-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8181818181818182,
+      "words": 791,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.9260000000000002,
+        0.9245000000000001
+      ],
+      "judge": 0.9252500000000001,
+      "meetsGoal": 0.9612499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "707c3dd41d",
+      "case": "retrieval-evaluation-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 831,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.9570000000000001,
+        0.956
+      ],
+      "judge": 0.9565,
+      "meetsGoal": 0.9750000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "599e2a7886",
+      "case": "retrieval-evaluation-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.3333333333333333,
+      "words": 698,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.9289999999999998,
+        0.925
+      ],
+      "judge": 0.9269999999999999,
+      "meetsGoal": 0.8724999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "697f3443d0",
+      "case": "retrieval-evaluation-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8571428571428571,
+      "words": 696,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.9550000000000001,
+        0.9504999999999999
+      ],
+      "judge": 0.95275,
+      "meetsGoal": 0.9612499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1e748844f9",
+      "case": "retrieval-evaluation-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.5714285714285714,
+      "words": 720,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.9564999999999999,
+        0.9550000000000001
+      ],
+      "judge": 0.95575,
+      "meetsGoal": 0.9649999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "dcb7467028",
+      "case": "retrieval-evaluation-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 739,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.95,
+        0.9535
+      ],
+      "judge": 0.95175,
+      "meetsGoal": 0.9525000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "995f479ffb",
+      "case": "retrieval-evaluation-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8181818181818182,
+      "words": 767,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.9390000000000001,
+        0.935
+      ],
+      "judge": 0.937,
+      "meetsGoal": 0.95875,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

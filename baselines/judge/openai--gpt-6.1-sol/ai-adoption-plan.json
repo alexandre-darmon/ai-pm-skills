@@ -1,0 +1,489 @@
+{
+  "skill": "ai-adoption-plan",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.02083333333333334,
+  "costUsd": 0.1755942,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 12,
+      "judge": 0.7875,
+      "meetsGoal": 0.8229166666666666,
+      "regex": 0.9498316498316498,
+      "words": 749.5833333333334
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.6791666666666667,
+      "meetsGoal": 0.3958333333333333,
+      "regex": 0.6053030303030303,
+      "words": 568.5833333333334
+    }
+  },
+  "answers": [
+    {
+      "id": "72250871da",
+      "case": "ai-adoption-plan-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 605,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It leaves calibration pass criteria and restrictions on reviewers who fail undecided.",
+        "It leaves severity-based pass criteria and the gate for independent review unspecified."
+      ]
+    },
+    {
+      "id": "80a5d66062",
+      "case": "ai-adoption-plan-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9090909090909091,
+      "words": 1697,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Wave gates lack concrete thresholds, decision deadlines and defined stop conditions, leaving rollout readiness unresolved.",
+        "Wave gates lack proposed thresholds, concrete stop conditions, and decision deadlines, leaving rollout readiness unresolved."
+      ]
+    },
+    {
+      "id": "5499e8e9cf",
+      "case": "ai-adoption-plan-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8,
+      "words": 405,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It buries awareness among hypotheses and never explicitly checks whether non-users have access.",
+        "It does not prioritize checking awareness and actual access, and it dismisses quality too confidently given selection-biased ratings."
+      ]
+    },
+    {
+      "id": "2c0f3b74a0",
+      "case": "ai-adoption-plan-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1214,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Wave gates lack defined thresholds, accountable owners and a Q2 schedule.",
+        "Wave gates lack defined success thresholds, accountable decision-makers, and explicit stop or rollback conditions."
+      ]
+    },
+    {
+      "id": "ce21197178",
+      "case": "ai-adoption-plan-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 593,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It gives sceptics seats but assigns no owners to their objections and makes no explicit DPO-agreed logging gate before any wave.",
+        "It leaves objections without owners and DPO agreement on logging and access without an explicit pre-wave gate."
+      ]
+    },
+    {
+      "id": "21234441e4",
+      "case": "ai-adoption-plan-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 417,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It does not explicitly gate every pilot or rollout on DPO-agreed logging and access, seat sceptics, or assign owners to objections.",
+        "It does not explicitly gate every pilot on DPO-agreed logging and access rules, seat sceptics, or assign owners to objections."
+      ]
+    },
+    {
+      "id": "9601f86c92",
+      "case": "ai-adoption-plan-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 679,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits training on actual agent failures, explicit override duties, catch/false-alarm scoring, and dated evidence of results.",
+        "It omits training on the agent\u2019s own failures, explicit override duties, catch/false-alarm scoring, and dated evidence of results."
+      ]
+    },
+    {
+      "id": "4a527951cb",
+      "case": "ai-adoption-plan-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 448,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never requires DPO agreement on staff logging and access before any pilot, seats sceptics, or assigns owners to objections.",
+        "It does not gate even the pilot on DPO-agreed staff logging and access, seat sceptics, or assign owners to objections."
+      ]
+    },
+    {
+      "id": "f8430e1224",
+      "case": "ai-adoption-plan-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6,
+      "words": 421,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It should prioritize verifying awareness and access among non-users rather than assuming churned users are the most informative group.",
+        "It should prioritize checking awareness and access among non-users rather than assuming churned users are the most informative group."
+      ]
+    },
+    {
+      "id": "ccbf3d5551",
+      "case": "ai-adoption-plan-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 624,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.8999999999999999,
+        0.95
+      ],
+      "judge": 0.9249999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It leaves qualification criteria unresolved, especially which critical misses must bar an adjuster from independent review.",
+        "Calibration readiness remains underspecified: no minimum case coverage, critical-error pass rule, or owner for setting thresholds."
+      ]
+    },
+    {
+      "id": "99effb95a8",
+      "case": "ai-adoption-plan-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6,
+      "words": 401,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It spreads the diagnosis across many hypotheses instead of prioritizing immediate checks of awareness, permissions, and access among non-users.",
+        "It does not prioritize checking awareness and access barriers before broadening into other adoption hypotheses."
+      ]
+    },
+    {
+      "id": "0f15830987",
+      "case": "ai-adoption-plan-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 554,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits training on the agent\u2019s actual failures, over-trust and override duties, and a seeded-error test scored on catches and false alarms with dated results.",
+        "It substitutes agreement calibration for training on the agent\u2019s actual failures, over-trust and override duties, and a seeded-error test scored on catches and false alarms with dated evidence."
+      ]
+    },
+    {
+      "id": "196e6881dd",
+      "case": "ai-adoption-plan-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 526,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Objection ownership is deferred, and DPO agreement on staff logging and access is not an explicit prerequisite for the pilot or any wave.",
+        "It defers assigning objection owners and never explicitly gates the pilot and every wave on DPO-agreed logging and access rules."
+      ]
+    },
+    {
+      "id": "eccd2d7658",
+      "case": "ai-adoption-plan-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8,
+      "words": 350,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It asserts dissatisfied users stopped using without evidence and never explicitly checks whether non-users have access.",
+        "It assumes dissatisfied users stopped rating and omits an explicit check that non-users have access."
+      ]
+    },
+    {
+      "id": "fdd83e68ee",
+      "case": "ai-adoption-plan-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 443,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Redefining adoption around active users obscures the non-users whose awareness and access need diagnosing.",
+        "Its proposed adoption metric excludes non-users, obscuring the awareness and access problem it correctly prioritizes."
+      ]
+    },
+    {
+      "id": "91acfbaa3f",
+      "case": "ai-adoption-plan-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5454545454545454,
+      "words": 581,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits training on the agent\u2019s own failures, explicit override duties, seeded-error testing scored on catches and false alarms, and dated evidence of results.",
+        "It omits training on the agent\u2019s own failures, explicit override duties, seeded-error testing scored on catches and false alarms, and dated evidence of results."
+      ]
+    },
+    {
+      "id": "904dffdaea",
+      "case": "ai-adoption-plan-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7272727272727273,
+      "words": 798,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It does not assign a champion to every branch or define separate adoption metrics for advisers, managers, and champions.",
+        "It does not assign a champion to every branch or define separate adoption metrics for advisers, managers, and champions."
+      ]
+    },
+    {
+      "id": "ab84498e84",
+      "case": "ai-adoption-plan-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7272727272727273,
+      "words": 950,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.65,
+        0.7
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It does not commit to manager-first rollout waves, a champion in every branch, or separate metrics for managers, champions and advisers.",
+        "Waves remain optional, champions are shared across branches, and metrics are not defined separately for advisers, managers, and champions."
+      ]
+    },
+    {
+      "id": "fb12419b67",
+      "case": "ai-adoption-plan-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.2727272727272727,
+      "words": 801,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It invents the calendar, sources all branches\u2019 champions from a ten-branch pilot, and omits champion-specific metrics.",
+        "It invents the calendar, cannot source every branch\u2019s champions from a ten-branch pilot, and lacks champion-specific metrics."
+      ]
+    },
+    {
+      "id": "6f790ca26a",
+      "case": "ai-adoption-plan-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 599,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The calibration test lacks a risk-based pass rule and a defined process for establishing correct answers.",
+        "It leaves severity-based pass criteria unresolved and treats samples as a quality measure without requiring representative selection and independently validated labels."
+      ]
+    },
+    {
+      "id": "8b5af32b8a",
+      "case": "ai-adoption-plan-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1340,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Wave sizes and release thresholds remain undecided, and champions are guaranteed only for pilot branches.",
+        "It leaves wave sizes, launch thresholds and champion coverage beyond the pilot undecided."
+      ]
+    },
+    {
+      "id": "28550332f0",
+      "case": "ai-adoption-plan-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7,
+      "words": 383,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never explicitly checks access or permissions, and its closing claim that the model is fine overstates what self-selected user ratings establish.",
+        "It never explicitly checks access barriers and overclaims that satisfied users prove the model is fine."
+      ]
+    },
+    {
+      "id": "63a4529273",
+      "case": "ai-adoption-plan-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 390,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It does not gate every rollout wave on DPO-agreed staff logging and access rules, seat sceptics explicitly, or assign owners to objections.",
+        "It does not gate every rollout wave on DPO-agreed logging and access rules, seat sceptics in governance, or assign owners to objections."
+      ]
+    },
+    {
+      "id": "8fd617097d",
+      "case": "ai-adoption-plan-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 599,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.8999999999999999,
+        0.8500000000000001
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It does not define safety escalation or stop rules for incorrect maintenance advice.",
+        "The pre-wave gate needs explicit DPO approval of the logging, access and retention rules."
+      ]
+    }
+  ]
+}

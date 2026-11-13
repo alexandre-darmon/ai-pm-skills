@@ -72,3 +72,9 @@
 {"skill": "multi-turn-evals", "kind": "regrade", "date": "2026-11-12", "pass": true, "meanDelta": 0.4993, "skillHash": "337607799c1a", "casesHash": "8774033f59f8", "failures": []}
 {"skill": "red-team-evals", "kind": "full", "date": "2026-11-12", "pass": false, "meanDelta": 0.4283, "skillHash": "2cc58f62d343", "casesHash": "9bf27473d206", "failures": ["red-team-evals-002: red line redline-exposure-not-conversations missed in 1/3 runs", "red-team-evals-003: score 0.74 < threshold 0.80"]}
 {"skill": "red-team-evals", "kind": "regrade", "date": "2026-11-12", "pass": true, "meanDelta": 0.4722, "skillHash": "2cc58f62d343", "casesHash": "cae1728617af", "failures": []}
+{"skill": "model-selection", "kind": "with-arm", "date": "2026-11-13", "pass": true, "meanDelta": 0.2525, "skillHash": "9a2e90a844bf", "casesHash": "c2dd2f983bc7", "failures": []}
+{"skill": "agent-design-and-tooling", "kind": "with-arm", "date": "2026-11-13", "pass": false, "meanDelta": 0.4333, "skillHash": "d5a90157e81d", "casesHash": "df979b81a603", "failures": ["agent-design-and-tooling-001: score 0.77 < threshold 0.80", "agent-design-and-tooling-001: red line redline-no-multi missed in 1/3 runs"]}
+{"skill": "system-prompt-and-guardrails", "kind": "with-arm", "date": "2026-11-13", "pass": true, "meanDelta": 0.1947, "skillHash": "a2705977b7b6", "casesHash": "82c0f20e0b84", "failures": []}
+{"skill": "llm-judge-calibration", "kind": "with-arm", "date": "2026-11-13", "pass": true, "meanDelta": 0.3157, "skillHash": "0af577a2e844", "casesHash": "45e1fafd8bb5", "failures": []}
+{"skill": "agent-design-and-tooling", "kind": "full", "date": "2026-11-13", "pass": true, "meanDelta": 0.4778, "skillHash": "a8f8f0146f46", "casesHash": "d8453c03a2e2", "failures": []}
+{"skill": "agent-design-and-tooling", "kind": "with-arm", "date": "2026-11-13", "pass": true, "meanDelta": 0.4667, "skillHash": "c001484c4522", "casesHash": "d8453c03a2e2", "failures": []}

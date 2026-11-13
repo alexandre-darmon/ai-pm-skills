@@ -1,0 +1,375 @@
+{
+  "skill": "system-prompt-and-guardrails",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.01666666666666665,
+  "costUsd": 0.1382064,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.7972222222222222,
+      "meetsGoal": 0.875,
+      "regex": 0.9666666666666666,
+      "words": 1138.4444444444443
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7305555555555556,
+      "meetsGoal": 0.5972222222222222,
+      "regex": 0.771969696969697,
+      "words": 653.4444444444445
+    }
+  },
+  "answers": [
+    {
+      "id": "da69d2d465",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7272727272727273,
+      "words": 984,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Caps remain placeholders, refund policy is assumed, and the red-team gate lacks explicit pass criteria.",
+        "It invents refund eligibility policy while leaving binding caps and red-team pass criteria undecided."
+      ]
+    },
+    {
+      "id": "1f944ce585",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8181818181818182,
+      "words": 909,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It requires running red-team tests but does not explicitly block L4 until action guardrails pass defined release criteria.",
+        "It calls for red-teaming but never explicitly blocks L4 until action guardrails pass defined release criteria."
+      ]
+    },
+    {
+      "id": "689114129a",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.75,
+      "words": 414,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.6,
+        0.55
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It recommends going live in nonblocking shadow mode without establishing that existing controls make this safe in a regulated environment.",
+        "It authorizes immediate shadow-mode launch without establishing safe fallback controls and leaves the false-positive budget and post-tuning re-run insufficiently decided."
+      ]
+    },
+    {
+      "id": "e94c45c4ef",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1994,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It incorrectly claims that absent outbound tools prevent exfiltration and that remaining risk is limited to capped refunds.",
+        "Caps remain placeholders, and atomic enforcement against concurrent or repeated refunds is not specified."
+      ]
+    },
+    {
+      "id": "5d5c0de4d2",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 536,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.8999999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The proposed launch thresholds need risk-based justification and validation on a representative, adequately sized legitimate-query holdout.",
+        "The proposed launch thresholds need justification against actual customer harm and regulatory requirements, not just product-owner confirmation."
+      ]
+    },
+    {
+      "id": "3819ce266d",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 639,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It lacks explicit refusal wording and overclaims that document-only instructions stop hallucinated policy.",
+        "It claims the prompt stops hallucinated policy and omits explicit refusal and out-of-scope response wording."
+      ]
+    },
+    {
+      "id": "cd1a5dfbb3",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 640,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It defines refusal boundaries but omits ready-to-use refusal wording for restricted requests.",
+        "It defines refusal boundaries but omits explicit employee-facing refusal wording."
+      ]
+    },
+    {
+      "id": "fa777cfcd8",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9,
+      "words": 772,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.8999999999999999,
+        0.95
+      ],
+      "judge": 0.9249999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Blanket routing of sensitive situations may suppress useful, document-grounded policy guidance when employees most need it.",
+        "Sensitive-case routing assumes confidential channels exist and may unnecessarily withhold useful policy guidance."
+      ]
+    },
+    {
+      "id": "3750fba263",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2024,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It overclaims that bounded refunds break the attack path and asserts an unsupported mandatory autonomy ladder.",
+        "Caps remain unset, and bounded refunds do not eliminate the outbound abuse path."
+      ]
+    },
+    {
+      "id": "268fa9855f",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 865,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It invents a tool-free architecture and claims the outbound risk is broken, overlooking disclosure through chat itself.",
+        "It invents the absence of tools and outbound paths, then uses that assumption to make an unsupported safety claim."
+      ]
+    },
+    {
+      "id": "0545012641",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.875,
+      "words": 390,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It proposes tuning and re-testing but does not set an explicit false-positive budget as a mandatory release gate.",
+        "It proposes tuning and a re-run but never sets an explicit false-positive budget as a binding launch gate."
+      ]
+    },
+    {
+      "id": "c51673edc1",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.75,
+      "words": 352,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.6,
+        0.55
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It recommends live shadow mode before establishing safe containment and assumes the false-positive data came from real traffic.",
+        "It proposes staged deployment before fixing a false-positive budget and tuning to it, while assuming unsupported facts about the evaluation data."
+      ]
+    },
+    {
+      "id": "79244771ee",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 509,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The re-run criterion incorrectly asks for attack pass rate to stay at or above baseline, and the test-set minimums are unsupported.",
+        "The re-run criterion incorrectly requires attack pass rate to stay at or above its current level, potentially accepting worse security."
+      ]
+    },
+    {
+      "id": "9f42b142f8",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7272727272727273,
+      "words": 1004,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Week 3 permits autonomous refunds without explicitly requiring action guardrails to pass red-team tests first.",
+        "The rollout schedules autonomous refunds without explicitly blocking L4 until action-guardrail redteam tests pass defined acceptance criteria."
+      ]
+    },
+    {
+      "id": "9d2f9f9be1",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2125,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It permits autonomous below-cap refunds before redteam passes, labeling them L3 rather than requiring human approval during validation.",
+        "It permits automatic below-cap refunds before redteam passes while calling that L3, undermining the stated L4 gate."
+      ]
+    },
+    {
+      "id": "ccbd0c8519",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 539,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.8999999999999999,
+        0.8500000000000001
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The re-run needs statistically justified sample sizes and explicit security acceptance thresholds, not an arbitrary minimum of five indirect injections.",
+        "The re-run plan uses arbitrary sample minimums and leaves the security acceptance threshold undecided."
+      ]
+    },
+    {
+      "id": "372f9932dd",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9,
+      "words": 882,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.95,
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The sample refusal claims the assistant cannot see compensation data, although its access is unknown.",
+        "The blanket restriction on discussing specific complaints could block legitimate procedural help for an employee\u2019s own complaint."
+      ]
+    },
+    {
+      "id": "455d781b9a",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7,
+      "words": 549,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It defines refusal boundaries but provides no actual refusal wording or useful redirection for out-of-scope requests.",
+        "It lacks explicit refusal wording and overstates prompt-level privacy protection."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "skill": "agent-design-and-tooling",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.03333333333333331,
+  "costUsd": 0.142926,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.7861111111111111,
+      "meetsGoal": 0.9305555555555556,
+      "regex": 0.9555555555555555,
+      "words": 1012.0
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7472222222222222,
+      "meetsGoal": 0.3888888888888889,
+      "regex": 0.48888888888888893,
+      "words": 679.4444444444445
+    }
+  },
+  "answers": [
+    {
+      "id": "544c58da08",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 863,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.6,
+        0.7
+      ],
+      "judge": 0.6499999999999999,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never delivers a permission matrix with a concrete payment cap and an explicit rule for when human approval is required.",
+        "It omits the permission matrix with an explicit payment cap and an enforceable human-approval rule for exceptions."
+      ]
+    },
+    {
+      "id": "ca886c6407",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8,
+      "words": 1160,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents owner confirmation and cost sizing for caps and budgets that should remain explicitly provisional.",
+        "It claims owner-confirmed limits and a justified cost cap without evidence, rather than marking them as proposals awaiting validation."
+      ]
+    },
+    {
+      "id": "2a8de26171",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9,
+      "words": 1014,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8,
+        0.8999999999999999
+      ],
+      "judge": 0.85,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Draft validation checks numeric facts but does not verify that dispute conclusions are supported by ERP evidence and approved policy.",
+        "Fallback lookup conflicts with the invoice-not-found escalation rule and lacks a deterministic rule for selecting among matching invoices."
+      ]
+    },
+    {
+      "id": "8effdcf1fa",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 765,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.55,
+        0.6
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never supplies a permission matrix with a proposed enforceable payment cap and an explicit approval rule above that cap.",
+        "It never supplies the required permission matrix with a concrete proposed payment cap and an explicit approval rule for exceptions."
+      ]
+    },
+    {
+      "id": "9b57db4d50",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6,
+      "words": 560,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The single-controller pipeline needs explicit retry limits, timeouts, and privacy-safe trace controls for regulated deployment.",
+        "Stop conditions need operational limits: defined confidence thresholds, ERP timeouts, and bounded retries."
+      ]
+    },
+    {
+      "id": "4cf2e27487",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1302,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The write protocol binds approvals only above the cap, contradicting the interim requirement for human approval of every payment.",
+        "The payment protocol depends on new prepare, commit and reconciliation capabilities without explicitly making their implementation a prerequisite."
+      ]
+    },
+    {
+      "id": "0334eb978d",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.1,
+      "words": 554,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It picks the framework first and names step and budget caps without defining enforceable limits.",
+        "It picks the framework first and mentions step and budget caps without defining an enforceable stopping policy."
+      ]
+    },
+    {
+      "id": "33792432d4",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 1052,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "Tool isolation limits damage but does not prevent injected instructions from reaching the drafting model through extracted fields.",
+        "The optional fuzzy-matching loop lacks a defined model-call cap and conflicts with the stated two-call limit."
+      ]
+    },
+    {
+      "id": "a642c8f6bd",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 537,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It recommends a raw loop without establishing operational requirements, and its budget formula is not an enforceable spending cap.",
+        "The proposed budget is not an enforceable spending cap, and rejecting both frameworks is premature without operational requirements."
+      ]
+    },
+    {
+      "id": "8a13a1fe45",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1221,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The payment protocol depends on new prepare, commit and reconciliation capabilities without specifying how the existing payment tool will support them.",
+        "The payment protocol needs explicit atomic cap enforcement and safe timeout reconciliation to prevent concurrent or retried calls from overpaying."
+      ]
+    },
+    {
+      "id": "b1993bede2",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1729,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Above-cap approval is allowed in the matrix but conflicts with the tool\u2019s within-cap-only rule, leaving execution ambiguous.",
+        "Draft-scoped idempotency can allow duplicate payments if the same goodwill decision generates a new draft."
+      ]
+    },
+    {
+      "id": "4b09bd3cdc",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.1,
+      "words": 515,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It leads with the framework and mentions caps without defining enforceable maximum steps and spend-budget stop conditions.",
+        "It leads with the framework and never specifies an enforceable maximum-step and spend-budget stopping rule."
+      ]
+    },
+    {
+      "id": "d2a9356b05",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 529,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It dismisses both shortlisted frameworks before establishing recovery and approval requirements, and leaves the per-run budget undefined.",
+        "It recommends a raw loop without establishing why neither shortlisted framework fits the regulated workflow."
+      ]
+    },
+    {
+      "id": "38a33001c7",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 564,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The prototype lacks explicit release gates for coverage accuracy, correct policy versions, and safe handling of unsupported conclusions.",
+        "The raw-loop recommendation dismisses LangGraph before establishing the company's operational and auditability requirements."
+      ]
+    },
+    {
+      "id": "4209975e53",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 692,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "ERP lookup lacks explicit customer-authorization checks and concrete limits for fallback searches and execution time.",
+        "It rejects multi-agent orchestration but leaves the single controller\u2019s terminal states, ERP timeout limits, and fallback-search budget unspecified."
+      ]
+    },
+    {
+      "id": "d2a9b839b3",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.1,
+      "words": 559,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It leads with the framework choice instead of ending with it, and leaves step and budget limits unspecified.",
+        "It picks the framework first and mentions caps and budgets without defining enforceable stopping rules."
+      ]
+    },
+    {
+      "id": "b70328fc9f",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8,
+      "words": 769,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never supplies a permission matrix with a decided payment cap and an explicit rule for when human approval is required.",
+        "It never supplies a permission matrix with an explicit payment cap and a rule specifying when human approval is required."
+      ]
+    },
+    {
+      "id": "2dbc107eb4",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6,
+      "words": 838,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It leaves separate agents optional instead of decisively specifying one bounded control loop with explicit stop conditions and end-to-end traces.",
+        "It leaves three separate agents as an option instead of decisively specifying one bounded control loop with explicit terminal states."
+      ]
+    }
+  ]
+}

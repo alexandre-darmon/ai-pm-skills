@@ -1,0 +1,197 @@
+{
+  "skill": "assistant-kpis-cost-per-outcome",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.0037222222222221824,
+  "costUsd": 0.00230496,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.9128055555555554,
+      "meetsGoal": 0.8941666666666666,
+      "regex": 0.9717813051146383,
+      "words": 1287.4444444444443
+    }
+  },
+  "answers": [
+    {
+      "id": "98dcfa8786",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1328,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.9300000000000002,
+        0.9309999999999998
+      ],
+      "judge": 0.9305,
+      "meetsGoal": 0.83875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "af21a8dd37",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1125,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.8489999999999998,
+        0.8374999999999999
+      ],
+      "judge": 0.8432499999999998,
+      "meetsGoal": 0.84625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9a05b55b18",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1031,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.8875,
+        0.8859999999999999
+      ],
+      "judge": 0.8867499999999999,
+      "meetsGoal": 0.84375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "fe83eadf55",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1527,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.9285000000000001,
+        0.9300000000000002
+      ],
+      "judge": 0.9292500000000001,
+      "meetsGoal": 0.905,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3b64ac9cdc",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1501,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.9359999999999999,
+        0.938
+      ],
+      "judge": 0.9369999999999999,
+      "meetsGoal": 0.9649999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2633a6a457",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1395,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.9484999999999999,
+        0.9510000000000001
+      ],
+      "judge": 0.94975,
+      "meetsGoal": 0.9649999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "64f76497b2",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1185,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.8865000000000001,
+        0.8919999999999999
+      ],
+      "judge": 0.88925,
+      "meetsGoal": 0.87375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7cfe7214e1",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8571428571428571,
+      "words": 1278,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.9544999999999999,
+        0.9515
+      ],
+      "judge": 0.953,
+      "meetsGoal": 0.96,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6cd7b21890",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 1217,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.899,
+        0.8939999999999999
+      ],
+      "judge": 0.8965,
+      "meetsGoal": 0.85,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

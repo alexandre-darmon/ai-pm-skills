@@ -24,7 +24,7 @@ Labels made without seeing the judge's verdicts: <yes / no>.
 Enrichment of fails: <none / how>.
 
 ## Targets, set before measuring
-| Metric | Target | Gate on | Signed by | Date |
+| Metric | Target | Gate on | Signed by (or: proposal, unsigned) | Date |
 | --- | --- | --- | --- | --- |
 | TPR | | point / lower bound | | |
 | TNR | | point / lower bound | | |
@@ -53,7 +53,7 @@ Raw agreement: <x>, not used for the decision (a judge passing everything would 
 
 ## Corrected pass rate on traffic
 Sample: <n answers, period, how sampled>. Judge pass rate (observed): <x>.
-Corrected rate: <x>, 95% interval <lo> to <hi> (<method>). Threshold of the decision: <t>. Reading: <met / missed / inside the interval, not decided>.
+Corrected rate: <x>, 95% interval <lo> to <hi> (<method>). Largest source of uncertainty: <sample / TPR / TNR, from the computed terms>. Threshold of the decision: <t>. Reading: <met / missed / inside the interval, not decided>.
 
 ## Status
 <Gate for this failure mode / Not a gate yet>. Until it is a gate: <who reviews what the judge would decide>.

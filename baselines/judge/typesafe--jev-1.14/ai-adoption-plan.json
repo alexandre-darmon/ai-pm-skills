@@ -1,0 +1,489 @@
+{
+  "skill": "ai-adoption-plan",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.003208333333333318,
+  "costUsd": 0.004066692,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 12,
+      "judge": 0.9110833333333334,
+      "meetsGoal": 0.9410416666666667,
+      "regex": 0.9498316498316498,
+      "words": 749.5833333333334
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.8548333333333334,
+      "meetsGoal": 0.8503124999999999,
+      "regex": 0.6053030303030303,
+      "words": 568.5833333333334
+    }
+  },
+  "answers": [
+    {
+      "id": "72250871da",
+      "case": "ai-adoption-plan-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 605,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.8995000000000002,
+        0.903
+      ],
+      "judge": 0.9012500000000001,
+      "meetsGoal": 0.9449999999999998,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "80a5d66062",
+      "case": "ai-adoption-plan-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9090909090909091,
+      "words": 1697,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.921,
+        0.9195
+      ],
+      "judge": 0.92025,
+      "meetsGoal": 0.9550000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5499e8e9cf",
+      "case": "ai-adoption-plan-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8,
+      "words": 405,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.9215,
+        0.9179999999999999
+      ],
+      "judge": 0.91975,
+      "meetsGoal": 0.95625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2c0f3b74a0",
+      "case": "ai-adoption-plan-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1214,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.8685,
+        0.8614999999999999
+      ],
+      "judge": 0.865,
+      "meetsGoal": 0.8737499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ce21197178",
+      "case": "ai-adoption-plan-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 593,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.9199999999999999,
+        0.9239999999999999
+      ],
+      "judge": 0.9219999999999999,
+      "meetsGoal": 0.9462499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "21234441e4",
+      "case": "ai-adoption-plan-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 417,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.8684999999999998,
+        0.8714999999999999
+      ],
+      "judge": 0.8699999999999999,
+      "meetsGoal": 0.87625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9601f86c92",
+      "case": "ai-adoption-plan-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 679,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.7865,
+        0.7805
+      ],
+      "judge": 0.7835,
+      "meetsGoal": 0.7,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4a527951cb",
+      "case": "ai-adoption-plan-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 448,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.8585,
+        0.857
+      ],
+      "judge": 0.85775,
+      "meetsGoal": 0.81625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "f8430e1224",
+      "case": "ai-adoption-plan-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6,
+      "words": 421,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.9460000000000002,
+        0.95
+      ],
+      "judge": 0.9480000000000001,
+      "meetsGoal": 0.97,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ccbf3d5551",
+      "case": "ai-adoption-plan-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 624,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.897,
+        0.8915000000000002
+      ],
+      "judge": 0.8942500000000001,
+      "meetsGoal": 0.93625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "99effb95a8",
+      "case": "ai-adoption-plan-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6,
+      "words": 401,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.9485000000000001,
+        0.9495
+      ],
+      "judge": 0.9490000000000001,
+      "meetsGoal": 0.9725000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0f15830987",
+      "case": "ai-adoption-plan-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 554,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.643,
+        0.6495000000000001
+      ],
+      "judge": 0.64625,
+      "meetsGoal": 0.595,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "196e6881dd",
+      "case": "ai-adoption-plan-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 526,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.9115,
+        0.9079999999999999
+      ],
+      "judge": 0.90975,
+      "meetsGoal": 0.9424999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "eccd2d7658",
+      "case": "ai-adoption-plan-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8,
+      "words": 350,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.9319999999999999,
+        0.9335
+      ],
+      "judge": 0.93275,
+      "meetsGoal": 0.9624999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "fdd83e68ee",
+      "case": "ai-adoption-plan-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 443,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.931,
+        0.935
+      ],
+      "judge": 0.933,
+      "meetsGoal": 0.95125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "91acfbaa3f",
+      "case": "ai-adoption-plan-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5454545454545454,
+      "words": 581,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.6505000000000001,
+        0.6575
+      ],
+      "judge": 0.654,
+      "meetsGoal": 0.59625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "904dffdaea",
+      "case": "ai-adoption-plan-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7272727272727273,
+      "words": 798,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.9309999999999998,
+        0.9285000000000001
+      ],
+      "judge": 0.92975,
+      "meetsGoal": 0.93375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ab84498e84",
+      "case": "ai-adoption-plan-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7272727272727273,
+      "words": 950,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.9395,
+        0.9335
+      ],
+      "judge": 0.9365,
+      "meetsGoal": 0.9575,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "fb12419b67",
+      "case": "ai-adoption-plan-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.2727272727272727,
+      "words": 801,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.9045000000000001,
+        0.9060000000000001
+      ],
+      "judge": 0.9052500000000001,
+      "meetsGoal": 0.9550000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6f790ca26a",
+      "case": "ai-adoption-plan-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 599,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.8969999999999998,
+        0.8984999999999999
+      ],
+      "judge": 0.8977499999999998,
+      "meetsGoal": 0.9424999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "8b5af32b8a",
+      "case": "ai-adoption-plan-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1340,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.921,
+        0.9205000000000001
+      ],
+      "judge": 0.9207500000000001,
+      "meetsGoal": 0.9337500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "28550332f0",
+      "case": "ai-adoption-plan-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7,
+      "words": 383,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.9390000000000001,
+        0.94
+      ],
+      "judge": 0.9395,
+      "meetsGoal": 0.9662499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "63a4529273",
+      "case": "ai-adoption-plan-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 390,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.8385,
+        0.8385
+      ],
+      "judge": 0.8385,
+      "meetsGoal": 0.8650000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "8fd617097d",
+      "case": "ai-adoption-plan-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 599,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.917,
+        0.9159999999999999
+      ],
+      "judge": 0.9165,
+      "meetsGoal": 0.9475,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

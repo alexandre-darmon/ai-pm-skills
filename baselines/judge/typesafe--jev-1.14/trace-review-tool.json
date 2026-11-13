@@ -1,0 +1,489 @@
+{
+  "skill": "trace-review-tool",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.010354166666666673,
+  "costUsd": 0.00558894,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 12,
+      "judge": 0.8810416666666666,
+      "meetsGoal": 0.8590625,
+      "regex": 0.9186342592592592,
+      "words": 1122.5
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.6397291666666667,
+      "meetsGoal": 0.4990625,
+      "regex": 0.5440972222222222,
+      "words": 906.8333333333334
+    }
+  },
+  "answers": [
+    {
+      "id": "31f5bee04a",
+      "case": "trace-review-tool-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9444444444444444,
+      "words": 668,
+      "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
+      "scores": [
+        0.8440000000000001,
+        0.8425
+      ],
+      "judge": 0.84325,
+      "meetsGoal": 0.9025,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d3a475bf37",
+      "case": "trace-review-tool-004",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9,
+      "words": 1262,
+      "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
+      "scores": [
+        0.8594999999999999,
+        0.849
+      ],
+      "judge": 0.85425,
+      "meetsGoal": 0.835,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1f7791dad1",
+      "case": "trace-review-tool-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7777777777777778,
+      "words": 652,
+      "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
+      "scores": [
+        0.5955,
+        0.6335000000000001
+      ],
+      "judge": 0.6145,
+      "meetsGoal": 0.44375000000000003,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6a2ed64a1d",
+      "case": "trace-review-tool-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 985,
+      "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
+      "scores": [
+        0.555,
+        0.5425
+      ],
+      "judge": 0.5487500000000001,
+      "meetsGoal": 0.3125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c156961ecc",
+      "case": "trace-review-tool-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8333333333333334,
+      "words": 577,
+      "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
+      "scores": [
+        0.7234999999999999,
+        0.7435
+      ],
+      "judge": 0.7335,
+      "meetsGoal": 0.55625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c9cc2c3e2d",
+      "case": "trace-review-tool-004",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 820,
+      "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
+      "scores": [
+        0.8039999999999998,
+        0.784
+      ],
+      "judge": 0.7939999999999999,
+      "meetsGoal": 0.7025,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "700a3f36d1",
+      "case": "trace-review-tool-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 905,
+      "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
+      "scores": [
+        0.47750000000000004,
+        0.4545
+      ],
+      "judge": 0.466,
+      "meetsGoal": 0.32,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ab7ad8cfa5",
+      "case": "trace-review-tool-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.2222222222222222,
+      "words": 1211,
+      "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
+      "scores": [
+        0.7050000000000001,
+        0.7004999999999999
+      ],
+      "judge": 0.70275,
+      "meetsGoal": 0.5487500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "deda02d6ae",
+      "case": "trace-review-tool-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9375,
+      "words": 1344,
+      "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
+      "scores": [
+        0.9425000000000001,
+        0.9415
+      ],
+      "judge": 0.9420000000000001,
+      "meetsGoal": 0.9424999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "21ea55f3fe",
+      "case": "trace-review-tool-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7777777777777778,
+      "words": 609,
+      "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
+      "scores": [
+        0.666,
+        0.649
+      ],
+      "judge": 0.6575,
+      "meetsGoal": 0.565,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5c56baaedc",
+      "case": "trace-review-tool-004",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8,
+      "words": 1281,
+      "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
+      "scores": [
+        0.8880000000000001,
+        0.877
+      ],
+      "judge": 0.8825000000000001,
+      "meetsGoal": 0.76125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5be1639723",
+      "case": "trace-review-tool-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 648,
+      "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
+      "scores": [
+        0.833,
+        0.8445
+      ],
+      "judge": 0.83875,
+      "meetsGoal": 0.8812500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "018702284e",
+      "case": "trace-review-tool-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.2222222222222222,
+      "words": 1347,
+      "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
+      "scores": [
+        0.7550000000000001,
+        0.7689999999999999
+      ],
+      "judge": 0.762,
+      "meetsGoal": 0.5762499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "77421c7873",
+      "case": "trace-review-tool-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.3333333333333333,
+      "words": 1070,
+      "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
+      "scores": [
+        0.584,
+        0.603
+      ],
+      "judge": 0.5934999999999999,
+      "meetsGoal": 0.41375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1a6786fa4e",
+      "case": "trace-review-tool-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5625,
+      "words": 882,
+      "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
+      "scores": [
+        0.477,
+        0.47450000000000003
+      ],
+      "judge": 0.47575,
+      "meetsGoal": 0.38625000000000004,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d492a56fa1",
+      "case": "trace-review-tool-004",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6,
+      "words": 928,
+      "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
+      "scores": [
+        0.5935,
+        0.599
+      ],
+      "judge": 0.59625,
+      "meetsGoal": 0.55,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "026621759d",
+      "case": "trace-review-tool-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1018,
+      "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
+      "scores": [
+        0.8585,
+        0.841
+      ],
+      "judge": 0.84975,
+      "meetsGoal": 0.7575000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0f5dca66b1",
+      "case": "trace-review-tool-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9375,
+      "words": 1358,
+      "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
+      "scores": [
+        0.9415,
+        0.9464999999999999
+      ],
+      "judge": 0.944,
+      "meetsGoal": 0.9475,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2dcf8f46a8",
+      "case": "trace-review-tool-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 734,
+      "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
+      "scores": [
+        0.841,
+        0.8420000000000001
+      ],
+      "judge": 0.8415,
+      "meetsGoal": 0.87875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e9f2173c72",
+      "case": "trace-review-tool-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9375,
+      "words": 1126,
+      "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
+      "scores": [
+        0.9395,
+        0.9415
+      ],
+      "judge": 0.9405,
+      "meetsGoal": 0.95125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c789fac6a0",
+      "case": "trace-review-tool-004",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7,
+      "words": 896,
+      "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
+      "scores": [
+        0.7314999999999999,
+        0.733
+      ],
+      "judge": 0.73225,
+      "meetsGoal": 0.61375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e7e67f5d2d",
+      "case": "trace-review-tool-004",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 1324,
+      "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
+      "scores": [
+        0.8394999999999999,
+        0.8394999999999999
+      ],
+      "judge": 0.8394999999999999,
+      "meetsGoal": 0.75625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e2b8fb634c",
+      "case": "trace-review-tool-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.7777777777777778,
+      "words": 1209,
+      "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
+      "scores": [
+        0.8905000000000001,
+        0.8965000000000001
+      ],
+      "judge": 0.8935000000000001,
+      "meetsGoal": 0.8462500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "71f5732508",
+      "case": "trace-review-tool-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 1498,
+      "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
+      "scores": [
+        0.9010000000000002,
+        0.905
+      ],
+      "judge": 0.9030000000000001,
+      "meetsGoal": 0.84875,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

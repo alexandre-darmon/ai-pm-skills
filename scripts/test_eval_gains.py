@@ -45,11 +45,37 @@ class EvalGainsTest(unittest.TestCase):
         (self.root / "baselines/judge/claude-haiku-5-5/s.json").write_text(json.dumps({
             "calibrated": False, "noise": 0.05, "answers": answers,
             "arms": {a: {"words": 500} for a in ("without", "template", "with")}}))
+        (self.root / "README.md").write_text("top\n<!-- gains:start -->\nold\n<!-- gains:end -->\nbottom\n")
         out = main(self.root, draws=200)
+        readme = (self.root / "README.md").read_text()
+        self.assertIn("| 40% | 70% | **90%** | +50 pts | +20 pts |", readme)
+        self.assertIn("| Blind LLM judge, Haiku 5.5: 1 of these skills, 2 cases, earlier runs | 60% | 70% | 80% | +20 pts | +10 pts |", readme)
+        self.assertNotIn("[+", readme)
+        self.assertNotIn("calibrated", readme)
+        self.assertTrue(readme.startswith("top\n") and readme.endswith("bottom\n"))
         self.assertIn("| 40% | 70% | **90%** | +50 [+50, +50] |", out)
-        self.assertIn("| Blind LLM judge, Haiku 5.5: 1 of these skills, 2 cases, earlier runs, not calibrated | 60% | 70% | 80% | +20 [+20, +20] | +10 [+10, +10] |", out)
+        self.assertIn("| Blind LLM judge, Haiku 5.5: 1 of these skills, 2 cases, earlier runs | 60% | 70% | 80% | +20 [+20, +20] | +10 [+10, +10] |", out)
         self.assertIn("| 50% | 83% | **100%** |", out)
         self.assertIn("| `s` | Haiku 5.5 | 60% | 70% | 80% | +20 pts | +10 pts | 5 pts | 500 / 500 / 500 |", out)
+
+    def judge_file(self, folder, **extra):
+        (self.root / "baselines/judge" / folder).mkdir(parents=True)
+        answers = [{"case": c, "arm": arm, "judge": v} for c in ("s-001", "s-002") for arm, v in (("without", 0.6), ("with", 0.8))]
+        (self.root / "baselines/judge" / folder / "s.json").write_text(json.dumps({
+            "calibrated": False, "noise": 0.05, "answers": answers, "arms": {a: {"words": 500} for a in ("without", "with")}, **extra}))
+
+    def test_other_vendor_judges_are_labelled_by_kind_and_answer_set(self):
+        self.judge_file("typesafe--jev-1.14", judgeModel="typesafe/jev-1.14", judgeKind="decision", answerSet="recorded")
+        self.judge_file("openai--gpt-6.1-sol", judgeModel="openai/gpt-6.1-sol", judgeKind="llm", answerSet="latest")
+        out = main(self.root, draws=200)
+        self.assertIn("| Blind decision model, typesafe/jev-1.14: 1 of these skills, 2 cases, recorded runs |", out)
+        self.assertIn("| Blind LLM judge, openai/gpt-6.1-sol: 1 of these skills, 2 cases, earlier runs |", out)
+
+    def test_a_limit_trial_stays_out_of_the_tables(self):
+        self.judge_file("typesafe--jev-1.14", judgeModel="typesafe/jev-1.14", judgeKind="decision", answerSet="recorded", limit=1)
+        out = main(self.root, draws=200)
+        self.assertNotIn("jev", out)
+        self.assertNotIn("jev", (self.root / "README.md").read_text())
 
     def test_template_arm_on_other_cases_is_left_out(self):
         (self.root / "baselines/template-arm").mkdir()

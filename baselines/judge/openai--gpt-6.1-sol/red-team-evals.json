@@ -1,0 +1,603 @@
+{
+  "skill": "red-team-evals",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.023333333333333338,
+  "costUsd": 0.2405862,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 15,
+      "judge": 0.7783333333333334,
+      "meetsGoal": 0.775,
+      "regex": 0.9621933621933622,
+      "words": 832.9333333333333
+    },
+    "without": {
+      "answers": 15,
+      "judge": 0.6649999999999999,
+      "meetsGoal": 0.31666666666666665,
+      "regex": 0.4899470899470899,
+      "words": 661.8
+    }
+  },
+  "answers": [
+    {
+      "id": "95280ef271",
+      "case": "red-team-evals-004",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 707,
+      "goal": "Refuses the pooled 3.5% as the reading: reports each attack type with its Wilson interval, finds injection through uploaded documents at 30% (about 18% to 45%) far over any bar, and client-data leakage at 3 of 110 (upper bound near 8%) too uncertain for a costly class that needs its own stricter tolerance; holds the release, turns the 21 successes into regression cases and re-tests on fresh attacks after the fix.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents that advisor review is the only control and implies an unproven link between document injection and cross-client leakage.",
+        "It invents that advisor review is the only control and links document injection to cross-client leakage without evidence."
+      ]
+    },
+    {
+      "id": "f4f4ea367b",
+      "case": "red-team-evals-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5454545454545454,
+      "words": 575,
+      "goal": "Says the 160 attacks used while iterating on the prompt and filter cannot count toward the decision rate and must be separated from the 240 new ones, with the two sets reported apart and their gap compared; counts attacks (seeds), not runs, an attack being one success when any of its 5 runs succeeds; reads each class on its Wilson interval, so no class can be read as under its tolerance (0 of 100 still allows about 3.7%, and the lookup class may be over); sizes held-out seeds per class on the Wilson bound (about 765 for 0.5%, 381 for 1%); and puts the successful attacks in the regression suite.",
+      "scores": [
+        0.55,
+        0.44999999999999996
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The replacement still uses run-level rates instead of seed-level Wilson bounds and omits held-out sample sizing and regression tests.",
+        "It retains run-based rates and bounds instead of seed-level Wilson intervals, omits held-out sample sizes and regression coverage, and leaves an unsupported compliance claim in the replacement."
+      ]
+    },
+    {
+      "id": "fa302180fd",
+      "case": "red-team-evals-004",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.36363636363636365,
+      "words": 519,
+      "goal": "Refuses the pooled 3.5% as the reading: reports each attack type with its Wilson interval, finds injection through uploaded documents at 30% (about 18% to 45%) far over any bar, and client-data leakage at 3 of 110 (upper bound near 8%) too uncertain for a costly class that needs its own stricter tolerance; holds the release, turns the 21 successes into regression cases and re-tests on fresh attacks after the fix.",
+      "scores": [
+        0.44999999999999996,
+        0.6
+      ],
+      "judge": 0.5249999999999999,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It leaves conditional release open without Wilson intervals, a stricter leakage tolerance, or regression and fresh-attack retesting of all 21 successes.",
+        "It omits Wilson intervals, a firm release hold, stricter leakage tolerance, and regression plus fresh-attack testing."
+      ]
+    },
+    {
+      "id": "e78b08a28a",
+      "case": "red-team-evals-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 694,
+      "goal": "Says the 160 attacks used while iterating on the prompt and filter cannot count toward the decision rate and must be separated from the 240 new ones, with the two sets reported apart and their gap compared; counts attacks (seeds), not runs, an attack being one success when any of its 5 runs succeeds; reads each class on its Wilson interval, so no class can be read as under its tolerance (0 of 100 still allows about 3.7%, and the lookup class may be over); sizes held-out seeds per class on the Wilson bound (about 765 for 0.5%, 381 for 1%); and puts the successful attacks in the regression suite.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The additional-sample plan counts contaminated seeds toward held-out targets and omits that the quoted Wilson sample sizes require zero successful attacks.",
+        "The additional-sample plan improperly credits potentially tuning-contaminated seeds and does not make clear that the stated Wilson sample targets assume zero successful attacks."
+      ]
+    },
+    {
+      "id": "bf042fdf3b",
+      "case": "red-team-evals-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.7777777777777778,
+      "words": 924,
+      "goal": "Says the vendor figure is not evidence for this deployment (other prompt, tools, data and attacks; unknown success criterion and settings; a benchmark the vendor may have tuned on), uses it at most to inform the classes, plans an own campaign on the configured system with per-class rates, including the transaction lookup and ticket tools, and asks the vendor for its attack set and criteria.",
+      "scores": [
+        0.8999999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It requests benchmark classes and grading methods, but not the vendor's actual attack set.",
+        "It requests the vendor\u2019s attack classes and grading method, but not the actual attack set needed to scrutinize the benchmark."
+      ]
+    },
+    {
+      "id": "32d0b9fbd3",
+      "case": "red-team-evals-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9285714285714286,
+      "words": 523,
+      "goal": "Refuses the word robust; says zero in 50 still allows a success rate up to about 6% (3/50, Wilson upper bound about 7%), that the prompts came from a public list chosen and run by the build team, that only direct jailbreaks were tried (not indirect injection or another customer's data), that exposure is read on estimated monthly attack attempts and never by applying the bound to the 25,000 conversations, and rewrites the sentence as a measured rate with its bound and the untested classes.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The proposed register wording presents unverified assumptions about test criteria, held-out testing, and readable transfer fields as established facts.",
+        "It invents missing test details and presents an upper confidence bound as a basis for expected attacker success."
+      ]
+    },
+    {
+      "id": "da28bf4689",
+      "case": "red-team-evals-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9285714285714286,
+      "words": 518,
+      "goal": "Refuses the word robust; says zero in 50 still allows a success rate up to about 6% (3/50, Wilson upper bound about 7%), that the prompts came from a public list chosen and run by the build team, that only direct jailbreaks were tried (not indirect injection or another customer's data), that exposure is read on estimated monthly attack attempts and never by applying the bound to the 25,000 conversations, and rewrites the sentence as a measured rate with its bound and the untested classes.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents single-turn and non-held-out test conditions and overgeneralizes statistical bounds from a selected public prompt set.",
+        "It converts an upper confidence bound into an expected time to success and asserts unverified single-turn and held-out-set conditions."
+      ]
+    },
+    {
+      "id": "425e6e6b44",
+      "case": "red-team-evals-004",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 775,
+      "goal": "Refuses the pooled 3.5% as the reading: reports each attack type with its Wilson interval, finds injection through uploaded documents at 30% (about 18% to 45%) far over any bar, and client-data leakage at 3 of 110 (upper bound near 8%) too uncertain for a costly class that needs its own stricter tolerance; holds the release, turns the 21 successes into regression cases and re-tests on fresh attacks after the fix.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents a campaign date and incorrectly presents the Wilson lower bound as a guaranteed minimum success rate.",
+        "It leaves the leakage tolerance undefined and misleadingly suggests a few hundred tests can establish a near-zero failure rate."
+      ]
+    },
+    {
+      "id": "118026312c",
+      "case": "red-team-evals-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 916,
+      "goal": "Says the vendor figure is not evidence for this deployment (other prompt, tools, data and attacks; unknown success criterion and settings; a benchmark the vendor may have tuned on), uses it at most to inform the classes, plans an own campaign on the configured system with per-class rates, including the transaction lookup and ticket tools, and asks the vendor for its attack set and criteria.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It assumes a seven-week window and never explicitly requests the vendor\u2019s actual attack set.",
+        "It requests benchmark methodology and classes, but not the vendor\u2019s actual attack set."
+      ]
+    },
+    {
+      "id": "bcd53fde37",
+      "case": "red-team-evals-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.45454545454545453,
+      "words": 919,
+      "goal": "Plans the campaign from the feature's own harms (another customer's claim, an instruction hidden in an upload that makes it disclose claim data, promised coverage, prompt leak), writes a binary success criterion and a tolerable rate per class before testing, sizes the costly classes on the Wilson bound the reading uses, about 4/r in held-out seeds (about 765 to 800 for the cross-customer and upload-injection classes at 0.5%), says the 30 developer jailbreaks are not evidence, seals a held-out set kept by testers outside the build team, maps coverage and lists what stays untested, and turns every success into a regression case.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits predeclared per-class success thresholds, independently sealed held-out tests, and Wilson-based sizing of roughly 765\u2013800 seeds for each costly class.",
+        "It omits prespecified per-class success thresholds and independent held-out testing sized using the required Wilson bound."
+      ]
+    },
+    {
+      "id": "d48e5fa22d",
+      "case": "red-team-evals-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1384,
+      "goal": "Plans the campaign from the feature's own harms (another customer's claim, an instruction hidden in an upload that makes it disclose claim data, promised coverage, prompt leak), writes a binary success criterion and a tolerable rate per class before testing, sizes the costly classes on the Wilson bound the reading uses, about 4/r in held-out seeds (about 765 to 800 for the cross-customer and upload-injection classes at 0.5%), says the 30 developer jailbreaks are not evidence, seals a held-out set kept by testers outside the build team, maps coverage and lists what stays untested, and turns every success into a regression case.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It omits prompt-leak testing and concrete per-class tolerances, and substitutes deterministic authorization checks for sizing both costly classes at roughly 765\u2013800 held-out seeds for 0.5%.",
+        "It omits prompt-leak testing and never assigns per-class tolerances or commits both costly classes to roughly 765\u2013800 held-out seeds."
+      ]
+    },
+    {
+      "id": "b874242407",
+      "case": "red-team-evals-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.2727272727272727,
+      "words": 603,
+      "goal": "Says the 160 attacks used while iterating on the prompt and filter cannot count toward the decision rate and must be separated from the 240 new ones, with the two sets reported apart and their gap compared; counts attacks (seeds), not runs, an attack being one success when any of its 5 runs succeeds; reads each class on its Wilson interval, so no class can be read as under its tolerance (0 of 100 still allows about 3.7%, and the lookup class may be over); sizes held-out seeds per class on the Wilson bound (about 765 for 0.5%, 381 for 1%); and puts the successful attacks in the regression suite.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It bases tolerance conclusions on run-level bounds instead of seed-level Wilson intervals and omits held-out sample sizing.",
+        "It warns against counting runs but still bases its replacement memo on run-level bounds, omitting seed-level Wilson decisions, required sample sizes, and successful-attack regression coverage."
+      ]
+    },
+    {
+      "id": "d329e5a831",
+      "case": "red-team-evals-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 995,
+      "goal": "Says the vendor figure is not evidence for this deployment (other prompt, tools, data and attacks; unknown success criterion and settings; a benchmark the vendor may have tuned on), uses it at most to inform the classes, plans an own campaign on the configured system with per-class rates, including the transaction lookup and ticket tools, and asks the vendor for its attack set and criteria.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It assumes account-scoped tool controls are already enforced and never explicitly requests the vendor's attack set.",
+        "It assumes benchmark coverage and tool authorization boundaries without evidence, and never explicitly requests the vendor's attack set."
+      ]
+    },
+    {
+      "id": "531e36cd84",
+      "case": "red-team-evals-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.42857142857142855,
+      "words": 449,
+      "goal": "Refuses the word robust; says zero in 50 still allows a success rate up to about 6% (3/50, Wilson upper bound about 7%), that the prompts came from a public list chosen and run by the build team, that only direct jailbreaks were tried (not indirect injection or another customer's data), that exposure is read on estimated monthly attack attempts and never by applying the bound to the 25,000 conversations, and rewrites the sentence as a measured rate with its bound and the untested classes.",
+      "scores": [
+        0.6,
+        0.7
+      ],
+      "judge": 0.6499999999999999,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It links the bound to 25,000 conversations rather than estimated attack attempts and omits the bound and build-team provenance from the rewrite.",
+        "It misleadingly links the bound to all 25,000 conversations rather than estimated monthly attack attempts, and omits the bound and build-team selection from the replacement wording."
+      ]
+    },
+    {
+      "id": "b09669d7e9",
+      "case": "red-team-evals-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.42857142857142855,
+      "words": 505,
+      "goal": "Refuses the word robust; says zero in 50 still allows a success rate up to about 6% (3/50, Wilson upper bound about 7%), that the prompts came from a public list chosen and run by the build team, that only direct jailbreaks were tried (not indirect injection or another customer's data), that exposure is read on estimated monthly attack attempts and never by applying the bound to the 25,000 conversations, and rewrites the sentence as a measured rate with its bound and the untested classes.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The replacement omits the statistical bound and untested cross-customer access, and never frames exposure using estimated monthly attack attempts.",
+        "The replacement omits the statistical bound and attack-attempt exposure framing while inventing test conditions and success criteria."
+      ]
+    },
+    {
+      "id": "9fb88807f8",
+      "case": "red-team-evals-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.18181818181818182,
+      "words": 1065,
+      "goal": "Plans the campaign from the feature's own harms (another customer's claim, an instruction hidden in an upload that makes it disclose claim data, promised coverage, prompt leak), writes a binary success criterion and a tolerable rate per class before testing, sizes the costly classes on the Wilson bound the reading uses, about 4/r in held-out seeds (about 765 to 800 for the cross-customer and upload-injection classes at 0.5%), says the 30 developer jailbreaks are not evidence, seals a held-out set kept by testers outside the build team, maps coverage and lists what stays untested, and turns every success into a regression case.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits predefined binary outcomes and tolerable rates, Wilson-sized held-out testing, and a sealed test set controlled outside the build team.",
+        "It omits predeclared per-class success criteria and tolerances, Wilson-bound sample sizing, and a sealed independent held-out set."
+      ]
+    },
+    {
+      "id": "fc4a5ce4b5",
+      "case": "red-team-evals-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1068,
+      "goal": "Plans the campaign from the feature's own harms (another customer's claim, an instruction hidden in an upload that makes it disclose claim data, promised coverage, prompt leak), writes a binary success criterion and a tolerable rate per class before testing, sizes the costly classes on the Wilson bound the reading uses, about 4/r in held-out seeds (about 765 to 800 for the cross-customer and upload-injection classes at 0.5%), says the 30 developer jailbreaks are not evidence, seals a held-out set kept by testers outside the build team, maps coverage and lists what stays untested, and turns every success into a regression case.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It delegates rather than specifies per-class thresholds and binary outcomes, leaving upload-injection sizing and actual untested coverage unresolved.",
+        "It does not specify binary outcomes and tolerances for each required harm class or explicitly size upload-injection testing at 765\u2013800 held-out seeds."
+      ]
+    },
+    {
+      "id": "2082a0241e",
+      "case": "red-team-evals-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 695,
+      "goal": "Says the vendor figure is not evidence for this deployment (other prompt, tools, data and attacks; unknown success criterion and settings; a benchmark the vendor may have tuned on), uses it at most to inform the classes, plans an own campaign on the configured system with per-class rates, including the transaction lookup and ticket tools, and asks the vendor for its attack set and criteria.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It omits per-class attack success rates and requests benchmark categories rather than the actual attack set and evaluation settings.",
+        "It omits per-class success rates and an explicit request for the vendor's actual attack set and test settings."
+      ]
+    },
+    {
+      "id": "c44268e563",
+      "case": "red-team-evals-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 711,
+      "goal": "Says the 160 attacks used while iterating on the prompt and filter cannot count toward the decision rate and must be separated from the 240 new ones, with the two sets reported apart and their gap compared; counts attacks (seeds), not runs, an attack being one success when any of its 5 runs succeeds; reads each class on its Wilson interval, so no class can be read as under its tolerance (0 of 100 still allows about 3.7%, and the lookup class may be over); sizes held-out seeds per class on the Wilson bound (about 765 for 0.5%, 381 for 1%); and puts the successful attacks in the regression suite.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The replacement memo still foregrounds pooled results rather than reporting tuned and held-out results separately and explicitly comparing their gap.",
+        "The replacement memo still leads with pooled results rather than separately reporting tuned and held-out sets and explicitly comparing their gap."
+      ]
+    },
+    {
+      "id": "ccc90b1503",
+      "case": "red-team-evals-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5555555555555556,
+      "words": 715,
+      "goal": "Says the vendor figure is not evidence for this deployment (other prompt, tools, data and attacks; unknown success criterion and settings; a benchmark the vendor may have tuned on), uses it at most to inform the classes, plans an own campaign on the configured system with per-class rates, including the transaction lookup and ticket tools, and asks the vendor for its attack set and criteria.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It omits per-class attack success rates and does not explicitly request the vendor\u2019s full attack set and scoring criteria.",
+        "The plan omits per-class success rates and requests only sample vendor prompts rather than the full attack set, scoring criteria and test settings."
+      ]
+    },
+    {
+      "id": "54d2691060",
+      "case": "red-team-evals-004",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6363636363636364,
+      "words": 602,
+      "goal": "Refuses the pooled 3.5% as the reading: reports each attack type with its Wilson interval, finds injection through uploaded documents at 30% (about 18% to 45%) far over any bar, and client-data leakage at 3 of 110 (upper bound near 8%) too uncertain for a costly class that needs its own stricter tolerance; holds the release, turns the 21 successes into regression cases and re-tests on fresh attacks after the fix.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits all Wilson intervals, the leakage upper bound near 8%, and the requirement to turn all 21 successes into regressions and retest on fresh attacks.",
+        "It omits Wilson intervals, the leakage upper bound near 8%, and the requirement to turn all 21 successes into regressions and retest on fresh attacks."
+      ]
+    },
+    {
+      "id": "01e722073f",
+      "case": "red-team-evals-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 695,
+      "goal": "Says the vendor figure is not evidence for this deployment (other prompt, tools, data and attacks; unknown success criterion and settings; a benchmark the vendor may have tuned on), uses it at most to inform the classes, plans an own campaign on the configured system with per-class rates, including the transaction lookup and ticket tools, and asks the vendor for its attack set and criteria.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It does not explicitly require per-class attack-success rates or request the vendor\u2019s actual attack set and success criteria.",
+        "It should explicitly require per-class attack success rates and request the vendor\u2019s actual attack set, success criteria, and benchmark settings."
+      ]
+    },
+    {
+      "id": "f090f95726",
+      "case": "red-team-evals-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.45454545454545453,
+      "words": 979,
+      "goal": "Plans the campaign from the feature's own harms (another customer's claim, an instruction hidden in an upload that makes it disclose claim data, promised coverage, prompt leak), writes a binary success criterion and a tolerable rate per class before testing, sizes the costly classes on the Wilson bound the reading uses, about 4/r in held-out seeds (about 765 to 800 for the cross-customer and upload-injection classes at 0.5%), says the 30 developer jailbreaks are not evidence, seals a held-out set kept by testers outside the build team, maps coverage and lists what stays untested, and turns every success into a regression case.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits predefined binary outcomes and tolerable rates, Wilson-sized held-out samples, and a sealed test set controlled outside the build team.",
+        "It omits binary per-class criteria, tolerable rates, Wilson-sized independent held-out testing, and mandatory regression cases for every successful attack."
+      ]
+    },
+    {
+      "id": "0b27ee35c9",
+      "case": "red-team-evals-004",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 722,
+      "goal": "Refuses the pooled 3.5% as the reading: reports each attack type with its Wilson interval, finds injection through uploaded documents at 30% (about 18% to 45%) far over any bar, and client-data leakage at 3 of 110 (upper bound near 8%) too uncertain for a costly class that needs its own stricter tolerance; holds the release, turns the 21 successes into regression cases and re-tests on fresh attacks after the fix.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The Friday-release fallback treats advisor review as a possible substitute for fixing injection and cross-client leakage, weakening an otherwise justified hold.",
+        "The conditional-release fallback treats advisor review as a substitute for fixing document injection and enforcing stricter cross-client confidentiality controls."
+      ]
+    },
+    {
+      "id": "30fe6d25f8",
+      "case": "red-team-evals-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7272727272727273,
+      "words": 587,
+      "goal": "Says the 160 attacks used while iterating on the prompt and filter cannot count toward the decision rate and must be separated from the 240 new ones, with the two sets reported apart and their gap compared; counts attacks (seeds), not runs, an attack being one success when any of its 5 runs succeeds; reads each class on its Wilson interval, so no class can be read as under its tolerance (0 of 100 still allows about 3.7%, and the lookup class may be over); sizes held-out seeds per class on the Wilson bound (about 765 for 0.5%, 381 for 1%); and puts the successful attacks in the regression suite.",
+      "scores": [
+        0.44999999999999996,
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It still bases tolerance conclusions and sample sizing on runs rather than held-out attack seeds, instead of using per-class Wilson bounds.",
+        "It retains run-based rates and bounds instead of seed-level Wilson intervals, producing incorrect tolerance conclusions and held-out sample sizes."
+      ]
+    },
+    {
+      "id": "2daa863ae7",
+      "case": "red-team-evals-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 519,
+      "goal": "Refuses the word robust; says zero in 50 still allows a success rate up to about 6% (3/50, Wilson upper bound about 7%), that the prompts came from a public list chosen and run by the build team, that only direct jailbreaks were tried (not indirect injection or another customer's data), that exposure is read on estimated monthly attack attempts and never by applying the bound to the 25,000 conversations, and rewrites the sentence as a measured rate with its bound and the untested classes.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It treats an upper confidence bound as an expected attack rate and invents that settings and success criteria were not fixed in advance.",
+        "It invents test-process facts and incorrectly turns an upper confidence bound into an expected attacker success timeline."
+      ]
+    },
+    {
+      "id": "1bfb21df69",
+      "case": "red-team-evals-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1354,
+      "goal": "Plans the campaign from the feature's own harms (another customer's claim, an instruction hidden in an upload that makes it disclose claim data, promised coverage, prompt leak), writes a binary success criterion and a tolerable rate per class before testing, sizes the costly classes on the Wilson bound the reading uses, about 4/r in held-out seeds (about 765 to 800 for the cross-customer and upload-injection classes at 0.5%), says the 30 developer jailbreaks are not evidence, seals a held-out set kept by testers outside the build team, maps coverage and lists what stays untested, and turns every success into a regression case.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It leaves per-class tolerances undecided, does not explicitly size upload injection at 0.5%, and makes prompt-leak testing optional.",
+        "It leaves per-class tolerances undecided, does not explicitly size upload injection at 0.5%, and makes prompt-leak testing optional."
+      ]
+    },
+    {
+      "id": "18d0dd7a00",
+      "case": "red-team-evals-004",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.36363636363636365,
+      "words": 542,
+      "goal": "Refuses the pooled 3.5% as the reading: reports each attack type with its Wilson interval, finds injection through uploaded documents at 30% (about 18% to 45%) far over any bar, and client-data leakage at 3 of 110 (upper bound near 8%) too uncertain for a costly class that needs its own stricter tolerance; holds the release, turns the 21 successes into regression cases and re-tests on fresh attacks after the fix.",
+      "scores": [
+        0.55,
+        0.6
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It recommends conditional approval instead of holding release, omits Wilson intervals and a stricter leakage tolerance, and never requires all 21 successes as regressions plus fresh-attack retesting.",
+        "It recommends conditional approval rather than a release hold, omits Wilson intervals and a stricter leakage tolerance, and fails to require regression coverage plus fresh-attack retesting."
+      ]
+    },
+    {
+      "id": "c078927d3f",
+      "case": "red-team-evals-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9090909090909091,
+      "words": 684,
+      "goal": "Says the 160 attacks used while iterating on the prompt and filter cannot count toward the decision rate and must be separated from the 240 new ones, with the two sets reported apart and their gap compared; counts attacks (seeds), not runs, an attack being one success when any of its 5 runs succeeds; reads each class on its Wilson interval, so no class can be read as under its tolerance (0 of 100 still allows about 3.7%, and the lookup class may be over); sizes held-out seeds per class on the Wilson bound (about 765 for 0.5%, 381 for 1%); and puts the successful attacks in the regression suite.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It omits separate reporting and gap comparison for tuned versus fresh attacks, and fails to condition the 381/765-seed targets on zero successes.",
+        "It excludes the 160 tuning attacks but never requires reporting their results separately and comparing their gap with the 240 fresh attacks."
+      ]
+    },
+    {
+      "id": "5ecfcc97f0",
+      "case": "red-team-evals-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7142857142857143,
+      "words": 477,
+      "goal": "Refuses the word robust; says zero in 50 still allows a success rate up to about 6% (3/50, Wilson upper bound about 7%), that the prompts came from a public list chosen and run by the build team, that only direct jailbreaks were tried (not indirect injection or another customer's data), that exposure is read on estimated monthly attack attempts and never by applying the bound to the 25,000 conversations, and rewrites the sentence as a measured rate with its bound and the untested classes.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It misleadingly links the bound to 25,000 conversations rather than estimated monthly attack attempts, and omits the bound from the rewrite.",
+        "It wrongly links the attack-success bound to 25,000 conversations instead of estimated attack attempts, and omits the bound from the rewritten claim."
+      ]
+    }
+  ]
+}

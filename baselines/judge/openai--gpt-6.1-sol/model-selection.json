@@ -1,0 +1,375 @@
+{
+  "skill": "model-selection",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.02499999999999998,
+  "costUsd": 0.130865,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.7222222222222222,
+      "meetsGoal": 0.9861111111111112,
+      "regex": 0.9753086419753088,
+      "words": 491.8888888888889
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.6972222222222223,
+      "meetsGoal": 0.8055555555555556,
+      "regex": 0.7227833894500562,
+      "words": 338.44444444444446
+    }
+  },
+  "answers": [
+    {
+      "id": "0a0a4cff31",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.7777777777777778,
+      "words": 465,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It presents an approximate significance cutoff as proof and invents a decision rule that favors E.",
+        "The statistical cutoff is unreliable, and lack of significance does not establish that E's lower accuracy is acceptable."
+      ]
+    },
+    {
+      "id": "b47e51a20f",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 508,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The statistical significance rule is unreliable, and missing paired results do not justify declaring the accuracy gap indistinguishable from noise.",
+        "The gap test overstates statistical certainty: the discordant-case count alone neither settles significance nor determines business value."
+      ]
+    },
+    {
+      "id": "b1a11ed0df",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 387,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It incorrectly treats label agreement as an accuracy ceiling and attributes small model-performance gaps to label noise without evidence.",
+        "It incorrectly treats label agreement as an accuracy ceiling and attributes close model scores to label noise without evidence."
+      ]
+    },
+    {
+      "id": "4badbbd029",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 309,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.65,
+        0.7
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It omits cost per success (\u20ac0.0213 for A versus \u20ac0.00110 for B) and the 3-point gap\u2019s projected 5,400 additional monthly errors.",
+        "It chooses B without calculating cost per successful classification or quantifying the 3-point gap as 12 suite cases and potentially 5,400 monthly errors."
+      ]
+    },
+    {
+      "id": "eded3019fb",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 456,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The tie-breaking formula presents an approximate significance test as definitive without stating its assumptions or confidence level.",
+        "The statistical tie rule is presented as definitive without stating its assumptions or confidence level."
+      ]
+    },
+    {
+      "id": "c79883cb2c",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 284,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It omits cost per success (\u20ac0.0213 for A versus \u20ac0.00110 for B) and the projected 5,400 additional monthly errors from B\u2019s 3-point gap.",
+        "It omits cost per correct detection and the projected 5,400 additional monthly errors implied by B\u2019s 3-point accuracy gap."
+      ]
+    },
+    {
+      "id": "5ed05f0849",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 614,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It treats an approximate significance cutoff as proof of a real gap and incorrectly treats missing significance evidence as a tie.",
+        "It incorrectly treats an approximate significance rule as proof that the gap is real and lets significance alone potentially reverse the economic decision."
+      ]
+    },
+    {
+      "id": "15fede919b",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 471,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It incorrectly makes statistical significance a prerequisite for valuing A\u2019s accuracy gain and presents d < 36 as a definitive significance test.",
+        "The unsupported d < 36 significance rule turns statistical uncertainty into an unjustified tie and reversal condition."
+      ]
+    },
+    {
+      "id": "896de55648",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 360,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never calculates cost per successful classification (\u20ac0.0213 for A versus \u20ac0.00110 for B) and asserts unvalidated cascade benefits.",
+        "It omits cost per successful classification (\u20ac0.00110 for B versus \u20ac0.02128 for A) and claims an unvalidated cascade recovers most of the accuracy gap."
+      ]
+    },
+    {
+      "id": "91cb9e6587",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 444,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Its statistical significance rule is unreliable, and an inconclusive quality difference does not justify treating D and E as tied.",
+        "The statistical significance rule is unreliable, and an uncertain accuracy gap does not establish a tie."
+      ]
+    },
+    {
+      "id": "a46d7a8a40",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 269,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It favors D using unsupported claims about score variability and E falling below threshold, without establishing that D's small measured advantage justifies triple the cost.",
+        "It asserts run-to-run variation and E's risk of falling below threshold without evidence, overstating D's demonstrated safety advantage."
+      ]
+    },
+    {
+      "id": "461f8e657c",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 397,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.65,
+        0.7
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It omits regulated-data safeguards and the risk that final ticket labels rely on information unavailable at initial routing.",
+        "It proposes sending regulated ticket data to model APIs without first checking privacy, retention, residency, and vendor approval requirements."
+      ]
+    },
+    {
+      "id": "e09a3b4dd2",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 1.0,
+      "words": 456,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.65,
+        0.55
+      ],
+      "judge": 0.6000000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It omits regulated-data deployment gates and incorrectly treats label consistency as a hard ceiling on model accuracy.",
+        "It omits regulated-data safeguards and incorrectly treats label consistency as a hard ceiling on model accuracy."
+      ]
+    },
+    {
+      "id": "f83615965f",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 419,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8999999999999999,
+        0.8500000000000001
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It lacks a concrete deployment gate and human-review fallback for costly or low-confidence misclassifications.",
+        "It lacks explicit per-category acceptance gates and a human-review fallback for costly or uncertain misroutes."
+      ]
+    },
+    {
+      "id": "f47d170546",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 272,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The default choice of D assumes its two-point advantage reduces costly errors without evidence on error severity or operating volume.",
+        "The preference for D assumes its small observed accuracy advantage justifies the extra cost without knowing error severity, production volume, or paired failure results."
+      ]
+    },
+    {
+      "id": "fbfd1a0084",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 534,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The decision rule needs category-specific error costs and minimum recall requirements, plus a human fallback for high-risk or uncertain tickets.",
+        "A fine-tuned classifier is offered as an optional baseline rather than explicitly added to the shortlist."
+      ]
+    },
+    {
+      "id": "6b3dcdcd36",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 516,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.7,
+        0.6
+      ],
+      "judge": 0.6499999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It uses an unjustified statistical cutoff and an unstated tie rule to support choosing E.",
+        "The statistical significance rule is incorrect, and the answer invents a tie rule and decision dates."
+      ]
+    },
+    {
+      "id": "1986059e4a",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 312,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.8999999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It favors D without establishing whether its small accuracy advantage reduces consequential errors enough to justify the higher cost at actual volume.",
+        "It calls D's extra cost small relative to error costs without knowing production volume, error severity, or whether D reduces consequential errors."
+      ]
+    }
+  ]
+}

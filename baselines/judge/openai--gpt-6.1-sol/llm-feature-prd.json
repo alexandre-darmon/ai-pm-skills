@@ -1,0 +1,197 @@
+{
+  "skill": "llm-feature-prd",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.04444444444444446,
+  "costUsd": 0.101821,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.7444444444444445,
+      "meetsGoal": 0.8333333333333334,
+      "regex": 1.0,
+      "words": 1779.4444444444443
+    }
+  },
+  "answers": [
+    {
+      "id": "446a2f00a1",
+      "case": "llm-feature-prd-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 2355,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Hard latency and cost constraints become percentile and average targets, while precomputation is incorrectly treated as satisfying generation latency.",
+        "It weakens hard latency and cost constraints into percentile and average targets, and incorrectly treats precomputation as proof of latency compliance."
+      ]
+    },
+    {
+      "id": "c2a5892b10",
+      "case": "llm-feature-prd-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 453,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.65,
+        0.7
+      ],
+      "judge": 0.675,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It identifies risks but does not prescribe concrete safeguards against incorrect policy advice or exposure of employee data.",
+        "It names relevant risks but leaves concrete safeguards and tomorrow\u2019s committee decision largely unspecified."
+      ]
+    },
+    {
+      "id": "3975f3065e",
+      "case": "llm-feature-prd-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2456,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Quality gates permit materially incorrect summaries and prolonged degradation without an immediate stop for critical errors.",
+        "Quality gates tolerate materially incorrect summaries without severity-based release blockers or immediate rollback for critical errors."
+      ]
+    },
+    {
+      "id": "d634f078d6",
+      "case": "llm-feature-prd-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2207,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.8500000000000001,
+        0.75
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The L3 gate measures human-validated refunds rather than uncorrected agent decisions, so it does not establish safety for autonomous issuance.",
+        "The L3 gate measures human-validated refund errors, which can hide agent mistakes and does not establish safe autonomous performance."
+      ]
+    },
+    {
+      "id": "d0938c4229",
+      "case": "llm-feature-prd-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 2615,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.65,
+        0.7
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The L3 gate lacks concrete monetary caps and approval rules, and the rollout contradicts its own required shadow duration.",
+        "The L3 gate lacks concrete monetary caps and approval rules, and the shadow timeline contradicts itself."
+      ]
+    },
+    {
+      "id": "be0c3491fc",
+      "case": "llm-feature-prd-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2441,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It invents mandatory autonomy rules and narrows the \u20ac0.10 cost constraint to model and infrastructure without agreement.",
+        "It invents mandatory autonomy rules and leaves financial caps and the scope of the \u20ac0.10 cost ceiling unresolved."
+      ]
+    },
+    {
+      "id": "8812f979d5",
+      "case": "llm-feature-prd-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 501,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It defers concrete safeguards for sensitive employee data and incorrect policy answers to the future PRD.",
+        "It defers concrete privacy safeguards and wrong-answer mitigations to the future PRD."
+      ]
+    },
+    {
+      "id": "82cf5d4277",
+      "case": "llm-feature-prd-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 585,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It promises a complete PRD once the outcome metric arrives, despite listing several other unresolved blockers.",
+        "It promises a complete PRD once the outcome metric arrives, despite identifying several other unresolved blockers."
+      ]
+    },
+    {
+      "id": "28119a297c",
+      "case": "llm-feature-prd-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2402,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.8,
+        0.7
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Release gates conflict and permit rollout without demonstrating the 14-minute target; the grading rubric also lacks scoring anchors.",
+        "Conflicting rollout gates permit launch below the 14-minute goal without a clear decision rule or statistically justified quality guardrail."
+      ]
+    }
+  ]
+}

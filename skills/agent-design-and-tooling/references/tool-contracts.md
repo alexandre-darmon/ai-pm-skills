@@ -30,7 +30,7 @@ Return an empty result and a failed lookup differently. Merged into one "nothing
 
 ## Risk by effect
 
-Rate what the tool does: a `get_` name can hide a write. The rating sets the tool's line in the permission matrix. A working connection says nothing about whether this user may take this action.
+Rate what the tool does: a `get_` name can hide a write. The rating sets the tool's line in the permission matrix. A working connection says nothing about whether this user may take this action. The tool takes the customer or tenant from the authenticated session or the case record and checks the target belongs to it; a `customer_id` the model read from a message or document is a search hint, never the access key.
 
 ## Test on real tasks
 

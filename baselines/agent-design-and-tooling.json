@@ -2,15 +2,15 @@
   "skill": "agent-design-and-tooling",
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.317",
-  "date": "2026-11-11",
-  "casesHash": "df979b81a60379844191904ee06750177997566a97625801f09e082483a73610",
+  "claudeVersion": "2.1.321",
+  "date": "2026-11-13",
+  "casesHash": "d8453c03a2e2224328c21c193afaeaf2d502864996ec021fd810317962b17563",
   "partial": false,
-  "costUsd": 0.637741,
+  "costUsd": 0.6562294000000001,
   "cases": {
     "agent-design-and-tooling-001": {
-      "score": 0.9,
-      "scoreWithout": 0.5333333333333333,
+      "score": 0.8666666666666667,
+      "scoreWithout": 0.5666666666666667,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -26,14 +26,14 @@
         ],
         "outcome": [
           3,
-          1
+          2
         ],
         "redline-no-multi": [
           3,
           3
         ],
         "single": [
-          3,
+          2,
           0
         ],
         "stop": [
@@ -42,14 +42,14 @@
         ]
       },
       "costPerAnswer": [
-        0.05924216666666667,
+        0.062117533333333336,
         null
       ],
-      "delta": 0.3666666666666667
+      "delta": 0.30000000000000004
     },
     "agent-design-and-tooling-002": {
       "score": 1.0,
-      "scoreWithout": 0.7666666666666666,
+      "scoreWithout": 0.8000000000000002,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -61,7 +61,7 @@
         ],
         "budget": [
           3,
-          2
+          3
         ],
         "cap": [
           3,
@@ -81,14 +81,14 @@
         ]
       },
       "costPerAnswer": [
-        0.08183093333333334,
+        0.08195363333333333,
         null
       ],
-      "delta": 0.2333333333333334
+      "delta": 0.19999999999999984
     },
     "agent-design-and-tooling-003": {
-      "score": 0.9666666666666667,
-      "scoreWithout": 0.16666666666666666,
+      "score": 1.0,
+      "scoreWithout": 0.10000000000000002,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -96,15 +96,15 @@
       "graders": {
         "budget": [
           3,
-          1
+          0
         ],
         "done-state": [
-          2,
+          3,
           0
         ],
         "max-steps": [
           3,
-          2
+          3
         ],
         "raw": [
           3,
@@ -116,14 +116,14 @@
         ],
         "stop": [
           3,
-          2
+          0
         ]
       },
       "costPerAnswer": [
-        0.0456279,
+        0.0490253,
         null
       ],
-      "delta": 0.8
+      "delta": 0.9
     },
     "agent-design-and-tooling-004": {
       "score": 1.0,
@@ -139,12 +139,12 @@
         ]
       },
       "costPerAnswer": [
-        0.025879333333333334,
+        0.025646666666666665,
         null
       ]
     }
   },
-  "skillHash": "968edb5a63a68ed58c86e5f4c49ae34d0274f1aa397051577dac12f0faeeaca2",
-  "meanDelta": 0.46666666666666673,
+  "skillHash": "c001484c4522f8fc0f02d0c3ec519db43b9842dd54af397a1f48581f9313f1e4",
+  "meanDelta": 0.4666666666666666,
   "failures": []
 }

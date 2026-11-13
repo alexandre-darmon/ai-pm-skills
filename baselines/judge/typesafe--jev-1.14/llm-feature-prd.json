@@ -1,0 +1,197 @@
+{
+  "skill": "llm-feature-prd",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.002611111111111169,
+  "costUsd": 0.002758476,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.9214166666666667,
+      "meetsGoal": 0.9565277777777779,
+      "regex": 1.0,
+      "words": 1779.4444444444443
+    }
+  },
+  "answers": [
+    {
+      "id": "446a2f00a1",
+      "case": "llm-feature-prd-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 2355,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.9415,
+        0.9384999999999999
+      ],
+      "judge": 0.94,
+      "meetsGoal": 0.95125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c2a5892b10",
+      "case": "llm-feature-prd-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 453,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.8855,
+        0.883
+      ],
+      "judge": 0.88425,
+      "meetsGoal": 0.9624999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3975f3065e",
+      "case": "llm-feature-prd-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2456,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.9495,
+        0.9550000000000001
+      ],
+      "judge": 0.95225,
+      "meetsGoal": 0.9637499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d634f078d6",
+      "case": "llm-feature-prd-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2207,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.9239999999999999,
+        0.9285000000000001
+      ],
+      "judge": 0.92625,
+      "meetsGoal": 0.95125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d0938c4229",
+      "case": "llm-feature-prd-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 2615,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.9199999999999999,
+        0.917
+      ],
+      "judge": 0.9185,
+      "meetsGoal": 0.93875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "be0c3491fc",
+      "case": "llm-feature-prd-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2441,
+      "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
+      "scores": [
+        0.9219999999999999,
+        0.9225000000000001
+      ],
+      "judge": 0.92225,
+      "meetsGoal": 0.9437499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "8812f979d5",
+      "case": "llm-feature-prd-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 501,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.889,
+        0.887
+      ],
+      "judge": 0.888,
+      "meetsGoal": 0.9675,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "82cf5d4277",
+      "case": "llm-feature-prd-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 585,
+      "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
+      "scores": [
+        0.9149999999999998,
+        0.9155
+      ],
+      "judge": 0.9152499999999999,
+      "meetsGoal": 0.9712500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "28119a297c",
+      "case": "llm-feature-prd-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2402,
+      "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
+      "scores": [
+        0.9469999999999998,
+        0.9449999999999998
+      ],
+      "judge": 0.9459999999999998,
+      "meetsGoal": 0.95875,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

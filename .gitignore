@@ -2,6 +2,9 @@
 **/evals/results/
 eval-out/
 __pycache__/
+.env
+.env.*
+!.env.example
 
 # release zips built by scripts/package_skills.py
 dist/

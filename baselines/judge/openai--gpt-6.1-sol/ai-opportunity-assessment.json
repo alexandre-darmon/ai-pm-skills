@@ -1,0 +1,603 @@
+{
+  "skill": "ai-opportunity-assessment",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.028333333333333332,
+  "costUsd": 0.2474334,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 15,
+      "judge": 0.6816666666666666,
+      "meetsGoal": 0.65,
+      "regex": 0.9324074074074074,
+      "words": 1278.0
+    },
+    "without": {
+      "answers": 15,
+      "judge": 0.5633333333333332,
+      "meetsGoal": 0.39166666666666666,
+      "regex": 0.5531986531986531,
+      "words": 587.8
+    }
+  },
+  "answers": [
+    {
+      "id": "79b48ca36f",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8333333333333334,
+      "words": 1651,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It defers the requested Go decision and leaves LLM triage versus classic ML unresolved, with acceptance thresholds unset.",
+        "It defers the go decision and LLM selection, leaving success thresholds unset rather than committing to L2 LLM triage."
+      ]
+    },
+    {
+      "id": "523bdf9cb1",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 369,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It lacks concrete safeguards for incorrect ERP data, disputed invoices, and access to emailed collections reports.",
+        "It omits concrete controls for data accuracy, inappropriate collection calls, and access to sensitive customer reports."
+      ]
+    },
+    {
+      "id": "9968e4682f",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6363636363636364,
+      "words": 463,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.44999999999999996,
+        0.35
+      ],
+      "judge": 0.39999999999999997,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The pitch still requests full deployment and presents point-estimate gains instead of a pilot with a projected range derived from the test-result interval.",
+        "The revised pitch retains plant-wide deployment instead of requesting a pilot and gives point savings rather than projections bounded by the accuracy interval."
+      ]
+    },
+    {
+      "id": "2a297731f7",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 754,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The headline projection\u2019s low value uses 82% accuracy, not the interval\u2019s lower bound, so it overstates the downside case.",
+        "The pitch\u2019s low projection uses 82% accuracy rather than the interval\u2019s 76% lower bound, understating downside."
+      ]
+    },
+    {
+      "id": "b33b86f1ee",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9166666666666666,
+      "words": 1547,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It recommends exploration rather than a clear go for an L2 LLM triage pilot, leaving the starting approach undecided.",
+        "It recommends exploration rather than a clear go for LLM triage at L2, and substitutes unsupported gates for that decision."
+      ]
+    },
+    {
+      "id": "493861c372",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.75,
+      "words": 567,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.6,
+        0.65
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It gives a premature yes instead of rating data readiness below 2/5, blocking a go, and making an approved, labelled data sample the first task.",
+        "It recommends proceeding without recognizing data readiness below 2/5 as a no-go gate requiring an approved, usable, labelled dataset first."
+      ]
+    },
+    {
+      "id": "4d283e4c80",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.625,
+      "words": 539,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It leads with yes instead of explicitly blocking a go on data readiness below 2/5 and making an approved, representative data-readiness task the first decision.",
+        "It never rates data readiness below 2/5 or explicitly blocks a go pending an approved, usable, labelled dataset."
+      ]
+    },
+    {
+      "id": "7cb5b27dbd",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1026,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents data-readiness scores and asserts missing outcome data while making a simple rule rollout depend on arbitrary overlap thresholds.",
+        "It invents data-readiness scores and asserts missing outcome data, while making a straightforward rule rollout depend on arbitrary overlap thresholds."
+      ]
+    },
+    {
+      "id": "1aa9b13a46",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6363636363636364,
+      "words": 503,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.4,
+        0.35
+      ],
+      "judge": 0.375,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The pitch still asks for full deployment and gives point-estimate returns instead of a pilot with projected low\u2013high gains derived from the accuracy interval.",
+        "The pitch still requests full deployment and asserts unsupported savings and payback instead of proposing a pilot with an interval-based projected gain."
+      ]
+    },
+    {
+      "id": "d53fdf07cc",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8333333333333334,
+      "words": 1485,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.6,
+        0.65
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It recommends further exploration and a model bake-off rather than a clear go for LLM triage at L2.",
+        "It recommends exploration rather than a clear go for LLM triage at L2, and leaves key acceptance thresholds undecided."
+      ]
+    },
+    {
+      "id": "df66503275",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.875,
+      "words": 1457,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The arbitrary 2.0 readiness average masks blocking data gaps and leads to a model spike instead of an explicit data-readiness task first.",
+        "It averages away blocking data gaps to reach 2/5 and proposes a model spike instead of making data readiness remediation the first deliverable."
+      ]
+    },
+    {
+      "id": "8ea9f3af87",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.1111111111111111,
+      "words": 748,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.44999999999999996,
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It asks for rollout funding before establishing value, rather than a dated measurement pilot with an explicit stop rule.",
+        "It requests rollout funding rather than a dated measurement pilot with an explicit metric, threshold, reading date and stop action."
+      ]
+    },
+    {
+      "id": "572c62a510",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 994,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It weakens the correct recommendation with unsupported readiness scores, implementation costs, and assumptions about customer type and error consequences.",
+        "It invents readiness scores and cost assumptions while understating operational risks such as calling customers whose invoices are paid or disputed."
+      ]
+    },
+    {
+      "id": "0a6c144020",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 1186,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The pilot exposes employees to entitlement errors without a severity-based immediate stop rule or adequate human review.",
+        "The pilot exposes employees to entitlement errors without a severe-error stop rule or a credible human-review safeguard."
+      ]
+    },
+    {
+      "id": "b7cda681d9",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 1469,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The pilot\u2019s key stop thresholds remain placeholders, so the comex cannot approve a fully specified decision gate.",
+        "The pilot lacks a costed funding ask and agreed quality thresholds, while its automatic FAQ stop rule is not justified."
+      ]
+    },
+    {
+      "id": "a38cd10c21",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1454,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The correct-or-abstained gate can pass a system that extracts nothing, while the readiness average obscures blocking access and labelling gaps.",
+        "The readiness average masks blocking gaps, and the correct-or-abstained gate could pass a system that extracts nothing."
+      ]
+    },
+    {
+      "id": "ed850f446a",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 771,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The arbitrary 80% historical-call threshold could approve an incomplete list without establishing correct prioritisation.",
+        "The arbitrary 80% match to historical calls is not a justified acceptance test, and the actual priority order remains undefined."
+      ]
+    },
+    {
+      "id": "d102a78be9",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 831,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It recommends encoder-led automation rather than L2 LLM triage, gives no data-readiness score, and proposes no non-AI alternative.",
+        "It recommends classifier-led automation rather than L2 LLM assistance, names no non-AI alternative, and gives no data-readiness score."
+      ]
+    },
+    {
+      "id": "41b6d24b41",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.1111111111111111,
+      "words": 907,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.5,
+        0.55
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It seeks gated deployment funding rather than a dated measurement pilot, with no concrete stop metric, threshold, reading date or action.",
+        "It seeks gated deployment funding rather than a dated measurement pilot and leaves stop metrics, thresholds, reading dates and actions undecided."
+      ]
+    },
+    {
+      "id": "23ee338c1f",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 642,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It does not recommend LLM triage at L2 to start, name a non-AI alternative, or score data readiness.",
+        "It does not recommend LLM triage at L2 initially, name a viable non-AI alternative, or score data readiness."
+      ]
+    },
+    {
+      "id": "4835c94731",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 596,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.6,
+        0.55
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It proposes auto-routing rather than L2 human-approved LLM triage, names no non-AI alternative, and never scores data readiness.",
+        "It omits an L2 human-approved LLM starting point, a non-AI alternative, and an explicit data-readiness score."
+      ]
+    },
+    {
+      "id": "e14547be91",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.625,
+      "words": 555,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It opens with yes instead of declaring data readiness below 2/5, blocking a go, and prioritizing approved sample access and data assessment.",
+        "It leads with yes instead of declaring data readiness below 2/5, blocking a go, and making approved data access and assessment the first gate."
+      ]
+    },
+    {
+      "id": "cce24716cd",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1189,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Conflicting 80% and 90% safety-critical acceptance thresholds leave the pilot\u2019s go/no-go decision unresolved.",
+        "Safety-critical acceptance thresholds conflict between 80% and 90% and lack a risk-based justification."
+      ]
+    },
+    {
+      "id": "c4ce26e7d5",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 377,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It proposes changing the eligibility rules without approval and asserts implementation effort, savings, and data requirements without sufficient inputs.",
+        "It replaces the stated eligibility rules with an unvalidated score and invents implementation, savings, and data-volume estimates."
+      ]
+    },
+    {
+      "id": "47b142546e",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.75,
+      "words": 1379,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.65,
+        0.7
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "Averaging volume into readiness masks blocking data gaps, and allowing data work in parallel fails to make it the prerequisite.",
+        "Averaging volume into readiness masks critical blockers, and the data task is not made an unequivocal prerequisite to the pilot."
+      ]
+    },
+    {
+      "id": "cb43521dbf",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1344,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The safety-critical acceptance threshold is 90%, but the stop threshold is 80%, leaving pilot decisions and exposure between them unresolved.",
+        "Safety-critical acceptance requires a 90% lower confidence bound, but the stop rule uses 80%, leaving an unresolved go/no-go gap."
+      ]
+    },
+    {
+      "id": "b273c926d3",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1464,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "The stop thresholds remain placeholders, and the pilot ask is weakened by seeking conditional rollout funding before evidence exists.",
+        "The stop thresholds remain placeholders, and conditional rollout funding undermines the measurement-only ask."
+      ]
+    },
+    {
+      "id": "9e3eda9f04",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 478,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.55,
+        0.5
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The pitch still asks for full deployment rather than a pilot and never translates the accuracy interval into low and high projected gains.",
+        "The revised pitch still requests full deployment and gives point-estimate gains instead of an uncertainty-bounded projection supporting a pilot."
+      ]
+    },
+    {
+      "id": "31d239d417",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 851,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.4,
+        0.44999999999999996
+      ],
+      "judge": 0.425,
+      "meetsGoal": 0.125,
+      "weakest": [
+        "It defaults to rollout funding rather than a dated measurement pilot with a metric, threshold, review date and explicit stop action.",
+        "It primarily seeks rollout funding rather than a dated measurement pilot and lacks a stop condition with a metric, threshold, reading date and action."
+      ]
+    },
+    {
+      "id": "207e9e2775",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 391,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It assumes implementation effort and savings without evidence and suggests ranking changes without validating the collections policy.",
+        "It assumes implementation effort and suggests relaxing the three required criteria without establishing that either is justified."
+      ]
+    }
+  ]
+}
