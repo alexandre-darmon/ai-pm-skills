@@ -553,8 +553,10 @@ def check_other_manifests(root: Path, version: str | None) -> list[str]:
         except ValueError as e:
             problems.append(f"{rel}: not valid JSON ({e})")
             continue
-        if "version" in data and data["version"] != version:
-            problems.append(f"{rel}: version {data['version']} differs from .claude-plugin/marketplace.json ({version})")
+        entries = [data] + [p for p in data.get("plugins", []) if isinstance(p, dict)]
+        for entry in entries:
+            if "version" in entry and entry["version"] != version:
+                problems.append(f"{rel}: version {entry['version']} differs from .claude-plugin/marketplace.json ({version})")
         if "skills" in data and data["skills"] != "./skills/":
             problems.append(f"{rel}: skills must be \"./skills/\" (drafts and templates never ship)")
     return problems

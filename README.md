@@ -84,258 +84,145 @@ You rarely need the command: skills load on their own when the request matches. 
 
 ## Install
 
-Every folder in `skills/` follows the [Agent Skills](https://agentskills.io) standard and is self-contained (its `references/`, `templates/` and `scripts/` sit inside it), so any agent that reads `SKILL.md` folders can load it. The evals were run with Claude (Sonnet 5.5): other agents may pick and follow the skills differently, and the numbers above do not carry over to them. Each skill folder also holds its eval cases in `evals/`, which the agent never needs; the [release zips](https://github.com/alexandre-darmon/ai-pm-skills/releases/latest) leave them out.
+Every skill follows the [Agent Skills](https://agentskills.io) standard, so any agent that reads `SKILL.md` folders can load it. The evals ran on Claude only: the numbers above do not carry over to other agents.
 
-**Fastest path, most agents, one command** ([skills CLI](https://github.com/vercel-labs/skills), third-party, not vendor-official):
+**Fastest path, any agent** ([skills CLI](https://github.com/vercel-labs/skills), third-party):
 
 ```bash
-npx skills add alexandre-darmon/ai-pm-skills --list                 # see the 29 skills
-npx skills add alexandre-darmon/ai-pm-skills --skill build-evals     # one skill
-npx skills add alexandre-darmon/ai-pm-skills --skill '*'             # all of them
+npx skills add alexandre-darmon/ai-pm-skills     # pick skills and agents from a list
 ```
 
-Prefer your tool's own installer? Pick it below. Sources, paths and what is not yet tested: [docs/install.md](docs/install.md).
+Or use your tool's own installer. Only the Claude Code and claude.ai routes were run on this repo; the others follow vendor docs. Details, scopes, updates and limits: [docs/install.md](docs/install.md).
 
 <details>
 <summary><b>Claude Code (recommended)</b></summary>
 
-No clone needed. Add the marketplace once:
-
 ```bash
 claude plugin marketplace add alexandre-darmon/ai-pm-skills
+claude plugin install ai-pm-skills@ai-pm-skills     # all 29
+claude plugin install build-evals@ai-pm-skills      # or one skill, by its name
 ```
 
-Then install every tested skill:
-
-```bash
-claude plugin install ai-pm-skills@ai-pm-skills
-```
-
-Or a single skill, by its name:
-
-```bash
-claude plugin install build-evals@ai-pm-skills
-```
-
-Each per-skill plugin is named after its skill (see the [catalog](#catalog)). Pick the bundle or single skills, not both. A skill's full text loads only when it fires. Drafts are not installable: they join the marketplace once they pass their eval run.
-
-**Pin a version.** Add the marketplace at a tag and it stays on that tag until you add it again: `claude plugin marketplace add alexandre-darmon/ai-pm-skills#v1.1.0`. Without a tag you follow `main`; refresh with `claude plugin marketplace update ai-pm-skills`, then `claude plugin update ai-pm-skills@ai-pm-skills`. What changed between versions: [CHANGELOG](CHANGELOG.md).
-
-**Roll it out in your company.**
-
-- **Claude Code**: an admin registers the marketplace pinned to a tag in managed settings (`extraKnownMarketplaces`, source `alexandre-darmon/ai-pm-skills` with `ref` set to the tag) and turns on the plugins people should have (`enabledPlugins`). `strictKnownMarketplaces` keeps everything else out. See the [organisation guide](https://code.claude.com/docs/en/plugins/org.md).
-- **Before rollout**: each skill's eval record (`baselines/<skill>.json`) is the evidence your model risk or IT risk reviewer can read. The legal skills give checklists and questions for counsel, never a verdict.
+In a session, type the same commands after `/plugin`. More: [docs/install.md#claude-code](docs/install.md#claude-code)
 
 </details>
 
 <details>
 <summary><b>claude.ai, the Claude apps, the Skills API</b></summary>
 
-Download a skill's zip from the [latest release](https://github.com/alexandre-darmon/ai-pm-skills/releases/latest) and upload it under Customize > Skills. Each zip is one skill folder without its eval cases, with its licence; `SHA256SUMS` lists the checksums. One zip per skill.
-
-**claude.ai Team or Enterprise**: an owner uploads the release zips under Organization settings > Plugins & skills and chooses who gets each skill.
+Download a skill's zip from the [latest release](https://github.com/alexandre-darmon/ai-pm-skills/releases/latest) and upload it under Customize > Skills. One zip per skill. More: [docs/install.md#claude-apps](docs/install.md#claude-apps)
 
 </details>
 
 <details>
-<summary><b>OpenAI Codex (CLI, IDE extension, ChatGPT desktop app)</b></summary>
-
-Codex reads skill folders natively from `.agents/skills/` in your project (walking up to the repo root) and `~/.agents/skills/` for your user ([docs](https://learn.chatgpt.com/docs/build-skills)). Copy one skill or all of them:
-
-```bash
-git clone https://github.com/alexandre-darmon/ai-pm-skills.git
-mkdir -p ~/.agents/skills
-cp -r ai-pm-skills/skills/build-evals ~/.agents/skills/   # one skill, user scope
-cp -r ai-pm-skills/skills/* ~/.agents/skills/            # all 29
-```
-
-For one project, copy into `<your-repo>/.agents/skills/` instead. Or unzip a release zip there: `unzip build-evals-<version>.zip -d ~/.agents/skills/`. Codex picks up changes on its own (restart it if one does not show); update with `git pull` and copy again. Invoke with `$build-evals` or `/skills`, or let the description trigger it.
-
-**From GitHub, inside Codex**: ask the bundled `$skill-installer` to install `skills/build-evals` from `alexandre-darmon/ai-pm-skills` (optionally at ref `v1.1.0`). It writes to `$CODEX_HOME/skills/` (default `~/.codex/skills/`), which is not among the skill locations the Codex skills docs list, so the copy into `~/.agents/skills/` above is the documented route. It installs one path per skill and stops if the folder already exists, so delete it before reinstalling ([installer](https://github.com/openai/skills/blob/main/skills/.system/skill-installer/SKILL.md)).
-
-**As a Codex plugin (all 29)**: the repo ships `.agents/plugins/marketplace.json` and `.codex-plugin/plugin.json`.
+<summary><b>OpenAI Codex</b></summary>
 
 ```bash
 codex plugin marketplace add alexandre-darmon/ai-pm-skills
-codex plugin marketplace upgrade ai-pm-skills    # later, to refresh
+codex plugin add ai-pm-skills@ai-pm-skills
 ```
 
-Then run `codex`, open `/plugins` and install `ai-pm-skills`, or use the Plugins tab in the desktop app, and start a new session ([docs](https://developers.openai.com/codex/plugins/build/)). The Codex manifests are newer than v1.1.0: follow `main` until the next release, then pin with `--ref <tag>`.
-
-> Limits: the IDE extension does not support plugins, only skill folders. The plugin route installs the bundle, not single skills, and has not been tested on this repo yet; Codex does not document a plugin source rooted at the marketplace root (`./`), which is what this repo uses. ChatGPT on the web can take uploaded skills (Skills > Create > Upload from your computer, if your workspace admin allows it), but the zip layout it expects is not confirmed in a doc we could read.
+Codex CLI 0.131 or later; installs all 29. Start a new session and invoke a skill with `$ai-pm-skills:build-evals` (or type `$` or `@` and pick it), or just describe the task. More: [docs/install.md#codex](docs/install.md#codex)
 
 </details>
 
 <details>
 <summary><b>Cursor</b></summary>
 
-Cursor reads skill folders natively ([docs](https://cursor.com/docs/context/skills)): project `.agents/skills/` or `.cursor/skills/`, user `~/.agents/skills/` or `~/.cursor/skills/`. It also reads `.claude/skills/` and `~/.claude/skills/`.
-
 ```bash
-git clone https://github.com/alexandre-darmon/ai-pm-skills.git
-mkdir -p ~/.cursor/skills
-cp -r ai-pm-skills/skills/build-evals ~/.cursor/skills/   # one skill
-cp -r ai-pm-skills/skills/* ~/.cursor/skills/            # all 29
+npx skills add alexandre-darmon/ai-pm-skills --skill '*' -a cursor -g
 ```
 
-Or `npx skills add alexandre-darmon/ai-pm-skills --skill build-evals -a cursor`. Skills are found at startup: restart Cursor after a copy or an update (`git pull`, copy again).
-
-> Limits: this repo does not ship a `.cursor-plugin/marketplace.json`, so the "From GitHub Repository" import and team marketplaces do not apply yet.
+Installs all 29 into `~/.cursor/skills/` (use `--skill build-evals` for one); restart Cursor. More: [docs/install.md#cursor](docs/install.md#cursor)
 
 </details>
 
 <details>
-<summary><b>GitHub Copilot (VS Code, Copilot CLI, cloud agent)</b></summary>
-
-With GitHub CLI 2.90.0 or later, `gh skill` (public preview) installs from this repo as it is ([manual](https://cli.github.com/manual/gh_skill_install)):
-
-```bash
-gh skill install alexandre-darmon/ai-pm-skills build-evals                 # one skill, project scope
-gh skill install alexandre-darmon/ai-pm-skills --all --scope user          # all 29, for you
-gh skill install alexandre-darmon/ai-pm-skills build-evals@v1.1.0          # pinned to a tag
-gh skill update --all                                                      # later
-```
-
-Copilot reads `.github/skills/`, `.claude/skills/` or `.agents/skills/` in a project and `~/.copilot/skills/` or `~/.agents/skills/` for your user, so a manual copy works too ([docs](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)).
-
-**Copilot CLI plugin**: the CLI reads this repo's `.claude-plugin/marketplace.json` ([reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference)).
+<summary><b>GitHub Copilot</b></summary>
 
 ```bash
 copilot plugin marketplace add alexandre-darmon/ai-pm-skills
 copilot plugin install ai-pm-skills@ai-pm-skills
-copilot plugin update ai-pm-skills
 ```
 
-> Limits: `gh skill` is in preview and copies the whole folder, `evals/` included. Copilot documents the `strict` and `skills` fields this repo's marketplace entries use, but neither the bundle nor the single-skill plugins (`build-evals@ai-pm-skills`) have been tested on this repo.
+Copilot CLI, all 29 (or `build-evals@ai-pm-skills` for one). For VS Code and the cloud agent, use `gh skill`. More: [docs/install.md#github-copilot](docs/install.md#github-copilot)
 
 </details>
 
 <details>
 <summary><b>Gemini CLI</b></summary>
 
-No manifest needed for skills ([docs](https://geminicli.com/docs/cli/skills/)):
-
-```bash
-gemini skills install https://github.com/alexandre-darmon/ai-pm-skills.git --path skills/build-evals   # one skill
-gemini skills install https://github.com/alexandre-darmon/ai-pm-skills.git --path skills               # all 29
-```
-
-Default scope is your user (`~/.gemini/skills/`); add `--scope workspace` for the current project. There is no skills update command: run the install again (it replaces the folder), then `/skills reload`.
-
-**As an extension (all 29, with updates)**: the repo ships `gemini-extension.json` ([docs](https://geminicli.com/docs/extensions/reference/)).
-
 ```bash
 gemini extensions install https://github.com/alexandre-darmon/ai-pm-skills
-gemini extensions update ai-pm-skills
 ```
 
-> Limits: `gemini-extension.json` is newer than v1.1.0, so pin with `--ref <tag>` only from the next release. Google replaced Gemini CLI with Antigravity CLI for unpaid-tier and Google One users on June 18, 2026; on those plans, use Antigravity. Installing all skills with `--path skills` follows from the CLI's source code, not its docs.
+Installs all 29 as an extension. For one skill: `gemini skills install https://github.com/alexandre-darmon/ai-pm-skills.git --path skills/build-evals`. More: [docs/install.md#gemini-cli](docs/install.md#gemini-cli)
 
 </details>
 
 <details>
-<summary><b>Google Antigravity (IDE, App, CLI)</b></summary>
-
-**CLI, all 29 as a plugin**: the repo ships `.antigravity-plugin/plugin.json` ([docs](https://antigravity.google/docs/plugins?tab=cli)).
+<summary><b>Google Antigravity</b></summary>
 
 ```bash
 agy plugin install https://github.com/alexandre-darmon/ai-pm-skills
 ```
 
-Skills then appear as `/<skill>` (for example `/build-evals`), with no plugin prefix ([docs](https://antigravity.google/docs/build-plugins/)). There is no documented update command: uninstall (`agy plugin uninstall ai-pm-skills`) and install again.
-
-**IDE, App or CLI, one skill**: copy the folder; the IDE has no install command ([docs](https://antigravity.google/docs/skills)).
-
-```bash
-git clone https://github.com/alexandre-darmon/ai-pm-skills.git
-mkdir -p ~/.gemini/config/skills
-cp -r ai-pm-skills/skills/build-evals ~/.gemini/config/skills/   # user scope
-```
-
-For one project, copy into `<project>/.agents/skills/`. In the CLI, run `/skills reload` or start a new conversation.
-
-> Limits: `.antigravity-plugin/plugin.json` is newer than v1.1.0. The plugin install has no documented tag pinning or scope flag, and the plugin docs are recent and still changing. Not tested on this repo yet.
+CLI, all 29; invoke a skill with `/build-evals`. For the IDE or one skill, copy the folder. More: [docs/install.md#antigravity](docs/install.md#antigravity)
 
 </details>
 
 <details>
-<summary><b>Windsurf (now Devin Desktop and Devin CLI)</b></summary>
-
-Windsurf's docs now redirect to Devin's. The CLI installs this repo as a skills-only plugin, all 29 at once, after `devin auth login` ([docs](https://docs.devin.ai/cli/extensibility/plugins/overview)):
+<summary><b>Windsurf (now Devin)</b></summary>
 
 ```bash
 devin plugins install alexandre-darmon/ai-pm-skills
-devin plugins update ai-pm-skills
 ```
 
-Skills are then invoked as `/ai-pm-skills:<skill>`. A plugin cannot install a single skill: for one, copy its folder into `.devin/skills/` or `.agents/skills/` (project, legacy `.windsurf/skills/`) or `~/.config/devin/skills/` or `~/.agents/skills/` (user) ([docs](https://docs.devin.ai/desktop/devin-local/customizations)).
-
-> Limits: the plugin route is not tested on this repo yet.
+Devin CLI, after `devin auth login`; installs all 29. More: [docs/install.md#devin-and-windsurf](docs/install.md#devin-and-windsurf)
 
 </details>
 
 <details>
-<summary><b>Kiro (IDE and CLI)</b></summary>
-
-Kiro reads `.kiro/skills/` (workspace) and `~/.kiro/skills/` (global) ([docs](https://kiro.dev/docs/skills/)). In the IDE, open Agent Steering & Skills, click +, choose Import a skill > GitHub and paste one skill's folder URL, for example `https://github.com/alexandre-darmon/ai-pm-skills/tree/main/skills/build-evals`. From a terminal, copy or use `gh skill`:
+<summary><b>Kiro</b></summary>
 
 ```bash
-mkdir -p ~/.kiro/skills && cp -r ai-pm-skills/skills/build-evals ~/.kiro/skills/   # one skill, from a clone
-gh skill install alexandre-darmon/ai-pm-skills --all --dir .kiro/skills          # all 29, this workspace
+npx skills add alexandre-darmon/ai-pm-skills --skill '*' -a kiro-cli -g
 ```
 
-> Limits: one skill per import, no update mechanism (import again). Custom agents load skills only if their `resources` include `skill://.kiro/skills/*/SKILL.md`.
+Installs all 29 into `~/.kiro/skills/`, read by the IDE and the CLI (use `--skill build-evals` for one). More: [docs/install.md#kiro](docs/install.md#kiro)
 
 </details>
 
 <details>
 <summary><b>OpenCode</b></summary>
 
-OpenCode reads `.opencode/skills/`, `.agents/skills/` and `.claude/skills/` in a project, and `~/.config/opencode/skills/`, `~/.agents/skills/` and `~/.claude/skills/` for your user, so skills installed for Claude Code show up too ([docs](https://opencode.ai/docs/skills/)). It has no install command:
-
 ```bash
-npx skills add alexandre-darmon/ai-pm-skills --skill build-evals -a opencode -g   # one skill, user scope
-mkdir -p ~/.config/opencode/skills
-cp -r ai-pm-skills/skills/* ~/.config/opencode/skills/                          # all 29, from a clone
+npx skills add alexandre-darmon/ai-pm-skills --skill '*' -a opencode -g
 ```
 
-Update with `npx skills update` or copy again.
+Installs all 29 into `~/.config/opencode/skills/` (use `--skill build-evals` for one). More: [docs/install.md#opencode](docs/install.md#opencode)
 
 </details>
 
 <details>
 <summary><b>Command Code</b></summary>
 
-([docs](https://commandcode.ai/docs/skills))
-
 ```bash
-cmd skills add alexandre-darmon/ai-pm-skills -s build-evals        # one skill, project (.commandcode/skills/)
-cmd skills add alexandre-darmon/ai-pm-skills -s build-evals -g     # one skill, user (~/.commandcode/skills/)
-cmd skills add alexandre-darmon/ai-pm-skills                       # pick from a list
+cmd skills add alexandre-darmon/ai-pm-skills -g
 ```
 
-> Limits: no documented flag to install all skills at once and no update command; `--force` overwrites an installed skill.
+Pick skills from a list, for all your projects; `-s build-evals` installs one directly. More: [docs/install.md#command-code](docs/install.md#command-code)
 
 </details>
 
 <details>
 <summary><b>Other agents (Amp, Goose, Roo Code, Cline, ...)</b></summary>
 
-The [skills CLI](https://github.com/vercel-labs/skills) targets about 70 agents; name yours with `-a`, add `-g` for user scope:
-
 ```bash
-npx skills add alexandre-darmon/ai-pm-skills --skill build-evals -a amp -g
-npx skills update
+npx skills add alexandre-darmon/ai-pm-skills --skill '*' -a <agent> -g
 ```
 
-Or copy `skills/<name>/` (or unzip a release zip) into your agent's skills folder:
-
-| Agent | Project | User | Docs |
-| --- | --- | --- | --- |
-| Amp | `.agents/skills/` | `~/.config/agents/skills/` (also `amp skill add --global alexandre-darmon/ai-pm-skills`) | [ampcode.com](https://ampcode.com/docs/customize/skills) |
-| Goose | `.agents/skills/` | `~/.agents/skills/` | [goose-docs.ai](https://goose-docs.ai/docs/guides/context-engineering/using-skills) |
-| Roo Code | `.roo/skills/` or `.agents/skills/` | `~/.roo/skills/` or `~/.agents/skills/` | [Roo Code docs](https://roocodeinc.github.io/Roo-Code/features/skills) |
-| Cline | `.cline/skills/` | `~/.cline/skills/` | [docs.cline.bot](https://docs.cline.bot/features/skills) |
+Name your agent with `-a` (for example `amp`, `goose`, `roo`); about 70 are supported. More: [docs/install.md#other-agents](docs/install.md#other-agents)
 
 </details>
 
