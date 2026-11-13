@@ -1,0 +1,375 @@
+{
+  "skill": "model-selection",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.007972222222222195,
+  "costUsd": 0.00267162,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.852,
+      "meetsGoal": 0.9136111111111112,
+      "regex": 0.9753086419753088,
+      "words": 491.8888888888889
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.8364722222222222,
+      "meetsGoal": 0.8983333333333334,
+      "regex": 0.7227833894500562,
+      "words": 338.44444444444446
+    }
+  },
+  "answers": [
+    {
+      "id": "0a0a4cff31",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.7777777777777778,
+      "words": 465,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.875,
+        0.8580000000000001
+      ],
+      "judge": 0.8665,
+      "meetsGoal": 0.93625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b47e51a20f",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 508,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8320000000000001,
+        0.813
+      ],
+      "judge": 0.8225,
+      "meetsGoal": 0.91,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b1a11ed0df",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 387,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.9059999999999999,
+        0.9039999999999999
+      ],
+      "judge": 0.9049999999999999,
+      "meetsGoal": 0.925,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4badbbd029",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 309,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8625,
+        0.851
+      ],
+      "judge": 0.85675,
+      "meetsGoal": 0.905,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "eded3019fb",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 456,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8574999999999999,
+        0.8599999999999999
+      ],
+      "judge": 0.8587499999999999,
+      "meetsGoal": 0.8624999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c79883cb2c",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 284,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8655000000000002,
+        0.8660000000000001
+      ],
+      "judge": 0.8657500000000001,
+      "meetsGoal": 0.90125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5ed05f0849",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 614,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.825,
+        0.8109999999999999
+      ],
+      "judge": 0.818,
+      "meetsGoal": 0.9212499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "15fede919b",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 471,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8350000000000002,
+        0.8454999999999999
+      ],
+      "judge": 0.84025,
+      "meetsGoal": 0.9287500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "896de55648",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 360,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8180000000000001,
+        0.8240000000000001
+      ],
+      "judge": 0.8210000000000001,
+      "meetsGoal": 0.9125000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "91cb9e6587",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 444,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.8534999999999999,
+        0.8614999999999999
+      ],
+      "judge": 0.8574999999999999,
+      "meetsGoal": 0.9224999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a46d7a8a40",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 269,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.7845,
+        0.7795000000000001
+      ],
+      "judge": 0.782,
+      "meetsGoal": 0.905,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "461f8e657c",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 397,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8519999999999999,
+        0.847
+      ],
+      "judge": 0.8494999999999999,
+      "meetsGoal": 0.8587499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e09a3b4dd2",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 1.0,
+      "words": 456,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8879999999999999,
+        0.8945000000000001
+      ],
+      "judge": 0.89125,
+      "meetsGoal": 0.9225,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "f83615965f",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 419,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8675000000000002,
+        0.8705
+      ],
+      "judge": 0.8690000000000001,
+      "meetsGoal": 0.9000000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "f47d170546",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 272,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.7905,
+        0.778
+      ],
+      "judge": 0.78425,
+      "meetsGoal": 0.8787499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "fbfd1a0084",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 534,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8839999999999999,
+        0.871
+      ],
+      "judge": 0.8775,
+      "meetsGoal": 0.9112500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6b3dcdcd36",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 516,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.8574999999999999,
+        0.8585
+      ],
+      "judge": 0.858,
+      "meetsGoal": 0.9299999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1986059e4a",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 312,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.7695000000000001,
+        0.776
+      ],
+      "judge": 0.77275,
+      "meetsGoal": 0.87625,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

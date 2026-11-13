@@ -1,0 +1,375 @@
+{
+  "skill": "llm-judge-calibration",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.009583333333333326,
+  "costUsd": 0.003150672,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8493611111111111,
+      "meetsGoal": 0.8901388888888889,
+      "regex": 0.9506172839506173,
+      "words": 588.5555555555555
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.8239444444444444,
+      "meetsGoal": 0.7775000000000001,
+      "regex": 0.6349206349206349,
+      "words": 478.3333333333333
+    }
+  },
+  "answers": [
+    {
+      "id": "6d869be816",
+      "case": "llm-judge-calibration-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.2857142857142857,
+      "words": 511,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.8865000000000001,
+        0.875
+      ],
+      "judge": 0.88075,
+      "meetsGoal": 0.8300000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "abefda3e05",
+      "case": "llm-judge-calibration-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5714285714285714,
+      "words": 572,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.9390000000000001,
+        0.9430000000000001
+      ],
+      "judge": 0.9410000000000001,
+      "meetsGoal": 0.91625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "aa947465a8",
+      "case": "llm-judge-calibration-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5714285714285714,
+      "words": 633,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.9495,
+        0.948
+      ],
+      "judge": 0.94875,
+      "meetsGoal": 0.92125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a026157977",
+      "case": "llm-judge-calibration-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8571428571428571,
+      "words": 418,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.788,
+        0.778
+      ],
+      "judge": 0.783,
+      "meetsGoal": 0.6825,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e53b89f2bb",
+      "case": "llm-judge-calibration-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 826,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.9410000000000001,
+        0.9365000000000001
+      ],
+      "judge": 0.9387500000000001,
+      "meetsGoal": 0.9525000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3bfe6f50e8",
+      "case": "llm-judge-calibration-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 530,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.8175000000000001,
+        0.813
+      ],
+      "judge": 0.81525,
+      "meetsGoal": 0.8899999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a5c0600d13",
+      "case": "llm-judge-calibration-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5555555555555556,
+      "words": 376,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.8214999999999999,
+        0.8089999999999999
+      ],
+      "judge": 0.8152499999999999,
+      "meetsGoal": 0.80125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b77e64f987",
+      "case": "llm-judge-calibration-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7142857142857143,
+      "words": 432,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.7650000000000001,
+        0.7574999999999998
+      ],
+      "judge": 0.76125,
+      "meetsGoal": 0.67125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e7a1dff42b",
+      "case": "llm-judge-calibration-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 531,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.7855000000000001,
+        0.749
+      ],
+      "judge": 0.76725,
+      "meetsGoal": 0.7937500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4fe7251470",
+      "case": "llm-judge-calibration-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.7777777777777778,
+      "words": 520,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.853,
+        0.8474999999999999
+      ],
+      "judge": 0.85025,
+      "meetsGoal": 0.86875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e179b66786",
+      "case": "llm-judge-calibration-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.7777777777777778,
+      "words": 504,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.8915,
+        0.885
+      ],
+      "judge": 0.88825,
+      "meetsGoal": 0.9225,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b06f9969af",
+      "case": "llm-judge-calibration-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7142857142857143,
+      "words": 448,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.7074999999999999,
+        0.7045
+      ],
+      "judge": 0.706,
+      "meetsGoal": 0.61625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "12b874a17f",
+      "case": "llm-judge-calibration-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 464,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.7425,
+        0.7589999999999999
+      ],
+      "judge": 0.75075,
+      "meetsGoal": 0.8225,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "baba2e6c31",
+      "case": "llm-judge-calibration-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7777777777777778,
+      "words": 474,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.7870000000000001,
+        0.8085
+      ],
+      "judge": 0.7977500000000001,
+      "meetsGoal": 0.77375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "08fa3a25e6",
+      "case": "llm-judge-calibration-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 761,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.8919999999999999,
+        0.8900000000000001
+      ],
+      "judge": 0.891,
+      "meetsGoal": 0.92125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9aec3ef6ff",
+      "case": "llm-judge-calibration-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 459,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.8445,
+        0.8565
+      ],
+      "judge": 0.8505,
+      "meetsGoal": 0.93,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a6f6f8046d",
+      "case": "llm-judge-calibration-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 441,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.786,
+        0.7775000000000001
+      ],
+      "judge": 0.7817500000000001,
+      "meetsGoal": 0.785,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2a9efe4a9a",
+      "case": "llm-judge-calibration-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 702,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.8900000000000001,
+        0.8945000000000001
+      ],
+      "judge": 0.8922500000000001,
+      "meetsGoal": 0.9100000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

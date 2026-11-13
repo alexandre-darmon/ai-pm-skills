@@ -2,14 +2,14 @@
   "skill": "llm-judge-calibration",
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.317",
-  "date": "2026-11-11",
+  "claudeVersion": "2.1.321",
+  "date": "2026-11-13",
   "casesHash": "45e1fafd8bb58eb019455fc7d00320447af2c53053c61c17c9b20b583dc6e901",
   "partial": false,
-  "costUsd": 1.0392147,
+  "costUsd": 0.6421987,
   "cases": {
     "llm-judge-calibration-001": {
-      "score": 0.8888888888888888,
+      "score": 0.8518518518518517,
       "scoreWithout": 0.6666666666666666,
       "fired": 3,
       "runs": 3,
@@ -17,7 +17,7 @@
       "negative": false,
       "graders": {
         "always-pass": [
-          2,
+          1,
           0
         ],
         "fresh-labels": [
@@ -50,10 +50,10 @@
         ]
       },
       "costPerAnswer": [
-        0.05325883333333333,
-        0.035883333333333337
+        0.05722053333333333,
+        null
       ],
-      "delta": 0.2222222222222222
+      "delta": 0.18518518518518512
     },
     "llm-judge-calibration-002": {
       "score": 1.0,
@@ -89,13 +89,13 @@
         ]
       },
       "costPerAnswer": [
-        0.052097399999999995,
-        0.037636666666666665
+        0.06206116666666667,
+        null
       ],
       "delta": 0.523809523809524
     },
     "llm-judge-calibration-003": {
-      "score": 0.9047619047619048,
+      "score": 1.0,
       "scoreWithout": 0.7619047619047619,
       "fired": 3,
       "runs": 3,
@@ -103,7 +103,7 @@
       "negative": false,
       "graders": {
         "bias-direction": [
-          2,
+          3,
           3
         ],
         "bootstrap": [
@@ -115,7 +115,7 @@
           3
         ],
         "fresh-labels": [
-          2,
+          3,
           1
         ],
         "inconclusive": [
@@ -128,10 +128,10 @@
         ]
       },
       "costPerAnswer": [
-        0.055710666666666665,
-        0.041382
+        0.06007786666666667,
+        null
       ],
-      "delta": 0.1428571428571429
+      "delta": 0.23809523809523814
     },
     "llm-judge-calibration-004": {
       "score": 1.0,
@@ -147,12 +147,12 @@
         ]
       },
       "costPerAnswer": [
-        0.03555066666666667,
-        0.03488533333333333
+        0.03470666666666666,
+        null
       ]
     }
   },
-  "skillHash": "90a660dc36fdf799591590aa395b07e7a1776bed50dda16f346fb38a03f9f5a3",
-  "meanDelta": 0.29629629629629634,
+  "skillHash": "0af577a2e844837c68990e9950ced797772064f3f0cab0f7f51f2caf0e2e3e53",
+  "meanDelta": 0.3156966490299824,
   "failures": []
 }

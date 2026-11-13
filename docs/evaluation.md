@@ -108,6 +108,19 @@ Rules, written and committed before the full run (2026-11-06):
 - **The headline is the generic score.** "Meets the goal" is reported apart, because the skills' author wrote those goals.
 - **Known biases are reported:** each answer is judged twice to show the judge's noise, and length is shown next to the scores.
 
+**Judges from other vendors.** Claude wrote the answers, so a Claude judge may favour them. A model id with a slash runs through [OpenRouter](https://openrouter.ai) (`scripts/openrouter.py`), on the key in `OPENROUTER_API_KEY` or in the repo's git-ignored `.env` (`OPENROUTER_API_KEY=...`); the key is never printed or written. Same answers, same blinding, same rubric, same rules as above:
+
+- **A general LLM** (e.g. `openai/gpt-6.1-sol`) gets the Claude judges' prompt word for word, and writes the weakest point.
+- **TypeSafe's Jev** (`typesafe/jev-1.14`), a decision model, gets each criterion as one five-level score question and returns the probability-weighted level: no text, no weakest point, so its scores cannot be audited answer by answer. Its row is labelled "decision model". Requests above about 32,000 bytes run in a slower, less accurate mode; the file counts them (`longContextCalls`).
+- Pinned ids only: an alias (`~vendor/...`, `...-latest`, `:free`) is refused, so a judge stays the same model from one run to the next. Requests ask for providers that keep no prompts (`provider.data_collection: deny`, chat only; the Decisions API has no such field). Cost is what OpenRouter billed (`usage.cost`).
+- Folders go one level deep: `baselines/judge/openai--gpt-6.1-sol/`. With `--recorded`, every judge grades the run recorded in `baselines/<skill>.json`, and the README row says "recorded runs"; files from `eval-out/answers/` say "earlier runs". Legal skills are skipped in folder mode too.
+
+```bash
+python3 scripts/judge_answers.py --recorded --dry-run --model typesafe/jev-1.14 skills/*   # counts and prompt sizes, no call
+python3 scripts/judge_answers.py --recorded --model typesafe/jev-1.14 skills/*
+python3 scripts/judge_answers.py --recorded --model openai/gpt-6.1-sol skills/*
+```
+
 **Choosing the judge** (rules committed before the Sonnet run and before any human score, 2026-11-07). Haiku 5.5 and Sonnet 5.5 grade the same answers. Sonnet also wrote those answers, so it may be lenient. A person then scores 20 answers drawn at random, blind to the arm, from 1 to 5 overall. Each judge's mean on the five criteria is compared with that score:
 
 - **A judge is calibrated** if it lands within 1 point of the human score on at least 80% of the 20 answers.

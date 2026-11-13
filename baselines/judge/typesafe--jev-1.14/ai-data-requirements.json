@@ -1,0 +1,603 @@
+{
+  "skill": "ai-data-requirements",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.009700000000000009,
+  "costUsd": 0.0055481160000000005,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 15,
+      "judge": 0.86795,
+      "meetsGoal": 0.8079999999999999,
+      "regex": 0.9441750841750841,
+      "words": 901.0666666666667
+    },
+    "without": {
+      "answers": 15,
+      "judge": 0.8099166666666666,
+      "meetsGoal": 0.6773333333333333,
+      "regex": 0.6488215488215487,
+      "words": 634.6666666666666
+    }
+  },
+  "answers": [
+    {
+      "id": "d605674b53",
+      "case": "ai-data-requirements-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 657,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.9055,
+        0.8975000000000002
+      ],
+      "judge": 0.9015000000000001,
+      "meetsGoal": 0.91375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ebb0da490f",
+      "case": "ai-data-requirements-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8,
+      "words": 802,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.8685,
+        0.8855
+      ],
+      "judge": 0.877,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "44b2287039",
+      "case": "ai-data-requirements-004",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.1,
+      "words": 457,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.875,
+        0.8839999999999999
+      ],
+      "judge": 0.8795,
+      "meetsGoal": 0.7262500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6b4b145749",
+      "case": "ai-data-requirements-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5555555555555556,
+      "words": 779,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.8515000000000001,
+        0.8525
+      ],
+      "judge": 0.8520000000000001,
+      "meetsGoal": 0.8262500000000002,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1002d5d844",
+      "case": "ai-data-requirements-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1186,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.7555000000000001,
+        0.7135
+      ],
+      "judge": 0.7345,
+      "meetsGoal": 0.52875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7f396fa9f8",
+      "case": "ai-data-requirements-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 616,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.8775,
+        0.873
+      ],
+      "judge": 0.87525,
+      "meetsGoal": 0.895,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d5ed9f2a6b",
+      "case": "ai-data-requirements-004",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6,
+      "words": 368,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.8500000000000001,
+        0.845
+      ],
+      "judge": 0.8475,
+      "meetsGoal": 0.6125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0711eaec61",
+      "case": "ai-data-requirements-004",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 502,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.889,
+        0.895
+      ],
+      "judge": 0.892,
+      "meetsGoal": 0.7649999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "cb866b85b0",
+      "case": "ai-data-requirements-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 870,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.8900000000000001,
+        0.8984999999999999
+      ],
+      "judge": 0.89425,
+      "meetsGoal": 0.9012500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5c43ea04c3",
+      "case": "ai-data-requirements-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 704,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.8925000000000001,
+        0.877
+      ],
+      "judge": 0.88475,
+      "meetsGoal": 0.90875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d52a50bc6c",
+      "case": "ai-data-requirements-004",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6,
+      "words": 388,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.8620000000000001,
+        0.8690000000000002
+      ],
+      "judge": 0.8655000000000002,
+      "meetsGoal": 0.6737500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6476c7cd0d",
+      "case": "ai-data-requirements-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 903,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.8725,
+        0.8760000000000001
+      ],
+      "judge": 0.8742500000000001,
+      "meetsGoal": 0.8475,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "bf265e7b73",
+      "case": "ai-data-requirements-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9090909090909091,
+      "words": 861,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.8905000000000001,
+        0.891
+      ],
+      "judge": 0.89075,
+      "meetsGoal": 0.8525,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b968a249ba",
+      "case": "ai-data-requirements-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7777777777777778,
+      "words": 485,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.6144999999999999,
+        0.617
+      ],
+      "judge": 0.61575,
+      "meetsGoal": 0.47125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a413030976",
+      "case": "ai-data-requirements-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8181818181818182,
+      "words": 754,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.9035,
+        0.8915
+      ],
+      "judge": 0.8975,
+      "meetsGoal": 0.7175,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "18bd8b3c6b",
+      "case": "ai-data-requirements-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 408,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.743,
+        0.758
+      ],
+      "judge": 0.7505,
+      "meetsGoal": 0.63625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ae29aeddfc",
+      "case": "ai-data-requirements-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 1136,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.7810000000000001,
+        0.8030000000000002
+      ],
+      "judge": 0.7920000000000001,
+      "meetsGoal": 0.6412500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2a00dd9b36",
+      "case": "ai-data-requirements-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8181818181818182,
+      "words": 802,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.71,
+        0.718
+      ],
+      "judge": 0.714,
+      "meetsGoal": 0.5375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "75eb96b09a",
+      "case": "ai-data-requirements-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1164,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.887,
+        0.8895
+      ],
+      "judge": 0.88825,
+      "meetsGoal": 0.8724999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a6892a3a6c",
+      "case": "ai-data-requirements-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 1632,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.8185,
+        0.7985
+      ],
+      "judge": 0.8085,
+      "meetsGoal": 0.62625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "533bb7f09d",
+      "case": "ai-data-requirements-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7,
+      "words": 683,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.8714999999999999,
+        0.8720000000000001
+      ],
+      "judge": 0.87175,
+      "meetsGoal": 0.7424999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1bfc53493e",
+      "case": "ai-data-requirements-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7,
+      "words": 775,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.8955,
+        0.8969999999999998
+      ],
+      "judge": 0.8962499999999999,
+      "meetsGoal": 0.7887500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2649b431a8",
+      "case": "ai-data-requirements-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9090909090909091,
+      "words": 1179,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.8500000000000001,
+        0.8394999999999999
+      ],
+      "judge": 0.84475,
+      "meetsGoal": 0.78,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "43ba8c3a3d",
+      "case": "ai-data-requirements-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1137,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.8844999999999998,
+        0.885
+      ],
+      "judge": 0.8847499999999999,
+      "meetsGoal": 0.8987499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7ffab87994",
+      "case": "ai-data-requirements-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5555555555555556,
+      "words": 492,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.6460000000000001,
+        0.626
+      ],
+      "judge": 0.6360000000000001,
+      "meetsGoal": 0.49374999999999997,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "39a5202aaf",
+      "case": "ai-data-requirements-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8181818181818182,
+      "words": 729,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.8245,
+        0.8044999999999998
+      ],
+      "judge": 0.8144999999999999,
+      "meetsGoal": 0.6387499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7a48892161",
+      "case": "ai-data-requirements-004",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 474,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.9315,
+        0.935
+      ],
+      "judge": 0.93325,
+      "meetsGoal": 0.81875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "22e89fa3b1",
+      "case": "ai-data-requirements-004",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 495,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.921,
+        0.9199999999999999
+      ],
+      "judge": 0.9205,
+      "meetsGoal": 0.8699999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2be7f084f9",
+      "case": "ai-data-requirements-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5555555555555556,
+      "words": 888,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.8300000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8400000000000001,
+      "meetsGoal": 0.7449999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "880c4e2f5e",
+      "case": "ai-data-requirements-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 710,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.7890000000000001,
+        0.7929999999999999
+      ],
+      "judge": 0.791,
+      "meetsGoal": 0.8,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

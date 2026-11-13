@@ -1,0 +1,375 @@
+{
+  "skill": "ai-roi-quantification",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.03333333333333335,
+  "costUsd": 0.1363954,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.5888888888888889,
+      "meetsGoal": 0.7916666666666666,
+      "regex": 0.9676767676767677,
+      "words": 876.5555555555555
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.48888888888888893,
+      "meetsGoal": 0.2638888888888889,
+      "regex": 0.6872053872053872,
+      "words": 435.6666666666667
+    }
+  },
+  "answers": [
+    {
+      "id": "7406a33cea",
+      "case": "ai-roi-quantification-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 407,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It flags low quality but gives no immediate containment or compliance gate for troubleshooting in a regulated company.",
+        "It assumes stopping troubleshooting recovers the full loss and does not address immediate safeguards for low-quality advice in a regulated setting."
+      ]
+    },
+    {
+      "id": "06188c277a",
+      "case": "ai-roi-quantification-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6,
+      "words": 464,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.5,
+        0.55
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.125,
+      "weakest": [
+        "It turns unmeasured time savings into an ROI claim and an unconditional renewal recommendation instead of a labelled projection with a credible baseline plan.",
+        "It presents unverified savings as ROI and uses them to justify renewal instead of offering a labelled projection and a credible baseline plan."
+      ]
+    },
+    {
+      "id": "d03fb652f0",
+      "case": "ai-roi-quantification-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1418,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The ROI model treats failed uses as costless and proposes arbitrary quality thresholds without addressing regulated-maintenance safety.",
+        "Arbitrary stop thresholds and no allowance for harmful incorrect outputs undermine the recommendation to continue in a regulated setting."
+      ]
+    },
+    {
+      "id": "74b4fc5ba8",
+      "case": "ai-roi-quantification-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 523,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It wrongly treats last year's baseline as proof of realized ROI and assumes stopping troubleshooting would recover its full reported loss.",
+        "It wrongly treats last year's baselines as validated ROI and assumes stopping troubleshooting would eliminate its entire loss."
+      ]
+    },
+    {
+      "id": "7d884c0da7",
+      "case": "ai-roi-quantification-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 346,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.35,
+        0.4
+      ],
+      "judge": 0.375,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It claims robust positive ROI without a measured baseline instead of presenting a conditional projection and a defensible measurement plan.",
+        "It claims robust positive ROI without a measured baseline instead of presenting a conditional projection and a defensible baseline plan."
+      ]
+    },
+    {
+      "id": "141501582c",
+      "case": "ai-roi-quantification-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 414,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It assumes stopping or shrinking troubleshooting yields +270,000 EUR without checking avoidable costs, exit costs, or displaced support work.",
+        "It assumes stopping or shrinking troubleshooting yields +270,000 EUR without checking avoidable costs, and leaves the fix-or-stop decision unresolved."
+      ]
+    },
+    {
+      "id": "817849c431",
+      "case": "ai-roi-quantification-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6,
+      "words": 392,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.44999999999999996,
+        0.5
+      ],
+      "judge": 0.475,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It headlines an unsupported ROI claim instead of a conditional projection, and its baseline plan does not measure net time saved.",
+        "It leads with an unsupported ROI claim instead of a conditional projection, and its baseline plan does not measure net time saved."
+      ]
+    },
+    {
+      "id": "f9b377bc0d",
+      "case": "ai-roi-quantification-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 646,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It flags the unsupported 45-minute claim but provides no interview template to investigate and validate it.",
+        "It flags the unsupported 45-minute claim but never proposes the required interview template to investigate it."
+      ]
+    },
+    {
+      "id": "b60b749442",
+      "case": "ai-roi-quantification-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 632,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It flags the unsupported 45-minute claim but proposes no interview template and prematurely declares that go/no-go does not depend on it.",
+        "It flags the unsupported savings figure but never proposes the required interview template."
+      ]
+    },
+    {
+      "id": "8551ef34e5",
+      "case": "ai-roi-quantification-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9,
+      "words": 769,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.7,
+        0.6
+      ],
+      "judge": 0.6499999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Renewal thresholds rely on speculative capacity value rather than measured end-to-end savings and risk-based limits on harmful HR errors.",
+        "Renewal and quality thresholds are driven by projected economics rather than the severity of wrong HR answers in a regulated company."
+      ]
+    },
+    {
+      "id": "12b3464eb9",
+      "case": "ai-roi-quantification-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 291,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.5,
+        0.55
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It offers options instead of a stop-or-fix recommendation and allows the negative use case to be buried in an appendix.",
+        "It allows troubleshooting to be buried in an appendix and lists options instead of making a clear stop-or-fix recommendation."
+      ]
+    },
+    {
+      "id": "13f9a2e987",
+      "case": "ai-roi-quantification-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 806,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.5,
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It recommends renewal on unverified savings and weak safety thresholds, with incorrect counterfactual arithmetic and an inadequately designed baseline.",
+        "It recommends renewal on unverified savings and a misleading break-even cushion, including an incorrect counterfactual calculation, without adequate HR safety gates."
+      ]
+    },
+    {
+      "id": "fc660c31ac",
+      "case": "ai-roi-quantification-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7777777777777778,
+      "words": 279,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.44999999999999996,
+        0.5
+      ],
+      "judge": 0.475,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It offers no firm stop-or-fix recommendation and ultimately allows the negative use case to be buried in an appendix or speaker notes.",
+        "It retreats to an optional appendix instead of requiring visible disclosure and a clear stop-or-fix decision for troubleshooting."
+      ]
+    },
+    {
+      "id": "4f843f6235",
+      "case": "ai-roi-quantification-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1434,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.44999999999999996,
+        0.5
+      ],
+      "judge": 0.475,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It uses unverified savings and arbitrary thresholds to justify continued spending and claim that a loss is unlikely.",
+        "It recommends another quarter using invented decision thresholds and unsupported economics, despite flagging the central evidence gap."
+      ]
+    },
+    {
+      "id": "385aed57f6",
+      "case": "ai-roi-quantification-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9090909090909091,
+      "words": 1129,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.5,
+        0.4
+      ],
+      "judge": 0.45,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It invents evidence-gathering history and baseline age, while offering interview prompts rather than a usable validation template.",
+        "It flags the unsourced figure but substitutes arbitrary decision thresholds and a brief interview suggestion for a usable interview template."
+      ]
+    },
+    {
+      "id": "2c382b6bf9",
+      "case": "ai-roi-quantification-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 1.0,
+      "words": 323,
+      "goal": "The negative use case is shown on its own with a stop-or-fix call.",
+      "scores": [
+        0.5,
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It promises a shutdown uplift to +270,000 EUR without validating last year's baseline, avoidable costs, or replacement-service costs.",
+        "It assumes stopping troubleshooting recovers the full \u20ac45,000 without validating last year\u2019s baseline, avoidable costs, or shutdown impacts."
+      ]
+    },
+    {
+      "id": "7a0c0e0406",
+      "case": "ai-roi-quantification-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9,
+      "words": 989,
+      "goal": "A labelled projection and a baseline plan, not an ROI claim.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The arbitrary 70% accuracy threshold ignores regulated HR harms, and the optimistic renewal recommendation exceeds the unmeasured evidence.",
+        "It recommends renewal with an unjustified 70% quality floor, ignoring the severity of incorrect HR advice in a regulated company."
+      ]
+    },
+    {
+      "id": "83e36d2348",
+      "case": "ai-roi-quantification-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6363636363636364,
+      "words": 548,
+      "goal": "The figure is flagged, an interview template proposed.",
+      "scores": [
+        0.44999999999999996,
+        0.4
+      ],
+      "judge": 0.425,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It flags the unsourced figure but proposes no interview template and prematurely assures the CFO that the decision holds.",
+        "It endorses an unvalidated business case and omits the required interview template."
+      ]
+    }
+  ]
+}

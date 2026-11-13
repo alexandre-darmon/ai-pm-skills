@@ -1,0 +1,375 @@
+{
+  "skill": "release-to-production",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.006916666666666682,
+  "costUsd": 0.002801148,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8664999999999999,
+      "meetsGoal": 0.8554166666666666,
+      "regex": 0.9876543209876544,
+      "words": 556.7777777777778
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7970833333333334,
+      "meetsGoal": 0.6845833333333333,
+      "regex": 0.6111111111111112,
+      "words": 490.44444444444446
+    }
+  },
+  "answers": [
+    {
+      "id": "0972f20961",
+      "case": "release-to-production-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7,
+      "words": 377,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.8925000000000001,
+        0.8900000000000001
+      ],
+      "judge": 0.8912500000000001,
+      "meetsGoal": 0.9375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4459612a53",
+      "case": "release-to-production-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 488,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.9279999999999999,
+        0.925
+      ],
+      "judge": 0.9265,
+      "meetsGoal": 0.9624999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "019069e071",
+      "case": "release-to-production-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5555555555555556,
+      "words": 364,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.8960000000000001,
+        0.8815000000000002
+      ],
+      "judge": 0.8887500000000002,
+      "meetsGoal": 0.88875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "56105f7241",
+      "case": "release-to-production-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 646,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.6849999999999999,
+        0.6855
+      ],
+      "judge": 0.6852499999999999,
+      "meetsGoal": 0.68875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3630f768f4",
+      "case": "release-to-production-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 784,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.8559999999999999,
+        0.8445
+      ],
+      "judge": 0.85025,
+      "meetsGoal": 0.93875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "fcc2e00ccb",
+      "case": "release-to-production-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5555555555555556,
+      "words": 338,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.8360000000000001,
+        0.8225
+      ],
+      "judge": 0.82925,
+      "meetsGoal": 0.7075,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "94151b9569",
+      "case": "release-to-production-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 397,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.915,
+        0.9059999999999999
+      ],
+      "judge": 0.9105,
+      "meetsGoal": 0.815,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "dd3cf883c2",
+      "case": "release-to-production-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7,
+      "words": 399,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.915,
+        0.9179999999999999
+      ],
+      "judge": 0.9165,
+      "meetsGoal": 0.83,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "135a1e08aa",
+      "case": "release-to-production-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 627,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.935,
+        0.9375
+      ],
+      "judge": 0.93625,
+      "meetsGoal": 0.9725000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c9e73c61a2",
+      "case": "release-to-production-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 382,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.9265000000000001,
+        0.9209999999999998
+      ],
+      "judge": 0.92375,
+      "meetsGoal": 0.82375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "bb68ea7319",
+      "case": "release-to-production-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5555555555555556,
+      "words": 316,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.8815,
+        0.8855
+      ],
+      "judge": 0.8835,
+      "meetsGoal": 0.83875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2a895c78d1",
+      "case": "release-to-production-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6,
+      "words": 393,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.873,
+        0.887
+      ],
+      "judge": 0.88,
+      "meetsGoal": 0.76125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4f08dcd629",
+      "case": "release-to-production-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 683,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.7615000000000001,
+        0.7625
+      ],
+      "judge": 0.762,
+      "meetsGoal": 0.7687499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "933fe1c099",
+      "case": "release-to-production-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 687,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.6545,
+        0.6709999999999999
+      ],
+      "judge": 0.66275,
+      "meetsGoal": 0.46125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6a5c3ffbdc",
+      "case": "release-to-production-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 610,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.901,
+        0.9004999999999999
+      ],
+      "judge": 0.9007499999999999,
+      "meetsGoal": 0.9649999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5e5391b89f",
+      "case": "release-to-production-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 754,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.64,
+        0.6199999999999999
+      ],
+      "judge": 0.6299999999999999,
+      "meetsGoal": 0.34625000000000006,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "bfd1a78a2c",
+      "case": "release-to-production-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 394,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.9040000000000001,
+        0.9025000000000001
+      ],
+      "judge": 0.9032500000000001,
+      "meetsGoal": 0.7637499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7a82d2241f",
+      "case": "release-to-production-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 786,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.5925,
+        0.591
+      ],
+      "judge": 0.59175,
+      "meetsGoal": 0.39,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

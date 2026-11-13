@@ -1,0 +1,489 @@
+{
+  "skill": "multi-turn-evals",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.0064375000000000265,
+  "costUsd": 0.004793964,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 12,
+      "judge": 0.9252916666666667,
+      "meetsGoal": 0.9369791666666667,
+      "regex": 0.93125,
+      "words": 792.3333333333334
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.8425625,
+      "meetsGoal": 0.7285416666666666,
+      "regex": 0.43194444444444446,
+      "words": 616.0
+    }
+  },
+  "answers": [
+    {
+      "id": "bd83f05ad6",
+      "case": "multi-turn-evals-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8333333333333334,
+      "words": 875,
+      "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
+      "scores": [
+        0.9425000000000001,
+        0.9415
+      ],
+      "judge": 0.9420000000000001,
+      "meetsGoal": 0.9275,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "32b1b2c146",
+      "case": "multi-turn-evals-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 761,
+      "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
+      "scores": [
+        0.9345000000000001,
+        0.9295000000000002
+      ],
+      "judge": 0.9320000000000002,
+      "meetsGoal": 0.9525000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "180fc277b5",
+      "case": "multi-turn-evals-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 780,
+      "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
+      "scores": [
+        0.9390000000000001,
+        0.9344999999999999
+      ],
+      "judge": 0.93675,
+      "meetsGoal": 0.95125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2b4160a0a3",
+      "case": "multi-turn-evals-004",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.4,
+      "words": 634,
+      "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
+      "scores": [
+        0.7615000000000001,
+        0.7445
+      ],
+      "judge": 0.7530000000000001,
+      "meetsGoal": 0.575,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a12f9008f4",
+      "case": "multi-turn-evals-004",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 702,
+      "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
+      "scores": [
+        0.8919999999999999,
+        0.891
+      ],
+      "judge": 0.8915,
+      "meetsGoal": 0.9199999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "060cf0cfce",
+      "case": "multi-turn-evals-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.3333333333333333,
+      "words": 777,
+      "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
+      "scores": [
+        0.9464999999999999,
+        0.948
+      ],
+      "judge": 0.9472499999999999,
+      "meetsGoal": 0.9299999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1018215b5a",
+      "case": "multi-turn-evals-004",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.2,
+      "words": 458,
+      "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
+      "scores": [
+        0.649,
+        0.6615
+      ],
+      "judge": 0.65525,
+      "meetsGoal": 0.565,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "20314e9a94",
+      "case": "multi-turn-evals-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8333333333333334,
+      "words": 978,
+      "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
+      "scores": [
+        0.944,
+        0.9484999999999999
+      ],
+      "judge": 0.9462499999999999,
+      "meetsGoal": 0.9649999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9e8de7565a",
+      "case": "multi-turn-evals-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.875,
+      "words": 884,
+      "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
+      "scores": [
+        0.9510000000000001,
+        0.9505000000000001
+      ],
+      "judge": 0.9507500000000001,
+      "meetsGoal": 0.9612499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "470d19a367",
+      "case": "multi-turn-evals-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8333333333333334,
+      "words": 1001,
+      "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
+      "scores": [
+        0.9475,
+        0.9475000000000002
+      ],
+      "judge": 0.9475000000000001,
+      "meetsGoal": 0.9637499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5540dd2887",
+      "case": "multi-turn-evals-004",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 515,
+      "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
+      "scores": [
+        0.7310000000000001,
+        0.7415
+      ],
+      "judge": 0.7362500000000001,
+      "meetsGoal": 0.61625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e6e558f23b",
+      "case": "multi-turn-evals-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 650,
+      "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
+      "scores": [
+        0.9359999999999999,
+        0.9390000000000001
+      ],
+      "judge": 0.9375,
+      "meetsGoal": 0.8600000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "75481bec48",
+      "case": "multi-turn-evals-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.625,
+      "words": 607,
+      "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
+      "scores": [
+        0.7929999999999999,
+        0.808
+      ],
+      "judge": 0.8005,
+      "meetsGoal": 0.69875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9dcd2643e2",
+      "case": "multi-turn-evals-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 590,
+      "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
+      "scores": [
+        0.8780000000000001,
+        0.8755000000000002
+      ],
+      "judge": 0.8767500000000001,
+      "meetsGoal": 0.6799999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ed2a539dae",
+      "case": "multi-turn-evals-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 786,
+      "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
+      "scores": [
+        0.9184999999999999,
+        0.9164999999999999
+      ],
+      "judge": 0.9174999999999999,
+      "meetsGoal": 0.9000000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b6594a2622",
+      "case": "multi-turn-evals-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.625,
+      "words": 643,
+      "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
+      "scores": [
+        0.905,
+        0.9179999999999999
+      ],
+      "judge": 0.9115,
+      "meetsGoal": 0.7775000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b8c158c476",
+      "case": "multi-turn-evals-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.375,
+      "words": 593,
+      "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
+      "scores": [
+        0.8015000000000001,
+        0.7949999999999999
+      ],
+      "judge": 0.79825,
+      "meetsGoal": 0.665,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0baa87ae66",
+      "case": "multi-turn-evals-004",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 693,
+      "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
+      "scores": [
+        0.8820000000000001,
+        0.8795
+      ],
+      "judge": 0.88075,
+      "meetsGoal": 0.8999999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e7854932ee",
+      "case": "multi-turn-evals-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.0,
+      "words": 597,
+      "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
+      "scores": [
+        0.8515000000000001,
+        0.8539999999999999
+      ],
+      "judge": 0.85275,
+      "meetsGoal": 0.705,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "58c0abd48a",
+      "case": "multi-turn-evals-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 682,
+      "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
+      "scores": [
+        0.942,
+        0.9435
+      ],
+      "judge": 0.94275,
+      "meetsGoal": 0.92625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c25beb33d1",
+      "case": "multi-turn-evals-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 698,
+      "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
+      "scores": [
+        0.9495,
+        0.9555
+      ],
+      "judge": 0.9525,
+      "meetsGoal": 0.9662499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "53af75b890",
+      "case": "multi-turn-evals-004",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9,
+      "words": 647,
+      "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
+      "scores": [
+        0.8855,
+        0.865
+      ],
+      "judge": 0.87525,
+      "meetsGoal": 0.885,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d18b0078df",
+      "case": "multi-turn-evals-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 703,
+      "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
+      "scores": [
+        0.925,
+        0.9365000000000001
+      ],
+      "judge": 0.9307500000000001,
+      "meetsGoal": 0.95125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b8b02aadaf",
+      "case": "multi-turn-evals-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.625,
+      "words": 646,
+      "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
+      "scores": [
+        0.9040000000000001,
+        0.8939999999999999
+      ],
+      "judge": 0.899,
+      "meetsGoal": 0.74375,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

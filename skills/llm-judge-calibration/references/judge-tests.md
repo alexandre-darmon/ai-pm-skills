@@ -18,7 +18,7 @@ Reading: to show TNR ≥ 80% on the lower bound when the judge's true TNR is abo
 
 The same table holds for TPR with expert passes. Passes are usually plentiful; fails are the constraint.
 
-Enrichment: when fails are rare in traffic, add likely fails to the labelling sample (answers flagged in `error-analysis`, low-confidence answers, complaints). TPR and TNR are computed within each expert class, so enrichment does not bias them. It does change raw agreement, one more reason not to report agreement.
+Enrichment: when fails are rare in traffic, add likely fails to the labelling sample (answers flagged in `error-analysis`, low-confidence answers, complaints). TPR and TNR are computed within each expert class, so the class mix does not bias them; enrichment can still bias them if the added fails are easier or harder to catch than typical ones, so mix sources and keep a random part. It does change raw agreement, one more reason not to report agreement.
 
 ## 2. Splits
 

@@ -1,0 +1,375 @@
+{
+  "skill": "retrieval-evaluation",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.025000000000000005,
+  "costUsd": 0.1315148,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.7833333333333333,
+      "meetsGoal": 0.8611111111111112,
+      "regex": 0.8674843674843675,
+      "words": 765.1111111111111
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7027777777777778,
+      "meetsGoal": 0.3888888888888889,
+      "regex": 0.5091390091390091,
+      "words": 634.8888888888889
+    }
+  },
+  "answers": [
+    {
+      "id": "7424411aee",
+      "case": "retrieval-evaluation-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.16666666666666666,
+      "words": 736,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits standalone recall@5 evaluation on labelled queries including unanswerable ones, pooled relevance judgements across retrievers, and explicit generation testing on fixed contexts.",
+        "It omits a standalone retrieval evaluation using recall at the actual k sent, labelled unanswerable queries, and relevance judgements pooled across retrievers."
+      ]
+    },
+    {
+      "id": "5b29a166d2",
+      "case": "retrieval-evaluation-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6363636363636364,
+      "words": 573,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits unanswerable questions with expected answer \"not found\" and fails to require judging newly surfaced passages before comparing results per class.",
+        "It omits unanswerable questions expecting plain \"not found\" and judging newly surfaced passages before comparing release results by class."
+      ]
+    },
+    {
+      "id": "eee7744266",
+      "case": "retrieval-evaluation-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8333333333333334,
+      "words": 865,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It assumes without evidence that the sample contains no unanswerable queries and that retrieved contexts are already logged.",
+        "It asserts without evidence that the sample contains no unanswerable questions and that the logs retain retrieved contexts."
+      ]
+    },
+    {
+      "id": "c455e0ba29",
+      "case": "retrieval-evaluation-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 642,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It conflates missing evidence with retrieval failure, although generating an unsupported claim remains a generation failure requiring abstention.",
+        "It misclassifies missing evidence as retrieval failure and asserts without evidence that the test set contains no unanswerable questions."
+      ]
+    },
+    {
+      "id": "096b9ec5d9",
+      "case": "retrieval-evaluation-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9090909090909091,
+      "words": 842,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The release gate inconsistently handles ties and substitutes 'not found plus who to contact' for the required plain 'not found'.",
+        "The unanswerable cases should expect plain \"not found\", and the proposed statistical tie rule does not establish non-regression."
+      ]
+    },
+    {
+      "id": "6755eb558b",
+      "case": "retrieval-evaluation-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.36363636363636365,
+      "words": 678,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits unanswerable questions expecting plain \"not found\" and fails to require judging newly surfaced passages before comparing releases on identical questions by class.",
+        "It omits unanswerable questions expecting plain \"not found\" and never requires judging newly surfaced passages before comparing results per class."
+      ]
+    },
+    {
+      "id": "df285decca",
+      "case": "retrieval-evaluation-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.2857142857142857,
+      "words": 522,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It does not require fixed contexts for comparisons or validate the claim-level judge against procedure-owner judgments.",
+        "It proposes claim-level checking but never requires fixed contexts or validates the judge against procedure-owner labels."
+      ]
+    },
+    {
+      "id": "5d4d6bb3c2",
+      "case": "retrieval-evaluation-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.2727272727272727,
+      "words": 640,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It omits no-document questions expecting plain \"not found\" and fails to require judging newly surfaced passages before comparing results per class.",
+        "It omits unanswerable questions expecting plain \"not found\" and judging newly surfaced passages before comparing results per class."
+      ]
+    },
+    {
+      "id": "8b235edf4b",
+      "case": "retrieval-evaluation-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8571428571428571,
+      "words": 581,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It does not explicitly freeze retrieved contexts for claim-level comparisons or define held-out validation criteria for the judge.",
+        "It does not explicitly freeze retrieved contexts or validate the judge against owner-labelled individual claims before comparing fixes."
+      ]
+    },
+    {
+      "id": "e21cd01f96",
+      "case": "retrieval-evaluation-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 732,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The switch depends on a per-class acceptance gate that is never defined.",
+        "The switch gate lacks explicit overall and per-class acceptance thresholds, and the statistical tie rule is only an approximation."
+      ]
+    },
+    {
+      "id": "11decc5beb",
+      "case": "retrieval-evaluation-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 1.0,
+      "words": 547,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never requires claim-by-claim evaluation on fixed contexts with a validated judge, making generation improvements hard to establish reliably.",
+        "It makes validated claim-level judging optional and never specifies testing prompt and abstention changes on fixed retrieved contexts."
+      ]
+    },
+    {
+      "id": "b18ccc696c",
+      "case": "retrieval-evaluation-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8181818181818182,
+      "words": 791,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It invents a one-day evaluation estimate and an absence of rollback, and adds an HR referral instead of the required plain \"not found\".",
+        "It assumes a one-day evaluation and missing safeguards without evidence, and changes the required plain \"not found\" answer by adding a contact."
+      ]
+    },
+    {
+      "id": "707c3dd41d",
+      "case": "retrieval-evaluation-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 831,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.8500000000000001,
+        0.95
+      ],
+      "judge": 0.9,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The claimed 85% ceiling treats failure-stage attribution as a hard limit on what a larger model could improve.",
+        "The claim that fewer than 28 generation failures makes 85% impossible overstates what a small retrospective sample can establish."
+      ]
+    },
+    {
+      "id": "599e2a7886",
+      "case": "retrieval-evaluation-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.3333333333333333,
+      "words": 698,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It omits standalone retrieval evaluation using recall@5 on labelled queries, including unanswerable ones, with relevance judgments pooled across retrievers.",
+        "It omits a standalone retrieval evaluation measuring recall at the five chunks sent, using labelled queries including unanswerable ones and relevance judgments pooled across retrievers."
+      ]
+    },
+    {
+      "id": "697f3443d0",
+      "case": "retrieval-evaluation-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8571428571428571,
+      "words": 696,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It asserts without evidence that the evaluation set contains no unanswerable questions.",
+        "It asserts without evidence that the test set contains no unanswerable questions."
+      ]
+    },
+    {
+      "id": "1e748844f9",
+      "case": "retrieval-evaluation-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.5714285714285714,
+      "words": 720,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.75,
+        0.65
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never specifies or validates a claim-level faithfulness judge against procedure-owner labels.",
+        "It never specifies a validated claim-level judge, leaving the central faithfulness measurement unreliable."
+      ]
+    },
+    {
+      "id": "dcb7467028",
+      "case": "retrieval-evaluation-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 739,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Retrieval evaluation lacks relevance judgments pooled across retrievers and explicit handling of labelled unanswerable queries.",
+        "Retrieval evaluation lacks relevance judgments pooled across retrievers and an explicitly labelled query set including unanswerable questions."
+      ]
+    },
+    {
+      "id": "995f479ffb",
+      "case": "retrieval-evaluation-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8181818181818182,
+      "words": 767,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The release gate treats statistically undetected subgroup regressions as acceptable despite acknowledging the test's small sample.",
+        "The release gate can miss meaningful per-class regressions because the small test set has little power to detect statistically significant drops."
+      ]
+    }
+  ]
+}

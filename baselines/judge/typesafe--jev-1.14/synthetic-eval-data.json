@@ -1,0 +1,375 @@
+{
+  "skill": "synthetic-eval-data",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.01044444444444443,
+  "costUsd": 0.003545556,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.9261944444444443,
+      "meetsGoal": 0.8929166666666668,
+      "regex": 0.9583333333333334,
+      "words": 814.0
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.8173611111111111,
+      "meetsGoal": 0.6575,
+      "regex": 0.30000000000000004,
+      "words": 662.6666666666666
+    }
+  },
+  "answers": [
+    {
+      "id": "07861fc3d6",
+      "case": "synthetic-eval-data-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.75,
+      "words": 880,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.873,
+        0.8939999999999999
+      ],
+      "judge": 0.8835,
+      "meetsGoal": 0.825,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ba4c844db1",
+      "case": "synthetic-eval-data-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 675,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.952,
+        0.9529999999999998
+      ],
+      "judge": 0.9524999999999999,
+      "meetsGoal": 0.9675,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0ffba56831",
+      "case": "synthetic-eval-data-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.4,
+      "words": 402,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.9175,
+        0.917
+      ],
+      "judge": 0.91725,
+      "meetsGoal": 0.8412499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3af7d66db8",
+      "case": "synthetic-eval-data-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.125,
+      "words": 672,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.6735,
+        0.695
+      ],
+      "judge": 0.68425,
+      "meetsGoal": 0.53375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3c2771421c",
+      "case": "synthetic-eval-data-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.4,
+      "words": 498,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.8895,
+        0.8855
+      ],
+      "judge": 0.8875,
+      "meetsGoal": 0.75875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "74cd9ff4f2",
+      "case": "synthetic-eval-data-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.875,
+      "words": 870,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.925,
+        0.9315
+      ],
+      "judge": 0.92825,
+      "meetsGoal": 0.9187500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "fc79268fd8",
+      "case": "synthetic-eval-data-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1129,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.9515,
+        0.9504999999999999
+      ],
+      "judge": 0.951,
+      "meetsGoal": 0.9125000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e20f59ac89",
+      "case": "synthetic-eval-data-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 795,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.8919999999999999,
+        0.8939999999999999
+      ],
+      "judge": 0.8929999999999999,
+      "meetsGoal": 0.6825,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "eab8578ec2",
+      "case": "synthetic-eval-data-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 792,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.891,
+        0.899
+      ],
+      "judge": 0.895,
+      "meetsGoal": 0.7899999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c12ef7a971",
+      "case": "synthetic-eval-data-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.4,
+      "words": 469,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.911,
+        0.905
+      ],
+      "judge": 0.908,
+      "meetsGoal": 0.815,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "f96c78ebca",
+      "case": "synthetic-eval-data-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 591,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.94,
+        0.9395
+      ],
+      "judge": 0.93975,
+      "meetsGoal": 0.9525,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9c200a2b68",
+      "case": "synthetic-eval-data-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 639,
+      "goal": "Adds language and writing style as a dimension anchored on pilot messages, compares the set with pilot traffic on length, language and class mix, rejects and regenerates, reports the 94% as a score on synthetic cases only, and brings in masked pilot cases.",
+      "scores": [
+        0.9295,
+        0.9285000000000001
+      ],
+      "judge": 0.929,
+      "meetsGoal": 0.95625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "26f7468681",
+      "case": "synthetic-eval-data-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.125,
+      "words": 822,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.8405,
+        0.7795000000000001
+      ],
+      "judge": 0.81,
+      "meetsGoal": 0.54,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "fe9fb413b2",
+      "case": "synthetic-eval-data-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 962,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.895,
+        0.9085000000000001
+      ],
+      "judge": 0.90175,
+      "meetsGoal": 0.6425000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c28afe5843",
+      "case": "synthetic-eval-data-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.0,
+      "words": 625,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.7035,
+        0.6855
+      ],
+      "judge": 0.6945,
+      "meetsGoal": 0.5762499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "290f0c4509",
+      "case": "synthetic-eval-data-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 846,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.903,
+        0.8985000000000001
+      ],
+      "judge": 0.90075,
+      "meetsGoal": 0.7762500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "99e4c166b0",
+      "case": "synthetic-eval-data-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.25,
+      "words": 719,
+      "goal": "Derives dimensions from the 12 questions, lists tuples before writing inputs in a separate step, has experts review and records the rejection rate, flags every synthetic case and states the share per class, and plans replacement by real cases with a date.",
+      "scores": [
+        0.6675000000000001,
+        0.6525000000000001
+      ],
+      "judge": 0.6600000000000001,
+      "meetsGoal": 0.5275,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b7d67ed8aa",
+      "case": "synthetic-eval-data-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 904,
+      "goal": "Refuses to let the model under test write the expected answers; answers come from claims experts or the procedures; questions grounded in real claims traffic, include questions the procedures cannot answer, judge kept apart and validated, synthetic share declared.",
+      "scores": [
+        0.9544999999999999,
+        0.9575
+      ],
+      "judge": 0.956,
+      "meetsGoal": 0.9375,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

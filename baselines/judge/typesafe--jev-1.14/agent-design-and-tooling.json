@@ -1,0 +1,375 @@
+{
+  "skill": "agent-design-and-tooling",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.004888888888888905,
+  "costUsd": 0.003516828,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.9137500000000001,
+      "regex": 0.9555555555555555,
+      "words": 1012.0
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.900111111111111,
+      "meetsGoal": 0.7575,
+      "regex": 0.48888888888888893,
+      "words": 679.4444444444445
+    }
+  },
+  "answers": [
+    {
+      "id": "544c58da08",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 863,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.9064999999999999,
+        0.9079999999999999
+      ],
+      "judge": 0.9072499999999999,
+      "meetsGoal": 0.8474999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ca886c6407",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8,
+      "words": 1160,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8485,
+        0.8595000000000002
+      ],
+      "judge": 0.8540000000000001,
+      "meetsGoal": 0.9237500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2a8de26171",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9,
+      "words": 1014,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8955,
+        0.8939999999999999
+      ],
+      "judge": 0.8947499999999999,
+      "meetsGoal": 0.94875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "8effdcf1fa",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 765,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.845,
+        0.8435000000000001
+      ],
+      "judge": 0.8442500000000001,
+      "meetsGoal": 0.835,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9b57db4d50",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6,
+      "words": 560,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.9015,
+        0.901
+      ],
+      "judge": 0.90125,
+      "meetsGoal": 0.8262499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4cf2e27487",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1302,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.7795000000000001,
+        0.7715000000000001
+      ],
+      "judge": 0.7755000000000001,
+      "meetsGoal": 0.8725,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0334eb978d",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.1,
+      "words": 554,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.9179999999999999,
+        0.907
+      ],
+      "judge": 0.9125,
+      "meetsGoal": 0.58125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "33792432d4",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 1052,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8675000000000002,
+        0.855
+      ],
+      "judge": 0.8612500000000001,
+      "meetsGoal": 0.92,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a642c8f6bd",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 537,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.8685,
+        0.8759999999999999
+      ],
+      "judge": 0.87225,
+      "meetsGoal": 0.9,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "8a13a1fe45",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1221,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.7215,
+        0.718
+      ],
+      "judge": 0.71975,
+      "meetsGoal": 0.8650000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b1993bede2",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1729,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8660000000000001,
+        0.8725
+      ],
+      "judge": 0.8692500000000001,
+      "meetsGoal": 0.935,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4b09bd3cdc",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.1,
+      "words": 515,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.9239999999999999,
+        0.919
+      ],
+      "judge": 0.9215,
+      "meetsGoal": 0.49500000000000005,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d2a9356b05",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 529,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.8795,
+        0.8820000000000001
+      ],
+      "judge": 0.88075,
+      "meetsGoal": 0.9075000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "38a33001c7",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 564,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.9219999999999999,
+        0.923
+      ],
+      "judge": 0.9225,
+      "meetsGoal": 0.95125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4209975e53",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 692,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.9140000000000001,
+        0.907
+      ],
+      "judge": 0.9105000000000001,
+      "meetsGoal": 0.885,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "d2a9b839b3",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.1,
+      "words": 559,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.915,
+        0.911
+      ],
+      "judge": 0.913,
+      "meetsGoal": 0.63375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b70328fc9f",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8,
+      "words": 769,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8844999999999998,
+        0.885
+      ],
+      "judge": 0.8847499999999999,
+      "meetsGoal": 0.8475,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2dbc107eb4",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6,
+      "words": 838,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.9075,
+        0.9045000000000001
+      ],
+      "judge": 0.906,
+      "meetsGoal": 0.86625,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

@@ -4,6 +4,13 @@ Each release lists what changed for someone who installs the skills.
 
 **Version numbers.** Major (2.0): a skill is removed or renamed, or an output template changes shape, so installs or downstream documents can break. Minor (1.2): a skill is added, or a skill gains a method step. Patch (1.1.1): wording, graders, docs, manifests. The release version is the same in every manifest; each skill also has its own version in `metadata.version`. Per-skill versions live in each `SKILL.md` (`metadata.version`); eval records and their history are in [`baselines/`](baselines/).
 
+## Unreleased
+
+- **Judges from other vendors.** `judge_answers.py` grades saved answers through OpenRouter (`scripts/openrouter.py`, key in `OPENROUTER_API_KEY` or the git-ignored `.env`): GPT-6.1 Sol (same prompt as the Claude judges) and TypeSafe's Jev decision model, on the recorded runs of the 23 non-legal skills. Both find +9 points with the skill; the regex graders find +45.
+- **Four skills improved from the judges' critiques**, each rerun (3 runs, pass) and re-judged: `model-selection` (overlapping intervals no longer read as a tie; ask for the discordant cases), `agent-design-and-tooling` (data scope from the trusted session, a concrete provisional cap and limits marked as assumptions, output checked against tool facts), `system-prompt-and-guardrails` (unprovided figures and policies become owned assumptions; a re-test never shrinks the attack set), `llm-judge-calibration` (no default target presented as given; compute which term drives the corrected rate's uncertainty). Outside-judge gains on these four went from about 0 to +2 to +7 (GPT) and +4 to +12 (Sonnet).
+- `agent-design-and-tooling` case 001: grader `empty-vs-failed` accepts "X and Y are different" (it rejected a correct answer).
+- README table: one number per gain column; intervals stay in [skill-eval-gains.md](skill-eval-gains.md).
+
 ## v1.1.1 (2026-11-13)
 
 Packaging only: same skills and evidence as v1.1.0. Release notes: [docs/releases/v1.1.1.md](docs/releases/v1.1.1.md).

@@ -5,14 +5,16 @@
 <!-- gains:start -->
 | Same cases, Sonnet 5.5 answering | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 29 skills, 109 cases × 3 runs | 52% | 82% | **96%** | +45 [+41, +48] | +17 [+6, +32] |
-| Blind LLM judge, Haiku 5.5: 5 of these skills, 17 cases, earlier runs, not calibrated | 71% | 78% | 80% | +10 [+6, +13] | +3 [+1, +5] |
-| Blind LLM judge, Sonnet 5.5: 5 of these skills, 17 cases, earlier runs, not calibrated | 69% | 76% | 80% | +11 [+6, +17] | +5 [+3, +7] |
+| Regex graders: 29 skills, 109 cases × 3 runs | 52% | 82% | **96%** | +45 pts | +17 pts |
+| Blind LLM judge, Haiku 5.5: 5 of these skills, 17 cases, earlier runs | 71% | 78% | 80% | +10 pts | +3 pts |
+| Blind LLM judge, Sonnet 5.5: 9 of these skills, 29 cases, earlier runs | 72% | 76% | 82% | +9 pts | +5 pts |
+| Blind LLM judge, openai/gpt-6.1-sol: 23 of these skills, 86 cases, recorded runs | 63% | — | 72% | +9 pts | — |
+| Blind decision model, typesafe/jev-1.14: 23 of these skills, 86 cases, recorded runs | 81% | — | 90% | +9 pts | — |
 | Red lines held (the one thing the answer must never do) | 71% | 88% | **100%** | | |
-| Cost per correct answer, API equivalent (22 skills) | $0.097 | — | **$0.076** | -22% | |
+| Cost per correct answer, API equivalent (20 skills) | $0.102 | — | **$0.078** | -23% | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
-<sub>Sonnet 5.5 answers each case 3 times per arm. **Regex graders** check that the answer contains what the skill asks for; the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; it is not calibrated on human scores yet, tends to favour longer answers, and never grades the legal skills. Gains in points; brackets: 95% interval from resampling the cases, which shows how much the gain depends on the cases written, not on the graders chosen. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>
+<sub>Sonnet 5.5 answers each case 3 times per arm. **Regex graders** check that the answer contains what the skill asks for; the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; it tends to favour longer answers and never grades the legal skills. Gains in points; 95% intervals are in the per-skill numbers. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>
 <!-- gains:end -->
 
 ## Why evals as evidence?

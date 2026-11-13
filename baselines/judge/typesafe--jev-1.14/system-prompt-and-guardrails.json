@@ -1,0 +1,375 @@
+{
+  "skill": "system-prompt-and-guardrails",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.00388888888888888,
+  "costUsd": 0.00363468,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.9319444444444444,
+      "meetsGoal": 0.9512499999999999,
+      "regex": 0.9666666666666666,
+      "words": 1138.4444444444443
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.9241111111111111,
+      "meetsGoal": 0.9381944444444444,
+      "regex": 0.771969696969697,
+      "words": 653.4444444444445
+    }
+  },
+  "answers": [
+    {
+      "id": "da69d2d465",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7272727272727273,
+      "words": 984,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.9285000000000001,
+        0.9285000000000001
+      ],
+      "judge": 0.9285000000000001,
+      "meetsGoal": 0.9575,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1f944ce585",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8181818181818182,
+      "words": 909,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.9344999999999999,
+        0.938
+      ],
+      "judge": 0.9362499999999999,
+      "meetsGoal": 0.9475,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "689114129a",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.75,
+      "words": 414,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.903,
+        0.9019999999999999
+      ],
+      "judge": 0.9025,
+      "meetsGoal": 0.91625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e94c45c4ef",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1994,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.8969999999999998,
+        0.8824999999999998
+      ],
+      "judge": 0.8897499999999998,
+      "meetsGoal": 0.9249999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5d5c0de4d2",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 536,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.9244999999999999,
+        0.9279999999999999
+      ],
+      "judge": 0.9262499999999999,
+      "meetsGoal": 0.9537500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3819ce266d",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 639,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.9425000000000001,
+        0.9449999999999998
+      ],
+      "judge": 0.94375,
+      "meetsGoal": 0.9525,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "cd1a5dfbb3",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 640,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.944,
+        0.94
+      ],
+      "judge": 0.942,
+      "meetsGoal": 0.94875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "fa777cfcd8",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9,
+      "words": 772,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.9550000000000001,
+        0.956
+      ],
+      "judge": 0.9555,
+      "meetsGoal": 0.94875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3750fba263",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2024,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.9319999999999999,
+        0.9265000000000001
+      ],
+      "judge": 0.92925,
+      "meetsGoal": 0.9537500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "268fa9855f",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 865,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.9359999999999999,
+        0.9304999999999999
+      ],
+      "judge": 0.9332499999999999,
+      "meetsGoal": 0.9462499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0545012641",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.875,
+      "words": 390,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.9170000000000003,
+        0.9144999999999999
+      ],
+      "judge": 0.9157500000000001,
+      "meetsGoal": 0.94375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c51673edc1",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.75,
+      "words": 352,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.8959999999999999,
+        0.8900000000000001
+      ],
+      "judge": 0.893,
+      "meetsGoal": 0.8625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "79244771ee",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 509,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.9239999999999999,
+        0.9235
+      ],
+      "judge": 0.92375,
+      "meetsGoal": 0.95125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9f42b142f8",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7272727272727273,
+      "words": 1004,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.925,
+        0.9300000000000002
+      ],
+      "judge": 0.9275000000000001,
+      "meetsGoal": 0.9612499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9d2f9f9be1",
+      "case": "system-prompt-and-guardrails-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2125,
+      "goal": "Caps and an approval rule are added; L4 stays blocked until action guardrails pass redteam.",
+      "scores": [
+        0.9295,
+        0.9335
+      ],
+      "judge": 0.9315,
+      "meetsGoal": 0.9662499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ccbd0c8519",
+      "case": "system-prompt-and-guardrails-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 539,
+      "goal": "A tuning plan against a false-positive budget, then a re-run; the 30% rate is not accepted.",
+      "scores": [
+        0.9425000000000001,
+        0.95
+      ],
+      "judge": 0.94625,
+      "meetsGoal": 0.9674999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "372f9932dd",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9,
+      "words": 882,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.9510000000000001,
+        0.9530000000000001
+      ],
+      "judge": 0.9520000000000001,
+      "meetsGoal": 0.94875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "455d781b9a",
+      "case": "system-prompt-and-guardrails-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7,
+      "words": 549,
+      "goal": "Scope, refusal policy with wording and out-of-scope handling are added; no safety claim.",
+      "scores": [
+        0.927,
+        0.9285000000000001
+      ],
+      "judge": 0.9277500000000001,
+      "meetsGoal": 0.9537500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

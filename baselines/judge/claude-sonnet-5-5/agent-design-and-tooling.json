@@ -1,0 +1,375 @@
+{
+  "skill": "agent-design-and-tooling",
+  "judgeModel": "claude-sonnet-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.02222222222222223,
+  "costUsd": 0.3230561,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8194444444444444,
+      "meetsGoal": 0.6805555555555556,
+      "regex": 0.9555555555555555,
+      "words": 1012.0
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7583333333333333,
+      "meetsGoal": 0.375,
+      "regex": 0.48888888888888893,
+      "words": 679.4444444444445
+    }
+  },
+  "answers": [
+    {
+      "id": "544c58da08",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 863,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never gives a concrete permission matrix with a defined cap and an explicit approval rule (who approves, above what amount), leaving amounts as placeholders and approval as human escalation or L3 rollout only.",
+        "It never gives an explicit permission matrix with concrete cap values and a clear approval rule (who approves what above the cap); caps and tiers are left as examples and open questions, and approval is only 'escalate to human'."
+      ]
+    },
+    {
+      "id": "ca886c6407",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8,
+      "words": 1160,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It rejects the single-loop framing in favor of a code pipeline with a loop only conditionally in stage 2, and the stop conditions are internally inconsistent: it claims a 'placeholder-free' budget figure while calling it an assumption, and a 6-step cap that doesn't clearly cover the model calls plus up to 3 ERP calls.",
+        "It drops the requested single loop in favor of a fixed pipeline, with the loop appearing only as an optional stage 2 and its caps being inconsistent (6 steps vs 3 ERP calls, plus an unjustified $0.15 budget described as 'placeholder-free'), which weakens the goal fit and honesty about unknowns."
+      ]
+    },
+    {
+      "id": "2a8de26171",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9,
+      "words": 1014,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.95,
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It recommends a fixed code workflow with model calls rather than literally a single agent loop, and the stop limits (6 calls, 60 s) are labeled assumptions with no measured basis.",
+        "It frames the design as a fixed workflow with single-step model calls rather than a true single agent loop, and the stop limits (6 calls, 60 s) are unvalidated assumptions, so the 'single loop' goal is met only loosely."
+      ]
+    },
+    {
+      "id": "8effdcf1fa",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 765,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It gives caps only as examples and never presents a permission matrix with an explicit approval rule per tool, instead assuming L4 means no approval, so the requested cap-and-approval matrix is only implied.",
+        "The goal was a cap and approval rule in a permission matrix for the payment tool, but the answer gives no permission matrix and uses placeholder caps, and under its L4 assumption it sets no approval rule beyond escalation, so the PM still has to decide the cap values and approver."
+      ]
+    },
+    {
+      "id": "9b57db4d50",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6,
+      "words": 560,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It proposes a fixed three-step pipeline rather than the requested single loop with explicit stop conditions and traces, so stop conditions (iteration/budget limits, termination criteria) and trace design are only touched on loosely.",
+        "It recommends a fixed pipeline rather than the requested single loop with explicit stop conditions and traces, so there is no loop design, no step/retry/budget limits or termination criteria, and tracing is only a one-line mention."
+      ]
+    },
+    {
+      "id": "4cf2e27487",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1302,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8999999999999999,
+        0.8
+      ],
+      "judge": 0.85,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The cap values (\u20ac20/\u20ac50/1 per case) are invented, though flagged as assumptions, and the matrix mixes 'L4 target' with an effective L2 interim rule and a prepare/commit split that adds tools beyond the three specified.",
+        "The cap values (\u20ac20/\u20ac50/1 per case) are invented placeholders, and the matrix is internally awkward: it labels pay_goodwill L4 yet requires approval on every call until confirmed, and the prepare/commit split adds tools beyond the three the brief listed."
+      ]
+    },
+    {
+      "id": "0334eb978d",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.1,
+      "words": 554,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The framework pick comes first and stop conditions (max steps, budget) are buried inside item 1 of the missing list, so the required ordering with the framework last is not met.",
+        "It opens with the framework pick instead of putting it last, and the stop conditions (iteration, token, cost and time caps) are one bullet in a list with no proposed values or exit behaviour."
+      ]
+    },
+    {
+      "id": "33792432d4",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 1052,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8500000000000001,
+        0.75
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It is a fixed three-stage pipeline rather than a single loop with stop conditions, so the 'single loop' goal is only loosely met; stop conditions and traces are present but the optional stage-2 loop and the generic boilerplate (L1/L2 matrix, write protocol) add bulk without sharpening the invoice-dispute case.",
+        "It says 'single loop' yet designs a fixed three-stage pipeline with an optional bounded lookup loop, and the stop conditions (2 model calls, 5 lookups, 60s) are unvalidated assumptions, so the single-loop goal is only loosely met and the design is padded with generic boilerplate like the permission matrix and write protocol."
+      ]
+    },
+    {
+      "id": "a642c8f6bd",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 537,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The framework recommendation comes last as required, but the answer opens by deferring the framework choice and recommends a raw loop without weighing the two named options, and the numeric stop limits (12 calls, 60 s, budget as steps \u00d7 cost) are only briefly sketched assumptions.",
+        "The framework decision comes after the missing-pieces list, but the answer opens by deferring it and never makes a clear LangGraph-vs-CrewAI pick, while the stop conditions are buried as one item among eleven with vague budget guidance (max steps \u00d7 cost per call)."
+      ]
+    },
+    {
+      "id": "8a13a1fe45",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1221,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The cap numbers (25 per payment, 50 per 30 days) are invented placeholders, and the design is inconsistent about whether pay_goodwill is a single call or a prepare/commit pair, which leaves the matrix slightly muddled.",
+        "Cap numbers (25 per payment, 50 per 30 days) are invented placeholders with no currency, and the design adds a prepare/commit split and extra tools (prepare_payment, commit_payment) beyond the three tools given, which muddies the permission matrix."
+      ]
+    },
+    {
+      "id": "b1993bede2",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1729,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The cap values (20 per payment, 40 per 30 days) are guesses with a hand-wavy 'coffee' justification and no data on typical gestures, and the L4 target is paired with a de facto L2 start without defining the concrete exit criteria from L2 to L4.",
+        "The cap figures (20 per payment, 40 per 30 days) and the 'coffee price' sizing rationale are invented placeholders; they are flagged as assumptions, but the PM still has no real basis for choosing them, and the design sprawls well beyond the permission matrix that was the goal."
+      ]
+    },
+    {
+      "id": "4b09bd3cdc",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.1,
+      "words": 515,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The framework pick comes first and the stop conditions (max steps, budget) are buried inside item 1 of the missing list, with no concrete numbers, so the required ordering of stop conditions first and framework last is not met.",
+        "The goal required stop conditions with max steps and budget up front and the framework recommendation last, but the answer leads with the framework pick and buries the hard caps as a sub-bullet under defining confidence."
+      ]
+    },
+    {
+      "id": "d2a9356b05",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 529,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "The framework recommendation (raw loop, neither option) is placed last but the stop conditions are only one item in a long gap list, and the 12-step figure is a loosely justified guess with no cost or timeout numbers.",
+        "It leads with a gaps list in which stop limits are item 2 and the framework answer comes last, but the limits are vague (about 12 steps, no budget or timeout figure) and the framework answer is a hedged 'raw loop' that doesn't pick between the two options."
+      ]
+    },
+    {
+      "id": "38a33001c7",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 564,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "The framework section comes last but dodges the actual pick (LangGraph vs CrewAI) with 'raw loop for now', and the stop-condition numbers are placeholders buried in a long list instead of leading.",
+        "It leads with gaps and sets stop limits, with max steps and budget, as only part of item 1 inside a long list; it also defers a clear framework pick (\"raw loop for now\") rather than choosing between LangGraph and CrewAI."
+      ]
+    },
+    {
+      "id": "4209975e53",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 692,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never defines an explicit single loop with stop conditions (max steps, retry/time/cost limits, escalation triggers) or a concrete trace schema, so the 'single loop, stop conditions and traces' goal is only partly met.",
+        "It never defines an explicit single loop with stop conditions (max steps, retry/budget limits, termination criteria) or a concrete trace schema, so the stated goal is only partly met; it offers a fixed pipeline and a generic trace ID instead."
+      ]
+    },
+    {
+      "id": "d2a9b839b3",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.1,
+      "words": 559,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The answer leads with the framework pick and puts stop conditions (max steps, budget) as a sub-bullet inside the confidence item, instead of making them the lead item and putting the framework choice last as the goal requires.",
+        "The framework pick comes first and the stop conditions (max steps, budget) are buried within item 1 of the missing list rather than being added as a distinct step with the framework decision placed last, so the requested ordering is not met."
+      ]
+    },
+    {
+      "id": "b70328fc9f",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8,
+      "words": 769,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "The goal asked for a cap and an approval rule in the permission matrix, but the design gives placeholder caps and no explicit approval tier (for example, amounts above X need human approval), instead treating over-cap as escalate-only and assuming no per-action approval at L4.",
+        "It never lays out an explicit permission matrix with an approval rule (e.g., amount tiers requiring human approval above the cap); it only sets a hard cap with escalation, and its L4 assumption sidesteps the approval-rule goal."
+      ]
+    },
+    {
+      "id": "2dbc107eb4",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6,
+      "words": 838,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The goal asked for a single loop with explicit stop conditions and traces, but the answer designs a three-stage pipeline with escalation paths instead of a single-loop design with iteration limits, budgets, termination criteria, and a trace schema.",
+        "The goal asked for a single loop with explicit stop conditions and traces, but the answer designs a three-stage pipeline with no loop, no global stop or step limits, and only audit persistence instead of real tracing."
+      ]
+    }
+  ]
+}

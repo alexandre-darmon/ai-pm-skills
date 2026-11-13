@@ -1,0 +1,717 @@
+{
+  "skill": "build-evals",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.00662500000000001,
+  "costUsd": 0.006222888,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 18,
+      "judge": 0.8997777777777779,
+      "meetsGoal": 0.8938194444444445,
+      "regex": 0.9808455433455434,
+      "words": 585.6666666666666
+    },
+    "without": {
+      "answers": 18,
+      "judge": 0.812625,
+      "meetsGoal": 0.7056944444444444,
+      "regex": 0.39217032967032966,
+      "words": 544.8333333333334
+    }
+  },
+  "answers": [
+    {
+      "id": "fec85a5638",
+      "case": "build-evals-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 670,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.9319999999999999,
+        0.9319999999999999
+      ],
+      "judge": 0.9319999999999999,
+      "meetsGoal": 0.9375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "81bae50bcd",
+      "case": "build-evals-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 881,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.9380000000000002,
+        0.9375
+      ],
+      "judge": 0.9377500000000001,
+      "meetsGoal": 0.915,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c3123b4512",
+      "case": "build-evals-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 728,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.9365000000000001,
+        0.9344999999999999
+      ],
+      "judge": 0.9355,
+      "meetsGoal": 0.9474999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "f7c7482c77",
+      "case": "build-evals-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.16666666666666666,
+      "words": 962,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.8660000000000001,
+        0.8620000000000001
+      ],
+      "judge": 0.8640000000000001,
+      "meetsGoal": 0.8499999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "23bf131bd9",
+      "case": "build-evals-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 447,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.8130000000000002,
+        0.8145
+      ],
+      "judge": 0.8137500000000001,
+      "meetsGoal": 0.86625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "f4653cd8f1",
+      "case": "build-evals-006",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8333333333333334,
+      "words": 372,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.7550000000000001,
+        0.766
+      ],
+      "judge": 0.7605000000000001,
+      "meetsGoal": 0.66125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "805d57907e",
+      "case": "build-evals-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 422,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.8795,
+        0.8880000000000001
+      ],
+      "judge": 0.88375,
+      "meetsGoal": 0.9,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c9dd47a9b3",
+      "case": "build-evals-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 431,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.8960000000000001,
+        0.9039999999999999
+      ],
+      "judge": 0.9,
+      "meetsGoal": 0.8937499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a6da8792cf",
+      "case": "build-evals-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 620,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8279999999999998,
+        0.823
+      ],
+      "judge": 0.8254999999999999,
+      "meetsGoal": 0.63375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "66bb43583b",
+      "case": "build-evals-007",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.3333333333333333,
+      "words": 319,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.5415,
+        0.509
+      ],
+      "judge": 0.52525,
+      "meetsGoal": 0.3775,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "afe581444c",
+      "case": "build-evals-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9230769230769231,
+      "words": 933,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.9260000000000002,
+        0.9239999999999999
+      ],
+      "judge": 0.925,
+      "meetsGoal": 0.93875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ef727d00cd",
+      "case": "build-evals-006",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 407,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.7705,
+        0.778
+      ],
+      "judge": 0.77425,
+      "meetsGoal": 0.74125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "bdf0c60a13",
+      "case": "build-evals-006",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 425,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.8254999999999999,
+        0.8165
+      ],
+      "judge": 0.821,
+      "meetsGoal": 0.7825,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e5331e74a8",
+      "case": "build-evals-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.3076923076923077,
+      "words": 690,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.9244999999999999,
+        0.9265000000000001
+      ],
+      "judge": 0.9255,
+      "meetsGoal": 0.7687499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "660548c54a",
+      "case": "build-evals-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8571428571428571,
+      "words": 718,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.927,
+        0.9219999999999999
+      ],
+      "judge": 0.9245,
+      "meetsGoal": 0.93875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c4349561af",
+      "case": "build-evals-007",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 405,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.9415,
+        0.9455
+      ],
+      "judge": 0.9435,
+      "meetsGoal": 0.95625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7fda5323e2",
+      "case": "build-evals-006",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.3333333333333333,
+      "words": 352,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.7275,
+        0.7344999999999999
+      ],
+      "judge": 0.731,
+      "meetsGoal": 0.6075,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e4668eb9dc",
+      "case": "build-evals-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 587,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8094999999999999,
+        0.786
+      ],
+      "judge": 0.79775,
+      "meetsGoal": 0.6325000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a2be9a197e",
+      "case": "build-evals-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 396,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.8999999999999999,
+        0.8995000000000002
+      ],
+      "judge": 0.89975,
+      "meetsGoal": 0.935,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "aa18d28c6b",
+      "case": "build-evals-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 717,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.9004999999999999,
+        0.8969999999999998
+      ],
+      "judge": 0.8987499999999998,
+      "meetsGoal": 0.8825,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "98a4a4e2b2",
+      "case": "build-evals-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 622,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.9304999999999999,
+        0.9274999999999998
+      ],
+      "judge": 0.9289999999999998,
+      "meetsGoal": 0.94875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3ebbd39342",
+      "case": "build-evals-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.14285714285714285,
+      "words": 418,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.9144999999999999,
+        0.9019999999999999
+      ],
+      "judge": 0.9082499999999999,
+      "meetsGoal": 0.8887499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c28a0cc898",
+      "case": "build-evals-007",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.3333333333333333,
+      "words": 380,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.728,
+        0.7384999999999999
+      ],
+      "judge": 0.73325,
+      "meetsGoal": 0.54625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "639dcead40",
+      "case": "build-evals-007",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 367,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.8485,
+        0.873
+      ],
+      "judge": 0.86075,
+      "meetsGoal": 0.74875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e01b76b46d",
+      "case": "build-evals-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.38461538461538464,
+      "words": 702,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.8935,
+        0.8855
+      ],
+      "judge": 0.8895,
+      "meetsGoal": 0.6950000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a99eff920a",
+      "case": "build-evals-007",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 343,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.9119999999999999,
+        0.9204999999999999
+      ],
+      "judge": 0.9162499999999999,
+      "meetsGoal": 0.9500000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "917f6eaf0e",
+      "case": "build-evals-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.42857142857142855,
+      "words": 581,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.9265000000000001,
+        0.9285000000000001
+      ],
+      "judge": 0.9275000000000001,
+      "meetsGoal": 0.9024999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c2b23c226e",
+      "case": "build-evals-006",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 386,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.8980000000000001,
+        0.8940000000000001
+      ],
+      "judge": 0.8960000000000001,
+      "meetsGoal": 0.87625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a5476dc6b6",
+      "case": "build-evals-007",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 372,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.8355000000000001,
+        0.8414999999999999
+      ],
+      "judge": 0.8385,
+      "meetsGoal": 0.6675,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3654195bb4",
+      "case": "build-evals-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 755,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.903,
+        0.8984999999999999
+      ],
+      "judge": 0.9007499999999999,
+      "meetsGoal": 0.92625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e40a56c452",
+      "case": "build-evals-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 812,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.9224999999999999,
+        0.9199999999999999
+      ],
+      "judge": 0.9212499999999999,
+      "meetsGoal": 0.8824999999999998,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "afd4a6a416",
+      "case": "build-evals-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.2857142857142857,
+      "words": 562,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.9224999999999999,
+        0.9265000000000001
+      ],
+      "judge": 0.9245,
+      "meetsGoal": 0.9112499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "aa72ddfb05",
+      "case": "build-evals-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.625,
+      "words": 626,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8035000000000001,
+        0.8
+      ],
+      "judge": 0.8017500000000001,
+      "meetsGoal": 0.63125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b73b9c4beb",
+      "case": "build-evals-006",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.3333333333333333,
+      "words": 391,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.6004999999999999,
+        0.6
+      ],
+      "judge": 0.60025,
+      "meetsGoal": 0.47000000000000003,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "df0785b4a2",
+      "case": "build-evals-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.875,
+      "words": 841,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8939999999999999,
+        0.8960000000000001
+      ],
+      "judge": 0.895,
+      "meetsGoal": 0.8700000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7ce5e81423",
+      "case": "build-evals-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.38461538461538464,
+      "words": 709,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.8645,
+        0.859
+      ],
+      "judge": 0.86175,
+      "meetsGoal": 0.71,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

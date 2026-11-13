@@ -1,0 +1,197 @@
+{
+  "skill": "assistant-kpis-cost-per-outcome",
+  "judgeModel": "openai/gpt-6.1-sol",
+  "provider": "openrouter",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.04444444444444446,
+  "costUsd": 0.0847562,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.6666666666666666,
+      "meetsGoal": 0.7638888888888888,
+      "regex": 0.9717813051146383,
+      "words": 1287.4444444444443
+    }
+  },
+  "answers": [
+    {
+      "id": "98dcfa8786",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1328,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Oversampling stale sources without weighting and not explicitly grading incorrect answers for staleness can distort the core KPIs.",
+        "The cost-per-correct-answer estimate assumes conversations equal answers and applies last quarter\u2019s quality rate to current monthly volume."
+      ]
+    },
+    {
+      "id": "af21a8dd37",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1125,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.6,
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Cost per success is not validly defined: multiplying sessions by sampled answer correctness does not establish successful sessions.",
+        "It estimates successes from answer-level quality without a valid session-level sampling method and does not place sampled quality beside every usage panel."
+      ]
+    },
+    {
+      "id": "9a05b55b18",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1031,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It multiplies sessions by sampled answer correctness without establishing that this estimates successful conversations.",
+        "Multiplying sessions by sampled answer correctness does not establish successful conversations, so the proposed cost-per-success denominator is unsound."
+      ]
+    },
+    {
+      "id": "fe83eadf55",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1527,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Cost per correct answer is not established: the calculation treats conversations as answers and conflates correctness with downstream outcomes.",
+        "The \u20ac0.25 cost per correct answer assumes conversations equal answers and applies last quarter\u2019s quality rate to current monthly volume."
+      ]
+    },
+    {
+      "id": "3b64ac9cdc",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1501,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It treats sampled answer correctness as request resolution, so its interim cost-per-success estimate may mislead the CIO.",
+        "The interim denominator treats correct answers as resolved requests, so it can materially misstate cost per resolution."
+      ]
+    },
+    {
+      "id": "2633a6a457",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1395,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.65,
+        0.7
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It promises sampled resolution estimates without establishing access to conversation content or evidence of actual resolution.",
+        "The interim resolution estimate assumes access to conversation content and resolution evidence that the stated logs do not contain."
+      ]
+    },
+    {
+      "id": "64f76497b2",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1185,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.55,
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Success is not rigorously defined: avoiding escalation does not establish correctness, and answer-level quality cannot directly estimate successful sessions.",
+        "The success denominator conflates sampled answer correctness with verified successful conversations, making the headline cost KPI unreliable."
+      ]
+    },
+    {
+      "id": "7cfe7214e1",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8571428571428571,
+      "words": 1278,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.6,
+        0.75
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "The interim estimate assumes reviewers can access conversation content and verify outcomes, neither of which the listed logs provide.",
+        "The interim plan assumes access to conversation content and employee-level ticket matching, neither of which is established by the available logs."
+      ]
+    },
+    {
+      "id": "6cd7b21890",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 1217,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.7,
+        0.8
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Cost per correct answer remains unmeasured because conversation volume is substituted for answered-question volume.",
+        "Per-KB owners remain generic, and the missing eligible-employee denominator for each country is not explicitly called out."
+      ]
+    }
+  ]
+}

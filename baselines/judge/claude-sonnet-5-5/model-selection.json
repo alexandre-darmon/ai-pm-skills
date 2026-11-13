@@ -1,0 +1,375 @@
+{
+  "skill": "model-selection",
+  "judgeModel": "claude-sonnet-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.02222222222222223,
+  "costUsd": 0.3224617,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8027777777777778,
+      "meetsGoal": 1.0,
+      "regex": 0.9753086419753088,
+      "words": 491.8888888888889
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7583333333333333,
+      "meetsGoal": 0.7777777777777778,
+      "regex": 0.7227833894500562,
+      "words": 338.44444444444446
+    }
+  },
+  "answers": [
+    {
+      "id": "0a0a4cff31",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.7777777777777778,
+      "words": 465,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.75,
+        0.7
+      ],
+      "judge": 0.725,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It picks the cheaper E on a statistical-noise argument without weighing that the absolute cost difference is tiny against the cost of errors in health-data claims summaries, and it doesn't check that 'EU region' hosting meets GDPR special-category requirements such as a DPA or provider access from outside the EU.",
+        "It picks E on a cost saving of only 0.004 EUR per call without weighing that the cost of an error in health-data summaries likely outweighs it, and E's 2-point margin over the threshold is thin."
+      ]
+    },
+    {
+      "id": "b47e51a20f",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 508,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It says 0.63 EUR is 'about 30 times B's cost per call', but that is about 630 times B's cost (30 times A's), and it never checks that B's 91% on 400 cases has a confidence interval reaching below the 88% threshold.",
+        "It says B clears the 88% threshold by 3 points as if that were certain, but on 400 cases B's confidence interval (about \u00b12.8 points) could reach below 88%. That risk is not flagged, and it matters for a regulated company."
+      ]
+    },
+    {
+      "id": "b1a11ed0df",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 387,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It treats the regulated context as only a data-privacy line item, with nothing on compliance, auditability, PII in tickets, or human-review controls, and the small models and fine-tuned classifier are added as one baseline step rather than as full candidates in the comparison.",
+        "It treats small models and a fine-tuned classifier as an afterthought 'baseline' and ignores regulated-company risks like PII handling, auditability and data residency beyond a passing privacy-terms mention."
+      ]
+    },
+    {
+      "id": "4badbbd029",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 309,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It never computes cost per successful classification (about \u20ac0.021 for A versus \u20ac0.0011 for B, or roughly \u20ac0.63 per extra correct email), so the 3-point gap is not priced as the goal asks, and the blended-cost figure (\u20ac0.0045) is slightly off.",
+        "It never computes cost per successful classification (about \u20ac0.0011 for B against \u20ac0.0213 for A), and the hybrid routing cost of \u20ac0.0045 per call doesn't match its own assumptions (about \u20ac0.004)."
+      ]
+    },
+    {
+      "id": "eded3019fb",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 456,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The paired-comparison rule (d under g\u00b2/4) is stated tersely and approximately, and it doesn't commit to a default path or timeline, e.g. a concrete suggested first step to start the eval today.",
+        "The McNemar-style rule 'd under g\u00b2/4' is stated tersely and is only roughly right (it is a rough threshold, not explained), and it offers no concrete sample size or target metric for the 12 classes."
+      ]
+    },
+    {
+      "id": "c79883cb2c",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 284,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8,
+        0.75
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never computes cost per success (about 0.0213 EUR for A vs 0.0011 EUR for B) and never turns the 3-point gap into about 5,400 extra correct emails a month, or roughly 0.63 EUR per extra correct email, so the stated goal is only partly met.",
+        "It never computes cost per success (about 0.0011 vs 0.0213 EUR) or turns the 3-point gap into about 5,400 extra correct emails a month, so the cost per extra correct email (about 0.63 EUR) is missing."
+      ]
+    },
+    {
+      "id": "5ed05f0849",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 614,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It treats B's 91% as clearing the 88% threshold with a 3-point margin, but on 400 cases the confidence interval reaches roughly 87.7%, so clearing it is not certain.",
+        "It says B clears the 88% threshold by 3 points without noting that 364/400 on a single run has a confidence interval reaching roughly to the threshold, so the pass is itself uncertain."
+      ]
+    },
+    {
+      "id": "15fede919b",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 471,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never notes that B's 91% on 400 cases has a confidence interval of roughly \u00b13 points, so B's clearance of the 88% threshold is itself uncertain and the margin is thin.",
+        "It does not note that B's 91% on only 400 cases has a confidence interval reaching roughly the 88% threshold, so clearing it is not secure."
+      ]
+    },
+    {
+      "id": "896de55648",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 360,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8,
+        0.8999999999999999
+      ],
+      "judge": 0.85,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never states cost per successful classification (about 0.0011 vs 0.0213 EUR) and uses cost per avoided error instead, and the hybrid option's claim to recover most of the accuracy gap assumes B's confidence scores are well calibrated, which is unverified.",
+        "It never states cost per successful classification (about 0.0011 EUR for B against 0.0213 EUR for A), using cost per avoided error instead, and the 15% escalation rate in the hybrid option is an assumed figure."
+      ]
+    },
+    {
+      "id": "91cb9e6587",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 444,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It hedges E as provisional and treats a 2-point gap as a tie using a shaky g\u00b2/4 heuristic, instead of committing more firmly, and it pads with generic to-dos like adding another candidate and a non-LLM baseline.",
+        "The g\u00b2/4 significance rule is asserted without justification and treats a 2-point gap as a tie, so choosing E over D on health data in a regulated setting leans on a shaky statistical heuristic rather than weighing the cost of errors."
+      ]
+    },
+    {
+      "id": "a46d7a8a40",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 269,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents a 100k calls/month volume for the cost figure and claims a 2-point gap is within run-to-run variation without evidence, while the D-vs-E choice is made without asking for actual volume or error severity.",
+        "It invents a 100k calls/month volume and treats the 2-point gap as noise without stating that those figures are assumptions, while recommending D without asking for actual volume or the cost of errors."
+      ]
+    },
+    {
+      "id": "461f8e657c",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 397,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The baseline of a small model or fine-tuned classifier is added only as step 6 of the evaluation, so it is not treated as a full candidate alongside the two LLMs, and regulated-company risks such as data privacy, PII, vendor data handling, and auditability are never mentioned.",
+        "Small LLMs and a fine-tuned classifier are only mentioned as a late baseline (step 6), not made candidates in the comparison, and regulated-company risks such as data privacy, PII, and vendor/API data handling are ignored."
+      ]
+    },
+    {
+      "id": "e09a3b4dd2",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 1.0,
+      "words": 456,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It ignores regulated-company risks such as data privacy/PII in tickets, vendor data handling, and auditability, and gives no concrete accuracy or cost thresholds or human-review fallback for costly misclassifications.",
+        "The fine-tuned small model and baselines are added only as step 6 'baselines' rather than as first-class candidates, and it ignores regulated-company concerns such as data privacy, PII in tickets, vendor/hosting constraints, and auditability."
+      ]
+    },
+    {
+      "id": "f83615965f",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 419,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It offers no concrete decision rule or default interim path (e.g., a shortlist with a timeline or a quality threshold), and the 2\u221ad \u00f7 n tie formula is stated without explanation.",
+        "The 2\u221ad \u00f7 n noise threshold is an unexplained rule of thumb presented as a standard, and the answer gives no concrete decision criteria or fallback if the PM must choose before the suite runs."
+      ]
+    },
+    {
+      "id": "f47d170546",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 272,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It picks D on a 2-point gap that its own confidence-interval caveat shows is within noise, and it never asks for call volume or a break-even cost to settle D versus E.",
+        "It names D but hedges toward E without asking for the volume and adjuster-review inputs that would settle it, and it never says the 4-point gap between D and E is itself within noise."
+      ]
+    },
+    {
+      "id": "fbfd1a0084",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 534,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never states a concrete starting plan or default candidate list and the noise formula and quality threshold are left loosely defined, so the PM still has to build the decision rule.",
+        "The noise-threshold formula (2\u221ad \u00f7 n) is stated loosely without explanation, and the answer offers no concrete quality threshold, sample size, or first-step timeline, so the PM still can't start running the suite today."
+      ]
+    },
+    {
+      "id": "6b3dcdcd36",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 516,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The noise argument rests on an unexplained 'd under g\u00b2/4 = 9' rule and an unstated tie rule, and it recommends E on thin evidence while the health-data class and the cost of wrong summaries are left unchecked.",
+        "The noise argument (d under g\u00b2/4 = 9 rule, 'tie rule' favoring cheaper) is asserted shakily and somewhat inconsistently, leaving the E-over-D pick hinging on an unverified statistical claim while the 'cost per success' and 'check C eval run' extras add noise."
+      ]
+    },
+    {
+      "id": "1986059e4a",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 312,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It invents a 100,000 summaries/month volume and a \u00b13\u20134 point margin of error without flagging volume as unknown, and the 'choose E instead' hedge muddies an otherwise clear pick.",
+        "It invents a 100,000 summaries/month volume and a \u00b13\u20134 point margin of error without flagging them as assumptions, and the 'headroom' argument for D is statistically shaky given the stated overlap."
+      ]
+    }
+  ]
+}

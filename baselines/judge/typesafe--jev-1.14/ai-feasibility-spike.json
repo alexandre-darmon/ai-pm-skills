@@ -1,0 +1,603 @@
+{
+  "skill": "ai-feasibility-spike",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.010716666666666663,
+  "costUsd": 0.005939472,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 15,
+      "judge": 0.8803166666666667,
+      "meetsGoal": 0.8499166666666667,
+      "regex": 0.95505698005698,
+      "words": 765.8
+    },
+    "without": {
+      "answers": 15,
+      "judge": 0.6781666666666666,
+      "meetsGoal": 0.5384166666666667,
+      "regex": 0.45918803418803417,
+      "words": 595.1333333333333
+    }
+  },
+  "answers": [
+    {
+      "id": "74fe541554",
+      "case": "ai-feasibility-spike-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.38461538461538464,
+      "words": 476,
+      "goal": "Computes cost per correct coding as 31 / 41, about 0.76 EUR, three times the 0.25 ceiling fixed before the run, and adds the rework of the 9 wrong codings (about 8 EUR of accountant time); rejects the per-invoice comparison and the \"cheaper models later\" argument as unmeasured; decides reshape (a fixed workflow where code does the vendor and PO lookups and one model call picks the account, re-run under a new appetite and kill date) or stop, not a go to PRD.",
+      "scores": [
+        0.672,
+        0.667
+      ],
+      "judge": 0.6695,
+      "meetsGoal": 0.495,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "42ef9eb83e",
+      "case": "ai-feasibility-spike-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.875,
+      "words": 947,
+      "goal": "Sets one question, fixes a time box in days (or one week), a maximum cost per correct answer derived from the handler minutes it replaces, a target and stop line per class (stricter on bodily injury, which gets more cases, sized for its stop line) and a kill date before building; starts with a fixed workflow, not an agent; anonymised or synthetic cases only; removes forwarding in code (the lethal-trifecta check); ends on go to PRD, reshape or stop.",
+      "scores": [
+        0.935,
+        0.937
+      ],
+      "judge": 0.936,
+      "meetsGoal": 0.9175,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "657d38e31b",
+      "case": "ai-feasibility-spike-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6923076923076923,
+      "words": 502,
+      "goal": "Computes cost per correct coding as 31 / 41, about 0.76 EUR, three times the 0.25 ceiling fixed before the run, and adds the rework of the 9 wrong codings (about 8 EUR of accountant time); rejects the per-invoice comparison and the \"cheaper models later\" argument as unmeasured; decides reshape (a fixed workflow where code does the vendor and PO lookups and one model call picks the account, re-run under a new appetite and kill date) or stop, not a go to PRD.",
+      "scores": [
+        0.6084999999999999,
+        0.6120000000000001
+      ],
+      "judge": 0.61025,
+      "meetsGoal": 0.45125000000000004,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c0959d610c",
+      "case": "ai-feasibility-spike-004",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.625,
+      "words": 499,
+      "goal": "Reads each class with its Wilson interval (passports about 79% to 98%, registry extracts about 60% to 98%), says neither demonstrates 90% and that 9 of 10 falls under the 75% stop line at its lower bound, so registry extracts are undecided; goes to PRD for passports only with the class flagged as not demonstrated, reshapes registry extracts (more cases under a new appetite, or out of scope), and names the size build-evals needs.",
+      "scores": [
+        0.5165,
+        0.5115000000000001
+      ],
+      "judge": 0.514,
+      "meetsGoal": 0.45499999999999996,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "844f0f7341",
+      "case": "ai-feasibility-spike-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1012,
+      "goal": "Refuses real customer data in the spike (an unauthorised end-user ICT asset under DORA, and a non-production use where only anonymised or synthetic data belong), flags the card-opened account as an ICT third-party arrangement and a processor question for the DPO, replaces the 2,000 records with a few dozen synthetic complaints sized per type, fixes a kill date, and removes the email-to-phone step as the outbound leg of the lethal trifecta.",
+      "scores": [
+        0.9315000000000002,
+        0.933
+      ],
+      "judge": 0.9322500000000001,
+      "meetsGoal": 0.95,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "19d1f9b51f",
+      "case": "ai-feasibility-spike-004",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.75,
+      "words": 454,
+      "goal": "Reads each class with its Wilson interval (passports about 79% to 98%, registry extracts about 60% to 98%), says neither demonstrates 90% and that 9 of 10 falls under the 75% stop line at its lower bound, so registry extracts are undecided; goes to PRD for passports only with the class flagged as not demonstrated, reshapes registry extracts (more cases under a new appetite, or out of scope), and names the size build-evals needs.",
+      "scores": [
+        0.556,
+        0.5654999999999999
+      ],
+      "judge": 0.56075,
+      "meetsGoal": 0.44875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "361e669d22",
+      "case": "ai-feasibility-spike-004",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 516,
+      "goal": "Reads each class with its Wilson interval (passports about 79% to 98%, registry extracts about 60% to 98%), says neither demonstrates 90% and that 9 of 10 falls under the 75% stop line at its lower bound, so registry extracts are undecided; goes to PRD for passports only with the class flagged as not demonstrated, reshapes registry extracts (more cases under a new appetite, or out of scope), and names the size build-evals needs.",
+      "scores": [
+        0.718,
+        0.7370000000000001
+      ],
+      "judge": 0.7275,
+      "meetsGoal": 0.5125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b9d686cc7f",
+      "case": "ai-feasibility-spike-004",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.375,
+      "words": 431,
+      "goal": "Reads each class with its Wilson interval (passports about 79% to 98%, registry extracts about 60% to 98%), says neither demonstrates 90% and that 9 of 10 falls under the 75% stop line at its lower bound, so registry extracts are undecided; goes to PRD for passports only with the class flagged as not demonstrated, reshapes registry extracts (more cases under a new appetite, or out of scope), and names the size build-evals needs.",
+      "scores": [
+        0.477,
+        0.4595
+      ],
+      "judge": 0.46825,
+      "meetsGoal": 0.41875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ca15ab107d",
+      "case": "ai-feasibility-spike-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.25,
+      "words": 741,
+      "goal": "Sets one question, fixes a time box in days (or one week), a maximum cost per correct answer derived from the handler minutes it replaces, a target and stop line per class (stricter on bodily injury, which gets more cases, sized for its stop line) and a kill date before building; starts with a fixed workflow, not an agent; anonymised or synthetic cases only; removes forwarding in code (the lethal-trifecta check); ends on go to PRD, reshape or stop.",
+      "scores": [
+        0.666,
+        0.6849999999999999
+      ],
+      "judge": 0.6755,
+      "meetsGoal": 0.56,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "39099001ae",
+      "case": "ai-feasibility-spike-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 594,
+      "goal": "Computes cost per correct coding as 31 / 41, about 0.76 EUR, three times the 0.25 ceiling fixed before the run, and adds the rework of the 9 wrong codings (about 8 EUR of accountant time); rejects the per-invoice comparison and the \"cheaper models later\" argument as unmeasured; decides reshape (a fixed workflow where code does the vendor and PO lookups and one model call picks the account, re-run under a new appetite and kill date) or stop, not a go to PRD.",
+      "scores": [
+        0.9369999999999998,
+        0.9449999999999998
+      ],
+      "judge": 0.9409999999999998,
+      "meetsGoal": 0.95625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "93c89a4a36",
+      "case": "ai-feasibility-spike-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.125,
+      "words": 697,
+      "goal": "Sets one question, fixes a time box in days (or one week), a maximum cost per correct answer derived from the handler minutes it replaces, a target and stop line per class (stricter on bodily injury, which gets more cases, sized for its stop line) and a kill date before building; starts with a fixed workflow, not an agent; anonymised or synthetic cases only; removes forwarding in code (the lethal-trifecta check); ends on go to PRD, reshape or stop.",
+      "scores": [
+        0.6415000000000001,
+        0.6214999999999999
+      ],
+      "judge": 0.6315,
+      "meetsGoal": 0.515,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6be09ca1bb",
+      "case": "ai-feasibility-spike-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.875,
+      "words": 974,
+      "goal": "Sets one question, fixes a time box in days (or one week), a maximum cost per correct answer derived from the handler minutes it replaces, a target and stop line per class (stricter on bodily injury, which gets more cases, sized for its stop line) and a kill date before building; starts with a fixed workflow, not an agent; anonymised or synthetic cases only; removes forwarding in code (the lethal-trifecta check); ends on go to PRD, reshape or stop.",
+      "scores": [
+        0.917,
+        0.9125000000000001
+      ],
+      "judge": 0.9147500000000001,
+      "meetsGoal": 0.92125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7d94669a5c",
+      "case": "ai-feasibility-spike-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 841,
+      "goal": "Keeps the signed 90% bar (no bar moved after seeing results); has every case re-graded under the final definition, since the 25 passed disputes were never checked against the new date rule, and the change logged with its date and reason; reads disputes per class with its Wilson interval (about 66% to 93%), which straddles the 75% stop line, so undecided, not a pooled 91%; gives cost per correct routing (4.20 / 100, 0.042 EUR); treats the two extra weeks as a reshape, a new spike with its own appetite and kill date signed again, not an extension.",
+      "scores": [
+        0.8734999999999999,
+        0.859
+      ],
+      "judge": 0.86625,
+      "meetsGoal": 0.82375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b7a6c329fe",
+      "case": "ai-feasibility-spike-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.875,
+      "words": 799,
+      "goal": "Sets one question, fixes a time box in days (or one week), a maximum cost per correct answer derived from the handler minutes it replaces, a target and stop line per class (stricter on bodily injury, which gets more cases, sized for its stop line) and a kill date before building; starts with a fixed workflow, not an agent; anonymised or synthetic cases only; removes forwarding in code (the lethal-trifecta check); ends on go to PRD, reshape or stop.",
+      "scores": [
+        0.9059999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.9029999999999999,
+      "meetsGoal": 0.9012500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6e8801cd53",
+      "case": "ai-feasibility-spike-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 838,
+      "goal": "Refuses real customer data in the spike (an unauthorised end-user ICT asset under DORA, and a non-production use where only anonymised or synthetic data belong), flags the card-opened account as an ICT third-party arrangement and a processor question for the DPO, replaces the 2,000 records with a few dozen synthetic complaints sized per type, fixes a kill date, and removes the email-to-phone step as the outbound leg of the lethal trifecta.",
+      "scores": [
+        0.9120000000000001,
+        0.9105000000000001
+      ],
+      "judge": 0.9112500000000001,
+      "meetsGoal": 0.9512499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2ea77cca40",
+      "case": "ai-feasibility-spike-004",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 462,
+      "goal": "Reads each class with its Wilson interval (passports about 79% to 98%, registry extracts about 60% to 98%), says neither demonstrates 90% and that 9 of 10 falls under the 75% stop line at its lower bound, so registry extracts are undecided; goes to PRD for passports only with the class flagged as not demonstrated, reshapes registry extracts (more cases under a new appetite, or out of scope), and names the size build-evals needs.",
+      "scores": [
+        0.6744999999999999,
+        0.6865
+      ],
+      "judge": 0.6804999999999999,
+      "meetsGoal": 0.54,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "46dc051cfc",
+      "case": "ai-feasibility-spike-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 599,
+      "goal": "Keeps the signed 90% bar (no bar moved after seeing results); has every case re-graded under the final definition, since the 25 passed disputes were never checked against the new date rule, and the change logged with its date and reason; reads disputes per class with its Wilson interval (about 66% to 93%), which straddles the 75% stop line, so undecided, not a pooled 91%; gives cost per correct routing (4.20 / 100, 0.042 EUR); treats the two extra weeks as a reshape, a new spike with its own appetite and kill date signed again, not an extension.",
+      "scores": [
+        0.8045,
+        0.782
+      ],
+      "judge": 0.79325,
+      "meetsGoal": 0.61625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "a6a3c89b1f",
+      "case": "ai-feasibility-spike-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 695,
+      "goal": "Computes cost per correct coding as 31 / 41, about 0.76 EUR, three times the 0.25 ceiling fixed before the run, and adds the rework of the 9 wrong codings (about 8 EUR of accountant time); rejects the per-invoice comparison and the \"cheaper models later\" argument as unmeasured; decides reshape (a fixed workflow where code does the vendor and PO lookups and one model call picks the account, re-run under a new appetite and kill date) or stop, not a go to PRD.",
+      "scores": [
+        0.903,
+        0.9185000000000001
+      ],
+      "judge": 0.9107500000000001,
+      "meetsGoal": 0.9275,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "98615bd0dd",
+      "case": "ai-feasibility-spike-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.0,
+      "words": 673,
+      "goal": "Refuses real customer data in the spike (an unauthorised end-user ICT asset under DORA, and a non-production use where only anonymised or synthetic data belong), flags the card-opened account as an ICT third-party arrangement and a processor question for the DPO, replaces the 2,000 records with a few dozen synthetic complaints sized per type, fixes a kill date, and removes the email-to-phone step as the outbound leg of the lethal trifecta.",
+      "scores": [
+        0.7484999999999999,
+        0.7545
+      ],
+      "judge": 0.7515,
+      "meetsGoal": 0.5425,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "40c5481cba",
+      "case": "ai-feasibility-spike-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 617,
+      "goal": "Keeps the signed 90% bar (no bar moved after seeing results); has every case re-graded under the final definition, since the 25 passed disputes were never checked against the new date rule, and the change logged with its date and reason; reads disputes per class with its Wilson interval (about 66% to 93%), which straddles the 75% stop line, so undecided, not a pooled 91%; gives cost per correct routing (4.20 / 100, 0.042 EUR); treats the two extra weeks as a reshape, a new spike with its own appetite and kill date signed again, not an extension.",
+      "scores": [
+        0.7985000000000002,
+        0.8054999999999999
+      ],
+      "judge": 0.802,
+      "meetsGoal": 0.6499999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c6d8ca4678",
+      "case": "ai-feasibility-spike-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 968,
+      "goal": "Keeps the signed 90% bar (no bar moved after seeing results); has every case re-graded under the final definition, since the 25 passed disputes were never checked against the new date rule, and the change logged with its date and reason; reads disputes per class with its Wilson interval (about 66% to 93%), which straddles the 75% stop line, so undecided, not a pooled 91%; gives cost per correct routing (4.20 / 100, 0.042 EUR); treats the two extra weeks as a reshape, a new spike with its own appetite and kill date signed again, not an extension.",
+      "scores": [
+        0.8820000000000001,
+        0.885
+      ],
+      "judge": 0.8835000000000001,
+      "meetsGoal": 0.815,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0487725d68",
+      "case": "ai-feasibility-spike-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 683,
+      "goal": "Keeps the signed 90% bar (no bar moved after seeing results); has every case re-graded under the final definition, since the 25 passed disputes were never checked against the new date rule, and the change logged with its date and reason; reads disputes per class with its Wilson interval (about 66% to 93%), which straddles the 75% stop line, so undecided, not a pooled 91%; gives cost per correct routing (4.20 / 100, 0.042 EUR); treats the two extra weeks as a reshape, a new spike with its own appetite and kill date signed again, not an extension.",
+      "scores": [
+        0.7219999999999999,
+        0.758
+      ],
+      "judge": 0.74,
+      "meetsGoal": 0.61,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4d4977f829",
+      "case": "ai-feasibility-spike-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7692307692307693,
+      "words": 463,
+      "goal": "Computes cost per correct coding as 31 / 41, about 0.76 EUR, three times the 0.25 ceiling fixed before the run, and adds the rework of the 9 wrong codings (about 8 EUR of accountant time); rejects the per-invoice comparison and the \"cheaper models later\" argument as unmeasured; decides reshape (a fixed workflow where code does the vendor and PO lookups and one model call picks the account, re-run under a new appetite and kill date) or stop, not a go to PRD.",
+      "scores": [
+        0.733,
+        0.7455
+      ],
+      "judge": 0.73925,
+      "meetsGoal": 0.5387500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2327650527",
+      "case": "ai-feasibility-spike-004",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 593,
+      "goal": "Reads each class with its Wilson interval (passports about 79% to 98%, registry extracts about 60% to 98%), says neither demonstrates 90% and that 9 of 10 falls under the 75% stop line at its lower bound, so registry extracts are undecided; goes to PRD for passports only with the class flagged as not demonstrated, reshapes registry extracts (more cases under a new appetite, or out of scope), and names the size build-evals needs.",
+      "scores": [
+        0.8850000000000002,
+        0.8755
+      ],
+      "judge": 0.8802500000000001,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "ee5a60a216",
+      "case": "ai-feasibility-spike-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 688,
+      "goal": "Refuses real customer data in the spike (an unauthorised end-user ICT asset under DORA, and a non-production use where only anonymised or synthetic data belong), flags the card-opened account as an ICT third-party arrangement and a processor question for the DPO, replaces the 2,000 records with a few dozen synthetic complaints sized per type, fixes a kill date, and removes the email-to-phone step as the outbound leg of the lethal trifecta.",
+      "scores": [
+        0.766,
+        0.7745000000000002
+      ],
+      "judge": 0.7702500000000001,
+      "meetsGoal": 0.5974999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "28c08bff87",
+      "case": "ai-feasibility-spike-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.125,
+      "words": 655,
+      "goal": "Sets one question, fixes a time box in days (or one week), a maximum cost per correct answer derived from the handler minutes it replaces, a target and stop line per class (stricter on bodily injury, which gets more cases, sized for its stop line) and a kill date before building; starts with a fixed workflow, not an agent; anonymised or synthetic cases only; removes forwarding in code (the lethal-trifecta check); ends on go to PRD, reshape or stop.",
+      "scores": [
+        0.6709999999999999,
+        0.681
+      ],
+      "judge": 0.6759999999999999,
+      "meetsGoal": 0.58,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "cb9e28d8f9",
+      "case": "ai-feasibility-spike-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.625,
+      "words": 749,
+      "goal": "Refuses real customer data in the spike (an unauthorised end-user ICT asset under DORA, and a non-production use where only anonymised or synthetic data belong), flags the card-opened account as an ICT third-party arrangement and a processor question for the DPO, replaces the 2,000 records with a few dozen synthetic complaints sized per type, fixes a kill date, and removes the email-to-phone step as the outbound leg of the lethal trifecta.",
+      "scores": [
+        0.7595000000000001,
+        0.7814999999999999
+      ],
+      "judge": 0.7705,
+      "meetsGoal": 0.5975,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e2ac58ea52",
+      "case": "ai-feasibility-spike-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9230769230769231,
+      "words": 639,
+      "goal": "Computes cost per correct coding as 31 / 41, about 0.76 EUR, three times the 0.25 ceiling fixed before the run, and adds the rework of the 9 wrong codings (about 8 EUR of accountant time); rejects the per-invoice comparison and the \"cheaper models later\" argument as unmeasured; decides reshape (a fixed workflow where code does the vendor and PO lookups and one model call picks the account, re-run under a new appetite and kill date) or stop, not a go to PRD.",
+      "scores": [
+        0.919,
+        0.9219999999999999
+      ],
+      "judge": 0.9205,
+      "meetsGoal": 0.93625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "c1b8bb2c9e",
+      "case": "ai-feasibility-spike-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 733,
+      "goal": "Refuses real customer data in the spike (an unauthorised end-user ICT asset under DORA, and a non-production use where only anonymised or synthetic data belong), flags the card-opened account as an ICT third-party arrangement and a processor question for the DPO, replaces the 2,000 records with a few dozen synthetic complaints sized per type, fixes a kill date, and removes the email-to-phone step as the outbound leg of the lethal trifecta.",
+      "scores": [
+        0.9105000000000001,
+        0.9205000000000001
+      ],
+      "judge": 0.9155000000000001,
+      "meetsGoal": 0.9225000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "0d44307507",
+      "case": "ai-feasibility-spike-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 876,
+      "goal": "Keeps the signed 90% bar (no bar moved after seeing results); has every case re-graded under the final definition, since the 25 passed disputes were never checked against the new date rule, and the change logged with its date and reason; reads disputes per class with its Wilson interval (about 66% to 93%), which straddles the 75% stop line, so undecided, not a pooled 91%; gives cost per correct routing (4.20 / 100, 0.042 EUR); treats the two extra weeks as a reshape, a new spike with its own appetite and kill date signed again, not an extension.",
+      "scores": [
+        0.8855,
+        0.8780000000000001
+      ],
+      "judge": 0.88175,
+      "meetsGoal": 0.7987500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,489 @@
+{
+  "skill": "agent-evals",
+  "judgeModel": "typesafe/jev-1.14",
+  "provider": "openrouter",
+  "judgeKind": "decision",
+  "answerSet": "recorded",
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.008062500000000009,
+  "costUsd": 0.004931472,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 12,
+      "judge": 0.9448958333333333,
+      "meetsGoal": 0.9476041666666667,
+      "regex": 0.9812500000000001,
+      "words": 918.25
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.884125,
+      "meetsGoal": 0.7239583333333334,
+      "regex": 0.44910714285714287,
+      "words": 731.0
+    }
+  },
+  "answers": [
+    {
+      "id": "7e0045f25b",
+      "case": "agent-evals-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 673,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.9464999999999999,
+        0.9435
+      ],
+      "judge": 0.945,
+      "meetsGoal": 0.965,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b9f25e6273",
+      "case": "agent-evals-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.4,
+      "words": 750,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.7459999999999999,
+        0.741
+      ],
+      "judge": 0.7434999999999999,
+      "meetsGoal": 0.5725,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "8431278117",
+      "case": "agent-evals-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 800,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.9384999999999999,
+        0.9395
+      ],
+      "judge": 0.939,
+      "meetsGoal": 0.8975,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "8538b5e2e3",
+      "case": "agent-evals-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.375,
+      "words": 577,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.9015,
+        0.9075
+      ],
+      "judge": 0.9045,
+      "meetsGoal": 0.6837500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "15927e631f",
+      "case": "agent-evals-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1043,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.9515,
+        0.9515
+      ],
+      "judge": 0.9515,
+      "meetsGoal": 0.9662499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "cbcaf3ce61",
+      "case": "agent-evals-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5714285714285714,
+      "words": 829,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.9105000000000001,
+        0.8925000000000001
+      ],
+      "judge": 0.9015000000000001,
+      "meetsGoal": 0.645,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "f814411c41",
+      "case": "agent-evals-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 925,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.9515,
+        0.9484999999999999
+      ],
+      "judge": 0.95,
+      "meetsGoal": 0.9550000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "27a1e4803b",
+      "case": "agent-evals-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.2,
+      "words": 968,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.8305,
+        0.8219999999999998
+      ],
+      "judge": 0.8262499999999999,
+      "meetsGoal": 0.6087499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b742832064",
+      "case": "agent-evals-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1021,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.935,
+        0.925
+      ],
+      "judge": 0.93,
+      "meetsGoal": 0.9225,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4eb8fc8ce8",
+      "case": "agent-evals-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 819,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.9644999999999999,
+        0.9650000000000001
+      ],
+      "judge": 0.96475,
+      "meetsGoal": 0.9674999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "dc13e2bd37",
+      "case": "agent-evals-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 800,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.9425000000000001,
+        0.935
+      ],
+      "judge": 0.9387500000000001,
+      "meetsGoal": 0.90875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "7d41eb7384",
+      "case": "agent-evals-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.3,
+      "words": 853,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.7894999999999999,
+        0.7925
+      ],
+      "judge": 0.7909999999999999,
+      "meetsGoal": 0.60625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6af34a8665",
+      "case": "agent-evals-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.9,
+      "words": 602,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.9595,
+        0.9609999999999999
+      ],
+      "judge": 0.9602499999999999,
+      "meetsGoal": 0.9475,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "57827b16ee",
+      "case": "agent-evals-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9,
+      "words": 974,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.9530000000000001,
+        0.9515
+      ],
+      "judge": 0.95225,
+      "meetsGoal": 0.9375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "90312dcb70",
+      "case": "agent-evals-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 543,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.9375,
+        0.9265000000000001
+      ],
+      "judge": 0.932,
+      "meetsGoal": 0.72375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "57ca8b8b37",
+      "case": "agent-evals-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 515,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.8885000000000001,
+        0.9019999999999999
+      ],
+      "judge": 0.89525,
+      "meetsGoal": 0.6825,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6f6a617a9f",
+      "case": "agent-evals-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 886,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.9195,
+        0.9015
+      ],
+      "judge": 0.9105,
+      "meetsGoal": 0.9187500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1a2a656229",
+      "case": "agent-evals-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 933,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.964,
+        0.96
+      ],
+      "judge": 0.962,
+      "meetsGoal": 0.9750000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2a8f6825fc",
+      "case": "agent-evals-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 839,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.9449999999999998,
+        0.9544999999999999
+      ],
+      "judge": 0.9497499999999999,
+      "meetsGoal": 0.9625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b48c81df80",
+      "case": "agent-evals-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1246,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.938,
+        0.9404999999999999
+      ],
+      "judge": 0.9392499999999999,
+      "meetsGoal": 0.9049999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e9eba62599",
+      "case": "agent-evals-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1021,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.9460000000000002,
+        0.9445000000000001
+      ],
+      "judge": 0.9452500000000001,
+      "meetsGoal": 0.9662499999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "b77202ff84",
+      "case": "agent-evals-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.875,
+      "words": 639,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.9365000000000001,
+        0.9405000000000001
+      ],
+      "judge": 0.9385000000000001,
+      "meetsGoal": 0.9299999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "de9d9f19d2",
+      "case": "agent-evals-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5714285714285714,
+      "words": 903,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.9164999999999999,
+        0.8694999999999999
+      ],
+      "judge": 0.8929999999999999,
+      "meetsGoal": 0.67,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "1807c8b3b7",
+      "case": "agent-evals-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5714285714285714,
+      "words": 632,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.8775,
+        0.8915
+      ],
+      "judge": 0.8845,
+      "meetsGoal": 0.74125,
+      "weakest": [
+        "",
+        ""
+      ]
+    }
+  ]
+}
