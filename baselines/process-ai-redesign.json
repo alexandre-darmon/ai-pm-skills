@@ -2,14 +2,14 @@
   "skill": "process-ai-redesign",
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.317",
-  "date": "2026-11-09",
+  "claudeVersion": "2.1.321",
+  "date": "2026-11-18",
   "casesHash": "7583854002c2fc3d3833fdd7907fb3dd2e53117ea5f42ebe4b704c43818adcb7",
   "partial": false,
-  "costUsd": 0,
+  "costUsd": 0.9721262,
   "cases": {
     "process-ai-redesign-001": {
-      "score": 0.9722222222222222,
+      "score": 0.9166666666666666,
       "scoreWithout": 0.4444444444444445,
       "fired": 3,
       "runs": 3,
@@ -21,7 +21,7 @@
           0
         ],
         "fallback-hours": [
-          3,
+          2,
           0
         ],
         "gate": [
@@ -29,11 +29,11 @@
           0
         ],
         "l1-decide": [
-          3,
+          1,
           0
         ],
         "l2-extract": [
-          2,
+          3,
           0
         ],
         "l3-check": [
@@ -50,13 +50,13 @@
         ]
       },
       "costPerAnswer": [
-        0.1252174,
-        0.04731466666666667
+        0.10918206666666667,
+        null
       ],
-      "delta": 0.5277777777777777
+      "delta": 0.47222222222222215
     },
     "process-ai-redesign-002": {
-      "score": 1.0,
+      "score": 0.9696969696969697,
       "scoreWithout": 0.5151515151515151,
       "fired": 3,
       "runs": 3,
@@ -72,7 +72,7 @@
           1
         ],
         "g1": [
-          3,
+          2,
           0
         ],
         "l4-routing": [
@@ -93,10 +93,10 @@
         ]
       },
       "costPerAnswer": [
-        0.09302636666666665,
-        0.042978666666666665
+        0.08991483333333333,
+        null
       ],
-      "delta": 0.48484848484848486
+      "delta": 0.4545454545454546
     },
     "process-ai-redesign-003": {
       "score": 1.0,
@@ -128,8 +128,8 @@
         ]
       },
       "costPerAnswer": [
-        0.08753633333333333,
-        0.039722
+        0.08647783333333332,
+        null
       ],
       "delta": 0.2592592592592592
     },
@@ -147,14 +147,12 @@
         ]
       },
       "costPerAnswer": [
-        0.041242,
-        0.04137933333333333
+        0.03846733333333333,
+        null
       ]
     }
   },
-  "regraded": true,
-  "stale": false,
-  "skillHash": "810ff4c66705dcb0a2ab548a1e6c3ed3020f04e2b44450e2729fdff78d0a06e0",
-  "meanDelta": 0.4239618406285072,
+  "skillHash": "88cf6000a5a3b4ee2259bf3dcaa39df7d564ed063e4974f4250704e693a57c33",
+  "meanDelta": 0.3953423120089787,
   "failures": []
 }

@@ -1,0 +1,377 @@
+{
+  "skill": "llm-judge-calibration",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.04166666666666668,
+  "costUsd": 0.6881632,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8694444444444445,
+      "meetsGoal": 0.9027777777777778,
+      "regex": 0.9347442680776015,
+      "words": 617.4444444444445
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7555555555555555,
+      "meetsGoal": 0.5694444444444444,
+      "regex": 0.6349206349206349,
+      "words": 478.3333333333333
+    }
+  },
+  "answers": [
+    {
+      "id": "6d869be816",
+      "case": "llm-judge-calibration-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.2857142857142857,
+      "words": 511,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.65,
+        0.6
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never fixes TPR/TNR targets before scoring, reports precision instead of TNR, only gestures at correcting the pass rate, miscalculates that 75% recall misses 'a third' rather than a quarter of cases, and still endorses launching an unvalidated metric to the steering committee.",
+        "It never sets TPR/TNR targets before scoring and reports precision instead of TNR. It only gestures at correcting the pass rate, and says 75% recall misses 'a third' of failures when it is a quarter. It also allows launching an unvalidated metric into a regulated steering pack."
+      ]
+    },
+    {
+      "id": "abefda3e05",
+      "case": "llm-judge-calibration-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5714285714285714,
+      "words": 572,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It uses recall and precision instead of TPR and TNR, so the pass-rate correction is built on a prevalence-dependent metric, and it sets no TPR or TNR targets before scoring the fresh set.",
+        "It uses recall and precision instead of TPR and TNR, so its pass-rate correction is wrong, and it never fixes the targets before scoring the new set."
+      ]
+    },
+    {
+      "id": "aa947465a8",
+      "case": "llm-judge-calibration-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5714285714285714,
+      "words": 633,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never sets TPR/TNR targets before scoring. It reports recall and precision rather than TPR and TNR. Its 200-label plan contradicts its own estimate of 300\u2013600 labels for enough positives.",
+        "It never sets TPR and TNR targets before scoring the fresh set, and it headlines recall and precision instead of TNR, which the pass-rate correction needs. It also lets the tuning-set figure into the steering pack as 'preliminary'."
+      ]
+    },
+    {
+      "id": "a026157977",
+      "case": "llm-judge-calibration-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8571428571428571,
+      "words": 418,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The 82\u201399% interval rests on an unshown delta-method calculation with no bootstrap script to reproduce it.",
+        "The 82\u201399% interval rests on an unshown delta-method figure, with no bootstrap script the PM could rerun."
+      ]
+    },
+    {
+      "id": "e53b89f2bb",
+      "case": "llm-judge-calibration-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 866,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It contains small numerical slips: 56/60 is 5 answers better than the 51/60 pass-everything baseline, not 4, and 9/9 supports a catch rate of about 66% or higher, not 70%.",
+        "The answer defines TPR as good summaries passed, which is the reverse of its 'catch rate' framing and could cause the correction formula to be misapplied; it also rounds the 9/9 lower bound up to about 70% when it is nearer 66%."
+      ]
+    },
+    {
+      "id": "3bfe6f50e8",
+      "case": "llm-judge-calibration-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 483,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It offers to run a bootstrap instead of pointing to a script, and calling 90% 'above the bar' slightly undercuts its own 'can't tell' message to the chair.",
+        "It offers to run a bootstrap rather than pointing to a script, and it states an unsourced 0.5 stability threshold for the correction."
+      ]
+    },
+    {
+      "id": "a5c0600d13",
+      "case": "llm-judge-calibration-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5555555555555556,
+      "words": 376,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It sets only a recall target with no target for correct items, gives an interval of about 16% to 55% instead of the Wilson 18% to 53%, and assumes today's error rate is near 0%. Its hybrid idea also misses that a complaint wrongly placed outside a report category would skip full review.",
+        "It sets only a recall target, with no false-flag target and no requirement to fix targets before the re-test; its 16%\u201355% interval is not the Wilson one (about 18%\u201353%), and the '7.5% vs close to 0% today' claim assumes perfect officers and that every miss reaches the report."
+      ]
+    },
+    {
+      "id": "b77e64f987",
+      "case": "llm-judge-calibration-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7142857142857143,
+      "words": 432,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.75,
+        0.8500000000000001
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "The 82\u201399% interval and the '30% chance below 88%' are asserted without showing the method, and there is no bootstrap script to reproduce them.",
+        "The 82\u201399% interval and 30% probability come with no bootstrap script or method, so the chair's team cannot reproduce or audit the key uncertainty claim."
+      ]
+    },
+    {
+      "id": "e7a1dff42b",
+      "case": "llm-judge-calibration-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 547,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.75,
+        0.8500000000000001
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The interim step is muddled: it says the judge flags 'roughly 10%' when it flags 10 of 200 (5%), it misstates what that step would save, and it quietly loosens checks outside the report categories while also saying to keep the full check. The retest also names only a miss-rate target, not explicit TPR and TNR targets.",
+        "The 'interim step' is incoherent: it seems to skip review of judge-flagged items, misstates the flag rate as about 10% when it is 5%, and conflicts with keeping the full check. The retest plan also never explicitly sets both TPR and TNR targets."
+      ]
+    },
+    {
+      "id": "4fe7251470",
+      "case": "llm-judge-calibration-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.7777777777777778,
+      "words": 547,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.95,
+        0.8999999999999999
+      ],
+      "judge": 0.9249999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The answer proposes a concrete TNR target but none for TPR, and it presents the 0.5 Youden and 0.6 kappa thresholds as personal rules of thumb without justifying them.",
+        "It proposes only a TNR target, sets no TPR target, and ignores the regulatory and audit side of changing a control behind a supervisor report."
+      ]
+    },
+    {
+      "id": "e179b66786",
+      "case": "llm-judge-calibration-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 598,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.8999999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It states a firm 0.5 threshold on TPR+TNR\u22121 as something 'the method needs' without a source, and it offers to compute exact Wilson intervals it has already reported.",
+        "It states an unsourced 0.5 threshold for rate correction as if it were an established requirement, which weakens otherwise careful arithmetic."
+      ]
+    },
+    {
+      "id": "b06f9969af",
+      "case": "llm-judge-calibration-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7142857142857143,
+      "words": 448,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It uses an admittedly rough delta-method calculation instead of a reproducible bootstrap script, and still presents a '30% chance below 88%' figure and calls full review disproportionate when its own interval reaches 82%.",
+        "The interval comes from an unshown 'rough delta-method' calculation with no bootstrap script, and it adds an unsupported '30% chance below 88%' and a 'few days' labelling estimate."
+      ]
+    },
+    {
+      "id": "12b874a17f",
+      "case": "llm-judge-calibration-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 571,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.95,
+        0.8
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It says having the analyst label 100\u2013150 of this month's memos would 'settle it', but at about 90% true quality a sample that size still gives roughly \u00b15 points, which could straddle the 88% bar.",
+        "It only describes a bootstrap and offers to run one rather than pointing to a ready script, and its interim fix of routing judge-failed memos to humans wrongly assumes the judge runs on every memo rather than a weekly sample."
+      ]
+    },
+    {
+      "id": "baba2e6c31",
+      "case": "llm-judge-calibration-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7777777777777778,
+      "words": 474,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It offers a menu that includes dropping the full check on low-stakes categories instead of firmly keeping it, and it sets only a recall target with no specificity target and no explicit plan to collect more expert-labelled fails.",
+        "It gives a menu of options instead of firmly keeping the full check, sets a target only on catching errors with nothing on false flags, doesn't ask for more expert-labelled fails, and its interval (16\u201355%) is not quite the Wilson interval (about 18\u201353%)."
+      ]
+    },
+    {
+      "id": "08fa3a25e6",
+      "case": "llm-judge-calibration-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 666,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.8500000000000001,
+        0.95
+      ],
+      "judge": 0.9,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The test set rests on one senior handler's labels, with no second labeller or agreement check to validate the ground truth in a regulated setting.",
+        "It relies on a single senior handler as ground truth and never checks her label reliability, for example with a second labeller on a sample, before treating her labels as the reference for TPR and TNR."
+      ]
+    },
+    {
+      "id": "9aec3ef6ff",
+      "case": "llm-judge-calibration-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8571428571428571,
+      "words": 590,
+      "goal": "Explains why the raw 85% is biased, corrects it to about 90% with an interval carrying the TPR and TNR uncertainty (about 82% to 99%), reads the 88% bar against the interval (not decided either way), points to the bootstrap script, and asks for fresh expert labels on production memos.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The 'roughly 1 in 8 memos' figure matches neither the 90% point estimate nor the 82% lower bound, and the bootstrap is only offered if the rows are shared rather than pointed to as a ready script.",
+        "The bootstrap is only offered as future work rather than pointed to as an existing script, and the '1 in 8' figure doesn't match the 90% point estimate (about 1 in 10)."
+      ]
+    },
+    {
+      "id": "a6f6f8046d",
+      "case": "llm-judge-calibration-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 441,
+      "goal": "Rebuilds the confusion counts, computes TNR of about 33% with its Wilson interval (about 18% to 53%), shows a judge passing everything would agree 88%, refuses the judge as the gate, keeps the full check, and plans a revision re-tested on fresh labels with more expert fails under TPR and TNR targets set before the re-test.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The re-test plan sets only an error-recall target, with no correct-class (TPR) target and no requirement for fresh labels, even though it proposes tuning the judge on the very errors it missed.",
+        "It suggests improving the judge using the errors it missed, but never says the re-test must use fresh, held-out labels, and it sets a target only for error recall, not for both TPR and TNR."
+      ]
+    },
+    {
+      "id": "2a9efe4a9a",
+      "case": "llm-judge-calibration-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 689,
+      "goal": "Rejects the 94% as tuning data, asks for a held-out test split never used for tuning with many more expert fails, treats any label set read to revise the prompt as dev data, not a test, sets TPR and TNR targets before scoring, reports TPR and TNR rather than agreement, and corrects the weekly pass rate for the judge errors.",
+      "scores": [
+        0.95,
+        0.8999999999999999
+      ],
+      "judge": 0.9249999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It relies on a single senior handler's labels as ground truth, with no second labeller to check agreement on what counts as an applicable exclusion, which matters in a regulated setting.",
+        "The bias-check list is generic boilerplate, and the regulated-insurance stakes of a missed exclusion beyond the handler acting on it are barely developed."
+      ]
+    }
+  ],
+  "skillHash": "1fcf735cd46dd9902a6c3e3894a40a6766e3b0634eab948bae65aeb3296e47fb"
+}

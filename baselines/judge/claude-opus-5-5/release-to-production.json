@@ -1,0 +1,341 @@
+{
+  "skill": "release-to-production",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 1,
+  "errors": 0,
+  "firstError": null,
+  "noise": null,
+  "costUsd": 0.514024,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8611111111111112,
+      "meetsGoal": 0.9722222222222222,
+      "regex": 0.9876543209876544,
+      "words": 627.4444444444445
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.6166666666666667,
+      "meetsGoal": 0.5,
+      "regex": 0.6111111111111112,
+      "words": 490.44444444444446
+    }
+  },
+  "answers": [
+    {
+      "id": "0972f20961",
+      "case": "release-to-production-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7,
+      "words": 377,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It ignores that the company is regulated, so it says nothing about change control, validation records, compliance sign-off or audit evidence, and it asserts a current date ('9 November') that is wrong."
+      ]
+    },
+    {
+      "id": "4459612a53",
+      "case": "release-to-production-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 614,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It gives no fallback if the successor fails the offline gate near 31 March, such as asking the provider for an extension or switching to an alternative model, and parts like the A/B formula and model card read as a generic template."
+      ]
+    },
+    {
+      "id": "019069e071",
+      "case": "release-to-production-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5555555555555556,
+      "words": 364,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "In a regulated company it offers a 5\u201310% staged rollout of a model that fails the threshold, without addressing compliance, validation or audit obligations."
+      ]
+    },
+    {
+      "id": "56105f7241",
+      "case": "release-to-production-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 869,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The table row for m = 10, ICC = 0.05 is wrong: the design effect is 1.45, so about 540 users per arm are needed, not about 1,300, and that design fits in 900 users. The error breaks the table's monotonic logic and overstates infeasibility."
+      ]
+    },
+    {
+      "id": "3630f768f4",
+      "case": "release-to-production-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 845,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The final 'release after shadow' decision skips the canary gate the plan just set, and the 8-point, 3-day rollback trigger on about 180 users is noisy enough to cause false alarms, which the answer doesn't acknowledge."
+      ]
+    },
+    {
+      "id": "fcc2e00ccb",
+      "case": "release-to-production-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5555555555555556,
+      "words": 338,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It recommends a gated partial rollout for Monday before any per-class diagnosis and never addresses what releasing below the threshold means in a regulated company."
+      ]
+    },
+    {
+      "id": "94151b9569",
+      "case": "release-to-production-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 468,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "In a regulated company, it never says who must formally sign off on the hold or own the per-class diagnostic and by when, and it leaves 'the classes that matter' undefined."
+      ]
+    },
+    {
+      "id": "dd3cf883c2",
+      "case": "release-to-production-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7,
+      "words": 399,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It ignores the regulated setting (model validation, change approval, audit trail), offers a canary rollout instead of a true shadow run, and asserts 'you have months' without knowing today's date."
+      ]
+    },
+    {
+      "id": "135a1e08aa",
+      "case": "release-to-production-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 584,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It sets no dated timeline working back from 31 March and never asks the provider to confirm or extend the retirement date, while the generic A/B sample-size material uses space a deadline-driven plan doesn't need."
+      ]
+    },
+    {
+      "id": "c9e73c61a2",
+      "case": "release-to-production-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 427,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never addresses the regulated context: no compliance or model-risk sign-off, and no audit trail for the release decision or any lowered threshold."
+      ]
+    },
+    {
+      "id": "bb68ea7319",
+      "case": "release-to-production-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5555555555555556,
+      "words": 316,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "For a regulated company, it ignores compliance and audit duties, and it favours a canary or partial ship of a below-threshold model before the per-class diagnostic has validated anything."
+      ]
+    },
+    {
+      "id": "2a895c78d1",
+      "case": "release-to-production-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6,
+      "words": 393,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It ignores the regulated context (change control, validation evidence, sign-off), offers a canary instead of a true shadow run, sets no go/no-go criteria, and asserts an unsupported 'today is 9 November'."
+      ]
+    },
+    {
+      "id": "4f08dcd629",
+      "case": "release-to-production-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 772,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 62%-over-300-tasks rollback trigger is never checked for false alarms, even though 300 tasks clustered in about 60 canary users is noisy, and the autonomy-level section is generic boilerplate."
+      ]
+    },
+    {
+      "id": "933fe1c099",
+      "case": "release-to-production-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 687,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        ""
+      ]
+    },
+    {
+      "id": "6a5c3ffbdc",
+      "case": "release-to-production-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 604,
+      "goal": "Treated as a release: offline run and shadow before the switch.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never asks when the successor became available or how many days remain before 31 March, so the backward-planned schedule may not fit the time actually left."
+      ]
+    },
+    {
+      "id": "5e5391b89f",
+      "case": "release-to-production-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 754,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It computes ~3,550 tasks per arm correctly but never checks this against the fixed 900-user ceiling; it assumes the A/B is feasible, guesses a 3\u20136 week duration, and never falls back on shadow or canary or addresses the regulated context."
+      ]
+    },
+    {
+      "id": "bfd1a78a2c",
+      "case": "release-to-production-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 464,
+      "goal": "No release; a diagnostic by class instead.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never addresses the regulated context (audit trail, documenting the sponsor override request), and it leaves the decision owner unnamed."
+      ]
+    },
+    {
+      "id": "7a82d2241f",
+      "case": "release-to-production-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 786,
+      "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
+      "scores": [
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It misses that with a fixed 1,800 users the effective sample size has a ceiling of about 900/\u03c1 per arm (roughly 3,000 at \u03c1=0.3), so the 3-point lift may never be detectable no matter how long the test runs; it therefore never declares the A/B test infeasible or falls back to a shadow-plus-canary release, and it ignores the regulatory context."
+      ]
+    }
+  ],
+  "skillHash": "00efcebee393b798afacc19be61c0719e438e3ddad74d9c9f4c8eda9998ffd57"
+}

@@ -1,0 +1,341 @@
+{
+  "skill": "agent-design-and-tooling",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 1,
+  "errors": 0,
+  "firstError": null,
+  "noise": null,
+  "costUsd": 0.583388,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.9055555555555556,
+      "meetsGoal": 0.9444444444444444,
+      "regex": 0.9888888888888889,
+      "words": 1117.111111111111
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7444444444444445,
+      "meetsGoal": 0.5277777777777778,
+      "regex": 0.48888888888888893,
+      "words": 679.4444444444445
+    }
+  },
+  "answers": [
+    {
+      "id": "544c58da08",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 863,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "There is no permission matrix: caps, the approval threshold and each tool's autonomy level are spread across several sections, and no concrete cap is set even as a proposed default."
+      ]
+    },
+    {
+      "id": "ca886c6407",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9,
+      "words": 901,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The stop conditions contradict each other: a cap of 4 total calls with no retries sits beside a separate allowance of 3 ERP calls, and regulated-sector needs like trace retention and the audit trail of human edits are only touched on."
+      ]
+    },
+    {
+      "id": "2a8de26171",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1191,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The ERP call caps contradict each other (3 per case in the permission matrix, 4 in the stop conditions), and the 'mark customer claims' check is presented as a code check that code can't reliably do."
+      ]
+    },
+    {
+      "id": "8effdcf1fa",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 765,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never produces an actual permission matrix: caps are placeholder examples and the approval rule is scattered across prose, with no regulatory or compliance controls such as who may change caps or segregation of duties."
+      ]
+    },
+    {
+      "id": "9b57db4d50",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6,
+      "words": 560,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "For a regulated company it barely covers audit-grade trace retention, PII handling, or sign-off records, and it leaves the 'low confidence' stop threshold undefined and uncalibrated."
+      ]
+    },
+    {
+      "id": "4cf2e27487",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1589,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "There is no absolute ceiling above which even the team lead cannot approve, and the new prepare/commit tools are assumed without being listed as changes the tool owner must confirm."
+      ]
+    },
+    {
+      "id": "0334eb978d",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.1,
+      "words": 554,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It opens with a framework verdict and leaves stop conditions to a generic list of caps with no concrete max steps, budget values or exit behaviour, which inverts the required order."
+      ]
+    },
+    {
+      "id": "33792432d4",
+      "case": "agent-design-and-tooling-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1342,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It treats 'customer assertions must be phrased as claims' as a code check, which code can't reliably verify, and it labels the three-stage workflow a 'single step' loop type."
+      ]
+    },
+    {
+      "id": "a642c8f6bd",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 677,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It leaves the budget, API-call cap and timeout without even proposed placeholder numbers and never names an owner or date for the LangGraph-vs-raw-loop decision trigger."
+      ]
+    },
+    {
+      "id": "8a13a1fe45",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1579,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The design caps tariff amounts at the per-action limit yet keeps an above-cap approval path, and never says when an above-cap request can arise or how an approver weighs one."
+      ]
+    },
+    {
+      "id": "b1993bede2",
+      "case": "agent-design-and-tooling-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1513,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The tariff tops out at 20 and code rejects any amount outside it, so the per-action cap and its approval path can never trigger; only the rolling cap can, which leaves the approval rule partly inconsistent."
+      ]
+    },
+    {
+      "id": "4b09bd3cdc",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.1,
+      "words": 515,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It opens with the framework pick and only later lists step, token and time caps, without proposing starting values, which inverts the required order and weakens the stop conditions."
+      ]
+    },
+    {
+      "id": "d2a9356b05",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 666,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It says every limit needs a number but proposes one only for max steps, leaving the token budget, API call cap and timeout unquantified."
+      ]
+    },
+    {
+      "id": "38a33001c7",
+      "case": "agent-design-and-tooling-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 596,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It leaves the token budget, timeout and API-call cap without starting values and gives no owner or deadline for settling the open inputs, so the PM has less to act on immediately."
+      ]
+    },
+    {
+      "id": "4209975e53",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 692,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Stop conditions stay vague: the 'bounded' ERP fallback has no stated limits on attempts, timeouts or cost, and the regulatory audit and retention requirements behind the traces are never addressed."
+      ]
+    },
+    {
+      "id": "d2a9b839b3",
+      "case": "agent-design-and-tooling-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.1,
+      "words": 559,
+      "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
+      "scores": [
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It leads with the framework choice and puts stop conditions inside item 1, mentioning iteration, token and time caps without concrete max-step or budget values or a way to set them."
+      ]
+    },
+    {
+      "id": "b70328fc9f",
+      "case": "agent-design-and-tooling-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8,
+      "words": 769,
+      "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "There is no permission matrix across the three tools, and the approval rule for pay_goodwill is only implied (no approval below the cap, handoff above it) rather than stated with named approvers and thresholds."
+      ]
+    },
+    {
+      "id": "2dbc107eb4",
+      "case": "agent-design-and-tooling-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6,
+      "words": 838,
+      "goal": "A single loop, no multi-agent, stop conditions and traces.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It offers to keep three separate agents for ownership reasons instead of firmly recommending one loop, and its traces omit prompts, model versions and regulatory audit or PII handling."
+      ]
+    }
+  ],
+  "skillHash": "497df30d9befb30f0de879a09f800106b32c19e88364a57e0b38379d22be03d7"
+}

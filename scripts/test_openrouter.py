@@ -142,6 +142,7 @@ class CallTest(unittest.TestCase):
         self.assertEqual(path, "/v1/chat/completions")
         self.assertEqual(body["messages"], [{"role": "system", "content": SYSTEM}, {"role": "user", "content": "the prompt"}])
         self.assertEqual(body["provider"], {"data_collection": "deny"})
+        self.assertEqual(body["max_tokens"], openrouter.MAX_TOKENS)
         self.assertEqual((out["sound"], out["specific"], out["weakest_point"], out["costUsd"]), (5, 1, "w", 0.002))
 
     def test_chat_judge_error_reply_raises(self):
@@ -226,6 +227,18 @@ class JudgeMainTest(unittest.TestCase):
         written = json.loads((self.root / "baselines/judge/typesafe--jev-1.14/alpha.json").read_text())
         self.assertEqual((written["limit"], len(written["answers"])), (2, 2))
 
+    def test_a_run_where_every_call_fails_keeps_the_last_good_file(self):
+        self.run_main("--model", "typesafe/jev-1.14", "skills/alpha", call=FakeJev())
+        path = self.root / "baselines/judge/typesafe--jev-1.14/alpha.json"
+        before = path.read_text()
+
+        def broke(item, model):
+            raise openrouter.BilledError("HTTP 402", None)
+        broke.takes_item = True
+        code, printed = self.run_main("--model", "typesafe/jev-1.14", "skills/alpha", call=broke)
+        self.assertEqual(path.read_text(), before)
+        self.assertIn("no answer judged", printed)
+
     def test_legal_skills_are_never_judged(self):
         fake = FakeJev()
         code, printed = self.run_main("--model", "typesafe/jev-1.14", "skills/lex", call=fake)
@@ -256,3 +269,35 @@ class JudgeMainTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LocalJudgeTest(unittest.TestCase):
+    def test_local_ids_route_to_ollama_and_name_a_flat_folder(self):
+        import ollama_judge
+        from judge_answers import judge_dir, judge_meta, pick_call, call_judge
+        self.assertTrue(ollama_judge.is_local("ollama/qwen3.8:27b-mlx"))
+        self.assertEqual(judge_dir(Path("/r"), "ollama/qwen3.8:27b-mlx").name, "ollama--qwen3.8-27b-mlx")
+        self.assertEqual(judge_meta("ollama/qwen3.8:27b-mlx", None)["provider"], "ollama")
+        self.assertIs(pick_call("ollama/qwen3.8:27b-mlx", call_judge, dry_run=True), ollama_judge.call_local)
+
+    def test_refuses_to_start_next_to_another_loaded_model(self):
+        import ollama_judge
+
+        def opener(req, timeout):
+            path = req.full_url.split("11434")[1]
+            body = {"/api/tags": {"models": [{"name": "qwen3.8:27b-mlx"}, {"name": "gemma4:31b-mlx"}]},
+                    "/api/ps": {"models": [{"name": "gemma4:31b-mlx"}]}}[path]
+            return Response(json.dumps(body).encode())
+        with self.assertRaises(SystemExit) as stop:
+            ollama_judge.check_ready("ollama/qwen3.8:27b-mlx", opener=opener)
+        self.assertIn("ollama stop", str(stop.exception))
+
+    def test_local_call_parses_the_reply(self):
+        import ollama_judge
+        seen = []
+
+        def opener(req, timeout):
+            seen.append(json.loads(req.data))
+            return Response(json.dumps({"message": {"content": CHAT_REPLY}}).encode())
+        out = ollama_judge.call_local("p", "ollama/qwen3.8:27b-mlx", opener=opener)
+        self.assertEqual((out["sound"], out["costUsd"], seen[0]["model"], seen[0]["think"]), (5, 0.0, "qwen3.8:27b-mlx", True))

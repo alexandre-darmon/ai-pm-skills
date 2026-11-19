@@ -1,0 +1,647 @@
+{
+  "skill": "build-evals",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 1,
+  "errors": 0,
+  "firstError": null,
+  "noise": null,
+  "costUsd": 1.1510719999999999,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 18,
+      "judge": 0.8583333333333334,
+      "meetsGoal": 0.9027777777777778,
+      "regex": 0.9808455433455434,
+      "words": 585.6666666666666
+    },
+    "without": {
+      "answers": 18,
+      "judge": 0.7027777777777778,
+      "meetsGoal": 0.4722222222222222,
+      "regex": 0.39217032967032966,
+      "words": 544.8333333333334
+    }
+  },
+  "answers": [
+    {
+      "id": "fec85a5638",
+      "case": "build-evals-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 670,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The labelling plan contradicts itself: it says to label 30 to 50 cases for the LLM step but also all 120, and it carves a 20% holdout from a 120-case set it also uses for the paired comparison."
+      ]
+    },
+    {
+      "id": "81bae50bcd",
+      "case": "build-evals-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 881,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The golden-set minimum of 20 real questions contradicts the plan's own estimate of about 150 cases per class to clear a 90% lower bound, so it understates what Friday's expert grading requires."
+      ]
+    },
+    {
+      "id": "c3123b4512",
+      "case": "build-evals-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 728,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 95% warranty bar and its case counts (200/450/1,800) are presented as givens without saying the bar is an assumed example, and the returns range of 35\u2013140 cases has no stated basis."
+      ]
+    },
+    {
+      "id": "f7c7482c77",
+      "case": "build-evals-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.16666666666666666,
+      "words": 962,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never states the synthetic share outright (24 of 32 drafted) or calls the set provisional, and it ignores regulated-context risks such as sending real invoices to model vendors and leakage if the 8 gold items are reused as prompt examples."
+      ]
+    },
+    {
+      "id": "23bf131bd9",
+      "case": "build-evals-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 447,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It ignores the one-week deadline and the regulated setting: there is no fallback if 100+ real invoices can't be gathered in time, nothing on handling supplier data sent to candidate vendors, and it defers the actual files instead of delivering them."
+      ]
+    },
+    {
+      "id": "f4653cd8f1",
+      "case": "build-evals-006",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8333333333333334,
+      "words": 372,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It implies a day of extra testing (about 200 cases) can settle the question, when roughly 650 cases are needed; it also floats a lower-bound-at-90% rule that quietly moves the signed 95% threshold."
+      ]
+    },
+    {
+      "id": "805d57907e",
+      "case": "build-evals-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 422,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It produces nothing usable before next week's model choice and cites an unexplained '20-case method', and it misses the data-confidentiality risk of sending real supplier invoices to candidate model vendors in a regulated company."
+      ]
+    },
+    {
+      "id": "c9dd47a9b3",
+      "case": "build-evals-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 431,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It states a 20-example minimum as if it were an established rule, when it is an arbitrary threshold."
+      ]
+    },
+    {
+      "id": "a6da8792cf",
+      "case": "build-evals-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 620,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never sets an 80% agreement floor, never splits the vague correct/incorrect criterion into sub-criteria with pass and fail examples, gives no per-class thresholds, and names no baseline judge model and date; it also doesn't flag that getting 100+ fresh expert labels by Thursday may not be feasible."
+      ]
+    },
+    {
+      "id": "66bb43583b",
+      "case": "build-evals-007",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.3333333333333333,
+      "words": 319,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It notes the ~94% lower bound but still calls 147/150 a pass and says the committee can sign off with spot-checks, instead of holding the bodily-injury queue with claims handlers while the other three go live. Its 'few hundred more' claims is far short of the roughly 1,000+ needed to show 97%."
+      ]
+    },
+    {
+      "id": "afe581444c",
+      "case": "build-evals-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9230769230769231,
+      "words": 933,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never commits to a numeric warranty bar, and it calls ~50 order-status/returns cases enough for a ~90% bar, then says reading near 90% to \u00b15 points takes ~140."
+      ]
+    },
+    {
+      "id": "ef727d00cd",
+      "case": "build-evals-006",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 407,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never gives the case count at the observed 96.7% rate (about 650), only at 97% and 96%, and its 'passes as written' reading of the signed threshold weakens the gate."
+      ]
+    },
+    {
+      "id": "bdf0c60a13",
+      "case": "build-evals-006",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 425,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It sizes the eval for an assumed 97% (about 450 cases) and never gives the roughly 650 cases needed at the observed 96.7%, and it wrongly says the data fit 90% as well as 97%."
+      ]
+    },
+    {
+      "id": "e5331e74a8",
+      "case": "build-evals-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.3076923076923077,
+      "words": 690,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never freezes a baseline that records the judge model and date, and it gates only on cost per answer rather than cost per correct answer, so two required goal elements are missing."
+      ]
+    },
+    {
+      "id": "660548c54a",
+      "case": "build-evals-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8571428571428571,
+      "words": 718,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It specifies a labelled check only for extraction, not for OCR, rules or posting, and it ends with a dangling 'Which would you like?' that offers no options."
+      ]
+    },
+    {
+      "id": "c4349561af",
+      "case": "build-evals-007",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 405,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        1.0
+      ],
+      "judge": 1.0,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 'well over a thousand cases' sizing gives no assumed true rate and no per-class prevalence, so the committee can't see what the test-set requirement depends on."
+      ]
+    },
+    {
+      "id": "7fda5323e2",
+      "case": "build-evals-006",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.3333333333333333,
+      "words": 352,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        ""
+      ]
+    },
+    {
+      "id": "e4668eb9dc",
+      "case": "build-evals-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 587,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The rubric fix stays generic, with no splitting of vague criteria or pass/fail examples, and there are no per-class thresholds for leave and expenses or a baseline naming the judge model and date; the Tue\u2013Thu schedule with 100\u2013150 fresh expert labels also ignores that Friday may be tomorrow."
+      ]
+    },
+    {
+      "id": "a2be9a197e",
+      "case": "build-evals-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 396,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It leans on an unnamed 'method' for its 20-example minimum and ignores the regulated context: it never addresses invoice data privacy or auditability of the eval and model choice."
+      ]
+    },
+    {
+      "id": "aa18d28c6b",
+      "case": "build-evals-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 717,
+      "goal": "Says 8 examples are not enough, asks for more real cases, and if synthetic cases are generated states their share and flags them; the set is provisional.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The 20 drafted cases carry no synthetic/source flag that would survive once they are labelled and merged with real invoices, the answer never says the eval set is provisional for next week's model choice, and regulated-company risks like data privacy and audit trail go unmentioned."
+      ]
+    },
+    {
+      "id": "98a4a4e2b2",
+      "case": "build-evals-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 622,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It largely ignores the regulated setting (audit trail, sign-off, compliance on wrongly posted invoices), and the 'fewer than 20 real invoices' threshold is asserted without justification."
+      ]
+    },
+    {
+      "id": "3ebbd39342",
+      "case": "build-evals-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.14285714285714285,
+      "words": 418,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never makes the end-to-end score the explicit release gate, and it ignores the regulated context: change control, audit trail, and data handling for a new model."
+      ]
+    },
+    {
+      "id": "c28a0cc898",
+      "case": "build-evals-007",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.3333333333333333,
+      "words": 380,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It computes the ~94% lower bound but still opens with 'technically yes' and offers a conditional go, instead of holding the bodily-injury queue with claims handlers while the other queues go live and sizing a retest at about a thousand claims rather than a few hundred."
+      ]
+    },
+    {
+      "id": "639dcead40",
+      "case": "build-evals-007",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 367,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The sample sizing is wrong: if the true rate is 97%, the lower bound never reliably clears 97% at any n, and at a true 98% it takes roughly 750+ cases, not 200, so the committee is told the gap is far smaller than the roughly one thousand cases needed."
+      ]
+    },
+    {
+      "id": "e01b76b46d",
+      "case": "build-evals-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.38461538461538464,
+      "words": 702,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never asks for a private holdout, for a frozen baseline that records the judge model and date, or for cost per correct answer. It treats cost only as a per-answer gate with a placeholder 'X%'."
+      ]
+    },
+    {
+      "id": "a99eff920a",
+      "case": "build-evals-007",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 343,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It recommends human review on the bodily-injury queue but never addresses reviewer capacity or the risk of rubber-stamping, and its 200-case aside at a 95% bar is borderline and adds little."
+      ]
+    },
+    {
+      "id": "917f6eaf0e",
+      "case": "build-evals-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.42857142857142855,
+      "words": 581,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never says the end-to-end posted-correctly score stays as the release gate for the swap, and it ignores the regulated-company context (audit trail, sign-off on silent mis-postings)."
+      ]
+    },
+    {
+      "id": "c2b23c226e",
+      "case": "build-evals-006",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 386,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It gives sample sizes at 97% and 96% rather than at the observed 96.7% (about 650 cases), and its option to ship on the signer's written risk acceptance slightly weakens the hold-or-review recommendation."
+      ]
+    },
+    {
+      "id": "a5476dc6b6",
+      "case": "build-evals-007",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.3333333333333333,
+      "words": 372,
+      "goal": "Reads the queue on the lower bound of its interval (about 94%), says the bar is not demonstrated for that queue, keeps it with claims handlers (or holds it) while the other queues go live, sizes the queue at about a thousand cases or more, and does not move the signed threshold.",
+      "scores": [
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never proposes launching the other three queues while bodily-injury stays with claims handlers. It also offers a conditional go-live for that queue and sizes the extra test at 'a few hundred' instead of about a thousand or more."
+      ]
+    },
+    {
+      "id": "3654195bb4",
+      "case": "build-evals-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 755,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It calls the gap to the previous version probably noise, but the request gives only one score (88%), so that comparison isn't grounded."
+      ]
+    },
+    {
+      "id": "e40a56c452",
+      "case": "build-evals-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 812,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It asserts without evidence that about half the 50 labels were probably used to write the judge prompt, and it ends with a generic cost-per-correct-outcome section that does not bear on Friday's decision."
+      ]
+    },
+    {
+      "id": "afd4a6a416",
+      "case": "build-evals-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.2857142857142857,
+      "words": 562,
+      "goal": "Keeps the end-to-end score as the release gate, adds a labelled check per step, labels the first failing step on the failed cases, scores a step on frozen upstream outputs, and compares old and new extraction on the same cases before any swap.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never makes the end-to-end posted-correctly rate the explicit release gate, it only adds a labelled check for the extraction step and not for OCR, rules or ERP, and it ignores the audit and compliance constraints of a regulated company."
+      ]
+    },
+    {
+      "id": "aa72ddfb05",
+      "case": "build-evals-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.625,
+      "words": 626,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never sets an explicit 80% agreement bar, revises the rubric without splitting vague criteria or adding pass/fail examples, sets no per-class thresholds, and has no baseline naming the judge model and date; it also assumes today is Wednesday."
+      ]
+    },
+    {
+      "id": "b73b9c4beb",
+      "case": "build-evals-006",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.3333333333333333,
+      "words": 391,
+      "goal": "Says the class is not demonstrated because the lower bound of the interval is about 89%, explains that even at this rate about 650 cases would be needed (more cases by the ship date will not settle it), keeps human review on that class (or holds it) instead of shipping on the point score, and does not move the signed threshold.",
+      "scores": [
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It shows the lower bound is about 89%, yet still says shipping Monday on the point score is defensible, and it implies 150\u2013200 more cases would settle the question when roughly 650 are needed to show the class clears 95%."
+      ]
+    },
+    {
+      "id": "df0785b4a2",
+      "case": "build-evals-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.875,
+      "words": 841,
+      "goal": "Refuses the judge as a gate below 80% agreement, revises the rubric by splitting vague criteria and adding pass and fail examples, keeps human review until it passes, and writes the plan with per-class thresholds and a baseline that names the judge model and date.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It invents a release date of 13 Nov 2026, a Friday that has already passed (the next Friday is 20 Nov), and that wrong date sits on the plan meant to be dated and signed."
+      ]
+    },
+    {
+      "id": "7ce5e81423",
+      "case": "build-evals-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.38461538461538464,
+      "words": 709,
+      "goal": "Splits the threshold per class, stricter on the legal warranty class, re-samples the rare classes, keeps a private holdout, freezes a baseline that names the judge model and date, and scores cost per correct answer.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never freezes a baseline that records the judge model and date, and it gates on cost per answer rather than cost per correct answer."
+      ]
+    }
+  ],
+  "skillHash": "5e86c01f1b6d1a295c9a5e7bdc0b7eab941465e7131d9238519453fb9b704e57"
+}

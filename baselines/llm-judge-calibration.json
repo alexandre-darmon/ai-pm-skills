@@ -3,10 +3,10 @@
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.321",
-  "date": "2026-11-13",
+  "date": "2026-11-19",
   "casesHash": "45e1fafd8bb58eb019455fc7d00320447af2c53053c61c17c9b20b583dc6e901",
   "partial": false,
-  "costUsd": 0.6421987,
+  "costUsd": 0.6623828,
   "cases": {
     "llm-judge-calibration-001": {
       "score": 0.8518518518518517,
@@ -17,7 +17,7 @@
       "negative": false,
       "graders": {
         "always-pass": [
-          1,
+          0,
           0
         ],
         "fresh-labels": [
@@ -25,7 +25,7 @@
           1
         ],
         "keep-full-review": [
-          1,
+          3,
           3
         ],
         "more-fails": [
@@ -37,7 +37,7 @@
           3
         ],
         "targets-before": [
-          3,
+          2,
           1
         ],
         "tnr-interval": [
@@ -50,7 +50,7 @@
         ]
       },
       "costPerAnswer": [
-        0.05722053333333333,
+        0.0620455,
         null
       ],
       "delta": 0.18518518518518512
@@ -89,13 +89,13 @@
         ]
       },
       "costPerAnswer": [
-        0.06206116666666667,
+        0.06138336666666667,
         null
       ],
       "delta": 0.523809523809524
     },
     "llm-judge-calibration-003": {
-      "score": 1.0,
+      "score": 0.9523809523809524,
       "scoreWithout": 0.7619047619047619,
       "fired": 3,
       "runs": 3,
@@ -115,7 +115,7 @@
           3
         ],
         "fresh-labels": [
-          3,
+          2,
           1
         ],
         "inconclusive": [
@@ -128,10 +128,10 @@
         ]
       },
       "costPerAnswer": [
-        0.06007786666666667,
+        0.06232273333333333,
         null
       ],
-      "delta": 0.23809523809523814
+      "delta": 0.19047619047619058
     },
     "llm-judge-calibration-004": {
       "score": 1.0,
@@ -147,12 +147,12 @@
         ]
       },
       "costPerAnswer": [
-        0.03470666666666666,
+        0.035042666666666666,
         null
       ]
     }
   },
-  "skillHash": "0af577a2e844837c68990e9950ced797772064f3f0cab0f7f51f2caf0e2e3e53",
-  "meanDelta": 0.3156966490299824,
+  "skillHash": "1fcf735cd46dd9902a6c3e3894a40a6766e3b0634eab948bae65aeb3296e47fb",
+  "meanDelta": 0.29982363315696653,
   "failures": []
 }

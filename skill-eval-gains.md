@@ -4,14 +4,15 @@ Same cases, Sonnet 5.5 answering, three arms: the model alone, the model given o
 
 | Test performed | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 29 skills, 109 cases × 3 runs | 52% | — | **96%** | +45 [+41, +48] | — |
-| Regex graders, the 3 skills also run with their template only: 9 cases | 43% | 82% | 99% | +56 [+47, +67] | +17 [+6, +32] |
+| Regex graders: 29 skills, 109 cases × 3 runs | 52% | — | **97%** | +45 [+42, +48] | — |
+| Regex graders, the 1 skill also run with its template only: 3 cases | 25% | 76% | 100% | +75 [+70, +85] | +24 [-5, +71] |
 | Blind LLM judge, Haiku 5.5: 11 of these skills, 40 cases, earlier runs | 70% | — | 79% | +9 [+7, +11] | — |
+| Blind LLM judge, Opus 5.5: 29 of these skills, 109 cases, recorded runs | 70% | — | 85% | +15 [+14, +17] | — |
 | Blind LLM judge, Sonnet 5.5: 9 of these skills, 29 cases, earlier runs | 72% | — | 82% | +9 [+6, +13] | — |
-| Blind LLM judge, openai/gpt-6.1-sol: 29 of these skills, 109 cases, recorded runs | 63% | — | 70% | +7 [+5, +10] | — |
-| Blind decision model, typesafe/jev-1.14: 29 of these skills, 109 cases, recorded runs | 80% | — | 89% | +9 [+7, +11] | — |
+| Blind LLM judge, openai/gpt-6.1-sol: 27 of these skills, 102 cases, earlier runs | 61% | — | 71% | +10 [+7, +13] | — |
+| Blind decision model, typesafe/jev-1.14: 29 of these skills, 109 cases, earlier runs | 80% | — | 89% | +9 [+7, +11] | — |
 | Red lines held (the one thing the answer must never do) | 71% | — | **100%** | | |
-| Cost per correct answer, API equivalent (19 skills) | $0.104 | — | **$0.077** | -26% | |
+| Cost per correct answer, API equivalent (16 skills) | $0.131 | — | **$0.078** | -40% | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
 Gains in points. Brackets: 95% interval over cases (see below).
@@ -20,31 +21,31 @@ Gains in points. Brackets: 95% interval over cases (see below).
 
 | Skill | Without | Template only | With | Gain over the model alone (lowest to highest case) | Gain over the template | Red lines held: without / template / with | Cost per correct answer: without → with | Cases × runs | Run date |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [`agent-design-and-tooling`](skills/agent-design-and-tooling/SKILL.md) | 49% | — | **96%** | +47 pts (+20 to +90) | — | 67% / — / 100% | — | 3 × 3 | 2026-11-13 |
-| [`agent-evals`](skills/agent-evals/SKILL.md) | 45% | — | **98%** | +53 pts (+37 to +67) | — | 60% / — / 100% | $0.098 → $0.066 | 4 × 3 | 2026-11-09 |
-| [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | 74% | 91% | **100%** | +26 pts (+20 to +33) | +9 pts | 100% / 100% / 100% | — | 3 × 3 | 2026-11-13 |
+| [`agent-design-and-tooling`](skills/agent-design-and-tooling/SKILL.md) | 49% | — | **99%** | +50 pts (+20 to +90) | — | 67% / — / 100% | — | 3 × 3 | 2026-11-19 |
+| [`agent-evals`](skills/agent-evals/SKILL.md) | 45% | — | **97%** | +52 pts (+37 to +67) | — | 60% / — / 100% | — | 4 × 3 | 2026-11-19 |
+| [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | 71% | — | **100%** | +29 pts (+23 to +33) | — | 100% / — / 100% | $0.071 → $0.149 | 3 × 3 | 2026-11-18 |
 | [`ai-adoption-plan`](skills/ai-adoption-plan/SKILL.md) | 61% | — | **95%** | +34 pts (+23 to +45) | — | 92% / — / 100% | — | 4 × 3 | 2026-11-11 |
 | [`ai-data-requirements`](skills/ai-data-requirements/SKILL.md) | 65% | — | **94%** | +30 pts (+12 to +57) | — | 93% / — / 100% | $0.068 → $0.078 | 5 × 3 | 2026-11-09 |
 | [`ai-feasibility-spike`](skills/ai-feasibility-spike/SKILL.md) | 46% | — | **96%** | +50 pts (+36 to +71) | — | 61% / — / 100% | $0.088 → $0.069 | 5 × 3 | 2026-11-12 |
-| [`ai-incident-playbook`](skills/ai-incident-playbook/SKILL.md) | 45% | — | **98%** | +53 pts (+23 to +93) | — | 67% / — / 100% | $0.117 → $0.074 | 5 × 3 | 2026-11-12 |
+| [`ai-incident-playbook`](skills/ai-incident-playbook/SKILL.md) | 45% | — | **99%** | +55 pts (+27 to +97) | — | 67% / — / 100% | — | 5 × 3 | 2026-11-18 |
 | [`ai-interaction-patterns`](skills/ai-interaction-patterns/SKILL.md) | 64% | — | **95%** | +31 pts (+13 to +45) | — | 83% / — / 100% | $0.060 → $0.066 | 4 × 3 | 2026-11-12 |
 | [`ai-opportunity-assessment`](skills/ai-opportunity-assessment/SKILL.md) | 55% | — | **93%** | +38 pts (+21 to +63) | — | 87% / — / 100% | $0.068 → $0.106 | 5 × 3 | 2026-11-11 |
 | [`ai-roi-quantification`](skills/ai-roi-quantification/SKILL.md) | 69% | — | **97%** | +28 pts (+11 to +37) | — | 100% / — / 100% | $0.069 → $0.081 | 3 × 3 | 2026-11-09 |
-| [`ai-vendor-evaluation`](skills/ai-vendor-evaluation/SKILL.md) | 60% | — | **98%** | +39 pts (+35 to +41) | — | 81% / — / 100% | $0.066 → $0.068 | 3 × 3 | 2026-11-09 |
-| [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | 27% | 78% | **97%** | +70 pts (+48 to +100) | +20 pts | 56% / 100% / 100% | — | 3 × 3 | 2026-11-11 |
+| [`ai-vendor-evaluation`](skills/ai-vendor-evaluation/SKILL.md) | 60% | — | **98%** | +38 pts (+36 to +41) | — | 81% / — / 100% | — | 3 × 3 | 2026-11-18 |
+| [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | 27% | — | **97%** | +70 pts (+48 to +100) | — | 56% / — / 100% | $0.159 → $0.066 | 3 × 3 | 2026-11-18 |
 | [`build-evals`](skills/build-evals/SKILL.md) | 39% | — | **98%** | +59 pts (+42 to +67) | — | 33% / — / 100% | $0.122 → $0.057 | 6 × 3 | 2026-11-11 |
-| [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | 22% | — | **98%** | +75 pts (+48 to +100) | — | 58% / — / 100% | $0.245 → $0.053 | 4 × 3 | 2026-11-11 |
+| [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | 24% | — | **100%** | +76 pts (+57 to +100) | — | 50% / — / 100% | $0.422 → $0.057 | 4 × 3 | 2026-11-19 |
 | [`error-analysis`](skills/error-analysis/SKILL.md) | 34% | — | **98%** | +64 pts (+53 to +83) | — | 0% / — / 100% | $0.142 → $0.069 | 3 × 3 | 2026-11-11 |
-| [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | 29% | 76% | **100%** | +71 pts (+67 to +75) | +24 pts | 0% / 50% / 100% | — | 3 × 3 | 2026-11-11 |
-| [`llm-judge-calibration`](skills/llm-judge-calibration/SKILL.md) | 63% | — | **95%** | +32 pts (+19 to +52) | — | 89% / — / 100% | — | 3 × 3 | 2026-11-13 |
-| [`model-card-ai-registry`](skills/model-card-ai-registry/SKILL.md) | 66% | — | **99%** | +33 pts (+17 to +50) | — | 100% / — / 100% | — | 4 × 3 | 2026-11-11 |
-| [`model-selection`](skills/model-selection/SKILL.md) | 72% | — | **98%** | +25 pts (+7 to +42) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-13 |
+| [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | 25% | 76% | **100%** | +75 pts (+71 to +83) | +24 pts | 0% / 50% / 100% | $0.329 → $0.111 | 3 × 3 | 2026-11-18 |
+| [`llm-judge-calibration`](skills/llm-judge-calibration/SKILL.md) | 63% | — | **93%** | +30 pts (+19 to +52) | — | 89% / — / 100% | — | 3 × 3 | 2026-11-19 |
+| [`model-card-ai-registry`](skills/model-card-ai-registry/SKILL.md) | 66% | — | **97%** | +31 pts (+17 to +44) | — | 100% / — / 100% | — | 4 × 3 | 2026-11-18 |
+| [`model-selection`](skills/model-selection/SKILL.md) | 72% | — | **99%** | +26 pts (+7 to +42) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-19 |
 | [`multi-turn-evals`](skills/multi-turn-evals/SKILL.md) | 43% | — | **93%** | +50 pts (+38 to +67) | — | 78% / — / 100% | $0.106 → $0.072 | 4 × 3 | 2026-11-12 |
-| [`process-ai-redesign`](skills/process-ai-redesign/SKILL.md) | 57% | — | **99%** | +42 pts (+26 to +53) | — | 100% / — / 100% | $0.076 → $0.103 | 3 × 3 | 2026-11-09 |
-| [`production-evals-monitoring`](skills/production-evals-monitoring/SKILL.md) | 45% | — | **100%** | +55 pts (+53 to +58) | — | 33% / — / 100% | $0.158 → $0.102 | 3 × 3 | 2026-11-11 |
-| [`prototype-handover`](skills/prototype-handover/SKILL.md) | 48% | — | **96%** | +48 pts (+25 to +56) | — | 83% / — / 100% | $0.105 → $0.127 | 5 × 3 | 2026-11-11 |
+| [`process-ai-redesign`](skills/process-ai-redesign/SKILL.md) | 57% | — | **96%** | +40 pts (+26 to +47) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-18 |
+| [`production-evals-monitoring`](skills/production-evals-monitoring/SKILL.md) | 45% | — | **100%** | +55 pts (+53 to +58) | — | 33% / — / 100% | — | 3 × 3 | 2026-11-18 |
+| [`prototype-handover`](skills/prototype-handover/SKILL.md) | 48% | — | **99%** | +50 pts (+25 to +62) | — | 83% / — / 100% | — | 5 × 3 | 2026-11-18 |
 | [`red-team-evals`](skills/red-team-evals/SKILL.md) | 49% | — | **96%** | +47 pts (+30 to +64) | — | 58% / — / 100% | $0.086 → $0.071 | 5 × 3 | 2026-11-12 |
-| [`release-to-production`](skills/release-to-production/SKILL.md) | 61% | — | **99%** | +38 pts (+33 to +41) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-12 |
+| [`release-to-production`](skills/release-to-production/SKILL.md) | 61% | — | **99%** | +38 pts (+33 to +41) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-18 |
 | [`retrieval-evaluation`](skills/retrieval-evaluation/SKILL.md) | 51% | — | **87%** | +36 pts (+10 to +56) | — | 17% / — / 100% | $0.077 → $0.065 | 3 × 3 | 2026-11-09 |
 | [`synthetic-eval-data`](skills/synthetic-eval-data/SKILL.md) | 30% | — | **96%** | +66 pts (+58 to +79) | — | 33% / — / 100% | $0.131 → $0.060 | 3 × 3 | 2026-11-09 |
 | [`system-prompt-and-guardrails`](skills/system-prompt-and-guardrails/SKILL.md) | 77% | — | **97%** | +19 pts (+13 to +24) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-13 |
@@ -54,7 +55,7 @@ Gains in points. Brackets: 95% interval over cases (see below).
 
 | Skill | Judge | Without | Template only | With | Gain over the model alone | Gain over the template | Judge noise | Words: without / template / with |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `ai-act-classification` | Haiku 5.5 | 72% | — | 72% | 0 pts | — | 4 pts | 735 / — / 1,650 |
+| `ai-act-classification` | Haiku 5.5 | 74% | — | 75% | +2 pts | — | 6 pts | 735 / — / 1,486 |
 | `ai-incident-playbook` | Haiku 5.5 | 64% | — | 74% | +10 pts | — | 4 pts | 659 / — / 922 |
 | `ai-roi-quantification` | Haiku 5.5 | 71% | — | 78% | +7 pts | — | 7 pts | 401 / — / 770 |
 | `ai-vendor-evaluation` | Haiku 5.5 | 69% | — | 82% | +13 pts | — | 5 pts | 537 / — / 980 |
@@ -65,6 +66,35 @@ Gains in points. Brackets: 95% interval over cases (see below).
 | `model-card-ai-registry` | Haiku 5.5 | 74% | — | 79% | +5 pts | — | 3 pts | 480 / — / 654 |
 | `production-evals-monitoring` | Haiku 5.5 | 72% | — | 83% | +11 pts | — | 4 pts | 1,029 / — / 1,236 |
 | `prototype-handover` | Haiku 5.5 | 66% | — | 77% | +11 pts | — | 5 pts | 775 / — / 1,286 |
+| `agent-design-and-tooling` | Opus 5.5 | 74% | — | 91% | +16 pts | — | — | 679 / — / 1,117 |
+| `agent-evals` | Opus 5.5 | 80% | — | 94% | +14 pts | — | 2 pts | 731 / — / 1,275 |
+| `ai-act-classification` | Opus 5.5 | 78% | — | 84% | +6 pts | — | 5 pts | 746 / — / 1,611 |
+| `ai-adoption-plan` | Opus 5.5 | 70% | — | 82% | +12 pts | — | — | 569 / — / 750 |
+| `ai-data-requirements` | Opus 5.5 | 72% | — | 82% | +10 pts | — | — | 635 / — / 901 |
+| `ai-feasibility-spike` | Opus 5.5 | 63% | — | 83% | +21 pts | — | — | 595 / — / 766 |
+| `ai-incident-playbook` | Opus 5.5 | 63% | — | 81% | +18 pts | — | 5 pts | 659 / — / 1,078 |
+| `ai-interaction-patterns` | Opus 5.5 | 60% | — | 87% | +27 pts | — | — | 667 / — / 957 |
+| `ai-opportunity-assessment` | Opus 5.5 | 66% | — | 80% | +14 pts | — | — | 588 / — / 1,278 |
+| `ai-roi-quantification` | Opus 5.5 | 59% | — | 75% | +16 pts | — | — | 436 / — / 877 |
+| `ai-vendor-evaluation` | Opus 5.5 | 76% | — | 88% | +13 pts | — | — | 537 / — / 1,039 |
+| `assistant-kpis-cost-per-outcome` | Opus 5.5 | 64% | — | 77% | +13 pts | — | — | 701 / — / 1,219 |
+| `build-evals` | Opus 5.5 | 70% | — | 86% | +16 pts | — | — | 545 / — / 586 |
+| `conversation-analysis` | Opus 5.5 | 62% | — | 81% | +19 pts | — | 3 pts | 570 / — / 684 |
+| `error-analysis` | Opus 5.5 | 68% | — | 88% | +19 pts | — | — | 767 / — / 928 |
+| `llm-feature-prd` | Opus 5.5 | 76% | — | 89% | +13 pts | — | — | 1,389 / — / 1,858 |
+| `llm-judge-calibration` | Opus 5.5 | 76% | — | 87% | +11 pts | — | 4 pts | 478 / — / 617 |
+| `model-card-ai-registry` | Opus 5.5 | 73% | — | 85% | +12 pts | — | — | 480 / — / 999 |
+| `model-selection` | Opus 5.5 | 78% | — | 88% | +10 pts | — | 4 pts | 338 / — / 602 |
+| `multi-turn-evals` | Opus 5.5 | 75% | — | 88% | +13 pts | — | — | 616 / — / 792 |
+| `process-ai-redesign` | Opus 5.5 | 64% | — | 83% | +19 pts | — | — | 806 / — / 1,521 |
+| `production-evals-monitoring` | Opus 5.5 | 74% | — | 91% | +17 pts | — | 3 pts | 1,029 / — / 1,317 |
+| `prototype-handover` | Opus 5.5 | 69% | — | 85% | +16 pts | — | — | 775 / — / 1,352 |
+| `red-team-evals` | Opus 5.5 | 72% | — | 91% | +18 pts | — | — | 662 / — / 833 |
+| `release-to-production` | Opus 5.5 | 62% | — | 86% | +24 pts | — | — | 490 / — / 627 |
+| `retrieval-evaluation` | Opus 5.5 | 75% | — | 88% | +13 pts | — | — | 635 / — / 765 |
+| `synthetic-eval-data` | Opus 5.5 | 69% | — | 81% | +12 pts | — | — | 663 / — / 814 |
+| `system-prompt-and-guardrails` | Opus 5.5 | 72% | — | 87% | +14 pts | — | — | 653 / — / 1,138 |
+| `trace-review-tool` | Opus 5.5 | 62% | — | 82% | +20 pts | — | — | 907 / — / 1,122 |
 | `agent-design-and-tooling` | Sonnet 5.5 | 76% | — | 82% | +6 pts | — | 2 pts | 679 / — / 1,012 |
 | `ai-roi-quantification` | Sonnet 5.5 | 64% | — | 76% | +12 pts | — | 3 pts | 401 / — / 770 |
 | `assistant-kpis-cost-per-outcome` | Sonnet 5.5 | 66% | 77% | 82% | +16 pts | +5 pts | 2 pts | 726 / 1,723 / 1,213 |
@@ -74,38 +104,36 @@ Gains in points. Brackets: 95% interval over cases (see below).
 | `llm-judge-calibration` | Sonnet 5.5 | 78% | — | 84% | +6 pts | — | 3 pts | 478 / — / 589 |
 | `model-selection` | Sonnet 5.5 | 76% | — | 80% | +4 pts | — | 2 pts | 338 / — / 492 |
 | `system-prompt-and-guardrails` | Sonnet 5.5 | 77% | — | 89% | +12 pts | — | 4 pts | 653 / — / 1,138 |
-| `agent-design-and-tooling` | openai/gpt-6.1-sol | 75% | — | 79% | +4 pts | — | 3 pts | 679 / — / 1,012 |
-| `agent-evals` | openai/gpt-6.1-sol | 76% | — | 81% | +5 pts | — | 2 pts | 731 / — / 918 |
-| `ai-act-classification` | openai/gpt-6.1-sol | 66% | — | 56% | -11 pts | — | 2 pts | 735 / — / 1,650 |
+| `agent-design-and-tooling` | openai/gpt-6.1-sol | 75% | — | 84% | +9 pts | — | 2 pts | 679 / — / 1,117 |
+| `ai-act-classification` | openai/gpt-6.1-sol | 68% | — | 61% | -7 pts | — | 3 pts | 746 / — / 1,611 |
 | `ai-adoption-plan` | openai/gpt-6.1-sol | 68% | — | 79% | +11 pts | — | 2 pts | 569 / — / 750 |
 | `ai-data-requirements` | openai/gpt-6.1-sol | 65% | — | 72% | +7 pts | — | 3 pts | 635 / — / 901 |
 | `ai-feasibility-spike` | openai/gpt-6.1-sol | 51% | — | 67% | +16 pts | — | 3 pts | 595 / — / 766 |
-| `ai-incident-playbook` | openai/gpt-6.1-sol | 62% | — | 66% | +4 pts | — | 3 pts | 659 / — / 922 |
+| `ai-incident-playbook` | openai/gpt-6.1-sol | 60% | — | 64% | +4 pts | — | 3 pts | 659 / — / 1,078 |
 | `ai-interaction-patterns` | openai/gpt-6.1-sol | 54% | — | 76% | +22 pts | — | 2 pts | 667 / — / 957 |
 | `ai-opportunity-assessment` | openai/gpt-6.1-sol | 56% | — | 68% | +12 pts | — | 3 pts | 588 / — / 1,278 |
 | `ai-roi-quantification` | openai/gpt-6.1-sol | 49% | — | 59% | +10 pts | — | 3 pts | 436 / — / 877 |
-| `ai-vendor-evaluation` | openai/gpt-6.1-sol | 69% | — | 71% | +3 pts | — | 1 pts | 537 / — / 980 |
-| `assistant-kpis-cost-per-outcome` | openai/gpt-6.1-sol | — | — | 67% | — | — | 4 pts | — / — / 1,287 |
+| `ai-vendor-evaluation` | openai/gpt-6.1-sol | 67% | — | 77% | +9 pts | — | 2 pts | 537 / — / 1,039 |
+| `assistant-kpis-cost-per-outcome` | openai/gpt-6.1-sol | 52% | — | 65% | +13 pts | — | 1 pts | 701 / — / 1,219 |
 | `build-evals` | openai/gpt-6.1-sol | 64% | — | 72% | +8 pts | — | 2 pts | 545 / — / 586 |
-| `conversation-analysis` | openai/gpt-6.1-sol | 56% | — | 60% | +4 pts | — | 2 pts | 556 / — / 640 |
+| `conversation-analysis` | openai/gpt-6.1-sol | 51% | — | 66% | +15 pts | — | 2 pts | 583 / — / 729 |
 | `error-analysis` | openai/gpt-6.1-sol | 56% | — | 78% | +22 pts | — | 2 pts | 767 / — / 928 |
-| `llm-feature-prd` | openai/gpt-6.1-sol | — | — | 74% | — | — | 4 pts | — / — / 1,779 |
-| `llm-judge-calibration` | openai/gpt-6.1-sol | 70% | — | 74% | +4 pts | — | 1 pts | 478 / — / 589 |
-| `model-card-ai-registry` | openai/gpt-6.1-sol | 59% | — | 64% | +5 pts | — | 3 pts | 480 / — / 654 |
-| `model-selection` | openai/gpt-6.1-sol | 70% | — | 72% | +2 pts | — | 2 pts | 338 / — / 492 |
+| `llm-feature-prd` | openai/gpt-6.1-sol | 59% | — | 70% | +11 pts | — | 2 pts | 1,389 / — / 1,858 |
+| `model-card-ai-registry` | openai/gpt-6.1-sol | 60% | — | 68% | +8 pts | — | 3 pts | 480 / — / 999 |
+| `model-selection` | openai/gpt-6.1-sol | 69% | — | 69% | -1 pts | — | 2 pts | 338 / — / 559 |
 | `multi-turn-evals` | openai/gpt-6.1-sol | 66% | — | 73% | +6 pts | — | 2 pts | 616 / — / 792 |
-| `process-ai-redesign` | openai/gpt-6.1-sol | 54% | — | 59% | +5 pts | — | 3 pts | 806 / — / 1,746 |
-| `production-evals-monitoring` | openai/gpt-6.1-sol | 64% | — | 68% | +4 pts | — | 3 pts | 1,029 / — / 1,236 |
-| `prototype-handover` | openai/gpt-6.1-sol | 59% | — | 63% | +4 pts | — | 2 pts | 775 / — / 1,286 |
+| `process-ai-redesign` | openai/gpt-6.1-sol | 54% | — | 64% | +10 pts | — | 2 pts | 806 / — / 1,521 |
+| `production-evals-monitoring` | openai/gpt-6.1-sol | 64% | — | 69% | +4 pts | — | 2 pts | 1,029 / — / 1,317 |
+| `prototype-handover` | openai/gpt-6.1-sol | 58% | — | 70% | +12 pts | — | 3 pts | 775 / — / 1,352 |
 | `red-team-evals` | openai/gpt-6.1-sol | 66% | — | 78% | +11 pts | — | 2 pts | 662 / — / 833 |
-| `release-to-production` | openai/gpt-6.1-sol | 56% | — | 59% | +3 pts | — | 2 pts | 490 / — / 557 |
+| `release-to-production` | openai/gpt-6.1-sol | 55% | — | 74% | +19 pts | — | 3 pts | 490 / — / 627 |
 | `retrieval-evaluation` | openai/gpt-6.1-sol | 70% | — | 78% | +8 pts | — | 3 pts | 635 / — / 765 |
 | `synthetic-eval-data` | openai/gpt-6.1-sol | 68% | — | 76% | +7 pts | — | 2 pts | 663 / — / 814 |
 | `system-prompt-and-guardrails` | openai/gpt-6.1-sol | 73% | — | 80% | +7 pts | — | 2 pts | 653 / — / 1,138 |
 | `trace-review-tool` | openai/gpt-6.1-sol | 57% | — | 73% | +16 pts | — | 3 pts | 907 / — / 1,122 |
 | `agent-design-and-tooling` | typesafe/jev-1.14 | 90% | — | 85% | -5 pts | — | 0 pts | 679 / — / 1,012 |
 | `agent-evals` | typesafe/jev-1.14 | 88% | — | 94% | +6 pts | — | 1 pts | 731 / — / 918 |
-| `ai-act-classification` | typesafe/jev-1.14 | 74% | — | 74% | +1 pts | — | 1 pts | 735 / — / 1,650 |
+| `ai-act-classification` | typesafe/jev-1.14 | 74% | — | 75% | +1 pts | — | 1 pts | 735 / — / 1,486 |
 | `ai-adoption-plan` | typesafe/jev-1.14 | 85% | — | 91% | +6 pts | — | 0 pts | 569 / — / 750 |
 | `ai-data-requirements` | typesafe/jev-1.14 | 81% | — | 87% | +6 pts | — | 1 pts | 635 / — / 901 |
 | `ai-feasibility-spike` | typesafe/jev-1.14 | 68% | — | 88% | +20 pts | — | 1 pts | 595 / — / 766 |
@@ -114,11 +142,11 @@ Gains in points. Brackets: 95% interval over cases (see below).
 | `ai-opportunity-assessment` | typesafe/jev-1.14 | 76% | — | 90% | +14 pts | — | 1 pts | 588 / — / 1,278 |
 | `ai-roi-quantification` | typesafe/jev-1.14 | 85% | — | 92% | +7 pts | — | 1 pts | 436 / — / 877 |
 | `ai-vendor-evaluation` | typesafe/jev-1.14 | 73% | — | 87% | +14 pts | — | 1 pts | 537 / — / 980 |
-| `assistant-kpis-cost-per-outcome` | typesafe/jev-1.14 | — | — | 91% | — | — | 0 pts | — / — / 1,287 |
+| `assistant-kpis-cost-per-outcome` | typesafe/jev-1.14 | 71% | — | 90% | +20 pts | — | 1 pts | 701 / — / 1,219 |
 | `build-evals` | typesafe/jev-1.14 | 81% | — | 90% | +9 pts | — | 1 pts | 545 / — / 586 |
 | `conversation-analysis` | typesafe/jev-1.14 | 66% | — | 85% | +19 pts | — | 1 pts | 556 / — / 640 |
 | `error-analysis` | typesafe/jev-1.14 | 82% | — | 93% | +11 pts | — | 1 pts | 767 / — / 928 |
-| `llm-feature-prd` | typesafe/jev-1.14 | — | — | 92% | — | — | 0 pts | — / — / 1,779 |
+| `llm-feature-prd` | typesafe/jev-1.14 | 84% | — | 91% | +8 pts | — | 1 pts | 1,389 / — / 1,858 |
 | `llm-judge-calibration` | typesafe/jev-1.14 | 82% | — | 85% | +3 pts | — | 1 pts | 478 / — / 589 |
 | `model-card-ai-registry` | typesafe/jev-1.14 | 77% | — | 89% | +11 pts | — | 1 pts | 480 / — / 654 |
 | `model-selection` | typesafe/jev-1.14 | 84% | — | 85% | +2 pts | — | 1 pts | 338 / — / 492 |

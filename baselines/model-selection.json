@@ -3,10 +3,10 @@
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.321",
-  "date": "2026-11-13",
+  "date": "2026-11-19",
   "casesHash": "c2dd2f983bc79df15428d3370838d7af0aa0c35de560984d68a27f5f4d2e11c1",
   "partial": false,
-  "costUsd": 0.5330204000000001,
+  "costUsd": 0.6186413000000001,
   "cases": {
     "model-selection-001": {
       "score": 1.0,
@@ -46,13 +46,13 @@
         ]
       },
       "costPerAnswer": [
-        0.04978153333333333,
+        0.05945456666666666,
         null
       ],
       "delta": 0.4242424242424243
     },
     "model-selection-002": {
-      "score": 0.9259259259259259,
+      "score": 0.9629629629629629,
       "scoreWithout": 0.6666666666666666,
       "fired": 3,
       "runs": 3,
@@ -72,7 +72,7 @@
           3
         ],
         "gap-noise": [
-          2,
+          3,
           0
         ],
         "redline-not-c": [
@@ -81,10 +81,10 @@
         ]
       },
       "costPerAnswer": [
-        0.045135,
+        0.05906446666666667,
         null
       ],
-      "delta": 0.2592592592592593
+      "delta": 0.2962962962962963
     },
     "model-selection-003": {
       "score": 1.0,
@@ -116,7 +116,7 @@
         ]
       },
       "costPerAnswer": [
-        0.041124266666666666,
+        0.0440934,
         null
       ],
       "delta": 0.07407407407407407
@@ -135,12 +135,12 @@
         ]
       },
       "costPerAnswer": [
-        0.04163266666666667,
+        0.04360133333333333,
         null
       ]
     }
   },
-  "skillHash": "9a2e90a844bfec7246104f65436d3455875c783ce1ff473220c48e42fd44e054",
-  "meanDelta": 0.25252525252525254,
+  "skillHash": "4d18a9f3316dac0c129e6ee3216b8afa02646f0412edfc326510a951246fde90",
+  "meanDelta": 0.2648709315375982,
   "failures": []
 }

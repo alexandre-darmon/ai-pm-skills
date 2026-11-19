@@ -111,6 +111,10 @@ def main(root=ROOT, draws=DRAWS):
             f"| {rlw} | {cost_cell(costs.get(skill), arm_mean(one, 'without'), arm_mean(one, 'with'))} | {len(pos)} × {'/'.join(map(str, runs))} | {b['date']} |")
 
     judges, judge_rows = [], []
+
+    def base_hash(skill):
+        f = base / f"{skill}.json"
+        return json.loads(f.read_text()).get("skillHash") if f.is_file() else None
     for d in sorted(p for p in (base / "judge").glob("*") if p.is_dir()) if (base / "judge").is_dir() else []:
         cases, calibrated, meta = {}, True, {}
         for skill in regex:
@@ -120,9 +124,13 @@ def main(root=ROOT, draws=DRAWS):
             j = json.loads(f.read_text())
             if j.get("limit"):  # a --limit trial, not a run: kept out of the tables
                 continue
+            if sum(a.get("judge") is not None for a in j["answers"]) < len(j["answers"]) / 2:
+                continue  # most calls failed (e.g. out of credit): not a measurement
             calibrated &= bool(j.get("calibrated"))
             meta = {"model": j.get("judgeModel") or d.name, "kind": j.get("judgeKind") or "llm",
-                    "recorded": meta.get("recorded", True) and j.get("answerSet") == "recorded"}
+                    # current: it grades the run recorded in baselines/<skill>.json for the skill's present text
+                    "recorded": meta.get("recorded", True) and j.get("answerSet") == "recorded"
+                    and bool(j.get("skillHash")) and j.get("skillHash") == base_hash(skill)}
             sums = {}
             for a in j["answers"]:
                 if a.get("judge") is not None:
@@ -133,7 +141,7 @@ def main(root=ROOT, draws=DRAWS):
             judge_rows.append(
                 f"| `{skill}` | {model_name(j.get('judgeModel') or d.name)} | {pct(arm_mean(one, 'without'))} | {pct(arm_mean(one, 'template'))} "
                 f"| {pct(arm_mean(one, 'with'))} | {point_gain(one, 'with', 'without')} "
-                f"| {point_gain(one, 'with', 'template')} | {round(100 * j['noise'])} pts | {words} |")
+                f"| {point_gain(one, 'with', 'template')} | {'—' if j.get('noise') is None else str(round(100 * j['noise'])) + ' pts'} | {words} |")
         if cases:
             judges.append((model_name(meta["model"]), calibrated, cases, meta))
 
@@ -171,7 +179,7 @@ def main(root=ROOT, draws=DRAWS):
         ]
         subset = {k: cs for k, cs in regex.items() if any("template" in c for c in cs.values())}
         if subset and len(subset) < len(regex):
-            lines.append(row(f"Regex graders, the {len(subset)} skills also run with their template only: "
+            lines.append(row(f"Regex graders, the {len(subset)} skill{'s' if len(subset) != 1 else ''} also run with {'their' if len(subset) != 1 else 'its'} template only: "
                              f"{sum(len(cs) for cs in subset.values())} cases", subset))
         for name, cal, cases, meta in judges:
             n = sum(len(cs) for cs in cases.values())

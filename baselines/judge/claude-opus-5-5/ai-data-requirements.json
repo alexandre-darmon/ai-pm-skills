@@ -1,0 +1,545 @@
+{
+  "skill": "ai-data-requirements",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 1,
+  "errors": 0,
+  "firstError": null,
+  "noise": null,
+  "costUsd": 0.922608,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 15,
+      "judge": 0.8166666666666667,
+      "meetsGoal": 0.7166666666666667,
+      "regex": 0.9441750841750841,
+      "words": 901.0666666666667
+    },
+    "without": {
+      "answers": 15,
+      "judge": 0.7166666666666667,
+      "meetsGoal": 0.38333333333333336,
+      "regex": 0.6488215488215487,
+      "words": 634.6666666666666
+    }
+  },
+  "answers": [
+    {
+      "id": "d605674b53",
+      "case": "ai-data-requirements-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 657,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The stale-answer KPI has no sample size, no target threshold and no owner, and the regulatory audit-trail angle is never raised."
+      ]
+    },
+    {
+      "id": "ebb0da490f",
+      "case": "ai-data-requirements-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8,
+      "words": 802,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It treats the ownerless table as a blocker but never names a sponsor to escalate to, and it never says to check the freshness and quality thresholds against measurements on unfiltered data."
+      ]
+    },
+    {
+      "id": "44b2287039",
+      "case": "ai-data-requirements-004",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.1,
+      "words": 457,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The triage of the 12 ownerless sources has no named accountable person, escalation path or deadline, and the fallback 'lower-trust tier' partly reopens the door to indexing unowned content."
+      ]
+    },
+    {
+      "id": "6b4b145749",
+      "case": "ai-data-requirements-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5555555555555556,
+      "words": 779,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It raises personal-data flags (PII redaction, privacy review for sampling) the goal rules out, and never asks for query volume or traffic."
+      ]
+    },
+    {
+      "id": "1002d5d844",
+      "case": "ai-data-requirements-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1186,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The goal called for no personal-data flags, yet the answer makes query-text personal data its top blocker with a DPO decision, lawful basis, art. 9 and 35 references and masking, which over-engineers a catalog-only spec and stalls launch."
+      ]
+    },
+    {
+      "id": "7f396fa9f8",
+      "case": "ai-data-requirements-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 616,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The stale-answer KPI has no sample size, target threshold or HR coverage, and the 30-day spec expiry could pull stable, valid specs out of the index."
+      ]
+    },
+    {
+      "id": "d5ed9f2a6b",
+      "case": "ai-data-requirements-004",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6,
+      "words": 368,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never names who escalates and decides when the sponsor insists on indexing everything, and it skips compliance sign-off in a regulated company."
+      ]
+    },
+    {
+      "id": "0711eaec61",
+      "case": "ai-data-requirements-004",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 502,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never confirms that the other 28 sources have named owners and gives no default expiry, so 'every kept source has an owner and an expiry' is promised rather than shown."
+      ]
+    },
+    {
+      "id": "cb866b85b0",
+      "case": "ai-data-requirements-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 870,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Every quality threshold is left 'to set with owner' with no proposed starting values, and the repair-prices table is missing from the threshold table even if it is adopted."
+      ]
+    },
+    {
+      "id": "5c43ea04c3",
+      "case": "ai-data-requirements-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 704,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The stale-answer KPI has no sample size, target threshold or owner, so nobody can tell whether the rate passes or fails."
+      ]
+    },
+    {
+      "id": "d52a50bc6c",
+      "case": "ai-data-requirements-004",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6,
+      "words": 388,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Kept sources get an owner and last-reviewed date but no expiry or re-review date, and an unowned source can still be added if 'confirmed current', which breaks the every-source-has-an-owner rule."
+      ]
+    },
+    {
+      "id": "6476c7cd0d",
+      "case": "ai-data-requirements-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 903,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Quality thresholds are left wholly 'to set with owner' with no proposed starting values, and claim amounts go to the vendor in clear without flagging a processor-agreement check."
+      ]
+    },
+    {
+      "id": "bf265e7b73",
+      "case": "ai-data-requirements-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9090909090909091,
+      "words": 861,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It lists 'contract or legitimate interest' for most fields without choosing one, and gives no Article 9 condition for the special-category data it says the email body may carry to the vendor."
+      ]
+    },
+    {
+      "id": "b968a249ba",
+      "case": "ai-data-requirements-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7777777777777778,
+      "words": 485,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never states a concrete expiry per source type (it only says 'older than a threshold') and never defines a stale-answer KPI, so the core goal is unmet."
+      ]
+    },
+    {
+      "id": "a413030976",
+      "case": "ai-data-requirements-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8181818181818182,
+      "words": 754,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "There is no lawful basis per field and no per-field data-flow mapping: the lawful basis is given only generically, and pseudonymisation and destinations are scattered across sections rather than recorded field by field."
+      ]
+    },
+    {
+      "id": "18bd8b3c6b",
+      "case": "ai-data-requirements-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 408,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It sets expiries per source (12 months for HR, an example 24 hours for specs) but never defines a stale-answer KPI, such as the share of answers citing a superseded version, with a target, and it ignores the regulated-company audit angle."
+      ]
+    },
+    {
+      "id": "ae29aeddfc",
+      "case": "ai-data-requirements-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 1136,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The goal asks for no personal-data flags, yet the spec makes incidental PII in query text a blocker and builds redaction and lawful-basis machinery around it, adding DPO dependencies that may not be needed."
+      ]
+    },
+    {
+      "id": "2a00dd9b36",
+      "case": "ai-data-requirements-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8181818181818182,
+      "words": 802,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never produces the requested field-level sheet: there is no per-field personal-data flag, no lawful basis per field (only a vague 'probably contract or legitimate interests' overall), no per-field pseudonymisation plan, and no per-field flow mapping."
+      ]
+    },
+    {
+      "id": "75eb96b09a",
+      "case": "ai-data-requirements-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1164,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It assumes the company is a bank under GDPR without saying so, and the pseudonymisation plan never explains how names and third-party data in free-text email bodies would actually be detected and redacted."
+      ]
+    },
+    {
+      "id": "a6892a3a6c",
+      "case": "ai-data-requirements-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 1632,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The goal calls for no personal-data flags, yet the answer makes query-text personal data its first blocker and adds lawful-basis, art. 9 and DPIA work for an anonymous search box."
+      ]
+    },
+    {
+      "id": "533bb7f09d",
+      "case": "ai-data-requirements-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7,
+      "words": 683,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It undercuts the ownerless table as a blocker by offering an interim 'label as estimates' workaround, and its thresholds ('within X%', freshness SLAs) are never checked against a measurement on unfiltered data."
+      ]
+    },
+    {
+      "id": "1bfc53493e",
+      "case": "ai-data-requirements-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7,
+      "words": 775,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It softens the ownerless table from a hard blocker by offering an 'if it must ship' path with no sponsor-named owner, and it never ties staleness or price thresholds to a baseline measured on the full, unfiltered table."
+      ]
+    },
+    {
+      "id": "2649b431a8",
+      "case": "ai-data-requirements-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9090909090909091,
+      "words": 1179,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Lawful basis is grouped rather than mapped per field in the sheet, and it misses the main LLM-specific risk: prompt injection through the email body."
+      ]
+    },
+    {
+      "id": "43ba8c3a3d",
+      "case": "ai-data-requirements-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1137,
+      "goal": "The ownerless source is a blocker until a sponsor names an owner; thresholds are checked against a measurement on unfiltered data.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The threshold figures (99%, 24 h, under 0.5% duplicates) are invented with no stated basis, and the sampling action has no date, so the measurement check could slip indefinitely."
+      ]
+    },
+    {
+      "id": "7ffab87994",
+      "case": "ai-data-requirements-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5555555555555556,
+      "words": 492,
+      "goal": "Distinct expiry per source type, stated in days or months; stale-answer KPI defined.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never sets a concrete expiry for either source type (for example 7 days for specs, 12 months for HR) and never defines a stale-answer KPI with a formula and target; 'older than a threshold' and 'alert on index lag' leave both open."
+      ]
+    },
+    {
+      "id": "39a5202aaf",
+      "case": "ai-data-requirements-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8181818181818182,
+      "words": 729,
+      "goal": "A field-level sheet with personal-data flags, a lawful basis per field, a pseudonymisation plan and where each field flows.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never produces the field-level sheet: the lawful basis is generic rather than per field, and there is no per-field pseudonymisation decision or data-flow mapping."
+      ]
+    },
+    {
+      "id": "7a48892161",
+      "case": "ai-data-requirements-004",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 474,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It sets no deadline or decision owner for escalating the 12 ownerless sources and proposes no default expiry, so the sponsor dispute and source triage could stall."
+      ]
+    },
+    {
+      "id": "22e89fa3b1",
+      "case": "ai-data-requirements-004",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 495,
+      "goal": "The 12 ownerless sources are excluded or escalated; every kept source has an owner and an expiry.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Escalation of the 12 has no deadline or decider, and expiry and monthly re-certification are blanket rules rather than set per source type (rate sheets vs. procedures vs. FAQs)."
+      ]
+    },
+    {
+      "id": "2be7f084f9",
+      "case": "ai-data-requirements-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5555555555555556,
+      "words": 888,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It treats shopper queries as potentially personal and builds redaction, retention and legal-review steps around that, even though the search box stores nothing; it also never states or asks for query volume."
+      ]
+    },
+    {
+      "id": "880c4e2f5e",
+      "case": "ai-data-requirements-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 710,
+      "goal": "No personal-data flags, freshness stated as a number, volumes stated or asked.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never states or asks for query volume, and it flags query text as possible personal data even though the goal calls for no personal-data flags."
+      ]
+    }
+  ],
+  "skillHash": "f1a0c7eff2a85e97fa49d17c91549a41e825e750d5c268634970b4ec14957955"
+}

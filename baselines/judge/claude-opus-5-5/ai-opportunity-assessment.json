@@ -1,0 +1,545 @@
+{
+  "skill": "ai-opportunity-assessment",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 1,
+  "errors": 0,
+  "firstError": null,
+  "noise": null,
+  "costUsd": 1.095408,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 15,
+      "judge": 0.7966666666666666,
+      "meetsGoal": 0.7166666666666667,
+      "regex": 0.9324074074074074,
+      "words": 1278.0
+    },
+    "without": {
+      "answers": 15,
+      "judge": 0.66,
+      "meetsGoal": 0.4,
+      "regex": 0.5531986531986531,
+      "words": 587.8
+    }
+  },
+  "answers": [
+    {
+      "id": "79b48ca36f",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8333333333333334,
+      "words": 1651,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It lands on 'explore' and an ML-versus-LLM bake-off rather than a Go with LLM triage at L2, despite 430k resolver-labelled tickets and a measured 5 h delay, and it adds an invented 76\u201392% range and dangling references ('[ref]', 'the spike below')."
+      ]
+    },
+    {
+      "id": "523bdf9cb1",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 369,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It presents assumed figures (40 EUR/hour, 'a day or two' of IT work) as near-facts without asking for real inputs, and it ignores regulated-company concerns such as sending customer payment data to a vendor and whether the three criteria combine with AND or OR."
+      ]
+    },
+    {
+      "id": "9968e4682f",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6363636363636364,
+      "words": 463,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The pitch still asks for 250k EUR for a full Q1 rollout and gives a single point estimate built on an assumed 1-minute copilot search, when it should ask for a pilot and give a low\u2013high projection from the 76\u201387% interval."
+      ]
+    },
+    {
+      "id": "2a297731f7",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 754,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The pilot still asks for the full 250k EUR without saying why, and the quoted range mixes the 76\u201387% interval with an assumed copilot time, so the 12,700-hour low case is not the true low (76% accuracy with a 3-minute copilot gives about 10,300 hours)."
+      ]
+    },
+    {
+      "id": "b33b86f1ee",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9166666666666666,
+      "words": 1547,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It lands on 'explore' and an undecided classifier-versus-LLM bake-off, when 430k resolver-labelled tickets and the failed 2023 rules support a clear Go on LLM triage at L2."
+      ]
+    },
+    {
+      "id": "493861c372",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.75,
+      "words": 567,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It opens with 'Yes, an LLM can do most of this' and pencils governance sign-off into weeks 1-2, though access approvals take months and no clause has ever been labelled, so data readiness should block a go and the data task should be the decision."
+      ]
+    },
+    {
+      "id": "4d283e4c80",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.625,
+      "words": 539,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It opens with 'Yes, with caveats' and never says that unreadable scans, no labels and months-long access put data readiness too low to approve the project until a data task is done; it also states unsupported figures like 'low thousands of dollars' and 'cuts lawyer time sharply'."
+      ]
+    },
+    {
+      "id": "7cb5b27dbd",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1026,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never settles how the three criteria combine (AND or OR) or how to order the call list, and its data-readiness scores and inconsistent 80% versus 90% thresholds are unsupported numbers."
+      ]
+    },
+    {
+      "id": "1aa9b13a46",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6363636363636364,
+      "words": 503,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The rewritten pitch still asks for 250k EUR for a full Q1 rollout and claims a single 1.4M EUR figure, built on an invented 1-minute search time. It does not present the gain as a projection with a low and high value from the 76\u201387% interval, and it only mentions a pilot as an afterthought."
+      ]
+    },
+    {
+      "id": "d53fdf07cc",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8333333333333334,
+      "words": 1485,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It decides 'explore' and hedges between a classic classifier and an LLM instead of a Go on LLM triage at L2, despite 430k labelled tickets and failed rules, and it sets the DPO deadline for tomorrow (2026-11-20)."
+      ]
+    },
+    {
+      "id": "df66503275",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.875,
+      "words": 1457,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The readiness scoring is off (a 0 on a 1\u20135 scale and a mean of exactly 2.0), which blurs the blocking verdict, so it jumps to a model accuracy pilot instead of making access, annex inventory, OCR audit and labelling the explicit first task."
+      ]
+    },
+    {
+      "id": "8ea9f3af87",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.1111111111111111,
+      "words": 748,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It still asks the comex to fund the full 400k rollout, not a dated measurement pilot, and its gate has bracketed thresholds, a vague 'end of Q1' reading date and no stop or downscale action."
+      ]
+    },
+    {
+      "id": "572c62a510",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 994,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It assumes the three criteria combine with a strict AND without checking how the team actually combines them, and it gives readiness scores and a 'far above a collector's hourly cost' claim without the underlying figures."
+      ]
+    },
+    {
+      "id": "0a6c144020",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 1186,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It sets a pre-comex baseline task it estimates at three weeks with only two weeks left before 3 December, gives the deflection stop condition no threshold, and claims 60 cases per class while the general class has 35."
+      ]
+    },
+    {
+      "id": "b7cda681d9",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 1469,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The key accuracy stop condition leaves its threshold as an unfilled bracket, as do the volume floor and pilot cost, so the comex is asked to approve a gate with no number on it."
+      ]
+    },
+    {
+      "id": "a38cd10c21",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1454,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Labels are scored 0 on a 1\u20135 scale, which drags the mean to exactly 2.0 rather than below it. The access stop date is three weeks away, despite a history of approvals taking months."
+      ]
+    },
+    {
+      "id": "ed850f446a",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 771,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never asks whether the three criteria combine as AND or OR, or how to rank invoices within the list, which is the core of the rule it recommends building; the 2026-11-25 decision date also contradicts its own 2-week timebox."
+      ]
+    },
+    {
+      "id": "d102a78be9",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 831,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It makes a fine-tuned encoder the core and auto-routes after shadow mode, rather than starting with LLM triage at L2; it also never names a non-AI alternative such as a customer-selected category form or scores data readiness, and it states unsupported figures like the 60\u201380% auto-routing share and the cost estimates."
+      ]
+    },
+    {
+      "id": "41b6d24b41",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.1111111111111111,
+      "words": 907,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It still asks the comex for up to 400k toward full rollout, and its gate has placeholder thresholds (X/Y/Z), a blank reading date and no explicit stop action, so it is not a dated measurement pilot."
+      ]
+    },
+    {
+      "id": "23ee338c1f",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 642,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It recommends starting with a fine-tuned classifier and confidence-based auto-routing rather than LLM triage with a human confirming each suggestion, never names a non-AI alternative such as a structured intake form, and lists data checks without scoring data readiness."
+      ]
+    },
+    {
+      "id": "4835c94731",
+      "case": "ai-opportunity-assessment-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 596,
+      "goal": "Go, LLM triage at L2 to start, non-AI alternative named, data readiness scored.",
+      "scores": [
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It jumps to auto-routing instead of starting with LLM-suggested triage that humans confirm (L2), names no non-AI alternative such as a structured intake form, and never scores data readiness."
+      ]
+    },
+    {
+      "id": "e14547be91",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.625,
+      "words": 555,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It opens with 'Yes, with caveats' instead of saying that unlabelled, poorly scanned, incomplete and access-blocked data rules out a go until a data-readiness task is done, and it asserts unsupported claims like 'days, not months' and 'cuts review effort substantially'."
+      ]
+    },
+    {
+      "id": "cce24716cd",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1189,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The safety-critical stop threshold is inconsistent: the pitch and stop conditions say a lower bound of 80%, while the evidence plan says at least 90%, and internal references such as `ai-act-classification`, `build-evals` and [ref] leak into a document meant for stakeholders."
+      ]
+    },
+    {
+      "id": "c4ce26e7d5",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 377,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It does not address risks a regulated company faces, such as sharing customer financial data with a vendor or ERP data-quality errors in the filter fields, and it presents an unsourced 5-8k EUR labor value as if known."
+      ]
+    },
+    {
+      "id": "47b142546e",
+      "case": "ai-opportunity-assessment-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.75,
+      "words": 1379,
+      "goal": "Explore: data readiness below 2/5 blocks a go; a data task comes first.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "A generous volume score of 5 lifts the readiness mean to exactly 2.0, which hides the 0 on labels and 1 on access, and the data and access task is allowed to run 'first or in parallel' instead of being required to come first."
+      ]
+    },
+    {
+      "id": "cb43521dbf",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1344,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The safety-critical gate contradicts itself: the evidence plan requires a lower bound of at least 90%, the stop condition only triggers below 80%, and 60 cases can barely show either, so the go or stop rule is not well defined."
+      ]
+    },
+    {
+      "id": "b273c926d3",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1464,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The stop conditions and pilot amount are left as empty placeholders instead of proposed brackets (e.g., \u226590% lower bound, a 20\u201330% deflection range), so the comex is asked to approve thresholds it cannot see."
+      ]
+    },
+    {
+      "id": "9e3eda9f04",
+      "case": "ai-opportunity-assessment-006",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 478,
+      "goal": "The 30% is removed or rewritten from volume, quality and unit value; the gain is labelled a projection with low and high values taken from the interval on 82% of 200; the ask becomes a pilot.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The rewritten pitch still asks for 250k EUR for full Q1 deployment and gives a single-point 1.4M EUR payback instead of a low/high range from the 76\u201387% interval and a pilot ask, even though the answer itself flags capacity-not-cash and wrong-procedure safety risk."
+      ]
+    },
+    {
+      "id": "31d239d417",
+      "case": "ai-opportunity-assessment-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 851,
+      "goal": "The ask is a dated measurement pilot, not the rollout; the stop condition names a metric, a threshold or bracket, a reading date and an action; the evidence plan sizes the sampled answers; testers liking the prototype is not read as quality.",
+      "scores": [
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The preferred ask is still the full 400k EUR rollout, the measurement pilot is only a fallback, and the gate leaves its thresholds blank with no reading date or stop action."
+      ]
+    },
+    {
+      "id": "207e9e2775",
+      "case": "ai-opportunity-assessment-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 391,
+      "goal": "No-go on AI: a deterministic query on due date and amount does the job, named as the recommendation.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It asserts unverified figures, such as the 45 minutes being mostly export work and the 'day or two' build estimate, and it skips regulated-company concerns like sharing customer financial data with the vendor."
+      ]
+    }
+  ],
+  "skillHash": "e2d2bc44a4f5625c74bcec9a9f582d0878599162d0956e5d325a72e22d7838f9"
+}

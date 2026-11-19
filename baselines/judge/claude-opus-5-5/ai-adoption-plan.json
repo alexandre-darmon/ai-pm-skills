@@ -1,0 +1,443 @@
+{
+  "skill": "ai-adoption-plan",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 1,
+  "errors": 0,
+  "firstError": null,
+  "noise": null,
+  "costUsd": 0.6673439999999999,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 12,
+      "judge": 0.8166666666666668,
+      "meetsGoal": 0.8541666666666666,
+      "regex": 0.9498316498316498,
+      "words": 749.5833333333334
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.7000000000000001,
+      "meetsGoal": 0.5625,
+      "regex": 0.6053030303030303,
+      "words": 568.5833333333334
+    }
+  },
+  "answers": [
+    {
+      "id": "72250871da",
+      "case": "ai-adoption-plan-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 605,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It cites 'art. 4' and an 'adoption-plan template' without naming the regulation or explaining the template, and leaves the calibration test's size unspecified."
+      ]
+    },
+    {
+      "id": "80a5d66062",
+      "case": "ai-adoption-plan-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9090909090909091,
+      "words": 1697,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Champions per branch get a single thin bullet with no selection criteria, role, time allocation or link to the sampling duties assigned to them in the metrics table, while the plan leans on unexplained internal skill names and assumes EU AI Act art. 4 applies."
+      ]
+    },
+    {
+      "id": "5499e8e9cf",
+      "case": "ai-adoption-plan-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8,
+      "words": 405,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It ignores the regulated setting: retraining would trigger costly model revalidation and compliance review, a strong argument it leaves unused, and it gives no advice on handling the sponsor."
+      ]
+    },
+    {
+      "id": "2c0f3b74a0",
+      "case": "ai-adoption-plan-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1214,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Champions get a single line with no selection criteria, role, time allocation or wave timing, and the outcome-gated waves are never checked against the Q2 deadline."
+      ]
+    },
+    {
+      "id": "ce21197178",
+      "case": "ai-adoption-plan-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8888888888888888,
+      "words": 593,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It names no owner or log for union objections, and it hedges on CSE consultation, which French law clearly requires before introducing a tool that can monitor staff."
+      ]
+    },
+    {
+      "id": "21234441e4",
+      "case": "ai-adoption-plan-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 417,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never makes settling what is logged and who sees it a hard DPO gate before the pilot, and it assigns no owners for seating sceptics or answering objections (it also wrongly calls d\u00e9lit d'entrave an injunction)."
+      ]
+    },
+    {
+      "id": "9601f86c92",
+      "case": "ai-adoption-plan-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 679,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It scores calibration on inter-rater agreement rather than seeded-error catches and false alarms, and never records results as dated evidence, which a regulated company needs."
+      ]
+    },
+    {
+      "id": "4a527951cb",
+      "case": "ai-adoption-plan-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 448,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never has the DPO settle what is logged about technicians and who can see it before any wave, and its March pilot could itself trigger the CSE consultation it warns about."
+      ]
+    },
+    {
+      "id": "f8430e1224",
+      "case": "ai-adoption-plan-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6,
+      "words": 421,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never mentions that in a regulated company a retrain triggers model revalidation and change control, which is the strongest argument against retraining first."
+      ]
+    },
+    {
+      "id": "ccbf3d5551",
+      "case": "ai-adoption-plan-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 624,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The calibration test gets only 40 minutes right after practice, and the answer gives no number of seeded errors per person and no rule keeping test cases separate from practice cases, so the scores may be thin or inflated."
+      ]
+    },
+    {
+      "id": "99effb95a8",
+      "case": "ai-adoption-plan-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6,
+      "words": 401,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It largely ignores the regulated-industry angle: retraining would need model risk/validation review, and liability concerns may be the real adoption barrier."
+      ]
+    },
+    {
+      "id": "0f15830987",
+      "case": "ai-adoption-plan-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 554,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It trains for inter-rater consistency but never addresses over-trust or override duties, never seeds known errors to score catches against false alarms, and never records results as dated evidence."
+      ]
+    },
+    {
+      "id": "196e6881dd",
+      "case": "ai-adoption-plan-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 526,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It treats CSE consultation as an open question for counsel, though French labour law generally requires it before introducing new technology that can monitor staff, and it defers the owned objection table instead of naming even one owner."
+      ]
+    },
+    {
+      "id": "eccd2d7658",
+      "case": "ai-adoption-plan-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8,
+      "words": 350,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It lists awareness and access as one cause among many instead of naming them as the leading hypothesis, and it skips the regulated-company cost of a retrain (revalidation and model-risk review)."
+      ]
+    },
+    {
+      "id": "fdd83e68ee",
+      "case": "ai-adoption-plan-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 443,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The closing training and rollout advice is generic, and it cites an unexplained internal `build-evals` reference instead of naming the regulatory and audit implications specific to claims handling."
+      ]
+    },
+    {
+      "id": "91acfbaa3f",
+      "case": "ai-adoption-plan-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5454545454545454,
+      "words": 581,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "Calibration uses consensus scoring of pass/fail/borderline cases, not seeded known errors scored on catches and false alarms. Training uses a generic error list instead of the agent's own failure history, and gives no override duties or dated evidence record."
+      ]
+    },
+    {
+      "id": "904dffdaea",
+      "case": "ai-adoption-plan-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7272727272727273,
+      "words": 798,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It names only 8\u201310 champions for 60 branches instead of one per branch, and its metrics are not split between advisers and managers."
+      ]
+    },
+    {
+      "id": "ab84498e84",
+      "case": "ai-adoption-plan-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7272727272727273,
+      "words": 950,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Champions are set at one per 2\u20133 branches, yet the total of 40 doesn't match 60 branches, and every metric tracks advisers only, with no separate measures for the 60 managers."
+      ]
+    },
+    {
+      "id": "fb12419b67",
+      "case": "ai-adoption-plan-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.2727272727272727,
+      "words": 801,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Metrics are not split by population (managers, champions, each adviser wave), and it states a wrong 'today' date and a 70% target with no basis."
+      ]
+    },
+    {
+      "id": "6f790ca26a",
+      "case": "ai-adoption-plan-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 599,
+      "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It squeezes 25\u201330 test items into 40 minutes and gives no guidance on how the seeded-error ratio or so few items will yield reliable per-person catch and false-alarm scores."
+      ]
+    },
+    {
+      "id": "8b5af32b8a",
+      "case": "ai-adoption-plan-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1340,
+      "goal": "Waves with managers first, champions per branch, metrics per population.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never proposes even provisional wave sizes, pilot scope, a Q2 timeline or a champion selection and time allocation, so the PM cannot schedule anything yet, and it cites internal artefacts like build-evals and ai-act-classification without explaining them."
+      ]
+    },
+    {
+      "id": "28550332f0",
+      "case": "ai-adoption-plan-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7,
+      "words": 383,
+      "goal": "Diagnosis: awareness or access, not quality.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It ignores the regulated setting, where retraining triggers model revalidation, audit and compliance cost, the strongest argument against the sponsor's plan."
+      ]
+    },
+    {
+      "id": "63a4529273",
+      "case": "ai-adoption-plan-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 390,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never makes a DPO-approved decision on what is logged about technicians and who can see it a gate before the pilot, and it names no owner for each union objection."
+      ]
+    },
+    {
+      "id": "8fd617097d",
+      "case": "ai-adoption-plan-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 599,
+      "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It hedges on CSE consultation and never names a DPIA, though in France a tool that can monitor staff almost certainly needs both, which puts March at real risk."
+      ]
+    }
+  ],
+  "skillHash": "7ba06435ff1237e870252cd1ce6682b76b5d401b350732b7237d5a5271cedd6c"
+}

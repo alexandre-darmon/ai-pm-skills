@@ -2,11 +2,11 @@
   "skill": "production-evals-monitoring",
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.317",
-  "date": "2026-11-11",
+  "claudeVersion": "2.1.321",
+  "date": "2026-11-18",
   "casesHash": "f296756e2d395561f2e76248c9d15a949677198d114ec3a263b7e5e16d23877d",
   "partial": false,
-  "costUsd": 0,
+  "costUsd": 1.1607916,
   "cases": {
     "production-evals-monitoring-001": {
       "score": 1.0,
@@ -54,8 +54,8 @@
         ]
       },
       "costPerAnswer": [
-        0.08362036666666667,
-        0.055579333333333335
+        0.09241586666666668,
+        null
       ],
       "delta": 0.5333333333333334
     },
@@ -101,8 +101,8 @@
         ]
       },
       "costPerAnswer": [
-        0.05917266666666667,
-        0.038054
+        0.06049806666666666,
+        null
       ],
       "delta": 0.5333333333333334
     },
@@ -156,8 +156,8 @@
         ]
       },
       "costPerAnswer": [
-        0.16301946666666667,
-        0.11912083333333333
+        0.18673726666666668,
+        null
       ],
       "delta": 0.5833333333333333
     },
@@ -175,14 +175,12 @@
         ]
       },
       "costPerAnswer": [
-        0.05096666666666666,
-        0.049557333333333335
+        0.04727933333333334,
+        null
       ]
     }
   },
-  "regraded": true,
-  "stale": false,
-  "skillHash": "1fadcc92b3a155785a59e8227a1dfaba067564e51716a319acb8f72826c13b6a",
+  "skillHash": "fbdd4516f6a4f676743be4c21df91cbbcf3f9095d3a98855a21431504ff8e946",
   "meanDelta": 0.55,
   "failures": []
 }

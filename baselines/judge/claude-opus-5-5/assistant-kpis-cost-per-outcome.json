@@ -1,0 +1,341 @@
+{
+  "skill": "assistant-kpis-cost-per-outcome",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 1,
+  "errors": 0,
+  "firstError": null,
+  "noise": null,
+  "costUsd": 0.681136,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.7722222222222223,
+      "meetsGoal": 0.8611111111111112,
+      "regex": 0.9682539682539681,
+      "words": 1218.7777777777778
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.6388888888888888,
+      "meetsGoal": 0.3888888888888889,
+      "regex": 0.26631393298059963,
+      "words": 701.1111111111111
+    }
+  },
+  "answers": [
+    {
+      "id": "3b64ac9cdc",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8571428571428571,
+      "words": 1231,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It never says whether a correctly opened ticket counts as a success or a failure in the cost-per-resolution denominator, which matters for an assistant whose job includes opening tickets."
+      ]
+    },
+    {
+      "id": "18a3b12ba0",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.1111111111111111,
+      "words": 875,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It gives cost per conversation and per resolved conversation but never cost per correct answer (about \u20ac0.25 at 84%); it also measures adoption against the 3,500 total rather than eligible employees per country, and names no single accountable owner for each knowledge base."
+      ]
+    },
+    {
+      "id": "a59738feb7",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5555555555555556,
+      "words": 836,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Adoption is measured only against all 3,500 employees, not per country. The outdated-answer rate isn't split by knowledge base, owners are left as an open question, and cost per correct answer is defined but never calculated (about \u20ac0.25)."
+      ]
+    },
+    {
+      "id": "98dcfa8786",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1349,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Adding user ids and countries to employee traces in a regulated three-country company raises privacy and works-council issues, which the answer never mentions. It also leaves KB owners unnamed, doesn't split eligible employees by country, and cites an L2 gate and release plan the request never set up."
+      ]
+    },
+    {
+      "id": "7cfe7214e1",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8571428571428571,
+      "words": 1069,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It assumes knowledge bases exist (per-KB quality, stale-answer rate) that the logs never mention, and in a regulated company it skips the privacy review needed before agents read employee transcripts."
+      ]
+    },
+    {
+      "id": "3576174594",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.4444444444444444,
+      "words": 907,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never defines a per-knowledge-base stale-answer rate with a named owner, and it measures adoption against the 3,500 total without asking for each country's eligible headcount; it also ignores privacy and works-council constraints on human review of employee conversations in a regulated, three-country setting."
+      ]
+    },
+    {
+      "id": "9a05b55b18",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1320,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "For a regulated insurer, it never addresses what happens when the sampled review finds wrong claim or contract answers: no escalation, compliance, or personal-data handling for reviewers. It also keeps cost per session alongside cost per correct outcome rather than replacing it."
+      ]
+    },
+    {
+      "id": "020d8d2433",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.0,
+      "words": 409,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.4
+      ],
+      "judge": 0.4,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It keeps Finance's cost-per-session figure and leaves outcomes optional instead of adding sampled-review quality, cost per successful resolution, adoption by population and the stale-answer rate, which a regulated claims assistant needs."
+      ]
+    },
+    {
+      "id": "6cd7b21890",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1272,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "For a regulated company it never addresses the privacy and works-council implications of logging user id and country for per-country adoption, and its owners stay generic 'KB owners' rather than one named role per knowledge base."
+      ]
+    },
+    {
+      "id": "64f76497b2",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 986,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "In a regulated insurer, it never addresses the risks of wrong claims or contract answers to policyholders, or the privacy handling needed when sampling their conversations for review."
+      ]
+    },
+    {
+      "id": "af21a8dd37",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1171,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "In a regulated insurance setting it never names compliance exposure: a wrong claims or contract answer to a policyholder, or personal data in the reviewed samples. Quality is scored as a plain correct rate, with no severity tier for regulatory errors."
+      ]
+    },
+    {
+      "id": "5df40f72e2",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.42857142857142855,
+      "words": 694,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The proxy counts silent abandonment and no-ticket conversations as resolved and treats a bot-opened ticket as failure, and it skips the privacy and regulatory implications of hashed employee IDs and human review of employee conversations in a regulated company."
+      ]
+    },
+    {
+      "id": "7f2076875c",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 433,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It keeps cost per session as the headline and leaves cost per resolved session as optional. It also omits sampled-review quality lines, adoption by population and the stale-answer rate, even though wrong or outdated answers on claims carry regulatory risk."
+      ]
+    },
+    {
+      "id": "3adb4567d0",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.42857142857142855,
+      "words": 841,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The timeline has the committee seeing a 'defended' Tier C figure in week 2, yet the answer says it needs about 4 weeks, and it never explicitly keys the outcome event to the conversation id."
+      ]
+    },
+    {
+      "id": "fc9bdf1caa",
+      "case": "assistant-kpis-cost-per-outcome-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.0,
+      "words": 436,
+      "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
+      "scores": [
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It keeps cost per session as the headline and adds no sampled quality review, adoption by population or stale-answer rate, so the regulatory risk of wrong or outdated policy answers goes unmeasured."
+      ]
+    },
+    {
+      "id": "2633a6a457",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1311,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "In a regulated company, having helpdesk agents read employee conversations and linking them to tickets by employee id raises privacy and works-council issues that the answer never addresses, and the outcome event is keyed to the conversation id rather than an explicit trace id."
+      ]
+    },
+    {
+      "id": "5149f7d7bc",
+      "case": "assistant-kpis-cost-per-outcome-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.42857142857142855,
+      "words": 879,
+      "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It invents '240 employees' worth of signal' from a 6% conversation rate when the conversation count is unknown, and it calls containment computable today although the logs don't record ticket creation. It also never says explicitly to log the outcome as an event keyed to the conversation id."
+      ]
+    },
+    {
+      "id": "fe83eadf55",
+      "case": "assistant-kpis-cost-per-outcome-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1260,
+      "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The plan oversamples IT ticketing and un-updated T&E documents but never says to reweight, which biases the per-KB quality and stale rates. It also leaves owners as generic 'KB owners' and barely covers compliance or privacy risk in a regulated company."
+      ]
+    }
+  ],
+  "skillHash": "5c99df677e2b572e69c8c9c594ebd79a850f753905fb932fb5e0fab4c7449d69"
+}

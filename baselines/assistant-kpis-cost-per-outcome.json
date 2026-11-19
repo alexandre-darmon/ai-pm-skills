@@ -2,15 +2,15 @@
   "skill": "assistant-kpis-cost-per-outcome",
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.317",
-  "date": "2026-11-11",
-  "casesHash": "e4415d1b78c698ebb5084b23b5f2b2f16e4e42806c29f2c6366d92acd74c3207",
+  "claudeVersion": "2.1.321",
+  "date": "2026-11-18",
+  "casesHash": "eabb31f1469c91cf95359e6b303e080edf44241fca7686c9869b223f6adc6e98",
   "partial": false,
-  "costUsd": 0.7170491000000001,
+  "costUsd": 0,
   "cases": {
     "assistant-kpis-cost-per-outcome-001": {
-      "score": 0.9523809523809524,
-      "scoreWithout": 0.3333333333333333,
+      "score": 0.9047619047619048,
+      "scoreWithout": 0.42857142857142855,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -26,10 +26,10 @@
         ],
         "redline-successes-denominator": [
           3,
-          2
+          3
         ],
         "rework-not-success": [
-          2,
+          1,
           0
         ],
         "sampled-quality": [
@@ -42,10 +42,10 @@
         ]
       },
       "costPerAnswer": [
-        0.06451886666666667,
-        null
+        0.06227570000000001,
+        0.047765999999999996
       ],
-      "delta": 0.6190476190476191
+      "delta": 0.4761904761904762
     },
     "assistant-kpis-cost-per-outcome-002": {
       "score": 1.0,
@@ -81,14 +81,14 @@
         ]
       },
       "costPerAnswer": [
-        0.0613516,
-        null
+        0.06298033333333333,
+        0.032787333333333335
       ],
       "delta": 1.0
     },
     "assistant-kpis-cost-per-outcome-003": {
-      "score": 0.9629629629629629,
-      "scoreWithout": 0.48148148148148145,
+      "score": 1.0,
+      "scoreWithout": 0.3703703703703704,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -99,8 +99,8 @@
           2
         ],
         "cost-per-correct": [
-          2,
-          2
+          3,
+          1
         ],
         "interim": [
           3,
@@ -120,7 +120,7 @@
         ],
         "redline-quality-per-kb": [
           3,
-          3
+          2
         ],
         "stale-rate": [
           3,
@@ -128,10 +128,10 @@
         ]
       },
       "costPerAnswer": [
-        0.0695719,
-        null
+        0.0674772,
+        0.046852000000000005
       ],
-      "delta": 0.48148148148148145
+      "delta": 0.6296296296296295
     },
     "assistant-kpis-cost-per-outcome-004": {
       "score": 1.0,
@@ -147,12 +147,14 @@
         ]
       },
       "costPerAnswer": [
-        0.043574,
-        null
+        0.043890000000000005,
+        0.04480133333333333
       ]
     }
   },
+  "regraded": true,
+  "stale": false,
   "skillHash": "5c99df677e2b572e69c8c9c594ebd79a850f753905fb932fb5e0fab4c7449d69",
-  "meanDelta": 0.7001763668430335,
+  "meanDelta": 0.7019400352733686,
   "failures": []
 }
