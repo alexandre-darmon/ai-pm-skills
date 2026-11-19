@@ -4,26 +4,28 @@
   "provider": "openrouter",
   "judgeKind": "decision",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "7ba06435ff1237e870252cd1ce6682b76b5d401b350732b7237d5a5271cedd6c",
   "limit": null,
   "calibrated": false,
   "passes": 2,
   "errors": 0,
   "firstError": null,
-  "noise": 0.003208333333333318,
+  "noise": 0.005104166666666669,
   "costUsd": 0.004066692,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 12,
-      "judge": 0.9110833333333334,
-      "meetsGoal": 0.9410416666666667,
+      "judge": 0.9123541666666667,
+      "meetsGoal": 0.9407291666666667,
       "regex": 0.9498316498316498,
       "words": 749.5833333333334
     },
     "without": {
       "answers": 12,
-      "judge": 0.8548333333333334,
-      "meetsGoal": 0.8503124999999999,
+      "judge": 0.8552916666666667,
+      "meetsGoal": 0.8547916666666667,
       "regex": 0.6053030303030303,
       "words": 568.5833333333334
     }
@@ -38,11 +40,11 @@
       "words": 605,
       "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
       "scores": [
-        0.8995000000000002,
+        0.9060000000000001,
         0.903
       ],
-      "judge": 0.9012500000000001,
-      "meetsGoal": 0.9449999999999998,
+      "judge": 0.9045000000000001,
+      "meetsGoal": 0.9437499999999999,
       "weakest": [
         "",
         ""
@@ -58,10 +60,10 @@
       "goal": "Waves with managers first, champions per branch, metrics per population.",
       "scores": [
         0.921,
-        0.9195
+        0.9165000000000001
       ],
-      "judge": 0.92025,
-      "meetsGoal": 0.9550000000000001,
+      "judge": 0.9187500000000001,
+      "meetsGoal": 0.9537500000000001,
       "weakest": [
         "",
         ""
@@ -76,10 +78,10 @@
       "words": 405,
       "goal": "Diagnosis: awareness or access, not quality.",
       "scores": [
-        0.9215,
-        0.9179999999999999
+        0.9179999999999999,
+        0.9209999999999998
       ],
-      "judge": 0.91975,
+      "judge": 0.9194999999999999,
       "meetsGoal": 0.95625,
       "weakest": [
         "",
@@ -96,10 +98,10 @@
       "goal": "Waves with managers first, champions per branch, metrics per population.",
       "scores": [
         0.8685,
-        0.8614999999999999
+        0.871
       ],
-      "judge": 0.865,
-      "meetsGoal": 0.8737499999999999,
+      "judge": 0.86975,
+      "meetsGoal": 0.885,
       "weakest": [
         "",
         ""
@@ -114,11 +116,11 @@
       "words": 593,
       "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
       "scores": [
-        0.9199999999999999,
-        0.9239999999999999
+        0.9224999999999999,
+        0.9179999999999999
       ],
-      "judge": 0.9219999999999999,
-      "meetsGoal": 0.9462499999999999,
+      "judge": 0.9202499999999999,
+      "meetsGoal": 0.9424999999999999,
       "weakest": [
         "",
         ""
@@ -133,11 +135,11 @@
       "words": 417,
       "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
       "scores": [
-        0.8684999999999998,
-        0.8714999999999999
+        0.8664999999999998,
+        0.8679999999999999
       ],
-      "judge": 0.8699999999999999,
-      "meetsGoal": 0.87625,
+      "judge": 0.8672499999999999,
+      "meetsGoal": 0.8775,
       "weakest": [
         "",
         ""
@@ -152,11 +154,11 @@
       "words": 679,
       "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
       "scores": [
-        0.7865,
-        0.7805
+        0.8140000000000001,
+        0.7749999999999999
       ],
-      "judge": 0.7835,
-      "meetsGoal": 0.7,
+      "judge": 0.7945,
+      "meetsGoal": 0.73375,
       "weakest": [
         "",
         ""
@@ -171,11 +173,11 @@
       "words": 448,
       "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
       "scores": [
-        0.8585,
-        0.857
+        0.8575000000000002,
+        0.8605
       ],
-      "judge": 0.85775,
-      "meetsGoal": 0.81625,
+      "judge": 0.8590000000000001,
+      "meetsGoal": 0.8375,
       "weakest": [
         "",
         ""
@@ -190,11 +192,11 @@
       "words": 421,
       "goal": "Diagnosis: awareness or access, not quality.",
       "scores": [
-        0.9460000000000002,
-        0.95
+        0.948,
+        0.9515
       ],
-      "judge": 0.9480000000000001,
-      "meetsGoal": 0.97,
+      "judge": 0.94975,
+      "meetsGoal": 0.9674999999999999,
       "weakest": [
         "",
         ""
@@ -209,11 +211,11 @@
       "words": 624,
       "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
       "scores": [
-        0.897,
-        0.8915000000000002
+        0.899,
+        0.8980000000000001
       ],
-      "judge": 0.8942500000000001,
-      "meetsGoal": 0.93625,
+      "judge": 0.8985000000000001,
+      "meetsGoal": 0.935,
       "weakest": [
         "",
         ""
@@ -228,11 +230,11 @@
       "words": 401,
       "goal": "Diagnosis: awareness or access, not quality.",
       "scores": [
-        0.9485000000000001,
-        0.9495
+        0.9475000000000002,
+        0.9510000000000001
       ],
-      "judge": 0.9490000000000001,
-      "meetsGoal": 0.9725000000000001,
+      "judge": 0.9492500000000001,
+      "meetsGoal": 0.9712500000000001,
       "weakest": [
         "",
         ""
@@ -247,11 +249,11 @@
       "words": 554,
       "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
       "scores": [
-        0.643,
-        0.6495000000000001
+        0.648,
+        0.6359999999999999
       ],
-      "judge": 0.64625,
-      "meetsGoal": 0.595,
+      "judge": 0.6419999999999999,
+      "meetsGoal": 0.59625,
       "weakest": [
         "",
         ""
@@ -266,11 +268,11 @@
       "words": 526,
       "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
       "scores": [
-        0.9115,
-        0.9079999999999999
+        0.9119999999999999,
+        0.915
       ],
-      "judge": 0.90975,
-      "meetsGoal": 0.9424999999999999,
+      "judge": 0.9135,
+      "meetsGoal": 0.94,
       "weakest": [
         "",
         ""
@@ -285,11 +287,11 @@
       "words": 350,
       "goal": "Diagnosis: awareness or access, not quality.",
       "scores": [
-        0.9319999999999999,
-        0.9335
+        0.9345000000000001,
+        0.933
       ],
-      "judge": 0.93275,
-      "meetsGoal": 0.9624999999999999,
+      "judge": 0.9337500000000001,
+      "meetsGoal": 0.9612499999999999,
       "weakest": [
         "",
         ""
@@ -304,11 +306,11 @@
       "words": 443,
       "goal": "Diagnosis: awareness or access, not quality.",
       "scores": [
-        0.931,
-        0.935
+        0.935,
+        0.931
       ],
       "judge": 0.933,
-      "meetsGoal": 0.95125,
+      "meetsGoal": 0.94875,
       "weakest": [
         "",
         ""
@@ -323,10 +325,10 @@
       "words": 581,
       "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
       "scores": [
-        0.6505000000000001,
-        0.6575
+        0.6545,
+        0.6395
       ],
-      "judge": 0.654,
+      "judge": 0.647,
       "meetsGoal": 0.59625,
       "weakest": [
         "",
@@ -342,11 +344,11 @@
       "words": 798,
       "goal": "Waves with managers first, champions per branch, metrics per population.",
       "scores": [
-        0.9309999999999998,
-        0.9285000000000001
+        0.9335,
+        0.9324999999999999
       ],
-      "judge": 0.92975,
-      "meetsGoal": 0.93375,
+      "judge": 0.9329999999999999,
+      "meetsGoal": 0.945,
       "weakest": [
         "",
         ""
@@ -361,11 +363,11 @@
       "words": 950,
       "goal": "Waves with managers first, champions per branch, metrics per population.",
       "scores": [
-        0.9395,
-        0.9335
+        0.9355,
+        0.935
       ],
-      "judge": 0.9365,
-      "meetsGoal": 0.9575,
+      "judge": 0.93525,
+      "meetsGoal": 0.9525000000000001,
       "weakest": [
         "",
         ""
@@ -380,11 +382,11 @@
       "words": 801,
       "goal": "Waves with managers first, champions per branch, metrics per population.",
       "scores": [
-        0.9045000000000001,
-        0.9060000000000001
+        0.9060000000000001,
+        0.9079999999999999
       ],
-      "judge": 0.9052500000000001,
-      "meetsGoal": 0.9550000000000001,
+      "judge": 0.907,
+      "meetsGoal": 0.9462499999999999,
       "weakest": [
         "",
         ""
@@ -399,11 +401,11 @@
       "words": 599,
       "goal": "Failure-mode training built from the agent's own failures, over-trust and override duties, a calibration test with seeded errors scored on catches and false alarms, results recorded as dated evidence.",
       "scores": [
-        0.8969999999999998,
-        0.8984999999999999
+        0.8955,
+        0.899
       ],
-      "judge": 0.8977499999999998,
-      "meetsGoal": 0.9424999999999999,
+      "judge": 0.89725,
+      "meetsGoal": 0.9462499999999999,
       "weakest": [
         "",
         ""
@@ -418,11 +420,11 @@
       "words": 1340,
       "goal": "Waves with managers first, champions per branch, metrics per population.",
       "scores": [
-        0.921,
-        0.9205000000000001
+        0.925,
+        0.9195
       ],
-      "judge": 0.9207500000000001,
-      "meetsGoal": 0.9337500000000001,
+      "judge": 0.92225,
+      "meetsGoal": 0.9275000000000001,
       "weakest": [
         "",
         ""
@@ -437,11 +439,11 @@
       "words": 383,
       "goal": "Diagnosis: awareness or access, not quality.",
       "scores": [
-        0.9390000000000001,
-        0.94
+        0.9415,
+        0.9410000000000001
       ],
-      "judge": 0.9395,
-      "meetsGoal": 0.9662499999999999,
+      "judge": 0.94125,
+      "meetsGoal": 0.96375,
       "weakest": [
         "",
         ""
@@ -456,11 +458,11 @@
       "words": 390,
       "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
       "scores": [
-        0.8385,
-        0.8385
+        0.8400000000000001,
+        0.8365
       ],
-      "judge": 0.8385,
-      "meetsGoal": 0.8650000000000001,
+      "judge": 0.83825,
+      "meetsGoal": 0.8700000000000001,
       "weakest": [
         "",
         ""
@@ -475,11 +477,11 @@
       "words": 599,
       "goal": "What is logged about staff and who sees it settled with the DPO before any wave; sceptics seated; objections owned.",
       "scores": [
-        0.917,
-        0.9159999999999999
+        0.9179999999999999,
+        0.9164999999999999
       ],
-      "judge": 0.9165,
-      "meetsGoal": 0.9475,
+      "judge": 0.9172499999999999,
+      "meetsGoal": 0.94875,
       "weakest": [
         "",
         ""

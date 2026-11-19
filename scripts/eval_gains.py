@@ -28,6 +28,17 @@ def model_name(model):  # claude-haiku-5-5 -> Haiku 5.5
     return f"{parts[1].capitalize()} {'.'.join(parts[2:])}" if parts[0] == "claude" and len(parts) > 2 else model
 
 
+def display_name(model):
+    """claude-opus-5-5 -> Claude Opus 5.5, openai/gpt-6.1-sol -> GPT-6.1 Sol, typesafe/jev-1.14 -> Jev 1.14."""
+    if model.startswith("claude-"):
+        return "Claude " + model_name(model)
+    parts = model.split("/")[-1].split(":")[0].split("-")
+    acronym = parts[0] in ("gpt", "glm") and len(parts) > 1  # written as GPT-6.1, not Gpt 6.1
+    head = f"{parts[0].upper()}-{parts[1]}" if acronym else parts[0].capitalize()
+    tail = parts[2:] if acronym else parts[1:]
+    return " ".join([head] + [t if t[:1].isdigit() else t.capitalize() for t in tail])
+
+
 def groups(cases, a, b=None):
     """Per skill, the list of case values of arm a (or of a - b), skipping skills that lack an arm."""
     out = [[c[a] - c[b] if b else c[a] for c in cs.values() if a in c and (b is None or b in c)] for cs in cases.values()]
@@ -198,7 +209,23 @@ def main(root=ROOT, draws=DRAWS):
         tail.append(f"| Cost per correct answer, API equivalent ({len(costs)} skills) | ${cwo:.3f} | — | **${cw:.3f}** | {round(100 * (cw / cwo - 1)):+d}% | |")
     tail.append(f"| Stays silent on near-miss requests | — | — | **{pct(held(neg))}** | | |")
     headline = "\n".join(table(row))
-    readme_table = "\n".join(table(readme_row))
+
+    def short_row(label, cases, bold=False):
+        """README row: model alone, with the skill, and the gain read off the two rounded scores (85% - 70% = +15)."""
+        wo, w = (None if arm_mean(cases, a) is None else round(100 * arm_mean(cases, a)) for a in ("without", "with"))
+        cell = lambda v, b=False: "—" if v is None else (f"**{v}%**" if b else f"{v}%")
+        return f"| {label} | {cell(wo)} | {cell(w, bold)} | {'—' if None in (wo, w) else f'{w - wo:+d}'} |"
+
+    # the README keeps the judges that cover nearly the whole catalogue; partial ones stay in skill-eval-gains.md
+    wide = [(meta, cases) for _, _, cases, meta in judges if len(cases) >= 0.9 * len(regex)]
+    readme_lines = ["| Test | Model alone | With the skill | Gain |", "| --- | --- | --- | --- |",
+                    short_row(f"Regex graders, {len(regex)} skill{'s' if len(regex) != 1 else ''}", regex, bold=True)]
+    for meta, cases in wide:
+        runs_label = "current runs" if meta["recorded"] else "earlier runs"
+        readme_lines.append(short_row(f"{display_name(meta['model'])}, {len(cases)} skill{'s' if len(cases) != 1 else ''}, {runs_label}", cases))
+    readme_lines.append(f"| Red lines held (the one thing the answer must never do) | {pct(held(rl['without']))} | **{pct(held(rl['with']))}** | |")
+    readme_lines.append(f"| Stays silent on near-miss requests | — | **{pct(held(neg))}** | |")
+    readme_table = "\n".join(readme_lines)
 
     out = f"""# Skill eval gains
 
@@ -237,9 +264,10 @@ Gains in points. Brackets: 95% interval over cases (see below).
     if readme.is_file() and "<!-- gains:start -->" in readme.read_text():
         head, rest = readme.read_text().split("<!-- gains:start -->", 1)
         note = (f"<sub>{model} answers each case {'/'.join(map(str, runs))} times per arm. **Regex graders** check that the answer contains what the skill asks for; "
-                "the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; "
-                "it tends to favour longer answers, and on the legal skills it does not check legal correctness. "
-                "Gains in points: each is the row's score with the skill minus the score it is compared with, on the same skills; 95% intervals are in the per-skill numbers. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>")
+                "the skills' author wrote them, so they favour the skill. The **blind judges** score general quality without knowing the arm; "
+                "Claude Opus is from the same family as the model that answers, GPT-6.1 Sol and Jev are from other vendors, and none checks legal correctness. "
+                "\"Current runs\": the judge graded the runs recorded for each skill's present text. "
+                "Gain in points: the score with the skill minus the score alone. 95% intervals, the template-only control and the partial judges are in the per-skill numbers. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>")
         readme.write_text(f"{head}<!-- gains:start -->\n{readme_table}\n\n{note}\n<!-- gains:end -->{rest.split('<!-- gains:end -->', 1)[1]}")
     return out
 

@@ -10,7 +10,7 @@ Same cases, Sonnet 5.5 answering, three arms: the model alone, the model given o
 | Blind LLM judge, Opus 5.5: 29 of these skills, 109 cases, recorded runs | 70% | — | 85% | +15 [+14, +17] | — |
 | Blind LLM judge, Sonnet 5.5: 9 of these skills, 29 cases, earlier runs | 72% | — | 82% | +9 [+6, +13] | — |
 | Blind LLM judge, openai/gpt-6.1-sol: 27 of these skills, 102 cases, earlier runs | 61% | — | 71% | +10 [+7, +13] | — |
-| Blind decision model, typesafe/jev-1.14: 29 of these skills, 109 cases, earlier runs | 80% | — | 89% | +9 [+7, +11] | — |
+| Blind decision model, typesafe/jev-1.14: 29 of these skills, 109 cases, recorded runs | 80% | — | 90% | +10 [+8, +12] | — |
 | Red lines held (the one thing the answer must never do) | 71% | — | **100%** | | |
 | Cost per correct answer, API equivalent (16 skills) | $0.131 | — | **$0.078** | -40% | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
@@ -131,34 +131,34 @@ Gains in points. Brackets: 95% interval over cases (see below).
 | `synthetic-eval-data` | openai/gpt-6.1-sol | 68% | — | 76% | +7 pts | — | 2 pts | 663 / — / 814 |
 | `system-prompt-and-guardrails` | openai/gpt-6.1-sol | 73% | — | 80% | +7 pts | — | 2 pts | 653 / — / 1,138 |
 | `trace-review-tool` | openai/gpt-6.1-sol | 57% | — | 73% | +16 pts | — | 3 pts | 907 / — / 1,122 |
-| `agent-design-and-tooling` | typesafe/jev-1.14 | 90% | — | 85% | -5 pts | — | 0 pts | 679 / — / 1,012 |
-| `agent-evals` | typesafe/jev-1.14 | 88% | — | 94% | +6 pts | — | 1 pts | 731 / — / 918 |
-| `ai-act-classification` | typesafe/jev-1.14 | 74% | — | 75% | +1 pts | — | 1 pts | 735 / — / 1,486 |
-| `ai-adoption-plan` | typesafe/jev-1.14 | 85% | — | 91% | +6 pts | — | 0 pts | 569 / — / 750 |
+| `agent-design-and-tooling` | typesafe/jev-1.14 | 90% | — | 87% | -3 pts | — | 0 pts | 679 / — / 1,117 |
+| `agent-evals` | typesafe/jev-1.14 | 88% | — | 94% | +5 pts | — | 1 pts | 731 / — / 1,275 |
+| `ai-act-classification` | typesafe/jev-1.14 | 74% | — | 75% | +1 pts | — | 1 pts | 746 / — / 1,611 |
+| `ai-adoption-plan` | typesafe/jev-1.14 | 86% | — | 91% | +6 pts | — | 1 pts | 569 / — / 750 |
 | `ai-data-requirements` | typesafe/jev-1.14 | 81% | — | 87% | +6 pts | — | 1 pts | 635 / — / 901 |
 | `ai-feasibility-spike` | typesafe/jev-1.14 | 68% | — | 88% | +20 pts | — | 1 pts | 595 / — / 766 |
-| `ai-incident-playbook` | typesafe/jev-1.14 | 79% | — | 87% | +8 pts | — | 1 pts | 659 / — / 922 |
+| `ai-incident-playbook` | typesafe/jev-1.14 | 79% | — | 87% | +8 pts | — | 1 pts | 659 / — / 1,078 |
 | `ai-interaction-patterns` | typesafe/jev-1.14 | 71% | — | 90% | +19 pts | — | 1 pts | 667 / — / 957 |
-| `ai-opportunity-assessment` | typesafe/jev-1.14 | 76% | — | 90% | +14 pts | — | 1 pts | 588 / — / 1,278 |
-| `ai-roi-quantification` | typesafe/jev-1.14 | 85% | — | 92% | +7 pts | — | 1 pts | 436 / — / 877 |
-| `ai-vendor-evaluation` | typesafe/jev-1.14 | 73% | — | 87% | +14 pts | — | 1 pts | 537 / — / 980 |
-| `assistant-kpis-cost-per-outcome` | typesafe/jev-1.14 | 71% | — | 90% | +20 pts | — | 1 pts | 701 / — / 1,219 |
-| `build-evals` | typesafe/jev-1.14 | 81% | — | 90% | +9 pts | — | 1 pts | 545 / — / 586 |
-| `conversation-analysis` | typesafe/jev-1.14 | 66% | — | 85% | +19 pts | — | 1 pts | 556 / — / 640 |
+| `ai-opportunity-assessment` | typesafe/jev-1.14 | 77% | — | 90% | +14 pts | — | 1 pts | 588 / — / 1,278 |
+| `ai-roi-quantification` | typesafe/jev-1.14 | 85% | — | 92% | +8 pts | — | 1 pts | 436 / — / 877 |
+| `ai-vendor-evaluation` | typesafe/jev-1.14 | 73% | — | 90% | +16 pts | — | 1 pts | 537 / — / 1,039 |
+| `assistant-kpis-cost-per-outcome` | typesafe/jev-1.14 | 70% | — | 90% | +20 pts | — | 0 pts | 701 / — / 1,219 |
+| `build-evals` | typesafe/jev-1.14 | 81% | — | 90% | +8 pts | — | 1 pts | 545 / — / 586 |
+| `conversation-analysis` | typesafe/jev-1.14 | 61% | — | 87% | +26 pts | — | 1 pts | 570 / — / 684 |
 | `error-analysis` | typesafe/jev-1.14 | 82% | — | 93% | +11 pts | — | 1 pts | 767 / — / 928 |
-| `llm-feature-prd` | typesafe/jev-1.14 | 84% | — | 91% | +8 pts | — | 1 pts | 1,389 / — / 1,858 |
-| `llm-judge-calibration` | typesafe/jev-1.14 | 82% | — | 85% | +3 pts | — | 1 pts | 478 / — / 589 |
-| `model-card-ai-registry` | typesafe/jev-1.14 | 77% | — | 89% | +11 pts | — | 1 pts | 480 / — / 654 |
-| `model-selection` | typesafe/jev-1.14 | 84% | — | 85% | +2 pts | — | 1 pts | 338 / — / 492 |
-| `multi-turn-evals` | typesafe/jev-1.14 | 84% | — | 93% | +8 pts | — | 1 pts | 616 / — / 792 |
-| `process-ai-redesign` | typesafe/jev-1.14 | 89% | — | 88% | -1 pts | — | 1 pts | 806 / — / 1,746 |
-| `production-evals-monitoring` | typesafe/jev-1.14 | 80% | — | 88% | +8 pts | — | 1 pts | 1,029 / — / 1,236 |
-| `prototype-handover` | typesafe/jev-1.14 | 78% | — | 90% | +12 pts | — | 1 pts | 775 / — / 1,286 |
-| `red-team-evals` | typesafe/jev-1.14 | 78% | — | 93% | +16 pts | — | 1 pts | 662 / — / 833 |
-| `release-to-production` | typesafe/jev-1.14 | 80% | — | 87% | +7 pts | — | 1 pts | 490 / — / 557 |
-| `retrieval-evaluation` | typesafe/jev-1.14 | 90% | — | 95% | +5 pts | — | 0 pts | 635 / — / 765 |
+| `llm-feature-prd` | typesafe/jev-1.14 | 83% | — | 91% | +8 pts | — | 1 pts | 1,389 / — / 1,858 |
+| `llm-judge-calibration` | typesafe/jev-1.14 | 82% | — | 85% | +3 pts | — | 1 pts | 478 / — / 617 |
+| `model-card-ai-registry` | typesafe/jev-1.14 | 78% | — | 91% | +14 pts | — | 1 pts | 480 / — / 999 |
+| `model-selection` | typesafe/jev-1.14 | 84% | — | 86% | +2 pts | — | 1 pts | 338 / — / 602 |
+| `multi-turn-evals` | typesafe/jev-1.14 | 84% | — | 93% | +9 pts | — | 1 pts | 616 / — / 792 |
+| `process-ai-redesign` | typesafe/jev-1.14 | 89% | — | 87% | -2 pts | — | 1 pts | 806 / — / 1,521 |
+| `production-evals-monitoring` | typesafe/jev-1.14 | 80% | — | 88% | +9 pts | — | 1 pts | 1,029 / — / 1,317 |
+| `prototype-handover` | typesafe/jev-1.14 | 79% | — | 90% | +12 pts | — | 0 pts | 775 / — / 1,352 |
+| `red-team-evals` | typesafe/jev-1.14 | 77% | — | 93% | +16 pts | — | 1 pts | 662 / — / 833 |
+| `release-to-production` | typesafe/jev-1.14 | 80% | — | 90% | +10 pts | — | 1 pts | 490 / — / 627 |
+| `retrieval-evaluation` | typesafe/jev-1.14 | 90% | — | 94% | +5 pts | — | 0 pts | 635 / — / 765 |
 | `synthetic-eval-data` | typesafe/jev-1.14 | 82% | — | 93% | +11 pts | — | 1 pts | 663 / — / 814 |
-| `system-prompt-and-guardrails` | typesafe/jev-1.14 | 92% | — | 93% | +1 pts | — | 0 pts | 653 / — / 1,138 |
+| `system-prompt-and-guardrails` | typesafe/jev-1.14 | 93% | — | 93% | +1 pts | — | 0 pts | 653 / — / 1,138 |
 | `trace-review-tool` | typesafe/jev-1.14 | 64% | — | 88% | +24 pts | — | 1 pts | 907 / — / 1,122 |
 
 ## How to read it

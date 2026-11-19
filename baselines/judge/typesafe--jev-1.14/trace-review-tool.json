@@ -4,26 +4,28 @@
   "provider": "openrouter",
   "judgeKind": "decision",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "0131efc10e80d66468850b27c74df489265fe616d70459501cb95ce5a49bde34",
   "limit": null,
   "calibrated": false,
   "passes": 2,
   "errors": 0,
   "firstError": null,
-  "noise": 0.010354166666666673,
+  "noise": 0.012416666666666664,
   "costUsd": 0.00558894,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 12,
-      "judge": 0.8810416666666666,
-      "meetsGoal": 0.8590625,
+      "judge": 0.8817291666666667,
+      "meetsGoal": 0.8645833333333334,
       "regex": 0.9186342592592592,
       "words": 1122.5
     },
     "without": {
       "answers": 12,
-      "judge": 0.6397291666666667,
-      "meetsGoal": 0.4990625,
+      "judge": 0.6371041666666667,
+      "meetsGoal": 0.4964583333333333,
       "regex": 0.5440972222222222,
       "words": 906.8333333333334
     }
@@ -38,11 +40,11 @@
       "words": 668,
       "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
       "scores": [
-        0.8440000000000001,
-        0.8425
+        0.8435000000000001,
+        0.8495000000000001
       ],
-      "judge": 0.84325,
-      "meetsGoal": 0.9025,
+      "judge": 0.8465000000000001,
+      "meetsGoal": 0.91125,
       "weakest": [
         "",
         ""
@@ -57,11 +59,11 @@
       "words": 1262,
       "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
       "scores": [
-        0.8594999999999999,
-        0.849
+        0.8525,
+        0.8635000000000002
       ],
-      "judge": 0.85425,
-      "meetsGoal": 0.835,
+      "judge": 0.8580000000000001,
+      "meetsGoal": 0.82375,
       "weakest": [
         "",
         ""
@@ -76,11 +78,11 @@
       "words": 652,
       "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
       "scores": [
-        0.5955,
-        0.6335000000000001
+        0.6165,
+        0.6120000000000001
       ],
-      "judge": 0.6145,
-      "meetsGoal": 0.44375000000000003,
+      "judge": 0.6142500000000001,
+      "meetsGoal": 0.44125000000000003,
       "weakest": [
         "",
         ""
@@ -95,11 +97,11 @@
       "words": 985,
       "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
       "scores": [
-        0.555,
-        0.5425
+        0.5349999999999999,
+        0.5415
       ],
-      "judge": 0.5487500000000001,
-      "meetsGoal": 0.3125,
+      "judge": 0.5382499999999999,
+      "meetsGoal": 0.32125000000000004,
       "weakest": [
         "",
         ""
@@ -114,11 +116,11 @@
       "words": 577,
       "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
       "scores": [
-        0.7234999999999999,
-        0.7435
+        0.742,
+        0.7005000000000001
       ],
-      "judge": 0.7335,
-      "meetsGoal": 0.55625,
+      "judge": 0.7212500000000001,
+      "meetsGoal": 0.5925,
       "weakest": [
         "",
         ""
@@ -133,11 +135,11 @@
       "words": 820,
       "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
       "scores": [
-        0.8039999999999998,
-        0.784
+        0.8049999999999999,
+        0.7565
       ],
-      "judge": 0.7939999999999999,
-      "meetsGoal": 0.7025,
+      "judge": 0.7807499999999999,
+      "meetsGoal": 0.7012499999999999,
       "weakest": [
         "",
         ""
@@ -152,11 +154,11 @@
       "words": 905,
       "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
       "scores": [
-        0.47750000000000004,
-        0.4545
+        0.4730000000000001,
+        0.48450000000000004
       ],
-      "judge": 0.466,
-      "meetsGoal": 0.32,
+      "judge": 0.47875000000000006,
+      "meetsGoal": 0.32625,
       "weakest": [
         "",
         ""
@@ -171,11 +173,11 @@
       "words": 1211,
       "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
       "scores": [
-        0.7050000000000001,
-        0.7004999999999999
+        0.716,
+        0.6915000000000001
       ],
-      "judge": 0.70275,
-      "meetsGoal": 0.5487500000000001,
+      "judge": 0.7037500000000001,
+      "meetsGoal": 0.545,
       "weakest": [
         "",
         ""
@@ -190,10 +192,10 @@
       "words": 1344,
       "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
       "scores": [
-        0.9425000000000001,
-        0.9415
+        0.9450000000000001,
+        0.942
       ],
-      "judge": 0.9420000000000001,
+      "judge": 0.9435,
       "meetsGoal": 0.9424999999999999,
       "weakest": [
         "",
@@ -209,11 +211,11 @@
       "words": 609,
       "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
       "scores": [
-        0.666,
-        0.649
+        0.6495,
+        0.6164999999999999
       ],
-      "judge": 0.6575,
-      "meetsGoal": 0.565,
+      "judge": 0.633,
+      "meetsGoal": 0.5237499999999999,
       "weakest": [
         "",
         ""
@@ -228,11 +230,11 @@
       "words": 1281,
       "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
       "scores": [
-        0.8880000000000001,
-        0.877
+        0.8875,
+        0.8880000000000001
       ],
-      "judge": 0.8825000000000001,
-      "meetsGoal": 0.76125,
+      "judge": 0.88775,
+      "meetsGoal": 0.7862499999999999,
       "weakest": [
         "",
         ""
@@ -247,11 +249,11 @@
       "words": 648,
       "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
       "scores": [
-        0.833,
-        0.8445
+        0.8359999999999999,
+        0.8315000000000001
       ],
-      "judge": 0.83875,
-      "meetsGoal": 0.8812500000000001,
+      "judge": 0.83375,
+      "meetsGoal": 0.8787499999999999,
       "weakest": [
         "",
         ""
@@ -266,11 +268,11 @@
       "words": 1347,
       "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
       "scores": [
-        0.7550000000000001,
-        0.7689999999999999
+        0.7585000000000002,
+        0.7665000000000002
       ],
-      "judge": 0.762,
-      "meetsGoal": 0.5762499999999999,
+      "judge": 0.7625000000000002,
+      "meetsGoal": 0.575,
       "weakest": [
         "",
         ""
@@ -285,11 +287,11 @@
       "words": 1070,
       "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
       "scores": [
-        0.584,
-        0.603
+        0.5965,
+        0.595
       ],
-      "judge": 0.5934999999999999,
-      "meetsGoal": 0.41375,
+      "judge": 0.59575,
+      "meetsGoal": 0.4075,
       "weakest": [
         "",
         ""
@@ -304,11 +306,11 @@
       "words": 882,
       "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
       "scores": [
-        0.477,
-        0.47450000000000003
+        0.494,
+        0.48650000000000004
       ],
-      "judge": 0.47575,
-      "meetsGoal": 0.38625000000000004,
+      "judge": 0.49025,
+      "meetsGoal": 0.38,
       "weakest": [
         "",
         ""
@@ -323,10 +325,10 @@
       "words": 928,
       "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
       "scores": [
-        0.5935,
-        0.599
+        0.608,
+        0.6125
       ],
-      "judge": 0.59625,
+      "judge": 0.61025,
       "meetsGoal": 0.55,
       "weakest": [
         "",
@@ -342,11 +344,11 @@
       "words": 1018,
       "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
       "scores": [
-        0.8585,
-        0.841
+        0.833,
+        0.8465
       ],
-      "judge": 0.84975,
-      "meetsGoal": 0.7575000000000001,
+      "judge": 0.83975,
+      "meetsGoal": 0.7525,
       "weakest": [
         "",
         ""
@@ -361,11 +363,11 @@
       "words": 1358,
       "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
       "scores": [
-        0.9415,
-        0.9464999999999999
+        0.9395,
+        0.9375
       ],
-      "judge": 0.944,
-      "meetsGoal": 0.9475,
+      "judge": 0.9385,
+      "meetsGoal": 0.95,
       "weakest": [
         "",
         ""
@@ -380,11 +382,11 @@
       "words": 734,
       "goal": "Lists the capture fields per call (prompt and model version, retrieved ids, tool calls, guardrail hits, overrides, tokens and cost, a join key to the loan outcome), flags a possible high-risk system, puts art. 12, 19 and 26(6), the six-month floor with its data-protection qualifier, the financial-institution clause, the 2 December 2027 application date, provider or deployer or both, and labels as logs to counsel as questions, and gives no compliance verdict.",
       "scores": [
-        0.841,
-        0.8420000000000001
+        0.8445,
+        0.833
       ],
-      "judge": 0.8415,
-      "meetsGoal": 0.87875,
+      "judge": 0.83875,
+      "meetsGoal": 0.875,
       "weakest": [
         "",
         ""
@@ -399,11 +401,11 @@
       "words": 1126,
       "goal": "Refuses to load unmasked personal data and to save labels without reviewer identity; has the app identified as an ICT asset before it loads even masked data, masks in the export step with consistent placeholders, keeps checks that need real names in the source system, sizes the residual-leak check (all 200, about 1.5%), and stores labels in approved storage.",
       "scores": [
-        0.9395,
-        0.9415
+        0.9435,
+        0.9430000000000001
       ],
-      "judge": 0.9405,
-      "meetsGoal": 0.95125,
+      "judge": 0.94325,
+      "meetsGoal": 0.9550000000000001,
       "weakest": [
         "",
         ""
@@ -418,11 +420,11 @@
       "words": 896,
       "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
       "scores": [
-        0.7314999999999999,
-        0.733
+        0.7280000000000001,
+        0.7050000000000001
       ],
-      "judge": 0.73225,
-      "meetsGoal": 0.61375,
+      "judge": 0.7165000000000001,
+      "meetsGoal": 0.59375,
       "weakest": [
         "",
         ""
@@ -437,11 +439,11 @@
       "words": 1324,
       "goal": "Moves sampling into a separate script with a random stream that alone gives the rate with its interval, says the thumbs-down fill over-counts failures, replaces the pre-filled score with an expert pass/fail read first, keeps a dev/test split for a later judge, computes 840 EUR of review and asks for cost per correct letter, not only per run.",
       "scores": [
-        0.8394999999999999,
-        0.8394999999999999
+        0.8439999999999999,
+        0.8614999999999999
       ],
-      "judge": 0.8394999999999999,
-      "meetsGoal": 0.75625,
+      "judge": 0.8527499999999999,
+      "meetsGoal": 0.77375,
       "weakest": [
         "",
         ""
@@ -456,11 +458,11 @@
       "words": 1209,
       "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
       "scores": [
-        0.8905000000000001,
-        0.8965000000000001
+        0.8955,
+        0.891
       ],
-      "judge": 0.8935000000000001,
-      "meetsGoal": 0.8462500000000001,
+      "judge": 0.89325,
+      "meetsGoal": 0.8512500000000001,
       "weakest": [
         "",
         ""
@@ -475,11 +477,11 @@
       "words": 1498,
       "goal": "Writes the brief: masking in the export step, a residual-leak check sized by 3/n (all 300, about 1%), a separate sampling script whose random stream alone gives the rate with its interval, pass/fail plus critique with reviewer id and timestamp on every label, approved storage, and the officers' edits captured as overrides.",
       "scores": [
-        0.9010000000000002,
-        0.905
+        0.9005000000000001,
+        0.9095
       ],
-      "judge": 0.9030000000000001,
-      "meetsGoal": 0.84875,
+      "judge": 0.905,
+      "meetsGoal": 0.875,
       "weakest": [
         "",
         ""

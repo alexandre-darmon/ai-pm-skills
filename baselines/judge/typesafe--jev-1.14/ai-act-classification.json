@@ -5,28 +5,29 @@
   "judgeKind": "decision",
   "answerSet": "recorded",
   "legal": true,
+  "skillHash": "d2aa1f2b6c954617cc54c6f8f76eca8e84809ab76755da03f6a13b86fcb11b42",
   "limit": null,
   "calibrated": false,
   "passes": 2,
   "errors": 0,
   "firstError": null,
-  "noise": 0.010638888888888871,
-  "costUsd": 0.004274676,
+  "noise": 0.007833333333333366,
+  "costUsd": 0.004462836,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.7458888888888889,
-      "meetsGoal": 0.8581944444444445,
+      "judge": 0.7500277777777778,
+      "meetsGoal": 0.8677777777777778,
       "regex": 1.0,
-      "words": 1485.6666666666667
+      "words": 1610.7777777777778
     },
     "without": {
       "answers": 9,
-      "judge": 0.7361388888888889,
-      "meetsGoal": 0.7544444444444445,
-      "regex": 0.7388888888888889,
-      "words": 735.2222222222222
+      "judge": 0.7408611111111111,
+      "meetsGoal": 0.7741666666666667,
+      "regex": 0.7092592592592593,
+      "words": 746.2222222222222
     }
   },
   "answers": [
@@ -36,147 +37,14 @@
       "arm": "without",
       "run": 2,
       "regex": 0.75,
-      "words": 874,
+      "words": 873,
       "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
       "scores": [
-        0.6765000000000001,
-        0.6945
+        0.6984999999999999,
+        0.6900000000000001
       ],
-      "judge": 0.6855,
-      "meetsGoal": 0.6174999999999999,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "2f75bfcf6c",
-      "case": "ai-act-classification-003",
-      "arm": "with",
-      "run": 1,
-      "regex": 1.0,
-      "words": 1904,
-      "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
-      "scores": [
-        0.7645,
-        0.7689999999999999
-      ],
-      "judge": 0.7667499999999999,
-      "meetsGoal": 0.8300000000000001,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "4e5c80e683",
-      "case": "ai-act-classification-002",
-      "arm": "without",
-      "run": 2,
-      "regex": 0.9,
-      "words": 543,
-      "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
-      "scores": [
-        0.76,
-        0.7785
-      ],
-      "judge": 0.76925,
-      "meetsGoal": 0.88625,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "585bc08223",
-      "case": "ai-act-classification-001",
-      "arm": "without",
-      "run": 1,
-      "regex": 0.6153846153846154,
-      "words": 645,
-      "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
-      "scores": [
-        0.7334999999999999,
-        0.711
-      ],
-      "judge": 0.72225,
-      "meetsGoal": 0.64875,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "6bfda2a861",
-      "case": "ai-act-classification-003",
-      "arm": "without",
-      "run": 3,
-      "regex": 0.75,
-      "words": 837,
-      "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
-      "scores": [
-        0.7449999999999999,
-        0.7414999999999999
-      ],
-      "judge": 0.74325,
-      "meetsGoal": 0.6975,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "9b4c74a8a5",
-      "case": "ai-act-classification-001",
-      "arm": "with",
-      "run": 1,
-      "regex": 1.0,
-      "words": 1562,
-      "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
-      "scores": [
-        0.7414999999999999,
-        0.7529999999999999
-      ],
-      "judge": 0.74725,
-      "meetsGoal": 0.8400000000000001,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "e226d2ef30",
-      "case": "ai-act-classification-003",
-      "arm": "with",
-      "run": 2,
-      "regex": 1.0,
-      "words": 1786,
-      "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
-      "scores": [
-        0.7690000000000001,
-        0.7484999999999999
-      ],
-      "judge": 0.75875,
-      "meetsGoal": 0.85875,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "e03ea429c3",
-      "case": "ai-act-classification-002",
-      "arm": "with",
-      "run": 2,
-      "regex": 1.0,
-      "words": 1137,
-      "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
-      "scores": [
-        0.774,
-        0.7665
-      ],
-      "judge": 0.77025,
-      "meetsGoal": 0.90875,
+      "judge": 0.69425,
+      "meetsGoal": 0.71,
       "weakest": [
         "",
         ""
@@ -188,52 +56,33 @@
       "arm": "with",
       "run": 1,
       "regex": 1.0,
-      "words": 1152,
+      "words": 1139,
       "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
       "scores": [
-        0.7355,
-        0.7219999999999999
+        0.764,
+        0.7650000000000001
       ],
-      "judge": 0.72875,
-      "meetsGoal": 0.89125,
+      "judge": 0.7645000000000001,
+      "meetsGoal": 0.89625,
       "weakest": [
         "",
         ""
       ]
     },
     {
-      "id": "5ade4a24a1",
-      "case": "ai-act-classification-002",
-      "arm": "without",
-      "run": 3,
-      "regex": 0.8,
-      "words": 594,
-      "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
+      "id": "e226d2ef30",
+      "case": "ai-act-classification-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 2026,
+      "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
       "scores": [
-        0.735,
-        0.743
+        0.77,
+        0.7715000000000001
       ],
-      "judge": 0.739,
-      "meetsGoal": 0.8825,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "6274889bba",
-      "case": "ai-act-classification-001",
-      "arm": "without",
-      "run": 3,
-      "regex": 0.6923076923076923,
-      "words": 776,
-      "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
-      "scores": [
-        0.756,
-        0.7460000000000001
-      ],
-      "judge": 0.7510000000000001,
-      "meetsGoal": 0.7224999999999999,
+      "judge": 0.77075,
+      "meetsGoal": 0.80375,
       "weakest": [
         "",
         ""
@@ -245,33 +94,71 @@
       "arm": "without",
       "run": 1,
       "regex": 0.7,
-      "words": 566,
+      "words": 599,
       "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
       "scores": [
-        0.7574999999999998,
-        0.7570000000000001
+        0.7785,
+        0.7669999999999999
       ],
-      "judge": 0.75725,
-      "meetsGoal": 0.8912500000000001,
+      "judge": 0.7727499999999999,
+      "meetsGoal": 0.8937499999999999,
       "weakest": [
         "",
         ""
       ]
     },
     {
-      "id": "bc46cdf8b7",
+      "id": "6bfda2a861",
+      "case": "ai-act-classification-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 815,
+      "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
+      "scores": [
+        0.7215,
+        0.7174999999999999
+      ],
+      "judge": 0.7195,
+      "meetsGoal": 0.6825,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9b4c74a8a5",
+      "case": "ai-act-classification-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1660,
+      "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
+      "scores": [
+        0.7479999999999999,
+        0.7695000000000001
+      ],
+      "judge": 0.75875,
+      "meetsGoal": 0.8875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e03ea429c3",
       "case": "ai-act-classification-002",
       "arm": "with",
-      "run": 3,
+      "run": 2,
       "regex": 1.0,
-      "words": 1087,
+      "words": 1154,
       "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
       "scores": [
-        0.6735,
-        0.6865
+        0.7570000000000001,
+        0.7529999999999999
       ],
-      "judge": 0.6799999999999999,
-      "meetsGoal": 0.84125,
+      "judge": 0.755,
+      "meetsGoal": 0.9,
       "weakest": [
         "",
         ""
@@ -282,15 +169,34 @@
       "case": "ai-act-classification-001",
       "arm": "without",
       "run": 2,
-      "regex": 0.6923076923076923,
-      "words": 873,
+      "regex": 0.6153846153846154,
+      "words": 905,
       "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
       "scores": [
-        0.7425,
-        0.75
+        0.8054999999999999,
+        0.7935000000000001
       ],
-      "judge": 0.7462500000000001,
-      "meetsGoal": 0.79,
+      "judge": 0.7995,
+      "meetsGoal": 0.81625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "585bc08223",
+      "case": "ai-act-classification-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6923076923076923,
+      "words": 786,
+      "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
+      "scores": [
+        0.758,
+        0.7685
+      ],
+      "judge": 0.76325,
+      "meetsGoal": 0.7262500000000001,
       "weakest": [
         "",
         ""
@@ -302,14 +208,109 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 1903,
+      "words": 2125,
       "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
       "scores": [
-        0.7515000000000001,
-        0.7585
+        0.7929999999999999,
+        0.7994999999999999
       ],
-      "judge": 0.755,
-      "meetsGoal": 0.8524999999999999,
+      "judge": 0.7962499999999999,
+      "meetsGoal": 0.9024999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5ade4a24a1",
+      "case": "ai-act-classification-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 559,
+      "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
+      "scores": [
+        0.6945,
+        0.6965
+      ],
+      "judge": 0.6955,
+      "meetsGoal": 0.8575,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "2f75bfcf6c",
+      "case": "ai-act-classification-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2133,
+      "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
+      "scores": [
+        0.7275,
+        0.724
+      ],
+      "judge": 0.72575,
+      "meetsGoal": 0.8225,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "6274889bba",
+      "case": "ai-act-classification-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6923076923076923,
+      "words": 759,
+      "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
+      "scores": [
+        0.784,
+        0.7885
+      ],
+      "judge": 0.78625,
+      "meetsGoal": 0.8150000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4e5c80e683",
+      "case": "ai-act-classification-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8,
+      "words": 543,
+      "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
+      "scores": [
+        0.7529999999999999,
+        0.7589999999999999
+      ],
+      "judge": 0.7559999999999999,
+      "meetsGoal": 0.85875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "bc46cdf8b7",
+      "case": "ai-act-classification-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1118,
+      "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
+      "scores": [
+        0.649,
+        0.6505000000000001
+      ],
+      "judge": 0.64975,
+      "meetsGoal": 0.8137500000000001,
       "weakest": [
         "",
         ""
@@ -321,14 +322,14 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 1398,
+      "words": 1407,
       "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
       "scores": [
-        0.748,
-        0.7555000000000001
+        0.7665000000000002,
+        0.756
       ],
-      "judge": 0.75175,
-      "meetsGoal": 0.855,
+      "judge": 0.7612500000000001,
+      "meetsGoal": 0.89125,
       "weakest": [
         "",
         ""
@@ -339,15 +340,15 @@
       "case": "ai-act-classification-003",
       "arm": "without",
       "run": 1,
-      "regex": 0.75,
-      "words": 909,
+      "regex": 0.6666666666666666,
+      "words": 877,
       "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
       "scores": [
-        0.71,
-        0.7130000000000001
+        0.6695,
+        0.692
       ],
-      "judge": 0.7115,
-      "meetsGoal": 0.65375,
+      "judge": 0.68075,
+      "meetsGoal": 0.6074999999999999,
       "weakest": [
         "",
         ""
@@ -359,14 +360,14 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 1442,
+      "words": 1735,
       "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
       "scores": [
-        0.7470000000000001,
-        0.762
+        0.7635000000000001,
+        0.7730000000000001
       ],
-      "judge": 0.7545000000000001,
-      "meetsGoal": 0.8462500000000001,
+      "judge": 0.7682500000000001,
+      "meetsGoal": 0.8925,
       "weakest": [
         "",
         ""

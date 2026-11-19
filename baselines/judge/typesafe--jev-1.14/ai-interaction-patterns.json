@@ -4,26 +4,28 @@
   "provider": "openrouter",
   "judgeKind": "decision",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "48037223c55915ad62b84a219c4870a26d723fb8400298a89ce915d1817b1f79",
   "limit": null,
   "calibrated": false,
   "passes": 2,
   "errors": 0,
   "firstError": null,
-  "noise": 0.010187500000000007,
+  "noise": 0.010291666666666657,
   "costUsd": 0.004697868,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 12,
-      "judge": 0.8969999999999999,
-      "meetsGoal": 0.9094791666666667,
+      "judge": 0.8989583333333333,
+      "meetsGoal": 0.9139583333333333,
       "regex": 0.9537698412698412,
       "words": 957.3333333333334
     },
     "without": {
       "answers": 12,
-      "judge": 0.7052708333333334,
-      "meetsGoal": 0.6221875,
+      "judge": 0.7072916666666668,
+      "meetsGoal": 0.626875,
       "regex": 0.6406746031746032,
       "words": 667.0833333333334
     }
@@ -38,11 +40,11 @@
       "words": 828,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.9595,
-        0.9580000000000002
+        0.956,
+        0.9550000000000001
       ],
-      "judge": 0.9587500000000001,
-      "meetsGoal": 0.9637499999999999,
+      "judge": 0.9555,
+      "meetsGoal": 0.9612499999999999,
       "weakest": [
         "",
         ""
@@ -57,10 +59,10 @@
       "words": 823,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.9575,
-        0.9575
+        0.958,
+        0.9609999999999999
       ],
-      "judge": 0.9575,
+      "judge": 0.9594999999999999,
       "meetsGoal": 0.9649999999999999,
       "weakest": [
         "",
@@ -76,11 +78,11 @@
       "words": 909,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.8134999999999999,
-        0.7965
+        0.7879999999999998,
+        0.8054999999999999
       ],
-      "judge": 0.8049999999999999,
-      "meetsGoal": 0.8262499999999999,
+      "judge": 0.7967499999999998,
+      "meetsGoal": 0.8025000000000001,
       "weakest": [
         "",
         ""
@@ -95,11 +97,11 @@
       "words": 1777,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.915,
-        0.9019999999999999
+        0.9115,
+        0.9015
       ],
-      "judge": 0.9085,
-      "meetsGoal": 0.95125,
+      "judge": 0.9065,
+      "meetsGoal": 0.95625,
       "weakest": [
         "",
         ""
@@ -114,11 +116,11 @@
       "words": 881,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.7754999999999999,
-        0.7894999999999999
+        0.78,
+        0.8089999999999999
       ],
-      "judge": 0.7824999999999999,
-      "meetsGoal": 0.76875,
+      "judge": 0.7945,
+      "meetsGoal": 0.7850000000000001,
       "weakest": [
         "",
         ""
@@ -133,11 +135,11 @@
       "words": 630,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.44299999999999995,
-        0.4395
+        0.469,
+        0.46199999999999997
       ],
-      "judge": 0.44125,
-      "meetsGoal": 0.3175,
+      "judge": 0.46549999999999997,
+      "meetsGoal": 0.325,
       "weakest": [
         "",
         ""
@@ -152,11 +154,11 @@
       "words": 1382,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.9430000000000001,
-        0.9410000000000001
+        0.9410000000000001,
+        0.9404999999999999
       ],
-      "judge": 0.9420000000000001,
-      "meetsGoal": 0.95875,
+      "judge": 0.94075,
+      "meetsGoal": 0.95625,
       "weakest": [
         "",
         ""
@@ -171,11 +173,11 @@
       "words": 416,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.627,
-        0.6445000000000001
+        0.6295,
+        0.6439999999999999
       ],
-      "judge": 0.63575,
-      "meetsGoal": 0.48624999999999996,
+      "judge": 0.6367499999999999,
+      "meetsGoal": 0.48,
       "weakest": [
         "",
         ""
@@ -190,11 +192,11 @@
       "words": 764,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.35850000000000004,
-        0.36150000000000004
+        0.372,
+        0.36250000000000004
       ],
-      "judge": 0.36000000000000004,
-      "meetsGoal": 0.245,
+      "judge": 0.36725,
+      "meetsGoal": 0.26625,
       "weakest": [
         "",
         ""
@@ -209,11 +211,11 @@
       "words": 524,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.7909999999999999,
-        0.802
+        0.7955000000000001,
+        0.7709999999999999
       ],
-      "judge": 0.7965,
-      "meetsGoal": 0.79375,
+      "judge": 0.78325,
+      "meetsGoal": 0.7925,
       "weakest": [
         "",
         ""
@@ -228,11 +230,11 @@
       "words": 977,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.7885,
-        0.7879999999999998
+        0.7955000000000001,
+        0.7745000000000002
       ],
-      "judge": 0.7882499999999999,
-      "meetsGoal": 0.79625,
+      "judge": 0.7850000000000001,
+      "meetsGoal": 0.7925,
       "weakest": [
         "",
         ""
@@ -247,11 +249,11 @@
       "words": 498,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.6475,
-        0.6779999999999999
+        0.6855,
+        0.6555
       ],
-      "judge": 0.66275,
-      "meetsGoal": 0.49625,
+      "judge": 0.6705,
+      "meetsGoal": 0.50625,
       "weakest": [
         "",
         ""
@@ -266,11 +268,11 @@
       "words": 822,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.586,
-        0.5315000000000001
+        0.5585000000000001,
+        0.5619999999999999
       ],
-      "judge": 0.5587500000000001,
-      "meetsGoal": 0.44375,
+      "judge": 0.56025,
+      "meetsGoal": 0.47624999999999995,
       "weakest": [
         "",
         ""
@@ -285,11 +287,11 @@
       "words": 550,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.784,
-        0.7909999999999999
+        0.7855000000000001,
+        0.819
       ],
-      "judge": 0.7875,
-      "meetsGoal": 0.79125,
+      "judge": 0.80225,
+      "meetsGoal": 0.82125,
       "weakest": [
         "",
         ""
@@ -304,11 +306,11 @@
       "words": 408,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.711,
-        0.6775
+        0.6824999999999999,
+        0.6625
       ],
-      "judge": 0.69425,
-      "meetsGoal": 0.55,
+      "judge": 0.6724999999999999,
+      "meetsGoal": 0.5475000000000001,
       "weakest": [
         "",
         ""
@@ -323,10 +325,10 @@
       "words": 1069,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.907,
-        0.9105000000000001
+        0.913,
+        0.9095
       ],
-      "judge": 0.9087500000000001,
+      "judge": 0.91125,
       "meetsGoal": 0.95125,
       "weakest": [
         "",
@@ -343,10 +345,10 @@
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
         0.9235,
-        0.917
+        0.9265000000000001
       ],
-      "judge": 0.92025,
-      "meetsGoal": 0.8875000000000001,
+      "judge": 0.925,
+      "meetsGoal": 0.9075,
       "weakest": [
         "",
         ""
@@ -361,11 +363,11 @@
       "words": 607,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.899,
-        0.8865000000000001
+        0.8940000000000001,
+        0.8960000000000001
       ],
-      "judge": 0.89275,
-      "meetsGoal": 0.8099999999999999,
+      "judge": 0.8950000000000001,
+      "meetsGoal": 0.80375,
       "weakest": [
         "",
         ""
@@ -380,11 +382,11 @@
       "words": 893,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.9445000000000001,
-        0.9430000000000001
+        0.9395,
+        0.94
       ],
-      "judge": 0.9437500000000001,
-      "meetsGoal": 0.9562499999999999,
+      "judge": 0.93975,
+      "meetsGoal": 0.9575,
       "weakest": [
         "",
         ""
@@ -399,11 +401,11 @@
       "words": 578,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.7749999999999999,
-        0.7685
+        0.8014999999999999,
+        0.7935000000000001
       ],
-      "judge": 0.7717499999999999,
-      "meetsGoal": 0.7275,
+      "judge": 0.7975,
+      "meetsGoal": 0.75,
       "weakest": [
         "",
         ""
@@ -418,11 +420,11 @@
       "words": 505,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.921,
-        0.9224999999999999
+        0.9179999999999999,
+        0.919
       ],
-      "judge": 0.92175,
-      "meetsGoal": 0.83875,
+      "judge": 0.9185,
+      "meetsGoal": 0.8299999999999998,
       "weakest": [
         "",
         ""
@@ -437,11 +439,11 @@
       "words": 830,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.96,
-        0.9594999999999998
+        0.9570000000000001,
+        0.9600000000000002
       ],
-      "judge": 0.9597499999999999,
-      "meetsGoal": 0.96875,
+      "judge": 0.9585000000000001,
+      "meetsGoal": 0.9649999999999999,
       "weakest": [
         "",
         ""
@@ -456,11 +458,11 @@
       "words": 1122,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.933,
-        0.9295
+        0.9335,
+        0.9344999999999999
       ],
-      "judge": 0.93125,
-      "meetsGoal": 0.94625,
+      "judge": 0.9339999999999999,
+      "meetsGoal": 0.94875,
       "weakest": [
         "",
         ""
@@ -475,11 +477,11 @@
       "words": 1112,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.8980000000000001,
-        0.8979999999999999
+        0.8984999999999999,
+        0.899
       ],
-      "judge": 0.898,
-      "meetsGoal": 0.94,
+      "judge": 0.8987499999999999,
+      "meetsGoal": 0.9424999999999999,
       "weakest": [
         "",
         ""

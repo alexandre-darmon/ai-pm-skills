@@ -4,26 +4,28 @@
   "provider": "openrouter",
   "judgeKind": "decision",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "dad6a5ca5ab0ad7d800f80f2948b889dc0efdcab7d4b5bb63d729d4db61712d9",
   "limit": null,
   "calibrated": false,
   "passes": 2,
   "errors": 0,
   "firstError": null,
-  "noise": 0.00858333333333332,
+  "noise": 0.007000000000000024,
   "costUsd": 0.00407526,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.9334166666666667,
-      "meetsGoal": 0.9313888888888889,
+      "judge": 0.9330277777777778,
+      "meetsGoal": 0.9327777777777777,
       "regex": 0.9777777777777779,
       "words": 927.8888888888889
     },
     "without": {
       "answers": 9,
-      "judge": 0.8236666666666667,
-      "meetsGoal": 0.6769444444444445,
+      "judge": 0.8228611111111112,
+      "meetsGoal": 0.6754166666666666,
       "regex": 0.34273504273504274,
       "words": 766.6666666666666
     }
@@ -38,11 +40,11 @@
       "words": 945,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.9390000000000001,
-        0.9449999999999998
+        0.9410000000000001,
+        0.9395
       ],
-      "judge": 0.942,
-      "meetsGoal": 0.93125,
+      "judge": 0.94025,
+      "meetsGoal": 0.92375,
       "weakest": [
         "",
         ""
@@ -57,11 +59,11 @@
       "words": 757,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.9075,
-        0.9115
+        0.909,
+        0.9175
       ],
-      "judge": 0.9095,
-      "meetsGoal": 0.9199999999999999,
+      "judge": 0.91325,
+      "meetsGoal": 0.9249999999999999,
       "weakest": [
         "",
         ""
@@ -76,11 +78,11 @@
       "words": 896,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.7505,
-        0.7220000000000001
+        0.7154999999999999,
+        0.7285
       ],
-      "judge": 0.7362500000000001,
-      "meetsGoal": 0.5049999999999999,
+      "judge": 0.722,
+      "meetsGoal": 0.485,
       "weakest": [
         "",
         ""
@@ -95,11 +97,11 @@
       "words": 1082,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.9164999999999999,
-        0.9205000000000001
+        0.9224999999999999,
+        0.9179999999999999
       ],
-      "judge": 0.9185,
-      "meetsGoal": 0.9212499999999999,
+      "judge": 0.9202499999999999,
+      "meetsGoal": 0.92125,
       "weakest": [
         "",
         ""
@@ -114,10 +116,10 @@
       "words": 693,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.895,
-        0.8915
+        0.887,
+        0.891
       ],
-      "judge": 0.89325,
+      "judge": 0.889,
       "meetsGoal": 0.89375,
       "weakest": [
         "",
@@ -133,11 +135,11 @@
       "words": 837,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.796,
-        0.8054999999999999
+        0.8065,
+        0.8109999999999999
       ],
-      "judge": 0.80075,
-      "meetsGoal": 0.6387499999999999,
+      "judge": 0.80875,
+      "meetsGoal": 0.63625,
       "weakest": [
         "",
         ""
@@ -152,11 +154,11 @@
       "words": 966,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.952,
-        0.9490000000000001
+        0.944,
+        0.9449999999999998
       ],
-      "judge": 0.9505,
-      "meetsGoal": 0.9462499999999999,
+      "judge": 0.9444999999999999,
+      "meetsGoal": 0.9375,
       "weakest": [
         "",
         ""
@@ -171,11 +173,11 @@
       "words": 913,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.7230000000000001,
-        0.7449999999999999
+        0.72,
+        0.7494999999999999
       ],
-      "judge": 0.734,
-      "meetsGoal": 0.48874999999999996,
+      "judge": 0.73475,
+      "meetsGoal": 0.51125,
       "weakest": [
         "",
         ""
@@ -190,11 +192,11 @@
       "words": 750,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.8285,
-        0.8305
+        0.8240000000000001,
+        0.8260000000000001
       ],
-      "judge": 0.8295,
-      "meetsGoal": 0.61,
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.6025,
       "weakest": [
         "",
         ""
@@ -209,11 +211,11 @@
       "words": 867,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.9359999999999999,
-        0.9359999999999999
+        0.9410000000000001,
+        0.935
       ],
-      "judge": 0.9359999999999999,
-      "meetsGoal": 0.9099999999999999,
+      "judge": 0.9380000000000001,
+      "meetsGoal": 0.9187500000000001,
       "weakest": [
         "",
         ""
@@ -228,11 +230,11 @@
       "words": 1017,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.9430000000000001,
+        0.9405000000000001,
         0.9405000000000001
       ],
-      "judge": 0.9417500000000001,
-      "meetsGoal": 0.9462499999999999,
+      "judge": 0.9405000000000001,
+      "meetsGoal": 0.94875,
       "weakest": [
         "",
         ""
@@ -247,11 +249,11 @@
       "words": 624,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.8530000000000002,
-        0.867
+        0.8614999999999999,
+        0.875
       ],
-      "judge": 0.8600000000000001,
-      "meetsGoal": 0.8625,
+      "judge": 0.86825,
+      "meetsGoal": 0.8712499999999999,
       "weakest": [
         "",
         ""
@@ -266,11 +268,11 @@
       "words": 782,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.8515000000000001,
-        0.8219999999999998
+        0.8365,
+        0.8265
       ],
-      "judge": 0.83675,
-      "meetsGoal": 0.6000000000000001,
+      "judge": 0.8315,
+      "meetsGoal": 0.6,
       "weakest": [
         "",
         ""
@@ -286,10 +288,10 @@
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
         0.9274999999999998,
-        0.9300000000000002
+        0.9295
       ],
-      "judge": 0.92875,
-      "meetsGoal": 0.9412499999999999,
+      "judge": 0.9284999999999999,
+      "meetsGoal": 0.9425,
       "weakest": [
         "",
         ""
@@ -304,11 +306,11 @@
       "words": 1030,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.9434999999999998,
-        0.942
+        0.9445000000000001,
+        0.9424999999999999
       ],
-      "judge": 0.9427499999999999,
-      "meetsGoal": 0.9437499999999999,
+      "judge": 0.9435,
+      "meetsGoal": 0.94375,
       "weakest": [
         "",
         ""
@@ -323,11 +325,11 @@
       "words": 605,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.8765000000000001,
-        0.867
+        0.8700000000000001,
+        0.8725
       ],
-      "judge": 0.87175,
-      "meetsGoal": 0.875,
+      "judge": 0.8712500000000001,
+      "meetsGoal": 0.85,
       "weakest": [
         "",
         ""
@@ -342,11 +344,11 @@
       "words": 800,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.847,
-        0.8545
+        0.8654999999999999,
+        0.845
       ],
-      "judge": 0.85075,
-      "meetsGoal": 0.61875,
+      "judge": 0.85525,
+      "meetsGoal": 0.6287499999999999,
       "weakest": [
         "",
         ""
@@ -361,11 +363,11 @@
       "words": 830,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.9285000000000001,
-        0.9335
+        0.929,
+        0.9279999999999999
       ],
-      "judge": 0.931,
-      "meetsGoal": 0.9225000000000001,
+      "judge": 0.9285,
+      "meetsGoal": 0.9337500000000001,
       "weakest": [
         "",
         ""
