@@ -1,6 +1,6 @@
 # Handover file: <artefact name>
 
-Date: <date> · Prepared by: <PM> · Freshness: <last_verified, and a warning if over 90 days>
+Date: <date> · Prepared by: <name, or leave the placeholder> · <a freshness warning only if last_verified is over 90 days old>
 
 ## 1. Containment
 Production personal data: <yes / no> · Production credentials: <yes / no> · Kill date: <date, past or not>
@@ -30,7 +30,7 @@ Decision needed: <stop now / dated decision by <named owner> on <date> / none ne
 - Bar per class, signed by <who> on <date>; never-acceptable error: <...>
 - Judge: <model, criterion, TPR, TNR, on how many expert labels / "not validated: cannot gate">
 - Configuration under change control: <prompts, model ids, parameters>
-- Autonomy level per step and gate to the next level
+- Autonomy level per step and proposed gate to the next level (to set with model risk)
 - Trace fields logged
 - The baseline is the floor for the engineering build. Release evidence is the suite run on that build.
 
@@ -54,7 +54,7 @@ Decision needed: <stop now / dated decision by <named owner> on <date> / none ne
 | --- | --- |
 
 ## 9. AI Act flag
-<Built in-house and put into service for own use? Purpose changed? Possible Annex III area?> → for ai-act-classification.
+<Built in-house and put into service for own use (art. 3(3), 3(11))? Purpose changed (art. 25(1))? Possible Annex III point?> → for ai-act-classification.
 
 ## 10. Questions
 - For IT risk:

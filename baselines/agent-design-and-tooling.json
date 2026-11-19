@@ -3,13 +3,13 @@
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.321",
-  "date": "2026-11-13",
+  "date": "2026-11-19",
   "casesHash": "d8453c03a2e2224328c21c193afaeaf2d502864996ec021fd810317962b17563",
   "partial": false,
-  "costUsd": 0.6562294000000001,
+  "costUsd": 0.8186088,
   "cases": {
     "agent-design-and-tooling-001": {
-      "score": 0.8666666666666667,
+      "score": 0.9666666666666667,
       "scoreWithout": 0.5666666666666667,
       "fired": 3,
       "runs": 3,
@@ -17,7 +17,7 @@
       "negative": false,
       "graders": {
         "empty-vs-failed": [
-          0,
+          3,
           0
         ],
         "matrix": [
@@ -42,10 +42,10 @@
         ]
       },
       "costPerAnswer": [
-        0.062117533333333336,
+        0.07077346666666667,
         null
       ],
-      "delta": 0.30000000000000004
+      "delta": 0.4
     },
     "agent-design-and-tooling-002": {
       "score": 1.0,
@@ -81,7 +81,7 @@
         ]
       },
       "costPerAnswer": [
-        0.08195363333333333,
+        0.1216251,
         null
       ],
       "delta": 0.19999999999999984
@@ -120,7 +120,7 @@
         ]
       },
       "costPerAnswer": [
-        0.0490253,
+        0.054587699999999996,
         null
       ],
       "delta": 0.9
@@ -139,12 +139,12 @@
         ]
       },
       "costPerAnswer": [
-        0.025646666666666665,
+        0.02588333333333333,
         null
       ]
     }
   },
-  "skillHash": "c001484c4522f8fc0f02d0c3ec519db43b9842dd54af397a1f48581f9313f1e4",
-  "meanDelta": 0.4666666666666666,
+  "skillHash": "497df30d9befb30f0de879a09f800106b32c19e88364a57e0b38379d22be03d7",
+  "meanDelta": 0.5,
   "failures": []
 }

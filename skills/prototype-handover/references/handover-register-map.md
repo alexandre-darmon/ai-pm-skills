@@ -49,6 +49,7 @@ The repo adds the autonomy axis (references/autonomy-ladder.md) and takes the hi
 - art. 3(3): a provider develops an AI system, or has it developed, and places it on the market or puts it into service under its own name or trademark.
 - art. 3(11): putting into service includes supplying the system for its own use in the Union. A bank that builds an AI tool and uses it itself can therefore be its provider, not only a deployer.
 - art. 25(1): a deployer or other party becomes provider of a high-risk system if it puts its name on it, substantially modifies it, or changes the purpose of a system not classified high-risk so that it becomes high-risk.
+- Annex III points met most by PM-built tools in banks and insurers, to name as possibilities only: point 4 (employment and worker management, such as recruitment, task allocation or performance monitoring), point 5(b) (creditworthiness or credit scoring of natural persons, fraud detection excepted), point 5(c) (risk assessment and pricing for natural persons in life and health insurance). Art. 6(3) can take a system out of high-risk in limited cases (such as a narrow procedural or preparatory task, and never when it profiles natural persons); that test is for `ai-act-classification`.
 - The classification itself (Annex III point, exceptions, dates) belongs to `ai-act-classification`. This skill only raises the flag with the facts.
 
 ## GDPR

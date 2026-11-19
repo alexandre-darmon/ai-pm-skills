@@ -5,14 +5,15 @@
 <!-- gains:start -->
 | Test performed | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 29 skills, 109 cases × 3 runs | 52% | — | **96%** | +44 pts | — |
-| Regex graders, the 3 skills also run with their template only: 9 cases | 43% | 82% | 99% | +56 pts | +17 pts |
+| Regex graders: 29 skills, 109 cases × 3 runs | 52% | — | **97%** | +45 pts | — |
+| Regex graders, the 1 skill also run with its template only: 3 cases | 25% | 76% | 100% | +75 pts | +24 pts |
 | Blind LLM judge, Haiku 5.5: 11 of these skills, 40 cases, earlier runs | 70% | — | 79% | +9 pts | — |
+| Blind LLM judge, Opus 5.5: 29 of these skills, 109 cases, recorded runs | 70% | — | 85% | +15 pts | — |
 | Blind LLM judge, Sonnet 5.5: 9 of these skills, 29 cases, earlier runs | 72% | — | 82% | +10 pts | — |
-| Blind LLM judge, openai/gpt-6.1-sol: 29 of these skills, 109 cases, recorded runs | 63% | — | 70% | +7 pts | — |
-| Blind decision model, typesafe/jev-1.14: 29 of these skills, 109 cases, recorded runs | 80% | — | 89% | +9 pts | — |
+| Blind LLM judge, openai/gpt-6.1-sol: 27 of these skills, 102 cases, earlier runs | 61% | — | 71% | +10 pts | — |
+| Blind decision model, typesafe/jev-1.14: 29 of these skills, 109 cases, earlier runs | 80% | — | 89% | +9 pts | — |
 | Red lines held (the one thing the answer must never do) | 71% | — | **100%** | | |
-| Cost per correct answer, API equivalent (19 skills) | $0.104 | — | **$0.077** | -26% | |
+| Cost per correct answer, API equivalent (16 skills) | $0.131 | — | **$0.078** | -40% | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
 <sub>Sonnet 5.5 answers each case 3 times per arm. **Regex graders** check that the answer contains what the skill asks for; the skills' author wrote them, so they favour the skill. The **blind LLM judge** scores general quality without knowing the arm; it tends to favour longer answers, and on the legal skills it does not check legal correctness. Gains in points: each is the row's score with the skill minus the score it is compared with, on the same skills; 95% intervals are in the per-skill numbers. [How the skills are tested](docs/testing-approach.md) · [per-skill numbers](skill-eval-gains.md).</sub>

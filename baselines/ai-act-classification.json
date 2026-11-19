@@ -3,10 +3,10 @@
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.321",
-  "date": "2026-11-13",
-  "casesHash": "35083e4a3d51f2627665a813eaf967e0a49325c76f9c2e3da7d06f9253f89c76",
+  "date": "2026-11-18",
+  "casesHash": "bbe9508dc10f6e9857296af003dad07f63e0b2401ee17ec24d906a083b99ae52",
   "partial": false,
-  "costUsd": 1.3337078999999998,
+  "costUsd": 2.0128345,
   "cases": {
     "ai-act-classification-001": {
       "score": 1.0,
@@ -34,7 +34,7 @@
         ],
         "date-not-aug-2026": [
           3,
-          0
+          1
         ],
         "deployer": [
           3,
@@ -54,7 +54,7 @@
         ],
         "vendor-claim": [
           3,
-          2
+          1
         ],
         "workers-informed": [
           3,
@@ -62,14 +62,14 @@
         ]
       },
       "costPerAnswer": [
-        0.12445833333333334,
-        null
+        0.15392256666666665,
+        0.04984666666666667
       ],
       "delta": 0.33333333333333337
     },
     "ai-act-classification-002": {
       "score": 1.0,
-      "scoreWithout": 0.7999999999999999,
+      "scoreWithout": 0.7666666666666666,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -105,18 +105,18 @@
         ],
         "role": [
           3,
-          2
+          1
         ]
       },
       "costPerAnswer": [
-        0.1375547,
-        null
+        0.12823293333333333,
+        0.04169333333333333
       ],
-      "delta": 0.20000000000000007
+      "delta": 0.2333333333333334
     },
     "ai-act-classification-003": {
       "score": 1.0,
-      "scoreWithout": 0.75,
+      "scoreWithout": 0.6944444444444443,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -140,7 +140,7 @@
         ],
         "date-not-aug-2026": [
           3,
-          3
+          1
         ],
         "explanation-art-86": [
           3,
@@ -164,10 +164,10 @@
         ]
       },
       "costPerAnswer": [
-        0.14488026666666667,
-        null
+        0.16482866666666668,
+        0.059630666666666665
       ],
-      "delta": 0.25
+      "delta": 0.3055555555555557
     },
     "ai-act-classification-004": {
       "score": 1.0,
@@ -183,12 +183,12 @@
         ]
       },
       "costPerAnswer": [
-        0.037676,
-        null
+        0.03720266666666667,
+        0.03558733333333333
       ]
     }
   },
-  "skillHash": "dff2b946979e8a83ca32d2aec715f751857680be7a7312a6a7a04898fded3ede",
-  "meanDelta": 0.2611111111111111,
+  "skillHash": "d2aa1f2b6c954617cc54c6f8f76eca8e84809ab76755da03f6a13b86fcb11b42",
+  "meanDelta": 0.2907407407407408,
   "failures": []
 }

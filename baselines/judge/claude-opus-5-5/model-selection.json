@@ -1,0 +1,377 @@
+{
+  "skill": "model-selection",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.0361111111111111,
+  "costUsd": 0.6639608,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8805555555555555,
+      "meetsGoal": 1.0,
+      "regex": 0.9876543209876544,
+      "words": 601.6666666666666
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.7777777777777778,
+      "meetsGoal": 0.7777777777777778,
+      "regex": 0.7227833894500562,
+      "words": 338.44444444444446
+    }
+  },
+  "answers": [
+    {
+      "id": "0a0a4cff31",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 601,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.8999999999999999,
+        0.8
+      ],
+      "judge": 0.85,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It picks E even though E's 2-point margin over the threshold sits inside the noise band, for summaries of health data where errors are costly.",
+        "It picks E even though E's 2-point margin over the threshold is inside its own noise band, which is a weak default for health-data claims where D clears the threshold more convincingly."
+      ]
+    },
+    {
+      "id": "b47e51a20f",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 662,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8999999999999999,
+        0.95
+      ],
+      "judge": 0.9249999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "B is chosen even though its 3-point margin over the threshold sits inside its 2.9-point noise band, and the answer never says what happens if the enlarged suite drops B below 88%.",
+        "The seven follow-up checks have no owner, order or deadline, and B ships even though its 3-point margin over threshold sits inside its 2.9-point noise band."
+      ]
+    },
+    {
+      "id": "b1a11ed0df",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8888888888888888,
+      "words": 387,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8500000000000001,
+        0.75
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It barely addresses the regulated setting beyond a passing mention of data-privacy terms, and it never names small general-purpose LLMs as candidates alongside the encoder and TF-IDF baselines.",
+        "For a regulated company, the answer reduces PII exposure to third-party APIs, auditability and post-launch drift monitoring to a passing mention of privacy terms."
+      ]
+    },
+    {
+      "id": "4badbbd029",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 309,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never computes cost per success (about \u20ac0.0011 vs \u20ac0.0213 per correct call) or states the 3-point gap as roughly 5,400 more misclassified emails a month, and the blended-routing figure is slightly off (about \u20ac0.004, not \u20ac0.0045).",
+        "It compares cost per call instead of cost per correct classification (~\u20ac0.021 vs ~\u20ac0.0011), never turns the 3-point gap into about 5,400 more misrouted emails a month, and its \u20ac0.0045 blended routing cost is slightly miscalculated."
+      ]
+    },
+    {
+      "id": "eded3019fb",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 457,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It does not check whether two years of 'final category' labels are noisy or whether category definitions drifted, and it skips regulated-context needs like auditability of misroutes.",
+        "Risk handling leaves out label drift and inconsistency in the two-year history, and the regulated context gets no mention of audit or explainability requirements."
+      ]
+    },
+    {
+      "id": "c79883cb2c",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 284,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It compares cost per call rather than cost per success (about 0.0213 vs 0.0011 EUR) and never turns the 3-point gap into roughly 5,400 extra misclassified emails a month or asks what an error costs.",
+        "It never computes cost per success (about 0.0213 vs 0.0011 EUR) or turns the 3-point gap into about 5,400 extra misclassified emails a month, and it never asks what one misclassification costs."
+      ]
+    },
+    {
+      "id": "5ed05f0849",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 671,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8500000000000001,
+        0.95
+      ],
+      "judge": 0.9,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "B's 3-point margin over the 88% threshold sits within its 2.9-point noise, yet the answer gives no fallback, owner or pass bar for the larger-suite check.",
+        "Model B's 3-point margin over the 88% threshold sits within its 2.9-point noise, yet the answer picks B without setting a hard pass/fail gate, such as a larger-suite result, that must be met before go-live."
+      ]
+    },
+    {
+      "id": "15fede919b",
+      "case": "model-selection-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 620,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.8999999999999999,
+        0.95
+      ],
+      "judge": 0.9249999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "B sits only 3 points above the 88% threshold, inside its own noise band, yet the answer gives no production monitoring plan (sample size, cadence, alert level) to catch a slide below it.",
+        "B's lower bound is roughly 88%, right at the threshold, yet the answer only flags this and sets no production sampling or monitoring guardrail to catch it falling below in a regulated setting."
+      ]
+    },
+    {
+      "id": "896de55648",
+      "case": "model-selection-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 360,
+      "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
+      "scores": [
+        0.7,
+        0.75
+      ],
+      "judge": 0.725,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It never computes cost per successful classification, and it presents the cascade's 15% escalation rate and its claim to 'recover most of the gap' without support.",
+        "It asserts without evidence that the cheap-first cascade 'recovers most of the accuracy gap' and that a 0.63 EUR error cost is not worth paying 'for most routing cases', and it never states cost per correct call (about 0.021 vs 0.0011 EUR) explicitly."
+      ]
+    },
+    {
+      "id": "91cb9e6587",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 735,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.8999999999999999,
+        0.8500000000000001
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It picks E even though E's 2-point margin over the threshold sits inside its own noise band on health data, where D's clearer pass might be the safer default until the suite is enlarged.",
+        "It picks E even though its own maths puts E's margin over the 85% threshold inside the noise band, on health data where D clears the threshold more robustly."
+      ]
+    },
+    {
+      "id": "a46d7a8a40",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 269,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It argues E's 2-point margin over 85% may be noise, yet treats the equally small 2-point gap between D and E as a real accuracy advantage.",
+        "It calls E's margin within noise but treats D's 2-point lead over E as decisive, and assumes 100k calls a month instead of asking for the real volume."
+      ]
+    },
+    {
+      "id": "461f8e657c",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8888888888888888,
+      "words": 397,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It treats the fine-tuned classifier only as a baseline, never adds small LLMs as candidates, and ignores the regulated context (sending ticket PII to external APIs, data residency, auditability).",
+        "It ignores the regulated context (PII in tickets, data residency, sending data to external APIs) and adds a fine-tuned classifier but never adds small LLMs as candidates."
+      ]
+    },
+    {
+      "id": "e09a3b4dd2",
+      "case": "model-selection-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 1.0,
+      "words": 456,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.65,
+        0.75
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It ignores the regulated-company context: no mention of PII in tickets, data residency or vendor terms for external APIs and fine-tuning, or the audit trail a regulator would expect.",
+        "It ignores the regulated setting: sending ticket PII to external model APIs, data residency and auditability of routing decisions."
+      ]
+    },
+    {
+      "id": "f83615965f",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 488,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It gives no concrete starting point, such as a suggested sample size per rare category or a default quality bar, so the PM must supply every threshold before anything can start.",
+        "It never asks whether the 12-category taxonomy changed over the 2 years, and it gives no concrete eval sample size or first-week plan, so the PM still has to size the work."
+      ]
+    },
+    {
+      "id": "f47d170546",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 272,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It recommends D on a 2-point gap without saying that gap is likely within noise on 300 cases, and it doesn't suggest a paired comparison or estimating volume to settle D versus E.",
+        "It justifies D's 3x price with a 2-point gap but never says that gap is within the \u00b14-point noise it cites, so D may not actually be more accurate than E."
+      ]
+    },
+    {
+      "id": "fbfd1a0084",
+      "case": "model-selection-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 587,
+      "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It leans on generic eval boilerplate (p95 latency, structured-output errors, cost per success) and skips regulated-domain needs such as auditability, explainability of routing decisions, and drift monitoring after launch.",
+        "It never covers the ongoing work a fine-tuned classifier needs (category drift, retraining, versioning), and it sets a few hundred cases per category without checking whether rare categories have that many."
+      ]
+    },
+    {
+      "id": "6b3dcdcd36",
+      "case": "model-selection-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 594,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.8999999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It picks E on a cost tie-break even though it admits E's pass over 85% is not established; for health-data summaries, D is the safer interim default until per-case results come in.",
+        "It picks E on cost even though E's own threshold pass is within noise on health-data summaries, where D's safer margin might be the better default until more data arrives."
+      ]
+    },
+    {
+      "id": "1986059e4a",
+      "case": "model-selection-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 312,
+      "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
+      "scores": [
+        0.95,
+        0.8999999999999999
+      ],
+      "judge": 0.9249999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It uses an assumed 100,000-a-month volume to size the cost gap instead of asking for the real volume, and it picks D firmly while admitting the D\u2013E gap is within the margin of error.",
+        "It illustrates cost with an assumed 100,000 calls a month instead of asking for actual volume, so the D-versus-E cost trade-off stays hypothetical."
+      ]
+    }
+  ],
+  "skillHash": "4d18a9f3316dac0c129e6ee3216b8afa02646f0412edfc326510a951246fde90"
+}

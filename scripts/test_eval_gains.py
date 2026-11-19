@@ -71,7 +71,7 @@ class EvalGainsTest(unittest.TestCase):
         rows = [r for r in readme.splitlines() if r.startswith("| Regex graders")]
         self.assertEqual(len(rows), 2)
         self.assertIn("| — |", rows[0])  # 2 skills, only one with a template run: no template column on this row
-        self.assertIn("Regex graders, the 1 skills also run with their template only: 2 cases | 40% | 70% | 90% | +50 pts | +20 pts |", rows[1])
+        self.assertIn("Regex graders, the 1 skill also run with its template only: 2 cases | 40% | 70% | 90% | +50 pts | +20 pts |", rows[1])
         for r in readme.splitlines():
             cells = [c.strip().strip("*") for c in r.split("|")[1:-1]]
             if len(cells) == 6 and cells[1].endswith("%") and cells[3].endswith("%") and cells[4].endswith("pts"):
@@ -84,11 +84,24 @@ class EvalGainsTest(unittest.TestCase):
             "calibrated": False, "noise": 0.05, "answers": answers, "arms": {a: {"words": 500} for a in ("without", "with")}, **extra}))
 
     def test_other_vendor_judges_are_labelled_by_kind_and_answer_set(self):
-        self.judge_file("typesafe--jev-1.14", judgeModel="typesafe/jev-1.14", judgeKind="decision", answerSet="recorded")
+        b = json.loads((self.root / "baselines/s.json").read_text())
+        (self.root / "baselines/s.json").write_text(json.dumps({**b, "skillHash": "h1"}))
+        self.judge_file("typesafe--jev-1.14", judgeModel="typesafe/jev-1.14", judgeKind="decision", answerSet="recorded", skillHash="h1")
         self.judge_file("openai--gpt-6.1-sol", judgeModel="openai/gpt-6.1-sol", judgeKind="llm", answerSet="latest")
+        self.judge_file("claude-opus-5-5", judgeModel="claude-opus-5-5", judgeKind="llm", answerSet="recorded", skillHash="old")
         out = main(self.root, draws=200)
         self.assertIn("| Blind decision model, typesafe/jev-1.14: 1 of these skills, 2 cases, recorded runs |", out)
         self.assertIn("| Blind LLM judge, openai/gpt-6.1-sol: 1 of these skills, 2 cases, earlier runs |", out)
+        self.assertIn("| Blind LLM judge, Opus 5.5: 1 of these skills, 2 cases, earlier runs |", out)  # graded another text of the skill
+
+    def test_a_judge_file_mostly_in_error_is_left_out(self):
+        self.judge_file("openai--gpt-6.1-sol", judgeModel="openai/gpt-6.1-sol", answerSet="recorded")
+        f = self.root / "baselines/judge/openai--gpt-6.1-sol/s.json"
+        j = json.loads(f.read_text())
+        for a in j["answers"][1:]:
+            a["judge"] = None
+        f.write_text(json.dumps(j))
+        self.assertNotIn("gpt-6.1-sol", main(self.root, draws=200))
 
     def test_a_limit_trial_stays_out_of_the_tables(self):
         self.judge_file("typesafe--jev-1.14", judgeModel="typesafe/jev-1.14", judgeKind="decision", answerSet="recorded", limit=1)

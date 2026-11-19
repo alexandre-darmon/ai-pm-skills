@@ -1,0 +1,341 @@
+{
+  "skill": "process-ai-redesign",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 1,
+  "errors": 0,
+  "firstError": null,
+  "noise": null,
+  "costUsd": 0.696296,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8277777777777778,
+      "meetsGoal": 0.5277777777777778,
+      "regex": 0.962121212121212,
+      "words": 1520.5555555555557
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.6388888888888888,
+      "meetsGoal": 0.25,
+      "regex": 0.5667789001122334,
+      "words": 805.5555555555555
+    }
+  },
+  "answers": [
+    {
+      "id": "20820c8c4f",
+      "case": "process-ai-redesign-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1539,
+      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It caps routing at L3 and rules out L4 everywhere, even though it calls misroutes cheap and reversible, which is the case for L4 on routing."
+      ]
+    },
+    {
+      "id": "12fc4dd3e3",
+      "case": "process-ai-redesign-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9090909090909091,
+      "words": 1370,
+      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Routing is capped at L3 instead of the L4 the goal calls for, and the plan's 'then L2' for decision support contradicts the table's L1 target for the decision."
+      ]
+    },
+    {
+      "id": "e3d6f5c79c",
+      "case": "process-ai-redesign-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1286,
+      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Targets are not uniformly low: step 1 goes to L3 and the ambitious scenario puts liability and settlement decisions at L2, and the art. 26(7) date framing could suggest the CSE duty is not yet urgent, though French labour law already requires consultation now."
+      ]
+    },
+    {
+      "id": "185fe61b8f",
+      "case": "process-ai-redesign-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1729,
+      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It caps sort-and-route at L3, explicitly saying L4 is not needed, so it misses the goal of taking routing to L4."
+      ]
+    },
+    {
+      "id": "dad5b31de8",
+      "case": "process-ai-redesign-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7777777777777778,
+      "words": 725,
+      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        ""
+      ]
+    },
+    {
+      "id": "03378f4e8c",
+      "case": "process-ai-redesign-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9166666666666666,
+      "words": 1548,
+      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It recommends L2 for the sanctions and rules check, where the goal is L3, so a human validates all 9,000 deterministic screenings a month and L3 appears only in the 'ambitious' scenario."
+      ]
+    },
+    {
+      "id": "7c93ad9167",
+      "case": "process-ai-redesign-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.7777777777777778,
+      "words": 541,
+      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
+      "scores": [
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        ""
+      ]
+    },
+    {
+      "id": "b3a7bf5736",
+      "case": "process-ai-redesign-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.4166666666666667,
+      "words": 916,
+      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It plans auto-approval for the decision step instead of keeping it at L1, and it gives no explicit gate per step and no three scenarios."
+      ]
+    },
+    {
+      "id": "5f0ad438f3",
+      "case": "process-ai-redesign-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 922,
+      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
+      "scores": [
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It cites GDPR Art. 22 against automated decisions, then recommends Tier A auto-deciding founded/unfounded and compensation for 40\u201360% of cases, which is L5 on decisions and contradicts its own legal reasoning."
+      ]
+    },
+    {
+      "id": "9c96e6b4e7",
+      "case": "process-ai-redesign-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.45454545454545453,
+      "words": 776,
+      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It lets AI auto-decide and pay compensation on 40\u201360% of cases, with replies sent automatically, so humans don't keep the decisions, and it backs this with invented figures (70\u201380% no-touch, 2 vs 20 minutes)."
+      ]
+    },
+    {
+      "id": "dac99a6584",
+      "case": "process-ai-redesign-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.4166666666666667,
+      "words": 862,
+      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never sets autonomy levels or a go/no-go gate for each step, gives one impact table instead of three scenarios, and its fast-approval lane takes the onboarding decision past the required L1."
+      ]
+    },
+    {
+      "id": "93c8731d42",
+      "case": "process-ai-redesign-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8333333333333334,
+      "words": 1633,
+      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The goal sets verification at L3, but the plan holds step 2 at L2 and states its gate backwards as 'miss rate \u2265 threshold'."
+      ]
+    },
+    {
+      "id": "79304e1aff",
+      "case": "process-ai-redesign-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1304,
+      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Setting intake at L3 and coverage and quotes at L2 is more ambitious than the 'low target levels' goal, especially when no baseline or miss-rate data exists yet."
+      ]
+    },
+    {
+      "id": "3c1a83c59f",
+      "case": "process-ai-redesign-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 725,
+      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It sets an aggressive auto-approve target for about 60% of claims instead of low starting levels. It also treats employee-representative involvement as a hedged 'depending on your country' check, without naming the CSE or AI Act art. 26(7) as a step required before the tool is used."
+      ]
+    },
+    {
+      "id": "78ce7c2f97",
+      "case": "process-ai-redesign-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1679,
+      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Verification only partly reaches L3: sanctions screening is held at L2, and the recommended target scenario puts internal rules at L2 even though the step table sets them at L3, so the answer contradicts itself on the level the goal asks for."
+      ]
+    },
+    {
+      "id": "5180155a5c",
+      "case": "process-ai-redesign-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 869,
+      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It plans straight-through auto-approval of onboarding instead of keeping the decision at L1, and it never sets autonomy levels or an explicit gate for each step; its 'three scenarios' are really a baseline plus two."
+      ]
+    },
+    {
+      "id": "4cc72c7eb8",
+      "case": "process-ai-redesign-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5454545454545454,
+      "words": 914,
+      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It plans auto-decisions on founded-ness and compensation for an estimated 50\u201370% of volume, so humans do not keep the decisions; it also treats the AI Act as 'may apply' and never asks for an explicit risk-classification re-check."
+      ]
+    },
+    {
+      "id": "bf190b8cde",
+      "case": "process-ai-redesign-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1597,
+      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Step 1 targets L3 from an L0 start, which strains the low-target principle, and the 2 December 2027 date for art. 26(7) is stated without noting that it depends on the AI Act timeline amendment."
+      ]
+    }
+  ],
+  "skillHash": "88cf6000a5a3b4ee2259bf3dcaa39df7d564ed063e4974f4250704e693a57c33"
+}

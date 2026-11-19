@@ -2,11 +2,11 @@
   "skill": "ai-vendor-evaluation",
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.317",
-  "date": "2026-11-09",
+  "claudeVersion": "2.1.321",
+  "date": "2026-11-18",
   "casesHash": "295862b60b23c6976551f6e6f30c9b4f33972d24fbb742a951ce42a0b9cf0a65",
   "partial": false,
-  "costUsd": 0,
+  "costUsd": 0.7659313,
   "cases": {
     "ai-vendor-evaluation-001": {
       "score": 1.0,
@@ -78,13 +78,13 @@
         ]
       },
       "costPerAnswer": [
-        0.0697742,
-        0.04330933333333333
+        0.07817493333333334,
+        null
       ],
       "delta": 0.4126984126984127
     },
     "ai-vendor-evaluation-002": {
-      "score": 0.9833333333333334,
+      "score": 1.0,
       "scoreWithout": 0.6333333333333333,
       "fired": 3,
       "runs": 3,
@@ -100,7 +100,7 @@
           1
         ],
         "dora-article": [
-          2,
+          3,
           1
         ],
         "exit": [
@@ -149,13 +149,13 @@
         ]
       },
       "costPerAnswer": [
-        0.06211493333333332,
-        0.03730666666666666
+        0.0662914,
+        null
       ],
-      "delta": 0.3500000000000001
+      "delta": 0.3666666666666667
     },
     "ai-vendor-evaluation-003": {
-      "score": 0.9696969696969697,
+      "score": 0.9393939393939394,
       "scoreWithout": 0.5757575757575758,
       "fired": 3,
       "runs": 3,
@@ -183,7 +183,7 @@
           2
         ],
         "re-eval": [
-          2,
+          1,
           0
         ],
         "redline-not-a": [
@@ -200,10 +200,10 @@
         ]
       },
       "costPerAnswer": [
-        0.06889363333333333,
-        0.03880666666666666
+        0.0756541,
+        null
       ],
-      "delta": 0.3939393939393939
+      "delta": 0.36363636363636365
     },
     "ai-vendor-evaluation-004": {
       "score": 1.0,
@@ -219,14 +219,12 @@
         ]
       },
       "costPerAnswer": [
-        0.036997999999999996,
-        0.03176266666666667
+        0.03519,
+        null
       ]
     }
   },
-  "regraded": true,
-  "stale": false,
-  "skillHash": "166b3434bf74c7c79cd48970435d59f626686bfb1fb6a73c6032e0e67f97c9aa",
-  "meanDelta": 0.3855459355459356,
+  "skillHash": "82cf58257cfbc666f81550da42ec06089d0e0730ee0e4fc71353cec74c2d8c07",
+  "meanDelta": 0.381000481000481,
   "failures": []
 }

@@ -4,7 +4,7 @@ Working checklist for `ai-vendor-evaluation`, in the repo's own words. It points
 
 ## Evidence status
 
-Every document or clause gets one status: **on file** (link, version, date) · **claimed** (the vendor says so, nothing shown) · **missing** (asked, not provided) · **not due yet** (the duty applies later; say from when). A status records paper, not conformity. Whether the paper is enough is counsel's call.
+Every document or clause gets one status: **on file** (link, version, date) · **claimed** (the vendor says so, nothing shown) · **requested** (asked, not yet seen) · **missing** (the vendor says it does not exist) · **not due yet** (the duty applies later; say from when). A status records paper, not conformity. Whether the paper is enough is counsel's call.
 
 ## Bake-off design
 

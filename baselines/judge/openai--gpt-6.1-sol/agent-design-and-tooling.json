@@ -4,26 +4,27 @@
   "provider": "openrouter",
   "judgeKind": "llm",
   "answerSet": "recorded",
+  "legal": false,
   "limit": null,
   "calibrated": false,
   "passes": 2,
-  "errors": 0,
-  "firstError": null,
-  "noise": 0.03333333333333331,
-  "costUsd": 0.142926,
+  "errors": 13,
+  "firstError": "OpenRouter HTTP 402: {\"error\":{\"message\":\"This request requires more credits, or fewer max_tokens. You requested up to 65536 tokens, but can only afford 65472. To increase, visit https://openrouter.ai",
+  "noise": 0.019999999999999997,
+  "costUsd": 0.09620189999999999,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.7861111111111111,
-      "meetsGoal": 0.9305555555555556,
-      "regex": 0.9555555555555555,
-      "words": 1012.0
+      "judge": 0.838888888888889,
+      "meetsGoal": 0.9722222222222222,
+      "regex": 0.9888888888888889,
+      "words": 1117.111111111111
     },
     "without": {
       "answers": 9,
-      "judge": 0.7472222222222222,
-      "meetsGoal": 0.3888888888888889,
+      "judge": 0.75,
+      "meetsGoal": 0.4166666666666667,
       "regex": 0.48888888888888893,
       "words": 679.4444444444445
     }
@@ -39,13 +40,13 @@
       "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
       "scores": [
         0.6,
-        0.7
+        0.6
       ],
-      "judge": 0.6499999999999999,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It never delivers a permission matrix with a concrete payment cap and an explicit rule for when human approval is required.",
-        "It omits the permission matrix with an explicit payment cap and an enforceable human-approval rule for exceptions."
+        "It never provides a permission matrix with a concrete payment cap and an explicit rule for when human approval is required.",
+        "It never provides a permission matrix with a concrete proposed payment cap and an explicit approval rule for payments above it."
       ]
     },
     {
@@ -53,18 +54,18 @@
       "case": "agent-design-and-tooling-001",
       "arm": "with",
       "run": 1,
-      "regex": 0.8,
-      "words": 1160,
+      "regex": 0.9,
+      "words": 901,
       "goal": "A single loop, no multi-agent, stop conditions and traces.",
       "scores": [
-        0.7,
-        0.7
+        0.8500000000000001,
+        0.8500000000000001
       ],
-      "judge": 0.7,
+      "judge": 0.8500000000000001,
       "meetsGoal": 1.0,
       "weakest": [
-        "It invents owner confirmation and cost sizing for caps and budgets that should remain explicitly provisional.",
-        "It claims owner-confirmed limits and a justified cost cap without evidence, rather than marking them as proposals awaiting validation."
+        "The four-call total conflicts with allowing three ERP calls, leaving retry behavior and budget enforcement underspecified.",
+        "The four-call total conflicts with allowing three ERP calls, leaving retry and stop behavior underspecified."
       ]
     },
     {
@@ -72,18 +73,18 @@
       "case": "agent-design-and-tooling-001",
       "arm": "with",
       "run": 3,
-      "regex": 0.9,
-      "words": 1014,
+      "regex": 1.0,
+      "words": 1191,
       "goal": "A single loop, no multi-agent, stop conditions and traces.",
       "scores": [
-        0.8,
-        0.8999999999999999
+        0.8500000000000001,
+        0.8500000000000001
       ],
-      "judge": 0.85,
+      "judge": 0.8500000000000001,
       "meetsGoal": 1.0,
       "weakest": [
-        "Draft validation checks numeric facts but does not verify that dispute conclusions are supported by ERP evidence and approved policy.",
-        "Fallback lookup conflicts with the invoice-not-found escalation rule and lacks a deterministic rule for selecting among matching invoices."
+        "The proposed autonomy promotion gate has no measurable acceptance thresholds to justify removing mandatory human review.",
+        "It claims there are no write tools while saving drafts, leaving write permissions and approval controls inconsistent."
       ]
     },
     {
@@ -95,14 +96,14 @@
       "words": 765,
       "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
       "scores": [
-        0.55,
-        0.6
+        0.6,
+        0.5
       ],
-      "judge": 0.575,
+      "judge": 0.55,
       "meetsGoal": 0.25,
       "weakest": [
-        "It never supplies a permission matrix with a proposed enforceable payment cap and an explicit approval rule above that cap.",
-        "It never supplies the required permission matrix with a concrete proposed payment cap and an explicit approval rule for exceptions."
+        "It never supplies a permission matrix with a definite payment cap and an explicit approval rule; example caps and escalation leave the key decision unresolved.",
+        "It leaves the cap illustrative and never specifies an above-cap approval rule in a permission matrix."
       ]
     },
     {
@@ -115,13 +116,13 @@
       "goal": "A single loop, no multi-agent, stop conditions and traces.",
       "scores": [
         0.8,
-        0.8500000000000001
+        0.8
       ],
-      "judge": 0.8250000000000001,
+      "judge": 0.8,
       "meetsGoal": 0.75,
       "weakest": [
-        "The single-controller pipeline needs explicit retry limits, timeouts, and privacy-safe trace controls for regulated deployment.",
-        "Stop conditions need operational limits: defined confidence thresholds, ERP timeouts, and bounded retries."
+        "Retry limits and privacy-safe, auditable trace controls are missing.",
+        "ERP access must be authorized against trusted customer identity, not merely matched to customer IDs extracted from untrusted dispute text."
       ]
     },
     {
@@ -130,17 +131,15 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 1302,
+      "words": 1589,
       "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
       "scores": [
-        0.8,
-        0.8
+        0.8500000000000001
       ],
-      "judge": 0.8,
+      "judge": 0.8500000000000001,
       "meetsGoal": 1.0,
       "weakest": [
-        "The write protocol binds approvals only above the cap, contradicting the interim requirement for human approval of every payment.",
-        "The payment protocol depends on new prepare, commit and reconciliation capabilities without explicitly making their implementation a prerequisite."
+        "Above-cap approvals have no absolute payment ceiling or defined limits on the team lead\u2019s authority."
       ]
     },
     {
@@ -152,14 +151,12 @@
       "words": 554,
       "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
       "scores": [
-        0.8500000000000001,
         0.8500000000000001
       ],
       "judge": 0.8500000000000001,
       "meetsGoal": 0.25,
       "weakest": [
-        "It picks the framework first and names step and budget caps without defining enforceable limits.",
-        "It picks the framework first and mentions step and budget caps without defining an enforceable stopping policy."
+        "It picks the framework first instead of last and calls for step and budget caps without defining enforceable limits."
       ]
     },
     {
@@ -167,18 +164,16 @@
       "case": "agent-design-and-tooling-001",
       "arm": "with",
       "run": 2,
-      "regex": 0.9,
-      "words": 1052,
+      "regex": 1.0,
+      "words": 1342,
       "goal": "A single loop, no multi-agent, stop conditions and traces.",
       "scores": [
-        0.8500000000000001,
         0.8500000000000001
       ],
       "judge": 0.8500000000000001,
-      "meetsGoal": 0.875,
+      "meetsGoal": 1.0,
       "weakest": [
-        "Tool isolation limits damage but does not prevent injected instructions from reaching the drafting model through extracted fields.",
-        "The optional fuzzy-matching loop lacks a defined model-call cap and conflicts with the stated two-call limit."
+        "It promises deterministic fact checks on free-text drafts without defining a reliable validation mechanism."
       ]
     },
     {
@@ -187,17 +182,15 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 537,
+      "words": 677,
       "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
       "scores": [
-        0.7,
-        0.65
+        0.8999999999999999
       ],
-      "judge": 0.675,
-      "meetsGoal": 0.75,
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
       "weakest": [
-        "It recommends a raw loop without establishing operational requirements, and its budget formula is not an enforceable spending cap.",
-        "The proposed budget is not an enforceable spending cap, and rejecting both frameworks is premature without operational requirements."
+        "It avoids choosing between the shortlisted frameworks and leaves enforceable budget values undecided."
       ]
     },
     {
@@ -206,17 +199,15 @@
       "arm": "with",
       "run": 1,
       "regex": 1.0,
-      "words": 1221,
+      "words": 1579,
       "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
       "scores": [
-        0.8500000000000001,
-        0.8500000000000001
+        0.8999999999999999
       ],
-      "judge": 0.8500000000000001,
+      "judge": 0.8999999999999999,
       "meetsGoal": 1.0,
       "weakest": [
-        "The payment protocol depends on new prepare, commit and reconciliation capabilities without specifying how the existing payment tool will support them.",
-        "The payment protocol needs explicit atomic cap enforcement and safe timeout reconciliation to prevent concurrent or retried calls from overpaying."
+        "The above-cap approval path conflicts with the eligibility rule that amounts must never exceed the per-action cap."
       ]
     },
     {
@@ -225,17 +216,15 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 1729,
+      "words": 1513,
       "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
       "scores": [
-        0.8,
-        0.8
+        0.8500000000000001
       ],
-      "judge": 0.8,
+      "judge": 0.8500000000000001,
       "meetsGoal": 1.0,
       "weakest": [
-        "Above-cap approval is allowed in the matrix but conflicts with the tool\u2019s within-cap-only rule, leaving execution ambiguous.",
-        "Draft-scoped idempotency can allow duplicate payments if the same goodwill decision generates a new draft."
+        "Above-cap approval conflicts with eligibility and tariff rules that appear to prohibit those same payments."
       ]
     },
     {
@@ -247,14 +236,12 @@
       "words": 515,
       "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
       "scores": [
-        0.8,
-        0.75
+        0.8500000000000001
       ],
-      "judge": 0.775,
+      "judge": 0.8500000000000001,
       "meetsGoal": 0.25,
       "weakest": [
-        "It leads with the framework and mentions caps without defining enforceable maximum steps and spend-budget stop conditions.",
-        "It leads with the framework and never specifies an enforceable maximum-step and spend-budget stopping rule."
+        "It leads with the framework choice instead of putting it last, and names caps without setting explicit maximum steps or a per-run budget."
       ]
     },
     {
@@ -263,17 +250,15 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 529,
+      "words": 666,
       "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
       "scores": [
-        0.7,
-        0.65
+        0.7
       ],
-      "judge": 0.675,
+      "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "It dismisses both shortlisted frameworks before establishing recovery and approval requirements, and leaves the per-run budget undefined.",
-        "It recommends a raw loop without establishing why neither shortlisted framework fits the regulated workflow."
+        "The budget remains unspecified, and read-only tools do not limit prompt-injection harm to misleading summaries."
       ]
     },
     {
@@ -282,17 +267,15 @@
       "arm": "with",
       "run": 1,
       "regex": 1.0,
-      "words": 564,
+      "words": 596,
       "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
       "scores": [
-        0.8500000000000001,
-        0.8999999999999999
+        0.8
       ],
-      "judge": 0.875,
+      "judge": 0.8,
       "meetsGoal": 1.0,
       "weakest": [
-        "The prototype lacks explicit release gates for coverage accuracy, correct policy versions, and safe handling of unsupported conclusions.",
-        "The raw-loop recommendation dismisses LangGraph before establishing the company's operational and auditability requirements."
+        "It substitutes a raw loop for the requested framework choice without adequately weighing LangGraph's value for controlled execution and human escalation."
       ]
     },
     {
@@ -304,14 +287,12 @@
       "words": 692,
       "goal": "A single loop, no multi-agent, stop conditions and traces.",
       "scores": [
-        0.8,
-        0.8500000000000001
+        0.8
       ],
-      "judge": 0.8250000000000001,
+      "judge": 0.8,
       "meetsGoal": 0.75,
       "weakest": [
-        "ERP lookup lacks explicit customer-authorization checks and concrete limits for fallback searches and execution time.",
-        "It rejects multi-agent orchestration but leaves the single controller\u2019s terminal states, ERP timeout limits, and fallback-search budget unspecified."
+        "It leaves the single orchestration loop underspecified, especially ERP timeouts, search limits, and terminal failure states."
       ]
     },
     {
@@ -323,14 +304,12 @@
       "words": 559,
       "goal": "Stop conditions with max steps and budget are added; the framework comes last.",
       "scores": [
-        0.75,
-        0.7
+        0.8
       ],
-      "judge": 0.725,
+      "judge": 0.8,
       "meetsGoal": 0.25,
       "weakest": [
-        "It leads with the framework choice instead of ending with it, and leaves step and budget limits unspecified.",
-        "It picks the framework first and mentions caps and budgets without defining enforceable stopping rules."
+        "It picks the framework first and never makes the per-claim cost budget an enforced stop condition."
       ]
     },
     {
@@ -342,14 +321,12 @@
       "words": 769,
       "goal": "A cap and an approval rule in the permission matrix for the payment tool.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
-      "meetsGoal": 0.25,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It never supplies a permission matrix with a decided payment cap and an explicit rule for when human approval is required.",
-        "It never supplies a permission matrix with an explicit payment cap and a rule specifying when human approval is required."
+        "It leaves the cap provisional and never supplies a payment permission-matrix row explicitly defining when human approval is required."
       ]
     },
     {
@@ -361,14 +338,12 @@
       "words": 838,
       "goal": "A single loop, no multi-agent, stop conditions and traces.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
       "meetsGoal": 0.5,
       "weakest": [
-        "It leaves separate agents optional instead of decisively specifying one bounded control loop with explicit stop conditions and end-to-end traces.",
-        "It leaves three separate agents as an option instead of decisively specifying one bounded control loop with explicit terminal states."
+        "It never firmly commits to a single bounded control loop, leaves ERP retries unbounded, and reopens the three-agent option."
       ]
     }
   ]

@@ -1,0 +1,605 @@
+{
+  "skill": "ai-incident-playbook",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": true,
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.04666666666666665,
+  "costUsd": 1.473036,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 15,
+      "judge": 0.8083333333333333,
+      "meetsGoal": 0.85,
+      "regex": 0.9939393939393939,
+      "words": 1077.9333333333334
+    },
+    "without": {
+      "answers": 15,
+      "judge": 0.6283333333333334,
+      "meetsGoal": 0.39166666666666666,
+      "regex": 0.4484848484848485,
+      "words": 659.3333333333334
+    }
+  },
+  "answers": [
+    {
+      "id": "793ecef987",
+      "case": "ai-incident-playbook-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.9,
+      "words": 495,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.5,
+        0.6
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.375,
+      "weakest": [
+        "It never turns this exact leak into a regression test that fails on the faulty version before the fix ships, and its unsupported 'that is tomorrow' misses that, as of 19 November, the 13 November 10:00 deadline has already passed, so late notification with reasons for the delay is now needed.",
+        "The answer correctly computes Friday 13 Nov 10:00, then invents 'that is tomorrow' without knowing today's date (the deadline may already have passed, which would require a late-notification justification), and it never makes this specific leak a regression test that must fail on the faulty version before the fix ships."
+      ]
+    },
+    {
+      "id": "a872827077",
+      "case": "ai-incident-playbook-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 675,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It only asks whether the prompt change can be reverted instead of ordering the owner to revert it now, and its GDPR deadline of 2026-11-20 does not fit a detection on the night of 2026-11-18 (72 hours puts it on 2026-11-21).",
+        "It asks whether the prompt change can be reverted instead of ordering the revert, and its GDPR deadline is off: 72 hours from detection on the night of 18 November falls on 21 November, not 20 November."
+      ]
+    },
+    {
+      "id": "7361afa194",
+      "case": "ai-incident-playbook-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6,
+      "words": 412,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.55,
+        0.5
+      ],
+      "judge": 0.525,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Its numbers are wrong: at 4 points a month the router would cross 88% in about a week, not a month, and at n\u2248200 the 95% interval is about \u00b14 points, not \u00b12. It also never addresses the eval-set refresh or the regulated context.",
+        "Its numbers are wrong: at 4 points a month the 1-point margin is gone in about a week, not a month, and \u00b12 points understates the noise on ~200 samples (closer to \u00b14), which undercuts the noise check the goal depends on."
+      ]
+    },
+    {
+      "id": "c2afd7f46c",
+      "case": "ai-incident-playbook-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 2476,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8999999999999999,
+        0.8500000000000001
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The rollback owner is a role chosen by the assistant ('name to confirm'), not a named person, and the rollback rehearsal is unverified.",
+        "The rollback owner is a placeholder role (Head of Claims Operations, 'name to confirm'), not a named person, and some AI Act dates are stated more firmly than the evidence supports."
+      ]
+    },
+    {
+      "id": "d54597d34b",
+      "case": "ai-incident-playbook-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.25,
+      "words": 2136,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The rollback owner is only a role with a [name] placeholder, and every AI-quality alarm threshold is left blank without even a proposed starting default, so the plan defers the decisions Compliance needs to sign off.",
+        "Rollback ownership stops at a role with a [name] placeholder and every alarm threshold is blank, so the goal's named owner and concrete quality alarm are not delivered."
+      ]
+    },
+    {
+      "id": "2cbf74d47f",
+      "case": "ai-incident-playbook-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 940,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.8999999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.875,
+      "weakest": [
+        "It says today is 18 November when it is 19 November, so the elapsed time ('8 days', 'passed 5 days ago') is understated by a day, even though the 72-hour deadline itself (Fri 13 Nov 10:00) is correct.",
+        "It states today is 18 November when it is 19 November, so the elapsed time is off by a day (9 days since detection, GDPR deadline passed 6 days ago) in an answer that hinges on deadline arithmetic."
+      ]
+    },
+    {
+      "id": "90d1422c63",
+      "case": "ai-incident-playbook-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 1470,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The rollback owner is a role placeholder rather than a named person, and the failure scenarios are listed as categories without a verification step for each.",
+        "Failure modes are listed by category without a paired verification step for each, and the rollback owner is a role placeholder, not a named person."
+      ]
+    },
+    {
+      "id": "c6a27b12df",
+      "case": "ai-incident-playbook-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5454545454545454,
+      "words": 398,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.6,
+        0.65
+      ],
+      "judge": 0.625,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never names a rollback owner empowered to act without waiting for the meeting, and it treats both the autonomy drop and telling customers as optional.",
+        "It names no rollback owner who acts without approval, never explicitly drops the L4 autonomy level, defers customer communication, and doesn't require the 40 failures as regression cases before the fix ships."
+      ]
+    },
+    {
+      "id": "31e17c7ca9",
+      "case": "ai-incident-playbook-006",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 827,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.8999999999999999,
+        0.8
+      ],
+      "judge": 0.85,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It states today's date as Wed 18 Nov without basis and predicts only a one-day delay, though checking every memo in the window could easily take longer.",
+        "It gives today as Wed 18 Nov when it is Thu 19 Nov, so the reporting-clock math rests on an unverified date, and generic regulatory boilerplate dilutes the case-specific plan."
+      ]
+    },
+    {
+      "id": "f4a95d7d83",
+      "case": "ai-incident-playbook-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.4,
+      "words": 423,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.55,
+        0.65
+      ],
+      "judge": 0.6000000000000001,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It wrongly says the Fri 13 Nov 10:00 deadline is 'about a day away' when it has already passed, and it never turns the leaked prompt into a regression test that must fail on the faulty version before the fix ships.",
+        "It never turns this exact leaking prompt into a regression case that must fail on the faulty version before the fix ships, and it claims without basis that the Fri 13 Nov 10:00 deadline is 'about a day away'."
+      ]
+    },
+    {
+      "id": "461a8e16f0",
+      "case": "ai-incident-playbook-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 849,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.7,
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It dates last night as 2026-11-17 when today is 2026-11-19, which puts both reporting deadlines a day early (and the DORA one already past), and it holds the customer message for counsel and finance instead of committing to a send time.",
+        "It puts detection on 2026-11-17 when 'yesterday night' is 2026-11-18, so its GDPR and DORA deadlines are wrong (the stated DORA date has already passed), and the customer notice is held for counsel with no send-by time."
+      ]
+    },
+    {
+      "id": "3a5dbb1cea",
+      "case": "ai-incident-playbook-006",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.0,
+      "words": 326,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.6,
+        0.55
+      ],
+      "judge": 0.575,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It approves shipping tonight on evidence from only three memos and treats the broader eval as a post-ship step. It also never mentions adding regression cases to the golden set, running the full suite per class against the previous version, or updating the card changelog.",
+        ""
+      ]
+    },
+    {
+      "id": "ba5caf3b2e",
+      "case": "ai-incident-playbook-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 691,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.8,
+        0.6
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It asserts today is 18 Nov (8 days on) when it is actually 19 Nov, and it uses unexplained internal jargon (L4 to L2, `error-analysis`, `build-evals`) that the PM may not be able to act on.",
+        "It asserts that today is 18 Nov, eight days after detection, which the request never says. That invented date drives its central 'deadline passed, notify late with reasons' advice instead of a conditional answer around the correctly computed Fri 13 Nov 10:00 deadline."
+      ]
+    },
+    {
+      "id": "a65bcb6509",
+      "case": "ai-incident-playbook-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9090909090909091,
+      "words": 800,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It assumes detection was 2026-11-17 when 'yesterday night' relative to today (2026-11-19) means 2026-11-18, which shifts every reporting deadline and wrongly labels the DORA 24-hour cutoff as 'today'.",
+        "It assumes detection was 2026-11-17 and calls 2026-11-18 'today', but today is 2026-11-19 and 'yesterday night' means the 18th, so the DORA and GDPR deadlines are off by a day."
+      ]
+    },
+    {
+      "id": "5591d0d0dc",
+      "case": "ai-incident-playbook-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 2261,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8999999999999999,
+        0.8500000000000001
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The rollback owner is a role with the person still to be confirmed, and the leak containment is left as 'L0 or L2', so two decisions stay open.",
+        "The illustrative reporting dates have the wrong weekdays (1 December 2026 is a Tuesday, not a Monday), and the rollback owner is a role with the name still to be confirmed, not a named person."
+      ]
+    },
+    {
+      "id": "e63867363f",
+      "case": "ai-incident-playbook-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 856,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.75,
+        0.8
+      ],
+      "judge": 0.775,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It states 'today is 18 Nov' as fact (actually 19 Nov) without the PM supplying a date, and its regression-case step stays generic instead of turning this specific injection into a concrete test that fails on the faulty version.",
+        "It says today is 18 Nov and that eight days have passed, but today is 19 Nov (nine days), so the 'notify now' urgency and the delay to explain are understated by a day."
+      ]
+    },
+    {
+      "id": "17399878de",
+      "case": "ai-incident-playbook-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2485,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8999999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The rollback owner is a role, not a named person ('name to confirm'), so the goal's 'named rollback owner' is only partly met, and the severity scale is never tied to response actions or reporting steps.",
+        "The rollback owner is a role, not a named person, and the plan relies on a 'ladder' and its rules without ever stating them, so the SEV levels are not mapped to the scenarios."
+      ]
+    },
+    {
+      "id": "9038cf7895",
+      "case": "ai-incident-playbook-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 487,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.8500000000000001,
+        0.8
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It says the trend reaches 88% 'within a few weeks', but at about 1 point a week from 89% the threshold is roughly one week away, so it understates how urgent setting the trigger is.",
+        "The containment trigger sits at the existing 88% threshold with no earlier warning level, and the noise check tests only a single 3-sigma point rather than the month-long downward trend."
+      ]
+    },
+    {
+      "id": "b16ed36e17",
+      "case": "ai-incident-playbook-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6363636363636364,
+      "words": 416,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.5,
+        0.5
+      ],
+      "judge": 0.5,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never names who owns the rollback or lets that person act without the meeting's approval, and it advises leaving affected customers alone instead of telling them, despite the regulated context.",
+        "It names no rollback owner, never tells affected customers (it even advises leaving them alone), and ignores compliance or regulator notification in a regulated company."
+      ]
+    },
+    {
+      "id": "c818677eb2",
+      "case": "ai-incident-playbook-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 641,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "Three of the four control-limit figures are miscalculated (about 87.6%, 89.2% and 90.6%, not 87.0%, 88.0% and 89.9%), so at n=400 the 89% is actually outside the limit, not borderline, which undermines the noise check the decision rests on.",
+        "The control-limit table is miscalculated for n=200, 400 and 1000 (true lower limits are about 87.6%, 89.2% and 90.6%), so n=400 is wrongly called borderline when 89% is already below the limit."
+      ]
+    },
+    {
+      "id": "0d420f4a89",
+      "case": "ai-incident-playbook-006",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.1,
+      "words": 355,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.5,
+        0.44999999999999996
+      ],
+      "judge": 0.475,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It still approves shipping tonight without a regression run. It never asks for error analysis on every memo in the alert window, regression cases added to the golden set, a per-class comparison against the previous version, or a card changelog update.",
+        "It approves shipping tonight even with no regression run, relying on analyst review, and never requires error analysis of every memo in the window, adding the failures to the golden set, or a model-card changelog update that a regulated firm needs."
+      ]
+    },
+    {
+      "id": "8ec3a8f1d0",
+      "case": "ai-incident-playbook-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 677,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.8500000000000001,
+        0.8999999999999999
+      ],
+      "judge": 0.875,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It may misread 'L3' as an autonomy level ('drop from L3 to L2') when it likely names the support tier, and the GDPR/DORA reporting section is generic boilerplate for a drift alert.",
+        "The GDPR/DORA reporting section reads like boilerplate, and the trend-alarm thresholds are left as placeholders (X points over N weeks) instead of being proposed."
+      ]
+    },
+    {
+      "id": "cb148421e0",
+      "case": "ai-incident-playbook-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.9,
+      "words": 405,
+      "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
+      "scores": [
+        0.44999999999999996,
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It assumes today is Thursday 12 Nov, which the request never states, so it may miss that the Friday 13 Nov 10:00 deadline has already passed; it also never turns the leaking prompt into a regression case that fails on the faulty version before the fix ships.",
+        "It invents 'today is Thursday 12 Nov' when the deadline of Friday 13 Nov 10:00 has likely already passed, and it never turns the leak into a regression case that must fail on the faulty version before the fix ships."
+      ]
+    },
+    {
+      "id": "f91ef8e56a",
+      "case": "ai-incident-playbook-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 425,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It projects a linear slide past 88% before settling whether the drop is just weekly-sample noise, and it ignores the regulated context (documentation and model-governance obligations) while never explicitly ruling out a rollback.",
+        "The extrapolation is wrong: at 4 points a month, the 1-point margin is gone in about a week, not a month. It also ignores the regulated setting (documenting the decision, audit trail) and never explicitly rules out a rollback."
+      ]
+    },
+    {
+      "id": "71e08c1f85",
+      "case": "ai-incident-playbook-006",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 336,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.7,
+        0.65
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It approves shipping tonight after an ad-hoc broader check, leaving the window-wide error analysis, golden-set regression cases, per-class full-suite comparison against the previous version and the card changelog until after release, and omitting the changelog entirely.",
+        "It approves shipping tonight before error analysis covers every memo in the window and before regression cases join the golden set, and it never mentions a per-class comparison against the previous version or a model card changelog update."
+      ]
+    },
+    {
+      "id": "aa3ee6658c",
+      "case": "ai-incident-playbook-006",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 736,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The reporting section reads like boilerplate and anchors the GDPR deadline on an odd date (2026-11-18) rather than detection (Nov 12) plus 72 hours.",
+        "The reporting section is shaky: it dismisses wrong values as a GDPR breach, though a wrong value about a natural person can be an integrity breach, and its deadline date is off since last Thursday was 2026-11-12, so 72 hours ran out around 2026-11-15, not 2026-11-18."
+      ]
+    },
+    {
+      "id": "823595dd7f",
+      "case": "ai-incident-playbook-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.25,
+      "words": 1503,
+      "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The scenario table gives first actions but no per-scenario verification, quality alarms have no concrete thresholds, and rollback sits with an unnamed 'IC' role rather than a named person.",
+        "The scenarios list first actions but no per-scenario verification that the fix worked, the quality alarm has no concrete threshold or paging route, and rollback goes to a generic IC/Engineering role rather than a named owner."
+      ]
+    },
+    {
+      "id": "87da35f1a0",
+      "case": "ai-incident-playbook-006",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 768,
+      "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
+      "scores": [
+        0.8,
+        0.65
+      ],
+      "judge": 0.7250000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It asserts unsupported specifics as fact: today's date (18 Nov, not 19), an AI Act Annex III application date of 2 Dec 2027, a SEV2 level and a no-approval downgrade rule, and it wrongly reads the alert as proof that analyst validation failed when analysts may have been the ones who caught the errors.",
+        "The regulatory-clock section overreaches: it treats wrong AI output as a possible overdue GDPR personal-data breach or DORA major incident, and states today is 18 Nov when it is the 19th, so its deadline maths is off and could push the PM into needless late notifications."
+      ]
+    },
+    {
+      "id": "a452b854b5",
+      "case": "ai-incident-playbook-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8,
+      "words": 375,
+      "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It ignores the regulated setting (documentation, audit trail, any reporting duty) and projects a threshold breach from a trend it has just said could be noise.",
+        "It ignores the regulated context: there is no documentation or audit-trail step and no explicit refresh of the eval set, and its projected threshold crossing treats a possibly-noisy trend as linear."
+      ]
+    },
+    {
+      "id": "891f157134",
+      "case": "ai-incident-playbook-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5454545454545454,
+      "words": 415,
+      "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
+      "scores": [
+        0.65,
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never names a rollback owner empowered to act without approval, doesn't commit to telling affected customers, and ignores regulatory notification in a regulated company.",
+        "It names no rollback owner, does not let that owner act without waiting for the meeting, routes customer communication through support rather than notifying affected customers, and ignores regulatory notification duties in a regulated company."
+      ]
+    }
+  ],
+  "skillHash": "a20f9c8520ba92927f8f4d71053048b9b166614b420a99bb3e58e1637b9fa31c"
+}

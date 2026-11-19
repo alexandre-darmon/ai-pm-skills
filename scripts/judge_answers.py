@@ -42,6 +42,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from run_evals import regrade, run_score, skill_check, mean, ROOT  # noqa: E402
 from validate_skills import read_frontmatter, read_skill  # noqa: E402
 import openrouter  # noqa: E402
+import ollama_judge  # noqa: E402
 import yaml  # noqa: E402
 
 JUDGE_MODEL = "claude-haiku-5-5"
@@ -293,11 +294,13 @@ def judge_prompt(item: dict) -> str:
 
 def judge_dir(root: Path, model: str) -> Path:
     """baselines/judge/<model>/, one level: an OpenRouter id's slash becomes -- (openrouter.dir_name)."""
-    return root / "baselines" / "judge" / openrouter.dir_name(model)
+    return root / "baselines" / "judge" / openrouter.dir_name(model).replace(":", "-")
 
 
 def judge_meta(model: str, call) -> dict:
     """What kind of judge wrote a file: eval_gains.py labels its row from this."""
+    if ollama_judge.is_local(model):
+        return {"provider": "ollama", "judgeKind": "llm"}
     if not openrouter.is_openrouter(model):
         return {"provider": "claude", "judgeKind": "llm"}
     return {"provider": "openrouter", "judgeKind": "decision" if getattr(call, "takes_item", False) else "llm"}
@@ -308,6 +311,10 @@ def pick_call(model: str, call, dry_run: bool):
     Checks the model id and the key before any call; a dry run needs no key."""
     if call is not call_judge or not openrouter.is_openrouter(model):
         return call
+    if ollama_judge.is_local(model):  # ollama/<name>: a model on this machine, no key
+        if not dry_run:
+            ollama_judge.check_ready(model)
+        return ollama_judge.call_local
     chosen = openrouter.caller(model)
     if not dry_run:
         openrouter.api_key()
@@ -356,6 +363,8 @@ def estimate_cost(root: Path, model: str, items: list[dict], passes: int) -> tup
 def run_judge(items: list[dict], model: str, passes: int, workers: int, call=call_judge) -> list[tuple[int, dict]]:
     """Every item judged `passes` times: [(item index, reply or {"error"})]. One bad reply never loses the batch."""
     jobs = [(k, p) for p in range(passes) for k in range(len(items))]
+    if ollama_judge.is_local(model):
+        workers = 1  # one call at a time: parallel requests grow the local model's memory, and a 32 GB machine swaps
 
     def run(job):
         k, _ = job
@@ -379,7 +388,7 @@ def score_items(items: list[dict], results: list[tuple[int, dict]]) -> list[str]
         item["scores"] = [overall(r) for r in good]
         item["judge"] = mean(item["scores"])
         item["meetsGoal"] = mean([(r["meets_goal"] - 1) / 4 for r in good])
-        item["weakest"] = [r["weakest_point"] for r in good]
+        item["weakest"] = [r.get("weakest_point", "") for r in good]
         for field in ("answer", "request"):
             item.pop(field, None)
     return errors
@@ -429,6 +438,9 @@ def main_key(args, root: Path, call) -> int:
         return 0
     results = run_judge(items, args.model, args.passes, args.j, call)
     errors = score_items(items, results)
+    if not any(i["judge"] is not None for i in items):
+        print(f"no answer judged ({len(errors)} errors, first: {errors[0] if errors else '-'}); nothing written")
+        return 1
     for item in items:
         item.pop("sheetId")  # the file joins on skill, id and words; the sheet's order stays out of it
     judged = [i for i in items if i["judge"] is not None]
@@ -457,8 +469,8 @@ def main(argv: list[str] | None = None, root: Path = ROOT, call=call_judge) -> i
                     "request hashes: the commit current when it was drawn)")
     ap.add_argument("--recorded", action="store_true", help="folders: judge the run recorded in baselines/<skill>.json, not eval-out/answers/")
     ap.add_argument("--dry-run", action="store_true", help="print the calls, the estimated cost and the prompts' sizes, no model call")
-    ap.add_argument("--model", default=JUDGE_MODEL, help="a Claude id (claude-haiku-5-5) or an OpenRouter id with a slash "
-                    "(openai/..., typesafe/jev-1.14), which needs OPENROUTER_API_KEY")
+    ap.add_argument("--model", default=JUDGE_MODEL, help="a Claude id (claude-haiku-5-5), an OpenRouter id with a slash "
+                    "(openai/..., typesafe/jev-1.14), which needs OPENROUTER_API_KEY, or ollama/<name> for a local model")
     ap.add_argument("--passes", type=int, default=2, help="judge each answer this many times, to measure its noise")
     ap.add_argument("--include-legal", action="store_true", help="folders: judge legal skills too; the rubric does not check legal "
                     "correctness, and eval_gains.py shows them on rows of their own")
@@ -491,6 +503,8 @@ def main(argv: list[str] | None = None, root: Path = ROOT, call=call_judge) -> i
         else:
             items = collect(folder, root / "eval-out" / "answers" / skill)
             template = root / "eval-out" / "template-arm" / "answers" / skill
+        # which text of the skill wrote the "with" answers: eval_gains.py counts a file as current only on a match
+        run_hash = json.loads((answers / "runs.json").read_text()).get("skillHash") if args.recorded and answers else None
         variant = root / "eval-out" / "template-arm" / "variants" / skill
         if template and variant.is_dir():
             items += collect(variant, template, "template")
@@ -506,7 +520,12 @@ def main(argv: list[str] | None = None, root: Path = ROOT, call=call_judge) -> i
             continue
         results = run_judge(items, args.model, args.passes, args.j, call)
         errors = score_items(items, results)
+        if not any(i["judge"] is not None for i in items):  # every call failed: keep the last good file
+            print(f"{skill}: no answer judged ({len(errors)} errors, first: {errors[0] if errors else '-'}); "
+                  f"{dest / (skill + '.json')} left unchanged", flush=True)
+            continue
         out = {"skill": skill, "judgeModel": args.model, **judge_meta(args.model, call), "answerSet": "recorded" if args.recorded else "latest", "legal": legal,
+               "skillHash": run_hash,
                "limit": args.limit, "calibrated": False, "passes": args.passes, "errors": len(errors), "firstError": errors[0] if errors else None,
                "noise": noise(items), "costUsd": sum(r.get("costUsd") or 0 for _, r in results), "longContextCalls": sum(bool(r.get("longContext")) for _, r in results), "arms": summarise(items), "answers": items}
         dest.mkdir(parents=True, exist_ok=True)

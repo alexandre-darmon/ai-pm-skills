@@ -1,5 +1,5 @@
 """Write assets/evals.svg: per catalog skill, the regex score without the skill and with it, and next to it the gain an
-outside blind judge (JUDGE, a general LLM from another vendor) sees on the same recorded answers.
+blind judge (JUDGE) sees on the same recorded answers; only files that grade the current recorded run count.
 
 Same style and outlined text as the banner (see lifecycle_svg.py). Needs fonttools and the Geist TTFs:
     python3 scripts/evals_svg.py <fonts_dir>
@@ -13,7 +13,7 @@ from lifecycle_svg import BORDER, FAINT, INK, MUTED, VIOLET, W, Text, background
 
 ROOT = Path(__file__).resolve().parent.parent
 MARGIN, LABEL, ROW = 56, 330, 34
-JUDGE, JUDGE_NAME = "openai--gpt-6.1-sol", "GPT-6.1 Sol"
+JUDGE, JUDGE_NAME = "claude-opus-5-5", "Claude Opus 5.5"
 
 
 def judge_gains(root=ROOT, judge=JUDGE):
@@ -21,7 +21,9 @@ def judge_gains(root=ROOT, judge=JUDGE):
     out = {}
     for f in sorted((root / "baselines" / "judge" / judge).glob("*.json")):
         j = json.loads(f.read_text())
-        if j.get("limit") or j.get("answerSet") != "recorded":
+        b = root / "baselines" / f.name
+        current = b.is_file() and j.get("skillHash") and j.get("skillHash") == json.loads(b.read_text()).get("skillHash")
+        if j.get("limit") or j.get("answerSet") != "recorded" or not current:
             continue
         cases = {}
         for a in j["answers"]:
@@ -58,7 +60,7 @@ def main(fonts):
     cr, cj = W - MARGIN - 150, W - MARGIN - 70  # fixed columns: regex gain, judge gain
     sx = lambda v: x0 + v * (x1 - x0)
     top = 150
-    h = top + len(rows) * ROW + 134
+    h = top + len(rows) * ROW + 158
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {h}" width="{W}" height="{h}" role="img" '
            f'aria-label="Eval scores of the {len(rows)} catalog skills: without the skill and with it on regex graders, and the gain seen by an outside judge">',
            f"<title>Eval scores of the {len(rows)} catalog skills</title>", *background(h),
@@ -85,9 +87,8 @@ def main(fonts):
             sans("with the skill, regex graders", MARGIN + 174, y + 5, 14, MUTED),
             sans("Gains in points. regex: graders written by the skills' author, they check what the skill asks for.",
                  MARGIN, y + 40, 14, MUTED),
-            sans(f"judge: {JUDGE_NAME} (OpenAI), blind to the arm, overall quality of the same answers; it does not check legal correctness. "
-                 "—: no saved answers without the skill to compare.",
-                 MARGIN, y + 64, 14, MUTED)]
+            sans(f"judge: {JUDGE_NAME}, blind to the arm, overall quality of the same answers; a Claude model like the one that answers,", MARGIN, y + 64, 14, MUTED),
+            sans("so the outside judges (GPT-6.1 Sol, Jev) are in the README table. It does not check legal correctness.", MARGIN, y + 88, 14, MUTED)]
     (ROOT / "assets/evals.svg").write_text("".join(out + ["</svg>\n"]))
 
 

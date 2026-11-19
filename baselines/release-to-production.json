@@ -2,11 +2,11 @@
   "skill": "release-to-production",
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.317",
-  "date": "2026-11-12",
+  "claudeVersion": "2.1.321",
+  "date": "2026-11-18",
   "casesHash": "6a42fae3a1003ca1ea700ed14d484a507a0ee22764230486c0cd56f964a7e7b4",
   "partial": false,
-  "costUsd": 0.5349470999999999,
+  "costUsd": 0.5650415999999999,
   "cases": {
     "release-to-production-001": {
       "score": 1.0,
@@ -50,7 +50,7 @@
         ]
       },
       "costPerAnswer": [
-        0.06053036666666666,
+        0.06473676666666667,
         null
       ],
       "delta": 0.38888888888888895
@@ -85,7 +85,7 @@
         ]
       },
       "costPerAnswer": [
-        0.038788533333333326,
+        0.04132249999999999,
         null
       ],
       "delta": 0.40740740740740733
@@ -124,7 +124,7 @@
         ]
       },
       "costPerAnswer": [
-        0.0440708,
+        0.04703393333333333,
         null
       ],
       "delta": 0.33333333333333337
@@ -143,12 +143,12 @@
         ]
       },
       "costPerAnswer": [
-        0.034926,
+        0.035254,
         null
       ]
     }
   },
-  "skillHash": "e77d50062f5e57f485625d088ebac865886aaae4b118acba3b0cd1821b3ae786",
+  "skillHash": "00efcebee393b798afacc19be61c0719e438e3ddad74d9c9f4c8eda9998ffd57",
   "meanDelta": 0.37654320987654327,
   "failures": []
 }

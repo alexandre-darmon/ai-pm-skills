@@ -1,0 +1,491 @@
+{
+  "skill": "agent-evals",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 2,
+  "errors": 0,
+  "firstError": null,
+  "noise": 0.02083333333333333,
+  "costUsd": 1.2363552,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 12,
+      "judge": 0.9375,
+      "meetsGoal": 0.9791666666666666,
+      "regex": 0.9729166666666668,
+      "words": 1274.8333333333333
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.7958333333333334,
+      "meetsGoal": 0.4270833333333333,
+      "regex": 0.44910714285714287,
+      "words": 731.0
+    }
+  },
+  "answers": [
+    {
+      "id": "b9f25e6273",
+      "case": "agent-evals-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.4,
+      "words": 750,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It says to run each case several times but never fixes k in advance or reports pass^k, and it lacks explicit sandbox end-state checks and the order-not-found forbidden event.",
+        "It says to run each case several times but never fixes k in advance or reports pass^k, and it never frames tests as an end-state check in the sandbox ledger with 'order not found' as a forbidden event."
+      ]
+    },
+    {
+      "id": "6f6a617a9f",
+      "case": "agent-evals-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1023,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.95,
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The L2/L3/L4 ladder and its prerequisites, such as the 2-week shadow run and AI Act items, are stated as binding rules without saying whose policy they are, and the 3.7 M EUR exposure assumes every wrong payment is a total loss.",
+        "It states the L2-to-L4 ladder requirements, including the AI Act annex III and art. 14 items, as binding policy without saying where that framework comes from or confirming that it applies to this company."
+      ]
+    },
+    {
+      "id": "15927e631f",
+      "case": "agent-evals-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 897,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        1.0,
+        1.0
+      ],
+      "judge": 1.0,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 200+ fresh-injection target is stated without tying it to the bound the committee would need, which leaves the attack-set size somewhat arbitrary.",
+        "The size of the new attack set (200 or more) is asserted without tying it to the per-action bound the committee would need."
+      ]
+    },
+    {
+      "id": "6af34a8665",
+      "case": "agent-evals-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.9,
+      "words": 602,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.8999999999999999,
+        0.95
+      ],
+      "judge": 0.9249999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It conflates per-trial reliability with pass^k and never shows the compounding (0.9 per trial gives about 0.73 over 3 trials), so the CFO doesn't see why pass@3 overstates reliability.",
+        "It blurs the per-trial rate with pass^k and never shows the compounding (0.9 per trial gives about 0.73 over 3), so it skips the clearest reason pass@3 misleads."
+      ]
+    },
+    {
+      "id": "57ca8b8b37",
+      "case": "agent-evals-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.0,
+      "words": 515,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It grades on CRM end state and tracks claimed-success-with-no-change, but never injects tool failures or timeouts at the last write, never builds a last-success by first-failure matrix, and never turns the 7 failing runs into regression tasks.",
+        "It never seeds tool failures or timeouts at the last write, never builds a last-success by first-failure matrix, and never turns the 7 runs into regression tasks."
+      ]
+    },
+    {
+      "id": "cbcaf3ce61",
+      "case": "agent-evals-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5714285714285714,
+      "words": 829,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It rules out the 300 real emails for security testing instead of planting injections in them, so benign utility, utility under attack and attack success never come from the same tasks. It also never reports attack success per forbidden action with an upper bound (about 2.5% for 0 of 120).",
+        "It writes off the 300 real emails as useless for security instead of planting injections in them to measure benign utility, utility under attack and attack success on the same tasks, and it never reports per-action attack success with its roughly 2.5% upper bound for 0 of 120."
+      ]
+    },
+    {
+      "id": "8538b5e2e3",
+      "case": "agent-evals-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.375,
+      "words": 577,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It grades on CRM end state, but it never seeds failures or timeouts at the final write, never reports false successes as their own metric, never builds a last-success by first-failure matrix, and never turns the 7 runs into regression tasks.",
+        "It grades on the CRM end state but never seeds timeouts at the final write, never reports false successes as their own metric, and never maps first-failing steps in a matrix, so the 7 runs become a sanity check rather than regression tasks."
+      ]
+    },
+    {
+      "id": "2a8f6825fc",
+      "case": "agent-evals-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1026,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.95,
+        0.8999999999999999
+      ],
+      "judge": 0.9249999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 6-to-8-week timeline and the pass^3 \u2265 95% bar are stated without a basis, a small inconsistency in an answer that otherwise names its unknowns carefully.",
+        "It cites L2/L3/L4 ladder rules and AI Act high-risk/art. 14 relevance as if established, and its faster fallback of sample-only review quietly drops the full approval it says to keep."
+      ]
+    },
+    {
+      "id": "b742832064",
+      "case": "agent-evals-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9,
+      "words": 1990,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.8999999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The answer requires at least 200 over-200 EUR trials, but the ~150-task \u00d7 5 plan, split across eight families, doesn't budget for them, and the pass^5 \u2265 0.90 bar is asserted rather than derived.",
+        "The headline claim that 750 trials meet the 0.5% bar treats repeated trials as independent, and the per-task bound (2%) is only offered afterward as a caveat."
+      ]
+    },
+    {
+      "id": "27a1e4803b",
+      "case": "agent-evals-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.2,
+      "words": 968,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never frames tests as tasks with a sandbox end-state check, omits the 'refund on an order not found' forbidden event, and says to run cases repeatedly without fixing k in advance or reporting pass^k.",
+        "It never defines tasks as a starting state plus a sandbox end-state check, omits 'refund on an order not found' as a forbidden event, and suggests repeated runs without fixing k in advance or reporting pass^k, applying the rule of three to wrong payouts rather than to zero forbidden events."
+      ]
+    },
+    {
+      "id": "e9eba62599",
+      "case": "agent-evals-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1204,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.8500000000000001,
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 1,500-trial sizing pools the five attack variants, so each forbidden action gets only 300 trials and a bound near 1%, not the 0.2% bar; the answer also leaves a '[ref]' placeholder in the level gate.",
+        "The 1,500-trial bar assumes 0.2% per attack, but spreading 5 variants across forbidden actions gives only about 300 trials per action (roughly a 1% bound each), and an unresolved '[ref]' placeholder is left in the level gate."
+      ]
+    },
+    {
+      "id": "1a2a656229",
+      "case": "agent-evals-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 847,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        1.0,
+        1.0
+      ],
+      "judge": 1.0,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 3.7M EUR monthly exposure ignores that the CFO's monthly limit would cap the loss, and the 3,600-trial bar comes without a view on whether the shadow run can realistically supply it.",
+        "It asserts the true error rate is 'probably far lower' with no evidence, and its 3,600-trial bar is impractical without leaning on the shadow run."
+      ]
+    },
+    {
+      "id": "f814411c41",
+      "case": "agent-evals-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1289,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.95,
+        1.0
+      ],
+      "judge": 0.975,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It cites an 'agent-eval template' and 'autonomy ladder' the user never supplied, and adds generic checklist items such as the CSE consultation, which pads an otherwise case-specific plan.",
+        "The 900-trial bound of \u22640.33% treats repeated trials on the same 300 tasks as independent; the answer hedges this, but the committee could still misread it."
+      ]
+    },
+    {
+      "id": "57827b16ee",
+      "case": "agent-evals-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 2139,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.8999999999999999,
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It proposes a new month-long shadow run but misses that the current L2 setup already produces one, with six months of agent proposals checked against validator decisions, and it cites an unexplained script, scripts/agent_reliability.py, as if it already exists.",
+        "It cites a `scripts/agent_reliability.py` command the PM likely doesn't have, and sets the pass^10 \u2265 0.95 and 1% attack bars without marking them as assumptions or justifying them."
+      ]
+    },
+    {
+      "id": "dc13e2bd37",
+      "case": "agent-evals-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 800,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.8999999999999999,
+        0.8500000000000001
+      ],
+      "judge": 0.875,
+      "meetsGoal": 0.625,
+      "weakest": [
+        "It never quantifies pass^3 (0.9 per trial gives about 0.73 over 3) or turns the 10% bound into about 120 wrong payments a month, saying only 'dozens'. Its shadow-mode exit of 1,200 clean payments also falls short of its own 3,000-payment requirement.",
+        "It says 'dozens' instead of quantifying about 120 wrong payments a month and gives no pass^3 illustration (0.9 per trial gives about 0.73), and its 1,200-payment shadow-mode exit contradicts its own 3,000-payment figure."
+      ]
+    },
+    {
+      "id": "8431278117",
+      "case": "agent-evals-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5,
+      "words": 800,
+      "goal": "Refuses pass@3 as the gate for payments that cannot be undone, asks for the per-trial rate and pass^k (0.9 per trial gives about 0.73 over 3), says zero wrong payments in 30 trials still allows about 10%, up to about 120 payments a month, and keeps the approval.",
+      "scores": [
+        0.8,
+        0.8500000000000001
+      ],
+      "judge": 0.8250000000000001,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never computes pass^k (0.9 per trial gives about 0.73 over 3) and never turns the 10% upper bound into up to about 120 wrong payments a month, so the core quantitative argument stays vague.",
+        "It never names pass^k or gives the 0.9 to about 0.73 example, and it never turns the 10% upper bound into the roughly 120 possible wrong payments a month at 1,200 payments."
+      ]
+    },
+    {
+      "id": "7e0045f25b",
+      "case": "agent-evals-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1382,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.95,
+        0.8500000000000001
+      ],
+      "judge": 0.9,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The failure matrix has only two rows and includes impossible cells, such as 'update never called' after a successful update_opportunity, and the plan leaves a dangling [ref] citation.",
+        "The failure matrix is muddled: its columns are failure modes rather than steps, it has contradictory cells (update_opportunity as last success crossed with 'update never called'), and it omits log_activity and a 'nothing succeeded' row; a dangling '[ref]' placeholder also remains."
+      ]
+    },
+    {
+      "id": "b77202ff84",
+      "case": "agent-evals-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 723,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.95,
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It calls log_activity 'the last write' without knowing the actual tool order, and offers no practical path to the roughly 1,800 zero-failure trials its bar requires.",
+        "It projects 420 silent failures a month from a 50-run hand sample without asking whether those 50 runs represent real traffic, and it barely covers the audit-trail obligations of a regulated company."
+      ]
+    },
+    {
+      "id": "4eb8fc8ce8",
+      "case": "agent-evals-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.875,
+      "words": 822,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.95,
+        1.0
+      ],
+      "judge": 0.975,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It ignores the regulated context: no mention of audit trails or compliance exposure from silent CRM write failures, and the reference to `agent-design-and-tooling` is never explained.",
+        "It points to an unexplained 'agent-design-and-tooling' reference for the production write protocol instead of deciding it, and it doesn't say whether log_activity is really the last write here."
+      ]
+    },
+    {
+      "id": "b48c81df80",
+      "case": "agent-evals-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9,
+      "words": 1956,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.8999999999999999,
+        0.95
+      ],
+      "judge": 0.9249999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It proposes a new shadow month when L2 already runs the agent in shadow, so six months of proposal-vs-approval data could supply that bound now; it also cites a script (scripts/agent_reliability.py) the PM may not have.",
+        "It cites a `scripts/agent_reliability.py` tool the PM was never given, an unexplained artifact in an otherwise careful plan."
+      ]
+    },
+    {
+      "id": "90312dcb70",
+      "case": "agent-evals-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5,
+      "words": 543,
+      "goal": "Grades runs on the CRM end state, not the closing message; seeds tool failures and timeouts at the last write; counts false successes apart; labels the first failing step in a last-success by first-failure matrix; turns the 7 runs into regression tasks.",
+      "scores": [
+        0.75,
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never seeds tool errors or timeouts at the final update_opportunity write and has no last-success by first-failure matrix, so it diagnoses causes ad hoc instead of systematically.",
+        "It grades the CRM end state and counts false successes separately, but it never injects tool failures or timeouts at the final write, never builds a last-success by first-failure matrix, and folds the 7 failures into a general seed set instead of turning them into explicit regression tasks."
+      ]
+    },
+    {
+      "id": "7d41eb7384",
+      "case": "agent-evals-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.3,
+      "words": 853,
+      "goal": "Writes tasks with a starting state, an end-state check in a sandbox and forbidden events (refund over 200 EUR without approval, double refund, refund on an order not found), fixes k before the run, reports pass^k and states the rule-of-three bound on zero forbidden events.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It runs each case '3\u20135 times' instead of fixing k before the run, never reports pass^k, and doesn't frame tasks as an end-state check in the sandbox plus a list of forbidden events, so it only partly meets the goal.",
+        "It leaves k as '3\u20135 runs' rather than fixing it before the run, never names or reports pass^k, and never turns the three forbidden events into an explicit per-task end-state check in the sandbox."
+      ]
+    },
+    {
+      "id": "de9d9f19d2",
+      "case": "agent-evals-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5714285714285714,
+      "words": 903,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.8,
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It treats the 300 real emails as a utility-only set instead of planting injections in them, so benign utility, utility under attack and attack success never come from the same tasks, and attack success is not broken out per forbidden action.",
+        "It treats the 300 real emails as security-irrelevant instead of planting injections in them, so it cannot measure benign utility, utility under attack and attack success on the same tasks, and it never reports attack success per forbidden action."
+      ]
+    },
+    {
+      "id": "1807c8b3b7",
+      "case": "agent-evals-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5714285714285714,
+      "words": 632,
+      "goal": "Refuses the 0 of 120 as evidence because the filter was adjusted on those same emails and asks for an attack set kept apart from tuning; plants injections inside the 300 real client emails so benign utility, utility under attack and attack success rate come from the same tasks; reads attack success per forbidden action (contact change, documents sent outside) with its upper bound, about 2.5% for 0 of 120.",
+      "scores": [
+        0.65,
+        0.7
+      ],
+      "judge": 0.675,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It says the 300 real emails reveal nothing about injection safety instead of planting injections in them to measure benign utility, utility under attack and attack success on the same tasks, and its '125 emails a month' wrongly applies the 2.5% bound to all traffic rather than to attack attempts.",
+        "It says the 300 real emails reveal nothing about injection safety instead of planting attacks in them to measure benign utility, utility under attack and attack success on the same tasks, and it misreads the 2.5% bound as about 125 compromised emails a month."
+      ]
+    }
+  ],
+  "skillHash": "0c73875d8d6284106e87b3d6b51d7cf62a7c039f6ea2a442737a393c356b8c6c"
+}

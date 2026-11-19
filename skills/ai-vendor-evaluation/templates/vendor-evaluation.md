@@ -1,6 +1,6 @@
 # AI vendor evaluation: <use case>
 
-Date: <date> · Cases version: <version> · Financial entity under DORA: <yes / no> · Freshness: skill verified on <last_verified>.
+Date: <date the user gave, else leave this placeholder> · Cases version: <version> · Financial entity under DORA: <yes / no> · Freshness: skill verified on <last_verified>.
 
 ## Shortlist
 | Candidate | Product and model version | Claims made (source) | Claim status (claimed / reproduced / not reproduced) |
@@ -27,8 +27,8 @@ Paired comparison: d = <cases where exactly one is right>, gap <points> against 
 | --- | --- | --- | --- |
 
 ## AI Act document status
-| Document | Article | Candidate | Status (on file / claimed / missing / not due yet) |
-| --- | --- | --- | --- |
+| Document | Article | Applies if | Candidate | Status (on file / claimed / requested / missing / not due yet) |
+| --- | --- | --- | --- | --- |
 
 ## DORA checks
 <If not a financial entity: "Not applicable", and why.>

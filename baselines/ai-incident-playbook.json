@@ -2,11 +2,11 @@
   "skill": "ai-incident-playbook",
   "model": "claude-sonnet-5-5",
   "judgeModel": "claude-haiku-5-5",
-  "claudeVersion": "2.1.317",
-  "date": "2026-11-12",
+  "claudeVersion": "2.1.321",
+  "date": "2026-11-18",
   "casesHash": "ed803bd12ac9cf9599a9319e8116e7420e7b6db23ee6a16e68a902b0d760d347",
   "partial": false,
-  "costUsd": 2.0782779999999996,
+  "costUsd": 1.2081744,
   "cases": {
     "ai-incident-playbook-001": {
       "score": 0.9696969696969697,
@@ -17,7 +17,7 @@
       "negative": false,
       "graders": {
         "comms": [
-          2,
+          3,
           2
         ],
         "level": [
@@ -37,7 +37,7 @@
           3
         ],
         "regression-before-fix": [
-          3,
+          2,
           0
         ],
         "window": [
@@ -46,8 +46,8 @@
         ]
       },
       "costPerAnswer": [
-        0.048846433333333335,
-        0.030902
+        0.05374193333333333,
+        null
       ],
       "delta": 0.39393939393939403
     },
@@ -85,13 +85,13 @@
         ]
       },
       "costPerAnswer": [
-        0.05859606666666667,
-        0.033012
+        0.06037376666666666,
+        null
       ],
       "delta": 0.2666666666666666
     },
     "ai-incident-playbook-003": {
-      "score": 0.9666666666666667,
+      "score": 1.0,
       "scoreWithout": 0.7333333333333334,
       "fired": 3,
       "runs": 3,
@@ -119,15 +119,15 @@
           1
         ],
         "severity": [
-          2,
+          3,
           1
         ]
       },
       "costPerAnswer": [
-        0.050751899999999996,
-        0.029801999999999995
+        0.05433796666666666,
+        null
       ],
-      "delta": 0.23333333333333328
+      "delta": 0.2666666666666666
     },
     "ai-incident-playbook-004": {
       "score": 1.0,
@@ -143,8 +143,8 @@
         ]
       },
       "costPerAnswer": [
-        0.033816,
-        0.033010000000000005
+        0.03291133333333334,
+        null
       ]
     },
     "ai-incident-playbook-005": {
@@ -173,13 +173,13 @@
         ]
       },
       "costPerAnswer": [
-        0.1561946,
-        0.1374968
+        0.142516,
+        null
       ],
       "delta": 0.8333333333333334
     },
     "ai-incident-playbook-006": {
-      "score": 0.9666666666666667,
+      "score": 1.0,
       "scoreWithout": 0.03333333333333333,
       "fired": 3,
       "runs": 3,
@@ -191,7 +191,7 @@
           1
         ],
         "changelog": [
-          2,
+          3,
           0
         ],
         "error-analysis": [
@@ -212,13 +212,13 @@
         ]
       },
       "costPerAnswer": [
-        0.050272199999999996,
-        0.030059333333333337
+        0.0588438,
+        null
       ],
-      "delta": 0.9333333333333333
+      "delta": 0.9666666666666667
     }
   },
-  "skillHash": "f1f719faac96b6ceaabcf07dd3fa19a3ab338c9b63f9903bf4824a115b0d26c6",
-  "meanDelta": 0.5321212121212121,
+  "skillHash": "a20f9c8520ba92927f8f4d71053048b9b166614b420a99bb3e58e1637b9fa31c",
+  "meanDelta": 0.5454545454545455,
   "failures": []
 }

@@ -4,6 +4,16 @@ Each release lists what changed for someone who installs the skills.
 
 **Version numbers.** Major (2.0): a skill is removed or renamed, or an output template changes shape, so installs or downstream documents can break. Minor (1.2): a skill is added, or a skill gains a method step. Patch (1.1.1): wording, graders, docs, manifests. The release version is the same in every manifest; each skill also has its own version in `metadata.version`. Per-skill versions live in each `SKILL.md` (`metadata.version`); eval records and their history are in [`baselines/`](baselines/).
 
+## Unreleased
+
+- **Outside-judge iterations, then an honesty pass.** Thirteen skills where GPT-6.1 Sol saw +5 points or less were iterated against its critiques. An independent review then found teaching to the test (case wording and expected answers copied into skills), red lines dropped from "Rules and red lines", correct law removed to please the judge, and Wald intervals where the skill uses Wilson; every finding was fixed and each skill rerun (3 runs, pass, red lines held). Skills changed: `ai-act-classification`, `ai-vendor-evaluation`, `model-card-ai-registry`, `ai-incident-playbook`, `production-evals-monitoring`, `process-ai-redesign`, `conversation-analysis`, `release-to-production`, `agent-design-and-tooling`, `agent-evals`, `llm-judge-calibration`, `model-selection`, `prototype-handover`.
+- **Claude Opus 5.5 as a judge** (`--model claude-opus-5-5`, on the subscription): all 29 skills on their current recorded runs, +6 to +27 points, +15 overall; it is a Claude model like the one that answers, so the chart says so and the outside judges stay in the table. GPT-6.1 Sol and Jev rows now read "earlier runs" until they are rerun on the current runs.
+- **Judge files record the run they grade** (`skillHash`): a table row says "recorded runs" only when it matches the current baseline, and a file where most calls failed is left out. A judge run where every call fails no longer overwrites the last good file. OpenRouter calls cap output at 4,000 tokens (no credit reserved for 65,536).
+- **Local judge** through Ollama (`--model ollama/<name>`), one call at a time and refused next to another loaded model, to keep a 32 GB machine out of swap. Tried and not adopted as a main judge: Gemma 4 31B rated everything 5/5; Qwen 3.8 27B is precise but takes 1-3 minutes per answer with reasoning and grows memory.
+- **Graders fixed** after they rejected correct answers: `agent-design-and-tooling-001/empty-vs-failed` is unchanged; `ai-act-classification-00*/redline-no-verdict` ("plans no further action"), `assistant-kpis-cost-per-outcome-001/redline-successes-denominator` ("verified resolution rate"), `conversation-analysis` 001 overlaps (plural "rules", merges shown as "Replaces:"), 002 routing ("send its low-confidence cases / the ones it is unsure of to …", "where the small model is unsure"), 005 eval set ("give / pass … as candidate golden-set cases"). Each correct answer is now a fixture; bad fixtures still fail.
+- `llm-feature-prd` and `assistant-kpis-cost-per-outcome` rerun with both arms so judges can compare.
+- Evals chart: judge column from Claude Opus 5.5 on the current runs.
+
 ## v1.3.0 (2026-11-13)
 
 Same 29 skills; `ai-act-classification` gains method rules, so a minor release. Release notes: [docs/releases/v1.3.0.md](docs/releases/v1.3.0.md).

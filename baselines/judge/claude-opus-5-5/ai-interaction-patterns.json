@@ -1,0 +1,443 @@
+{
+  "skill": "ai-interaction-patterns",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 1,
+  "errors": 0,
+  "firstError": null,
+  "noise": null,
+  "costUsd": 0.79972,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 12,
+      "judge": 0.8708333333333332,
+      "meetsGoal": 0.9375,
+      "regex": 0.9537698412698412,
+      "words": 957.3333333333334
+    },
+    "without": {
+      "answers": 12,
+      "judge": 0.6041666666666666,
+      "meetsGoal": 0.2708333333333333,
+      "regex": 0.6406746031746032,
+      "words": 667.0833333333334
+    }
+  },
+  "answers": [
+    {
+      "id": "e3e56ad9fa",
+      "case": "ai-interaction-patterns-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 828,
+      "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It cites 'the ladder' and an 'ai-act-classification' resource the PM may not have, and it gives no owner or timeline for the seeded-error test."
+      ]
+    },
+    {
+      "id": "5a4eb4d860",
+      "case": "ai-interaction-patterns-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 823,
+      "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The next step names no owner, timeline or seeded-error count, so management's push could stall it, and the screen spec is fairly generic."
+      ]
+    },
+    {
+      "id": "736686507b",
+      "case": "ai-interaction-patterns-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 909,
+      "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
+      "scores": [
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The audit sample is an arbitrary 20\u201330 per supervisor rather than sized via the rule of three from the error rate it must bound, and the queue has no explicit SLA or lapse path when owners don't act."
+      ]
+    },
+    {
+      "id": "d28d4be7cf",
+      "case": "ai-interaction-patterns-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1777,
+      "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 1\u20132% audit sample (150\u2013300 tickets a month in total) conflicts with the stated need for about 300 clean cases per stratum, and the answer never reconciles the two."
+      ]
+    },
+    {
+      "id": "386399f25b",
+      "case": "ai-interaction-patterns-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 881,
+      "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
+      "scores": [
+        0.55
+      ],
+      "judge": 0.55,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The 30\u201350 ticket weekly audit sample is not derived from the error rate it must bound, so it cannot certify that the Trust tier is safe at the stated ~95% volume."
+      ]
+    },
+    {
+      "id": "ca70bdf13d",
+      "case": "ai-interaction-patterns-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 630,
+      "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
+      "scores": [
+        0.4
+      ],
+      "judge": 0.4,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It keeps Send to CRM one click from the raw draft and relies on a review checkbox, without flagging statements the transcript doesn't support or logging corrections to the eval set."
+      ]
+    },
+    {
+      "id": "875301b91a",
+      "case": "ai-interaction-patterns-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1382,
+      "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The answer promises one click once flags are cleared, yet adds a mandatory preview screen. It also proposes seeding errors into a live regulated CRM queue without saying how that is controlled."
+      ]
+    },
+    {
+      "id": "d68ff480a2",
+      "case": "ai-interaction-patterns-005",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.8,
+      "words": 416,
+      "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
+      "scores": [
+        0.6
+      ],
+      "judge": 0.6,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never mentions the AI Act art. 50(1) disclosure, still lets the 48% bucket answer instead of handing it to a person, and its 'about 9 in 10' wording sits above the 89% lower bound."
+      ]
+    },
+    {
+      "id": "cf3520c73e",
+      "case": "ai-interaction-patterns-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.35714285714285715,
+      "words": 764,
+      "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
+      "scores": [
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.0,
+      "weakest": [
+        "It puts Send to CRM one click from the raw AI draft and relies on an 'I've reviewed this' checkbox. It never flags statements the transcript does not support and never logs corrections into the eval set."
+      ]
+    },
+    {
+      "id": "bab2a9fbf1",
+      "case": "ai-interaction-patterns-005",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8,
+      "words": 524,
+      "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It cites a '100-case minimum' that nobody set, and it offers sources plus an invitation to check as an option for the lowest bucket, when it should firmly stop that bucket from answering and hand it to a person."
+      ]
+    },
+    {
+      "id": "c3a709573e",
+      "case": "ai-interaction-patterns-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5833333333333334,
+      "words": 977,
+      "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
+      "scores": [
+        0.44999999999999996
+      ],
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The audit sample is a guessed 1\u20132% rather than sized from the error rate it must bound (rule of three). The answer never names rubber-stamping, gives no lapse path for missed SLAs, and ignores the regulated context while inventing tier shares and targets."
+      ]
+    },
+    {
+      "id": "5587f18ad0",
+      "case": "ai-interaction-patterns-005",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6,
+      "words": 498,
+      "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never mentions the AI Act art. 50(1) disclosure, and its 'about 9 in 10' and 'about 3 in 4' figures sit above the interval lower bounds."
+      ]
+    },
+    {
+      "id": "ea5c8bf071",
+      "case": "ai-interaction-patterns-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.7142857142857143,
+      "words": 822,
+      "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "The save stays on the raw answer behind a soft scroll nudge, unsupported statements get only a subtle highlight with no required action, a checkbox is proposed as the fix, and corrections never feed the eval set."
+      ]
+    },
+    {
+      "id": "5f476e4c40",
+      "case": "ai-interaction-patterns-005",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 550,
+      "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "A garbled fragment (\"py` before they go into a spec.\") breaks the text after the table, and the \"100-case minimum\" is stated as an established rule without any source."
+      ]
+    },
+    {
+      "id": "934a16301d",
+      "case": "ai-interaction-patterns-005",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.8,
+      "words": 408,
+      "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never mentions the AI Act art. 50(1) disclosure that customers are talking to an AI, and its suggested wording ('9 times in 10', '3 times in 4') sits above each bucket's lower bound, and above the 74% point estimate for the middle bucket."
+      ]
+    },
+    {
+      "id": "4dc51270a2",
+      "case": "ai-interaction-patterns-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1069,
+      "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The audit sample is a placeholder 1\u20132% rather than sized from the error rate it must bound; the rule of three only appears later and is never tied back to the 15,000-ticket volume or per-stratum sample sizes."
+      ]
+    },
+    {
+      "id": "16603806e8",
+      "case": "ai-interaction-patterns-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.7777777777777778,
+      "words": 588,
+      "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never makes a shadow run or a tested escalation path an explicit gate before relaxing validation, and it jumps to a straight-through tier with unexplained figures (4\u20136 weeks, 99%, 5\u201310%)."
+      ]
+    },
+    {
+      "id": "9dacbbe3bc",
+      "case": "ai-interaction-patterns-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.5555555555555556,
+      "words": 607,
+      "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never names GDPR art. 22 for rejections without per-claim review, and it omits a shadow run and a tested escalation path as explicit gates before relaxing one-by-one validation."
+      ]
+    },
+    {
+      "id": "a0376f58e6",
+      "case": "ai-interaction-patterns-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.9285714285714286,
+      "words": 893,
+      "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
+      "scores": [
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Flagging every amount, date, product and client fact may produce enough items to cause Confirm-click fatigue, and the spec does not cap or prioritise flags to prevent that."
+      ]
+    },
+    {
+      "id": "62e6134e50",
+      "case": "ai-interaction-patterns-005",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8,
+      "words": 578,
+      "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
+      "scores": [
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The art. 50(1) AI disclosure sits under 'open questions' instead of in the three-tier spec of what customers see, so it reads as optional rather than as a firm first-screen requirement."
+      ]
+    },
+    {
+      "id": "279744ffca",
+      "case": "ai-interaction-patterns-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.6666666666666666,
+      "words": 505,
+      "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never names GDPR art. 22 for rejections made without per-claim human review, and its gate before removing validation lacks a shadow run and a tested escalation path."
+      ]
+    },
+    {
+      "id": "30aec0121d",
+      "case": "ai-interaction-patterns-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 830,
+      "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The 'at least 100 cases per bucket' badge threshold is presented as a rule without justification, and the next steps have no owners or dates."
+      ]
+    },
+    {
+      "id": "79ea2e1653",
+      "case": "ai-interaction-patterns-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1122,
+      "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "Every amount, date and name is flagged, each clearable with a one-click 'correct', which invites flag fatigue and turns per-item confirmation into a de facto review checkbox."
+      ]
+    },
+    {
+      "id": "5209c8e016",
+      "case": "ai-interaction-patterns-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9166666666666666,
+      "words": 1112,
+      "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The audit sample size (about 300 clean cases per stratum) has no cadence or per-supervisor workload attached, and the 3\u20135% queue target is a guess, so capacity planning stays unresolved."
+      ]
+    }
+  ],
+  "skillHash": "48037223c55915ad62b84a219c4870a26d723fb8400298a89ce915d1817b1f79"
+}

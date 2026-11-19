@@ -1,0 +1,341 @@
+{
+  "skill": "retrieval-evaluation",
+  "judgeModel": "claude-opus-5-5",
+  "provider": "claude",
+  "judgeKind": "llm",
+  "answerSet": "recorded",
+  "legal": false,
+  "limit": null,
+  "calibrated": false,
+  "passes": 1,
+  "errors": 0,
+  "firstError": null,
+  "noise": null,
+  "costUsd": 0.587168,
+  "longContextCalls": 0,
+  "arms": {
+    "with": {
+      "answers": 9,
+      "judge": 0.8777777777777778,
+      "meetsGoal": 0.9722222222222222,
+      "regex": 0.8674843674843675,
+      "words": 765.1111111111111
+    },
+    "without": {
+      "answers": 9,
+      "judge": 0.75,
+      "meetsGoal": 0.4722222222222222,
+      "regex": 0.5091390091390091,
+      "words": 634.8888888888889
+    }
+  },
+  "answers": [
+    {
+      "id": "7424411aee",
+      "case": "retrieval-evaluation-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.16666666666666666,
+      "words": 736,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It compares whole pipelines end to end. It never measures retrieval on its own, with recall at the 5 chunks sent, gold-labelled queries including unanswerable ones, and relevance pooled across retrievers. It also never tests generation on fixed contexts."
+      ]
+    },
+    {
+      "id": "5b29a166d2",
+      "case": "retrieval-evaluation-003",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6363636363636364,
+      "words": 573,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never adds unanswerable questions whose expected answer is a plain 'not found', and it never judges sections the new model newly surfaces; it scores only against the single pre-labelled section, and its 3-point per-language threshold on roughly 40 questions each is within noise."
+      ]
+    },
+    {
+      "id": "eee7744266",
+      "case": "retrieval-evaluation-001",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.8333333333333334,
+      "words": 865,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It presents two unverified assumptions as facts: that the logs already store the retrieved chunks, and that the 200-answer sample contains no unanswerable questions."
+      ]
+    },
+    {
+      "id": "c455e0ba29",
+      "case": "retrieval-evaluation-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 642,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "It says the test set has no unanswerable questions as if that were known, and it barely covers the regulatory exposure of wrong deadlines or fees reaching operators while the fixes are pending."
+      ]
+    },
+    {
+      "id": "096b9ec5d9",
+      "case": "retrieval-evaluation-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.9090909090909091,
+      "words": 842,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The rule of being 'not worse on every country and language' cannot really be checked with only about 40 questions per class, and expert labelling of new passages and real questions is unlikely to finish by Wednesday."
+      ]
+    },
+    {
+      "id": "6755eb558b",
+      "case": "retrieval-evaluation-003",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.36363636363636365,
+      "words": 678,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never adds questions that no policy answers (expected answer: a plain 'not found'), and never has someone judge newly surfaced passages before comparing models. Its per-language 2-point drop rule also contradicts its own noise warning, since each language has only about 40 questions."
+      ]
+    },
+    {
+      "id": "df285decca",
+      "case": "retrieval-evaluation-002",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.2857142857142857,
+      "words": 522,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "The claim-level faithfulness check never freezes the retrieved contexts or validates the LLM/NLI judge against owner labels, and the baseline measurement comes after the fixes rather than before."
+      ]
+    },
+    {
+      "id": "5d4d6bb3c2",
+      "case": "retrieval-evaluation-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.2727272727272727,
+      "words": 640,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.65
+      ],
+      "judge": 0.65,
+      "meetsGoal": 0.25,
+      "weakest": [
+        "It never adds questions with no answer in any policy (expected answer 'not found') and never says to judge newly surfaced passages before scoring, so the comparison can still mislead; it also invents a past date (Tuesday 17 November) for the switch."
+      ]
+    },
+    {
+      "id": "8b235edf4b",
+      "case": "retrieval-evaluation-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.8571428571428571,
+      "words": 581,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It re-measures on the same 180 questions but never says to freeze the retrieved passages, so retrieval changes could confound the faithfulness comparison."
+      ]
+    },
+    {
+      "id": "e21cd01f96",
+      "case": "retrieval-evaluation-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 732,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The pre-Thursday failure attribution assumes the logs kept the 5 chunks sent for each graded answer, and never says so; it also calls for a 'one-week diagnosis' in one place and '1\u20132 days' in another."
+      ]
+    },
+    {
+      "id": "11decc5beb",
+      "case": "retrieval-evaluation-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 1.0,
+      "words": 547,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "The claim-level judge is only optional, its validation is not required before use, and it never says to freeze the retrieved contexts so that prompt changes are compared on identical passages."
+      ]
+    },
+    {
+      "id": "b18ccc696c",
+      "case": "retrieval-evaluation-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8181818181818182,
+      "words": 791,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The claim that the re-run costs 'about a day' is an unsupported estimate, and the answer doesn't say whether adding 60\u2013100 real questions and HR-expert labelling can actually fit before Tuesday."
+      ]
+    },
+    {
+      "id": "707c3dd41d",
+      "case": "retrieval-evaluation-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 831,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.8999999999999999
+      ],
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The example ship gate uses 'non-overlapping intervals', which is overly strict and clashes with the paired discordant-count comparison proposed just above it; the decision rule also leaves a gap when generation failures are 28 or more but not the busiest stage."
+      ]
+    },
+    {
+      "id": "599e2a7886",
+      "case": "retrieval-evaluation-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.3333333333333333,
+      "words": 698,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.7
+      ],
+      "judge": 0.7,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "It never measures retrieval on its own (no recall at k=5 on labelled queries, no relevance judgments pooled across retrievers), relying instead on post-hoc error triage and an oracle condition, and its cost-per-correct-answer break-even argument ('284%') is muddled."
+      ]
+    },
+    {
+      "id": "697f3443d0",
+      "case": "retrieval-evaluation-002",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8571428571428571,
+      "words": 696,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.95
+      ],
+      "judge": 0.95,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "In a regulated setting it proposes nothing to contain the 20% of live answers with wrong deadlines or fees while the diagnosis runs, such as shipping the numeric post-check or a warning immediately."
+      ]
+    },
+    {
+      "id": "1e748844f9",
+      "case": "retrieval-evaluation-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 0.5714285714285714,
+      "words": 720,
+      "goal": "Places the failure in generation, not retrieval; measures faithfulness claim by claim on fixed contexts with a validated judge; fixes the prompt and abstention before any re-index or model change.",
+      "scores": [
+        0.8
+      ],
+      "judge": 0.8,
+      "meetsGoal": 0.75,
+      "weakest": [
+        "It calls for claim-level faithfulness scoring but never says to validate the judge against the procedure owners' labels, and it offers no interim safeguard for wrong deadlines or fees reaching operators in a regulated setting."
+      ]
+    },
+    {
+      "id": "dcb7467028",
+      "case": "retrieval-evaluation-001",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.6666666666666666,
+      "words": 739,
+      "goal": "Does not endorse the LLM switch yet; attributes the failed answers to a stage, measures retrieval apart (recall at the k sent, labelled queries including unanswerable ones, relevance pooled across retrievers), then generation on fixed contexts.",
+      "scores": [
+        0.75
+      ],
+      "judge": 0.75,
+      "meetsGoal": 0.5,
+      "weakest": [
+        "Retrieval measurement assumes a single known gold passage: it never pools relevance judgments across retrievers, never builds unanswerable queries into the labelled set to test abstention, and underestimates the gold-labelling effort for a 'before Thursday' plan."
+      ]
+    },
+    {
+      "id": "995f479ffb",
+      "case": "retrieval-evaluation-003",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.8181818181818182,
+      "words": 767,
+      "goal": "Refuses to confirm the swap without a re-run; adds questions whose answer is in no document with a plain \"not found\" as expected answer; treats the swap as a release compared on the same questions, per class, after judging newly surfaced passages.",
+      "scores": [
+        0.8500000000000001
+      ],
+      "judge": 0.8500000000000001,
+      "meetsGoal": 1.0,
+      "weakest": [
+        "The switch gate is anchored to June's 88% rather than to the old index re-run on the same expanded, re-judged question set, and it doesn't flag that expert judging may not fit before Tuesday."
+      ]
+    }
+  ],
+  "skillHash": "157b4d77aaff0f88227ffba4204a9268b1db4c7a07f00254ee7ac5bb7b53e4ef"
+}
