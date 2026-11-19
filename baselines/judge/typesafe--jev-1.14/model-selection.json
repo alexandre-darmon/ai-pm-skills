@@ -4,26 +4,28 @@
   "provider": "openrouter",
   "judgeKind": "decision",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "4d18a9f3316dac0c129e6ee3216b8afa02646f0412edfc326510a951246fde90",
   "limit": null,
   "calibrated": false,
   "passes": 2,
   "errors": 0,
   "firstError": null,
-  "noise": 0.007972222222222195,
-  "costUsd": 0.00267162,
+  "noise": 0.005638888888888983,
+  "costUsd": 0.002829708,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.852,
-      "meetsGoal": 0.9136111111111112,
-      "regex": 0.9753086419753088,
-      "words": 491.8888888888889
+      "judge": 0.86425,
+      "meetsGoal": 0.9044444444444445,
+      "regex": 0.9876543209876544,
+      "words": 601.6666666666666
     },
     "without": {
       "answers": 9,
-      "judge": 0.8364722222222222,
-      "meetsGoal": 0.8983333333333334,
+      "judge": 0.8414444444444444,
+      "meetsGoal": 0.8994444444444445,
       "regex": 0.7227833894500562,
       "words": 338.44444444444446
     }
@@ -34,15 +36,15 @@
       "case": "model-selection-002",
       "arm": "with",
       "run": 1,
-      "regex": 0.7777777777777778,
-      "words": 465,
+      "regex": 0.8888888888888888,
+      "words": 601,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.875,
-        0.8580000000000001
+        0.8714999999999999,
+        0.8694999999999999
       ],
-      "judge": 0.8665,
-      "meetsGoal": 0.93625,
+      "judge": 0.8704999999999999,
+      "meetsGoal": 0.9137500000000001,
       "weakest": [
         "",
         ""
@@ -54,14 +56,14 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 508,
+      "words": 662,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.8320000000000001,
-        0.813
+        0.8405,
+        0.8474999999999999
       ],
-      "judge": 0.8225,
-      "meetsGoal": 0.91,
+      "judge": 0.844,
+      "meetsGoal": 0.90625,
       "weakest": [
         "",
         ""
@@ -76,11 +78,11 @@
       "words": 387,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.9059999999999999,
+        0.9039999999999999,
         0.9039999999999999
       ],
-      "judge": 0.9049999999999999,
-      "meetsGoal": 0.925,
+      "judge": 0.9039999999999999,
+      "meetsGoal": 0.92625,
       "weakest": [
         "",
         ""
@@ -95,11 +97,11 @@
       "words": 309,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.8625,
-        0.851
+        0.8674999999999999,
+        0.8664999999999998
       ],
-      "judge": 0.85675,
-      "meetsGoal": 0.905,
+      "judge": 0.8669999999999999,
+      "meetsGoal": 0.9,
       "weakest": [
         "",
         ""
@@ -111,14 +113,14 @@
       "arm": "with",
       "run": 1,
       "regex": 1.0,
-      "words": 456,
+      "words": 457,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.8574999999999999,
-        0.8599999999999999
+        0.845,
+        0.8530000000000002
       ],
-      "judge": 0.8587499999999999,
-      "meetsGoal": 0.8624999999999999,
+      "judge": 0.8490000000000001,
+      "meetsGoal": 0.9012500000000001,
       "weakest": [
         "",
         ""
@@ -133,11 +135,11 @@
       "words": 284,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.8655000000000002,
-        0.8660000000000001
+        0.8699999999999999,
+        0.8740000000000001
       ],
-      "judge": 0.8657500000000001,
-      "meetsGoal": 0.90125,
+      "judge": 0.872,
+      "meetsGoal": 0.9087500000000001,
       "weakest": [
         "",
         ""
@@ -149,14 +151,14 @@
       "arm": "with",
       "run": 1,
       "regex": 1.0,
-      "words": 614,
+      "words": 671,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.825,
-        0.8109999999999999
+        0.8584999999999998,
+        0.863
       ],
-      "judge": 0.818,
-      "meetsGoal": 0.9212499999999999,
+      "judge": 0.8607499999999999,
+      "meetsGoal": 0.93875,
       "weakest": [
         "",
         ""
@@ -168,14 +170,14 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 471,
+      "words": 620,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.8350000000000002,
-        0.8454999999999999
+        0.901,
+        0.8955
       ],
-      "judge": 0.84025,
-      "meetsGoal": 0.9287500000000001,
+      "judge": 0.89825,
+      "meetsGoal": 0.9500000000000001,
       "weakest": [
         "",
         ""
@@ -190,11 +192,11 @@
       "words": 360,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.8180000000000001,
-        0.8240000000000001
+        0.8240000000000001,
+        0.8205
       ],
-      "judge": 0.8210000000000001,
-      "meetsGoal": 0.9125000000000001,
+      "judge": 0.82225,
+      "meetsGoal": 0.895,
       "weakest": [
         "",
         ""
@@ -206,14 +208,14 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 444,
+      "words": 735,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.8534999999999999,
-        0.8614999999999999
+        0.8425,
+        0.841
       ],
-      "judge": 0.8574999999999999,
-      "meetsGoal": 0.9224999999999999,
+      "judge": 0.84175,
+      "meetsGoal": 0.91,
       "weakest": [
         "",
         ""
@@ -228,11 +230,11 @@
       "words": 269,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.7845,
-        0.7795000000000001
+        0.8015000000000001,
+        0.7949999999999999
       ],
-      "judge": 0.782,
-      "meetsGoal": 0.905,
+      "judge": 0.79825,
+      "meetsGoal": 0.90125,
       "weakest": [
         "",
         ""
@@ -247,11 +249,11 @@
       "words": 397,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.8519999999999999,
-        0.847
+        0.8515000000000001,
+        0.8439999999999999
       ],
-      "judge": 0.8494999999999999,
-      "meetsGoal": 0.8587499999999999,
+      "judge": 0.84775,
+      "meetsGoal": 0.86125,
       "weakest": [
         "",
         ""
@@ -266,11 +268,11 @@
       "words": 456,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.8879999999999999,
-        0.8945000000000001
+        0.891,
+        0.8905000000000001
       ],
-      "judge": 0.89125,
-      "meetsGoal": 0.9225,
+      "judge": 0.89075,
+      "meetsGoal": 0.9325,
       "weakest": [
         "",
         ""
@@ -282,14 +284,14 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 419,
+      "words": 488,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.8675000000000002,
-        0.8705
+        0.8684999999999998,
+        0.881
       ],
-      "judge": 0.8690000000000001,
-      "meetsGoal": 0.9000000000000001,
+      "judge": 0.8747499999999999,
+      "meetsGoal": 0.8687500000000001,
       "weakest": [
         "",
         ""
@@ -304,11 +306,11 @@
       "words": 272,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.7905,
-        0.778
+        0.7785,
+        0.784
       ],
-      "judge": 0.78425,
-      "meetsGoal": 0.8787499999999999,
+      "judge": 0.78125,
+      "meetsGoal": 0.88625,
       "weakest": [
         "",
         ""
@@ -320,14 +322,14 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 534,
+      "words": 587,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.8839999999999999,
-        0.871
+        0.8885000000000001,
+        0.8839999999999999
       ],
-      "judge": 0.8775,
-      "meetsGoal": 0.9112500000000001,
+      "judge": 0.88625,
+      "meetsGoal": 0.8787499999999999,
       "weakest": [
         "",
         ""
@@ -339,14 +341,14 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 516,
+      "words": 594,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.8574999999999999,
-        0.8585
+        0.8560000000000001,
+        0.8500000000000001
       ],
-      "judge": 0.858,
-      "meetsGoal": 0.9299999999999999,
+      "judge": 0.8530000000000001,
+      "meetsGoal": 0.8725,
       "weakest": [
         "",
         ""
@@ -361,11 +363,11 @@
       "words": 312,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.7695000000000001,
-        0.776
+        0.7789999999999999,
+        0.8005
       ],
-      "judge": 0.77275,
-      "meetsGoal": 0.87625,
+      "judge": 0.78975,
+      "meetsGoal": 0.88375,
       "weakest": [
         "",
         ""

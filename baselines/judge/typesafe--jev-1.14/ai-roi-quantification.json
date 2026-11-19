@@ -4,26 +4,28 @@
   "provider": "openrouter",
   "judgeKind": "decision",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "60c7869513216f368b017848d1274d9e89b822d4973119e8ba6bcfc56951b258",
   "limit": null,
   "calibrated": false,
   "passes": 2,
   "errors": 0,
   "firstError": null,
-  "noise": 0.006833333333333358,
+  "noise": 0.005194444444444489,
   "costUsd": 0.003263904,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.9198888888888889,
-      "meetsGoal": 0.9231944444444444,
+      "judge": 0.9233055555555555,
+      "meetsGoal": 0.9319444444444444,
       "regex": 0.9676767676767677,
       "words": 876.5555555555555
     },
     "without": {
       "answers": 9,
-      "judge": 0.8472222222222222,
-      "meetsGoal": 0.7802777777777777,
+      "judge": 0.846,
+      "meetsGoal": 0.7798611111111111,
       "regex": 0.6872053872053872,
       "words": 435.6666666666667
     }
@@ -38,11 +40,11 @@
       "words": 407,
       "goal": "The negative use case is shown on its own with a stop-or-fix call.",
       "scores": [
-        0.8984999999999999,
-        0.9205000000000001
+        0.9255,
+        0.9239999999999999
       ],
-      "judge": 0.9095,
-      "meetsGoal": 0.72,
+      "judge": 0.92475,
+      "meetsGoal": 0.7649999999999999,
       "weakest": [
         "",
         ""
@@ -57,11 +59,11 @@
       "words": 464,
       "goal": "A labelled projection and a baseline plan, not an ROI claim.",
       "scores": [
-        0.8519999999999999,
-        0.8625
+        0.8504999999999998,
+        0.8585
       ],
-      "judge": 0.85725,
-      "meetsGoal": 0.87,
+      "judge": 0.8544999999999999,
+      "meetsGoal": 0.84375,
       "weakest": [
         "",
         ""
@@ -76,11 +78,11 @@
       "words": 1418,
       "goal": "The figure is flagged, an interview template proposed.",
       "scores": [
-        0.927,
-        0.9315
+        0.929,
+        0.9279999999999999
       ],
-      "judge": 0.92925,
-      "meetsGoal": 0.9674999999999999,
+      "judge": 0.9285,
+      "meetsGoal": 0.9649999999999999,
       "weakest": [
         "",
         ""
@@ -95,11 +97,11 @@
       "words": 523,
       "goal": "The negative use case is shown on its own with a stop-or-fix call.",
       "scores": [
-        0.9319999999999999,
-        0.9395
+        0.9344999999999999,
+        0.9390000000000001
       ],
-      "judge": 0.93575,
-      "meetsGoal": 0.9637500000000001,
+      "judge": 0.93675,
+      "meetsGoal": 0.9650000000000001,
       "weakest": [
         "",
         ""
@@ -114,11 +116,11 @@
       "words": 346,
       "goal": "A labelled projection and a baseline plan, not an ROI claim.",
       "scores": [
-        0.8340000000000001,
-        0.8305
+        0.8160000000000001,
+        0.8325
       ],
-      "judge": 0.83225,
-      "meetsGoal": 0.815,
+      "judge": 0.82425,
+      "meetsGoal": 0.8087500000000001,
       "weakest": [
         "",
         ""
@@ -133,11 +135,11 @@
       "words": 414,
       "goal": "The negative use case is shown on its own with a stop-or-fix call.",
       "scores": [
-        0.9085000000000001,
-        0.9019999999999999
+        0.915,
+        0.9155000000000002
       ],
-      "judge": 0.90525,
-      "meetsGoal": 0.8987499999999999,
+      "judge": 0.9152500000000001,
+      "meetsGoal": 0.9237500000000001,
       "weakest": [
         "",
         ""
@@ -152,11 +154,11 @@
       "words": 392,
       "goal": "A labelled projection and a baseline plan, not an ROI claim.",
       "scores": [
-        0.8344999999999998,
-        0.8445
+        0.8399999999999999,
+        0.8394999999999999
       ],
-      "judge": 0.8394999999999999,
-      "meetsGoal": 0.78125,
+      "judge": 0.8397499999999999,
+      "meetsGoal": 0.8112499999999999,
       "weakest": [
         "",
         ""
@@ -171,11 +173,11 @@
       "words": 646,
       "goal": "The figure is flagged, an interview template proposed.",
       "scores": [
-        0.8435000000000001,
-        0.8344999999999998
+        0.8285,
+        0.8335000000000001
       ],
-      "judge": 0.839,
-      "meetsGoal": 0.7012499999999999,
+      "judge": 0.8310000000000001,
+      "meetsGoal": 0.6937500000000001,
       "weakest": [
         "",
         ""
@@ -190,11 +192,11 @@
       "words": 632,
       "goal": "The figure is flagged, an interview template proposed.",
       "scores": [
-        0.7979999999999998,
-        0.7955000000000001
+        0.7949999999999999,
+        0.8009999999999999
       ],
-      "judge": 0.79675,
-      "meetsGoal": 0.6825,
+      "judge": 0.7979999999999999,
+      "meetsGoal": 0.69625,
       "weakest": [
         "",
         ""
@@ -209,11 +211,11 @@
       "words": 769,
       "goal": "A labelled projection and a baseline plan, not an ROI claim.",
       "scores": [
-        0.9390000000000001,
-        0.9390000000000001
+        0.94,
+        0.9344999999999999
       ],
-      "judge": 0.9390000000000001,
-      "meetsGoal": 0.9662499999999999,
+      "judge": 0.9372499999999999,
+      "meetsGoal": 0.9637499999999999,
       "weakest": [
         "",
         ""
@@ -228,11 +230,11 @@
       "words": 291,
       "goal": "The negative use case is shown on its own with a stop-or-fix call.",
       "scores": [
-        0.8959999999999999,
-        0.8885000000000001
+        0.8939999999999999,
+        0.8939999999999999
       ],
-      "judge": 0.89225,
-      "meetsGoal": 0.85875,
+      "judge": 0.8939999999999999,
+      "meetsGoal": 0.85375,
       "weakest": [
         "",
         ""
@@ -247,11 +249,11 @@
       "words": 806,
       "goal": "A labelled projection and a baseline plan, not an ROI claim.",
       "scores": [
-        0.9105000000000001,
-        0.9035
+        0.9099999999999999,
+        0.9149999999999998
       ],
-      "judge": 0.907,
-      "meetsGoal": 0.9337500000000001,
+      "judge": 0.9124999999999999,
+      "meetsGoal": 0.9325,
       "weakest": [
         "",
         ""
@@ -266,11 +268,11 @@
       "words": 279,
       "goal": "The negative use case is shown on its own with a stop-or-fix call.",
       "scores": [
-        0.8734999999999999,
-        0.8660000000000001
+        0.8725,
+        0.863
       ],
-      "judge": 0.86975,
-      "meetsGoal": 0.81625,
+      "judge": 0.86775,
+      "meetsGoal": 0.8025,
       "weakest": [
         "",
         ""
@@ -285,11 +287,11 @@
       "words": 1434,
       "goal": "The figure is flagged, an interview template proposed.",
       "scores": [
-        0.9304999999999999,
-        0.9280000000000002
+        0.925,
+        0.9289999999999998
       ],
-      "judge": 0.92925,
-      "meetsGoal": 0.96,
+      "judge": 0.9269999999999999,
+      "meetsGoal": 0.95875,
       "weakest": [
         "",
         ""
@@ -304,11 +306,11 @@
       "words": 1129,
       "goal": "The figure is flagged, an interview template proposed.",
       "scores": [
-        0.901,
-        0.901
+        0.9045000000000001,
+        0.899
       ],
-      "judge": 0.901,
-      "meetsGoal": 0.93625,
+      "judge": 0.90175,
+      "meetsGoal": 0.9512499999999999,
       "weakest": [
         "",
         ""
@@ -323,11 +325,11 @@
       "words": 323,
       "goal": "The negative use case is shown on its own with a stop-or-fix call.",
       "scores": [
-        0.8595000000000002,
-        0.881
+        0.8859999999999999,
+        0.8679999999999999
       ],
-      "judge": 0.8702500000000001,
-      "meetsGoal": 0.7999999999999999,
+      "judge": 0.8769999999999999,
+      "meetsGoal": 0.81125,
       "weakest": [
         "",
         ""
@@ -342,10 +344,10 @@
       "words": 989,
       "goal": "A labelled projection and a baseline plan, not an ROI claim.",
       "scores": [
-        0.923,
-        0.9229999999999998
+        0.9255,
+        0.9265000000000001
       ],
-      "judge": 0.9229999999999999,
+      "judge": 0.926,
       "meetsGoal": 0.9624999999999999,
       "weakest": [
         "",
@@ -361,10 +363,10 @@
       "words": 548,
       "goal": "The figure is flagged, an interview template proposed.",
       "scores": [
-        0.8275000000000001,
-        0.8285
+        0.8285,
+        0.827
       ],
-      "judge": 0.8280000000000001,
+      "judge": 0.82775,
       "meetsGoal": 0.6975,
       "weakest": [
         "",

@@ -4,28 +4,30 @@
   "provider": "openrouter",
   "judgeKind": "decision",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "3bc4d2eecb8ac756e9f4b07397a5a0c01d805dab1d54a2d08dd88cd6409ae5b8",
   "limit": null,
   "calibrated": false,
   "passes": 2,
   "errors": 0,
   "firstError": null,
-  "noise": 0.010062499999999974,
-  "costUsd": 0.0042432600000000004,
+  "noise": 0.00920833333333336,
+  "costUsd": 0.004352292,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 12,
-      "judge": 0.8517708333333333,
-      "meetsGoal": 0.781875,
-      "regex": 0.9761904761904762,
-      "words": 640.3333333333334
+      "judge": 0.8729583333333334,
+      "meetsGoal": 0.8240625,
+      "regex": 1.0,
+      "words": 684.0
     },
     "without": {
       "answers": 12,
-      "judge": 0.658125,
-      "meetsGoal": 0.49583333333333335,
-      "regex": 0.22288359788359788,
-      "words": 556.0833333333334
+      "judge": 0.6093333333333333,
+      "meetsGoal": 0.4380208333333333,
+      "regex": 0.23677248677248675,
+      "words": 569.9166666666666
     }
   },
   "answers": [
@@ -34,15 +36,15 @@
       "case": "conversation-analysis-001",
       "arm": "with",
       "run": 2,
-      "regex": 0.8571428571428571,
-      "words": 529,
+      "regex": 1.0,
+      "words": 739,
       "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
       "scores": [
-        0.9065000000000001,
-        0.9115
+        0.8595000000000002,
+        0.8534999999999999
       ],
-      "judge": 0.909,
-      "meetsGoal": 0.7112499999999999,
+      "judge": 0.8565,
+      "meetsGoal": 0.69375,
       "weakest": [
         "",
         ""
@@ -54,14 +56,14 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 540,
+      "words": 583,
       "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
       "scores": [
-        0.8460000000000001,
-        0.837
+        0.9015,
+        0.9115
       ],
-      "judge": 0.8415,
-      "meetsGoal": 0.89625,
+      "judge": 0.9065,
+      "meetsGoal": 0.9462499999999999,
       "weakest": [
         "",
         ""
@@ -73,14 +75,14 @@
       "arm": "with",
       "run": 1,
       "regex": 1.0,
-      "words": 506,
+      "words": 599,
       "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
       "scores": [
-        0.8984999999999999,
-        0.8935
+        0.8705,
+        0.8685
       ],
-      "judge": 0.8959999999999999,
-      "meetsGoal": 0.9299999999999999,
+      "judge": 0.8695,
+      "meetsGoal": 0.8937499999999999,
       "weakest": [
         "",
         ""
@@ -92,14 +94,14 @@
       "arm": "without",
       "run": 1,
       "regex": 0.42857142857142855,
-      "words": 440,
+      "words": 546,
       "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
       "scores": [
-        0.7415,
-        0.758
+        0.8955,
+        0.8980000000000001
       ],
-      "judge": 0.74975,
-      "meetsGoal": 0.5675,
+      "judge": 0.89675,
+      "meetsGoal": 0.7537499999999999,
       "weakest": [
         "",
         ""
@@ -111,14 +113,14 @@
       "arm": "with",
       "run": 1,
       "regex": 1.0,
-      "words": 1014,
+      "words": 913,
       "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
       "scores": [
-        0.8815000000000002,
-        0.8820000000000001
+        0.8335000000000001,
+        0.8425
       ],
-      "judge": 0.8817500000000001,
-      "meetsGoal": 0.78625,
+      "judge": 0.8380000000000001,
+      "meetsGoal": 0.7762500000000001,
       "weakest": [
         "",
         ""
@@ -130,14 +132,14 @@
       "arm": "with",
       "run": 1,
       "regex": 1.0,
-      "words": 678,
+      "words": 501,
       "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
       "scores": [
-        0.8779999999999999,
-        0.8815
+        0.8735000000000002,
+        0.8845000000000001
       ],
-      "judge": 0.8797499999999999,
-      "meetsGoal": 0.8775,
+      "judge": 0.8790000000000001,
+      "meetsGoal": 0.92125,
       "weakest": [
         "",
         ""
@@ -149,14 +151,14 @@
       "arm": "without",
       "run": 2,
       "regex": 0.0,
-      "words": 544,
+      "words": 461,
       "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
       "scores": [
-        0.5890000000000001,
-        0.6035
+        0.6244999999999999,
+        0.6050000000000001
       ],
-      "judge": 0.5962500000000001,
-      "meetsGoal": 0.25,
+      "judge": 0.61475,
+      "meetsGoal": 0.34875,
       "weakest": [
         "",
         ""
@@ -167,15 +169,15 @@
       "case": "conversation-analysis-002",
       "arm": "without",
       "run": 1,
-      "regex": 0.0,
-      "words": 447,
+      "regex": 0.16666666666666666,
+      "words": 382,
       "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
       "scores": [
-        0.5645,
-        0.5654999999999999
+        0.5720000000000001,
+        0.5765
       ],
-      "judge": 0.565,
-      "meetsGoal": 0.4875,
+      "judge": 0.57425,
+      "meetsGoal": 0.44625000000000004,
       "weakest": [
         "",
         ""
@@ -186,15 +188,15 @@
       "case": "conversation-analysis-003",
       "arm": "without",
       "run": 1,
-      "regex": 0.3333333333333333,
-      "words": 758,
+      "regex": 0.1111111111111111,
+      "words": 869,
       "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
       "scores": [
-        0.522,
-        0.5519999999999999
+        0.46699999999999997,
+        0.49150000000000005
       ],
-      "judge": 0.5369999999999999,
-      "meetsGoal": 0.39250000000000007,
+      "judge": 0.47925,
+      "meetsGoal": 0.32125000000000004,
       "weakest": [
         "",
         ""
@@ -205,15 +207,15 @@
       "case": "conversation-analysis-002",
       "arm": "without",
       "run": 3,
-      "regex": 0.16666666666666666,
-      "words": 406,
+      "regex": 0.0,
+      "words": 413,
       "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
       "scores": [
-        0.6039999999999999,
-        0.5945
+        0.5005,
+        0.49
       ],
-      "judge": 0.59925,
-      "meetsGoal": 0.51,
+      "judge": 0.49524999999999997,
+      "meetsGoal": 0.39875000000000005,
       "weakest": [
         "",
         ""
@@ -225,14 +227,14 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 461,
+      "words": 665,
       "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
       "scores": [
-        0.9045000000000001,
-        0.9079999999999999
+        0.8960000000000001,
+        0.8915
       ],
-      "judge": 0.90625,
-      "meetsGoal": 0.74,
+      "judge": 0.89375,
+      "meetsGoal": 0.7325,
       "weakest": [
         "",
         ""
@@ -244,14 +246,14 @@
       "arm": "without",
       "run": 3,
       "regex": 0.42857142857142855,
-      "words": 554,
+      "words": 535,
       "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
       "scores": [
-        0.879,
-        0.8839999999999999
+        0.8119999999999998,
+        0.8045
       ],
-      "judge": 0.8815,
-      "meetsGoal": 0.7875000000000001,
+      "judge": 0.8082499999999999,
+      "meetsGoal": 0.6625000000000001,
       "weakest": [
         "",
         ""
@@ -262,15 +264,15 @@
       "case": "conversation-analysis-003",
       "arm": "without",
       "run": 3,
-      "regex": 0.5555555555555556,
-      "words": 935,
+      "regex": 0.6666666666666666,
+      "words": 843,
       "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
       "scores": [
-        0.671,
-        0.6855
+        0.42599999999999993,
+        0.43600000000000005
       ],
-      "judge": 0.67825,
-      "meetsGoal": 0.58875,
+      "judge": 0.431,
+      "meetsGoal": 0.29874999999999996,
       "weakest": [
         "",
         ""
@@ -282,14 +284,14 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 501,
+      "words": 473,
       "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
       "scores": [
-        0.712,
-        0.693
+        0.9015,
+        0.9015
       ],
-      "judge": 0.7024999999999999,
-      "meetsGoal": 0.66,
+      "judge": 0.9015,
+      "meetsGoal": 0.945,
       "weakest": [
         "",
         ""
@@ -301,14 +303,14 @@
       "arm": "without",
       "run": 2,
       "regex": 0.42857142857142855,
-      "words": 487,
+      "words": 514,
       "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
       "scores": [
-        0.8820000000000001,
-        0.8824999999999998
+        0.8574999999999999,
+        0.857
       ],
-      "judge": 0.88225,
-      "meetsGoal": 0.73375,
+      "judge": 0.85725,
+      "meetsGoal": 0.65625,
       "weakest": [
         "",
         ""
@@ -320,14 +322,14 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 450,
+      "words": 509,
       "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
       "scores": [
-        0.8599999999999999,
-        0.8740000000000001
+        0.8500000000000001,
+        0.847
       ],
-      "judge": 0.867,
-      "meetsGoal": 0.8400000000000001,
+      "judge": 0.8485,
+      "meetsGoal": 0.87125,
       "weakest": [
         "",
         ""
@@ -339,14 +341,14 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 1122,
+      "words": 854,
       "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
       "scores": [
         0.8279999999999998,
-        0.8145
+        0.8515000000000001
       ],
-      "judge": 0.8212499999999999,
-      "meetsGoal": 0.7537499999999999,
+      "judge": 0.83975,
+      "meetsGoal": 0.7,
       "weakest": [
         "",
         ""
@@ -358,14 +360,14 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 505,
+      "words": 514,
       "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
       "scores": [
-        0.8965000000000001,
-        0.899
+        0.8879999999999999,
+        0.8880000000000001
       ],
-      "judge": 0.89775,
-      "meetsGoal": 0.8562500000000001,
+      "judge": 0.888,
+      "meetsGoal": 0.89625,
       "weakest": [
         "",
         ""
@@ -376,15 +378,15 @@
       "case": "conversation-analysis-001",
       "arm": "with",
       "run": 1,
-      "regex": 0.8571428571428571,
-      "words": 462,
+      "regex": 1.0,
+      "words": 763,
       "goal": "Merges the overlapping classes or separates them with written rules, brings the list to 8-12 use cases with definitions, examples and counter-examples, caps \"other\", and freezes the taxonomy before labelling with two labellers on part of the set.",
       "scores": [
-        0.8984999999999999,
-        0.901
+        0.9065000000000001,
+        0.9095
       ],
-      "judge": 0.8997499999999999,
-      "meetsGoal": 0.7262500000000001,
+      "judge": 0.908,
+      "meetsGoal": 0.76875,
       "weakest": [
         "",
         ""
@@ -396,14 +398,14 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 916,
+      "words": 1095,
       "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
       "scores": [
-        0.7210000000000001,
-        0.7164999999999999
+        0.855,
+        0.8379999999999999
       ],
-      "judge": 0.71875,
-      "meetsGoal": 0.605,
+      "judge": 0.8464999999999999,
+      "meetsGoal": 0.7437499999999999,
       "weakest": [
         "",
         ""
@@ -414,15 +416,15 @@
       "case": "conversation-analysis-003",
       "arm": "without",
       "run": 2,
-      "regex": 0.3333333333333333,
-      "words": 859,
+      "regex": 0.4444444444444444,
+      "words": 885,
       "goal": "Blocks taxonomy and classification work until personal data is masked with typed placeholders and the masking is checked on a sample, and never repeats a name, IBAN, email or id in its answer.",
       "scores": [
-        0.6625,
-        0.6845000000000001
+        0.403,
+        0.4155
       ],
-      "judge": 0.6735,
-      "meetsGoal": 0.6,
+      "judge": 0.40925,
+      "meetsGoal": 0.27125,
       "weakest": [
         "",
         ""
@@ -434,14 +436,14 @@
       "arm": "without",
       "run": 1,
       "regex": 0.0,
-      "words": 444,
+      "words": 477,
       "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
       "scores": [
-        0.532,
-        0.514
+        0.5485,
+        0.5295
       ],
-      "judge": 0.523,
-      "meetsGoal": 0.22999999999999998,
+      "judge": 0.5389999999999999,
+      "meetsGoal": 0.27,
       "weakest": [
         "",
         ""
@@ -452,15 +454,15 @@
       "case": "conversation-analysis-002",
       "arm": "without",
       "run": 2,
-      "regex": 0.0,
-      "words": 357,
+      "regex": 0.16666666666666666,
+      "words": 394,
       "goal": "Routes by confidence (cheap model above a threshold, frontier or human below), sends low-confidence cases to review instead of forcing them, asks for agreement per dimension, gives the blended cost and plans a monthly re-measure on a fresh sample.",
       "scores": [
-        0.5965,
-        0.6185
+        0.5635,
+        0.5609999999999999
       ],
-      "judge": 0.6075,
-      "meetsGoal": 0.5125,
+      "judge": 0.5622499999999999,
+      "meetsGoal": 0.47624999999999995,
       "weakest": [
         "",
         ""
@@ -472,14 +474,14 @@
       "arm": "without",
       "run": 3,
       "regex": 0.0,
-      "words": 442,
+      "words": 520,
       "goal": "Treats the high-volume unresolved use case as a finding, pulls a masked sample of it and hands those conversations over as candidate cases for the eval set, without redoing the classification or grading the answers itself.",
       "scores": [
-        0.6015,
-        0.607
+        0.6355000000000001,
+        0.6539999999999999
       ],
-      "judge": 0.60425,
-      "meetsGoal": 0.29000000000000004,
+      "judge": 0.6447499999999999,
+      "meetsGoal": 0.3525,
       "weakest": [
         "",
         ""

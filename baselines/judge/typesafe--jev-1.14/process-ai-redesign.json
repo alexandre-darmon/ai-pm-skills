@@ -4,102 +4,104 @@
   "provider": "openrouter",
   "judgeKind": "decision",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "88cf6000a5a3b4ee2259bf3dcaa39df7d564ed063e4974f4250704e693a57c33",
   "limit": null,
   "calibrated": false,
   "passes": 2,
   "errors": 0,
   "firstError": null,
-  "noise": 0.005861111111111083,
-  "costUsd": 0.0044764439999999996,
+  "noise": 0.005444444444444437,
+  "costUsd": 0.00422562,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.8812500000000001,
-      "meetsGoal": 0.8663888888888889,
-      "regex": 0.9907407407407407,
-      "words": 1745.888888888889
+      "judge": 0.8695833333333334,
+      "meetsGoal": 0.8173611111111111,
+      "regex": 0.962121212121212,
+      "words": 1520.5555555555557
     },
     "without": {
       "answers": 9,
-      "judge": 0.8902777777777777,
-      "meetsGoal": 0.8080555555555555,
+      "judge": 0.8858611111111111,
+      "meetsGoal": 0.8129166666666667,
       "regex": 0.5667789001122334,
       "words": 805.5555555555555
     }
   },
   "answers": [
     {
-      "id": "b3a7bf5736",
-      "case": "process-ai-redesign-001",
-      "arm": "without",
-      "run": 2,
-      "regex": 0.4166666666666667,
-      "words": 916,
-      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
-      "scores": [
-        0.8775,
-        0.8785000000000001
-      ],
-      "judge": 0.878,
-      "meetsGoal": 0.665,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "dac99a6584",
-      "case": "process-ai-redesign-001",
-      "arm": "without",
-      "run": 3,
-      "regex": 0.4166666666666667,
-      "words": 862,
-      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
-      "scores": [
-        0.895,
-        0.8954999999999997
-      ],
-      "judge": 0.8952499999999999,
-      "meetsGoal": 0.7775,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
       "id": "20820c8c4f",
       "case": "process-ai-redesign-002",
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 1666,
+      "words": 1539,
       "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
       "scores": [
-        0.9019999999999999,
-        0.9059999999999999
+        0.8560000000000001,
+        0.8539999999999999
       ],
-      "judge": 0.9039999999999999,
-      "meetsGoal": 0.7625,
+      "judge": 0.855,
+      "meetsGoal": 0.65625,
       "weakest": [
         "",
         ""
       ]
     },
     {
-      "id": "5180155a5c",
-      "case": "process-ai-redesign-001",
-      "arm": "without",
-      "run": 1,
-      "regex": 0.5,
-      "words": 869,
-      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "id": "12fc4dd3e3",
+      "case": "process-ai-redesign-002",
+      "arm": "with",
+      "run": 3,
+      "regex": 0.9090909090909091,
+      "words": 1370,
+      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
       "scores": [
-        0.8824999999999998,
-        0.8675000000000002
+        0.8155000000000001,
+        0.812
       ],
-      "judge": 0.875,
-      "meetsGoal": 0.7962500000000001,
+      "judge": 0.8137500000000001,
+      "meetsGoal": 0.54875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "e3d6f5c79c",
+      "case": "process-ai-redesign-003",
+      "arm": "with",
+      "run": 2,
+      "regex": 1.0,
+      "words": 1286,
+      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
+      "scores": [
+        0.8779999999999999,
+        0.8795
+      ],
+      "judge": 0.8787499999999999,
+      "meetsGoal": 0.9337500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "185fe61b8f",
+      "case": "process-ai-redesign-002",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1729,
+      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
+      "scores": [
+        0.8134999999999999,
+        0.8089999999999999
+      ],
+      "judge": 0.8112499999999999,
+      "meetsGoal": 0.62,
       "weakest": [
         "",
         ""
@@ -114,11 +116,11 @@
       "words": 725,
       "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
       "scores": [
-        0.903,
-        0.9059999999999999
+        0.9114999999999998,
+        0.911
       ],
-      "judge": 0.9045,
-      "meetsGoal": 0.9112500000000001,
+      "judge": 0.9112499999999999,
+      "meetsGoal": 0.925,
       "weakest": [
         "",
         ""
@@ -129,15 +131,15 @@
       "case": "process-ai-redesign-001",
       "arm": "with",
       "run": 1,
-      "regex": 1.0,
-      "words": 1922,
+      "regex": 0.9166666666666666,
+      "words": 1548,
       "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
       "scores": [
-        0.8504999999999998,
-        0.849
+        0.885,
+        0.8800000000000001
       ],
-      "judge": 0.8497499999999999,
-      "meetsGoal": 0.7787499999999999,
+      "judge": 0.8825000000000001,
+      "meetsGoal": 0.89,
       "weakest": [
         "",
         ""
@@ -152,163 +154,30 @@
       "words": 541,
       "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
       "scores": [
-        0.8519999999999999,
-        0.8699999999999999
+        0.851,
+        0.8645
       ],
-      "judge": 0.8609999999999999,
-      "meetsGoal": 0.8099999999999999,
+      "judge": 0.85775,
+      "meetsGoal": 0.7787499999999999,
       "weakest": [
         "",
         ""
       ]
     },
     {
-      "id": "9c96e6b4e7",
-      "case": "process-ai-redesign-002",
-      "arm": "without",
-      "run": 2,
-      "regex": 0.45454545454545453,
-      "words": 776,
-      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
-      "scores": [
-        0.8899999999999999,
-        0.8955
-      ],
-      "judge": 0.8927499999999999,
-      "meetsGoal": 0.8274999999999999,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "79304e1aff",
-      "case": "process-ai-redesign-003",
-      "arm": "with",
-      "run": 1,
-      "regex": 1.0,
-      "words": 1794,
-      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
-      "scores": [
-        0.9060000000000001,
-        0.9119999999999999
-      ],
-      "judge": 0.909,
-      "meetsGoal": 0.9412499999999999,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "e3d6f5c79c",
-      "case": "process-ai-redesign-003",
-      "arm": "with",
-      "run": 2,
-      "regex": 1.0,
-      "words": 1238,
-      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
-      "scores": [
-        0.887,
-        0.895
-      ],
-      "judge": 0.891,
-      "meetsGoal": 0.94,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "4cc72c7eb8",
-      "case": "process-ai-redesign-002",
-      "arm": "without",
-      "run": 3,
-      "regex": 0.5454545454545454,
-      "words": 914,
-      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
-      "scores": [
-        0.897,
-        0.8904999999999998
-      ],
-      "judge": 0.8937499999999999,
-      "meetsGoal": 0.8075000000000001,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "93c8731d42",
+      "id": "b3a7bf5736",
       "case": "process-ai-redesign-001",
-      "arm": "with",
+      "arm": "without",
       "run": 2,
-      "regex": 0.9166666666666666,
-      "words": 1989,
+      "regex": 0.4166666666666667,
+      "words": 916,
       "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
       "scores": [
-        0.883,
-        0.877
+        0.8605,
+        0.8759999999999999
       ],
-      "judge": 0.88,
-      "meetsGoal": 0.865,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "185fe61b8f",
-      "case": "process-ai-redesign-002",
-      "arm": "with",
-      "run": 1,
-      "regex": 1.0,
-      "words": 1695,
-      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
-      "scores": [
-        0.9035,
-        0.9079999999999999
-      ],
-      "judge": 0.9057499999999999,
-      "meetsGoal": 0.9025000000000001,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "3c1a83c59f",
-      "case": "process-ai-redesign-003",
-      "arm": "without",
-      "run": 1,
-      "regex": 0.6666666666666666,
-      "words": 725,
-      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
-      "scores": [
-        0.9085000000000001,
-        0.9075
-      ],
-      "judge": 0.908,
-      "meetsGoal": 0.89125,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "78ce7c2f97",
-      "case": "process-ai-redesign-001",
-      "arm": "with",
-      "run": 3,
-      "regex": 1.0,
-      "words": 1889,
-      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
-      "scores": [
-        0.7970000000000002,
-        0.8115000000000001
-      ],
-      "judge": 0.8042500000000001,
-      "meetsGoal": 0.8250000000000001,
+      "judge": 0.86825,
+      "meetsGoal": 0.7075,
       "weakest": [
         "",
         ""
@@ -323,11 +192,163 @@
       "words": 922,
       "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
       "scores": [
-        0.9004999999999999,
-        0.9079999999999999
+        0.8904999999999998,
+        0.8925000000000001
       ],
-      "judge": 0.9042499999999999,
-      "meetsGoal": 0.7862500000000001,
+      "judge": 0.8915,
+      "meetsGoal": 0.77375,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "9c96e6b4e7",
+      "case": "process-ai-redesign-002",
+      "arm": "without",
+      "run": 2,
+      "regex": 0.45454545454545453,
+      "words": 776,
+      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
+      "scores": [
+        0.8859999999999999,
+        0.8835
+      ],
+      "judge": 0.8847499999999999,
+      "meetsGoal": 0.80125,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "dac99a6584",
+      "case": "process-ai-redesign-001",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.4166666666666667,
+      "words": 862,
+      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "scores": [
+        0.889,
+        0.8959999999999999
+      ],
+      "judge": 0.8925,
+      "meetsGoal": 0.8075000000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "93c8731d42",
+      "case": "process-ai-redesign-001",
+      "arm": "with",
+      "run": 2,
+      "regex": 0.8333333333333334,
+      "words": 1633,
+      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "scores": [
+        0.907,
+        0.9064999999999999
+      ],
+      "judge": 0.90675,
+      "meetsGoal": 0.9175,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "79304e1aff",
+      "case": "process-ai-redesign-003",
+      "arm": "with",
+      "run": 1,
+      "regex": 1.0,
+      "words": 1304,
+      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
+      "scores": [
+        0.8899999999999999,
+        0.8845000000000001
+      ],
+      "judge": 0.88725,
+      "meetsGoal": 0.9312500000000001,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "3c1a83c59f",
+      "case": "process-ai-redesign-003",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.6666666666666666,
+      "words": 725,
+      "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
+      "scores": [
+        0.9105000000000001,
+        0.9015
+      ],
+      "judge": 0.906,
+      "meetsGoal": 0.89625,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "78ce7c2f97",
+      "case": "process-ai-redesign-001",
+      "arm": "with",
+      "run": 3,
+      "regex": 1.0,
+      "words": 1679,
+      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "scores": [
+        0.9075,
+        0.9055
+      ],
+      "judge": 0.9065,
+      "meetsGoal": 0.91875,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "5180155a5c",
+      "case": "process-ai-redesign-001",
+      "arm": "without",
+      "run": 1,
+      "regex": 0.5,
+      "words": 869,
+      "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
+      "scores": [
+        0.8775,
+        0.8640000000000001
+      ],
+      "judge": 0.87075,
+      "meetsGoal": 0.7999999999999999,
+      "weakest": [
+        "",
+        ""
+      ]
+    },
+    {
+      "id": "4cc72c7eb8",
+      "case": "process-ai-redesign-002",
+      "arm": "without",
+      "run": 3,
+      "regex": 0.5454545454545454,
+      "words": 914,
+      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
+      "scores": [
+        0.887,
+        0.893
+      ],
+      "judge": 0.89,
+      "meetsGoal": 0.8262499999999999,
       "weakest": [
         "",
         ""
@@ -339,33 +360,14 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 1951,
+      "words": 1597,
       "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
       "scores": [
-        0.899,
-        0.899
+        0.8824999999999998,
+        0.8864999999999998
       ],
-      "judge": 0.899,
-      "meetsGoal": 0.9462499999999999,
-      "weakest": [
-        "",
-        ""
-      ]
-    },
-    {
-      "id": "12fc4dd3e3",
-      "case": "process-ai-redesign-002",
-      "arm": "with",
-      "run": 3,
-      "regex": 1.0,
-      "words": 1569,
-      "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
-      "scores": [
-        0.8900000000000001,
-        0.887
-      ],
-      "judge": 0.8885000000000001,
-      "meetsGoal": 0.8362499999999999,
+      "judge": 0.8844999999999998,
+      "meetsGoal": 0.94,
       "weakest": [
         "",
         ""
