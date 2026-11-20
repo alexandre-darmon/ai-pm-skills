@@ -5,26 +5,27 @@
   "judgeKind": "llm",
   "answerSet": "recorded",
   "legal": true,
+  "skillHash": "a20f9c8520ba92927f8f4d71053048b9b166614b420a99bb3e58e1637b9fa31c",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.030000000000000002,
-  "costUsd": 0.2399142,
+  "noise": null,
+  "costUsd": 0.1597265,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 15,
-      "judge": 0.645,
+      "judge": 0.65,
       "meetsGoal": 0.7833333333333333,
       "regex": 0.9939393939393939,
       "words": 1077.9333333333334
     },
     "without": {
       "answers": 15,
-      "judge": 0.605,
-      "meetsGoal": 0.325,
+      "judge": 0.6166666666666667,
+      "meetsGoal": 0.3333333333333333,
       "regex": 0.4484848484848485,
       "words": 659.3333333333334
     }
@@ -39,14 +40,12 @@
       "words": 495,
       "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
-      "meetsGoal": 0.375,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It never requires reproducing this leak as a regression test that fails on the faulty version and gates release of the fix.",
-        "It never requires reproducing this leak as a regression test that fails on the faulty version and passes before the fix ships."
+        "It never requires turning the actual leak into a regression test that fails on the faulty version and passes before the fix ships."
       ]
     },
     {
@@ -58,14 +57,12 @@
       "words": 675,
       "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
       "scores": [
-        0.6,
-        0.6
+        0.65
       ],
-      "judge": 0.6,
-      "meetsGoal": 0.75,
+      "judge": 0.65,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It invents notification dates and wrongly limits GDPR breach reporting to data exposure, while leaving rollback execution and customer notification insufficiently explicit.",
-        "It invents notification dates and incorrectly limits GDPR breach reporting to personal-data exposure."
+        "It invents reporting dates, misstates GDPR scope, and leaves rollback execution and customer notification unresolved."
       ]
     },
     {
@@ -77,14 +74,12 @@
       "words": 412,
       "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
       "scores": [
-        0.6,
-        0.44999999999999996
+        0.6
       ],
-      "judge": 0.5249999999999999,
+      "judge": 0.6,
       "meetsGoal": 0.5,
       "weakest": [
-        "It gives unreliable statistical assurances without actual sample sizes and never explicitly calls for an evaluation-set refresh.",
-        "It recommends checking sampling noise but supplies misleading statistical claims and omits an explicit evaluation refresh."
+        "It invents sample-size certainty instead of establishing sampling noise, and never explicitly calls for an evaluation refresh."
       ]
     },
     {
@@ -96,14 +91,12 @@
       "words": 2476,
       "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
       "scores": [
-        0.7,
         0.65
       ],
-      "judge": 0.675,
-      "meetsGoal": 0.875,
+      "judge": 0.65,
+      "meetsGoal": 1.0,
       "weakest": [
-        "Unsupported go-live and regulatory dates undermine a compliance-facing plan, and the rollback owner's actual name remains unresolved.",
-        "It mixes a strong operational plan with unsupported deployment details, nonexistent policy references, and unreliable regulatory applicability dates."
+        "It invents the go-live date and introduces unreliable regulatory timelines into a compliance sign-off plan."
       ]
     },
     {
@@ -115,14 +108,12 @@
       "words": 2136,
       "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
       "scores": [
-        0.75,
         0.65
       ],
-      "judge": 0.7,
+      "judge": 0.65,
       "meetsGoal": 0.5,
       "weakest": [
-        "Failure scenarios lack explicit verification steps, and the rollback owner remains an unfilled role rather than a named person.",
-        "It lacks scenario-specific verification steps and leaves the actual rollback owner unnamed."
+        "It lacks scenario-specific verification procedures and an actual named rollback owner, leaving key operational details unresolved."
       ]
     },
     {
@@ -134,14 +125,12 @@
       "words": 940,
       "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
       "scores": [
-        0.65,
-        0.6
+        0.65
       ],
-      "judge": 0.625,
+      "judge": 0.65,
       "meetsGoal": 0.75,
       "weakest": [
-        "It invents today's date and the incident year, incorrectly presenting the notification deadline as already missed.",
-        "It invents today's date and the incident year, then incorrectly treats the computed notification deadline as already missed."
+        "It invents the current date and incident year, falsely declaring deadlines overdue, and omits GDPR\u2019s explicit notification threshold."
       ]
     },
     {
@@ -153,14 +142,12 @@
       "words": 1470,
       "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.5,
       "weakest": [
-        "Rollback ownership, operational AI-quality alarm thresholds, and scenario-specific verification remain unresolved rather than sign-off ready.",
-        "It lacks scenario-specific verification criteria and a named individual accountable for rollback, while quality-alarm thresholds remain unset."
+        "Scenario-specific verification is missing, and rollback ownership and quality-alarm thresholds remain unresolved."
       ]
     },
     {
@@ -172,14 +159,12 @@
       "words": 398,
       "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
       "scores": [
-        0.55,
-        0.55
+        0.5
       ],
-      "judge": 0.55,
+      "judge": 0.5,
       "meetsGoal": 0.25,
       "weakest": [
-        "It never assigns an empowered rollback owner, guarantees an autonomy downgrade, requires customer notification, or counts every output since the change.",
-        "It names no rollback owner empowered to act immediately and does not require customer notification, counting every output since the change, or incident-specific regression tests before shipping the fix."
+        "It names no empowered rollback owner and omits mandatory autonomy reduction, customer notification, all-output accounting, and incident-specific regression tests before shipment."
       ]
     },
     {
@@ -191,14 +176,12 @@
       "words": 827,
       "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
       "scores": [
-        0.65,
         0.6
       ],
-      "judge": 0.625,
+      "judge": 0.6,
       "meetsGoal": 1.0,
       "weakest": [
-        "It invents calendar dates and overdue regulatory deadlines without knowing the date, jurisdiction, or reportability.",
-        "It invents incident dates and overdue regulatory deadlines, undermining otherwise strong release gates."
+        "It invents calendar dates and regulatory deadlines, undermining an otherwise strong release gate."
       ]
     },
     {
@@ -210,14 +193,12 @@
       "words": 423,
       "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
       "scores": [
-        0.65,
         0.7
       ],
-      "judge": 0.675,
-      "meetsGoal": 0.375,
+      "judge": 0.7,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It never requires replaying the actual leak as a regression test that fails on the faulty version and passes before the fix ships.",
-        "It never requires turning the leaked interaction into a regression test that fails on the faulty version and passes before the fix ships."
+        "It never requires replaying the actual leak as a regression test that fails on the faulty version and passes before the fix ships."
       ]
     },
     {
@@ -229,14 +210,12 @@
       "words": 849,
       "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
       "scores": [
-        0.75,
-        0.65
+        0.75
       ],
-      "judge": 0.7,
+      "judge": 0.75,
       "meetsGoal": 0.5,
       "weakest": [
-        "Customer notification waits on counsel and finance without a deadline, so the requirement to tell affected customers is not secured.",
-        "Customer notification waits indefinitely for approval, and invented dates make the regulatory deadlines unreliable."
+        "Customer notification is left waiting on counsel and finance, with no accountable sender or deadline."
       ]
     },
     {
@@ -248,14 +227,12 @@
       "words": 326,
       "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
       "scores": [
-        0.44999999999999996,
-        0.44999999999999996
+        0.55
       ],
-      "judge": 0.44999999999999996,
+      "judge": 0.55,
       "meetsGoal": 0.0,
       "weakest": [
-        "It approves shipping on three retested memos instead of requiring window-wide error analysis, golden-set additions, full per-class regression testing, and a card changelog update first.",
-        "It approves shipping before window-wide error analysis, golden-set additions, full per-class regression testing against the previous version, and a card changelog update."
+        "It authorizes shipping before window-wide error analysis, golden-set additions, full per-class regression testing against the previous version, and a card changelog update."
       ]
     },
     {
@@ -267,14 +244,12 @@
       "words": 691,
       "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
       "scores": [
-        0.6,
-        0.5
+        0.6
       ],
-      "judge": 0.55,
+      "judge": 0.6,
       "meetsGoal": 0.75,
       "weakest": [
-        "It invents the year and current date, then incorrectly treats an unverified reporting delay as established fact.",
-        "It invents the year and today's date, falsely declares reporting deadlines missed, and oversimplifies additional regulatory duties."
+        "It invents the year and current date, then wrongly treats an unestablished reporting delay as fact."
       ]
     },
     {
@@ -286,14 +261,12 @@
       "words": 800,
       "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
       "scores": [
-        0.75,
         0.7
       ],
-      "judge": 0.725,
-      "meetsGoal": 0.625,
+      "judge": 0.7,
+      "meetsGoal": 0.5,
       "weakest": [
-        "Customer notification remains an approval-dependent draft, and the rollback owner is still unconfirmed.",
-        "It invents calendar dates for regulatory deadlines and leaves customer notification without an accountable owner or deadline."
+        "It invents incident dates and leaves the rollback owner unconfirmed and customer notification without an owner or deadline."
       ]
     },
     {
@@ -305,14 +278,12 @@
       "words": 2261,
       "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "The plan is not sign-off ready: the individual rollback owner and operational alarm thresholds remain unset.",
-        "Owner names and operational alert thresholds remain unset, while inaccurate legal guidance undermines compliance readiness."
+        "Unreliable legal timing and an unfilled rollback-owner name prevent sign-off."
       ]
     },
     {
@@ -324,14 +295,12 @@
       "words": 856,
       "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.75,
       "weakest": [
-        "It invents the year and current date, falsely declares deadlines overdue, and oversimplifies DORA notification timing.",
-        "It invents the year, current date and eight-day delay, turning a valid relative deadline into an unsupported claim that notification is overdue."
+        "It invents the year and current date, falsely declares deadlines overdue, and oversimplifies DORA notification timing."
       ]
     },
     {
@@ -343,14 +312,12 @@
       "words": 2485,
       "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
-      "meetsGoal": 0.875,
+      "meetsGoal": 1.0,
       "weakest": [
-        "Unsupported regulatory dates and invented internal procedures make this unsafe to adopt without correction.",
-        "It introduces unsupported internal policies and jurisdiction-specific legal deadlines that need validation before compliance can rely on it."
+        "Incorrect regulatory dates and invented internal process references undermine an otherwise strong operational plan."
       ]
     },
     {
@@ -362,14 +329,12 @@
       "words": 487,
       "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.75,
       "weakest": [
-        "It rules out a reporting clock without establishing applicable policy or regulatory obligations.",
-        "It declares no reporting clock is running without knowing the applicable regulatory obligations or internal incident policy."
+        "It treats unverified absence of harm as fact and makes unjustified claims about regulatory reporting clocks."
       ]
     },
     {
@@ -381,14 +346,12 @@
       "words": 416,
       "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
       "scores": [
-        0.55,
         0.6
       ],
-      "judge": 0.575,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It names no accountable rollback owner empowered to act immediately, permits continued autonomy, and omits customer notification and a counted audit of every output since the change.",
-        "It names no accountable rollback owner empowered to act immediately, leaves autonomy reduction optional, omits customer notification, and audits refunds rather than every output since the change."
+        "It names no rollback owner empowered to act immediately, does not require customer notification, and audits refunds rather than counting every output since the change."
       ]
     },
     {
@@ -400,14 +363,12 @@
       "words": 641,
       "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
       "scores": [
-        0.6,
-        0.6
+        0.65
       ],
-      "judge": 0.6,
-      "meetsGoal": 0.625,
+      "judge": 0.65,
+      "meetsGoal": 0.75,
       "weakest": [
-        "Incorrect control-limit calculations undermine the noise check, and the categorical advice not to start reporting clocks lacks regulatory context.",
-        "The central noise check contains incorrect control limits, and the predicted threshold breach assumes an unproven trend."
+        "Incorrect control-limit calculations undermine the central noise check, while the prediction of an imminent threshold breach is unsupported."
       ]
     },
     {
@@ -419,14 +380,12 @@
       "words": 355,
       "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
       "scores": [
-        0.44999999999999996,
-        0.44999999999999996
+        0.55
       ],
-      "judge": 0.44999999999999996,
+      "judge": 0.55,
       "meetsGoal": 0.0,
       "weakest": [
-        "It permits shipping without regression testing and omits window-wide error analysis, golden-set additions, full per-class comparison against the previous version, and the card changelog update.",
-        "It permits shipping without regression testing and omits window-wide error analysis, golden-set additions, full per-class comparison, and the card changelog."
+        "It permits shipping without regression testing and omits window-wide error analysis, golden-set additions, full per-class comparisons, and the card changelog update."
       ]
     },
     {
@@ -438,14 +397,12 @@
       "words": 677,
       "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
       "scores": [
-        0.8,
         0.75
       ],
-      "judge": 0.775,
+      "judge": 0.75,
       "meetsGoal": 1.0,
       "weakest": [
-        "It rules out reporting obligations and harm too confidently without knowing the applicable rules or verifying hidden impacts.",
-        "It declares that no reporting clock applies without knowing the regulatory regime or verifying the absence of reportable harm."
+        "It declares that no reporting clock is running without knowing the applicable obligations or verifying the absence of hidden harm."
       ]
     },
     {
@@ -457,14 +414,12 @@
       "words": 405,
       "goal": "Breach assessment for the DPO with a computed 72-hour deadline; the leak becomes a regression case that fails on the faulty version before the fix ships.",
       "scores": [
-        0.6,
-        0.65
+        0.6
       ],
-      "judge": 0.625,
-      "meetsGoal": 0.375,
+      "judge": 0.6,
+      "meetsGoal": 0.25,
       "weakest": [
-        "It never requires reproducing the leak as a regression test that fails on the faulty version and passes before the fix ships.",
-        "It never requires replaying this exact leak as a regression test that fails on the faulty version before the fix ships."
+        "It never requires turning the captured leak into a regression test that fails on the faulty version and passes before the fix ships."
       ]
     },
     {
@@ -476,14 +431,12 @@
       "words": 425,
       "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.5,
       "weakest": [
-        "It prematurely treats the drop as a trend before checking sampling noise and leaves eval refresh optional rather than committing to it.",
-        "It treats an unverified drop as a trend and makes eval refresh optional rather than clearly recommending a low-severity review without emergency rollback."
+        "It extrapolates a trend before establishing sampling noise and leaves eval refresh optional rather than making it the low-severity next step."
       ]
     },
     {
@@ -495,13 +448,11 @@
       "words": 336,
       "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
       "scores": [
-        0.5,
         0.5
       ],
       "judge": 0.5,
       "meetsGoal": 0.0,
       "weakest": [
-        "It permits shipping before every memo in the window is analyzed, golden-set regressions are added, the full suite runs per class against the previous version, and the card changelog is updated.",
         "It permits shipping before window-wide error analysis, golden-set regressions, full per-class comparison against the previous version, and a card changelog update."
       ]
     },
@@ -514,14 +465,12 @@
       "words": 736,
       "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.75,
       "weakest": [
-        "The regulatory section invents a date and asserts notification clocks without establishing jurisdiction, applicability, or reporting thresholds.",
-        "It invents a regulatory deadline date and wrongly treats possible regulatory applicability as automatically starting notification clocks."
+        "Unsupported regulatory deadlines and an invented date undermine otherwise strong release gates, while error analysis is limited to faulty outputs rather than every memo."
       ]
     },
     {
@@ -533,14 +482,12 @@
       "words": 1503,
       "goal": "At least three system-specific failure scenarios with verification, an alarm on AI quality, a named rollback owner.",
       "scores": [
-        0.75,
-        0.75
+        0.7
       ],
-      "judge": 0.75,
+      "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "It lacks scenario-specific verification checks, a configured AI-quality alarm, and an unambiguous rollback execution owner.",
-        "The scenarios lack explicit verification steps, the AI-quality alarm is unspecified, and rollback execution ownership remains ambiguous."
+        "Scenario-specific verification is incomplete, AI-quality alarm thresholds remain unset, and rollback execution lacks one clearly accountable owner."
       ]
     },
     {
@@ -552,14 +499,12 @@
       "words": 768,
       "goal": "Does not ship on three memos: error analysis on every memo in the window, regression cases added to the golden set, full suite per class against the previous version, card changelog updated, then the fix ships.",
       "scores": [
-        0.55,
-        0.55
+        0.5
       ],
-      "judge": 0.55,
+      "judge": 0.5,
       "meetsGoal": 1.0,
       "weakest": [
-        "It invents dates and reporting deadlines, misstates regulatory triggers, and wrongly assumes analyst validation failed.",
-        "It invents dates and asserts regulatory deadlines without establishing jurisdiction, applicability, or a reportable incident."
+        "It invents dates and misstates regulatory triggers and deadlines, undermining an otherwise strong release gate."
       ]
     },
     {
@@ -571,14 +516,12 @@
       "words": 375,
       "goal": "Drop checked against the noise of the weekly sample; low severity, eval refresh, no emergency rollback.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.5,
       "weakest": [
-        "It projects a threshold breach from an unverified trend and never explicitly calls for an evaluation-set refresh.",
-        "It extrapolates an unverified trend into a breach deadline and never explicitly calls for an evaluation refresh."
+        "It extrapolates an unverified trend before checking sampling noise and never explicitly recommends refreshing the evaluation set."
       ]
     },
     {
@@ -590,14 +533,12 @@
       "words": 415,
       "goal": "Rollback owner named, level dropped, customers told, regression cases added before the fix ships; every output since the change pulled and counted; the owner acts without waiting for approval.",
       "scores": [
-        0.6,
         0.65
       ],
-      "judge": 0.625,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It names no empowered rollback owner and does not require customer notification, counting every output since the change, or regression cases before the fix ships.",
-        "It leaves rollback ownership and authority unassigned, customer notification unstated, and exhaustive output counting and pre-release regression cases unsecured."
+        "It names no rollback owner empowered to act immediately and does not require customer notification, counting every output, or regression cases before shipping the fix."
       ]
     }
   ]

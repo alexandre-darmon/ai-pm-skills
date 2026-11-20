@@ -5,26 +5,27 @@
   "judgeKind": "llm",
   "answerSet": "recorded",
   "legal": false,
+  "skillHash": "5c99df677e2b572e69c8c9c594ebd79a850f753905fb932fb5e0fab4c7449d69",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.013888888888888883,
-  "costUsd": 0.1502018,
+  "noise": null,
+  "costUsd": 0.1072775,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.6472222222222223,
+      "judge": 0.6499999999999999,
       "meetsGoal": 0.6666666666666666,
-      "regex": 0.9365079365079365,
+      "regex": 0.9682539682539681,
       "words": 1218.7777777777778
     },
     "without": {
       "answers": 9,
-      "judge": 0.5222222222222223,
-      "meetsGoal": 0.20833333333333334,
+      "judge": 0.5277777777777778,
+      "meetsGoal": 0.2222222222222222,
       "regex": 0.26631393298059963,
       "words": 701.1111111111111
     }
@@ -39,14 +40,12 @@
       "words": 1231,
       "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
-      "meetsGoal": 0.625,
+      "meetsGoal": 0.5,
       "weakest": [
-        "The denominator conflates answer correctness with verified request resolution and treats successful ticket creation as escalation rather than defining success by request type.",
-        "It substitutes answer correctness for verified resolution without defining success for answered requests versus ticket-opening requests."
+        "The cost denominator conflates correct answers with resolved requests without defining verified success or weighting the review sample to actual traffic."
       ]
     },
     {
@@ -58,14 +57,12 @@
       "words": 875,
       "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
       "scores": [
-        0.65,
-        0.65
+        0.7
       ],
-      "judge": 0.65,
+      "judge": 0.7,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits accountable owners per knowledge base, country-specific eligible-employee denominators, and cost per correct answer.",
-        "It omits cost per correct answer, uses the wrong denominator for country adoption, and leaves per-base KPI ownership implicit."
+        "It omits cost per correct answer, country-specific eligible-employee denominators, and accountable owners for each knowledge base\u2019s quality and stale-answer rate."
       ]
     },
     {
@@ -77,14 +74,12 @@
       "words": 836,
       "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
       "scores": [
-        0.65,
-        0.7
+        0.65
       ],
-      "judge": 0.675,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits owned per-KB stale-answer metrics and country-level adoption, and never correctly calculates cost per correct answer.",
-        "It omits country-level adoption denominators, explicit per-KB stale-answer ownership, and a valid stated cost per correct answer."
+        "It leaves KB ownership unresolved, omits country-level adoption denominators, and gives an incorrect cost-per-correct-answer formula."
       ]
     },
     {
@@ -96,14 +91,12 @@
       "words": 1349,
       "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
       "scores": [
-        0.65,
         0.7
       ],
-      "judge": 0.675,
+      "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "Country adoption needs country-specific eligible populations, and cost per correct answer cannot equate conversations with answers.",
-        "Country adoption needs country-specific eligible headcounts, and cost per correct answer cannot equate conversations with answers."
+        "It uses conversations as answers for unit cost and does not specify eligible-employee denominators for each country."
       ]
     },
     {
@@ -115,14 +108,12 @@
       "words": 1069,
       "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.75,
       "weakest": [
-        "The interim resolution estimate assumes access to transcripts and repeat-contact linkage that the stated logs do not provide.",
-        "The interim resolution estimate assumes access to transcripts and repeat-contact linkage that the stated logs do not provide."
+        "The two-week estimate assumes reviewable transcripts and employee-level ticket matching that the stated logs do not provide."
       ]
     },
     {
@@ -134,14 +125,12 @@
       "words": 907,
       "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
-      "meetsGoal": 0.375,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It omits stale-answer rates and explicit owners per knowledge base, uses the wrong country adoption denominator, and assumes one answer per conversation for cost.",
-        "It omits stale-answer rates by knowledge base and uses the global employee denominator for country adoption."
+        "It omits stale-answer rates by knowledge base, uses the wrong country adoption denominator, and treats conversations as answers in its cost calculation."
       ]
     },
     {
@@ -153,14 +142,12 @@
       "words": 1320,
       "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
       "scores": [
-        0.55,
-        0.65
+        0.6
       ],
-      "judge": 0.6000000000000001,
+      "judge": 0.6,
       "meetsGoal": 0.5,
       "weakest": [
-        "It substitutes answer-level accuracy for session success, retains cost per conversation, and does not pair every usage panel with sampled quality.",
-        "It retains cost per conversation, conflates sampled answer correctness with successful outcomes, and does not put sampled quality beside every usage panel."
+        "It substitutes sampled answer correctness for successful sessions and does not put sampled quality beside every usage panel."
       ]
     },
     {
@@ -172,14 +159,12 @@
       "words": 409,
       "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
       "scores": [
-        0.4,
         0.4
       ],
       "judge": 0.4,
       "meetsGoal": 0.0,
       "weakest": [
-        "It retains cost per conversation and omits sampled quality lines, cost per success, adoption by population, and stale-answer rate.",
-        "It omits sampled quality beside usage, cost per success, adoption by population, and stale-answer rate."
+        "It declares the spec nearly ready while omitting sampled quality beside usage panels, cost per success, adoption by population, and stale-answer rate."
       ]
     },
     {
@@ -191,14 +176,12 @@
       "words": 1272,
       "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
-      "meetsGoal": 0.875,
+      "meetsGoal": 1.0,
       "weakest": [
-        "It treats absent follow-up as success and calls \u20ac0.25 a cost floor without evidence supporting either inference.",
-        "It conflates absence of follow-up with success and conversations with answers, weakening its outcome and cost KPIs."
+        "It treats absent follow-up tickets or rejected claims as success, which can hide incorrect answers and distort cost per correct answer."
       ]
     },
     {
@@ -210,14 +193,12 @@
       "words": 986,
       "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.5,
       "weakest": [
-        "It treats sampled answer correctness as session success without justification and does not actually pair every usage panel with a sampled-quality line.",
-        "It substitutes answer correctness for verified session success in the cost denominator and does not pair every usage panel with sampled quality."
+        "The cost denominator treats sampled answer correctness as session success, and quality lines are not specified beside every usage panel."
       ]
     },
     {
@@ -229,14 +210,12 @@
       "words": 1171,
       "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.75,
       "weakest": [
-        "The cost denominator conflates sampled answer correctness with successful sessions and does not specify how redo adjustments avoid double-counting failures.",
-        "The cost denominator conflates sampled answer correctness with successful sessions without defining a representative, redo-adjusted estimate."
+        "The cost denominator treats sampled answer correctness as session success without defining session-level success or weighting the sample."
       ]
     },
     {
@@ -248,14 +227,12 @@
       "words": 694,
       "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
       "scores": [
-        0.5,
         0.44999999999999996
       ],
-      "judge": 0.475,
+      "judge": 0.44999999999999996,
       "meetsGoal": 0.25,
       "weakest": [
-        "It never specifies an outcome event linked to the trace ID and risks counting silent abandonment as resolution.",
-        "It omits a trace-linked outcome event and substitutes absence of tickets, negative feedback, and repeat contact for evidence of resolution."
+        "It omits a trace-linked outcome event and substitutes an unreliable absence-of-escalation proxy for successful resolution."
       ]
     },
     {
@@ -267,14 +244,12 @@
       "words": 433,
       "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
       "scores": [
-        0.4,
         0.4
       ],
       "judge": 0.4,
       "meetsGoal": 0.0,
       "weakest": [
-        "It retains cost per session and omits sampled quality beside usage panels, adoption by population, and stale-answer rate.",
-        "It retains cost per session and omits sampled quality lines, adoption by population, and stale-answer rate."
+        "It retains cost per session and omits sampled quality beside each usage panel, adoption by population, and stale-answer rate."
       ]
     },
     {
@@ -286,14 +261,12 @@
       "words": 841,
       "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
       "scores": [
-        0.55,
-        0.55
+        0.6
       ],
-      "judge": 0.55,
+      "judge": 0.6,
       "meetsGoal": 0.5,
       "weakest": [
-        "It never specifies an outcome event linked to the conversation trace, and assumes historical resolution can be reviewed despite no logged conversation content.",
-        "It omits an explicit outcome event linked to the trace ID and assumes reviewers can establish resolution from data not currently logged."
+        "It never specifies an outcome event linked to the conversation trace, leaving the success denominator inadequately instrumented."
       ]
     },
     {
@@ -305,14 +278,12 @@
       "words": 436,
       "goal": "Adds a quality line beside each usage panel, from a sampled review, replaces cost per conversation with cost divided by successes, and adds adoption by population and the stale-answer rate.",
       "scores": [
-        0.4,
         0.4
       ],
       "judge": 0.4,
       "meetsGoal": 0.0,
       "weakest": [
-        "It omits sampled-review quality lines, population-based adoption and stale-answer rate, and retains cost per session instead of replacing it with cost per success.",
-        "It retains cost per session and omits sampled-review quality beside each usage panel, adoption by population, and stale-answer rate."
+        "It omits sampled quality lines, adoption by population and stale-answer rate, while retaining cost per session instead of cost per success."
       ]
     },
     {
@@ -320,18 +291,16 @@
       "case": "assistant-kpis-cost-per-outcome-001",
       "arm": "with",
       "run": 1,
-      "regex": 0.7142857142857143,
+      "regex": 1.0,
       "words": 1311,
       "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "Outcome events omit the trace ID, and sampled answer review alone cannot verify actual resolution.",
-        "Outcome events omit the required trace_id, and sampled answer review cannot by itself verify resolution or absence of repeat contact."
+        "The interim estimate assumes reviewers can verify resolution, but the available logs contain neither conversation content nor outcome evidence."
       ]
     },
     {
@@ -343,14 +312,12 @@
       "words": 879,
       "goal": "Adds an outcome event attached to the trace id, uses a sampled review as interim quality instead of the thumbs, marks what is not computable yet, and divides cost by successes.",
       "scores": [
-        0.44999999999999996,
         0.44999999999999996
       ],
       "judge": 0.44999999999999996,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits a trace-linked outcome event and counts unsupported resolution proxies as successes instead of using sampled review for the interim estimate.",
-        "It omits a trace-linked outcome event and headlines an unvalidated resolution proxy instead of sampled-review quality."
+        "It omits a trace-linked outcome event and headlines an unsupported resolution proxy instead of sampled-review quality."
       ]
     },
     {
@@ -362,14 +329,12 @@
       "words": 1260,
       "goal": "Splits quality and the stale-answer rate by knowledge base with an owner each, adds adoption per country against eligible employees, and states cost per correct answer.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "Risk-weighted sampling lacks weighting corrections, so reported quality, stale-answer rates and cost per correct answer could be biased.",
-        "It overstates what document age proves and oversamples risky topics without weighting, potentially biasing the reported quality and stale-answer rates."
+        "It mixes answer accuracy with conversation volume to estimate cost per correct answer, without resolving the unit mismatch."
       ]
     }
   ]

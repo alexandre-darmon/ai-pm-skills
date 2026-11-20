@@ -5,25 +5,26 @@
   "judgeKind": "llm",
   "answerSet": "recorded",
   "legal": false,
+  "skillHash": "88cf6000a5a3b4ee2259bf3dcaa39df7d564ed063e4974f4250704e693a57c33",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.02499999999999999,
-  "costUsd": 0.1553824,
+  "noise": null,
+  "costUsd": 0.117528,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.6388888888888888,
+      "judge": 0.6444444444444444,
       "meetsGoal": 0.4166666666666667,
       "regex": 0.962121212121212,
       "words": 1520.5555555555557
     },
     "without": {
       "answers": 9,
-      "judge": 0.5361111111111111,
+      "judge": 0.5277777777777778,
       "meetsGoal": 0.1388888888888889,
       "regex": 0.5667789001122334,
       "words": 805.5555555555555
@@ -39,14 +40,12 @@
       "words": 1539,
       "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
       "scores": [
-        0.6,
         0.65
       ],
-      "judge": 0.625,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It explicitly rules out L4 routing instead of planning gated L4 routing with monitoring, human-owned decisions and trade-offs, and an AI Act classification re-check.",
-        "It explicitly caps routing at L3 instead of defining a gated path to the required L4-only routing target."
+        "It explicitly rules out L4 routing while its ambitious scenario allows unreviewed refusals, contradicting the required automation boundary."
       ]
     },
     {
@@ -58,14 +57,12 @@
       "words": 1370,
       "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It explicitly rejects L4 routing and omits an AI Act classification re-check as scope or autonomy changes.",
-        "It explicitly rejects L4 routing and omits an AI Act classification re-check as scope and autonomy change."
+        "It explicitly rejects L4 routing and omits an AI Act classification re-check as scope evolves."
       ]
     },
     {
@@ -77,14 +74,12 @@
       "words": 1286,
       "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
       "scores": [
-        0.7,
-        0.65
+        0.6
       ],
-      "judge": 0.675,
+      "judge": 0.6,
       "meetsGoal": 0.75,
       "weakest": [
-        "The unsupported AI Act applicability date could mislead compliance planning despite the correct pre-use CSE gate.",
-        "The answer gives an unsupported legal applicability date and contradictory automation gates, weakening an otherwise appropriate exception-first, pre-consultation recommendation."
+        "It incorrectly dates the employment-related AI Act duty to December 2027, although its explicit pre-use CSE gate is appropriate."
       ]
     },
     {
@@ -96,14 +91,12 @@
       "words": 1729,
       "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
       "scores": [
-        0.6,
-        0.6
+        0.55
       ],
-      "judge": 0.6,
+      "judge": 0.55,
       "meetsGoal": 0.25,
       "weakest": [
-        "It explicitly rejects the required L4 routing target and relies on unsupported autonomy ceilings and regulatory timing.",
-        "It explicitly rejects L4 routing, the required target, while asserting unsupported autonomy ceilings and legal requirements."
+        "It explicitly rejects L4 routing, missing the central target, and asserts unsupported automation ceilings and legal timing."
       ]
     },
     {
@@ -115,14 +108,12 @@
       "words": 725,
       "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
       "scores": [
-        0.6,
-        0.6
+        0.55
       ],
-      "judge": 0.6,
+      "judge": 0.55,
       "meetsGoal": 0.25,
       "weakest": [
-        "It does not clearly prioritize exception redesign and low automation targets or require employee-representative information or consultation before use under AI Act Article 26(7) and applicable labour law.",
-        "It does not make exception redesign and low automation targets the priority or require employee-representative information or consultation before use under AI Act Article 26(7) and applicable labour law."
+        "It does not make exception redesign the priority or require CSE information or consultation before deployment, including AI Act Article 26(7) worker information duties."
       ]
     },
     {
@@ -134,14 +125,12 @@
       "words": 1548,
       "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
       "scores": [
-        0.7,
-        0.65
+        0.7
       ],
-      "judge": 0.675,
+      "judge": 0.7,
       "meetsGoal": 0.25,
       "weakest": [
-        "The recommended plan keeps verification at L2 instead of the required L3, without defining a gated path to L3.",
-        "The recommended plan keeps verification at L2 rather than the required L3, and its deployment gates lack concrete pass criteria."
+        "The recommended plan keeps verification at L2 rather than the required L3, and its gates lack operational pass thresholds."
       ]
     },
     {
@@ -153,14 +142,12 @@
       "words": 541,
       "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
       "scores": [
-        0.5,
-        0.5
+        0.55
       ],
-      "judge": 0.5,
+      "judge": 0.55,
       "meetsGoal": 0.25,
       "weakest": [
-        "It jumps to 60%+ straight-through automation instead of exception-first redesign with low initial targets, and fails to require pre-use employee-representative involvement under AI Act Article 26(7) and applicable labour law.",
-        "It prioritises ambitious automation over exception redesign and fails to require pre-use employee-representative involvement under AI Act Article 26(7) and applicable French labour law."
+        "It proposes broad automation before exception redesign and omits the pre-use employee-representative information or consultation gate for handler monitoring."
       ]
     },
     {
@@ -172,14 +159,12 @@
       "words": 916,
       "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
       "scores": [
-        0.55,
-        0.5
+        0.55
       ],
-      "judge": 0.525,
+      "judge": 0.55,
       "meetsGoal": 0.0,
       "weakest": [
-        "It proposes automated onboarding decisions instead of L1 support and omits explicit gates per step and three scenarios.",
-        "It permits automated onboarding decisions instead of L1 human control and omits explicit gates per step and three scenarios."
+        "It permits automatic onboarding decisions instead of L1 human decisions, lacks explicit gates per step, and provides only one savings scenario."
       ]
     },
     {
@@ -191,14 +176,12 @@
       "words": 922,
       "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
       "scores": [
-        0.44999999999999996,
-        0.44999999999999996
+        0.4
       ],
-      "judge": 0.44999999999999996,
+      "judge": 0.4,
       "meetsGoal": 0.0,
       "weakest": [
-        "It explicitly enables autonomous complaint and compensation decisions instead of limiting L4 to routing and retaining human decisions and AI Act classification re-checks.",
-        "It explicitly introduces autonomous complaint decisions and payouts instead of limiting L4 to routing and retaining human decisions with an AI Act classification re-check."
+        "It explicitly introduces autonomous complaint and compensation decisions instead of limiting L4 to routing and keeping decisions human."
       ]
     },
     {
@@ -210,14 +193,12 @@
       "words": 776,
       "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
       "scores": [
-        0.44999999999999996,
-        0.44999999999999996
+        0.4
       ],
-      "judge": 0.44999999999999996,
+      "judge": 0.4,
       "meetsGoal": 0.0,
       "weakest": [
-        "It authorizes automated complaint decisions and payouts instead of limiting L4 autonomy to routing and retaining human decisions and AI Act classification re-checks.",
-        "It authorizes autonomous decisions and payouts instead of limiting L4 to routing, retaining human decisions and trade-offs, and requiring an AI Act classification re-check."
+        "It authorizes autonomous compensation decisions and no-touch handling instead of limiting L4 to routing, retaining human decisions, and requiring an AI Act classification re-check."
       ]
     },
     {
@@ -229,14 +210,12 @@
       "words": 862,
       "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It lacks three scenarios and explicit gates per step, and proposes sampled onboarding approval instead of keeping the decision at L1.",
-        "It permits sampled onboarding approvals and lacks explicit per-step gates and three scenarios."
+        "It allows sampled onboarding approval instead of L1 human decisions, lacks explicit gates per step, and omits the three scenarios."
       ]
     },
     {
@@ -248,14 +227,12 @@
       "words": 1633,
       "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
       "scores": [
-        0.5,
-        0.55
+        0.6
       ],
-      "judge": 0.525,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "The recommended target sets verification at L2 instead of the required L3, and its miss-rate gate uses the wrong inequality.",
-        "The recommended plan sets verification at L2 rather than the required L3, and its screening gate incorrectly requires a miss rate above a threshold."
+        "The recommended plan keeps verification at L2 instead of the required L3, and its miss-rate gate uses the wrong inequality."
       ]
     },
     {
@@ -267,14 +244,12 @@
       "words": 1304,
       "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
       "scores": [
-        0.65,
         0.7
       ],
-      "judge": 0.675,
+      "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "It gives an incorrect AI Act worker-information deadline, undermining otherwise clear pre-use consultation advice.",
-        "It incorrectly dates AI Act Article 26(7) obligations to 2 December 2027 rather than 2 August 2026."
+        "It incorrectly dates Article 26(7) to December 2027 and implies obligations depend on automation level."
       ]
     },
     {
@@ -286,14 +261,12 @@
       "words": 725,
       "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
       "scores": [
-        0.55,
-        0.65
+        0.6
       ],
-      "judge": 0.6000000000000001,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It assumes 60% straight-through eligibility instead of setting low initial automation levels, and fails to require CSE information or consultation before use under applicable labour law and AI Act Article 26(7).",
-        "It assumes 60% straight-through eligibility instead of setting conservative initial targets, and fails to require CSE information or consultation before use."
+        "It assumes 60% straight-through eligibility instead of starting with low automation, and fails to require CSE involvement before use or address AI Act Article 26(7)."
       ]
     },
     {
@@ -305,14 +278,12 @@
       "words": 1679,
       "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "The recommended scenario keeps verification at L2 rather than the required L3, contradicting its own step-level target.",
-        "The recommended scenario keeps verification at L2 rather than the required L3 and contradicts the step table."
+        "The recommended scenario keeps verification at L2 rather than the required L3, contradicting the step table and intended end state."
       ]
     },
     {
@@ -324,14 +295,12 @@
       "words": 869,
       "goal": "Extraction L2, verification L3, onboarding decision L1; a gate per step; three scenarios.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It exceeds the required extraction and onboarding autonomy levels and lacks explicit release gates for each step.",
-        "It exceeds the required autonomy for extraction and onboarding, lacks explicit per-step gates, and offers only two future scenarios."
+        "It exceeds the intended extraction and decision autonomy, lacks explicit per-step gates, and offers only two future scenarios."
       ]
     },
     {
@@ -343,14 +312,12 @@
       "words": 914,
       "goal": "L4 on routing only, humans keep decisions, trade-offs and ai-act-classification re-check; no L5.",
       "scores": [
-        0.44999999999999996,
         0.44999999999999996
       ],
       "judge": 0.44999999999999996,
       "meetsGoal": 0.0,
       "weakest": [
-        "It explicitly plans autonomous complaint and compensation decisions instead of limiting L4 to routing and retaining human decisions with an AI Act classification re-check.",
-        "It explicitly plans autonomous complaint decisions and compensation instead of limiting L4 to routing and retaining human decisions, trade-offs and AI Act classification re-checks."
+        "It explicitly plans autonomous complaint and compensation decisions instead of limiting L4 to routing, retaining human decisions and trade-offs, and requiring an AI Act classification re-check."
       ]
     },
     {
@@ -362,14 +329,12 @@
       "words": 1597,
       "goal": "Exception redesign first, low target levels, and employee representatives (the CSE in France) informed or consulted before use because handlers are measured (AI Act art. 26(7), labour law).",
       "scores": [
-        0.65,
         0.7
       ],
-      "judge": 0.675,
+      "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "It gives an incorrect Article 26(7) application date and implies removing rankings could bypass required pre-use employee consultation.",
-        "It gives an incorrect AI Act compliance date and implies removing rankings can bypass pre-use labour consultation."
+        "It gives an incorrect AI Act applicability date and implies removing rankings lets the claims rollout bypass potentially required CSE consultation."
       ]
     }
   ]

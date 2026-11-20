@@ -5,26 +5,27 @@
   "judgeKind": "llm",
   "answerSet": "recorded",
   "legal": true,
+  "skillHash": "82cf58257cfbc666f81550da42ec06089d0e0730ee0e4fc71353cec74c2d8c07",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.02222222222222223,
-  "costUsd": 0.1542636,
+  "noise": null,
+  "costUsd": 0.109803,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.7666666666666667,
-      "meetsGoal": 0.7638888888888888,
+      "judge": 0.7611111111111111,
+      "meetsGoal": 0.75,
       "regex": 0.9797979797979798,
       "words": 1038.5555555555557
     },
     "without": {
       "answers": 9,
-      "judge": 0.6722222222222222,
-      "meetsGoal": 0.4027777777777778,
+      "judge": 0.6944444444444444,
+      "meetsGoal": 0.4166666666666667,
       "regex": 0.5987974987974988,
       "words": 537.0
     }
@@ -39,14 +40,12 @@
       "words": 638,
       "goal": "Refuses to decide on the 97% claim, designs a blind bake-off on the insurer's own documents scored per document kind with intervals, shows that field accuracy overstates the document outcome, computes cost per correct extraction with review time, clears the data path (processing agreement, health data, hosting) before any upload, lists the AI Act documents to ask for and the DORA register entry, and leaves the selection pending.",
       "scores": [
-        0.65,
-        0.7
+        0.75
       ],
-      "judge": 0.675,
+      "judge": 0.75,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits AI Act evidence and the DORA register entry, leaves hosting and health-data safeguards unresolved, and never computes confidence intervals or review-inclusive cost per correct extraction.",
-        "It omits AI Act documentation, the DORA register entry, hosting and health-data clearance, confidence intervals, and a cost-per-correct-extraction calculation."
+        "It omits AI Act documentation, the DORA register entry, hosting and health-data safeguards, numerical uncertainty intervals, and cost per correct extraction including review time."
       ]
     },
     {
@@ -58,14 +57,12 @@
       "words": 1101,
       "goal": "Refuses to decide on the 97% claim, designs a blind bake-off on the insurer's own documents scored per document kind with intervals, shows that field accuracy overstates the document outcome, computes cost per correct extraction with review time, clears the data path (processing agreement, health data, hosting) before any upload, lists the AI Act documents to ask for and the DORA register entry, and leaves the selection pending.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
       "meetsGoal": 0.5,
       "weakest": [
-        "It never computes cost per correct extraction including measured review time, so its price-based selection rule is premature.",
-        "It never computes cost per correct extraction including measured review time, leaving its economic decision rule incomplete."
+        "It never computes cost per correct extraction including review time, and its statistical comparisons mix metrics and use the wrong test-set denominator."
       ]
     },
     {
@@ -77,14 +74,12 @@
       "words": 962,
       "goal": "Shows the 5-point gap is inside the 10-point noise (2 x sqrt(9) / 60), calls it a tie, decides on cost per correct outcome with correction time (B about 7.76 EUR against 8.89 EUR), asks for the result per document class, and writes the decision with a re-evaluation date and triggers.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "It adds incorrect regulatory claims and leaves quality thresholds and a concrete re-evaluation date unspecified.",
-        "The core comparison is correct, but the added compliance checklist asserts an incorrect AI Act application date."
+        "The core comparison is right, but unsupported regulatory assertions, unspecified quality thresholds, and no fixed re-evaluation date weaken the committee decision."
       ]
     },
     {
@@ -96,14 +91,12 @@
       "words": 418,
       "goal": "Shows the 5-point gap is inside the 10-point noise (2 x sqrt(9) / 60), calls it a tie, decides on cost per correct outcome with correction time (B about 7.76 EUR against 8.89 EUR), asks for the result per document class, and writes the decision with a re-evaluation date and triggers.",
       "scores": [
-        0.65,
-        0.65
+        0.6
       ],
-      "judge": 0.65,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits cost per correct outcome and a dated review, and incorrectly equates a 12-point gap with 3 files out of 60.",
-        "It omits cost per correct outcome and a re-evaluation date, while misstating the break-even gap in files."
+        "It omits cost per correct outcome (\u20ac7.76 versus \u20ac8.89), a firm review date, and defensible re-evaluation triggers."
       ]
     },
     {
@@ -115,14 +108,12 @@
       "words": 610,
       "goal": "Refuses to decide on the 97% claim, designs a blind bake-off on the insurer's own documents scored per document kind with intervals, shows that field accuracy overstates the document outcome, computes cost per correct extraction with review time, clears the data path (processing agreement, health data, hosting) before any upload, lists the AI Act documents to ask for and the DORA register entry, and leaves the selection pending.",
       "scores": [
-        0.5,
-        0.5
+        0.65
       ],
-      "judge": 0.5,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits hosting and health-data clearance, AI Act documentation, DORA registration, valid uncertainty intervals, and cost per correct extraction.",
-        "It omits hosting clearance, AI Act documentation and the DORA register entry, and never specifies a blind test with intervals or cost per correct extraction."
+        "It omits AI Act evidence, the DORA register entry, hosting and health-data checks, valid per-kind intervals, and cost per correct extraction."
       ]
     },
     {
@@ -134,14 +125,12 @@
       "words": 838,
       "goal": "Does not approve signature as drafted, flags both clauses as blocking, proposes notice with a right to re-run the eval set and stay on the tested version, a written ban on training, log access, a quality service level and exit terms, maps them to GDPR art. 28 and DORA arts. 28-30 (register, critical or important function), never calls anything compliant, and lists questions for counsel.",
       "scores": [
-        0.8500000000000001,
         0.8500000000000001
       ],
       "judge": 0.8500000000000001,
       "meetsGoal": 0.75,
       "weakest": [
-        "It prematurely suggests the function is probably not critical or important and leaves DORA Articles 28\u201329 mapping implicit.",
-        "It prematurely suggests the function is probably not critical or important and leaves the DORA Articles 28\u201329 mapping implicit."
+        "It prematurely suggests the function is probably not critical or important and leaves the DORA Articles 28\u201330 mapping incomplete."
       ]
     },
     {
@@ -153,14 +142,12 @@
       "words": 990,
       "goal": "Shows the 5-point gap is inside the 10-point noise (2 x sqrt(9) / 60), calls it a tie, decides on cost per correct outcome with correction time (B about 7.76 EUR against 8.89 EUR), asks for the result per document class, and writes the decision with a re-evaluation date and triggers.",
       "scores": [
-        0.8500000000000001,
         0.8
       ],
-      "judge": 0.8250000000000001,
+      "judge": 0.8,
       "meetsGoal": 0.75,
       "weakest": [
-        "The committee decision leaves the re-evaluation date as a placeholder rather than setting a firm review deadline.",
-        "The decision leaves the document-class acceptance thresholds and actual re-evaluation date unresolved."
+        "The committee decision still leaves the document-class acceptance thresholds and re-evaluation date unresolved."
       ]
     },
     {
@@ -172,14 +159,12 @@
       "words": 510,
       "goal": "Shows the 5-point gap is inside the 10-point noise (2 x sqrt(9) / 60), calls it a tie, decides on cost per correct outcome with correction time (B about 7.76 EUR against 8.89 EUR), asks for the result per document class, and writes the decision with a re-evaluation date and triggers.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits the required cost-per-correct comparison (\u20ac7.76 versus \u20ac8.89) and assigns an unsupported probability to A\u2019s true advantage.",
-        "It omits cost per correct outcome and the explicit 10-point noise calculation, while presenting an unsupported 8% probability."
+        "It omits cost per correct outcome (\u20ac7.76 for B versus \u20ac8.89 for A) and gives an unjustified probability for the true accuracy gap."
       ]
     },
     {
@@ -191,14 +176,12 @@
       "words": 538,
       "goal": "Does not approve signature as drafted, flags both clauses as blocking, proposes notice with a right to re-run the eval set and stay on the tested version, a written ban on training, log access, a quality service level and exit terms, maps them to GDPR art. 28 and DORA arts. 28-30 (register, critical or important function), never calls anything compliant, and lists questions for counsel.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits explicit DORA Articles 28\u201330 mapping, log access, and questions for counsel, while speculating that negotiations will take only days.",
-        "It omits explicit DORA arts. 28\u201330 mapping, log access and counsel questions, and speculates that vendor concessions will take only days."
+        "It omits explicit log access and DORA Articles 28\u201330 mapping, and weakens the right to stay on the tested version."
       ]
     },
     {
@@ -210,14 +193,12 @@
       "words": 636,
       "goal": "Refuses to decide on the 97% claim, designs a blind bake-off on the insurer's own documents scored per document kind with intervals, shows that field accuracy overstates the document outcome, computes cost per correct extraction with review time, clears the data path (processing agreement, health data, hosting) before any upload, lists the AI Act documents to ask for and the DORA register entry, and leaves the selection pending.",
       "scores": [
-        0.55,
         0.55
       ],
       "judge": 0.55,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits blinded scoring, uncertainty intervals, cost per correct extraction, and the required health-data, AI Act and DORA checks.",
-        "It omits blind scoring, uncertainty intervals, cost per correct extraction, health-data clearance, and the AI Act documentation and DORA register requirements."
+        "It omits blind scoring, uncertainty intervals, cost per correct extraction, and the required AI Act, DORA and health-data clearance steps."
       ]
     },
     {
@@ -229,14 +210,12 @@
       "words": 1317,
       "goal": "Refuses to decide on the 97% claim, designs a blind bake-off on the insurer's own documents scored per document kind with intervals, shows that field accuracy overstates the document outcome, computes cost per correct extraction with review time, clears the data path (processing agreement, health data, hosting) before any upload, lists the AI Act documents to ask for and the DORA register entry, and leaves the selection pending.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
       "meetsGoal": 0.75,
       "weakest": [
-        "It never computes cost per correct extraction including review time, and its denominator excludes successfully corrected documents.",
-        "The cost-per-correct calculation omits review time and mixes pre-correction accuracy with a human-corrected workflow."
+        "It never computes cost per correct extraction including review time, and its proposed denominator excludes outcomes corrected by that review."
       ]
     },
     {
@@ -248,14 +227,12 @@
       "words": 532,
       "goal": "Does not approve signature as drafted, flags both clauses as blocking, proposes notice with a right to re-run the eval set and stay on the tested version, a written ban on training, log access, a quality service level and exit terms, maps them to GDPR art. 28 and DORA arts. 28-30 (register, critical or important function), never calls anything compliant, and lists questions for counsel.",
       "scores": [
-        0.8,
         0.8
       ],
       "judge": 0.8,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits log access, the DORA register, explicit GDPR Article 28 and DORA Articles 28\u201329 mapping, and questions for counsel.",
-        "It omits GDPR Article 28, DORA Articles 28\u201329 and the register, operational log access, and explicit questions for counsel."
+        "It omits log access, explicit counsel questions, and the required GDPR Article 28 and DORA Articles 28\u201330 register mapping, while leaving retesting, version retention and quality SLAs insufficiently firm."
       ]
     },
     {
@@ -267,14 +244,12 @@
       "words": 404,
       "goal": "Shows the 5-point gap is inside the 10-point noise (2 x sqrt(9) / 60), calls it a tie, decides on cost per correct outcome with correction time (B about 7.76 EUR against 8.89 EUR), asks for the result per document class, and writes the decision with a re-evaluation date and triggers.",
       "scores": [
-        0.75,
-        0.65
+        0.75
       ],
-      "judge": 0.7,
-      "meetsGoal": 0.375,
+      "judge": 0.75,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It omits cost per correct outcome and a dated re-evaluation plan with explicit triggers.",
-        "It omits the required cost-per-correct comparison and a dated re-evaluation plan, while asserting an unsupported 90% probability."
+        "It omits the required cost-per-correct comparison, explicit statistical tie, and dated re-evaluation plan with triggers."
       ]
     },
     {
@@ -286,14 +261,12 @@
       "words": 547,
       "goal": "Does not approve signature as drafted, flags both clauses as blocking, proposes notice with a right to re-run the eval set and stay on the tested version, a written ban on training, log access, a quality service level and exit terms, maps them to GDPR art. 28 and DORA arts. 28-30 (register, critical or important function), never calls anything compliant, and lists questions for counsel.",
       "scores": [
-        0.75,
-        0.8
+        0.75
       ],
-      "judge": 0.775,
+      "judge": 0.75,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits explicit eval-set rerun rights, log access, a quality SLA, DORA Articles 28\u201330 mapping and critical-function assessment, and concrete questions for counsel.",
-        "It omits explicit eval-set rerun rights, log access, a quality SLA, and counsel questions mapping DORA Articles 28\u201330 to critical-or-important-function status."
+        "It omits explicit evaluation rerun rights, log access, a quality SLA, DORA Articles 28\u201330 and critical-function assessment, and concrete questions for counsel."
       ]
     },
     {
@@ -305,14 +278,12 @@
       "words": 989,
       "goal": "Does not approve signature as drafted, flags both clauses as blocking, proposes notice with a right to re-run the eval set and stay on the tested version, a written ban on training, log access, a quality service level and exit terms, maps them to GDPR art. 28 and DORA arts. 28-30 (register, critical or important function), never calls anything compliant, and lists questions for counsel.",
       "scores": [
-        0.75,
         0.8
       ],
-      "judge": 0.775,
+      "judge": 0.8,
       "meetsGoal": 1.0,
       "weakest": [
-        "The final signature condition omits its own blockers on log access, quality, exit terms and evaluation evidence.",
-        "The final signing condition omits several safeguards the answer itself identifies as blocking."
+        "The final signing condition omits several safeguards the answer itself labels blocking, creating an inconsistent approval gate."
       ]
     },
     {
@@ -324,14 +295,12 @@
       "words": 923,
       "goal": "Shows the 5-point gap is inside the 10-point noise (2 x sqrt(9) / 60), calls it a tie, decides on cost per correct outcome with correction time (B about 7.76 EUR against 8.89 EUR), asks for the result per document class, and writes the decision with a re-evaluation date and triggers.",
       "scores": [
-        0.8500000000000001,
         0.8
       ],
-      "judge": 0.8250000000000001,
+      "judge": 0.8,
       "meetsGoal": 0.75,
       "weakest": [
-        "It leaves the re-evaluation date as an example rather than committing to a dated review in the committee decision.",
-        "The recommendation leaves re-evaluation timing as an example rather than committing to a date or a firm signature-relative deadline."
+        "The re-evaluation date and quality triggers remain tentative rather than committee-ready commitments."
       ]
     },
     {
@@ -343,14 +312,12 @@
       "words": 1298,
       "goal": "Refuses to decide on the 97% claim, designs a blind bake-off on the insurer's own documents scored per document kind with intervals, shows that field accuracy overstates the document outcome, computes cost per correct extraction with review time, clears the data path (processing agreement, health data, hosting) before any upload, lists the AI Act documents to ask for and the DORA register entry, and leaves the selection pending.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
-      "meetsGoal": 0.625,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It never computes cost per correct extraction including review time, compares unlike accuracy metrics, and gives an incorrect AI Act applicability date.",
-        "It never computes cost per correct extraction including review time, and it gives an incorrect AI Act application date."
+        "It never computes cost per correct extraction including review time and gives an incorrect AI Act applicability date."
       ]
     },
     {
@@ -362,14 +329,12 @@
       "words": 929,
       "goal": "Does not approve signature as drafted, flags both clauses as blocking, proposes notice with a right to re-run the eval set and stay on the tested version, a written ban on training, log access, a quality service level and exit terms, maps them to GDPR art. 28 and DORA arts. 28-30 (register, critical or important function), never calls anything compliant, and lists questions for counsel.",
       "scores": [
-        0.75,
         0.7
       ],
-      "judge": 0.725,
+      "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "It introduces an unsupported AI Act applicability date and treats unedited drafts as a proxy for correctness.",
-        "It introduces an incorrect AI Act date and treats unedited drafts as a proxy for correctness."
+        "It introduces an incorrect AI Act date and an unjustified evaluation sample size into otherwise sound blocking advice."
       ]
     }
   ]

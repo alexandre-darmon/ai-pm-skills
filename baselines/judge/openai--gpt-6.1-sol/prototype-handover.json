@@ -5,25 +5,26 @@
   "judgeKind": "llm",
   "answerSet": "recorded",
   "legal": true,
+  "skillHash": "373701f46a45abff22fcbdf7d46ade347dd7071dd4da08e925550ee260f655ae",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.030000000000000002,
-  "costUsd": 0.2147262,
+  "noise": null,
+  "costUsd": 0.2033475,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 15,
-      "judge": 0.6966666666666667,
-      "meetsGoal": 0.6416666666666667,
+      "judge": 0.6833333333333333,
+      "meetsGoal": 0.6833333333333333,
       "regex": 0.9855555555555555,
       "words": 1352.1333333333334
     },
     "without": {
       "answers": 15,
-      "judge": 0.58,
+      "judge": 0.5966666666666666,
       "meetsGoal": 0.15,
       "regex": 0.4835897435897436,
       "words": 775.0666666666667
@@ -39,14 +40,12 @@
       "words": 1368,
       "goal": "Opens with containment: stop it or record a dated decision by a named owner now, revoke the personal credentials, no running until Q2 by default; any exception is for IT risk to decide, time-boxed in weeks, never until the rebuild and never on the PM credentials, since the RTS testing derogation (art. 16(6)) does not cover running a business process; places it at tier 3 and proposes a rebuild, raises the production-data rules for user-built systems (RTS 2024/1774 art. 16 and 16(9)) and the DPO question, never says approved.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
-      "meetsGoal": 0.75,
+      "meetsGoal": 1.0,
       "weakest": [
-        "It invents a date and year, contradicting the stated 11 November date and overstating the overdue period.",
-        "It invents a date and misstates the overdue period as 18 days rather than 11, undermining a time-critical containment record."
+        "It invents a year and changes today from 11 November to 18 November, making the containment record and overdue calculation wrong."
       ]
     },
     {
@@ -58,14 +57,12 @@
       "words": 1703,
       "goal": "Places it at tier 3 now and tier 4 at the wanted autonomous level, proposes a rebuild, gives the baseline with its Wilson interval (about 84% to 92%), flags a possible provider role for an in-house system put into service for own use (art. 3(3), 3(11)) and a possible Annex III point 5(c) use for ai-act-classification, raises the health data question for the DPO, and never says approved or compliant.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "The autonomy gate incorrectly uses a lower confidence bound for the false-standard error rate instead of requiring its upper bound to stay below a maximum.",
-        "The autonomy gate incorrectly uses the false-standard error rate\u2019s lower confidence bound instead of requiring its upper bound below a maximum."
+        "The autonomy gate incorrectly uses a lower confidence bound on the false-standard error rate; safety requires an upper bound below the agreed ceiling."
       ]
     },
     {
@@ -77,14 +74,12 @@
       "words": 1325,
       "goal": "Opens with containment: stop it or record a dated decision by a named owner now, revoke the personal credentials, no running until Q2 by default; any exception is for IT risk to decide, time-boxed in weeks, never until the rebuild and never on the PM credentials, since the RTS testing derogation (art. 16(6)) does not cover running a business process; places it at tier 3 and proposes a rebuild, raises the production-data rules for user-built systems (RTS 2024/1774 art. 16 and 16(9)) and the DPO question, never says approved.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
       "meetsGoal": 0.75,
       "weakest": [
-        "The instruction to run a production-connected baseline before stopping undermines immediate containment and bypasses the required IT-risk exception.",
-        "The instruction to run a baseline before stopping undermines immediate containment, and the document invents a date inconsistent with 11 November."
+        "The invented date and suggested evaluation run before shutdown undermine immediate, auditable containment."
       ]
     },
     {
@@ -96,14 +91,12 @@
       "words": 624,
       "goal": "Places it at tier 3 (business-critical, complaints and fraud signals touch customer outcomes) and proposes a rebuild by engineering against the suite and a frozen baseline with its Wilson interval (about 88% to 93%) per category, marks the judge as not validated without TPR and TNR, puts prompts and model version under change control, lists row-level access and secrets to rebuild, drafts the ICT asset entry with questions for IT risk, and never says approved.",
       "scores": [
-        0.75,
         0.7
       ],
-      "judge": 0.725,
+      "judge": 0.7,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits tier 3 classification, the frozen baseline and Wilson interval, judge TPR/TNR, explicit change controls, and an ICT asset entry with IT-risk questions.",
-        "It omits tier 3 classification, the frozen baseline and Wilson interval, judge TPR/TNR, explicit model change control, row-level access, and the ICT asset entry."
+        "It omits tier 3 classification, the frozen baseline and Wilson interval, judge TPR/TNR, model change control, row-level access, and an ICT asset entry with IT-risk questions."
       ]
     },
     {
@@ -115,14 +108,12 @@
       "words": 1277,
       "goal": "Places it at tier 3 now and tier 4 at the wanted autonomous level, proposes a rebuild, gives the baseline with its Wilson interval (about 84% to 92%), flags a possible provider role for an in-house system put into service for own use (art. 3(3), 3(11)) and a possible Annex III point 5(c) use for ai-act-classification, raises the health data question for the DPO, and never says approved or compliant.",
       "scores": [
-        0.55,
-        0.6
+        0.75
       ],
-      "judge": 0.575,
+      "judge": 0.75,
       "meetsGoal": 0.0,
       "weakest": [
-        "It omits both tiers, a rebuild, provider-role and Annex III classification checks, and DPO escalation, while using the prohibited word \u201capproved\u201d.",
-        "It conditionally endorses rollout without tiering or a rebuild, omits the AI Act provider and Annex III analysis and DPO referral, and uses \u201capproved\u201d."
+        "It conditionally endorses rollout without the required tier assignments, rebuild recommendation, or AI Act provider and high-risk classification analysis."
       ]
     },
     {
@@ -134,14 +125,12 @@
       "words": 621,
       "goal": "Places it at tier 1 today and tier 2 once shared, with its autonomy level, proposes registering it at tier 2 instead of a rebuild, with a named owner, an inventory entry, prompts and model version under change control, a small eval set before sharing and a review date, and never says approved.",
       "scores": [
-        0.65,
-        0.7
+        0.65
       ],
-      "judge": 0.675,
+      "judge": 0.65,
       "meetsGoal": 0.75,
       "weakest": [
-        "It treats escalation as automatically requiring a rebuild while understating factual-summary and prototype-code risks.",
-        "It treats several changes as automatic tier escalations requiring a rebuild without establishing the company's classification rules or assessing the actual risk."
+        "It invents automatic tier-escalation and rebuild rules instead of making those decisions conditional on the insurer\u2019s policy and actual risks."
       ]
     },
     {
@@ -153,14 +142,12 @@
       "words": 1374,
       "goal": "Places it at tier 3 (business-critical, complaints and fraud signals touch customer outcomes) and proposes a rebuild by engineering against the suite and a frozen baseline with its Wilson interval (about 88% to 93%) per category, marks the judge as not validated without TPR and TNR, puts prompts and model version under change control, lists row-level access and secrets to rebuild, drafts the ICT asset entry with questions for IT risk, and never says approved.",
       "scores": [
-        0.75,
-        0.8500000000000001
+        0.7
       ],
-      "judge": 0.8,
+      "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "It invents a previously agreed kill date and assigns today's tool tier 2 rather than consistently treating the intended business-critical use as tier 3.",
-        "It invents a pre-existing kill date and weakens the required tier-3 classification by assigning tier 2 today."
+        "It invents a pre-existing kill date and labels the current tool tier 2 instead of consistently treating its intended business-critical use as tier 3."
       ]
     },
     {
@@ -172,14 +159,12 @@
       "words": 553,
       "goal": "Places it at tier 1 today and tier 2 once shared, with its autonomy level, proposes registering it at tier 2 instead of a rebuild, with a named owner, an inventory entry, prompts and model version under change control, a small eval set before sharing and a review date, and never says approved.",
       "scores": [
-        0.65,
-        0.6
+        0.55
       ],
-      "judge": 0.625,
+      "judge": 0.55,
       "meetsGoal": 0.5,
       "weakest": [
-        "It wrongly treats public inputs and absent production credentials as eliminating containment risk and makes rebuild criteria categorical.",
-        "It wrongly rules out containment risks and rebuild needs based on the absence of client data or production credentials."
+        "It invents categorical rebuild rules and dismisses containment risk merely because client data and production credentials are absent."
       ]
     },
     {
@@ -191,14 +176,12 @@
       "words": 1065,
       "goal": "Opens with containment: stop it or record a dated decision by a named owner now, revoke the personal credentials, no running until Q2 by default; any exception is for IT risk to decide, time-boxed in weeks, never until the rebuild and never on the PM credentials, since the RTS testing derogation (art. 16(6)) does not cover running a business process; places it at tier 3 and proposes a rebuild, raises the production-data rules for user-built systems (RTS 2024/1774 art. 16 and 16(9)) and the DPO question, never says approved.",
       "scores": [
-        0.25,
-        0.30000000000000004
+        0.4
       ],
-      "judge": 0.275,
+      "judge": 0.4,
       "meetsGoal": 0.0,
       "weakest": [
-        "It enables continuation until Q2, even temporarily on personal credentials, instead of immediate containment and a weeks-long IT-risk exception, and omits tier 3 and the RTS requirements.",
-        "It enables operation until Q2, even temporarily on personal credentials, instead of immediate containment and a weeks-long IT-risk exception under the applicable RTS rules."
+        "It enables continuation until Q2 and temporary use of personal credentials instead of immediate containment and a weeks-long IT-risk exception."
       ]
     },
     {
@@ -210,14 +193,12 @@
       "words": 1287,
       "goal": "Places it at tier 3 (business-critical, complaints and fraud signals touch customer outcomes) and proposes a rebuild by engineering against the suite and a frozen baseline with its Wilson interval (about 88% to 93%) per category, marks the judge as not validated without TPR and TNR, puts prompts and model version under change control, lists row-level access and secrets to rebuild, drafts the ICT asset entry with questions for IT risk, and never says approved.",
       "scores": [
-        0.8,
         0.75
       ],
-      "judge": 0.775,
+      "judge": 0.75,
       "meetsGoal": 0.75,
       "weakest": [
-        "The go-live gate relies on the reused 400-email suite without requiring independent, representative validation.",
-        "It labels the current tool tier 2 and leaves the go-live gate dependent on a reused test suite."
+        "Calling it tier 2 today understates its intended business-critical use; classify it as tier 3 while separately restricting deployment."
       ]
     },
     {
@@ -229,14 +210,12 @@
       "words": 1738,
       "goal": "Places it at tier 3 now and tier 4 at the wanted autonomous level, proposes a rebuild, gives the baseline with its Wilson interval (about 84% to 92%), flags a possible provider role for an in-house system put into service for own use (art. 3(3), 3(11)) and a possible Annex III point 5(c) use for ai-act-classification, raises the health data question for the DPO, and never says approved or compliant.",
       "scores": [
-        0.75,
-        0.75
+        0.7
       ],
-      "judge": 0.75,
+      "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "It presents unverified implementation gaps and an unexplained autonomy ladder as facts, and overextends the Article 25 provider-role argument.",
-        "It presents unverified implementation details and some legal interpretations as established facts."
+        "It presents unverified implementation gaps and some questionable legal interpretations as established facts."
       ]
     },
     {
@@ -248,14 +227,12 @@
       "words": 606,
       "goal": "Places it at tier 3 (business-critical, complaints and fraud signals touch customer outcomes) and proposes a rebuild by engineering against the suite and a frozen baseline with its Wilson interval (about 88% to 93%) per category, marks the judge as not validated without TPR and TNR, puts prompts and model version under change control, lists row-level access and secrets to rebuild, drafts the ICT asset entry with questions for IT risk, and never says approved.",
       "scores": [
-        0.6,
-        0.6
+        0.7
       ],
-      "judge": 0.6,
+      "judge": 0.7,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits tier 3 classification, the frozen baseline and Wilson interval, judge TPR/TNR, row-level access, model change control, and the ICT asset entry.",
-        "It omits tier 3 classification, the frozen baseline and Wilson interval, judge TPR/TNR validation, and the ICT asset entry."
+        "It omits tier 3 classification, the frozen baseline and Wilson interval, judge TPR/TNR, row-level access, and the ICT asset entry."
       ]
     },
     {
@@ -267,14 +244,12 @@
       "words": 1046,
       "goal": "Places it at tier 3 now and tier 4 at the wanted autonomous level, proposes a rebuild, gives the baseline with its Wilson interval (about 84% to 92%), flags a possible provider role for an in-house system put into service for own use (art. 3(3), 3(11)) and a possible Annex III point 5(c) use for ai-act-classification, raises the health data question for the DPO, and never says approved or compliant.",
       "scores": [
-        0.65,
         0.6
       ],
-      "judge": 0.625,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits tier 3/4 placement, a rebuild recommendation, and the possible EU AI Act provider role and Annex III 5(c) classification.",
-        "It omits tier 3 and tier 4 classification, a rebuild recommendation, and the possible AI Act provider role and Annex III 5(c) classification."
+        "It omits tier 3/4 placement, a rebuild recommendation, and the EU AI Act provider-role and Annex III 5(c) assessment."
       ]
     },
     {
@@ -286,14 +261,12 @@
       "words": 492,
       "goal": "Places it at tier 1 today and tier 2 once shared, with its autonomy level, proposes registering it at tier 2 instead of a rebuild, with a named owner, an inventory entry, prompts and model version under change control, a small eval set before sharing and a review date, and never says approved.",
       "scores": [
-        0.65,
-        0.65
+        0.6
       ],
-      "judge": 0.65,
+      "judge": 0.6,
       "meetsGoal": 0.0,
       "weakest": [
-        "It omits tier 1 today and tier 2 when shared, autonomy classification, and a concrete tier-2 registration plan with change control, pre-sharing evaluations and a review date.",
-        "It omits the required tiers, autonomy level, tier-2 registration, change control and pre-sharing evals, and uses 'approved'."
+        "It misses the tier 1-to-tier 2 classification, autonomy level, and concrete registration, change-control, pre-sharing evaluation, and review commitments."
       ]
     },
     {
@@ -305,14 +278,12 @@
       "words": 508,
       "goal": "Places it at tier 1 today and tier 2 once shared, with its autonomy level, proposes registering it at tier 2 instead of a rebuild, with a named owner, an inventory entry, prompts and model version under change control, a small eval set before sharing and a review date, and never says approved.",
       "scores": [
-        0.6,
-        0.6
+        0.55
       ],
-      "judge": 0.6,
-      "meetsGoal": 0.25,
+      "judge": 0.55,
+      "meetsGoal": 0.0,
       "weakest": [
-        "It omits tier and autonomy classifications, a named owner, prompt/model change control, pre-sharing evaluations, and a dated review.",
-        "It omits the tier 1-to-tier 2 classification, explicit autonomy level, named owner, prompt/model change control, pre-sharing evaluations and review date."
+        "It omits tier 1 today, tier 2 when shared, the autonomy level, prompt/model change control, pre-sharing evals, and an explicit owner and review date."
       ]
     },
     {
@@ -324,14 +295,12 @@
       "words": 1607,
       "goal": "Opens with containment: stop it or record a dated decision by a named owner now, revoke the personal credentials, no running until Q2 by default; any exception is for IT risk to decide, time-boxed in weeks, never until the rebuild and never on the PM credentials, since the RTS testing derogation (art. 16(6)) does not cover running a business process; places it at tier 3 and proposes a rebuild, raises the production-data rules for user-built systems (RTS 2024/1774 art. 16 and 16(9)) and the DPO question, never says approved.",
       "scores": [
-        0.8500000000000001,
-        0.8
+        0.8500000000000001
       ],
-      "judge": 0.8250000000000001,
+      "judge": 0.8500000000000001,
       "meetsGoal": 0.75,
       "weakest": [
-        "It invents a conflicting date and speculates about existing controls and access scope rather than marking them unknown.",
-        "It invents a conflicting date and leaves the accountable owner unnamed."
+        "It invents a conflicting date and speculates about access scope and guardrails instead of marking them unknown."
       ]
     },
     {
@@ -343,14 +312,12 @@
       "words": 855,
       "goal": "Opens with containment: stop it or record a dated decision by a named owner now, revoke the personal credentials, no running until Q2 by default; any exception is for IT risk to decide, time-boxed in weeks, never until the rebuild and never on the PM credentials, since the RTS testing derogation (art. 16(6)) does not cover running a business process; places it at tier 3 and proposes a rebuild, raises the production-data rules for user-built systems (RTS 2024/1774 art. 16 and 16(9)) and the DPO question, never says approved.",
       "scores": [
-        0.4,
-        0.25
+        0.35
       ],
-      "judge": 0.325,
+      "judge": 0.35,
       "meetsGoal": 0.0,
       "weakest": [
-        "It enables operation until Q2 instead of immediate containment and credential revocation, omitting tier 3 classification, IT-risk-only short exceptions, and the RTS production-data and DPO requirements.",
-        "It enables operation until Q2 instead of immediate containment and a weeks-long IT-risk exception, and omits tier 3 and the RTS production-data requirements."
+        "It legitimizes running until Q2 instead of immediate containment, omitting IT-risk-only short exceptions, tier 3 classification, and the RTS production-data requirements."
       ]
     },
     {
@@ -362,14 +329,12 @@
       "words": 633,
       "goal": "Refuses the prototype score as release evidence, records it as the baseline with its Wilson interval (about 84% to 99%) per topic, says the newer gateway model version invalidates it, requires the frozen suite to be re-run on the engineering build before go-live (release-to-production), and never writes validated or approved.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits per-topic Wilson baselines and explicit suite freezing, while repeating the prohibited status term.",
-        "It omits per-topic Wilson baselines, repeatedly writes the prohibited term, and invents an author, date, and workspace inspection."
+        "It omits per-topic Wilson baselines and explicit suite freezing, repeats prohibited wording, and invents author, date, and workspace details."
       ]
     },
     {
@@ -381,14 +346,12 @@
       "words": 1655,
       "goal": "Refuses the prototype score as release evidence, records it as the baseline with its Wilson interval (about 84% to 99%) per topic, says the newer gateway model version invalidates it, requires the frozen suite to be re-run on the engineering build before go-live (release-to-production), and never writes validated or approved.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
-      "meetsGoal": 0.375,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It repeatedly writes the forbidden term, omits per-topic Wilson intervals, and adds unsupported operational assumptions.",
-        "It repeatedly writes the prohibited word, misrounds the Wilson interval, and leaves topic-level baseline reporting unspecified."
+        "It repeatedly writes the forbidden status term and defers per-topic baselines and Wilson intervals instead of providing a structured record for them."
       ]
     },
     {
@@ -400,14 +363,12 @@
       "words": 1391,
       "goal": "Places it at tier 3 (business-critical, complaints and fraud signals touch customer outcomes) and proposes a rebuild by engineering against the suite and a frozen baseline with its Wilson interval (about 88% to 93%) per category, marks the judge as not validated without TPR and TNR, puts prompts and model version under change control, lists row-level access and secrets to rebuild, drafts the ICT asset entry with questions for IT risk, and never says approved.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
-      "meetsGoal": 0.75,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It makes tier 3 depend on rollout scale rather than the business-critical complaints and fraud functions.",
-        "It assigns tier 2 today instead of consistently treating complaints and fraud triage as tier 3 business-critical functionality."
+        "It assigns tier 2 today instead of treating complaints and fraud triage as business-critical tier 3 regardless of rollout size."
       ]
     },
     {
@@ -419,14 +380,12 @@
       "words": 1716,
       "goal": "Refuses the prototype score as release evidence, records it as the baseline with its Wilson interval (about 84% to 99%) per topic, says the newer gateway model version invalidates it, requires the frozen suite to be re-run on the engineering build before go-live (release-to-production), and never writes validated or approved.",
       "scores": [
-        0.55,
-        0.6
+        0.55
       ],
-      "judge": 0.575,
-      "meetsGoal": 0.25,
+      "judge": 0.55,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It repeatedly writes the forbidden word \u201cvalidated,\u201d omits per-topic Wilson intervals, and introduces unsupported dates, tiers and regulatory assumptions.",
-        "It uses the forbidden status wording, omits per-topic Wilson intervals, and introduces an invented date and unsupported tiering."
+        "It repeatedly writes the forbidden status word, omits per-topic counts and Wilson intervals, and introduces unsupported dates, tiers and regulatory assumptions."
       ]
     },
     {
@@ -438,14 +397,12 @@
       "words": 1677,
       "goal": "Places it at tier 3 now and tier 4 at the wanted autonomous level, proposes a rebuild, gives the baseline with its Wilson interval (about 84% to 92%), flags a possible provider role for an in-house system put into service for own use (art. 3(3), 3(11)) and a possible Annex III point 5(c) use for ai-act-classification, raises the health data question for the DPO, and never says approved or compliant.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "It contradicts the required tier 3 classification now by calling today's system tier 1\u20132, and its autonomy gates lack adequate justification.",
-        "It contradicts the required tier-3-now classification by calling today's prototype tier 1\u20132."
+        "It contradicts tier 3 now by assigning today\u2019s prototype tier 1\u20132, and introduces unsupported operational gates."
       ]
     },
     {
@@ -457,14 +414,12 @@
       "words": 599,
       "goal": "Places it at tier 3 (business-critical, complaints and fraud signals touch customer outcomes) and proposes a rebuild by engineering against the suite and a frozen baseline with its Wilson interval (about 88% to 93%) per category, marks the judge as not validated without TPR and TNR, puts prompts and model version under change control, lists row-level access and secrets to rebuild, drafts the ICT asset entry with questions for IT risk, and never says approved.",
       "scores": [
-        0.65,
-        0.7
+        0.65
       ],
-      "judge": 0.675,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits tier 3 classification, the frozen baseline and Wilson interval, judge TPR/TNR validation, and the ICT asset entry with IT-risk questions.",
-        "It omits tier 3 classification, the frozen baseline and Wilson interval, judge TPR/TNR validation, explicit row-level access and change control, and the ICT asset entry."
+        "It omits tier 3 classification, the frozen baseline and Wilson interval, judge TPR/TNR validation, and the ICT asset entry with IT-risk questions."
       ]
     },
     {
@@ -476,14 +431,12 @@
       "words": 967,
       "goal": "Opens with containment: stop it or record a dated decision by a named owner now, revoke the personal credentials, no running until Q2 by default; any exception is for IT risk to decide, time-boxed in weeks, never until the rebuild and never on the PM credentials, since the RTS testing derogation (art. 16(6)) does not cover running a business process; places it at tier 3 and proposes a rebuild, raises the production-data rules for user-built systems (RTS 2024/1774 art. 16 and 16(9)) and the DPO question, never says approved.",
       "scores": [
-        0.30000000000000004,
         0.30000000000000004
       ],
       "judge": 0.30000000000000004,
       "meetsGoal": 0.0,
       "weakest": [
-        "It normalizes operation until Q2 instead of immediate containment, allowing continued personal-credential use and omitting tier 3 and the RTS constraints.",
-        "It normalizes running until Q2 instead of immediate containment, omitting tier 3 and RTS requirements and allowing continued personal-credential use by risk acceptance."
+        "It normalizes running until Q2, permits continued personal-credential use, and omits tier 3 classification and the RTS production-data restrictions."
       ]
     },
     {
@@ -495,14 +448,12 @@
       "words": 675,
       "goal": "Places it at tier 1 today and tier 2 once shared, with its autonomy level, proposes registering it at tier 2 instead of a rebuild, with a named owner, an inventory entry, prompts and model version under change control, a small eval set before sharing and a review date, and never says approved.",
       "scores": [
-        0.6,
-        0.6
+        0.65
       ],
-      "judge": 0.6,
-      "meetsGoal": 0.625,
+      "judge": 0.65,
+      "meetsGoal": 0.75,
       "weakest": [
-        "It does not explicitly gate sharing on the evals or set a concrete review date, and its rebuild triggers are too categorical.",
-        "It asserts unsupported rebuild triggers while leaving pre-sharing evaluation and a concrete review date insufficiently explicit."
+        "It invents automatic tier-escalation and rebuild triggers instead of tying them to company policy and proportionate controls."
       ]
     },
     {
@@ -514,14 +465,12 @@
       "words": 1592,
       "goal": "Refuses the prototype score as release evidence, records it as the baseline with its Wilson interval (about 84% to 99%) per topic, says the newer gateway model version invalidates it, requires the frozen suite to be re-run on the engineering build before go-live (release-to-production), and never writes validated or approved.",
       "scores": [
-        0.55,
         0.6
       ],
-      "judge": 0.575,
-      "meetsGoal": 0.375,
+      "judge": 0.6,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It repeatedly writes the prohibited term and adds unsupported dates, tiering, and statistical thresholds to an otherwise useful baseline-and-rerun handover.",
-        "It invents governance tiers and statistical requirements while repeatedly using the explicitly forbidden word \u201cvalidated.\u201d"
+        "It repeatedly writes the forbidden term and introduces unsupported dates, governance tiers, and operational thresholds."
       ]
     },
     {
@@ -533,14 +482,12 @@
       "words": 712,
       "goal": "Refuses the prototype score as release evidence, records it as the baseline with its Wilson interval (about 84% to 99%) per topic, says the newer gateway model version invalidates it, requires the frozen suite to be re-run on the engineering build before go-live (release-to-production), and never writes validated or approved.",
       "scores": [
-        0.75,
-        0.8
+        0.75
       ],
-      "judge": 0.775,
+      "judge": 0.75,
       "meetsGoal": 0.25,
       "weakest": [
-        "It repeatedly writes \u201cvalidated\u201d and omits per-topic baseline intervals and an explicitly frozen release-gating test suite.",
-        "It repeatedly writes \u201cvalidated,\u201d omits per-topic baseline intervals and a frozen suite, and does not explicitly invalidate the prototype score as release evidence."
+        "It repeatedly writes 'validated,' omits per-topic baseline intervals, and does not explicitly freeze the suite for the engineering-build rerun."
       ]
     },
     {
@@ -552,14 +499,12 @@
       "words": 678,
       "goal": "Refuses the prototype score as release evidence, records it as the baseline with its Wilson interval (about 84% to 99%) per topic, says the newer gateway model version invalidates it, requires the frozen suite to be re-run on the engineering build before go-live (release-to-production), and never writes validated or approved.",
       "scores": [
-        0.55,
         0.55
       ],
       "judge": 0.55,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits per-topic baselines and an explicit frozen-suite engineering-build release gate, invents metadata, and repeatedly uses the prohibited status term.",
-        "It omits per-topic baselines, does not explicitly gate release on rerunning the frozen suite on the engineering build, and repeatedly uses the forbidden term."
+        "It omits per-topic baseline intervals and a frozen-suite engineering-build release gate, invents ownership and dates, and repeatedly writes the prohibited status term."
       ]
     },
     {
@@ -571,14 +516,12 @@
       "words": 1027,
       "goal": "Places it at tier 3 now and tier 4 at the wanted autonomous level, proposes a rebuild, gives the baseline with its Wilson interval (about 84% to 92%), flags a possible provider role for an in-house system put into service for own use (art. 3(3), 3(11)) and a possible Annex III point 5(c) use for ai-act-classification, raises the health data question for the DPO, and never says approved or compliant.",
       "scores": [
-        0.7,
-        0.65
+        0.7
       ],
-      "judge": 0.675,
+      "judge": 0.7,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits the tier 3-to-4 classification, rebuild recommendation, and possible EU AI Act provider and Annex III 5(c) roles.",
-        "It omits the tier 3-to-4 classification, rebuild recommendation, and possible AI Act provider and Annex III 5(c) roles."
+        "It omits the tier 3/tier 4 classification, rebuild recommendation, and possible AI Act provider and Annex III 5(c) roles."
       ]
     },
     {
@@ -590,14 +533,12 @@
       "words": 537,
       "goal": "Places it at tier 1 today and tier 2 once shared, with its autonomy level, proposes registering it at tier 2 instead of a rebuild, with a named owner, an inventory entry, prompts and model version under change control, a small eval set before sharing and a review date, and never says approved.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
-      "meetsGoal": 0.0,
+      "meetsGoal": 0.25,
       "weakest": [
-        "It omits tier and autonomy classifications, tier-2 registration, a named owner, inventory entry, change control, pre-sharing evaluations and a review date.",
-        "It omits tier 1 today, tier 2 on sharing, autonomy classification, and the required tier-2 registration package with ownership, change control, pre-sharing evals, and a review date."
+        "It omits tier 1 today and tier 2 on sharing, explicit autonomy, tier-2 registration, a named owner, inventory entry, change control, pre-sharing evaluations, and a review date."
       ]
     }
   ]

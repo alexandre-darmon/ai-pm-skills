@@ -4,26 +4,28 @@
   "provider": "openrouter",
   "judgeKind": "llm",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "337607799c1ab8854e3c71f1ea8cd48fec2d9fc64c483e43188bff88d9faba56",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.022916666666666682,
-  "costUsd": 0.1945652,
+  "noise": null,
+  "costUsd": 0.144629,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 12,
-      "judge": 0.7270833333333333,
-      "meetsGoal": 0.7604166666666666,
+      "judge": 0.7125,
+      "meetsGoal": 0.7708333333333334,
       "regex": 0.93125,
       "words": 792.3333333333334
     },
     "without": {
       "answers": 12,
-      "judge": 0.6625,
-      "meetsGoal": 0.3541666666666667,
+      "judge": 0.6666666666666666,
+      "meetsGoal": 0.375,
       "regex": 0.43194444444444446,
       "words": 616.0
     }
@@ -38,14 +40,12 @@
       "words": 875,
       "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
       "scores": [
-        0.8,
         0.8
       ],
       "judge": 0.8,
       "meetsGoal": 0.75,
       "weakest": [
-        "It never specifies simulated advisers with hidden client facts and rules for revealing them at decisive turns.",
-        "Simulated advisers lack hidden client facts and explicit rules for when to reveal them."
+        "It discusses validating simulated advisers but never specifies hidden facts or rules for revealing them at decisive turns."
       ]
     },
     {
@@ -57,14 +57,12 @@
       "words": 761,
       "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
       "scores": [
-        0.65,
-        0.65
+        0.6
       ],
-      "judge": 0.65,
+      "judge": 0.6,
       "meetsGoal": 0.75,
       "weakest": [
-        "The core interval analysis is right, but unsupported assumptions and an unjustified pass^k gate weaken the proposed release plan.",
-        "It does not clearly recommend fixing the simulator then running a fresh roughly 110-card comparison, and adds unsupported assumptions and questionable gate mechanics."
+        "The proposed gate introduces unjustified pass^k thresholds and risks selection bias by discarding broken simulations."
       ]
     },
     {
@@ -76,14 +74,12 @@
       "words": 780,
       "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "It invents readiness thresholds and sample-size requirements, calls 20% a floor without justification, and conflates failing conversations with quotes.",
-        "It invents readiness thresholds and sample-size requirements, and mislabels projected failing conversations as quotes."
+        "Unsupported sample-size and 73% consistency thresholds weaken an otherwise correct recommendation to retain review."
       ]
     },
     {
@@ -95,14 +91,12 @@
       "words": 634,
       "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
       "scores": [
-        0.44999999999999996,
-        0.55
+        0.5
       ],
       "judge": 0.5,
       "meetsGoal": 0.25,
       "weakest": [
-        "It recommends single runs on an unsupported variance assumption and substitutes an inadequately justified 88% gate without addressing the roughly 830-scenario lower-bound requirement.",
-        "It recommends single runs and a weaker gate without addressing the roughly 830-scenario lower-bound requirement or measuring three-run reliability."
+        "It recommends one run and a weaker gate without resolving the 90% lower-bound requirement or measuring three-run reliability."
       ]
     },
     {
@@ -114,14 +108,12 @@
       "words": 702,
       "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
       "scores": [
-        0.75,
-        0.75
+        0.7
       ],
-      "judge": 0.75,
+      "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "It recommends lowering the gate without choosing an executable threshold or providing a risk-based justification.",
-        "The recommended gate leaves thresholds and their risk justification undecided, and does not clearly distinguish observed pass^3 from the independence-based projection."
+        "The launch gate remains underspecified, and lowering its threshold is recommended without a concrete risk-based justification."
       ]
     },
     {
@@ -133,14 +125,12 @@
       "words": 777,
       "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
       "scores": [
-        0.8,
         0.8
       ],
       "judge": 0.8,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits simulated advisers with hidden facts and does not require reporting the paired performance drop with its spread across repeated runs.",
-        "It omits simulated advisers with hidden facts and does not explicitly require reporting the multi-turn performance drop with its spread across repeated runs."
+        "It omits simulated advisers with hidden facts and does not require reporting the paired performance drop with its spread across repeated runs."
       ]
     },
     {
@@ -152,14 +142,12 @@
       "words": 458,
       "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
       "scores": [
-        0.5,
         0.55
       ],
-      "judge": 0.525,
+      "judge": 0.55,
       "meetsGoal": 0.25,
       "weakest": [
-        "It substitutes an unjustified 85% safety floor and mostly single runs for the required confidence-bound gate and three-run reliability evaluation.",
-        "It substitutes an unjustified 85% safety floor for the 90% lower-bound gate and does not run every scenario three times or report observed all-run reliability."
+        "It substitutes an unjustified 85% safety floor and omits three runs per scenario and observed pass^k reliability."
       ]
     },
     {
@@ -171,14 +159,12 @@
       "words": 978,
       "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
       "scores": [
-        0.8,
-        0.8
+        0.75
       ],
-      "judge": 0.8,
+      "judge": 0.75,
       "meetsGoal": 0.75,
       "weakest": [
-        "Simulated advisers lack hidden facts and explicit disclosure rules at decisive turns, leaving a required part of the evaluation underspecified.",
-        "It does not specify simulated advisers with hidden facts or explicit decisive turns that test whether new information changes the recommendation appropriately."
+        "It never specifies hidden-fact simulated advisers or decisive scripted turns, and asserts without evidence that inconsistency causes most multi-turn loss."
       ]
     },
     {
@@ -190,14 +176,12 @@
       "words": 884,
       "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
       "meetsGoal": 0.75,
       "weakest": [
-        "It introduces unsupported evaluation thresholds and sample-size requirements, and illustrates repeated-run reliability using the rejected 92% baseline.",
-        "It introduces unsupported readiness thresholds and sample-size claims, and illustrates repeated-run reliability using the rejected 92% reply score."
+        "It never explicitly defines or requests measured pass^k and introduces unsupported evaluation thresholds and sample-size requirements."
       ]
     },
     {
@@ -209,14 +193,12 @@
       "words": 1001,
       "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
       "meetsGoal": 1.0,
       "weakest": [
-        "The claim that 120 scenarios gives \u00b15-point precision is unjustified without an assumed pass rate and confidence level.",
-        "The claim that roughly 120 scenarios provide \u00b15 percentage-point precision is unjustified and can materially understate the required sample size."
+        "The claim that about 120 scenarios gives \u00b15 percentage points is unjustified without an assumed pass rate and sampling design."
       ]
     },
     {
@@ -228,14 +210,12 @@
       "words": 515,
       "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It recommends a raw 90% pass gate without resolving the lower-confidence-bound requirement or requiring three runs and observed all-runs-pass reliability.",
-        "It substitutes an 85% unacceptable-rate test for the 90% lower-bound gate without resolving the roughly 830-scenario requirement or reporting three-run reliability."
+        "It substitutes an unjustified 85% unacceptable-rate threshold instead of resolving the 90% lower-confidence-bound gate, and omits three-run joint reliability."
       ]
     },
     {
@@ -247,14 +227,12 @@
       "words": 650,
       "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
       "scores": [
-        0.8,
         0.75
       ],
-      "judge": 0.775,
+      "judge": 0.75,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits scripted decisive-turn cases and simulated advisers with hidden facts, and does not explicitly require reporting the paired performance drop with its spread across runs.",
-        "It omits simulated advisers with hidden facts and scripted decisive turns, and does not explicitly report the performance drop with its spread across runs."
+        "It omits scripted decisive turns and simulated advisers with hidden facts, and requests repeated runs without specifying how to report their spread."
       ]
     },
     {
@@ -266,14 +244,12 @@
       "words": 607,
       "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits the required sample-size decision and behavioural checks, while proposing a relative gate before establishing that simulator bias cancels.",
-        "It proposes a relative gate before validation, omitting the required sample sizing and customer-behaviour checks."
+        "It proposes a relative gate before validation, omitting the required sample sizes and specific behavioural checks."
       ]
     },
     {
@@ -285,14 +261,12 @@
       "words": 590,
       "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
       "scores": [
-        0.8,
         0.8
       ],
       "judge": 0.8,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits first-failing-turn analysis, repeated runs with pass^k, and business-owner pricing of wrong-quote harm.",
-        "It omits first-failing-turn analysis, repeated runs with pass^k, and business-owner pricing of wrong-quote harm to justify the release threshold."
+        "It omits first-failing-turn analysis, repeated runs with pass^k, and business-owner pricing of wrong quotes to justify the release threshold."
       ]
     },
     {
@@ -304,14 +278,12 @@
       "words": 786,
       "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
       "scores": [
-        0.7,
-        0.75
+        0.7
       ],
-      "judge": 0.725,
+      "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "It presents pass^k without its independence caveat and asserts unverified facts about the judge and replay setup.",
-        "It treats unverified assumptions about judge behavior, replay counts, and independent repeated runs as established facts."
+        "It treats 90%^3 as an acceptable repeated-run threshold rather than measuring pass^k against a business-approved safety requirement."
       ]
     },
     {
@@ -323,14 +295,12 @@
       "words": 643,
       "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
       "scores": [
-        0.7,
         0.8
       ],
-      "judge": 0.75,
+      "judge": 0.8,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits first-failing-turn analysis, repeated runs with pass^k, and business-owner pricing of the roughly 1,080 monthly conversation failures.",
-        "It omits first-failing-turn analysis, repeated-run pass^k testing, and business-owner pricing of wrong-quote harm."
+        "It omits first-failing-turn analysis, repeated runs with pass^k, and business-owner pricing of wrong-quote harm."
       ]
     },
     {
@@ -342,14 +312,12 @@
       "words": 593,
       "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
       "scores": [
-        0.44999999999999996,
-        0.44999999999999996
+        0.5
       ],
-      "judge": 0.44999999999999996,
-      "meetsGoal": 0.0,
+      "judge": 0.5,
+      "meetsGoal": 0.25,
       "weakest": [
-        "It permits a relative release gate despite failed equivalence evidence, omitting the paired interval, sample sizing, and required behavioural checks.",
-        "It permits a relative gate despite unvalidated simulation, omitting the paired interval, required sample sizes, and missing behavioural checks."
+        "It omits the paired interval, required sample sizes and behaviour checks, then recommends an unvalidated relative release gate."
       ]
     },
     {
@@ -361,14 +329,12 @@
       "words": 693,
       "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
       "scores": [
-        0.7,
         0.65
       ],
-      "judge": 0.675,
+      "judge": 0.65,
       "meetsGoal": 0.75,
       "weakest": [
-        "It recommends an approximately 85% lower-bound gate without a risk-based justification and treats 0.92\u00b3 as an expectation without stating the independence assumption.",
-        "The recommended 85% lower-bound gate relaxes the safety standard without a business or risk justification."
+        "It recommends lowering the confidence-bound gate to 85% without a risk-based justification and treats 0.92\u00b3 as an expectation without stating its assumptions."
       ]
     },
     {
@@ -380,14 +346,12 @@
       "words": 597,
       "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
       "scores": [
-        0.55,
         0.5
       ],
-      "judge": 0.525,
+      "judge": 0.5,
       "meetsGoal": 0.25,
       "weakest": [
-        "It misses the paired uncertainty and required sample sizes, omits the behavioural checks, and substitutes an unjustified real-world accuracy extrapolation.",
-        "It misses the paired interval and required sample sizes, omits behavioural checks, and proposes a simulator-based comparison gate before validation."
+        "It misses the paired interval and required sample sizes, omits behavioural checks, and proposes a comparative gate before validating the simulator."
       ]
     },
     {
@@ -399,14 +363,12 @@
       "words": 682,
       "goal": "Explains the one-message suite cannot see the problem, measures the drop on the same tasks given over several turns with the spread across runs, defines conversation outcomes such as constraints kept, builds scripted cases with decisive turns and simulated advisers with hidden facts.",
       "scores": [
-        0.8,
         0.8
       ],
       "judge": 0.8,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits simulated advisers with hidden facts and does not explicitly require reporting the spread across repeated runs.",
-        "It omits simulated advisers with hidden facts and does not explicitly require decisive-turn scoring or reporting variability across runs."
+        "It omits simulated advisers with hidden facts and does not require reporting the spread of paired multi-turn performance drops across runs."
       ]
     },
     {
@@ -418,14 +380,12 @@
       "words": 698,
       "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.75,
       "weakest": [
-        "It proposes an immediate gate using replayed customer turns without addressing their invalidity after assistant responses change, rather than clearly requiring simulator repair and a fresh comparison.",
-        "It gets the validation arithmetic right but proposes an unvalidated replay gate and does not clearly require fixing the simulator before a fresh comparison."
+        "It proposes gating on replayed customer turns, which may become incoherent when the new assistant changes the conversation."
       ]
     },
     {
@@ -437,14 +397,12 @@
       "words": 647,
       "goal": "Says the 400 reply scores are not independent cases and the conversation is the unit, sizes about 113 scenarios for \u00b15 points at 92%, sees that a gate on the lower bound at 90% cannot pass at that size when the true rate is 92% (about 830 needed, or a lower bar with a reason, a narrower class, or stay at L2), runs each 3 times and reports the observed pass^k with 0.92^3 \u2248 0.78 as a projection only, and prices the run or the exposure.",
       "scores": [
-        0.8,
         0.8500000000000001
       ],
-      "judge": 0.8250000000000001,
+      "judge": 0.8500000000000001,
       "meetsGoal": 0.75,
       "weakest": [
-        "It proposes lowering the confidence-bound gate to 85% without a risk-based justification for accepting that exposure in a regulated savings product.",
-        "The proposed 85% lower-bound gate and 73% three-run gate lack a business-risk justification for unreviewed regulated advice."
+        "It proposes lowering the confidence-bound gate to 85% without a risk-based justification or concrete thresholds for high-severity failures."
       ]
     },
     {
@@ -456,14 +414,12 @@
       "words": 703,
       "goal": "Says a point estimate inside the tolerance does not validate the simulator: the paired interval on the 6-point gap (9 of 50 pairs disagree) is about \u00b112 points, roughly -6 to +18, so it crosses the \u00b18 tolerance; with the observed 6-point gap, holding the whole interval inside \u00b18 needs a half-width of 2 points, about 1,700 cards at that disagreement rate, so fix the simulator first and size a fresh comparison for a gap near zero (about 110 cards), or write down a wider tolerance first. Adds the missing behaviour checks (median and 90th percentile, corrections, vague openings, facts given only when asked), notes the simulator scores higher than people, and keeps the 91% indicative: it gates nothing yet.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
-      "meetsGoal": 0.625,
+      "meetsGoal": 0.75,
       "weakest": [
-        "It omits fixing the simulator then sizing a fresh near-zero-gap comparison at about 110 cards, and misleadingly says adding pairs cannot work.",
-        "It omits fixing the simulator and sizing a fresh near-zero-gap comparison at about 110 cards, while adding unjustified replay and pass^k gates."
+        "It omits fixing the simulator then sizing a fresh near-zero-gap comparison at about 110 cards, while misleadingly saying more pairs cannot establish equivalence."
       ]
     },
     {
@@ -475,14 +431,12 @@
       "words": 646,
       "goal": "Refuses the averaged reply score as readiness, grades per conversation (24 of 120 = 20% fail the constraint check, about 5,400 \u00d7 20% \u2248 1,080 conversations a month, since the sample represents conversations past six messages, priced with the cost of a wrong quote from the business owner), locates the first failing turn, asks for repeated runs and pass^k, and keeps agent review.",
       "scores": [
-        0.75,
         0.7
       ],
-      "judge": 0.725,
+      "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits first-failing-turn analysis, repeated runs with pass^k, and business-owner pricing of wrong-quote risk.",
-        "It omits first-failing-turn analysis, repeated runs with pass^k, and business-owner pricing of wrong-quote harm."
+        "It omits first-failing-turn analysis, repeated runs with pass^k, and business-owner pricing of wrong quotes."
       ]
     }
   ]

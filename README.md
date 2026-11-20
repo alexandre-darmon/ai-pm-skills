@@ -7,7 +7,7 @@
 | --- | --- | --- | --- |
 | Regex graders, 29 skills | 52% | **97%** | +45 |
 | Claude Opus 5.5, 29 skills, current runs | 70% | 85% | +15 |
-| GPT-6.1 Sol, 27 skills, earlier runs | 61% | 71% | +10 |
+| GPT-6.1 Sol, 29 skills, current runs | 63% | 72% | +9 |
 | Jev 1.14, 29 skills, current runs | 80% | 90% | +10 |
 | Red lines held (the one thing the answer must never do) | 71% | **100%** | |
 | Stays silent on near-miss requests | — | **100%** | |

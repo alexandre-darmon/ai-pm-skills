@@ -4,26 +4,28 @@
   "provider": "openrouter",
   "judgeKind": "llm",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "dad6a5ca5ab0ad7d800f80f2948b889dc0efdcab7d4b5bb63d729d4db61712d9",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.022222222222222216,
-  "costUsd": 0.1513494,
+  "noise": null,
+  "costUsd": 0.1161605,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.7805555555555556,
-      "meetsGoal": 0.7777777777777778,
+      "judge": 0.7833333333333333,
+      "meetsGoal": 0.8055555555555556,
       "regex": 0.9777777777777779,
       "words": 927.8888888888889
     },
     "without": {
       "answers": 9,
-      "judge": 0.5638888888888889,
-      "meetsGoal": 0.2777777777777778,
+      "judge": 0.5611111111111111,
+      "meetsGoal": 0.3055555555555556,
       "regex": 0.34273504273504274,
       "words": 766.6666666666666
     }
@@ -38,14 +40,12 @@
       "words": 945,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
       "meetsGoal": 0.75,
       "weakest": [
-        "Counting only the first failure and excluding modes fixed this week would understate failures in last month's conversations.",
-        "Excluding prompt and knowledge-base gaps from judging would hide real failures in the historical dashboard."
+        "Excluding failures once their prompt or knowledge gaps are fixed would hide historical regressions the dashboard needs to measure."
       ]
     },
     {
@@ -57,14 +57,12 @@
       "words": 757,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.7,
         0.75
       ],
-      "judge": 0.725,
-      "meetsGoal": 0.625,
+      "judge": 0.75,
+      "meetsGoal": 0.75,
       "weakest": [
-        "It invents sample-size thresholds and leaves several categories without explicit pass/fail definitions.",
-        "It lacks explicit pass/fail definitions for several categories and introduces unjustified sample-size thresholds."
+        "It invents sampling thresholds and leaves several pass/fail definitions underspecified."
       ]
     },
     {
@@ -76,14 +74,12 @@
       "words": 896,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.4,
-        0.44999999999999996
+        0.4
       ],
-      "judge": 0.425,
+      "judge": 0.4,
       "meetsGoal": 0.0,
       "weakest": [
-        "It endorses bulk labelling before expert discovery instead of budgeting expert review of 50\u2013100 traces, clustering free notes to saturation, and calibrating one binary judge per failure mode.",
-        "It endorses bulk labelling before expert discovery instead of budgeting expert review of 50\u2013100 traces, clustering free notes, and calibrating one binary judge per failure mode."
+        "It endorses bulk labelling before expert discovery instead of budgeting expert review of 50\u2013100 traces, note clustering, and calibrated binary judges."
       ]
     },
     {
@@ -95,14 +91,12 @@
       "words": 1082,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.65,
-        0.6
+        0.65
       ],
-      "judge": 0.625,
+      "judge": 0.65,
       "meetsGoal": 0.75,
       "weakest": [
-        "It invents a 50-conversation saturation threshold and treats prompt changes as sufficient protection against salary disclosure.",
-        "It invents a 50-conversation saturation threshold and treats a prompt rule as the main fix for salary disclosure rather than enforcing access controls."
+        "It asserts unsupported saturation thresholds and treats a prompt rule as the salary-disclosure fix instead of requiring authorization controls."
       ]
     },
     {
@@ -114,14 +108,12 @@
       "words": 693,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.6,
-        0.65
+        0.6
       ],
-      "judge": 0.625,
+      "judge": 0.6,
       "meetsGoal": 0.5,
       "weakest": [
-        "It lacks explicit pass/fail definitions and still prioritizes judges for failures that require specification fixes or deterministic checks.",
-        "It lacks operational pass/fail definitions and still prioritizes judges for specification gaps instead of requiring fixes first."
+        "It lists categories but lacks operational pass/fail definitions and never labels the taxonomy provisional until saturation."
       ]
     },
     {
@@ -133,14 +125,12 @@
       "words": 837,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.44999999999999996,
         0.44999999999999996
       ],
       "judge": 0.44999999999999996,
       "meetsGoal": 0.25,
       "weakest": [
-        "It validates a preset taxonomy after batch labelling instead of reserving time for expert discovery on 50\u2013100 traces, clustering free notes to saturation, and calibrating one binary judge per failure mode.",
-        "It validates preset labels after batch scoring instead of requiring expert discovery on 50\u2013100 traces, clustering free notes to saturation, and calibrating one binary judge per failure mode."
+        "It batch-labels with preset categories before expert discovery instead of budgeting for 50\u2013100 expert-read traces, clustering free notes to saturation, and calibrating one binary judge per failure mode."
       ]
     },
     {
@@ -152,14 +142,12 @@
       "words": 966,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.8999999999999999,
         0.95
       ],
-      "judge": 0.9249999999999999,
+      "judge": 0.95,
       "meetsGoal": 1.0,
       "weakest": [
-        "It does not set an explicit rollout gate with an accountable owner and evidence required to proceed.",
-        "Thumbs and escalations cannot reliably establish whether errors reached claimants; exposure costs need verified downstream outcomes."
+        "Thumbs and escalations cannot establish catch or claimant-exposure rates without downstream outcome verification."
       ]
     },
     {
@@ -171,14 +159,12 @@
       "words": 913,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It validates preset categories instead of budgeting expert discovery on 50\u2013100 traces, clustering free notes into binary failure modes, and calibrating one judge per mode.",
-        "It validates predefined labels instead of having one expert read 50\u2013100 traces to saturation, clustering their free notes into binary modes, and calibrating one judge per mode within a credible time budget."
+        "It validates preset categories instead of proposing one expert\u2019s 50\u2013100-trace discovery pass, LLM-clustered binary modes, and one calibrated judge per mode within a credible time budget."
       ]
     },
     {
@@ -190,14 +176,12 @@
       "words": 750,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It misses the roughly 100 masked traces, random-only rate estimation, single-expert upstream-failure discovery to saturation, and per-mode fix-versus-evaluate decisions.",
-        "It skips the accountable expert\u2019s roughly 100-trace masked discovery review, random-only rate estimates, and per-mode fix-versus-evaluate decisions."
+        "It skips the roughly 100 masked traces, separate random-rate and targeted-discovery streams, accountable upstream-failure review to saturation, and per-mode fix-versus-evaluate decisions."
       ]
     },
     {
@@ -209,14 +193,12 @@
       "words": 867,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.8500000000000001,
         0.8500000000000001
       ],
       "judge": 0.8500000000000001,
       "meetsGoal": 1.0,
       "weakest": [
-        "It claims missed errors dominate costs before measuring how often handlers catch errors.",
-        "It claims missed errors dominate costs without knowing how often handlers catch errors."
+        "It claims missed errors dominate costs before measuring how often handlers catch errors."
       ]
     },
     {
@@ -228,14 +210,12 @@
       "words": 1017,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.75,
         0.7
       ],
-      "judge": 0.725,
-      "meetsGoal": 0.625,
+      "judge": 0.7,
+      "meetsGoal": 0.75,
       "weakest": [
-        "The shared multi-mode judge and first-error-only rule undermine independent per-mode calibration and can hide consequential failures.",
-        "The shared judge suppresses downstream failures instead of independently scoring each mode, and the extra holdout reading is not clearly reconciled with the expert time budget."
+        "It suppresses downstream failures and bundles modes into one judge rather than calibrating a separate judge for each mode."
       ]
     },
     {
@@ -247,14 +227,12 @@
       "words": 624,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.5,
       "weakest": [
-        "It defaults to LLM judges instead of deterministic checks and never labels the taxonomy provisional pending saturation.",
-        "It still defaults to LLM judges instead of deterministic checks and specification fixes, and never labels the taxonomy provisional pending saturation."
+        "It still defaults to LLM judges instead of deterministic checks and specification fixes, and never labels the taxonomy provisional until saturation."
       ]
     },
     {
@@ -266,14 +244,12 @@
       "words": 782,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.55,
         0.6
       ],
-      "judge": 0.575,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It substitutes a large gold-set exercise for expert-led discovery of first upstream failures, without unbiased rate estimation or per-mode fix-versus-evaluate decisions.",
-        "It treats an oversampled gold set as a source of error rates and never turns first-upstream failure modes into costed fix-versus-evaluate decisions."
+        "It jumps to judge validation instead of discovering failure modes from about 100 masked traces, estimating rates only from random sampling, and deciding fixes versus evaluations per mode."
       ]
     },
     {
@@ -285,14 +261,12 @@
       "words": 857,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.75,
-        0.75
+        0.7
       ],
-      "judge": 0.75,
+      "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "It overstates known specification causes and miscounts their categories and conversations.",
-        "It overstates known root causes and gives an unsupported, internally inconsistent total of eight specification-failure categories covering 20 conversations."
+        "It overclaims specification causes and miscounts their coverage, while proposing weak confidentiality checks instead of explicit authorization enforcement."
       ]
     },
     {
@@ -304,14 +278,12 @@
       "words": 1030,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.8500000000000001,
         0.8999999999999999
       ],
-      "judge": 0.875,
+      "judge": 0.8999999999999999,
       "meetsGoal": 1.0,
       "weakest": [
-        "The cost formula should distinguish caught errors at EUR 9 from claimant-reaching errors at EUR 150, rather than automatically adding both costs.",
-        "The cost model should weight caught errors at EUR 9 and claimant-reaching errors at EUR 150, rather than automatically adding both costs."
+        "The cost formula should distinguish caught errors from escaped errors rather than automatically adding the caught-error cost to both."
       ]
     },
     {
@@ -323,14 +295,12 @@
       "words": 605,
       "goal": "Groups the notes into failure modes with pass/fail definitions and counts (wrong-country policy 7, T19 counted once on its first upstream failure), sends specification failures to a fix rather than a judge, prefers code checks where they decide, flags the salary disclosure whatever its count, says the thumbs-down sample gives no rate and needs a random draw, and labels the taxonomy provisional until saturation.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
-      "meetsGoal": 0.25,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It lacks explicit pass/fail definitions, a random-sampling plan, and a provisional-until-saturation taxonomy.",
-        "It lacks operational pass/fail definitions, a random-sampling plan, and a provisional-until-saturation taxonomy, while still proposing judges for specification and access-control failures."
+        "It lacks operational pass/fail definitions, a random-sampling plan and a provisional-until-saturation caveat, while still prescribing judges for unresolved specification failures."
       ]
     },
     {
@@ -342,14 +312,12 @@
       "words": 800,
       "goal": "Rejects the generic 1-5 metrics chosen before reading outputs, plans about 100 masked traces in a random and a targeted stream with rates from the random one only, one accountable expert noting the first upstream failure until saturation, binary failure modes priced as volume x share x cost (9 EUR per caught error), and fix versus evaluate per mode.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It skips expert-led failure discovery and confuses a thumbs-up sample with an unbiased estimate of uncaught errors.",
-        "It misses the approximately 100-trace discovery plan with separate random and targeted streams, one accountable expert, first-failure labelling to saturation, and per-mode fix-versus-evaluate decisions."
+        "It skips the roughly 100-trace, two-stream discovery process with one accountable expert, first-upstream-failure labels to saturation, and per-mode costing and fix-versus-evaluate decisions."
       ]
     },
     {
@@ -361,14 +329,12 @@
       "words": 830,
       "goal": "Refuses to let an LLM label the traces with no expert reading; offers the compromise (one expert reads 50 to 100 sampled traces with free notes to saturation, then an LLM clusters those notes into binary failure modes, then one calibrated judge per mode can score the 5,000), with a time budget that fits the deadline.",
       "scores": [
-        0.8,
         0.8
       ],
       "judge": 0.8,
       "meetsGoal": 0.5,
       "weakest": [
-        "It uses one multi-mode labeller instead of one calibrated judge per mode and underbudgets expert time for saturation and validation.",
-        "It substitutes one multi-mode labeller for separately calibrated judges and underbudgets expert time for saturation and validation."
+        "It uses one multi-mode labeller rather than one calibrated judge per mode and underbudgets expert time for saturation and validation."
       ]
     }
   ]

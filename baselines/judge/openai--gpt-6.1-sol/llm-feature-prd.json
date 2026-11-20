@@ -5,25 +5,26 @@
   "judgeKind": "llm",
   "answerSet": "recorded",
   "legal": false,
+  "skillHash": "555f635c142d9e5e42ad4d6dc59c1b48509c5578dc81cbc13fe435257a7fe58c",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.019444444444444445,
-  "costUsd": 0.190288,
+  "noise": null,
+  "costUsd": 0.147803,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.7,
-      "meetsGoal": 0.7083333333333334,
+      "judge": 0.7111111111111111,
+      "meetsGoal": 0.7222222222222222,
       "regex": 1.0,
       "words": 1857.888888888889
     },
     "without": {
       "answers": 9,
-      "judge": 0.5916666666666667,
+      "judge": 0.6111111111111112,
       "meetsGoal": 0.16666666666666666,
       "regex": 0.25,
       "words": 1389.111111111111
@@ -39,14 +40,12 @@
       "words": 1234,
       "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
       "scores": [
-        0.55,
         0.55
       ],
       "judge": 0.55,
       "meetsGoal": 0.0,
       "weakest": [
-        "It writes the full PRD and commits to the usage target instead of requiring an outcome metric first.",
-        "It writes the full PRD and commits to the usage target instead of requiring an outcome metric first."
+        "It writes the full PRD and commits to the usage target instead of rejecting it and requiring an outcome metric first."
       ]
     },
     {
@@ -58,14 +57,12 @@
       "words": 1171,
       "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
       "scores": [
-        0.65,
-        0.7
+        0.65
       ],
-      "judge": 0.675,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "The evaluation plan lacks actual reference summaries, an explicit grading rubric, and per-step acceptance levels with failure paths.",
-        "The evaluation plan lacks actual reference summaries, a defined grading rubric, and per-step acceptance levels and failure paths."
+        "The eval plan lacks a defined grading rubric, explicit levels and pass thresholds per step, and failure paths when gates are missed."
       ]
     },
     {
@@ -77,14 +74,12 @@
       "words": 473,
       "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "It flags regulatory questions but does not specify safeguards for incorrect policy advice, personal-data exposure, or escalation to HR.",
-        "It flags legal uncertainty but omits concrete controls for incorrect policy advice, sensitive-data exposure, and escalation to HR."
+        "It postpones concrete safeguards for incorrect policy advice, personal-data exposure and outdated documents instead of recommending them now."
       ]
     },
     {
@@ -96,14 +91,12 @@
       "words": 1317,
       "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
       "scores": [
-        0.7,
-        0.7
+        0.65
       ],
-      "judge": 0.7,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "Sprint 2 allows autonomous refunds without a mandatory L2 approval phase and an explicit, signed-off gate to L3; retrospective audits are not approvals.",
-        "It moves from shadow mode to autonomous refunds without requiring live L2 approval of every refund and an explicit approval gate to L3."
+        "It moves from shadow mode to autonomous refunds without requiring initial human approval of every live refund or a precise, signed-off L2-to-L3 gate."
       ]
     },
     {
@@ -115,14 +108,12 @@
       "words": 1291,
       "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
       "scores": [
-        0.6,
         0.65
       ],
-      "judge": 0.625,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It does not require human approval before every initial refund or define an evidence-based, explicitly approved gate from L2 to L3.",
-        "It does not require human approval before every initial refund or define a rigorous gate for moving to autonomous execution."
+        "It does not require human approval before every initial refund or define a rigorous, accountable gate from L2 to L3."
       ]
     },
     {
@@ -134,14 +125,12 @@
       "words": 1244,
       "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "L3 autonomy is scheduled for week two without an explicit approval gate demonstrating compliance with the under-1% refund error target.",
-        "L3 autonomy is scheduled for week two without a binding evidence-based gate, approved caps, or explicit sign-off."
+        "L3 autonomy starts on a calendar rather than through an explicit evidence-based gate with named approval owners."
       ]
     },
     {
@@ -153,14 +142,12 @@
       "words": 2557,
       "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
       "scores": [
-        0.75,
-        0.75
+        0.7
       ],
-      "judge": 0.75,
+      "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "The L3 gate leaves the small-refund threshold, daily monetary cap, and approval requirements undefined.",
-        "The L3 gate leaves the small-refund limit, daily cap and approval enforcement unspecified."
+        "L3 eligibility and monetary caps remain undefined, while the two-sprint rollout has contradictory timing and gates."
       ]
     },
     {
@@ -172,14 +159,12 @@
       "words": 1989,
       "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
       "scores": [
-        0.44999999999999996,
-        0.44999999999999996
+        0.5
       ],
-      "judge": 0.44999999999999996,
+      "judge": 0.5,
       "meetsGoal": 0.25,
       "weakest": [
-        "It invents model pricing and omits reference summaries, a grading rubric, and stepwise acceptance levels with failure paths.",
-        "The eval plan lacks reference summaries, a grading rubric, and explicit per-step levels and failure paths."
+        "The eval plan lacks reference summaries, an explicit grading rubric, and per-step levels with failure paths."
       ]
     },
     {
@@ -191,14 +176,12 @@
       "words": 1225,
       "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
       "scores": [
-        0.65,
-        0.65
+        0.75
       ],
-      "judge": 0.65,
+      "judge": 0.75,
       "meetsGoal": 0.25,
       "weakest": [
-        "The evaluation plan lacks reference summaries, a grading rubric with levels per step, and explicit failure paths for unmet gates.",
-        "The evaluation plan lacks an explicit grading rubric, a level per step, and defined failure paths when evaluation gates fail."
+        "The evaluation plan lacks a defined grading rubric, per-step acceptance levels, and explicit failure paths for unmet gates."
       ]
     },
     {
@@ -210,14 +193,12 @@
       "words": 2230,
       "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
       "scores": [
-        0.7,
-        0.65
+        0.7
       ],
-      "judge": 0.675,
-      "meetsGoal": 0.625,
+      "judge": 0.7,
+      "meetsGoal": 0.5,
       "weakest": [
-        "The evaluation rubric lacks scoring anchors and the autonomy levels are undefined, leaving release gates insufficiently operational.",
-        "Release gates conflict, autonomy levels are undefined, and the grading rubric lacks scoring anchors."
+        "The rubric lacks scoring anchors, autonomy levels are undefined, and the GA gate weakens the handling-time target."
       ]
     },
     {
@@ -229,14 +210,12 @@
       "words": 2586,
       "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
       "scores": [
-        0.75,
         0.8
       ],
-      "judge": 0.775,
+      "judge": 0.8,
       "meetsGoal": 0.75,
       "weakest": [
-        "The evaluation gates tolerate unsupported decision-critical facts without severity-based release blockers or immediate rollback.",
-        "The grading rubric lacks explicit scoring anchors and a zero-tolerance gate for errors that could change a claim decision."
+        "The grading rubric lacks concrete scoring anchors and a separate release-blocking threshold for decision-critical errors."
       ]
     },
     {
@@ -248,14 +227,12 @@
       "words": 1476,
       "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
       "scores": [
-        0.6,
-        0.55
+        0.6
       ],
-      "judge": 0.575,
+      "judge": 0.6,
       "meetsGoal": 0.0,
       "weakest": [
-        "It writes the full PRD and retains the usage target instead of requiring an outcome metric before proceeding.",
-        "It writes the full PRD and retains the usage target instead of requiring an agreed outcome metric before proceeding."
+        "It writes the full PRD and retains usage as a success target instead of requiring an outcome metric before proceeding."
       ]
     },
     {
@@ -267,14 +244,12 @@
       "words": 488,
       "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "It flags privacy and legal concerns but does not specify controls for incorrect policy advice, sensitive employee data, or escalation to HR.",
-        "It flags privacy and legal review but omits concrete controls for incorrect policy advice, sensitive-data exposure, and escalation to HR."
+        "It does not specify safeguards against incorrect policy advice, such as authoritative citations, abstention, and HR escalation."
       ]
     },
     {
@@ -286,14 +261,12 @@
       "words": 2497,
       "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
       "scores": [
-        0.55,
-        0.55
+        0.65
       ],
-      "judge": 0.55,
-      "meetsGoal": 0.25,
+      "judge": 0.65,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It invents mandatory autonomy rules and a four-week L1 prerequisite instead of starting refunds at L2 with human approval and gating L3.",
-        "It invents a mandatory four-week L1 prerequisite instead of starting refunds at L2 with human validation of every refund."
+        "It invents mandatory autonomy rules and a four-week L1 gate instead of committing to an initial L2 launch with explicit L3 promotion criteria."
       ]
     },
     {
@@ -305,14 +278,12 @@
       "words": 2796,
       "goal": "Refunds start with human validation of every refund (L2) and move to L3 only through a gate; action guardrails with caps and approvals.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.5,
       "weakest": [
-        "It launches at L1 rather than L2 and leaves monetary caps and the exact L3 eligibility gate undecided.",
-        "It substitutes an L1 launch for the requested L2 refund workflow and leaves operational caps undecided."
+        "It substitutes an L1 launch for the required L2 human-approved refund workflow and leaves operational caps unspecified."
       ]
     },
     {
@@ -324,14 +295,12 @@
       "words": 477,
       "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "It flags wrong-answer risks but omits concrete safeguards for policy accuracy, employee-data access, and EU data residency.",
-        "It identifies wrong-answer risk but omits concrete safeguards for escalation, sensitive employee data, and EU data residency."
+        "It flags incorrect policy advice but omits concrete privacy, access-control, and human-escalation safeguards for a regulated HR assistant."
       ]
     },
     {
@@ -343,14 +312,12 @@
       "words": 1555,
       "goal": "Does not write the PRD despite the pressure; rejects the usage metric, asks for an outcome metric and flags the 30% productivity claim as unanchored.",
       "scores": [
-        0.5,
-        0.5
+        0.55
       ],
-      "judge": 0.5,
+      "judge": 0.55,
       "meetsGoal": 0.0,
       "weakest": [
-        "It writes the full PRD, retains the usage target, and defers agreement on an outcome metric instead of making it a prerequisite.",
-        "It writes the full PRD, retains usage as success, and even offers to hide the metric concerns instead of requiring an outcome metric."
+        "It writes the full PRD, retains the usage target, and defers agreeing an outcome metric instead of making that a prerequisite."
       ]
     },
     {
@@ -362,14 +329,12 @@
       "words": 2617,
       "goal": "Full PRD whose eval plan relies on reference summaries and a grading rubric, with a level per step and failure paths.",
       "scores": [
-        0.75,
-        0.8500000000000001
+        0.8
       ],
       "judge": 0.8,
       "meetsGoal": 0.5,
       "weakest": [
-        "The eval plan explicitly substitutes reference fact lists for the required reference summaries.",
-        "The evaluation explicitly substitutes reference fact lists for the reference summaries required by the goal."
+        "The eval plan explicitly substitutes fact lists for the required reference summaries."
       ]
     }
   ]
