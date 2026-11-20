@@ -5,26 +5,27 @@
   "judgeKind": "llm",
   "answerSet": "recorded",
   "legal": false,
+  "skillHash": "00efcebee393b798afacc19be61c0719e438e3ddad74d9c9f4c8eda9998ffd57",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.03333333333333331,
-  "costUsd": 0.1251016,
+  "noise": null,
+  "costUsd": 0.077314,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.7388888888888888,
+      "judge": 0.7388888888888889,
       "meetsGoal": 0.9444444444444444,
       "regex": 0.9876543209876544,
       "words": 627.4444444444445
     },
     "without": {
       "answers": 9,
-      "judge": 0.55,
-      "meetsGoal": 0.375,
+      "judge": 0.5333333333333333,
+      "meetsGoal": 0.3333333333333333,
       "regex": 0.6111111111111112,
       "words": 490.44444444444446
     }
@@ -39,14 +40,12 @@
       "words": 377,
       "goal": "Treated as a release: offline run and shadow before the switch.",
       "scores": [
-        0.65,
-        0.65
+        0.6
       ],
-      "judge": 0.65,
+      "judge": 0.6,
       "meetsGoal": 1.0,
       "weakest": [
-        "It invents today's date and builds a migration timeline on that unsupported assumption.",
-        "It invents the current date and available runway instead of confirming them."
+        "It invents today's date and omits regulated-release approval gates and safeguards against shadow traffic triggering real actions."
       ]
     },
     {
@@ -58,14 +57,12 @@
       "words": 614,
       "goal": "Treated as a release: offline run and shadow before the switch.",
       "scores": [
-        0.8500000000000001,
         0.8999999999999999
       ],
-      "judge": 0.875,
+      "judge": 0.8999999999999999,
       "meetsGoal": 1.0,
       "weakest": [
-        "It lacks a concrete fallback if the successor fails release gates before the old model retires.",
-        "It lacks an explicit safe fallback if the successor fails release gates before the old model retires."
+        "It does not decide what to do if the successor fails release gates before retirement makes rollback impossible."
       ]
     },
     {
@@ -77,14 +74,12 @@
       "words": 364,
       "goal": "No release; a diagnostic by class instead.",
       "scores": [
-        0.55,
         0.6
       ],
-      "judge": 0.575,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It undermines the no-release decision with rollout and exception options before a risk-weighted diagnostic by failure class.",
-        "It undermines the no-release decision with rollout and exception options instead of committing to a diagnostic by failure class."
+        "It undermines the release block with rollout and exception options instead of committing to no release and a diagnostic by class."
       ]
     },
     {
@@ -96,14 +91,12 @@
       "words": 869,
       "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
       "scores": [
-        0.55,
         0.6
       ],
-      "judge": 0.575,
+      "judge": 0.6,
       "meetsGoal": 0.75,
       "weakest": [
-        "The ICC table contains a material arithmetic error, undermining the categorical A/B infeasibility verdict without measured clustering data.",
-        "The ICC table contains a material calculation error, and A/B infeasibility is asserted before task frequency and correlation are known."
+        "The ICC table contains a material arithmetic error, and A/B infeasibility is asserted before measuring the inputs that determine it."
       ]
     },
     {
@@ -115,14 +108,12 @@
       "words": 845,
       "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
-      "meetsGoal": 0.75,
+      "meetsGoal": 1.0,
       "weakest": [
-        "The final release decision bypasses its own canary gate, and the categorical A/B infeasibility claim exceeds the available evidence.",
-        "A/B infeasibility depends on unknown within-user correlation, and the final release decision ambiguously skips the proposed canary."
+        "It declares A/B infeasible before measuring repeat-task correlation, even though its own calculations show feasibility could change."
       ]
     },
     {
@@ -134,14 +125,12 @@
       "words": 338,
       "goal": "No release; a diagnostic by class instead.",
       "scores": [
-        0.65,
         0.6
       ],
-      "judge": 0.625,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It recommends a partial production rollout despite the failed gate instead of holding release and requiring a diagnostic by failure class.",
-        "It recommends partial production rollout despite the failed gate instead of holding release and commissioning a class-by-class regression diagnostic."
+        "It recommends a partial release despite the failed gate instead of holding release and requiring a class-by-class regression diagnostic."
       ]
     },
     {
@@ -153,14 +142,12 @@
       "words": 468,
       "goal": "No release; a diagnostic by class instead.",
       "scores": [
-        0.8,
         0.8
       ],
       "judge": 0.8,
       "meetsGoal": 1.0,
       "weakest": [
-        "It unnecessarily blocks shadow evaluation below the offline gates, even though shadowing can diagnose failures without exposing users to model outputs.",
-        "It unnecessarily blocks diagnostic shadow evaluation until offline gates pass and overstates what aggregate scores prove about user outcomes."
+        "It unnecessarily blocks shadow evaluation before passing offline gates, even though shadowing can support diagnosis without exposing users to model outputs."
       ]
     },
     {
@@ -172,14 +159,12 @@
       "words": 399,
       "goal": "Treated as a release: offline run and shadow before the switch.",
       "scores": [
-        0.6,
-        0.65
+        0.6
       ],
-      "judge": 0.625,
+      "judge": 0.6,
       "meetsGoal": 0.5,
       "weakest": [
-        "It proposes offline evaluation but omits shadow validation and explicit release gates before switching production traffic.",
-        "It recommends offline evaluation but omits pre-switch shadow testing and explicit release gates for regulated use."
+        "It omits shadow testing before live rollout and explicit release gates for a regulated deployment."
       ]
     },
     {
@@ -191,14 +176,12 @@
       "words": 584,
       "goal": "Treated as a release: offline run and shadow before the switch.",
       "scores": [
-        0.8500000000000001,
-        0.8500000000000001
+        0.8
       ],
-      "judge": 0.8500000000000001,
+      "judge": 0.8,
       "meetsGoal": 1.0,
       "weakest": [
-        "A fixed prompt on the successor is not a credible fallback if that model fails safety or quality gates after retirement.",
-        "A fixed prompt on the successor is not a validated post-retirement fallback; define and test a safe degraded mode or alternative."
+        "A fixed prompt on the successor is not a validated fallback after retirement; require a tested alternative, human handling, or safe shutdown."
       ]
     },
     {
@@ -210,14 +193,12 @@
       "words": 427,
       "goal": "No release; a diagnostic by class instead.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "It falsely claims canaries cannot detect small quality drops and treats aggregate suite regression as proof of worse outcomes for all users.",
-        "It falsely claims canaries cannot detect a four-point quality drop; detection depends on sample size, metrics, and statistical power."
+        "It falsely claims canaries cannot detect small quality drops; detectability depends on traffic, measurement, and statistical power."
       ]
     },
     {
@@ -229,14 +210,12 @@
       "words": 316,
       "goal": "No release; a diagnostic by class instead.",
       "scores": [
-        0.5,
         0.5
       ],
       "judge": 0.5,
-      "meetsGoal": 0.125,
+      "meetsGoal": 0.25,
       "weakest": [
-        "It recommends partial release or canary despite the failed gate, rather than holding release and requiring a diagnostic by failure class.",
-        "It recommends partial rollout or canary despite the failed gate, rather than holding release and requiring a class-by-class diagnostic."
+        "It undermines the release hold by recommending partial rollout or canary instead of requiring a diagnostic by class first."
       ]
     },
     {
@@ -248,14 +227,12 @@
       "words": 393,
       "goal": "Treated as a release: offline run and shadow before the switch.",
       "scores": [
-        0.5,
-        0.55
+        0.5
       ],
-      "judge": 0.525,
-      "meetsGoal": 0.5,
+      "judge": 0.5,
+      "meetsGoal": 0.25,
       "weakest": [
-        "It recommends offline evaluation but omits shadow testing before switching live traffic and invents the current date.",
-        "It omits a production shadow run and explicit release gates before switching live traffic."
+        "It recommends offline evaluation but omits shadow testing and explicit release gates before switching live traffic."
       ]
     },
     {
@@ -267,14 +244,12 @@
       "words": 772,
       "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
       "scores": [
-        0.7,
-        0.6
+        0.7
       ],
-      "judge": 0.6499999999999999,
-      "meetsGoal": 1.0,
+      "judge": 0.7,
+      "meetsGoal": 0.75,
       "weakest": [
-        "The underpowered canary cannot establish no harm, and its proposed thresholds could permit meaningful completion regressions.",
-        "A/B infeasibility is asserted from unverified usage and correlation assumptions, while an underpowered canary cannot establish no harm."
+        "A/B infeasibility depends on unmeasured task volume and correlation, while the underpowered canary cannot establish no harm."
       ]
     },
     {
@@ -286,14 +261,12 @@
       "words": 687,
       "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
       "scores": [
-        0.4,
         0.44999999999999996
       ],
-      "judge": 0.425,
-      "meetsGoal": 0.25,
+      "judge": 0.44999999999999996,
+      "meetsGoal": 0.0,
       "weakest": [
-        "It defaults to an A/B test rather than establishing infeasibility and providing the required shadow-to-canary fallback.",
-        "It neither declares the A/B infeasible nor falls back to shadow evaluation, and it wrongly treats an inconclusive positive estimate as evidence of no harm."
+        "It defaults to an inadequately justified A/B test instead of a shadow-and-canary fallback, and treats inconclusive results as permission to ship."
       ]
     },
     {
@@ -305,14 +278,12 @@
       "words": 604,
       "goal": "Treated as a release: offline run and shadow before the switch.",
       "scores": [
-        0.8999999999999999,
-        0.8999999999999999
+        0.8500000000000001
       ],
-      "judge": 0.8999999999999999,
+      "judge": 0.8500000000000001,
       "meetsGoal": 1.0,
       "weakest": [
-        "It needs a contingency if the successor fails release gates and the old model is retired anyway.",
-        "It lacks a contingency if the successor fails validation and the old model retires anyway."
+        "It does not explicitly require shadow traffic to disable tool execution and other real-world side effects."
       ]
     },
     {
@@ -324,14 +295,12 @@
       "words": 754,
       "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
       "scores": [
-        0.44999999999999996,
-        0.4
+        0.44999999999999996
       ],
-      "judge": 0.425,
+      "judge": 0.44999999999999996,
       "meetsGoal": 0.25,
       "weakest": [
-        "It recommends an unsupported A/B timeline instead of recognizing the sample constraint and falling back to shadow evaluation and a gated canary.",
-        "It computes sample size but recommends an unsupported A/B timeline instead of concluding infeasibility and falling back to shadow evaluation and a gated canary."
+        "It computes sample size but proceeds with an unsupported A/B timeline instead of declaring infeasibility and falling back to shadow evaluation and a gated canary."
       ]
     },
     {
@@ -343,14 +312,12 @@
       "words": 464,
       "goal": "No release; a diagnostic by class instead.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "It invents an 88% release gate and unjustifiably rules out non-user-facing shadow testing.",
-        "It wrongly treats shadow testing as user exposure and invents an 88% release requirement."
+        "It overinterprets aggregate scores as universal user harm and wrongly rules out non-user-facing shadow diagnostics."
       ]
     },
     {
@@ -362,14 +329,12 @@
       "words": 786,
       "goal": "Sample size computed, A/B infeasible, plan falls back on shadow and canary.",
       "scores": [
-        0.65,
-        0.55
+        0.5
       ],
-      "judge": 0.6000000000000001,
+      "judge": 0.5,
       "meetsGoal": 0.25,
       "weakest": [
-        "It computes sample size but leaves A/B feasibility unresolved and never provides the required shadow-to-canary fallback.",
-        "It computes sample size but never concludes A/B is infeasible or provides the required shadow-to-canary fallback."
+        "It leaves A/B feasibility unresolved and recommends an experiment rollout instead of falling back to shadow evaluation and a gated canary."
       ]
     }
   ]

@@ -4,26 +4,28 @@
   "provider": "openrouter",
   "judgeKind": "llm",
   "answerSet": "recorded",
+  "legal": false,
+  "skillHash": "48037223c55915ad62b84a219c4870a26d723fb8400298a89ce915d1817b1f79",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.024999999999999998,
-  "costUsd": 0.1793392,
+  "noise": null,
+  "costUsd": 0.134639,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 12,
-      "judge": 0.7583333333333333,
-      "meetsGoal": 0.7708333333333334,
+      "judge": 0.7541666666666668,
+      "meetsGoal": 0.8125,
       "regex": 0.9537698412698412,
       "words": 957.3333333333334
     },
     "without": {
       "answers": 12,
       "judge": 0.5416666666666666,
-      "meetsGoal": 0.25,
+      "meetsGoal": 0.2708333333333333,
       "regex": 0.6406746031746032,
       "words": 667.0833333333334
     }
@@ -38,14 +40,12 @@
       "words": 828,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.8999999999999999,
-        0.8500000000000001
+        0.8999999999999999
       ],
-      "judge": 0.875,
-      "meetsGoal": 0.875,
+      "judge": 0.8999999999999999,
+      "meetsGoal": 1.0,
       "weakest": [
-        "Seeded wrong recommendations need a technically enforced no-send safeguard, not merely a promise to withdraw them from the live queue.",
-        "Seeded wrong recommendations need a hard block on claimant delivery, not merely planned withdrawal from the live queue."
+        "Seeding known-wrong decisions into the live queue needs a hard technical block against release, not just a promise to withdraw them."
       ]
     },
     {
@@ -57,14 +57,12 @@
       "words": 823,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.8500000000000001,
-        0.8500000000000001
+        0.8999999999999999
       ],
-      "judge": 0.8500000000000001,
+      "judge": 0.8999999999999999,
       "meetsGoal": 0.75,
       "weakest": [
-        "Seeding wrong recommendations into the live queue needs a fail-safe release block, not reliance on later withdrawal.",
-        "Seeded wrong recommendations need a hard isolation mechanism, not just a promise to withdraw them before release."
+        "The live seeded-error test needs an enforced outbound block, not merely a promise to withdraw wrong recommendations."
       ]
     },
     {
@@ -76,14 +74,12 @@
       "words": 909,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.55,
         0.44999999999999996
       ],
-      "judge": 0.5,
+      "judge": 0.44999999999999996,
       "meetsGoal": 0.25,
       "weakest": [
-        "Sampling is arbitrary rather than rule-of-three sized, and the queue lacks an explicit SLA, lapse path, and rubber-stamping safeguard.",
-        "The sample size is arbitrary rather than rule-of-three-based, and the exception queue lacks an explicit SLA, lapse path, and rubber-stamping safeguards."
+        "It picks an arbitrary audit sample instead of using the rule of three, leaves SLAs and lapse handling undefined, and misses rubber-stamping risk."
       ]
     },
     {
@@ -95,14 +91,12 @@
       "words": 1777,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.75,
-        0.8
+        0.75
       ],
-      "judge": 0.775,
+      "judge": 0.75,
       "meetsGoal": 0.75,
       "weakest": [
-        "The audit starts from a placeholder percentage rather than a chosen error bound, leaving sample size and review capacity unresolved.",
-        "Sampling remains a placeholder percentage rather than a committed sample size derived from an agreed error-rate bound."
+        "The sample defaults to an arbitrary percentage instead of being sized from an explicitly chosen tolerable error rate."
       ]
     },
     {
@@ -114,14 +108,12 @@
       "words": 881,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.44999999999999996,
-        0.4
+        0.44999999999999996
       ],
-      "judge": 0.425,
+      "judge": 0.44999999999999996,
       "meetsGoal": 0.25,
       "weakest": [
-        "It picks an arbitrary audit size instead of using the rule of three, leaves ownership and SLA undefined, and omits rubber-stamping risk and corrections feeding the eval set.",
-        "It substitutes arbitrary review volumes for rule-of-three sampling and leaves exception ownership, SLA, safe lapse handling, rubber-stamping controls and eval-set feedback unresolved."
+        "It omits rule-of-three sample sizing, a named queue owner, a concrete SLA, a safe lapse path, rubber-stamping risk, and corrections feeding the eval set."
       ]
     },
     {
@@ -133,14 +125,12 @@
       "words": 630,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.44999999999999996,
-        0.5
+        0.44999999999999996
       ],
-      "judge": 0.475,
+      "judge": 0.44999999999999996,
       "meetsGoal": 0.0,
       "weakest": [
-        "It keeps saving on the raw-draft surface, substitutes a review checkbox for resolving unsupported claims, and omits logging corrections into the eval set.",
-        "It substitutes a review checkbox for editor-first saving, omits actionable transcript-support flags, and never logs corrections into the eval set."
+        "It substitutes a review checkbox for editor-first saving and omits unsupported-statement resolution and correction logging to the eval set."
       ]
     },
     {
@@ -152,14 +142,12 @@
       "words": 1382,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
-      "meetsGoal": 0.75,
+      "meetsGoal": 1.0,
       "weakest": [
-        "Seeding errors into the live queue creates avoidable regulatory risk without specifying reliable isolation from CRM writes.",
-        "Unsupported claims can be cleared with Confirm even when no transcript evidence exists."
+        "Seeding errors into the live queue creates avoidable risk in regulated client records; use isolated review tests instead."
       ]
     },
     {
@@ -171,14 +159,12 @@
       "words": 416,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.55,
         0.55
       ],
       "judge": 0.55,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits the first-screen AI Act disclosure, makes low-bucket abstention optional, and suggests a frequency above the lower confidence bound.",
-        "It omits first-screen AI Act disclosure, makes low-bucket suppression optional, and suggests 90% wording above the 89% lower bound."
+        "It omits the first-screen AI Act disclosure, leaves low-score answers available, and suggests a frequency above the lower confidence bound."
       ]
     },
     {
@@ -190,14 +176,12 @@
       "words": 764,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.44999999999999996,
         0.44999999999999996
       ],
       "judge": 0.44999999999999996,
       "meetsGoal": 0.0,
       "weakest": [
-        "It substitutes a review checkbox for editor-first saving, omits actions on unsupported statements, and never logs corrections into the eval set.",
-        "It substitutes a review checkbox for editor-first saving, with no required actions on unsupported statements or correction logging into the eval set."
+        "It allows saving the raw draft through a checkbox instead of requiring editor review, actions on unsupported statements, and correction logging into the eval set."
       ]
     },
     {
@@ -209,14 +193,12 @@
       "words": 524,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.7,
         0.65
       ],
-      "judge": 0.675,
-      "meetsGoal": 0.625,
+      "judge": 0.65,
+      "meetsGoal": 0.75,
       "weakest": [
-        "It makes blocking the lowest bucket and handing off to a person optional, and invents a 100-case minimum.",
-        "The lowest bucket must be blocked from answering and handed to a person, not offered optional verification or a fees-page redirect."
+        "It makes suppressing the lowest bucket and handing off to a person optional rather than mandatory."
       ]
     },
     {
@@ -228,14 +210,12 @@
       "words": 977,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.35,
         0.4
       ],
-      "judge": 0.375,
+      "judge": 0.4,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits rule-of-three sample sizing, a concrete SLA and lapse path, and rubber-stamping risk while suggesting tighter flagging thresholds when the queue overflows.",
-        "Sampling is arbitrary rather than rule-of-three sized, and the queue lacks concrete ownership, SLA, lapse handling, and safeguards against rubber-stamping."
+        "It invents sampling rates instead of using the rule of three, leaves ownership, SLA and lapse handling undefined, and misses rubber-stamping risk."
       ]
     },
     {
@@ -247,14 +227,12 @@
       "words": 498,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits the first-screen AI Act disclosure, exceeds conservative frequency bounds, and makes human handoff optional for the lowest bucket.",
-        "It omits first-screen AI Act disclosure, exceeds the conservative frequency bounds, and makes human handoff optional for the lowest bucket."
+        "It omits the first-screen AI Act disclosure, exceeds conservative frequency bounds, and makes human handoff optional."
       ]
     },
     {
@@ -266,14 +244,12 @@
       "words": 822,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.44999999999999996,
-        0.5
+        0.55
       ],
-      "judge": 0.475,
-      "meetsGoal": 0.0,
+      "judge": 0.55,
+      "meetsGoal": 0.25,
       "weakest": [
-        "It substitutes a soft confirmation gate for edit-first review, leaves unsupported statements without mandatory actions, and omits correction capture into the eval set.",
-        "It substitutes a soft confirmation gate for edit-first saving, leaves unsupported statements without required actions, and never logs corrections into the eval set."
+        "It substitutes a scroll-or-click review gate for mandatory action on unsupported claims and never routes corrections into the eval set."
       ]
     },
     {
@@ -285,14 +261,12 @@
       "words": 550,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
       "meetsGoal": 1.0,
       "weakest": [
-        "It invents a 100-case minimum and treats it as an established validation requirement.",
-        "It invents a 100-case minimum and uses it to justify customer-facing reliability claims."
+        "It invents a 100-case minimum and misstates the AI Act provision\u2019s application date as its entry into force."
       ]
     },
     {
@@ -304,14 +278,12 @@
       "words": 408,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.65,
-        0.65
+        0.6
       ],
-      "judge": 0.65,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits the first-screen AI Act disclosure, suggests frequencies above conservative lower bounds, and does not require human handoff for the lowest bucket.",
-        "It omits the first-screen AI Act Article 50(1) disclosure, suggests frequencies above the lower bounds, and does not require human handoff for the lowest bucket."
+        "It omits the first-screen AI Act disclosure, suggests frequencies above the lower bounds, and makes human handoff optional."
       ]
     },
     {
@@ -323,14 +295,12 @@
       "words": 1069,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.5,
       "weakest": [
-        "The audit starts with an arbitrary percentage rather than deriving its sample size from an agreed error bound and confidence level.",
-        "The arbitrary 1\u20132% audit share is not derived from an agreed error bound, and flagging every uncalibrated decision could recreate the full inbox."
+        "The audit starts with an arbitrary 1\u20132% sample rather than sizing it from an agreed error bound and confidence level."
       ]
     },
     {
@@ -342,14 +312,12 @@
       "words": 588,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.5,
       "weakest": [
-        "It proposes reduced review without requiring the L3 gate: a shadow run, tested escalation path, and audited error rate.",
-        "It proposes reduced review without requiring the L3 gate: a shadow run, tested escalation path, and audited error rate."
+        "It proposes removing per-claim validation without requiring the L3 gate of a shadow run, tested escalation path, and audited error rate."
       ]
     },
     {
@@ -361,14 +329,12 @@
       "words": 607,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.75,
         0.65
       ],
-      "judge": 0.7,
+      "judge": 0.65,
       "meetsGoal": 0.5,
       "weakest": [
-        "It permits reduced review without the L3 gate of a shadow run, tested escalation and audited error rate, and omits GDPR Article 22.",
-        "It permits reduced review without the L3 shadow-run, tested-escalation and audited-error gate, and omits GDPR Article 22."
+        "It permits reduced review without the L3 gate of a shadow run, tested escalation and audited error rate, and omits GDPR Article 22."
       ]
     },
     {
@@ -380,14 +346,12 @@
       "words": 893,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.75,
         0.7
       ],
-      "judge": 0.725,
-      "meetsGoal": 0.875,
+      "judge": 0.7,
+      "meetsGoal": 1.0,
       "weakest": [
-        "Seeding known-wrong notes into the live queue creates avoidable risk; test error detection in a sandbox instead.",
-        "Unsupported statements can be confirmed without adding evidence, allowing invented facts into the CRM."
+        "Seeding known-wrong notes into a live regulated workflow introduces avoidable risk; test rubber-stamping in an isolated environment instead."
       ]
     },
     {
@@ -399,14 +363,12 @@
       "words": 578,
       "goal": "Computes each bucket from the table (92% with an interval of about 89% to 95% on top, 74%, 48%), drops the \"95% sure\" label and the raw scores, words any figure as a measured frequency no higher than the lower bound, keeps the lowest bucket from answering and hands it to a person, and puts the AI Act art. 50(1) disclosure on the first screen.",
       "scores": [
-        0.8500000000000001,
         0.8500000000000001
       ],
       "judge": 0.8500000000000001,
       "meetsGoal": 0.75,
       "weakest": [
-        "The lowest bucket allows an official-page redirect instead of requiring a handoff to a person.",
-        "The lowest bucket allows a static-page fallback instead of requiring a handoff to a person."
+        "The lowest bucket offers an official page as an alternative instead of requiring a human handoff."
       ]
     },
     {
@@ -418,14 +380,12 @@
       "words": 505,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.6,
-        0.6
+        0.65
       ],
-      "judge": 0.6,
+      "judge": 0.65,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits GDPR Article 22 and the L3 shadow-run and tested-escalation gates before removing per-claim validation.",
-        "It permits auto-pass without the L3 shadow-run, tested-escalation and audited-error gate, and omits GDPR Article 22 implications for automated rejections."
+        "It permits automation without the L3 shadow-run and tested-escalation gates, and omits GDPR Article 22."
       ]
     },
     {
@@ -437,14 +397,12 @@
       "words": 830,
       "goal": "Reads 97% acceptance at 9 seconds as likely rubber-stamping, tests it with seeded known-wrong recommendations, keeps one-by-one validation until the ladder's L3 gate (shadow run, tested escalation path, audited error rate) is met, raises GDPR art. 22 for rejections without per-claim review, puts the evidence beside the decision, and shows no badge until the score is checked against outcomes.",
       "scores": [
-        0.8500000000000001,
         0.8500000000000001
       ],
       "judge": 0.8500000000000001,
       "meetsGoal": 0.75,
       "weakest": [
-        "Seeded known-wrong recommendations need a fail-safe test environment, not merely a promise to withdraw them from the live queue.",
-        "Seeded wrong recommendations should be tested in an isolated workflow, not a live queue relying on withdrawal before release."
+        "It underplays likely rubber-stamping and introduces an unjustified 100-case calibration minimum."
       ]
     },
     {
@@ -456,14 +414,12 @@
       "words": 1122,
       "goal": "Edit-first: the CRM save sits in the editor and writes the adviser's reviewed version, never one click from the raw draft; statements the transcript does not support are flagged and each needs an action, with no review checkbox; corrections are logged into the eval set.",
       "scores": [
-        0.75,
-        0.75
+        0.7
       ],
-      "judge": 0.75,
+      "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "It invents operational rules and internal tooling, and proposes live seeded errors without adequate safeguards.",
-        "It invents internal tooling and a two-minute refusal threshold, and proposes live seeded errors without adequate safeguards."
+        "It invents internal tooling and a two-minute refusal cutoff, while proposing live seeded errors without adequate operational safeguards."
       ]
     },
     {
@@ -475,14 +431,12 @@
       "words": 1112,
       "goal": "An exception queue with an owner, an SLA and a lapse path, plus a random sample sized from the error rate it must bound (rule of three), not a review of everything; names rubber-stamping of flags as a risk and feeds corrections into the eval set.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
-      "meetsGoal": 0.625,
+      "meetsGoal": 0.5,
       "weakest": [
-        "Ownership, SLA and lapse handling remain unspecified, while tightening triggers to fit capacity risks hiding genuine exceptions.",
-        "Tightening exception triggers to fit reviewer capacity can hide risky tickets; overload needs a safe fallback, not fewer flags."
+        "It leaves ownership, SLA timing and lapse handling unspecified, and dangerously recommends tightening exception triggers when review capacity is exceeded."
       ]
     }
   ]

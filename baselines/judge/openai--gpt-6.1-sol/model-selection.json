@@ -5,26 +5,27 @@
   "judgeKind": "llm",
   "answerSet": "recorded",
   "legal": false,
+  "skillHash": "4d18a9f3316dac0c129e6ee3216b8afa02646f0412edfc326510a951246fde90",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.022222222222222223,
-  "costUsd": 0.1334592,
+  "noise": null,
+  "costUsd": 0.0779635,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.6888888888888889,
-      "meetsGoal": 0.9722222222222222,
-      "regex": 0.9629629629629629,
-      "words": 559.1111111111111
+      "judge": 0.7666666666666667,
+      "meetsGoal": 1.0,
+      "regex": 0.9876543209876544,
+      "words": 601.6666666666666
     },
     "without": {
       "answers": 9,
-      "judge": 0.6944444444444444,
-      "meetsGoal": 0.7638888888888888,
+      "judge": 0.6888888888888889,
+      "meetsGoal": 0.75,
       "regex": 0.7227833894500562,
       "words": 338.44444444444446
     }
@@ -35,18 +36,16 @@
       "case": "model-selection-002",
       "arm": "with",
       "run": 1,
-      "regex": 1.0,
-      "words": 487,
+      "regex": 0.8888888888888888,
+      "words": 601,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.55,
-        0.6
+        0.7
       ],
-      "judge": 0.575,
+      "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "It rejects E using an unstated confidence-bound requirement and flawed statistical tests, undermining the recommendation of D.",
-        "It invents a confidence-bound eligibility rule to reject E despite its passing score, and its statistical calculations are unreliable."
+        "It justifies E using an unstated tie rule and an unreliable significance shortcut, rather than resolving the cost-versus-error tradeoff."
       ]
     },
     {
@@ -55,17 +54,15 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 704,
+      "words": 662,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "Incorrect uncertainty calculations and an unnecessary significance gate weaken an otherwise correct cost-per-success decision.",
-        "It miscalculates A\u2019s uncertainty and incorrectly makes the economic comparison depend on statistical significance."
+        "It overstates approximate significance tests as proof and incorrectly says B\u2019s 3-point threshold margin lies inside its calculated 2.9-point uncertainty band."
       ]
     },
     {
@@ -77,14 +74,12 @@
       "words": 387,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
-      "meetsGoal": 0.875,
+      "meetsGoal": 1.0,
       "weakest": [
-        "It incorrectly treats label agreement as an accuracy ceiling and attributes small model-performance gaps to label noise without evidence.",
-        "It incorrectly treats label agreement as an accuracy ceiling and attributes close model scores to label noise without evidence."
+        "It incorrectly treats label agreement as an accuracy ceiling and small performance gaps as evidence of label noise."
       ]
     },
     {
@@ -96,14 +91,12 @@
       "words": 309,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.75,
         0.7
       ],
-      "judge": 0.725,
-      "meetsGoal": 0.375,
+      "judge": 0.7,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It omits cost per success (\u20ac0.00110 for B versus \u20ac0.02128 for A) and the gap\u2019s impact: 12 test cases or roughly 5,400 additional errors monthly.",
-        "It chooses B on raw cost rather than cost per success (\u20ac0.00110 versus \u20ac0.02128) and omits that the 3-point gap implies 5,400 additional monthly errors if representative."
+        "It omits cost per success (\u20ac0.00110 for B versus \u20ac0.02128 for A) and the gap\u2019s projected 5,400 additional errors monthly."
       ]
     },
     {
@@ -111,18 +104,16 @@
       "case": "model-selection-003",
       "arm": "with",
       "run": 1,
-      "regex": 0.8888888888888888,
-      "words": 515,
+      "regex": 1.0,
+      "words": 457,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.75,
         0.8
       ],
-      "judge": 0.775,
+      "judge": 0.8,
       "meetsGoal": 1.0,
       "weakest": [
-        "The claim that smaller models are often within one or two accuracy points at a fraction of the cost is unsupported for this task.",
-        "The quality threshold and category-specific misrouting costs remain undefined, leaving the selection rule incomplete."
+        "It needs a label-quality audit and explicit leakage-safe training, validation and test splits for the trained classifier."
       ]
     },
     {
@@ -134,14 +125,12 @@
       "words": 284,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.6,
-        0.6
+        0.65
       ],
-      "judge": 0.6,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits cost per success (\u20ac0.0213 for A versus \u20ac0.00110 for B) and the gap\u2019s projected 5,400 additional errors per month.",
-        "It omits cost per success (\u20ac0.00110 for B versus \u20ac0.02128 for A) and the gap\u2019s impact: 12 suite cases or approximately 5,400 additional errors monthly."
+        "It omits cost per success (\u20ac0.0213 for A versus \u20ac0.00110 for B) and the gap\u2019s impact: 12 suite cases or an estimated 5,400 emails monthly."
       ]
     },
     {
@@ -150,17 +139,15 @@
       "arm": "with",
       "run": 1,
       "regex": 1.0,
-      "words": 718,
+      "words": 671,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.6,
-        0.6
+        0.7
       ],
-      "judge": 0.6,
-      "meetsGoal": 0.75,
+      "judge": 0.7,
+      "meetsGoal": 1.0,
       "weakest": [
-        "It incorrectly makes statistical significance a prerequisite for valuing A\u2019s accuracy gain and adds an unjustified 90% go-live cutoff.",
-        "It makes statistical significance a prerequisite for valuing A\u2019s improvement and introduces an unsupported 90% deployment gate."
+        "It treats an approximate significance cutoff as proof that the gap is real and wrongly makes the economic trade-off conditional on statistical significance."
       ]
     },
     {
@@ -169,17 +156,15 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 688,
+      "words": 620,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.7,
-        0.7
+        0.75
       ],
-      "judge": 0.7,
+      "judge": 0.75,
       "meetsGoal": 1.0,
       "weakest": [
-        "It confuses statistical uncertainty with a tie and inconsistently raises the stated 88% acceptance threshold to roughly 91%.",
-        "It treats an untested accuracy gap as a statistical tie and introduces an unsupported roughly 91% acceptance gate."
+        "It wrongly makes statistical significance a prerequisite for A being economically worthwhile and treats an unassessed gap as noise."
       ]
     },
     {
@@ -191,14 +176,12 @@
       "words": 360,
       "goal": "The cheaper model is chosen on cost per success, with the 3-point gap quantified.",
       "scores": [
-        0.65,
-        0.7
+        0.65
       ],
-      "judge": 0.675,
+      "judge": 0.65,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits cost per successful classification: approximately EUR 0.00110 for B versus EUR 0.02128 for A.",
-        "It omits cost per successful classification (\u20ac0.0213 for A versus \u20ac0.00110 for B) and makes unsupported claims about escalation recovering accuracy."
+        "It omits cost per successful classification: approximately \u20ac0.00110 for B versus \u20ac0.02128 for A."
       ]
     },
     {
@@ -206,18 +189,16 @@
       "case": "model-selection-002",
       "arm": "with",
       "run": 2,
-      "regex": 0.8888888888888888,
-      "words": 507,
+      "regex": 1.0,
+      "words": 735,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.55,
-        0.5
+        0.75
       ],
-      "judge": 0.525,
+      "judge": 0.75,
       "meetsGoal": 1.0,
       "weakest": [
-        "It invents a statistical acceptance gate to reject E and justify D, although both exceed the stated 85% threshold.",
-        "It invents a confidence-bound eligibility rule and misapplies the statistics to exclude E and justify D."
+        "It treats statistical nonsignificance as a tie and incorrectly makes error-cost trade-offs conditional on proving the quality gap."
       ]
     },
     {
@@ -229,14 +210,12 @@
       "words": 269,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 1.0,
       "weakest": [
-        "It asserts normal run-to-run variation and E's risk of falling below threshold without evidence or uncertainty analysis for either model.",
-        "It asserts run-to-run variation without evidence and overstates how confidently the six-case gap makes D safer than E."
+        "It asserts normal run-to-run variation and E's risk of falling below threshold without evidence."
       ]
     },
     {
@@ -248,14 +227,12 @@
       "words": 397,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.75,
-        0.7
+        0.65
       ],
-      "judge": 0.725,
-      "meetsGoal": 0.875,
+      "judge": 0.65,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It omits regulated-data safeguards and approval requirements before sending support tickets to external model APIs.",
-        "It omits regulated-data safeguards and does not explicitly add small general-purpose models alongside the fine-tuned classifier."
+        "It omits regulated-data safeguards and does not explicitly add smaller LLMs alongside the fine-tuned classifier."
       ]
     },
     {
@@ -267,14 +244,12 @@
       "words": 456,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.55,
-        0.6
+        0.65
       ],
-      "judge": 0.575,
+      "judge": 0.65,
       "meetsGoal": 1.0,
       "weakest": [
-        "It omits regulated-data safeguards and incorrectly treats observed label consistency as a hard accuracy ceiling.",
-        "It omits regulated-data safeguards before sending sensitive tickets to candidate models."
+        "It omits privacy and deployment controls for regulated ticket data and incorrectly treats label consistency as a hard accuracy ceiling."
       ]
     },
     {
@@ -283,17 +258,15 @@
       "arm": "with",
       "run": 2,
       "regex": 1.0,
-      "words": 474,
+      "words": 488,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.8999999999999999,
         0.8999999999999999
       ],
       "judge": 0.8999999999999999,
       "meetsGoal": 1.0,
       "weakest": [
-        "The selection rule should account explicitly for category-specific misrouting harms rather than relying primarily on accuracy and cost per success.",
-        "The selection rule needs category-specific error costs and quality thresholds, since aggregate accuracy and cost per success can hide high-risk misrouting."
+        "The low-confidence fallback needs calibrated confidence thresholds and an estimate of human-review workload and cost."
       ]
     },
     {
@@ -305,14 +278,12 @@
       "words": 272,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.8500000000000001,
-        0.8500000000000001
+        0.8
       ],
-      "judge": 0.8500000000000001,
+      "judge": 0.8,
       "meetsGoal": 1.0,
       "weakest": [
-        "D\u2019s premium is justified without establishing whether its two-point lead is reliable or reduces costly errors.",
-        "D is favored without establishing that its uncertain two-point advantage justifies the extra cost at production volume."
+        "The preference for D assumes its extra cost buys meaningfully safer summaries without comparing error severity or establishing that its two-point lead is reliable."
       ]
     },
     {
@@ -321,17 +292,15 @@
       "arm": "with",
       "run": 3,
       "regex": 1.0,
-      "words": 415,
+      "words": 587,
       "goal": "Small models and a fine-tuned classifier are added as candidates; no choice from leaderboards.",
       "scores": [
-        0.8,
         0.8500000000000001
       ],
-      "judge": 0.8250000000000001,
+      "judge": 0.8500000000000001,
       "meetsGoal": 1.0,
       "weakest": [
-        "It needs category-specific error thresholds and calibrated confidence before using confidence-based human review.",
-        "The confidence-based human-review fallback needs calibration and class-specific error thresholds before it is safe to use."
+        "The formula declaring an accuracy gap real is an unlabeled statistical approximation, not a reliable general decision rule."
       ]
     },
     {
@@ -339,18 +308,16 @@
       "case": "model-selection-002",
       "arm": "with",
       "run": 3,
-      "regex": 0.8888888888888888,
-      "words": 524,
+      "regex": 1.0,
+      "words": 594,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.6,
-        0.6
+        0.75
       ],
-      "judge": 0.6,
+      "judge": 0.75,
       "meetsGoal": 1.0,
       "weakest": [
-        "It imposes an unrequested confidence-bound gate and miscalculates D\u2019s Wilson lower bound, incorrectly claiming D clears that gate.",
-        "It invents a confidence-bound eligibility rule to reject E and miscalculates the bounds; both EU models meet the stated 85% threshold."
+        "It asserts statistical indistinguishability without paired results and uses an unstated tie rule to justify E."
       ]
     },
     {
@@ -362,14 +329,12 @@
       "words": 312,
       "goal": "Model C is filtered out on hosting before scoring; the choice is among the others.",
       "scores": [
-        0.8,
         0.8
       ],
       "judge": 0.8,
       "meetsGoal": 1.0,
       "weakest": [
-        "It favors D\u2019s uncertain quality advantage without actual volume, budget, or comparative failure-severity evidence.",
-        "It treats D as safer and its added cost as minor without knowing comparative failure severity, production volume, or budget."
+        "It favors D without establishing that its uncertain quality advantage justifies the extra cost at actual volumes and error severity."
       ]
     }
   ]

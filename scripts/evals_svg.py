@@ -14,7 +14,7 @@ from lifecycle_svg import BORDER, FAINT, INK, MUTED, VIOLET, W, Text, background
 ROOT = Path(__file__).resolve().parent.parent
 MARGIN, LABEL, ROW = 56, 330, 34
 # judges shown next to the regex gain, in this order: (folder under baselines/judge/, column title)
-JUDGES = [("claude-opus-5-5", "Opus"), ("typesafe--jev-1.14", "Jev")]
+JUDGES = [("typesafe--jev-1.14", "Jev"), ("openai--gpt-6.1-sol", "GPT Sol"), ("claude-opus-5-5", "Opus")]
 JUDGE = JUDGES[0][0]
 
 
@@ -65,9 +65,9 @@ def main(fonts):
     cr = cols[0]
     sx = lambda v: x0 + v * (x1 - x0)
     top = 150
-    h = top + len(rows) * ROW + 206
+    h = top + len(rows) * ROW + 230
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {h}" width="{W}" height="{h}" role="img" '
-           f'aria-label="Eval scores of the {len(rows)} catalog skills: without the skill and with it on regex graders, and the gains seen by two blind judges">',
+           f'aria-label="Eval scores of the {len(rows)} catalog skills: without the skill and with it on regex graders, and the gains seen by three blind judges">',
            f"<title>Eval scores of the {len(rows)} catalog skills</title>", *background(h),
            mono("Evals · same cases, Sonnet 5.5, 3 runs per case", MARGIN, 56, 18, FAINT),
            medium("What the skill adds: required items, and overall quality", MARGIN, 100, 30, INK)]
@@ -93,12 +93,14 @@ def main(fonts):
             sans("with the skill, regex graders", MARGIN + 174, y + 5, 14, MUTED),
             sans("Gains in points. regex: graders written by the skills' author, they check what the skill asks for.",
                  MARGIN, y + 40, 14, MUTED),
-            sans("Opus: Claude Opus 5.5, a blind LLM judge of overall quality on the same answers; a Claude model like the one that answers.",
-                 MARGIN, y + 64, 14, MUTED),
             sans("Jev: TypeSafe's Jev 1.14, a blind decision model from another vendor, one score per criterion, no reasons given.",
+                 MARGIN, y + 64, 14, MUTED),
+            sans("GPT Sol: OpenAI's GPT-6.1 Sol, a blind LLM judge from another vendor, overall quality on the same answers.",
                  MARGIN, y + 88, 14, MUTED),
-            sans("Both grade the current recorded runs; neither checks legal correctness. Each varies by a few points per skill; larger gaps are real disagreements.",
-                 MARGIN, y + 112, 14, MUTED)]
+            sans("Opus: Claude Opus 5.5, the same blind judge prompt; a Claude model like the one that answers.",
+                 MARGIN, y + 112, 14, MUTED),
+            sans("All grade the current recorded runs; none checks legal correctness. Each varies by a few points per skill; larger gaps are real disagreements.",
+                 MARGIN, y + 136, 14, MUTED)]
     (ROOT / "assets/evals.svg").write_text("".join(out + ["</svg>\n"]))
 
 

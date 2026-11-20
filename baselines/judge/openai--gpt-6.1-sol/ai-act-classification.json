@@ -5,25 +5,26 @@
   "judgeKind": "llm",
   "answerSet": "recorded",
   "legal": true,
+  "skillHash": "d2aa1f2b6c954617cc54c6f8f76eca8e84809ab76755da03f6a13b86fcb11b42",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.033333333333333354,
-  "costUsd": 0.23809740000000001,
+  "noise": null,
+  "costUsd": 0.1286755,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.6111111111111112,
-      "meetsGoal": 0.7361111111111112,
+      "judge": 0.6166666666666667,
+      "meetsGoal": 0.7777777777777778,
       "regex": 1.0,
       "words": 1610.7777777777778
     },
     "without": {
       "answers": 9,
-      "judge": 0.6777777777777777,
+      "judge": 0.6722222222222222,
       "meetsGoal": 0.5277777777777778,
       "regex": 0.7092592592592593,
       "words": 746.2222222222222
@@ -39,14 +40,12 @@
       "words": 873,
       "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
       "scores": [
-        0.55,
         0.55
       ],
       "judge": 0.55,
       "meetsGoal": 0.25,
       "weakest": [
-        "It misses the explicit ladder-based obligations delta and gives speculative timing instead of 2 December 2027.",
-        "It misses the explicit level-by-level obligations delta and the required 2 December 2027 date for Annex III duties."
+        "It misses the explicit obligations delta on the autonomy ladder and fails to state 2 December 2027 as the Annex III duties date."
       ]
     },
     {
@@ -58,14 +57,12 @@
       "words": 1139,
       "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
       "scores": [
-        0.65,
-        0.5
+        0.65
       ],
-      "judge": 0.575,
+      "judge": 0.65,
       "meetsGoal": 1.0,
       "weakest": [
-        "It presents unsupported legislative amendments and transition dates as verified law, undermining an otherwise sound core classification.",
-        "The core classification is right, but unsupported legislative amendments and incorrect transitional deadlines make the compliance advice unreliable."
+        "It undermines an otherwise sound classification with unsupported legal amendments, transition dates, and an overconfident fine-tuning threshold."
       ]
     },
     {
@@ -77,14 +74,12 @@
       "words": 2026,
       "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
       "scores": [
-        0.5,
         0.55
       ],
-      "judge": 0.525,
-      "meetsGoal": 0.375,
+      "judge": 0.55,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It leaves core scope and oversight decisions to counsel instead of clearly stating the ladder\u2019s obligations delta, and introduces unsupported legal and contextual claims.",
-        "It blurs the obligations delta of removing pre-execution review and unnecessarily leaves ordinary card-payment-limit changes open to Annex III."
+        "It hedges the overdraft classification, unnecessarily brings other actions into Annex III, and never clearly separates existing duties from the oversight changes required by greater autonomy."
       ]
     },
     {
@@ -96,14 +91,12 @@
       "words": 599,
       "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
       "scores": [
-        0.75,
         0.8
       ],
-      "judge": 0.775,
+      "judge": 0.8,
       "meetsGoal": 1.0,
       "weakest": [
-        "It misses concrete helpdesk risks such as credential disclosure, unauthorized document retrieval, and harmful troubleshooting advice, with corresponding rollout controls.",
-        "It underplays operational safeguards against credential disclosure, sensitive-data leakage, and incorrect IT guidance."
+        "It oversimplifies when fine-tuning creates GPAI-provider duties and what adequate AI literacy requires."
       ]
     },
     {
@@ -115,14 +108,12 @@
       "words": 815,
       "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
       "scores": [
-        0.5,
         0.5
       ],
       "judge": 0.5,
       "meetsGoal": 0.25,
       "weakest": [
-        "It implies adviser validation can remove creditworthiness assessment from high-risk status, misses the explicit obligations delta, and fails to state the required 2 December 2027 date.",
-        "It obscures that creditworthiness assessment is Annex III 5(b) at either autonomy level and fails to date those duties to 2 December 2027."
+        "It wrongly ties overdraft classification to adviser validation and fails to state that Annex III duties apply from 2 December 2027."
       ]
     },
     {
@@ -134,14 +125,12 @@
       "words": 1660,
       "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
       "scores": [
-        0.8,
-        0.8500000000000001
+        0.8
       ],
-      "judge": 0.8250000000000001,
+      "judge": 0.8,
       "meetsGoal": 0.75,
       "weakest": [
-        "The Article 26 checklist omits authority cooperation and incompletely states serious-incident reporting duties.",
-        "The Article 26 checklist omits cooperation with authorities and incompletely states serious-incident reporting duties."
+        "The Article 26 checklist is incomplete, particularly on serious-incident notifications and cooperation with competent authorities."
       ]
     },
     {
@@ -153,14 +142,12 @@
       "words": 1154,
       "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
       "scores": [
-        0.55,
         0.55
       ],
       "judge": 0.55,
       "meetsGoal": 1.0,
       "weakest": [
-        "The unsupported amending regulation and Article 111(4) transition deadline undermine an otherwise correct classification.",
-        "Unsupported amendment citations and transitional deadlines undermine an otherwise correct core classification."
+        "The unsupported 2026 amendment and Article 111(4) transition date make the compliance timetable unreliable."
       ]
     },
     {
@@ -172,14 +159,12 @@
       "words": 905,
       "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
       "scores": [
-        0.75,
         0.7
       ],
-      "judge": 0.725,
+      "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "It misses the amended 2 December 2027 date and does not end with questions for counsel.",
-        "It fails to give the amended Annex III date of 2 December 2027 and does not end with questions for counsel."
+        "It misses the amended 2 December 2027 date, does not explicitly record the vendor claim as unverified, and fails to end with questions for counsel."
       ]
     },
     {
@@ -191,14 +176,12 @@
       "words": 786,
       "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
       "scores": [
-        0.7,
         0.75
       ],
-      "judge": 0.725,
-      "meetsGoal": 0.375,
+      "judge": 0.75,
+      "meetsGoal": 0.25,
       "weakest": [
-        "It misses the amended 2 December 2027 application date, does not explicitly record the vendor claim as unverified, and ends without questions for counsel.",
-        "It misses the amended 2 December 2027 date, does not explicitly record the vendor claim as unverified pending documents, and fails to end with questions for counsel."
+        "It misses the amended 2 December 2027 date, does not explicitly record the vendor claim as unverified pending documentation, and fails to end with questions for counsel."
       ]
     },
     {
@@ -210,14 +193,12 @@
       "words": 2125,
       "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
       "scores": [
-        0.55,
         0.55
       ],
       "judge": 0.55,
       "meetsGoal": 0.5,
       "weakest": [
-        "The ladder overstates overdraft classification, leaves the payment-limit action unresolved, and fails to date the explanation right.",
-        "It initially equates granting credit with assessing creditworthiness, then leaves the explanation right and parts of the obligations delta unresolved."
+        "It conflates granting credit with assessing creditworthiness, leaves payment-limit classification unresolved, and does not date the explanation right."
       ]
     },
     {
@@ -229,14 +210,12 @@
       "words": 559,
       "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
-      "meetsGoal": 0.875,
+      "meetsGoal": 1.0,
       "weakest": [
-        "It incorrectly treats text-based sentiment detection as prohibited workplace emotion recognition and understates obligations as transparency-only.",
-        "It incorrectly treats text-based employee sentiment detection as banned workplace emotion recognition, which requires biometric data."
+        "It overstates legal triggers: text sentiment detection is not automatically prohibited emotion recognition, and heavy fine-tuning does not automatically confer GPAI-provider status."
       ]
     },
     {
@@ -248,14 +227,12 @@
       "words": 2133,
       "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
       "scores": [
-        0.55,
         0.5
       ],
-      "judge": 0.525,
-      "meetsGoal": 0.5,
+      "judge": 0.5,
+      "meetsGoal": 0.25,
       "weakest": [
-        "It conflates granting credit with assessing creditworthiness and unnecessarily brings the card payment-limit change into Annex III.",
-        "It conflates granting credit with assessing creditworthiness, pulls card-limit changes into Annex III, and leaves the explanation duty unresolved."
+        "It conflates granting credit with assessing creditworthiness and leaves the required classification and ladder-level obligations delta unresolved."
       ]
     },
     {
@@ -267,14 +244,12 @@
       "words": 759,
       "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
       "scores": [
-        0.65,
-        0.7
+        0.65
       ],
-      "judge": 0.675,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It misses the amended 2 December 2027 date, precise Article 26 duty citations, and closing questions for counsel.",
-        "It misses the amended 2 December 2027 deadline, assumes the vendor claim's scope, omits duty-specific article references, and does not end with questions for counsel."
+        "It misses the amended 2 December 2027 date, lacks Article 26 subsection citations, and does not end with questions for counsel."
       ]
     },
     {
@@ -286,14 +261,12 @@
       "words": 543,
       "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
       "scores": [
-        0.8500000000000001,
         0.8
       ],
-      "judge": 0.8250000000000001,
+      "judge": 0.8,
       "meetsGoal": 1.0,
       "weakest": [
-        "It introduces speculative timeline changes instead of stating the baseline application dates and asking Legal to verify any amendments.",
-        "The speculative Digital Omnibus reference muddies the rollout timeline instead of clearly identifying the applicable dates for Legal to verify."
+        "It leaves Article 50(2)'s applicability and effective date unresolved rather than assigning Legal a concrete pre-rollout determination."
       ]
     },
     {
@@ -305,14 +278,12 @@
       "words": 1118,
       "goal": "Classifies it outside the prohibited practices and Annex III, so not high-risk, with the transparency duty of art. 50(1), raises art. 50(2) for counsel and AI literacy (art. 4), flags the general-purpose model use separately, and never says there are no obligations.",
       "scores": [
-        0.44999999999999996,
         0.44999999999999996
       ],
       "judge": 0.44999999999999996,
-      "meetsGoal": 0.75,
+      "meetsGoal": 1.0,
       "weakest": [
-        "It invents an amending regulation and transitional deadlines, making an otherwise appropriate classification legally unreliable.",
-        "It presents unsupported legislative amendments and application dates as verified law, undermining an otherwise largely correct classification."
+        "It presents an unsupported amending regulation and compliance deadlines as verified law."
       ]
     },
     {
@@ -324,14 +295,12 @@
       "words": 1407,
       "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
-      "meetsGoal": 0.875,
+      "meetsGoal": 1.0,
       "weakest": [
-        "It presents a specific amending regulation, a last-checked date and a 2026 rollout as established facts without supporting evidence.",
-        "It invents deployment and verification dates and omits Article 26 duties on DPIA support and cooperation with authorities."
+        "It presents an unsupported amendment citation, verification date and 2026 deployment assumption as established facts."
       ]
     },
     {
@@ -343,14 +312,12 @@
       "words": 877,
       "goal": "States the obligations delta of the level change explicitly on the ladder; the overdraft step is Annex III point 5(b) if it assesses creditworthiness, whatever the level, with human oversight design, logging, informing customers, the right to an explanation and the fundamental rights impact assessment; the other actions stay outside Annex III. Annex III duties dated 2 December 2027. No compliance verdict.",
       "scores": [
-        0.65,
         0.6
       ],
-      "judge": 0.625,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits the explicit obligations delta on the autonomy ladder and the required 2 December 2027 date, while blurring creditworthiness-based classification.",
-        "It misses the required 2 December 2027 date and explicit ladder delta, while wrongly suggesting autonomy changes classification and extending Annex III to other actions."
+        "It misses the explicit autonomy-ladder obligations delta, fails to state the required 2 December 2027 date, and expands the high-risk perimeter beyond the overdraft."
       ]
     },
     {
@@ -362,14 +329,12 @@
       "words": 1735,
       "goal": "Classifies it high-risk under Annex III point 4(a), sets the company as deployer, lists the art. 26 deployer duties with articles (oversight, logs, informing workers' representatives and candidates), keeps what the vendor's claim does not cover, records that claim as unverified until a document is shown, and ends with questions for counsel, gives the Annex III date as amended in 2026 (2 December 2027), never a compliance verdict.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
-      "meetsGoal": 0.875,
+      "meetsGoal": 1.0,
       "weakest": [
-        "It invents a verification date and vendor evaluation claims, while omitting the Article 26(12) duty to cooperate with authorities.",
-        "It invents a vendor claim about testing thresholds and omits some Article 26 duties, including cooperation with competent authorities."
+        "It invents a last-checked date and labels vendor testing evidence as claimed without support in the request."
       ]
     }
   ]

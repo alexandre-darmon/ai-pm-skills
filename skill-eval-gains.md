@@ -9,7 +9,7 @@ Same cases, Sonnet 5.5 answering, three arms: the model alone, the model given o
 | Blind LLM judge, Haiku 5.5: 11 of these skills, 40 cases, earlier runs | 70% | — | 79% | +9 [+7, +11] | — |
 | Blind LLM judge, Opus 5.5: 29 of these skills, 109 cases, recorded runs | 70% | — | 85% | +15 [+14, +17] | — |
 | Blind LLM judge, Sonnet 5.5: 9 of these skills, 29 cases, earlier runs | 72% | — | 82% | +9 [+6, +13] | — |
-| Blind LLM judge, openai/gpt-6.1-sol: 27 of these skills, 102 cases, earlier runs | 61% | — | 71% | +10 [+7, +13] | — |
+| Blind LLM judge, openai/gpt-6.1-sol: 29 of these skills, 109 cases, recorded runs | 63% | — | 72% | +9 [+7, +11] | — |
 | Blind decision model, typesafe/jev-1.14: 29 of these skills, 109 cases, recorded runs | 80% | — | 90% | +10 [+8, +12] | — |
 | Red lines held (the one thing the answer must never do) | 71% | — | **100%** | | |
 | Cost per correct answer, API equivalent (16 skills) | $0.131 | — | **$0.078** | -40% | |
@@ -104,33 +104,35 @@ Gains in points. Brackets: 95% interval over cases (see below).
 | `llm-judge-calibration` | Sonnet 5.5 | 78% | — | 84% | +6 pts | — | 3 pts | 478 / — / 589 |
 | `model-selection` | Sonnet 5.5 | 76% | — | 80% | +4 pts | — | 2 pts | 338 / — / 492 |
 | `system-prompt-and-guardrails` | Sonnet 5.5 | 77% | — | 89% | +12 pts | — | 4 pts | 653 / — / 1,138 |
-| `agent-design-and-tooling` | openai/gpt-6.1-sol | 75% | — | 84% | +9 pts | — | 2 pts | 679 / — / 1,117 |
-| `ai-act-classification` | openai/gpt-6.1-sol | 68% | — | 61% | -7 pts | — | 3 pts | 746 / — / 1,611 |
-| `ai-adoption-plan` | openai/gpt-6.1-sol | 68% | — | 79% | +11 pts | — | 2 pts | 569 / — / 750 |
-| `ai-data-requirements` | openai/gpt-6.1-sol | 65% | — | 72% | +7 pts | — | 3 pts | 635 / — / 901 |
-| `ai-feasibility-spike` | openai/gpt-6.1-sol | 51% | — | 67% | +16 pts | — | 3 pts | 595 / — / 766 |
-| `ai-incident-playbook` | openai/gpt-6.1-sol | 60% | — | 64% | +4 pts | — | 3 pts | 659 / — / 1,078 |
-| `ai-interaction-patterns` | openai/gpt-6.1-sol | 54% | — | 76% | +22 pts | — | 2 pts | 667 / — / 957 |
-| `ai-opportunity-assessment` | openai/gpt-6.1-sol | 56% | — | 68% | +12 pts | — | 3 pts | 588 / — / 1,278 |
-| `ai-roi-quantification` | openai/gpt-6.1-sol | 49% | — | 59% | +10 pts | — | 3 pts | 436 / — / 877 |
-| `ai-vendor-evaluation` | openai/gpt-6.1-sol | 67% | — | 77% | +9 pts | — | 2 pts | 537 / — / 1,039 |
-| `assistant-kpis-cost-per-outcome` | openai/gpt-6.1-sol | 52% | — | 65% | +13 pts | — | 1 pts | 701 / — / 1,219 |
-| `build-evals` | openai/gpt-6.1-sol | 64% | — | 72% | +8 pts | — | 2 pts | 545 / — / 586 |
-| `conversation-analysis` | openai/gpt-6.1-sol | 51% | — | 66% | +15 pts | — | 2 pts | 583 / — / 729 |
-| `error-analysis` | openai/gpt-6.1-sol | 56% | — | 78% | +22 pts | — | 2 pts | 767 / — / 928 |
-| `llm-feature-prd` | openai/gpt-6.1-sol | 59% | — | 70% | +11 pts | — | 2 pts | 1,389 / — / 1,858 |
-| `model-card-ai-registry` | openai/gpt-6.1-sol | 60% | — | 68% | +8 pts | — | 3 pts | 480 / — / 999 |
-| `model-selection` | openai/gpt-6.1-sol | 69% | — | 69% | -1 pts | — | 2 pts | 338 / — / 559 |
-| `multi-turn-evals` | openai/gpt-6.1-sol | 66% | — | 73% | +6 pts | — | 2 pts | 616 / — / 792 |
-| `process-ai-redesign` | openai/gpt-6.1-sol | 54% | — | 64% | +10 pts | — | 2 pts | 806 / — / 1,521 |
-| `production-evals-monitoring` | openai/gpt-6.1-sol | 64% | — | 69% | +4 pts | — | 2 pts | 1,029 / — / 1,317 |
-| `prototype-handover` | openai/gpt-6.1-sol | 58% | — | 70% | +12 pts | — | 3 pts | 775 / — / 1,352 |
-| `red-team-evals` | openai/gpt-6.1-sol | 66% | — | 78% | +11 pts | — | 2 pts | 662 / — / 833 |
-| `release-to-production` | openai/gpt-6.1-sol | 55% | — | 74% | +19 pts | — | 3 pts | 490 / — / 627 |
-| `retrieval-evaluation` | openai/gpt-6.1-sol | 70% | — | 78% | +8 pts | — | 3 pts | 635 / — / 765 |
-| `synthetic-eval-data` | openai/gpt-6.1-sol | 68% | — | 76% | +7 pts | — | 2 pts | 663 / — / 814 |
-| `system-prompt-and-guardrails` | openai/gpt-6.1-sol | 73% | — | 80% | +7 pts | — | 2 pts | 653 / — / 1,138 |
-| `trace-review-tool` | openai/gpt-6.1-sol | 57% | — | 73% | +16 pts | — | 3 pts | 907 / — / 1,122 |
+| `agent-design-and-tooling` | openai/gpt-6.1-sol | 77% | — | 81% | +4 pts | — | — | 679 / — / 1,117 |
+| `agent-evals` | openai/gpt-6.1-sol | 75% | — | 78% | +4 pts | — | — | 731 / — / 1,275 |
+| `ai-act-classification` | openai/gpt-6.1-sol | 67% | — | 62% | -6 pts | — | — | 746 / — / 1,611 |
+| `ai-adoption-plan` | openai/gpt-6.1-sol | 68% | — | 77% | +9 pts | — | — | 569 / — / 750 |
+| `ai-data-requirements` | openai/gpt-6.1-sol | 65% | — | 71% | +5 pts | — | — | 635 / — / 901 |
+| `ai-feasibility-spike` | openai/gpt-6.1-sol | 52% | — | 68% | +16 pts | — | — | 595 / — / 766 |
+| `ai-incident-playbook` | openai/gpt-6.1-sol | 62% | — | 65% | +3 pts | — | — | 659 / — / 1,078 |
+| `ai-interaction-patterns` | openai/gpt-6.1-sol | 54% | — | 75% | +21 pts | — | — | 667 / — / 957 |
+| `ai-opportunity-assessment` | openai/gpt-6.1-sol | 57% | — | 68% | +10 pts | — | — | 588 / — / 1,278 |
+| `ai-roi-quantification` | openai/gpt-6.1-sol | 49% | — | 58% | +9 pts | — | — | 436 / — / 877 |
+| `ai-vendor-evaluation` | openai/gpt-6.1-sol | 69% | — | 76% | +7 pts | — | — | 537 / — / 1,039 |
+| `assistant-kpis-cost-per-outcome` | openai/gpt-6.1-sol | 53% | — | 65% | +12 pts | — | — | 701 / — / 1,219 |
+| `build-evals` | openai/gpt-6.1-sol | 63% | — | 72% | +9 pts | — | — | 545 / — / 586 |
+| `conversation-analysis` | openai/gpt-6.1-sol | 54% | — | 68% | +13 pts | — | — | 570 / — / 684 |
+| `error-analysis` | openai/gpt-6.1-sol | 56% | — | 78% | +22 pts | — | — | 767 / — / 928 |
+| `llm-feature-prd` | openai/gpt-6.1-sol | 61% | — | 71% | +10 pts | — | — | 1,389 / — / 1,858 |
+| `llm-judge-calibration` | openai/gpt-6.1-sol | 71% | — | 75% | +4 pts | — | — | 478 / — / 617 |
+| `model-card-ai-registry` | openai/gpt-6.1-sol | 62% | — | 65% | +3 pts | — | — | 480 / — / 999 |
+| `model-selection` | openai/gpt-6.1-sol | 69% | — | 77% | +8 pts | — | — | 338 / — / 602 |
+| `multi-turn-evals` | openai/gpt-6.1-sol | 67% | — | 71% | +5 pts | — | — | 616 / — / 792 |
+| `process-ai-redesign` | openai/gpt-6.1-sol | 53% | — | 64% | +12 pts | — | — | 806 / — / 1,521 |
+| `production-evals-monitoring` | openai/gpt-6.1-sol | 64% | — | 69% | +4 pts | — | — | 1,029 / — / 1,317 |
+| `prototype-handover` | openai/gpt-6.1-sol | 60% | — | 68% | +9 pts | — | — | 775 / — / 1,352 |
+| `red-team-evals` | openai/gpt-6.1-sol | 66% | — | 80% | +14 pts | — | — | 662 / — / 833 |
+| `release-to-production` | openai/gpt-6.1-sol | 53% | — | 74% | +21 pts | — | — | 490 / — / 627 |
+| `retrieval-evaluation` | openai/gpt-6.1-sol | 70% | — | 78% | +8 pts | — | — | 635 / — / 765 |
+| `synthetic-eval-data` | openai/gpt-6.1-sol | 67% | — | 76% | +9 pts | — | — | 663 / — / 814 |
+| `system-prompt-and-guardrails` | openai/gpt-6.1-sol | 76% | — | 81% | +5 pts | — | — | 653 / — / 1,138 |
+| `trace-review-tool` | openai/gpt-6.1-sol | 59% | — | 73% | +14 pts | — | — | 907 / — / 1,122 |
 | `agent-design-and-tooling` | typesafe/jev-1.14 | 90% | — | 87% | -3 pts | — | 0 pts | 679 / — / 1,117 |
 | `agent-evals` | typesafe/jev-1.14 | 88% | — | 94% | +5 pts | — | 1 pts | 731 / — / 1,275 |
 | `ai-act-classification` | typesafe/jev-1.14 | 74% | — | 75% | +1 pts | — | 1 pts | 746 / — / 1,611 |

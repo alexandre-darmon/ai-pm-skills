@@ -5,25 +5,26 @@
   "judgeKind": "llm",
   "answerSet": "recorded",
   "legal": true,
+  "skillHash": "fbdd4516f6a4f676743be4c21df91cbbcf3f9095d3a98855a21431504ff8e946",
   "limit": null,
   "calibrated": false,
-  "passes": 2,
+  "passes": 1,
   "errors": 0,
   "firstError": null,
-  "noise": 0.022222222222222223,
-  "costUsd": 0.1776538,
+  "noise": null,
+  "costUsd": 0.1334305,
   "longContextCalls": 0,
   "arms": {
     "with": {
       "answers": 9,
-      "judge": 0.6861111111111111,
+      "judge": 0.6888888888888889,
       "meetsGoal": 0.6666666666666666,
       "regex": 1.0,
       "words": 1317.4444444444443
     },
     "without": {
       "answers": 9,
-      "judge": 0.6416666666666667,
+      "judge": 0.6444444444444444,
       "meetsGoal": 0.3611111111111111,
       "regex": 0.44999999999999996,
       "words": 1028.5555555555557
@@ -39,14 +40,12 @@
       "words": 1712,
       "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
       "scores": [
-        0.7,
         0.65
       ],
-      "judge": 0.675,
+      "judge": 0.65,
       "meetsGoal": 0.75,
       "weakest": [
-        "It treats semantic safety checks as deterministic and allows confirmed serious incidents to wait for recurrence before suspension.",
-        "It treats semantic safety checks as deterministic and allows serious privacy or hand-over failures to recur before suspension."
+        "It assumes semantic failures are deterministically detectable and delays containment of serious incidents until they recur."
       ]
     },
     {
@@ -58,14 +57,12 @@
       "words": 547,
       "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
       "scores": [
-        0.8,
         0.8500000000000001
       ],
-      "judge": 0.8250000000000001,
+      "judge": 0.8500000000000001,
       "meetsGoal": 0.75,
       "weakest": [
-        "It proposes a one-off larger sample rather than explicitly raising weekly monitoring to about 300 traces.",
-        "It recommends a one-off larger sample but never raises the ongoing weekly sample to about 300."
+        "It expands last week's sample but never commits to raising ongoing weekly sampling to about 300."
       ]
     },
     {
@@ -77,14 +74,12 @@
       "words": 1821,
       "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
       "scores": [
-        0.7,
-        0.75
+        0.7
       ],
-      "judge": 0.725,
+      "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "A processing contract is incorrectly offered as an alternative to masking personal data before external judging.",
-        "It wrongly allows a processing contract to substitute for masking personal data before external judging."
+        "A processing contract is incorrectly offered as an alternative to masking personal data before external judging."
       ]
     },
     {
@@ -96,14 +91,12 @@
       "words": 1441,
       "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
       "scores": [
-        0.5,
         0.5
       ],
       "judge": 0.5,
       "meetsGoal": 0.5,
       "weakest": [
-        "It leaves technical-documentation filing, deployer data collection, and substantial-modification handling as unresolved questions rather than operational parts of the plan.",
-        "It leaves technical-documentation placement, deployer data collection, and substantial-modification assessment as unresolved questions rather than operational commitments."
+        "It leaves technical-documentation filing, deployer data collection, and incident reporting as unresolved tasks rather than operational parts of the plan."
       ]
     },
     {
@@ -115,14 +108,12 @@
       "words": 1976,
       "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
       "scores": [
-        0.65,
-        0.55
+        0.6
       ],
-      "judge": 0.6000000000000001,
+      "judge": 0.6,
       "meetsGoal": 0.5,
       "weakest": [
-        "It leaves technical-documentation placement and deployer data collection as unresolved questions rather than defining an executable plan.",
-        "Technical-documentation filing, deployer data collection and incident reporting remain unresolved tasks rather than operational parts of the plan."
+        "It leaves technical-documentation placement and the deployer data-collection process as unresolved tasks rather than specifying them in the plan."
       ]
     },
     {
@@ -134,14 +125,12 @@
       "words": 1135,
       "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
       "scores": [
-        0.55,
-        0.5
+        0.6
       ],
-      "judge": 0.525,
+      "judge": 0.6,
       "meetsGoal": 0.25,
       "weakest": [
-        "It leaves validated judge-based measurement optional, without justified per-class sample sizes, external-judge data masking, or an owned escalation ladder.",
-        "The judge remains optional, with no validation and re-check protocol, justified per-class sample sizes, or mandatory masking before external judging."
+        "It leaves judge validation and re-checks, statistically justified per-class sample sizes, pre-judge data masking, and owned control limits with escalation actions unspecified."
       ]
     },
     {
@@ -153,14 +142,12 @@
       "words": 1331,
       "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "It gives the wrong template deadline and omits the required 2 December 2027 application date.",
-        "It gives the wrong template deadline and omits the required 2 December 2027 application date instead of stating that the template is due by 2 September 2027."
+        "It gives the wrong template deadline and omits the required 2 December 2027 application date instead of resolving the regulatory timeline."
       ]
     },
     {
@@ -172,14 +159,12 @@
       "words": 1367,
       "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
       "scores": [
-        0.6,
-        0.6
+        0.65
       ],
-      "judge": 0.6,
+      "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It lacks validated per-class judge scoring, justified sample sizes, explicit control limits and an action ladder, and mandatory masking before external judging.",
-        "It lacks a validated per-class judge sampling design, explicit control limits and action ladder, and mandatory personal-data masking before external judging."
+        "It lacks statistically justified per-class sampling, actionable control limits, and mandatory personal-data masking before external judging."
       ]
     },
     {
@@ -191,14 +176,12 @@
       "words": 1617,
       "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.75,
       "weakest": [
-        "The launch alert rule tolerates quality below acceptance bars, while production-derived control limits could normalize an already inadequate baseline.",
-        "The launch alert rule tolerates performance below approved pass bars, while later control limits could normalize an unacceptable baseline."
+        "Its control limits can normalize poor performance and delay action on breaches of the signed pass bars."
       ]
     },
     {
@@ -210,14 +193,12 @@
       "words": 522,
       "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
       "meetsGoal": 0.25,
       "weakest": [
-        "It omits the 82.4%\u201399.6% three-sigma band, a run-rule check, and ongoing sampling of about 300 conversations to flag a five-point drop.",
-        "It omits the 91% \u00b18.6-point three-sigma band, the run-rule check, and the ongoing increase to about 300 weekly samples."
+        "It omits the 3-sigma limits, run-rule check and ongoing weekly sample increase to about 300, while introducing an unsupported 88% rollback threshold."
       ]
     },
     {
@@ -229,14 +210,12 @@
       "words": 527,
       "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
       "scores": [
-        0.65,
         0.65
       ],
       "judge": 0.65,
-      "meetsGoal": 0.375,
+      "meetsGoal": 0.5,
       "weakest": [
-        "It omits the required 82.4%\u201399.6% three-sigma band, run-rule check, and ongoing increase to about 300 samples weekly.",
-        "It omits the 82.4%\u201399.6% three-sigma band, a run-rule check, and the ongoing increase to about 300 weekly samples."
+        "It omits the 82.4% three-sigma lower limit, the run-rule check, and the ongoing increase to about 300 weekly samples."
       ]
     },
     {
@@ -248,14 +227,12 @@
       "words": 546,
       "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
       "scores": [
-        0.8,
-        0.8
+        0.8500000000000001
       ],
-      "judge": 0.8,
+      "judge": 0.8500000000000001,
       "meetsGoal": 0.75,
       "weakest": [
-        "It overstates what a larger sample proves and never clearly recommends raising the weekly overall sample to about 300.",
-        "It does not clearly recommend about 300 samples weekly overall, instead prescribing 324 additional samples now and 324 per class going forward."
+        "It overstates what the larger sample proves and recommends 324 per class rather than clearly raising the overall weekly sample to about 300."
       ]
     },
     {
@@ -267,14 +244,12 @@
       "words": 549,
       "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
       "scores": [
-        0.75,
         0.75
       ],
       "judge": 0.75,
       "meetsGoal": 0.75,
       "weakest": [
-        "It enlarges last week's sample but does not raise ongoing weekly sampling to about 300.",
-        "It proposes a one-off larger sample rather than raising ongoing weekly sampling to about 300."
+        "It expands only last week's sample rather than raising ongoing weekly sampling to about 300, and assumes mitigation needs no approval."
       ]
     },
     {
@@ -286,14 +261,12 @@
       "words": 1648,
       "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
       "scores": [
-        0.6,
         0.6
       ],
       "judge": 0.6,
       "meetsGoal": 0.5,
       "weakest": [
-        "It leaves deployer data collection, technical-documentation filing and the serious-incident workflow as unresolved tasks rather than executable parts of the plan.",
-        "It leaves deployer data collection, technical-documentation filing and the Article 73 incident workflow as unresolved tasks rather than operational parts of the plan."
+        "Deployer data collection, technical-documentation filing, and incident reporting remain unresolved tasks rather than operational plans."
       ]
     },
     {
@@ -305,14 +278,12 @@
       "words": 1269,
       "goal": "Replaces the dashboard-only plan with quality per class from a validated judge on a stratified sample plus expert review that re-checks the judge, sizes the sample per class, sets control limits with owners and an action ladder, masks personal data before the external judge, and feeds confirmed failures back to the golden set as regression cases.",
       "scores": [
-        0.6,
         0.55
       ],
-      "judge": 0.575,
+      "judge": 0.55,
       "meetsGoal": 0.25,
       "weakest": [
-        "The judge is neither validated nor re-checked, and per-class sample sizing, owned control limits, and masking before external judging are missing.",
-        "It never validates or re-checks the judge, justifies per-class sample sizes, or requires masking personal data before external judging."
+        "The judge is neither validated nor re-checked by experts, and personal-data masking before external judging is not required."
       ]
     },
     {
@@ -324,14 +295,12 @@
       "words": 1224,
       "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
       "scores": [
-        0.65,
         0.6
       ],
-      "judge": 0.625,
-      "meetsGoal": 0.375,
+      "judge": 0.6,
+      "meetsGoal": 0.25,
       "weakest": [
-        "It gives the wrong template deadline, omits 2 December 2027, and defers rather than supplies row-level evidence statuses.",
-        "It omits the required 2 December 2027 application date, gives the wrong template deadline instead of 2 September 2027, and leaves per-row evidence status undone."
+        "It misses the required 2 December 2027 application date and 2 September 2027 template deadline, and defers row-level evidence status instead of providing it."
       ]
     },
     {
@@ -343,14 +312,12 @@
       "words": 536,
       "goal": "Computes the 3-sigma band around 91% for 100 traces (about \u00b18.6 points, lower limit near 82.4%), finds 86% inside it, does not roll back on this point, checks the breakdown by question class, any silent provider or judge model change and the run rule, and raises the weekly sample to about 300 so a 5-point drop becomes visible.",
       "scores": [
-        0.75,
-        0.75
+        0.7
       ],
-      "judge": 0.75,
+      "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits the explicit 82.4%\u201399.6% three-sigma band and run-rule check, and does not tie a roughly 300-trace weekly sample to detecting a five-point drop.",
-        "It omits the explicit 91% \u00b18.6-point three-sigma band and run-rule check, and does not tie roughly 300 weekly samples to detecting a five-point drop."
+        "It omits the explicit 82.4%\u201399.6% three-sigma band and run-rule check, and never connects a roughly 300-trace sample to detecting a five-point drop."
       ]
     },
     {
@@ -362,13 +329,11 @@
       "words": 1346,
       "goal": "Writes the plan and maps it to art. 72 with an evidence status per row and questions for counsel, places it in the technical documentation, plans data collection from deployers, treats a model change as a possible substantial modification, routes serious incidents to art. 73, gives the 2 December 2027 date and the template due by 2 September 2027, and never states that the plan complies.",
       "scores": [
-        0.7,
         0.7
       ],
       "judge": 0.7,
       "meetsGoal": 0.5,
       "weakest": [
-        "It omits the required 2 December 2027 application date and 2 September 2027 template deadline, substituting uncertainty about timing.",
         "It omits the required 2 December 2027 application date and 2 September 2027 template deadline, deferring both to counsel."
       ]
     }
