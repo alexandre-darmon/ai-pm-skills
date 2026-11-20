@@ -13,7 +13,9 @@ from lifecycle_svg import BORDER, FAINT, INK, MUTED, VIOLET, W, Text, background
 
 ROOT = Path(__file__).resolve().parent.parent
 MARGIN, LABEL, ROW = 56, 330, 34
-JUDGE, JUDGE_NAME = "claude-opus-5-5", "Claude Opus 5.5"
+# judges shown next to the regex gain, in this order: (folder under baselines/judge/, column title)
+JUDGES = [("claude-opus-5-5", "Opus"), ("typesafe--jev-1.14", "Jev")]
+JUDGE = JUDGES[0][0]
 
 
 def judge_gains(root=ROOT, judge=JUDGE):
@@ -55,14 +57,17 @@ def scores(root=ROOT):
 def main(fonts):
     fonts = Path(fonts)
     sans, medium, mono = (Text(fonts / f"{n}.ttf") for n in ("Geist-Regular", "Geist-Medium", "GeistMono-Regular"))
-    rows, jg = scores(), judge_gains()
-    x0, x1 = MARGIN + LABEL, W - MARGIN - 230
-    cr, cj = W - MARGIN - 150, W - MARGIN - 70  # fixed columns: regex gain, judge gain
+    rows = scores()
+    gains = [(title, judge_gains(judge=d)) for d, title in JUDGES]
+    step = 80  # one fixed column per gain: regex, then each judge
+    x0, x1 = MARGIN + LABEL, W - MARGIN - 70 - step * (len(JUDGES) + 1)
+    cols = [W - MARGIN - 70 - step * (len(JUDGES) - k) for k in range(len(JUDGES) + 1)]
+    cr = cols[0]
     sx = lambda v: x0 + v * (x1 - x0)
     top = 150
-    h = top + len(rows) * ROW + 158
+    h = top + len(rows) * ROW + 206
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {h}" width="{W}" height="{h}" role="img" '
-           f'aria-label="Eval scores of the {len(rows)} catalog skills: without the skill and with it on regex graders, and the gain seen by an outside judge">',
+           f'aria-label="Eval scores of the {len(rows)} catalog skills: without the skill and with it on regex graders, and the gains seen by two blind judges">',
            f"<title>Eval scores of the {len(rows)} catalog skills</title>", *background(h),
            mono("Evals · same cases, Sonnet 5.5, 3 runs per case", MARGIN, 56, 18, FAINT),
            medium("What the skill adds: required items, and overall quality", MARGIN, 100, 30, INK)]
@@ -70,7 +75,7 @@ def main(fonts):
         x = sx(v)
         out.append(f'<path d="M{x:.1f} {top - 18}V{top + len(rows) * ROW - 10}" stroke="{BORDER}" stroke-width="1"/>')
         out.append(mono(f"{round(v * 100)}%", x - 14, top - 26, 12, FAINT))
-    out += [mono("regex", cr - 4, top - 26, 12, FAINT), mono("judge", cj - 4, top - 26, 12, FAINT)]
+    out += [mono("regex", cr - 4, top - 26, 12, FAINT)] + [mono(t, x - 4, top - 26, 12, FAINT) for (t, _), x in zip(gains, cols[1:])]
     for i, (skill, wo, tm, w, n) in enumerate(rows):
         y = top + i * ROW + 8
         out.append(mono(skill, MARGIN, y + 5, 13.5, INK))
@@ -78,8 +83,9 @@ def main(fonts):
         out.append(f'<circle cx="{sx(wo):.1f}" cy="{y}" r="6" fill="#FFFFFF" stroke="{FAINT}" stroke-width="1.6"/>')
         out.append(f'<circle cx="{sx(w):.1f}" cy="{y}" r="7" fill="{VIOLET}"/>')
         out.append(mono(f"{round(100 * (w - wo)):+d}", cr, y + 5, 13, VIOLET))
-        g = jg.get(skill)
-        out.append(mono("—" if g is None else f"{g:+d}", cj, y + 5, 13, INK if g is not None else FAINT))
+        for (_, jg), x in zip(gains, cols[1:]):
+            g = jg.get(skill)
+            out.append(mono("—" if g is None else f"{g:+d}", x, y + 5, 13, INK if g is not None else FAINT))
     y = top + len(rows) * ROW + 30
     out += [f'<circle cx="{MARGIN + 6}" cy="{y}" r="6" fill="#FFFFFF" stroke="{FAINT}" stroke-width="1.6"/>',
             sans("model alone", MARGIN + 20, y + 5, 14, MUTED),
@@ -87,8 +93,12 @@ def main(fonts):
             sans("with the skill, regex graders", MARGIN + 174, y + 5, 14, MUTED),
             sans("Gains in points. regex: graders written by the skills' author, they check what the skill asks for.",
                  MARGIN, y + 40, 14, MUTED),
-            sans(f"judge: {JUDGE_NAME}, blind to the arm, overall quality of the same answers; a Claude model like the one that answers,", MARGIN, y + 64, 14, MUTED),
-            sans("so the outside judges (GPT-6.1 Sol, Jev) are in the README table. It does not check legal correctness.", MARGIN, y + 88, 14, MUTED)]
+            sans("Opus: Claude Opus 5.5, a blind LLM judge of overall quality on the same answers; a Claude model like the one that answers.",
+                 MARGIN, y + 64, 14, MUTED),
+            sans("Jev: TypeSafe's Jev 1.14, a blind decision model from another vendor, one score per criterion, no reasons given.",
+                 MARGIN, y + 88, 14, MUTED),
+            sans("Both grade the current recorded runs; neither checks legal correctness. Each varies by a few points per skill; larger gaps are real disagreements.",
+                 MARGIN, y + 112, 14, MUTED)]
     (ROOT / "assets/evals.svg").write_text("".join(out + ["</svg>\n"]))
 
 
