@@ -12,7 +12,7 @@ Each release lists what changed for someone who installs the skills.
 - **Local judge** through Ollama (`--model ollama/<name>`), one call at a time and refused next to another loaded model, to keep a 32 GB machine out of swap. Tried and not adopted as a main judge: Gemma 4 31B rated everything 5/5; Qwen 3.8 27B is precise but takes 1-3 minutes per answer with reasoning and grows memory.
 - **Graders fixed** after they rejected correct answers: `agent-design-and-tooling-001/empty-vs-failed` is unchanged; `ai-act-classification-00*/redline-no-verdict` ("plans no further action"), `assistant-kpis-cost-per-outcome-001/redline-successes-denominator` ("verified resolution rate"), `conversation-analysis` 001 overlaps (plural "rules", merges shown as "Replaces:"), 002 routing ("send its low-confidence cases / the ones it is unsure of to …", "where the small model is unsure"), 005 eval set ("give / pass … as candidate golden-set cases"). Each correct answer is now a fixture; bad fixtures still fail.
 - `llm-feature-prd` and `assistant-kpis-cost-per-outcome` rerun with both arms so judges can compare.
-- Evals chart: judge column from Claude Opus 5.5 on the current runs.
+- Evals chart: per skill, the regex gain and the gains of two blind judges on the current runs, Claude Opus 5.5 and Jev 1.14 (another vendor); their larger disagreements stay visible.
 
 ## v1.3.0 (2026-11-13)
 
