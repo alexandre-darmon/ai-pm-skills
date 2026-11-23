@@ -1,2 +1,2 @@
-Permission matrix: pay_goodwill | L4 | approval above 50 EUR | cap 50 EUR, 500 EUR per day. Stop conditions: budget per run. A pay_goodwill timeout has an unknown result: reconcile with the payment system before any retry.
+Permission matrix: pay_goodwill | L4 | above the cap, the team lead approves | cap 50 EUR per action, 500 EUR per day (proposed, to be confirmed by the Head of Customer Care). The cap is checked atomically on the payment system of record, in the same transaction as the commit. Stop conditions: max steps: 12, token budget: 40,000 per run. A pay_goodwill timeout has an unknown result: reconcile with the payment system before any retry.
 A kill switch drops `pay_goodwill` to L2 (all payments need approval) with no approval needed to do so. Down is free.

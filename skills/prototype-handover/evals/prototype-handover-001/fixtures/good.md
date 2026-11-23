@@ -18,7 +18,7 @@ Rebuild by engineering. The prototype is the spec and the evidence, not the code
 Intended: triage for handlers. Implemented: anyone with the link sees every email; key in a config file; prompts in code.
 
 ## 7. What engineering rebuilds
-Authentication and authorisation with row-level access per handler team; secrets in a vault; separate environments; logging pipeline; guardrails in code; model access through the gateway.
+Rebuild: authentication and authorisation with row-level access per handler team; secrets in a vault; separate environments; logging pipeline; guardrails in code; model access through the gateway. Reuse as spec: the prompts, the six category definitions and the eval cases. Drop: the sandbox VM, the shared link and the key file.
 
 ## 8. Draft register entry
 For an insurer under DORA, an end-user tool is an ICT asset (art. 3(7), ESMA Q&A 2103). Draft fields per RTS 2024/1774 art. 4(2): identifier, location, owner, classification, dependencies, model version, prompt version, suite id, baseline date.

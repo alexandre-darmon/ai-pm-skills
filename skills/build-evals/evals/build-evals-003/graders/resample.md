@@ -1,5 +1,5 @@
 ---
-type: regex
-pattern: 'stratif|over-?\s?sampl|up-?sampl|over-?(weight|represent)|rebalanc[^\n]{0,40}(risk|class|warranty)|(more|additional|extra) (cases|examples)[^\n]{0,60}(warranty|advice|rare|small(er)? class)|more (warranty|advice|product)[\w -]{0,40}(cases|examples)|more cases than (its|their)[^\n]{0,20}share|by traffic and (by )?risk|by risk (and|as well as) (by )?traffic|risk as well as (by )?traffic|\bsampl\w* (per class )?by risk\b|\b\d+ (warranty|advice|product[- ]advice) cases\b'
+type: regex  # sizes the rare legal class for its threshold (about 140-200+ warranty cases), not by traffic share
+pattern: '(cases|sample)[^.\n]{0,30}\b(its|the|their) (threshold|bar|gate) (needs|requires)|warranty[^.\n]{0,40}\b(1[4-9]\d|[2-9]\d\d|1,\d{3})( ?(to|–|-) ?\d[\d,]*)? (real |labell?ed )?(cases|examples|conversations)|\b(1[4-9]\d|[2-9]\d\d)\+? (real |labell?ed )?warranty (cases|examples|conversations)|±\s?\d+ points?[^.\n]{0,30}\b\d+ cases'
 flags: i
 ---

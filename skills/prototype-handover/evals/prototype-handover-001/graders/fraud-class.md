@@ -1,5 +1,5 @@
 ---
-type: regex  # the fraud-signal class is singled out: few cases, wide interval, its own bar
-pattern: 'fraud[- ]signals?\b[^.\n]{0,100}\b(?:interval|n\s?=|\d+ cases|few|small|wider|separately|own bar|recall|miss\w*|false negatives?)\b|\b(?:interval|recall|bar|miss\w*|false negatives?)\b[^.\n]{0,60}\bfraud[- ]signal'
+type: regex  # the fraud-signal class is rare: few cases, so a wide interval and its own bar
+pattern: 'fraud[- ]signals?\b[^.\n]{0,120}\b(?:intervals?|wide|wider|few cases|small|rare|n\s?=|\d+ of \d+)\b|\b(?:intervals?|wide|wider|rare|small)\b[^.\n]{0,60}\bfraud[- ]signal'
 flags: i
 ---

@@ -4,13 +4,13 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.321",
   "date": "2026-11-19",
-  "casesHash": "7b5e78813bbe00e90915181e48b459ff893c7f287545874ef5b9731a5b953d0f",
+  "casesHash": "e432b2b74c688abeb5e250d6ee963a27905d345150a8a09e28783bc34119fcad",
   "partial": false,
   "costUsd": 0,
   "cases": {
     "conversation-analysis-001": {
       "score": 1.0,
-      "scoreWithout": 0.42857142857142855,
+      "scoreWithout": 0.2857142857142857,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -38,14 +38,14 @@
         ],
         "two-labellers": [
           3,
-          3
+          0
         ]
       },
       "costPerAnswer": [
         0.05915696666666667,
         0.03699733333333333
       ],
-      "delta": 0.5714285714285714
+      "delta": 0.7142857142857143
     },
     "conversation-analysis-002": {
       "score": 1.0,
@@ -84,7 +84,7 @@
     },
     "conversation-analysis-003": {
       "score": 1.0,
-      "scoreWithout": 0.4074074074074074,
+      "scoreWithout": 0.2962962962962963,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -104,7 +104,7 @@
         ],
         "placeholders": [
           3,
-          3
+          0
         ],
         "redline-mask-first": [
           3,
@@ -123,7 +123,7 @@
         0.06228393333333334,
         0.23000049999999997
       ],
-      "delta": 0.5925925925925926
+      "delta": 0.7037037037037037
     },
     "conversation-analysis-004": {
       "score": 1.0,
@@ -166,6 +166,6 @@
   "regraded": true,
   "stale": false,
   "skillHash": "3bc4d2eecb8ac756e9f4b07397a5a0c01d805dab1d54a2d08dd88cd6409ae5b8",
-  "meanDelta": 0.7632275132275133,
+  "meanDelta": 0.8267195767195767,
   "failures": []
 }

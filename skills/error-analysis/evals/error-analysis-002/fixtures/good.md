@@ -10,7 +10,7 @@ Each trace is counted once, on its first upstream failure: T19 retrieved the Fre
 | Leave arithmetic | the stated balance differs from the HR system | 3 | generalisation | code check against the HR system |
 | Invented rule or benefit | the answer states a rule found in no policy | 2 | generalisation | one binary LLM judge, calibrated on the lead's labels |
 | No route to the HR business partner on a dispute | a disputed decision is not routed | 2 | specification | fix the prompt |
-| Colleague's salary disclosed | the answer gives another employee's pay data | 1 | guardrail | severity: top priority regardless of count; access control and a test |
+| Colleague's salary disclosed | the answer gives another employee's pay data | 1 | guardrail | severity: top priority regardless of count; access control and a test; exposure to the DPO or counsel as a question, not a euro figure |
 | Too long | answer over 10 lines for a yes/no question | 2 | generalisation | code check on length |
 | Wrong language | answer language differs from the question's | 1 | specification: the prompt imposes English | fix the spec |
 | No clarifying question | answers again without asking the missing contract type | 1 | generalisation | watch in the next read |

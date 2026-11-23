@@ -7,7 +7,7 @@ Decide on cost per correct file, correction time included (20 EUR per wrong file
 | A | 150,000 | 2,500 × 20 = 50,000 | 200,000 | 22,500 | 8.89 EUR |
 | B | 90,000 | 3,750 × 20 = 75,000 | 165,000 | 21,250 | 7.76 EUR |
 
-Even if A's gap were real, B is cheaper per correct file.
+Even if A's gap were real, B is cheaper per correct file. The decision flips only if A is about 8.6 points better than B (93.6% against 85%), near the top of the noise range.
 
 Check the result per document class: 20 tax notices are indicative only; if B fails the tax notices, add cases before deciding.
 

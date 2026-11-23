@@ -5,7 +5,7 @@ No: do not sign as drafted. Both clauses are **blocking**.
 | §7.2 silent model changes | Blocking | Written notice 90 days before any model or version change, the right to re-run your eval set on the new version before the switch, the right to stay on the tested version meanwhile, and exit without penalty if it misses your thresholds. |
 | §9.4 training on customer content | Blocking | No training, fine-tuning or improvement of any model on your inputs, outputs or feedback, written in the contract and binding sub-processors. "De-identified" customer emails are still personal data. |
 
-Also must-have: a processing agreement under GDPR art. 28 (a vendor that improves its models with your data acts for its own purposes, as a controller under art. 28(10)); access to logs and per-request traces; exit terms with return of data and a transition period.
+Also must-have: a processing agreement under GDPR art. 28 (a vendor that improves its models with your data acts for its own purposes, as a controller under art. 28(10)); a sub-processor list with notice and a right to object; access to logs and per-request traces; exit terms with your data and configurations returned usable and a transition period.
 
 Negotiable: a quality service level on your accuracy metric measured on your eval set each quarter.
 

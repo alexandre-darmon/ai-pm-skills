@@ -1,5 +1,5 @@
 ---
-type: regex  # challenges the 30% claim; the brief itself says "30%", so the number alone proves nothing
-pattern: '30 ?%[^\n]{0,160}(unanchored|(not|n''t) anchored|no (baseline|volume|evidence|data)|without (a )?baseline|assumption|unsupported|unsubstantiated|not (yet )?(measured|validated)|free-floating|(can''t|cannot) be (defended|justified))|(unanchored|unsupported|unsubstantiated|no baseline|free-floating)[^\n]{0,120}30 ?%|30 ?%[^\n]{0,160}(no basis|needs? (a |the )?(volume|baseline)|volume ?[×x*] ?quality|(not|n[''’]t) (yet )?(supported|backed|grounded))'
+type: regex  # challenging the 30% is generic; the skill says what would anchor it: volume × quality (share answered correctly) × unit value, not only "a baseline"
+pattern: '30 ?%[^\n]{0,200}\bvolumes?\b[^\n]{0,40}\b(quality|accura\w*|correct\w*|error rate)\b|\bvolumes?\b[^\n]{0,40}\b(quality|accura\w*|correct\w*)\b[^\n]{0,40}\b(unit value|value|cost|minutes?)\b[^\n]{0,200}30 ?%'
 flags: i
 ---

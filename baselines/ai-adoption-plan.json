@@ -4,21 +4,21 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-11",
-  "casesHash": "616338100a5997e226ac3576ce21d1af317ec25e2c5d1fd06c47a1355f945b95",
+  "casesHash": "181256bc515adfb9131ed823f249461405f9f5f1a2d2cdfc6133669411a56646",
   "partial": false,
-  "costUsd": 0.7850440999999999,
+  "costUsd": 0,
   "cases": {
     "ai-adoption-plan-001": {
-      "score": 0.9696969696969697,
-      "scoreWithout": 0.5757575757575758,
+      "score": 1.0,
+      "scoreWithout": 0.30303030303030304,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
       "negative": false,
       "graders": {
         "champion": [
-          2,
-          3
+          3,
+          0
         ],
         "current-workaround": [
           3,
@@ -26,7 +26,7 @@
         ],
         "managers-first": [
           3,
-          3
+          0
         ],
         "outcome-metric": [
           3,
@@ -42,14 +42,14 @@
         ],
         "wave": [
           3,
-          3
+          0
         ]
       },
       "costPerAnswer": [
         0.08410523333333332,
-        null
+        0.0
       ],
-      "delta": 0.3939393939393939
+      "delta": 0.696969696969697
     },
     "ai-adoption-plan-002": {
       "score": 0.8666666666666667,
@@ -86,13 +86,13 @@
       },
       "costPerAnswer": [
         0.0374017,
-        null
+        0.0
       ],
       "delta": 0.2333333333333334
     },
     "ai-adoption-plan-003": {
       "score": 0.9629629629629629,
-      "scoreWithout": 0.6666666666666666,
+      "scoreWithout": 0.5555555555555556,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -116,14 +116,14 @@
         ],
         "staff-data": [
           3,
-          3
+          0
         ]
       },
       "costPerAnswer": [
         0.052358966666666666,
-        null
+        0.0
       ],
-      "delta": 0.2962962962962963
+      "delta": 0.40740740740740733
     },
     "ai-adoption-plan-004": {
       "score": 1.0,
@@ -140,7 +140,7 @@
       },
       "costPerAnswer": [
         0.032256,
-        null
+        0.0
       ]
     },
     "ai-adoption-plan-005": {
@@ -182,12 +182,14 @@
       },
       "costPerAnswer": [
         0.05555946666666667,
-        null
+        0.0
       ],
       "delta": 0.4545454545454546
     }
   },
+  "regraded": true,
+  "stale": false,
   "skillHash": "7ba06435ff1237e870252cd1ce6682b76b5d401b350732b7237d5a5271cedd6c",
-  "meanDelta": 0.3445286195286196,
+  "meanDelta": 0.44806397306397305,
   "failures": []
 }

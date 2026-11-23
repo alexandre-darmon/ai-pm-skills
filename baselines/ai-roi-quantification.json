@@ -4,7 +4,7 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-09",
-  "casesHash": "f90b1207bcb75af6e64d528f962e94313762705879e6c6e0e3818e737211feca",
+  "casesHash": "307c0d5abae9c8c6ff6936f4c43324247d0d8db868528b42a87c4c43d0e1fb2a",
   "partial": false,
   "costUsd": 0,
   "cases": {
@@ -42,14 +42,14 @@
         ]
       },
       "costPerAnswer": [
-        0.06153126666666667,
-        0.03592066666666666
+        0.0,
+        0.0
       ],
       "delta": 0.3666666666666666
     },
     "ai-roi-quantification-002": {
       "score": 0.9696969696969697,
-      "scoreWithout": 0.6060606060606061,
+      "scoreWithout": 0.5151515151515151,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -81,18 +81,18 @@
         ],
         "sensitivity": [
           3,
-          3
+          0
         ]
       },
       "costPerAnswer": [
-        0.1323887333333333,
-        0.07706933333333334
+        0.0,
+        0.0
       ],
-      "delta": 0.36363636363636365
+      "delta": 0.4545454545454546
     },
     "ai-roi-quantification-003": {
       "score": 1.0,
-      "scoreWithout": 0.8888888888888888,
+      "scoreWithout": 0.8571428571428571,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -109,21 +109,13 @@
         "redline-no-hiding": [
           3,
           3
-        ],
-        "stop-fix": [
-          3,
-          3
-        ],
-        "total": [
-          3,
-          3
         ]
       },
       "costPerAnswer": [
-        0.040500266666666666,
-        0.028408
+        0.0,
+        0.0
       ],
-      "delta": 0.11111111111111116
+      "delta": 0.1428571428571429
     },
     "ai-roi-quantification-004": {
       "score": 1.0,
@@ -139,14 +131,14 @@
         ]
       },
       "costPerAnswer": [
-        0.030023333333333336,
-        0.02948466666666667
+        0.0,
+        0.0
       ]
     }
   },
   "regraded": true,
   "stale": false,
   "skillHash": "60c7869513216f368b017848d1274d9e89b822d4973119e8ba6bcfc56951b258",
-  "meanDelta": 0.2804713804713805,
+  "meanDelta": 0.32135642135642134,
   "failures": []
 }

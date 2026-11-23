@@ -4,29 +4,21 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.321",
   "date": "2026-11-19",
-  "casesHash": "45e1fafd8bb58eb019455fc7d00320447af2c53053c61c17c9b20b583dc6e901",
+  "casesHash": "fa7ee112d8fd3c0cb72611dac0e6ef3488b2e30cbc7bf214cebb2119d13eda3b",
   "partial": false,
-  "costUsd": 0.6623828,
+  "costUsd": 0,
   "cases": {
     "llm-judge-calibration-001": {
-      "score": 0.8518518518518517,
-      "scoreWithout": 0.6666666666666666,
+      "score": 0.9333333333333332,
+      "scoreWithout": 0.6,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
       "negative": false,
       "graders": {
-        "always-pass": [
-          0,
-          0
-        ],
         "fresh-labels": [
           3,
           1
-        ],
-        "keep-full-review": [
-          3,
-          3
         ],
         "more-fails": [
           3,
@@ -39,21 +31,13 @@
         "targets-before": [
           2,
           1
-        ],
-        "tnr-interval": [
-          3,
-          3
-        ],
-        "tnr": [
-          3,
-          3
         ]
       },
       "costPerAnswer": [
         0.0620455,
-        null
+        0.035883333333333337
       ],
-      "delta": 0.18518518518518512
+      "delta": 0.33333333333333326
     },
     "llm-judge-calibration-002": {
       "score": 1.0,
@@ -90,13 +74,13 @@
       },
       "costPerAnswer": [
         0.06138336666666667,
-        null
+        0.037636666666666665
       ],
       "delta": 0.523809523809524
     },
     "llm-judge-calibration-003": {
       "score": 0.9523809523809524,
-      "scoreWithout": 0.7619047619047619,
+      "scoreWithout": 0.3333333333333333,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -104,23 +88,23 @@
       "graders": {
         "bias-direction": [
           3,
-          3
+          0
         ],
         "bootstrap": [
           3,
           0
         ],
-        "corrected-interval": [
-          3,
-          3
-        ],
         "fresh-labels": [
           2,
           1
         ],
-        "inconclusive": [
+        "labels-narrow": [
           3,
-          3
+          0
+        ],
+        "main-uncertainty": [
+          3,
+          0
         ],
         "redline-corrected-rate": [
           3,
@@ -129,9 +113,9 @@
       },
       "costPerAnswer": [
         0.06232273333333333,
-        null
+        0.041382
       ],
-      "delta": 0.19047619047619058
+      "delta": 0.6190476190476191
     },
     "llm-judge-calibration-004": {
       "score": 1.0,
@@ -148,11 +132,13 @@
       },
       "costPerAnswer": [
         0.035042666666666666,
-        null
+        0.03488533333333333
       ]
     }
   },
+  "regraded": true,
+  "stale": false,
   "skillHash": "1fcf735cd46dd9902a6c3e3894a40a6766e3b0634eab948bae65aeb3296e47fb",
-  "meanDelta": 0.29982363315696653,
+  "meanDelta": 0.4920634920634921,
   "failures": []
 }

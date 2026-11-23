@@ -4,13 +4,13 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-11",
-  "casesHash": "621f54aa0a21f1e9f4f3f956efcca2ece9dd6d32b6dc99fbf97e4ad5781e8043",
+  "casesHash": "41b8dbe4509a68509ab96d29f26c6a7be81694717bf3127f71a3414e024541ec",
   "partial": false,
-  "costUsd": 1.6821985000000002,
+  "costUsd": 0,
   "cases": {
     "trace-review-tool-001": {
       "score": 0.8888888888888888,
-      "scoreWithout": 0.25925925925925924,
+      "scoreWithout": 0.14814814814814814,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -42,7 +42,7 @@
         ],
         "reviewer-identity": [
           3,
-          3
+          0
         ],
         "sampling-separate": [
           3,
@@ -57,39 +57,23 @@
         0.07556890000000001,
         0.05670333333333333
       ],
-      "delta": 0.6296296296296295
+      "delta": 0.7407407407407407
     },
     "trace-review-tool-002": {
-      "score": 0.9814814814814815,
-      "scoreWithout": 0.7962962962962963,
+      "score": 1.0,
+      "scoreWithout": 0.47222222222222227,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
       "negative": false,
       "graders": {
-        "art-19": [
-          3,
-          3
-        ],
-        "art-26-6": [
-          3,
-          3
-        ],
-        "financial-institution": [
-          2,
-          3
-        ],
         "guardrail-hits": [
           3,
           2
         ],
-        "high-risk": [
-          3,
-          3
-        ],
         "join-key": [
           3,
-          3
+          1
         ],
         "labels-as-logs": [
           3,
@@ -97,15 +81,11 @@
         ],
         "omnibus-date": [
           3,
-          3
+          0
         ],
         "override": [
           3,
           1
-        ],
-        "prompt-version": [
-          3,
-          3
         ],
         "provider-or-both": [
           3,
@@ -115,13 +95,9 @@
           3,
           3
         ],
-        "retrieved-ids": [
-          3,
-          3
-        ],
         "six-months": [
           3,
-          3
+          0
         ],
         "tokens-cost": [
           3,
@@ -132,7 +108,7 @@
         0.05935033333333333,
         0.04643333333333333
       ],
-      "delta": 0.18518518518518523
+      "delta": 0.5277777777777777
     },
     "trace-review-tool-003": {
       "score": 0.9375,
@@ -190,8 +166,8 @@
       "delta": 0.41666666666666663
     },
     "trace-review-tool-004": {
-      "score": 0.8666666666666667,
-      "scoreWithout": 0.6,
+      "score": 0.8333333333333334,
+      "scoreWithout": 0.3333333333333333,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -205,21 +181,13 @@
           2,
           0
         ],
-        "expert-first": [
-          3,
-          3
-        ],
         "interval": [
           3,
-          3
+          1
         ],
         "rate-from-random": [
           3,
-          3
-        ],
-        "review-cost": [
-          3,
-          3
+          1
         ],
         "reviewer-identity": [
           3,
@@ -242,7 +210,7 @@
         0.07574183333333333,
         0.04906666666666667
       ],
-      "delta": 0.2666666666666667
+      "delta": 0.5
     },
     "trace-review-tool-005": {
       "score": 1.0,
@@ -263,7 +231,9 @@
       ]
     }
   },
+  "regraded": true,
+  "stale": false,
   "skillHash": "0131efc10e80d66468850b27c74df489265fe616d70459501cb95ce5a49bde34",
-  "meanDelta": 0.374537037037037,
+  "meanDelta": 0.5462962962962963,
   "failures": []
 }

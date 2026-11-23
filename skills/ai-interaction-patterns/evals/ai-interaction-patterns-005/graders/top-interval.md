@@ -1,5 +1,5 @@
 ---
-type: regex  # the top bucket's lower bound (Wilson 88.7%, normal approximation 89.3%): the "95% sure" label sits above what the data shows; accepts 88.7%, 88.7–94.7, 0.887, 88 in 100
-pattern: '\b8[89](\.\d+)? ?(%|[–—-]|to\b|in 100\b|out of 100\b)|\b0\.8[89]\d*\b'
+type: regex  # the customer-facing figure is worded as a frequency no higher than the top bucket's lower bound (88.7%): "at least 88 in 100", not "about 9 in 10" or 92%
+pattern: '(?<![\d.])8[0-8] (in|out of) (every )?100\b|\bat least 8[0-8]([.,]\d)? ?%|(?<![\d.])8[0-8]([.,]\d)? ?% or (more|higher|better)\b|(≥|>=) ?8[0-8]([.,]\d)? ?%|(no higher than|at or below|at most|not above|capped at|rounded down to)[^.\n]{0,15}lower (bound|end|limit)|lower (bound|end|limit)[^.\n]{0,30}rounded down'
 flags: i
 ---

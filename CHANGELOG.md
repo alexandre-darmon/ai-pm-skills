@@ -4,6 +4,11 @@ Each release lists what changed for someone who installs the skills.
 
 **Version numbers.** Major (2.0): a skill is removed or renamed, or an output template changes shape, so installs or downstream documents can break. Minor (1.2): a skill is added, or a skill gains a method step. Patch (1.1.1): wording, graders, docs, manifests. The release version is the same in every manifest; each skill also has its own version in `metadata.version`. Per-skill versions live in each `SKILL.md` (`metadata.version`); eval records and their history are in [`baselines/`](baselines/).
 
+## Unreleased
+
+- **Graders that measured the model, not the skill, are gone.** 163 of 634 scored graders passed in every run without the skill: 96 were tightened to check what the skill adds (a computed figure, a decision, a condition), 60 generic ones were dropped, and 5 sharper graders were added where a case would have been left thin; the other 7 no longer passed every run once both arms were re-scored on the same saved answers. Author-written fixtures were updated, never real answers; every change was checked on both arms' saved answers and reviewed. None passes in every run without the skill now. Red lines were left alone: they should hold with or without the skill. Regex score: model alone 52% → 39%, with the skill 97% unchanged, gain +45 → +58 points. Skill texts are unchanged, so the judges' results stay current.
+- Both arms re-scored for free: each skill's recorded "with" answers and the "without" answers behind its baseline put side by side, then `run_evals.py --regrade`.
+
 ## v1.4.0 (2026-11-20)
 
 Same 29 skills; 13 revised, all rerun and passing, now judged by three blind judges on their current runs. Five output templates changed shape (see below): the written policy would make this 2.0, the maintainer chose 1.4. Release notes: [docs/releases/v1.4.0.md](docs/releases/v1.4.0.md).

@@ -7,6 +7,6 @@ The vendor's "99% jailbreak resistance" is not evidence for our deployment, and 
 - The benchmark is internal: the vendor may have tuned the model on it, and it grades its own homework.
 - One figure hides the classes that matter here: reading another customer's transactions, opening fraudulent dispute tickets, indirect injection through transaction descriptions.
 
-The whitepaper can inform which attack classes we test. The evidence has to come from our own campaign on the deployed setup: classes from our harms, a success criterion and tolerance per attack class signed before testing, testers outside the build team, a sealed held-out set, and rates per class with intervals. We will also ask the vendor for its attack set, its criteria and settings.
+The whitepaper can inform which attack classes we test. The evidence has to come from our own campaign on the deployed setup: classes from our harms, a success criterion and tolerance per attack class signed before testing, testers outside the build team, a sealed held-out set, and rates per class with intervals. Each class is sized for its tolerance: with no success, about 380 held-out seeds to read it under 1%, about 765 under 0.5% (another customer's transactions, dispute misuse). We will also ask the vendor for its attack set, its criteria and settings.
 
 Timeline: a focused campaign on the two costly classes fits before January if we start in two weeks.

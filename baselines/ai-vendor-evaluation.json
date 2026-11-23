@@ -4,13 +4,13 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.321",
   "date": "2026-11-18",
-  "casesHash": "295862b60b23c6976551f6e6f30c9b4f33972d24fbb742a951ce42a0b9cf0a65",
+  "casesHash": "70c1614fb59cbe77018d91e55a9d7a23a4639b01172cc7d9be240caea983f1ff",
   "partial": false,
-  "costUsd": 0.7659313,
+  "costUsd": 0,
   "cases": {
     "ai-vendor-evaluation-001": {
       "score": 1.0,
-      "scoreWithout": 0.5873015873015873,
+      "scoreWithout": 0.4666666666666666,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -36,17 +36,13 @@
           3,
           0
         ],
-        "document-level": [
-          3,
-          3
-        ],
         "dora": [
           3,
           0
         ],
         "human-time": [
           3,
-          3
+          0
         ],
         "instructions-for-use": [
           3,
@@ -58,7 +54,7 @@
         ],
         "per-kind": [
           3,
-          3
+          0
         ],
         "redline-data-before-upload": [
           3,
@@ -79,13 +75,13 @@
       },
       "costPerAnswer": [
         0.07817493333333334,
-        null
+        0.0
       ],
-      "delta": 0.4126984126984127
+      "delta": 0.5333333333333334
     },
     "ai-vendor-evaluation-002": {
       "score": 1.0,
-      "scoreWithout": 0.6333333333333333,
+      "scoreWithout": 0.43333333333333335,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -105,19 +101,19 @@
         ],
         "exit": [
           3,
-          3
+          0
         ],
         "gdpr-28": [
           3,
-          3
+          0
         ],
         "log-access": [
           3,
-          3
+          0
         ],
         "no-training": [
           3,
-          3
+          0
         ],
         "notice-retest": [
           3,
@@ -150,13 +146,13 @@
       },
       "costPerAnswer": [
         0.0662914,
-        null
+        0.0
       ],
-      "delta": 0.3666666666666667
+      "delta": 0.5666666666666667
     },
     "ai-vendor-evaluation-003": {
-      "score": 0.9393939393939394,
-      "scoreWithout": 0.5757575757575758,
+      "score": 0.9259259259259259,
+      "scoreWithout": 0.48148148148148145,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -169,14 +165,6 @@
         "cost-per-correct": [
           3,
           0
-        ],
-        "interval": [
-          3,
-          3
-        ],
-        "noise-10": [
-          3,
-          3
         ],
         "per-class": [
           3,
@@ -201,9 +189,9 @@
       },
       "costPerAnswer": [
         0.0756541,
-        null
+        0.0
       ],
-      "delta": 0.36363636363636365
+      "delta": 0.4444444444444445
     },
     "ai-vendor-evaluation-004": {
       "score": 1.0,
@@ -220,11 +208,13 @@
       },
       "costPerAnswer": [
         0.03519,
-        null
+        0.0
       ]
     }
   },
+  "regraded": true,
+  "stale": false,
   "skillHash": "82cf58257cfbc666f81550da42ec06089d0e0730ee0e4fc71353cec74c2d8c07",
-  "meanDelta": 0.381000481000481,
+  "meanDelta": 0.5148148148148148,
   "failures": []
 }

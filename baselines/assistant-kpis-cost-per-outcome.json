@@ -4,13 +4,13 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.321",
   "date": "2026-11-18",
-  "casesHash": "eabb31f1469c91cf95359e6b303e080edf44241fca7686c9869b223f6adc6e98",
+  "casesHash": "bb861b7574d9241b97a85df7a3020ab38b45e79da0d7fc409680c9c5b433caf0",
   "partial": false,
   "costUsd": 0,
   "cases": {
     "assistant-kpis-cost-per-outcome-001": {
-      "score": 0.9047619047619048,
-      "scoreWithout": 0.42857142857142855,
+      "score": 0.888888888888889,
+      "scoreWithout": 0.3333333333333333,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -35,17 +35,13 @@
         "sampled-quality": [
           3,
           0
-        ],
-        "thumbs-not-quality": [
-          3,
-          3
         ]
       },
       "costPerAnswer": [
         0.06227570000000001,
         0.047765999999999996
       ],
-      "delta": 0.4761904761904762
+      "delta": 0.5555555555555556
     },
     "assistant-kpis-cost-per-outcome-002": {
       "score": 1.0,
@@ -155,6 +151,6 @@
   "regraded": true,
   "stale": false,
   "skillHash": "5c99df677e2b572e69c8c9c594ebd79a850f753905fb932fb5e0fab4c7449d69",
-  "meanDelta": 0.7019400352733686,
+  "meanDelta": 0.7283950617283951,
   "failures": []
 }

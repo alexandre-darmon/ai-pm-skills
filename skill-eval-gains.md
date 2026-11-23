@@ -4,15 +4,14 @@ Same cases, Sonnet 5.5 answering, three arms: the model alone, the model given o
 
 | Test performed | Model alone | Skill's template only | With the skill | Gain over the model alone | Gain over the template |
 | --- | --- | --- | --- | --- | --- |
-| Regex graders: 29 skills, 109 cases × 3 runs | 52% | — | **97%** | +45 [+42, +48] | — |
-| Regex graders, the 1 skill also run with its template only: 3 cases | 25% | 76% | 100% | +75 [+70, +85] | +24 [-5, +71] |
+| Regex graders: 29 skills, 109 cases × 3 runs | 39% | — | **97%** | +57 [+55, +60] | — |
 | Blind LLM judge, Haiku 5.5: 11 of these skills, 40 cases, earlier runs | 70% | — | 79% | +9 [+7, +11] | — |
 | Blind LLM judge, Opus 5.5: 29 of these skills, 109 cases, recorded runs | 70% | — | 85% | +15 [+14, +17] | — |
 | Blind LLM judge, Sonnet 5.5: 9 of these skills, 29 cases, earlier runs | 72% | — | 82% | +9 [+6, +13] | — |
 | Blind LLM judge, openai/gpt-6.1-sol: 29 of these skills, 109 cases, recorded runs | 63% | — | 72% | +9 [+7, +11] | — |
 | Blind decision model, typesafe/jev-1.14: 29 of these skills, 109 cases, recorded runs | 80% | — | 90% | +10 [+8, +12] | — |
 | Red lines held (the one thing the answer must never do) | 71% | — | **100%** | | |
-| Cost per correct answer, API equivalent (16 skills) | $0.131 | — | **$0.078** | -40% | |
+| Cost per correct answer, API equivalent (29 skills) | $0.128 | — | **$0.068** | -47% | |
 | Stays silent on near-miss requests | — | — | **100%** | | |
 
 Gains in points. Brackets: 95% interval over cases (see below).
@@ -21,35 +20,35 @@ Gains in points. Brackets: 95% interval over cases (see below).
 
 | Skill | Without | Template only | With | Gain over the model alone (lowest to highest case) | Gain over the template | Red lines held: without / template / with | Cost per correct answer: without → with | Cases × runs | Run date |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| [`agent-design-and-tooling`](skills/agent-design-and-tooling/SKILL.md) | 49% | — | **99%** | +50 pts (+20 to +90) | — | 67% / — / 100% | — | 3 × 3 | 2026-11-19 |
-| [`agent-evals`](skills/agent-evals/SKILL.md) | 45% | — | **97%** | +52 pts (+37 to +67) | — | 60% / — / 100% | — | 4 × 3 | 2026-11-19 |
-| [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | 71% | — | **100%** | +29 pts (+23 to +33) | — | 100% / — / 100% | $0.071 → $0.149 | 3 × 3 | 2026-11-18 |
-| [`ai-adoption-plan`](skills/ai-adoption-plan/SKILL.md) | 61% | — | **95%** | +34 pts (+23 to +45) | — | 92% / — / 100% | — | 4 × 3 | 2026-11-11 |
-| [`ai-data-requirements`](skills/ai-data-requirements/SKILL.md) | 65% | — | **94%** | +30 pts (+12 to +57) | — | 93% / — / 100% | $0.068 → $0.078 | 5 × 3 | 2026-11-09 |
-| [`ai-feasibility-spike`](skills/ai-feasibility-spike/SKILL.md) | 46% | — | **96%** | +50 pts (+36 to +71) | — | 61% / — / 100% | $0.088 → $0.069 | 5 × 3 | 2026-11-12 |
-| [`ai-incident-playbook`](skills/ai-incident-playbook/SKILL.md) | 45% | — | **99%** | +55 pts (+27 to +97) | — | 67% / — / 100% | — | 5 × 3 | 2026-11-18 |
-| [`ai-interaction-patterns`](skills/ai-interaction-patterns/SKILL.md) | 64% | — | **95%** | +31 pts (+13 to +45) | — | 83% / — / 100% | $0.060 → $0.066 | 4 × 3 | 2026-11-12 |
-| [`ai-opportunity-assessment`](skills/ai-opportunity-assessment/SKILL.md) | 55% | — | **93%** | +38 pts (+21 to +63) | — | 87% / — / 100% | $0.068 → $0.106 | 5 × 3 | 2026-11-11 |
-| [`ai-roi-quantification`](skills/ai-roi-quantification/SKILL.md) | 69% | — | **97%** | +28 pts (+11 to +37) | — | 100% / — / 100% | $0.069 → $0.081 | 3 × 3 | 2026-11-09 |
-| [`ai-vendor-evaluation`](skills/ai-vendor-evaluation/SKILL.md) | 60% | — | **98%** | +38 pts (+36 to +41) | — | 81% / — / 100% | — | 3 × 3 | 2026-11-18 |
-| [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | 27% | — | **97%** | +70 pts (+48 to +100) | — | 56% / — / 100% | $0.159 → $0.066 | 3 × 3 | 2026-11-18 |
-| [`build-evals`](skills/build-evals/SKILL.md) | 39% | — | **98%** | +59 pts (+42 to +67) | — | 33% / — / 100% | $0.122 → $0.057 | 6 × 3 | 2026-11-11 |
-| [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | 24% | — | **100%** | +76 pts (+57 to +100) | — | 50% / — / 100% | $0.422 → $0.057 | 4 × 3 | 2026-11-19 |
-| [`error-analysis`](skills/error-analysis/SKILL.md) | 34% | — | **98%** | +64 pts (+53 to +83) | — | 0% / — / 100% | $0.142 → $0.069 | 3 × 3 | 2026-11-11 |
-| [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | 25% | 76% | **100%** | +75 pts (+71 to +83) | +24 pts | 0% / 50% / 100% | $0.329 → $0.111 | 3 × 3 | 2026-11-18 |
-| [`llm-judge-calibration`](skills/llm-judge-calibration/SKILL.md) | 63% | — | **93%** | +30 pts (+19 to +52) | — | 89% / — / 100% | — | 3 × 3 | 2026-11-19 |
-| [`model-card-ai-registry`](skills/model-card-ai-registry/SKILL.md) | 66% | — | **97%** | +31 pts (+17 to +44) | — | 100% / — / 100% | — | 4 × 3 | 2026-11-18 |
-| [`model-selection`](skills/model-selection/SKILL.md) | 72% | — | **99%** | +26 pts (+7 to +42) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-19 |
-| [`multi-turn-evals`](skills/multi-turn-evals/SKILL.md) | 43% | — | **93%** | +50 pts (+38 to +67) | — | 78% / — / 100% | $0.106 → $0.072 | 4 × 3 | 2026-11-12 |
-| [`process-ai-redesign`](skills/process-ai-redesign/SKILL.md) | 57% | — | **96%** | +40 pts (+26 to +47) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-18 |
-| [`production-evals-monitoring`](skills/production-evals-monitoring/SKILL.md) | 45% | — | **100%** | +55 pts (+53 to +58) | — | 33% / — / 100% | — | 3 × 3 | 2026-11-18 |
-| [`prototype-handover`](skills/prototype-handover/SKILL.md) | 48% | — | **99%** | +50 pts (+25 to +62) | — | 83% / — / 100% | — | 5 × 3 | 2026-11-18 |
-| [`red-team-evals`](skills/red-team-evals/SKILL.md) | 49% | — | **96%** | +47 pts (+30 to +64) | — | 58% / — / 100% | $0.086 → $0.071 | 5 × 3 | 2026-11-12 |
-| [`release-to-production`](skills/release-to-production/SKILL.md) | 61% | — | **99%** | +38 pts (+33 to +41) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-18 |
-| [`retrieval-evaluation`](skills/retrieval-evaluation/SKILL.md) | 51% | — | **87%** | +36 pts (+10 to +56) | — | 17% / — / 100% | $0.077 → $0.065 | 3 × 3 | 2026-11-09 |
-| [`synthetic-eval-data`](skills/synthetic-eval-data/SKILL.md) | 30% | — | **96%** | +66 pts (+58 to +79) | — | 33% / — / 100% | $0.131 → $0.060 | 3 × 3 | 2026-11-09 |
-| [`system-prompt-and-guardrails`](skills/system-prompt-and-guardrails/SKILL.md) | 77% | — | **97%** | +19 pts (+13 to +24) | — | 100% / — / 100% | — | 3 × 3 | 2026-11-13 |
-| [`trace-review-tool`](skills/trace-review-tool/SKILL.md) | 54% | — | **92%** | +37 pts (+19 to +63) | — | 100% / — / 100% | $0.091 → $0.077 | 4 × 3 | 2026-11-11 |
+| [`agent-design-and-tooling`](skills/agent-design-and-tooling/SKILL.md) | 36% | — | **99%** | +63 pts (+40 to +100) | — | 67% / — / 100% | $0.114 → $0.083 | 3 × 3 | 2026-11-19 |
+| [`agent-evals`](skills/agent-evals/SKILL.md) | 34% | — | **97%** | +63 pts (+46 to +83) | — | 60% / — / 100% | $0.000 → $0.087 | 4 × 3 | 2026-11-19 |
+| [`ai-act-classification`](skills/ai-act-classification/SKILL.md) | 39% | — | **100%** | +61 pts (+52 to +67) | — | 100% / — / 100% | $0.128 → $0.149 | 3 × 3 | 2026-11-18 |
+| [`ai-adoption-plan`](skills/ai-adoption-plan/SKILL.md) | 51% | — | **96%** | +45 pts (+23 to +70) | — | 92% / — / 100% | $0.000 → $0.060 | 4 × 3 | 2026-11-11 |
+| [`ai-data-requirements`](skills/ai-data-requirements/SKILL.md) | 53% | — | **94%** | +41 pts (+22 to +67) | — | 93% / — / 100% | $0.000 → $0.000 | 5 × 3 | 2026-11-09 |
+| [`ai-feasibility-spike`](skills/ai-feasibility-spike/SKILL.md) | 40% | — | **95%** | +56 pts (+42 to +71) | — | 61% / — / 100% | $0.102 → $0.069 | 5 × 3 | 2026-11-12 |
+| [`ai-incident-playbook`](skills/ai-incident-playbook/SKILL.md) | 38% | — | **99%** | +62 pts (+30 to +97) | — | 67% / — / 100% | $0.138 → $0.074 | 5 × 3 | 2026-11-18 |
+| [`ai-interaction-patterns`](skills/ai-interaction-patterns/SKILL.md) | 48% | — | **94%** | +46 pts (+36 to +67) | — | 83% / — / 100% | $0.080 → $0.067 | 4 × 3 | 2026-11-12 |
+| [`ai-opportunity-assessment`](skills/ai-opportunity-assessment/SKILL.md) | 48% | — | **93%** | +45 pts (+21 to +74) | — | 87% / — / 100% | $0.079 → $0.106 | 5 × 3 | 2026-11-11 |
+| [`ai-roi-quantification`](skills/ai-roi-quantification/SKILL.md) | 65% | — | **97%** | +32 pts (+14 to +45) | — | 100% / — / 100% | $0.000 → $0.000 | 3 × 3 | 2026-11-09 |
+| [`ai-vendor-evaluation`](skills/ai-vendor-evaluation/SKILL.md) | 46% | — | **98%** | +51 pts (+44 to +57) | — | 81% / — / 100% | $0.000 → $0.075 | 3 × 3 | 2026-11-18 |
+| [`assistant-kpis-cost-per-outcome`](skills/assistant-kpis-cost-per-outcome/SKILL.md) | 23% | — | **96%** | +73 pts (+56 to +100) | — | 56% / — / 100% | $0.181 → $0.067 | 3 × 3 | 2026-11-18 |
+| [`build-evals`](skills/build-evals/SKILL.md) | 25% | — | **98%** | +73 pts (+42 to +89) | — | 33% / — / 100% | $0.189 → $0.057 | 6 × 3 | 2026-11-11 |
+| [`conversation-analysis`](skills/conversation-analysis/SKILL.md) | 17% | — | **100%** | +83 pts (+70 to +100) | — | 50% / — / 100% | $0.577 → $0.057 | 4 × 3 | 2026-11-19 |
+| [`error-analysis`](skills/error-analysis/SKILL.md) | 15% | — | **98%** | +83 pts (+75 to +93) | — | 0% / — / 100% | $0.324 → $0.069 | 3 × 3 | 2026-11-11 |
+| [`llm-feature-prd`](skills/llm-feature-prd/SKILL.md) | 10% | — | **100%** | +90 pts (+83 to +95) | — | 0% / — / 100% | $0.798 → $0.111 | 3 × 3 | 2026-11-18 |
+| [`llm-judge-calibration`](skills/llm-judge-calibration/SKILL.md) | 47% | — | **96%** | +49 pts (+33 to +62) | — | 89% / — / 100% | $0.082 → $0.064 | 3 × 3 | 2026-11-19 |
+| [`model-card-ai-registry`](skills/model-card-ai-registry/SKILL.md) | 57% | — | **97%** | +40 pts (+17 to +53) | — | 100% / — / 100% | $0.000 → $0.074 | 4 × 3 | 2026-11-18 |
+| [`model-selection`](skills/model-selection/SKILL.md) | 60% | — | **100%** | +40 pts (+24 to +52) | — | 100% / — / 100% | $0.000 → $0.054 | 3 × 3 | 2026-11-19 |
+| [`multi-turn-evals`](skills/multi-turn-evals/SKILL.md) | 34% | — | **93%** | +59 pts (+50 to +67) | — | 78% / — / 100% | $0.134 → $0.072 | 4 × 3 | 2026-11-12 |
+| [`process-ai-redesign`](skills/process-ai-redesign/SKILL.md) | 53% | — | **96%** | +43 pts (+37 to +47) | — | 100% / — / 100% | $0.000 → $0.099 | 3 × 3 | 2026-11-18 |
+| [`production-evals-monitoring`](skills/production-evals-monitoring/SKILL.md) | 18% | — | **100%** | +82 pts (+73 to +89) | — | 33% / — / 100% | $0.405 → $0.113 | 3 × 3 | 2026-11-18 |
+| [`prototype-handover`](skills/prototype-handover/SKILL.md) | 37% | — | **99%** | +62 pts (+31 to +74) | — | 83% / — / 100% | $0.138 → $0.116 | 5 × 3 | 2026-11-18 |
+| [`red-team-evals`](skills/red-team-evals/SKILL.md) | 36% | — | **97%** | +61 pts (+41 to +73) | — | 58% / — / 100% | $0.118 → $0.070 | 5 × 3 | 2026-11-12 |
+| [`release-to-production`](skills/release-to-production/SKILL.md) | 57% | — | **99%** | +42 pts (+41 to +43) | — | 100% / — / 100% | $0.000 → $0.052 | 3 × 3 | 2026-11-18 |
+| [`retrieval-evaluation`](skills/retrieval-evaluation/SKILL.md) | 29% | — | **85%** | +56 pts (+38 to +67) | — | 17% / — / 100% | $0.000 → $0.000 | 3 × 3 | 2026-11-09 |
+| [`synthetic-eval-data`](skills/synthetic-eval-data/SKILL.md) | 17% | — | **96%** | +79 pts (+58 to +100) | — | 33% / — / 100% | $0.000 → $0.000 | 3 × 3 | 2026-11-09 |
+| [`system-prompt-and-guardrails`](skills/system-prompt-and-guardrails/SKILL.md) | 66% | — | **97%** | +31 pts (+23 to +37) | — | 100% / — / 100% | $0.000 → $0.065 | 3 × 3 | 2026-11-13 |
+| [`trace-review-tool`](skills/trace-review-tool/SKILL.md) | 37% | — | **91%** | +55 pts (+42 to +74) | — | 100% / — / 100% | $0.134 → $0.077 | 4 × 3 | 2026-11-11 |
 
 ## Per skill, blind LLM judges
 

@@ -1,4 +1,4 @@
-Action guardrails: cap of 150 EUR per refund, daily cap, approval by a supervisor above the cap. L4 is blocked until action guardrails pass the redteam set; the step stays at L3 meanwhile.
+Action guardrails: cap of 150 EUR per refund, daily cap, approval by a supervisor above the cap. L4 is blocked until action guardrails pass the redteam set; the step stays at L3 meanwhile. A capped L4 is still L4, so no autonomous refunds under the cap before the redteam passes.
 
 Enforcement point: the cap is a code check in the refund service, not a prompt line. It fails closed: on a timeout or crash the refund is denied, and an attempt above the cap alerts the support lead.
 

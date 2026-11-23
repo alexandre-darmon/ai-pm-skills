@@ -95,6 +95,8 @@ This is a strict test: these templates are the skill's own and already carry par
 
 Extended under the same rules to `build-evals`, `assistant-kpis-cost-per-outcome` and `cse-consultation` (retired on 2026-11-09, results kept in git history), committed before their run. Drafts have no frozen baseline yet, so they wait for a 3-run confirmation.
 
+**A grader must tell the arms apart.** A grader that passes in every run without the skill measures the model, not the skill: it raises both columns and hides the gain. `run_evals.py` lists them after each run. On 2026-11-23 the 163 such graders were tightened to check what the skill adds (96) or dropped when they only checked something generic (60), and 5 sharper ones were added; red lines are exempt, since they should hold with or without the skill.
+
 ## The blind LLM judge
 
 Regexes check words, not the quality of the advice. `python3 scripts/judge_answers.py <folder>` asks a cheaper model (Haiku 5.5) to grade the saved answers on a generic rubric: sound, actionable, honest about unknowns, risk-aware, specific. Results go to `baselines/judge/`.

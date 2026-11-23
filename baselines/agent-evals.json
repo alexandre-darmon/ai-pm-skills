@@ -4,13 +4,13 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.321",
   "date": "2026-11-19",
-  "casesHash": "79e7673d753438b6e11fbd132cd206a7647336ef7b3304f629e094bb60d475a4",
+  "casesHash": "187b9830586f15ada06672fb33eefabd07035c3bee91a45a1fdfecc58d3713f2",
   "partial": false,
-  "costUsd": 1.1427408,
+  "costUsd": 0,
   "cases": {
     "agent-evals-001": {
       "score": 0.9333333333333332,
-      "scoreWithout": 0.3,
+      "scoreWithout": 0.10000000000000002,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -18,7 +18,7 @@
       "graders": {
         "double-refund": [
           3,
-          3
+          0
         ],
         "k-before": [
           3,
@@ -46,18 +46,18 @@
         ],
         "zero-bound": [
           3,
-          3
+          0
         ]
       },
       "costPerAnswer": [
         0.10078159999999999,
-        null
+        0.0
       ],
-      "delta": 0.6333333333333333
+      "delta": 0.8333333333333333
     },
     "agent-evals-002": {
       "score": 1.0,
-      "scoreWithout": 0.6333333333333333,
+      "scoreWithout": 0.5416666666666666,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -66,14 +66,6 @@
         "exposure": [
           3,
           1
-        ],
-        "keep-approval": [
-          3,
-          3
-        ],
-        "pass-hat-k": [
-          3,
-          3
         ],
         "pass-hat-number": [
           3,
@@ -90,9 +82,9 @@
       },
       "costPerAnswer": [
         0.08050603333333334,
-        null
+        0.0
       ],
-      "delta": 0.3666666666666667
+      "delta": 0.45833333333333337
     },
     "agent-evals-003": {
       "score": 0.9583333333333334,
@@ -129,7 +121,7 @@
       },
       "costPerAnswer": [
         0.0688861,
-        null
+        0.0
       ],
       "delta": 0.6666666666666667
     },
@@ -148,12 +140,12 @@
       },
       "costPerAnswer": [
         0.04294,
-        null
+        0.0
       ]
     },
     "agent-evals-005": {
       "score": 1.0,
-      "scoreWithout": 0.5714285714285714,
+      "scoreWithout": 0.42857142857142855,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -161,7 +153,7 @@
       "graders": {
         "bound-number": [
           3,
-          3
+          0
         ],
         "per-action-bound": [
           3,
@@ -182,12 +174,14 @@
       },
       "costPerAnswer": [
         0.08779986666666667,
-        null
+        0.0
       ],
-      "delta": 0.4285714285714286
+      "delta": 0.5714285714285714
     }
   },
+  "regraded": true,
+  "stale": false,
   "skillHash": "0c73875d8d6284106e87b3d6b51d7cf62a7c039f6ea2a442737a393c356b8c6c",
-  "meanDelta": 0.5238095238095238,
+  "meanDelta": 0.6324404761904762,
   "failures": []
 }

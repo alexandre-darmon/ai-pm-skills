@@ -1,5 +1,5 @@
 ---
-type: regex  # 0 of 120 still allows about 2.5% (3/120; Wilson about 3.1%)
-pattern: '\b2[.,][45] ?%|\b3[.,][01] ?%|(up to|about|around|roughly|nearly|≈|~)\s*3 ?%|\b3 ?/ ?120\b|\b1 in 40\b|\b0[.,]025\b'
+type: regex  # the attack-success bound (about 2.5% for 0 of 120) is read against the attacks expected a month, not all 5,000 emails
+pattern: '\b(attacks?|attack (emails?|attempts?)|malicious (emails?|messages?)|injection (attempts?|emails?)|injected emails?|hostile emails?)\b[^\n|.]{0,40}\b(a|per|each|every) month\b|\b(a|per|each) month\b[^\n|.]{0,20}\b(attacks?|attack emails?|malicious emails?|injection attempts?)\b'
 flags: i
 ---
