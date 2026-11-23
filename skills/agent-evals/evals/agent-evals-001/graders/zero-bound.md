@@ -1,5 +1,5 @@
 ---
-type: regex  # zero observed is a bound, not zero risk
-pattern: 'rule of three|\b3 ?/ ?n\b|≈ ?3 ?/|(zero|no|0) (failures?|errors?|forbidden events?|bad refunds?|wrong refunds?|incidents?)[^\n]{0,160}\b(up to|as high as|still (allow|permit)\w*|upper bound|cannot rule out|can.t rule out)\b'
+type: regex  # zero observed is a bound, turned into bad refunds a month at the real volume
+pattern: '(?<![\d,.])(?!9[ ,.]?000\b)\d[\d,.]*\s*(wrong(ly issued)?|bad|forbidden|wrong-money)?\s*(refunds?|refund events|events|errors|payouts?)( events)? (a|per|each) month|\b\d+([.,]\d+)? ?%[^\n|]{0,30}\bof (the )?9[ ,.]?000\b'
 flags: i
 ---

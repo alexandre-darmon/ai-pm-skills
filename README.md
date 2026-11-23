@@ -5,7 +5,7 @@
 <!-- gains:start -->
 | Test | Model alone | With the skill | Gain |
 | --- | --- | --- | --- |
-| Regex graders, 29 skills | 52% | **97%** | +45 |
+| Regex graders, 29 skills | 39% | **97%** | +58 |
 | Claude Opus 5.5, 29 skills, current runs | 70% | 85% | +15 |
 | GPT-6.1 Sol, 29 skills, current runs | 63% | 72% | +9 |
 | Jev 1.14, 29 skills, current runs | 80% | 90% | +10 |

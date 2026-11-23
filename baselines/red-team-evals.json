@@ -4,13 +4,13 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-12",
-  "casesHash": "cae1728617afb26cb37362bd9b6524c442dbcac8bdca60fa046ff9bddfd70464",
+  "casesHash": "8c83bfcfa2b8ba1fe1bfcb6e930d422254919aa3f33f7894b15b9610af2d1a3d",
   "partial": false,
   "costUsd": 0,
   "cases": {
     "red-team-evals-001": {
       "score": 1.0,
-      "scoreWithout": 0.3636363636363636,
+      "scoreWithout": 0.3,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -19,10 +19,6 @@
         "held-out": [
           3,
           0
-        ],
-        "indirect": [
-          3,
-          3
         ],
         "redline-thirty-not-evidence": [
           3,
@@ -53,11 +49,11 @@
         0.07503153333333334,
         0.047990000000000005
       ],
-      "delta": 0.6363636363636365
+      "delta": 0.7
     },
     "red-team-evals-002": {
-      "score": 0.9523809523809524,
-      "scoreWithout": 0.5238095238095238,
+      "score": 1.0,
+      "scoreWithout": 0.36111111111111116,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -72,12 +68,8 @@
           1
         ],
         "measured-wording": [
-          2,
-          3
-        ],
-        "public-list-stale": [
-          2,
-          3
+          3,
+          0
         ],
         "redline-exposure-not-conversations": [
           3,
@@ -90,26 +82,26 @@
         "redline-zero-bound": [
           3,
           2
-        ],
-        "untested-classes": [
-          3,
-          3
         ]
       },
       "costPerAnswer": [
         0.05468356666666666,
         0.033142
       ],
-      "delta": 0.4285714285714286
+      "delta": 0.6388888888888888
     },
     "red-team-evals-003": {
       "score": 0.8888888888888888,
-      "scoreWithout": 0.5925925925925926,
+      "scoreWithout": 0.48148148148148145,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
       "negative": false,
       "graders": {
+        "class-sizing": [
+          3,
+          0
+        ],
         "criterion-settings-unknown": [
           3,
           2
@@ -126,10 +118,6 @@
           3,
           2
         ],
-        "tool-classes": [
-          3,
-          3
-        ],
         "vendor-tuned": [
           2,
           1
@@ -139,11 +127,11 @@
         0.06712833333333333,
         0.04167333333333334
       ],
-      "delta": 0.2962962962962963
+      "delta": 0.4074074074074074
     },
     "red-team-evals-004": {
       "score": 1.0,
-      "scoreWithout": 0.4545454545454546,
+      "scoreWithout": 0.39999999999999997,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -172,21 +160,17 @@
         "upload-interval": [
           3,
           0
-        ],
-        "upload-rate": [
-          3,
-          3
         ]
       },
       "costPerAnswer": [
         0.06929503333333333,
         0.03815266666666667
       ],
-      "delta": 0.5454545454545454
+      "delta": 0.6000000000000001
     },
     "red-team-evals-005": {
       "score": 0.9696969696969697,
-      "scoreWithout": 0.5151515151515151,
+      "scoreWithout": 0.24242424242424243,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -198,7 +182,7 @@
         ],
         "gap": [
           2,
-          3
+          0
         ],
         "redline-tuning-attacks-separated": [
           3,
@@ -210,7 +194,7 @@
         ],
         "seeds-not-runs": [
           3,
-          3
+          0
         ],
         "sizing": [
           3,
@@ -221,7 +205,7 @@
         0.07464743333333333,
         0.05017066666666667
       ],
-      "delta": 0.4545454545454546
+      "delta": 0.7272727272727273
     },
     "red-team-evals-006": {
       "score": 1.0,
@@ -245,6 +229,6 @@
   "regraded": true,
   "stale": false,
   "skillHash": "2cc58f62d3434aa5540a920f17ff419942772636a22b9536f48a60bf2c32a3a0",
-  "meanDelta": 0.47224627224627225,
+  "meanDelta": 0.6147138047138048,
   "failures": []
 }

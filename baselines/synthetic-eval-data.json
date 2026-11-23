@@ -4,7 +4,7 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-09",
-  "casesHash": "173cc1ec68bb9a6b69268ac66c39c530296fd97cfbe5b4549a78b2d5c0ee86be",
+  "casesHash": "c06e11aab41350c74f1a0197687706911afe081a7e25e7c6f56c6a5a6bf322bf",
   "partial": false,
   "costUsd": 0,
   "cases": {
@@ -42,8 +42,8 @@
         ]
       },
       "costPerAnswer": [
-        0.05903733333333333,
-        0.042567999999999995
+        0.0,
+        0.0
       ],
       "delta": 0.7916666666666666
     },
@@ -81,14 +81,14 @@
         ]
       },
       "costPerAnswer": [
-        0.06120446666666667,
-        0.044216000000000005
+        0.0,
+        0.0
       ],
       "delta": 0.5833333333333334
     },
     "synthetic-eval-data-003": {
       "score": 1.0,
-      "scoreWithout": 0.4000000000000001,
+      "scoreWithout": 0.0,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -100,7 +100,7 @@
         ],
         "real-pilot-cases": [
           3,
-          3
+          0
         ],
         "reject-regenerate": [
           3,
@@ -108,7 +108,7 @@
         ],
         "score-split": [
           3,
-          3
+          0
         ],
         "style-dimension": [
           3,
@@ -116,10 +116,10 @@
         ]
       },
       "costPerAnswer": [
-        0.051062633333333336,
-        0.03145666666666667
+        0.0,
+        0.0
       ],
-      "delta": 0.5999999999999999
+      "delta": 1.0
     },
     "synthetic-eval-data-004": {
       "score": 1.0,
@@ -135,14 +135,14 @@
         ]
       },
       "costPerAnswer": [
-        0.035768,
-        0.03420466666666667
+        0.0,
+        0.0
       ]
     }
   },
   "regraded": true,
   "stale": false,
   "skillHash": "e282c3fc94a32d920960ac7a47f8762772b6bcbb1efe385c0243d313fcbe3b1d",
-  "meanDelta": 0.6583333333333333,
+  "meanDelta": 0.7916666666666666,
   "failures": []
 }

@@ -4,13 +4,13 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-11",
-  "casesHash": "a23dee359047a2e6b85ad1dba207d431403407ebb1b91b597db3fc0538c2a6c5",
+  "casesHash": "79b266a67fdba788a6e468ce403610c832122c23d27172ebf713dc0ed5adcaa8",
   "partial": false,
   "costUsd": 0,
   "cases": {
     "error-analysis-001": {
       "score": 1.0,
-      "scoreWithout": 0.4615384615384615,
+      "scoreWithout": 0.25,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -18,11 +18,7 @@
       "graders": {
         "binary-per-mode": [
           3,
-          3
-        ],
-        "cost-caught": [
-          3,
-          3
+          0
         ],
         "first-upstream": [
           3,
@@ -30,7 +26,7 @@
         ],
         "mask": [
           3,
-          3
+          0
         ],
         "one-expert": [
           3,
@@ -65,11 +61,11 @@
         0.0636255,
         0.05188266666666667
       ],
-      "delta": 0.5384615384615385
+      "delta": 0.75
     },
     "error-analysis-002": {
       "score": 0.9666666666666667,
-      "scoreWithout": 0.43333333333333335,
+      "scoreWithout": 0.16666666666666666,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -85,7 +81,7 @@
         ],
         "country-count": [
           3,
-          3
+          1
         ],
         "first-upstream": [
           3,
@@ -93,7 +89,7 @@
         ],
         "needs-random": [
           3,
-          3
+          0
         ],
         "redline-provisional": [
           3,
@@ -101,7 +97,7 @@
         ],
         "severity": [
           3,
-          3
+          0
         ],
         "spec-fix-no-eval": [
           3,
@@ -112,11 +108,11 @@
         0.0716738,
         0.049726
       ],
-      "delta": 0.5333333333333333
+      "delta": 0.8
     },
     "error-analysis-003": {
       "score": 0.9666666666666667,
-      "scoreWithout": 0.13333333333333333,
+      "scoreWithout": 0.03333333333333333,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -152,14 +148,14 @@
         ],
         "time-budget": [
           3,
-          3
+          0
         ]
       },
       "costPerAnswer": [
         0.06598396666666667,
         0.04418666666666667
       ],
-      "delta": 0.8333333333333334
+      "delta": 0.9333333333333333
     },
     "error-analysis-004": {
       "score": 1.0,
@@ -183,6 +179,6 @@
   "regraded": true,
   "stale": false,
   "skillHash": "dad6a5ca5ab0ad7d800f80f2948b889dc0efdcab7d4b5bb63d729d4db61712d9",
-  "meanDelta": 0.6350427350427351,
+  "meanDelta": 0.8277777777777778,
   "failures": []
 }

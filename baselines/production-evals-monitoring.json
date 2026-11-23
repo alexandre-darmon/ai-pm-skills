@@ -4,13 +4,13 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.321",
   "date": "2026-11-18",
-  "casesHash": "f296756e2d395561f2e76248c9d15a949677198d114ec3a263b7e5e16d23877d",
+  "casesHash": "dbeb50828ecc71cb3cc09ac43547db0c18ac908cb5e79d8d33d2d70a8282c927",
   "partial": false,
-  "costUsd": 1.1607916,
+  "costUsd": 0,
   "cases": {
     "production-evals-monitoring-001": {
       "score": 1.0,
-      "scoreWithout": 0.4666666666666666,
+      "scoreWithout": 0.26666666666666666,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -30,7 +30,7 @@
         ],
         "model-change-release": [
           3,
-          3
+          0
         ],
         "move-down": [
           3,
@@ -46,7 +46,7 @@
         ],
         "regression-cases": [
           3,
-          3
+          0
         ],
         "sample-size": [
           3,
@@ -55,13 +55,13 @@
       },
       "costPerAnswer": [
         0.09241586666666668,
-        null
+        0.055579333333333335
       ],
-      "delta": 0.5333333333333334
+      "delta": 0.7333333333333334
     },
     "production-evals-monitoring-002": {
       "score": 1.0,
-      "scoreWithout": 0.4666666666666666,
+      "scoreWithout": 0.1111111111111111,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -73,19 +73,15 @@
         ],
         "bigger-sample": [
           3,
-          3
+          0
         ],
         "judge-drift": [
           3,
-          3
+          1
         ],
         "model-version-check": [
           3,
-          3
-        ],
-        "no-rollback-today": [
-          3,
-          3
+          0
         ],
         "per-class": [
           3,
@@ -102,22 +98,18 @@
       },
       "costPerAnswer": [
         0.06049806666666666,
-        null
+        0.038054
       ],
-      "delta": 0.5333333333333334
+      "delta": 0.8888888888888888
     },
     "production-evals-monitoring-003": {
       "score": 1.0,
-      "scoreWithout": 0.4166666666666667,
+      "scoreWithout": 0.14814814814814814,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
       "negative": false,
       "graders": {
-        "annex-iv": [
-          3,
-          3
-        ],
         "control-limits": [
           3,
           0
@@ -130,17 +122,9 @@
           3,
           0
         ],
-        "deployer-data": [
-          3,
-          3
-        ],
         "evidence-status": [
           3,
           0
-        ],
-        "incident-73": [
-          3,
-          3
         ],
         "redline-no-verdict": [
           3,
@@ -148,7 +132,7 @@
         ],
         "substantial-modification": [
           3,
-          3
+          1
         ],
         "template-2027": [
           3,
@@ -157,9 +141,9 @@
       },
       "costPerAnswer": [
         0.18673726666666668,
-        null
+        0.11912083333333333
       ],
-      "delta": 0.5833333333333333
+      "delta": 0.8518518518518519
     },
     "production-evals-monitoring-004": {
       "score": 1.0,
@@ -176,11 +160,13 @@
       },
       "costPerAnswer": [
         0.04727933333333334,
-        null
+        0.049557333333333335
       ]
     }
   },
+  "regraded": true,
+  "stale": false,
   "skillHash": "fbdd4516f6a4f676743be4c21df91cbbcf3f9095d3a98855a21431504ff8e946",
-  "meanDelta": 0.55,
+  "meanDelta": 0.8246913580246913,
   "failures": []
 }

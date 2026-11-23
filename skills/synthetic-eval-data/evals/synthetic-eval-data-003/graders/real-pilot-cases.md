@@ -1,5 +1,5 @@
 ---
-type: regex  # masked pilot conversations sampled into the set
-pattern: '(sample|pull|take|draw|add|bring)\w*[^\n]{0,60}(real|pilot|production)[^\n]{0,40}(conversations|questions|messages|cases)|(mask|pseudonymi|anonymi|redact)\w*[^\n]{0,80}(pilot|real|conversations|messages)|(conversations|messages)[^\n]{0,10}(mask|pseudonymi|anonymi|redact|scrub)\w*|build\w*[^\n]{0,40}(real|pilot)[^\n]{0,30}(conversations|traffic|messages)'
+type: regex  # real pilot cases brought in to replace synthetic ones, with a target share or a date for the switch
+pattern: '\b(retir|replac|phas|swap|drop)\w*( out)?[^\n]{0,60}\bsynthetic\b[^\n]{0,120}\b(date|deadline|by (the )?(end of )?\w+ \d|target|by (week|month|quarter)|\bQ[1-4]\b|\d+\s?%)|\b(target|date|deadline)\b[^\n]{0,100}\b(retir|replac|phas(e|ing) out|swap)\w*[^\n]{0,40}\bsynthetic\b'
 flags: i
 ---

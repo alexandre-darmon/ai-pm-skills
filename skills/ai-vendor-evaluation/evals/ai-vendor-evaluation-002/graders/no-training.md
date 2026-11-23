@@ -2,4 +2,4 @@
 type: regex
 flags: i
 ---
-\bno (use|training|fine-?tuning|model (training|improvement))\b|(prohibit|exclud|forbid|bar|ban|strik|delet|remov|carve[- ]out|opt[- ]out)\w*[^\n]{0,80}(train|improv|enhanc|develop)|(not|never) (be )?(used|use)[^\n]{0,60}(train|improv|enhanc|develop)
+(train|fine-?tun|improv)\w*[^\n|]{0,120}(feedback|eval(uation)? (set|cases|data)|test (set|cases|data))|(feedback|eval(uation)? (set|cases|data)|test (set|cases|data))[^\n|]{0,60}(never|not)[^\n|]{0,40}(train|fine-?tun|improv)

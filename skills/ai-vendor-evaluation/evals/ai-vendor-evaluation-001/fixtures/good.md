@@ -6,7 +6,7 @@ Do not choose on the 97%: it is a claim measured on Vendor A's own benchmark, no
 
 **Score what you pay for, per document type.** 97% per field is not 97% per document: with 12 fields, 0.97^12 ≈ 69% of documents fully right. Score document-level (every critical field correct) per document type, with a Wilson interval each: 40 bank details forms at 39 of 40 still give an interval of about 87% to 100%. Gate the bank details class on the lower bound.
 
-**Cost per correct extraction** = (usage + integration spread over the term + review and correction time) ÷ (85,000 × document-level accuracy).
+**Cost per correct extraction** = (usage + integration spread over the term + review and correction time) ÷ (85,000 × document-level accuracy). Break-even: at about 2.33 EUR to fix a wrong document, A must get about 4 points more documents fully right than B to cover its higher price.
 
 **AI Act**: ask each vendor for the instructions for use with declared accuracy (art. 13); record on file, claimed or missing. **DORA**: as an insurer, the contract enters your register of information.
 

@@ -1,5 +1,5 @@
 ---
-type: regex  # the rate is reported with its interval
+type: regex  # the interval is computed on the random stream
 flags: i
 ---
-Wilson|interval|margin of error|± ?\d|\+/- ?\d
+random[^\n]{0,80}(Wilson|interval|± ?\d|\+/- ?\d)|(Wilson|interval)[^\n]{0,60}\brandom|\b(main|random|representative) (sample|stream)s? only\b[^\n]{0,100}(Wilson|interval|± ?\d|\+/- ?\d)

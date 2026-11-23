@@ -1,5 +1,5 @@
 ---
-type: regex  # baseline per class: the fraud-signal class must not hide in the global rate
-pattern: 'per[- ](?:class|category)|by[- ](?:class|category)|each (?:class|category)|(?:class|category)[- ]level|for each of the (?:six|6)|category by category'
+type: regex  # baseline per class with n of N or an interval, not a global rate or a bare confusion matrix
+pattern: '(?:per|by|each)[- ](?:class|category)[^.\n]{0,80}\b(?:intervals?|n of N|\d+ of \d+|n\s?=)|\b(?:intervals?|n of N)\b[^.\n]{0,60}\b(?:per|by|each)[- ](?:class|category)'
 flags: i
 ---

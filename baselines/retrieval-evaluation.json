@@ -4,22 +4,18 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-09",
-  "casesHash": "c4f23ec741fc7f3780e6a094db8d7c21b2294dd00e0cd936c994ec0c0e301c07",
+  "casesHash": "3e121041669636e8a4366a896a7d0807c009541fbc4e45680e972515e1f529a6",
   "partial": false,
   "costUsd": 0,
   "cases": {
     "retrieval-evaluation-001": {
-      "score": 0.9444444444444445,
-      "scoreWithout": 0.38888888888888884,
+      "score": 0.9333333333333332,
+      "scoreWithout": 0.26666666666666666,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
       "negative": false,
       "graders": {
-        "attribute-failures": [
-          3,
-          3
-        ],
         "fixed-contexts": [
           3,
           2
@@ -42,14 +38,14 @@
         ]
       },
       "costPerAnswer": [
-        0.05949093333333333,
-        0.04172
+        0.0,
+        0.0
       ],
-      "delta": 0.5555555555555557
+      "delta": 0.6666666666666665
     },
     "retrieval-evaluation-002": {
       "score": 0.8095238095238094,
-      "scoreWithout": 0.7142857142857143,
+      "scoreWithout": 0.42857142857142855,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -57,7 +53,7 @@
       "graders": {
         "claim-level": [
           3,
-          3
+          0
         ],
         "fixed-contexts": [
           3,
@@ -77,18 +73,18 @@
         ],
         "prompt-abstention": [
           3,
-          3
+          0
         ]
       },
       "costPerAnswer": [
-        0.05117463333333333,
-        0.03970733333333334
+        0.0,
+        0.0
       ],
-      "delta": 0.09523809523809512
+      "delta": 0.3809523809523809
     },
     "retrieval-evaluation-003": {
-      "score": 0.8484848484848485,
-      "scoreWithout": 0.42424242424242425,
+      "score": 0.8148148148148149,
+      "scoreWithout": 0.1851851851851852,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -97,14 +93,6 @@
         "leaderboard-not-ours": [
           1,
           2
-        ],
-        "no-confirm": [
-          3,
-          3
-        ],
-        "per-class": [
-          3,
-          3
         ],
         "redline-paired-rerun": [
           3,
@@ -116,7 +104,7 @@
         ],
         "release": [
           3,
-          3
+          0
         ],
         "unjudged-passages": [
           0,
@@ -124,10 +112,10 @@
         ]
       },
       "costPerAnswer": [
-        0.0572164,
-        0.03604466666666667
+        0.0,
+        0.0
       ],
-      "delta": 0.42424242424242425
+      "delta": 0.6296296296296297
     },
     "retrieval-evaluation-004": {
       "score": 1.0,
@@ -143,14 +131,14 @@
         ]
       },
       "costPerAnswer": [
-        0.04303733333333334,
-        0.04090666666666667
+        0.0,
+        0.0
       ]
     }
   },
   "regraded": true,
   "stale": false,
   "skillHash": "157b4d77aaff0f88227ffba4204a9268b1db4c7a07f00254ee7ac5bb7b53e4ef",
-  "meanDelta": 0.35834535834535836,
+  "meanDelta": 0.5590828924162257,
   "failures": []
 }

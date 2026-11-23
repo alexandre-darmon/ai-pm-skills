@@ -4,7 +4,7 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-12",
-  "casesHash": "1042bbdd6d84110cf681a66f6b8cf0417ac394b28383fca1a327bc53fc672c9b",
+  "casesHash": "f59756bf9b4e1f4f998055901fadb4aee7bb2f65814c9635a4e16f048beba05a",
   "partial": false,
   "costUsd": 0,
   "cases": {
@@ -83,21 +83,13 @@
       "delta": 0.625
     },
     "ai-feasibility-spike-003": {
-      "score": 0.9259259259259259,
-      "scoreWithout": 0.5555555555555555,
+      "score": 0.888888888888889,
+      "scoreWithout": 0.3333333333333333,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
       "negative": false,
       "graders": {
-        "cost-per-correct": [
-          3,
-          3
-        ],
-        "disputes-interval": [
-          3,
-          3
-        ],
         "drift-log": [
           1,
           0
@@ -105,10 +97,6 @@
         "redline-bar-kept": [
           3,
           2
-        ],
-        "regrade-all": [
-          3,
-          3
         ],
         "reshape": [
           3,
@@ -123,11 +111,11 @@
         0.07735353333333334,
         0.04423933333333333
       ],
-      "delta": 0.37037037037037046
+      "delta": 0.5555555555555556
     },
     "ai-feasibility-spike-004": {
       "score": 1.0,
-      "scoreWithout": 0.5833333333333334,
+      "scoreWithout": 0.5238095238095238,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -136,10 +124,6 @@
         "build-evals-size": [
           3,
           1
-        ],
-        "passports-interval": [
-          3,
-          3
         ],
         "redline-not-demonstrated": [
           3,
@@ -158,11 +142,11 @@
         0.060319866666666666,
         0.038747333333333335
       ],
-      "delta": 0.41666666666666663
+      "delta": 0.47619047619047616
     },
     "ai-feasibility-spike-005": {
-      "score": 0.9743589743589745,
-      "scoreWithout": 0.6153846153846154,
+      "score": 1.0,
+      "scoreWithout": 0.5833333333333334,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -171,10 +155,6 @@
         "cost-per-correct": [
           3,
           0
-        ],
-        "over-appetite": [
-          2,
-          3
         ],
         "redline-no-go": [
           3,
@@ -201,7 +181,7 @@
         0.0634155,
         0.03858533333333333
       ],
-      "delta": 0.35897435897435903
+      "delta": 0.41666666666666663
     },
     "ai-feasibility-spike-006": {
       "score": 1.0,
@@ -225,6 +205,6 @@
   "regraded": true,
   "stale": false,
   "skillHash": "6ebc46483d557fd668ee3ea4b7a0d8892cac50fece96888313e35386162b9e99",
-  "meanDelta": 0.4958689458689459,
+  "meanDelta": 0.5563492063492064,
   "failures": []
 }

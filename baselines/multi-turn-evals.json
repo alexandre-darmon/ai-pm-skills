@@ -4,13 +4,13 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-12",
-  "casesHash": "8774033f59f8856b676b7b9df51b92c9260e4fcdd1465b3bde13d980213e54bf",
+  "casesHash": "d802ac98723fc3bcd3462a8a39a53a1ea8cabd6f56c0893697215e9f897e262c",
   "partial": false,
   "costUsd": 0,
   "cases": {
     "multi-turn-evals-001": {
       "score": 0.9583333333333334,
-      "scoreWithout": 0.5833333333333334,
+      "scoreWithout": 0.4583333333333333,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -18,7 +18,7 @@
       "graders": {
         "conv-rate": [
           3,
-          3
+          0
         ],
         "conversation-unit": [
           3,
@@ -45,7 +45,7 @@
         0.0668784,
         0.04534533333333334
       ],
-      "delta": 0.375
+      "delta": 0.5
     },
     "multi-turn-evals-002": {
       "score": 1.0,
@@ -84,7 +84,7 @@
     },
     "multi-turn-evals-003": {
       "score": 0.8333333333333334,
-      "scoreWithout": 0.4444444444444444,
+      "scoreWithout": 0.27777777777777773,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -92,7 +92,7 @@
       "graders": {
         "constraint-kept": [
           3,
-          3
+          0
         ],
         "decisive-turns": [
           1,
@@ -119,11 +119,11 @@
         0.0660659,
         0.04240733333333333
       ],
-      "delta": 0.38888888888888895
+      "delta": 0.5555555555555556
     },
     "multi-turn-evals-004": {
-      "score": 0.9333333333333332,
-      "scoreWithout": 0.3666666666666667,
+      "score": 0.9259259259259259,
+      "scoreWithout": 0.2962962962962963,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -152,17 +152,13 @@
         "redline-unit-conversation": [
           3,
           2
-        ],
-        "sizing": [
-          3,
-          3
         ]
       },
       "costPerAnswer": [
         0.06742523333333333,
         0.05103
       ],
-      "delta": 0.5666666666666665
+      "delta": 0.6296296296296297
     },
     "multi-turn-evals-005": {
       "score": 1.0,
@@ -186,6 +182,6 @@
   "regraded": true,
   "stale": false,
   "skillHash": "337607799c1ab8854e3c71f1ea8cd48fec2d9fc64c483e43188bff88d9faba56",
-  "meanDelta": 0.49930555555555556,
+  "meanDelta": 0.587962962962963,
   "failures": []
 }

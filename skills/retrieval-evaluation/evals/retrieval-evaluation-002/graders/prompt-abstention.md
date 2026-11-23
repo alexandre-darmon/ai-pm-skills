@@ -1,5 +1,5 @@
 ---
-type: regex  # prompt fix: answer only from passages, cite, abstain
-pattern: 'abst(ain|ention)|(say|answer|reply)[^\n]{0,20}("?not found|it (doesn.t|does not) know|no (basis|answer))|cite[^\n]{0,40}(passage|source)[^\n]{0,30}(each|every|per) (claim|statement|sentence|fact)|(only|strictly) from the (passages|context|retrieved)'
+type: regex  # abstention is specified as a measurable expected answer: a plain "not found" with a route to a person, on questions whose answer is in no procedure
+pattern: '(expected|correct|right|target) (answer|response|output) (is|=|:|should be)[^\n]{0,20}"?not (found|in|covered)|"?not found[^\n]{0,50}\b(ask|route|contact|refer\w*|person|owner|team|escalat\w*|human|colleague)\b'
 flags: i
 ---

@@ -1,5 +1,5 @@
 ---
-type: regex  # turns 24 of 120 into the conversation failure rate
-pattern: '\b20 ?%|\b80 ?%[^\n]{0,60}(conversations?|clean|pass)|one in five|1 in 5|0[.,]20?\b[^\n]{0,20}(conversation|fail)'
+type: regex  # the conversation failure rate (24 of 120 = 20%) is priced: the cost of one failed conversation or wrong quote is asked of the business owner, so the monthly count becomes money
+pattern: '\b(cost|price|loss) (of|per) (a |one |each )?(single )?(failed|wrong|bad|failing|unsuitable|mis-?sold)\b[^.!?\n]{0,20}\b(conversations?|quotes?|answers?|cases?)|\b(failed|wrong|bad|unsuitable) (conversations?|quotes?)\b[^.!?\n]{0,30}\bcosts?\b'
 flags: i
 ---

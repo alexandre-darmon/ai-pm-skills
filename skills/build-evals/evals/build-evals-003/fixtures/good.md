@@ -4,7 +4,7 @@ Replace the single 85% threshold with a threshold per question class: a global s
 - Order status and returns: 85% is fine.
 - Product advice: 80%.
 
-Re-sample the suite with stratified sampling so warranty claims and product advice get at least 30 cases each, instead of the 12 and 6 a random draw gives. Keep 20% of the cases as a private holdout that never enters a prompt or a repo.
+Re-sample the suite with stratified sampling so warranty claims and product advice get the cases their threshold needs, instead of the 12 and 6 a random draw gives: about 200 warranty cases to show 95% if the true rate is near 98%, about 30 product-advice cases. Keep 20% of the cases as a private holdout that never enters a prompt or a repo.
 
 Freeze the 88% run as the baseline, with the model and version, the judge model, the date and the set version.
 

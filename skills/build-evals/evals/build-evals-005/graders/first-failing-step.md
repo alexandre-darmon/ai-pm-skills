@@ -1,5 +1,5 @@
 ---
-type: regex  # label where each failed case first went wrong
-pattern: '(first|earliest|upstream)[^.\n]{0,30}\b(failing|failed|broken|wrong|faulty)\b[^.\n]{0,15}\b(step|stage|component)|(step|stage|component)[^.\n]{0,40}\b(went|goes|first) wrong'
+type: regex  # turns the first-failing-step counts into the most a model swap can recover
+pattern: '(recover|gain|win|fix|improve|add|lift|move)\w*[^.\n]{0,40}\bat most\b|\bat most\b[^.\n]{0,30}\b(points?|invoices|cases)\b|\bceiling\b|can(no|’|'')?t (take|get|push|lift|move) (you|it|the score|accuracy)? ?(past|beyond|above)|(upper bound|maximum|max) (on|of|for) (the|any)? ?(gain|improvement|uplift)'
 flags: i
 ---

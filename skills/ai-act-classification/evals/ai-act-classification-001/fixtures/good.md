@@ -6,7 +6,7 @@ The vendor's "AI Act compliant" label does not cover your deployer duties (art. 
 - use it according to the provider's instructions (art. 26(1));
 - human oversight by trained recruiters with the authority to override the ranking (art. 26(2));
 - keep the logs for at least six months (art. 26(6));
-- inform workers' representatives and affected workers before use (art. 26(7)), and inform candidates (art. 26(11));
+- inform workers' representatives and affected workers before use (art. 26(7)), from 2 December 2027, and inform candidates (art. 26(11));
 - AI literacy for the recruiters (art. 4).
 
 Evidence: the vendor's claim is claimed, not verified, until it shows the document. Instructions for use (art. 13): missing. EU declaration of conformity (art. 47): missing.

@@ -4,9 +4,9 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-12",
-  "casesHash": "6a64149214019a3b009f9e920481a7d682a177c31f88afd8d298c644844525bc",
+  "casesHash": "f21210108b14924e95e94521810c5b0e0719a472d52d2eb0ead4b4b0d41b9612",
   "partial": false,
-  "costUsd": 1.4319463000000001,
+  "costUsd": 0,
   "cases": {
     "ai-interaction-patterns-001": {
       "score": 0.9761904761904763,
@@ -52,8 +52,8 @@
       "delta": 0.45238095238095244
     },
     "ai-interaction-patterns-002": {
-      "score": 0.9722222222222222,
-      "scoreWithout": 0.6388888888888888,
+      "score": 0.9696969696969697,
+      "scoreWithout": 0.6060606060606061,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -86,21 +86,17 @@
         "sample-size": [
           3,
           0
-        ],
-        "sample": [
-          3,
-          3
         ]
       },
       "costPerAnswer": [
         0.0676027,
         0.04342066666666667
       ],
-      "delta": 0.33333333333333337
+      "delta": 0.36363636363636365
     },
     "ai-interaction-patterns-003": {
       "score": 1.0,
-      "scoreWithout": 0.6666666666666666,
+      "scoreWithout": 0.625,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -126,10 +122,6 @@
           3,
           3
         ],
-        "rubber-stamp": [
-          3,
-          3
-        ],
         "seeded-errors": [
           3,
           2
@@ -139,7 +131,7 @@
         0.056463566666666666,
         0.03589666666666667
       ],
-      "delta": 0.33333333333333337
+      "delta": 0.375
     },
     "ai-interaction-patterns-004": {
       "score": 1.0,
@@ -160,8 +152,8 @@
       ]
     },
     "ai-interaction-patterns-005": {
-      "score": 0.8666666666666667,
-      "scoreWithout": 0.7333333333333334,
+      "score": 0.8333333333333334,
+      "scoreWithout": 0.16666666666666666,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -177,25 +169,23 @@
         ],
         "mid-rate": [
           3,
-          3
+          0
         ],
         "top-interval": [
           3,
-          3
-        ],
-        "top-rate": [
-          3,
-          3
+          0
         ]
       },
       "costPerAnswer": [
         0.05869173333333333,
         0.03705733333333334
       ],
-      "delta": 0.1333333333333333
+      "delta": 0.6666666666666667
     }
   },
+  "regraded": true,
+  "stale": false,
   "skillHash": "48037223c55915ad62b84a219c4870a26d723fb8400298a89ce915d1817b1f79",
-  "meanDelta": 0.3130952380952381,
+  "meanDelta": 0.4644209956709957,
   "failures": []
 }

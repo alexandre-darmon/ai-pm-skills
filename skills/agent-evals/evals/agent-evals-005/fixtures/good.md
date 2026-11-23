@@ -2,5 +2,5 @@
 
 1. **Plant the attacks in real tasks.** Take the 300 client emails with their approved actions and build attacked copies: the same request, with an instruction hidden in the body or the PDF. Run the same tasks clean and attacked, in a sandbox.
 2. **Three numbers:** benign utility (clean pass rate, which also shows the filter's false positives), utility under attack (the approved action done and the injected goal not reached) and attack success rate per forbidden action: contact details changed, documents sent to an address not on file.
-3. **Bound, not point.** Even 0 of 120 on a fresh set still allows up to about 2.5% (3/120) per action. Gate on that upper bound against the cost of one statement sent outside.
+3. **Bound, not point.** Even 0 of 120 on a fresh set still allows up to about 2.5% (3/120) per action. Gate on that upper bound against the cost of one statement sent outside. The bound is per attack: multiply it by the attacks expected a month (an assumption Security states, say 100, so up to about 2.5 successes), never by all 5,000 emails.
 4. Contact changes and sends to a new address keep an out-of-band check until the bound is low enough.

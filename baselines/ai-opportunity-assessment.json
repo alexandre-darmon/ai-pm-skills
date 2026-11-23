@@ -4,13 +4,13 @@
   "judgeModel": "claude-haiku-5-5",
   "claudeVersion": "2.1.317",
   "date": "2026-11-11",
-  "casesHash": "7c0741f21ab96e16e68e2ae94e2e8619630165fa7df73146e53c8ce5e5ca9495",
+  "casesHash": "37c56c192f90c9058fde6dd49db5063fae6baa43c43309554325e9c55bb8eeb2",
   "partial": false,
   "costUsd": 0,
   "cases": {
     "ai-opportunity-assessment-001": {
       "score": 1.0,
-      "scoreWithout": 0.6666666666666666,
+      "scoreWithout": 0.625,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -28,10 +28,6 @@
           3,
           3
         ],
-        "rule-alternative": [
-          3,
-          3
-        ],
         "rule-evidence": [
           3,
           0
@@ -41,7 +37,7 @@
         0.0643137,
         0.030153333333333334
       ],
-      "delta": 0.33333333333333337
+      "delta": 0.375
     },
     "ai-opportunity-assessment-002": {
       "score": 0.875,
@@ -75,8 +71,8 @@
       "delta": 0.20833333333333337
     },
     "ai-opportunity-assessment-003": {
-      "score": 0.8611111111111112,
-      "scoreWithout": 0.5,
+      "score": 0.8484848484848485,
+      "scoreWithout": 0.45454545454545453,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -93,10 +89,6 @@
         "l2": [
           3,
           0
-        ],
-        "llm": [
-          3,
-          3
         ],
         "non-ai": [
           3,
@@ -119,7 +111,7 @@
         0.10967753333333334,
         0.043514
       ],
-      "delta": 0.36111111111111116
+      "delta": 0.393939393939394
     },
     "ai-opportunity-assessment-004": {
       "score": 1.0,
@@ -141,7 +133,7 @@
     },
     "ai-opportunity-assessment-005": {
       "score": 0.9259259259259259,
-      "scoreWithout": 0.2962962962962963,
+      "scoreWithout": 0.1851851851851852,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -161,7 +153,7 @@
         ],
         "sample-size": [
           3,
-          3
+          0
         ],
         "stop-condition": [
           3,
@@ -172,11 +164,11 @@
         0.10639383333333334,
         0.042145999999999996
       ],
-      "delta": 0.6296296296296297
+      "delta": 0.7407407407407407
     },
     "ai-opportunity-assessment-006": {
       "score": 1.0,
-      "scoreWithout": 0.6363636363636364,
+      "scoreWithout": 0.45454545454545453,
       "fired": 3,
       "runs": 3,
       "runsWithout": 3,
@@ -184,11 +176,11 @@
       "graders": {
         "interval": [
           3,
-          3
+          0
         ],
         "pilot": [
           3,
-          3
+          0
         ],
         "projection-range": [
           3,
@@ -215,12 +207,12 @@
         0.10614083333333334,
         0.037810666666666666
       ],
-      "delta": 0.36363636363636365
+      "delta": 0.5454545454545454
     }
   },
   "regraded": true,
   "stale": false,
   "skillHash": "e2d2bc44a4f5625c74bcec9a9f582d0878599162d0956e5d325a72e22d7838f9",
-  "meanDelta": 0.3792087542087542,
+  "meanDelta": 0.4526936026936027,
   "failures": []
 }

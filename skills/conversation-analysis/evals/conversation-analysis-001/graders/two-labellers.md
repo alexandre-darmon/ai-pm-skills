@@ -1,5 +1,5 @@
 ---
-type: regex  # human agreement measured on a shared subset
-pattern: '(both|two) (labell?ers|annotators|HR assistants)[^\n]{0,100}(same|overlap|agreement|double|50|subset)|double[- ]label|inter[- ](annotator|rater|labell?er)[^\n]{0,80}(same|shared|overlap|\d+ conversations|subset|kappa)|(same|shared|overlapping) (\d+|subset|set|sample)[^\n]{0,60}(conversations|agreement|kappa)|(labell?er|annotator|human) agreement[^\n]{0,80}(same|shared|overlap|\d+|subset|ceiling)'
+type: regex  # two labellers on a shared subset, and their agreement read as the ceiling a classifier can reach, not only as label reliability
+pattern: '(?:^|\n)(?=[^\n]*\b(both|two|second|same|shared|overlap\w*|double[- ]label\w*)\b)(?=[^\n]*\b(agreement|kappa|agree)\b)(?=[^\n]*(\b(ceiling|upper bound|upper limit)\b|\b(classifier|model|automat\w*)\b[^\n]{0,40}\b(can(no|[''’])?t|won[''’]t|will not|unlikely to) (beat|exceed|do better|reach higher|outperform)))'
 flags: i
 ---
